@@ -1,0 +1,45 @@
+<mat-sidenav-container [class.expanded]="expanded">
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar class="d-f jc-sb">
+      <img class="logo f-1 not-expanded-hide" src="assets/images/scion2e-logo.png">
+      <button mat-icon-button class="f-0" (click)="onToggleSidenavClick()" matTooltip="{{ expanded ? 'Collapse' : 'Expand' }}">
+        <mat-icon>{{ expanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list *ngIf="!(logged$ | async)" dense>
+      <a mat-list-item routerLink="auth/sign-in" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Authorization' }}">
+        <mat-icon>fingerprint</mat-icon><span class="ml-10 not-expanded-hide">Authorization</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="logged$ | async" dense>
+<!--      <a mat-list-item routerLink="system" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'System' }}">-->
+<!--        <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">System</span>-->
+<!--      </a>-->
+      <a mat-list-item routerLink="characters" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Characters' }}">
+        <mat-icon>group</mat-icon><span class="ml-10 not-expanded-hide">Characters</span>
+      </a>
+<!--      <a mat-list-item routerLink="campaigns" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Campaigns' }}">-->
+<!--        <mat-icon>history_edu</mat-icon><span class="ml-10 not-expanded-hide">Campaigns</span>-->
+<!--      </a>-->
+<!--      <a mat-list-item routerLink="world" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'World' }}">-->
+<!--        <mat-icon>public</mat-icon><span class="ml-10 not-expanded-hide">World</span>-->
+<!--      </a>-->
+<!--      <a mat-list-item routerLink="tools" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Tools' }}">-->
+<!--        <mat-icon>construction</mat-icon><span class="ml-10 not-expanded-hide">Tools</span>-->
+<!--      </a>-->
+<!--      <mat-divider></mat-divider>-->
+<!--      <a mat-list-item routerLink="style" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Style Guide' }}">-->
+<!--        <mat-icon>style</mat-icon><span class="ml-10 not-expanded-hide">Style Guide</span>-->
+<!--      </a>-->
+<!--      <a mat-list-item routerLink="profile" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Profile' }}">-->
+<!--        <mat-icon>account_circle</mat-icon><span class="ml-10 not-expanded-hide">Profile</span>-->
+<!--      </a>-->
+<!--      <a *ngIf="admin$ | async" mat-list-item routerLink="admin" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Admin' }}">-->
+<!--        <mat-icon>admin_panel_settings</mat-icon><span class="ml-10 not-expanded-hide">Admin</span>-->
+<!--      </a>-->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

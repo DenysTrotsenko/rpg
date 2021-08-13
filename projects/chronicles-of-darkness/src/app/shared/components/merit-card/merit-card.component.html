@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title class="fs-18">
+    <span class="mr-10 h2">{{src.name}}</span>
+    <span *ngIf="!!src.maneuvers?.length" class="mr-10 tc-gray">(Style)</span>
+    <span class="tc-gray">({{src.dots.sort().join(', ')}})</span>
+  </mat-card-title>
+  <mat-card-content>
+    <p *ngIf="src.maneuver" class="d-f ai-c">
+      <mat-hint><mat-icon inline>warning</mat-icon> You can take this Maneuver only as a part of a Style Merit.</mat-hint>
+    </p>
+    <p *ngIf="src.multiple" class="d-f ai-c">
+      <mat-hint><mat-icon inline>warning</mat-icon> You can take this Merit multiple times.</mat-hint>
+    </p>
+    <p *ngIf="src.specialty" class="d-f ai-c">
+      <mat-hint><mat-icon inline>warning</mat-icon> You need to take a specialty when taking this Merit.</mat-hint>
+    </p>
+    <p *ngIf="!!src.prerequisite" class="ws-pl">
+      <span class="fw-b mr-10 ws-pl">Prerequisite:</span>{{src.prerequisite}}
+    </p>
+    <p *ngIf="!!src.description" class="ws-pl">
+      <span class="fw-b mr-10">Description:</span>{{src.description}}
+    </p>
+    <p *ngIf="!!src.effect" class="ws-pl">
+      <span class="fw-b mr-10">Effect:</span>{{src.effect}}
+    </p>
+    <p *ngIf="!!src.drawback">
+      <span class="fw-b mr-10">Drawback:</span>{{src.drawback}}
+    </p>
+    <ng-container *ngIf="!!src.maneuvers?.length">
+      <div *ngFor="let maneuver of src.maneuvers | getById: 'merits' | async" class="maneuver-box mb-5">
+        <h3 class="mt-5">{{maneuver.name}} ({{maneuver.dots.sort().join(', ')}})</h3>
+        <p *ngIf="!!maneuver.prerequisite" class="mt-5 ws-pl"><span class="fw-b mr-10">Prerequisite:</span>{{maneuver.prerequisite}}</p>
+        <p *ngIf="!!maneuver.description" class="mt-5 ws-pl"><span class="fw-b mr-10">Description:</span>{{maneuver.description}}</p>
+        <p *ngIf="!!maneuver.effect" class="mt-5 ws-pl"><span class="fw-b mr-10">Effect:</span>{{maneuver.effect}}</p>
+        <p *ngIf="!!maneuver.drawback" class="mt-5 ws-pl"><span class="fw-b mr-10">Drawback:</span>{{maneuver.drawback}}</p>
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions *ngIf="mode === 'edit'">
+    <button mat-stroked-button color="accent" (click)="edit.emit(src)">Edit</button>
+    <button mat-stroked-button color="warn" class="ml-10" (click)="delete.emit(src)">Delete</button>
+  </mat-card-actions>
+</mat-card>

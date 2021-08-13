@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Metatype</mat-label>
+    <mat-select formControlName="metatype">
+      <mat-option *ngFor="let i of data.metatypes" [value]="i.id">
+        {{i.name}} ({{i.cost}})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Awakening</mat-label>
+    <mat-select formControlName="awakening">
+      <mat-option *ngFor="let i of data.awakenings" [value]="i.id">
+        {{i.name}} ({{i.cost}})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngFor="let item of attributes.controls; index as i;" class="d-f ai-b">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ data.attributes | find: 'id' : item.get('id').value | map: 'name' }}</mat-label>
+      <input matInput type="number"
+        [min]="getAttributeMin(item.get('id').value)"
+        [max]="getAttributeMax(item.get('id').value)"
+        [formControl]="attributes.controls[i].get('value')" [readonly]="item.get('id').value === 'attribute:essence'">
+    </mat-form-field>
+  </div>
+</form>

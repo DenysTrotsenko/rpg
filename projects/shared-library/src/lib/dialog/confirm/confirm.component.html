@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.title || 'Confirm'}}</h2>
+<mat-dialog-content>{{data.description || 'Are you sure?'}}</mat-dialog-content>
+<mat-dialog-actions class="actions">
+  <button mat-stroked-button color="primary" class="mr-5" [mat-dialog-close]="false">
+    {{data.cancel || 'Cancel'}}
+  </button>
+  <button mat-flat-button color="primary" class="ml-5" [mat-dialog-close]="true">
+    {{data.ok || 'Ok'}}
+  </button>
+</mat-dialog-actions>

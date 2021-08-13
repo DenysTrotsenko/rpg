@@ -1,0 +1,806 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "chronicles-of-darkness": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "scss"
+        }
+      },
+      "root": "projects/chronicles-of-darkness",
+      "sourceRoot": "projects/chronicles-of-darkness/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "projects/chronicles-of-darkness/dist",
+            "index": "projects/chronicles-of-darkness/src/index.html",
+            "main": "projects/chronicles-of-darkness/src/main.ts",
+            "polyfills": "projects/chronicles-of-darkness/src/polyfills.ts",
+            "tsConfig": "projects/chronicles-of-darkness/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/chronicles-of-darkness/src/favicon.ico",
+              "projects/chronicles-of-darkness/src/assets"
+            ],
+            "styles": [
+              "projects/shared-library/src/index.scss",
+              "projects/chronicles-of-darkness/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared-library/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/chronicles-of-darkness/src/environments/environment.ts",
+                  "with": "projects/chronicles-of-darkness/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "chronicles-of-darkness:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "chronicles-of-darkness:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "chronicles-of-darkness:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/chronicles-of-darkness/src/test.ts",
+            "polyfills": "projects/chronicles-of-darkness/src/polyfills.ts",
+            "tsConfig": "projects/chronicles-of-darkness/tsconfig.spec.json",
+            "karmaConfig": "projects/chronicles-of-darkness/karma.conf.js",
+            "assets": [
+              "projects/chronicles-of-darkness/src/favicon.ico",
+              "projects/chronicles-of-darkness/src/assets"
+            ],
+            "styles": [
+              "projects/shared-library/src/index.scss",
+              "projects/chronicles-of-darkness/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/chronicles-of-darkness/tsconfig.app.json",
+              "projects/chronicles-of-darkness/tsconfig.spec.json",
+              "projects/chronicles-of-darkness/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/chronicles-of-darkness/e2e/protractor.conf.js",
+            "devServerTarget": "chronicles-of-darkness:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "chronicles-of-darkness:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "shared-library": {
+      "projectType": "library",
+      "root": "projects/shared-library",
+      "sourceRoot": "projects/shared-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/shared-library/tsconfig.lib.json",
+            "project": "projects/shared-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/shared-library/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/shared-library/src/test.ts",
+            "tsConfig": "projects/shared-library/tsconfig.spec.json",
+            "karmaConfig": "projects/shared-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/shared-library/tsconfig.lib.json",
+              "projects/shared-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bloodbound": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "scss"
+        }
+      },
+      "root": "projects/bloodbound",
+      "sourceRoot": "projects/bloodbound/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bloodbound",
+            "index": "projects/bloodbound/src/index.html",
+            "main": "projects/bloodbound/src/main.ts",
+            "polyfills": "projects/bloodbound/src/polyfills.ts",
+            "tsConfig": "projects/bloodbound/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/bloodbound/src/favicon.ico",
+              "projects/bloodbound/src/assets"
+            ],
+            "styles": [
+              "projects/shared-library/src/index.scss",
+              "projects/bloodbound/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared-library/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bloodbound/src/environments/environment.ts",
+                  "with": "projects/bloodbound/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bloodbound:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bloodbound:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bloodbound:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bloodbound/src/test.ts",
+            "polyfills": "projects/bloodbound/src/polyfills.ts",
+            "tsConfig": "projects/bloodbound/tsconfig.spec.json",
+            "karmaConfig": "projects/bloodbound/karma.conf.js",
+            "assets": [
+              "projects/bloodbound/src/favicon.ico",
+              "projects/bloodbound/src/assets"
+            ],
+            "styles": [
+              "projects/bloodbound/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bloodbound/tsconfig.app.json",
+              "projects/bloodbound/tsconfig.spec.json",
+              "projects/bloodbound/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bloodbound/e2e/protractor.conf.js",
+            "devServerTarget": "bloodbound:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bloodbound:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "starfinder": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/starfinder",
+      "sourceRoot": "projects/starfinder/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/starfinder",
+            "index": "projects/starfinder/src/index.html",
+            "main": "projects/starfinder/src/main.ts",
+            "polyfills": "projects/starfinder/src/polyfills.ts",
+            "tsConfig": "projects/starfinder/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/starfinder/src/favicon.ico",
+              "projects/starfinder/src/assets"
+            ],
+            "styles": [
+              "projects/starfinder/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/starfinder/src/environments/environment.ts",
+                  "with": "projects/starfinder/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "starfinder:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "starfinder:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "starfinder:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/starfinder/src/test.ts",
+            "polyfills": "projects/starfinder/src/polyfills.ts",
+            "tsConfig": "projects/starfinder/tsconfig.spec.json",
+            "karmaConfig": "projects/starfinder/karma.conf.js",
+            "assets": [
+              "projects/starfinder/src/favicon.ico",
+              "projects/starfinder/src/assets"
+            ],
+            "styles": [
+              "projects/starfinder/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/starfinder/tsconfig.app.json",
+              "projects/starfinder/tsconfig.spec.json",
+              "projects/starfinder/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/starfinder/e2e/protractor.conf.js",
+            "devServerTarget": "starfinder:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "starfinder:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "unsorted": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/unsorted",
+      "sourceRoot": "projects/unsorted/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/unsorted",
+            "index": "projects/unsorted/src/index.html",
+            "main": "projects/unsorted/src/main.ts",
+            "polyfills": "projects/unsorted/src/polyfills.ts",
+            "tsConfig": "projects/unsorted/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/unsorted/src/favicon.ico",
+              "projects/unsorted/src/assets"
+            ],
+            "styles": [
+              "projects/shared-library/src/index.scss",
+              "projects/unsorted/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared-library/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/unsorted/src/environments/environment.ts",
+                  "with": "projects/unsorted/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "unsorted:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "unsorted:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "unsorted:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/unsorted/src/test.ts",
+            "polyfills": "projects/unsorted/src/polyfills.ts",
+            "tsConfig": "projects/unsorted/tsconfig.spec.json",
+            "karmaConfig": "projects/unsorted/karma.conf.js",
+            "assets": [
+              "projects/unsorted/src/favicon.ico",
+              "projects/unsorted/src/assets"
+            ],
+            "styles": [
+              "projects/unsorted/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/unsorted/tsconfig.app.json",
+              "projects/unsorted/tsconfig.spec.json",
+              "projects/unsorted/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/unsorted/e2e/protractor.conf.js",
+            "devServerTarget": "unsorted:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "unsorted:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "bloodbound-world": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/bloodbound-world",
+      "sourceRoot": "projects/bloodbound-world/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bloodbound-world",
+            "index": "projects/bloodbound-world/src/index.html",
+            "main": "projects/bloodbound-world/src/main.ts",
+            "polyfills": "projects/bloodbound-world/src/polyfills.ts",
+            "tsConfig": "projects/bloodbound-world/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/bloodbound-world/src/favicon.ico",
+              "projects/bloodbound-world/src/assets"
+            ],
+            "styles": [
+              "projects/shared-library/src/index.scss",
+              "projects/bloodbound-world/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {"includePaths": ["projects/shared-library/src/styles/"]},
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bloodbound-world/src/environments/environment.ts",
+                  "with": "projects/bloodbound-world/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bloodbound-world:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bloodbound-world:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bloodbound-world:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bloodbound-world/src/test.ts",
+            "polyfills": "projects/bloodbound-world/src/polyfills.ts",
+            "tsConfig": "projects/bloodbound-world/tsconfig.spec.json",
+            "karmaConfig": "projects/bloodbound-world/karma.conf.js",
+            "assets": [
+              "projects/bloodbound-world/src/favicon.ico",
+              "projects/bloodbound-world/src/assets"
+            ],
+            "styles": [
+              "projects/bloodbound-world/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bloodbound-world/tsconfig.app.json",
+              "projects/bloodbound-world/tsconfig.spec.json",
+              "projects/bloodbound-world/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bloodbound-world/e2e/protractor.conf.js",
+            "devServerTarget": "bloodbound-world:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bloodbound-world:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "shadowrun": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/shadowrun",
+      "sourceRoot": "projects/shadowrun/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/shadowrun",
+            "index": "projects/shadowrun/src/index.html",
+            "main": "projects/shadowrun/src/main.ts",
+            "polyfills": "projects/shadowrun/src/polyfills.ts",
+            "tsConfig": "projects/shadowrun/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/shadowrun/src/favicon.ico",
+              "projects/shadowrun/src/assets"
+            ],
+            "styles": [
+              "projects/shadowrun/src/styles.scss",
+              "projects/shared-library/src/index.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared-library/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/shadowrun/src/environments/environment.ts",
+                  "with": "projects/shadowrun/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "shadowrun:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shadowrun:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shadowrun:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/shadowrun/src/test.ts",
+            "polyfills": "projects/shadowrun/src/polyfills.ts",
+            "tsConfig": "projects/shadowrun/tsconfig.spec.json",
+            "karmaConfig": "projects/shadowrun/karma.conf.js",
+            "assets": [
+              "projects/shadowrun/src/favicon.ico",
+              "projects/shadowrun/src/assets"
+            ],
+            "styles": [
+              "projects/shadowrun/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/shadowrun/tsconfig.app.json",
+              "projects/shadowrun/tsconfig.spec.json",
+              "projects/shadowrun/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/shadowrun/e2e/protractor.conf.js",
+            "devServerTarget": "shadowrun:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shadowrun:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "shared-library",
+  "cli": {
+    "analytics": false
+  }
+}

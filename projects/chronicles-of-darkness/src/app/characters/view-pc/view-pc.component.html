@@ -1,0 +1,235 @@
+<ng-container *ngIf="character$ | async as character">
+  <!-- META -->
+  <mat-card class="mb-10">
+    <mat-card-content class="d-f">
+      <img [src]="character.meta.portrait" class="portrait">
+      <table class="mat-table">
+        <tbody>
+          <tr class="mat-row">
+            <td class="mat-cell">Name</td>
+            <td class="mat-cell">
+              {{ character.name }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Template</td>
+            <td class="mat-cell">
+              {{ character.template }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Concept</td>
+            <td class="mat-cell">
+              {{ character.meta.concept }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Virtues</td>
+            <td class="mat-cell">
+              {{ character.virtues | getById: 'virtues' | async | map: 'name' | join: ', ' }}
+            </td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Vices</td>
+            <td class="mat-cell">
+              {{ character.vices | getById: 'virtues' | async | map: 'name' | join: ', ' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <!-- DERIVED -->
+  <mat-card class="mb-10">
+    <mat-card-content class="d-f">
+      <table class="mat-table">
+        <tbody>
+          <tr class="mat-row">
+            <td class="mat-cell">Size</td>
+            <td class="mat-cell">{{character.size}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Speed</td>
+            <td class="mat-cell">{{character.speed}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Initiative</td>
+            <td class="mat-cell">{{character.initiative}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Defence</td>
+            <td class="mat-cell">{{character.defence}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Armor</td>
+            <td class="mat-cell">{{character.armor}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="mat-table">
+        <tbody>
+          <tr class="mat-row">
+            <td class="mat-cell">Health</td>
+            <td class="mat-cell">{{character.health}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Willpower</td>
+            <td class="mat-cell">{{character.willpower}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Integrity</td>
+            <td class="mat-cell">{{character.integrity}}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell">Arete</td>
+            <td class="mat-cell">{{character.power}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <!-- ATTRIBUTES -->
+  <mat-card class="mb-10">
+    <mat-card-content>
+      <table class="mat-table w-100">
+        <tbody>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Intelligence</td>
+            <td class="mat-cell w-100px">{{ character.attributes.intelligence | dots }}</td>
+            <td class="mat-cell w-200px">Strength</td>
+            <td class="mat-cell w-100px">{{ character.attributes.strength | dots }}</td>
+            <td class="mat-cell w-200px">Presence</td>
+            <td class="mat-cell w-100px">{{ character.attributes.presence | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Wits</td>
+            <td class="mat-cell w-100px">{{ character.attributes.wits | dots }}</td>
+            <td class="mat-cell w-200px">Dexterity</td>
+            <td class="mat-cell w-100px">{{ character.attributes.dexterity | dots }}</td>
+            <td class="mat-cell w-200px">Manipulation</td>
+            <td class="mat-cell w-100px">{{ character.attributes.manipulation | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Resolve</td>
+            <td class="mat-cell w-100px">{{ character.attributes.resolve | dots }}</td>
+            <td class="mat-cell w-200px">Stamina</td>
+            <td class="mat-cell w-100px">{{ character.attributes.stamina | dots }}</td>
+            <td class="mat-cell w-200px">Composure</td>
+            <td class="mat-cell w-100px">{{ character.attributes.composure | dots }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <!-- SKILLS -->
+  <mat-card class="mb-10">
+    <mat-card-content>
+      <table class="mat-table w-100">
+        <tbody>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">
+              Academics
+<!--              <span *ngIf="(character.skills | find: 'id' : 1).specialties.length">-->
+<!--                ({{(character.skills | find: 'id' : 1).specialties | join: ', '}})-->
+<!--              </span>-->
+            </td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 1).value | dots }}</td>
+            <td class="mat-cell w-200px">Archery</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 9).value | dots }}</td>
+            <td class="mat-cell w-200px">Animal Ken</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 18).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Crafts</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 2).value | dots }}</td>
+            <td class="mat-cell w-200px">Athletics</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 10).value | dots }}</td>
+            <td class="mat-cell w-200px">Empathy</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 19).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Enigmas</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 3).value | dots }}</td>
+            <td class="mat-cell w-200px">Brawl</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 11).value | dots }}</td>
+            <td class="mat-cell w-200px">Expression</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 20).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Investigation</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 4).value | dots }}</td>
+            <td class="mat-cell w-200px">Firearms</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 12).value | dots }}</td>
+            <td class="mat-cell w-200px">Intimidation</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 21).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Medicine</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 5).value | dots }}</td>
+            <td class="mat-cell w-200px">Larceny</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 13).value | dots }}</td>
+            <td class="mat-cell w-200px">Persuasion</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 22).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Occult</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 6).value | dots }}</td>
+            <td class="mat-cell w-200px">Ride</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 14).value | dots }}</td>
+            <td class="mat-cell w-200px">Socialize</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 23).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Politics</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 7).value | dots }}</td>
+            <td class="mat-cell w-200px">Stealth</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 15).value | dots }}</td>
+            <td class="mat-cell w-200px">Streetwise</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 24).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px">Science</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 8).value | dots }}</td>
+            <td class="mat-cell w-200px">Survival</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 16).value | dots }}</td>
+            <td class="mat-cell w-200px">Subterfuge</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 25).value | dots }}</td>
+          </tr>
+          <tr class="mat-row">
+            <td class="mat-cell w-200px"></td>
+            <td class="mat-cell w-100px"></td>
+            <td class="mat-cell w-200px">Weaponry</td>
+            <td class="mat-cell w-100px">{{ (character.skills | find: 'id' : 17).value | dots }}</td>
+            <td class="mat-cell w-200px"></td>
+            <td class="mat-cell w-100px"></td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <!-- MERITS -->
+  <mat-card class="mb-10">
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <!-- POWERS -->
+  <mat-card class="mb-10">
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <!-- EQUIPMENT -->
+  <mat-card class="mb-10">
+    <mat-card-content></mat-card-content>
+  </mat-card>
+</ng-container>
+
+<!--<table class="mat-table w-100 ta-c">-->
+<!--  <thead>-->
+<!--  <tr class="mat-header-row">-->
+<!--    <th class="mat-header-cell">Damage</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr class="mat-row">-->
+<!--    <td class="mat-cell">{{ }}</td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->

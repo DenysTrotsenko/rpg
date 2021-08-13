@@ -1,0 +1,222 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-content class="d-f fd-c">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" minlength="1" required>
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Template</mat-label>
+        <input matInput type="text" formControlName="template" minlength="1" required>
+        <mat-error *ngIf="form.get('template')?.hasError('required')">Template is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Virtues</mat-label>
+        <mat-select formControlName="virtues" required multiple>
+          <mat-option *ngFor="let i of virtues$ | async" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('virtues')?.hasError('required')">Virtue is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vices</mat-label>
+        <mat-select formControlName="vices" required multiple>
+          <mat-option *ngFor="let i of vices$ | async" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('vices')?.hasError('required')">Vice is required.</mat-error>
+      </mat-form-field>
+
+      <ng-container formGroupName="meta">
+        <div class="d-f mb-10">
+          <div class="portrait-wrapper mr-10">
+            <img class="portrait" [src]="portrait$ | async">
+          </div>
+          <file-input accept="image/*" (valueChanges)="onPortraitChange($event)"></file-input>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Concept</mat-label>
+          <input matInput type="text" formControlName="concept" minlength="1" required>
+          <mat-error *ngIf="form.get('concept')?.hasError('required')">Concept is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="form.get('description')?.hasError('required')">Description is required.</mat-error>
+        </mat-form-field>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- ATTRIBUTES -->
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-header>
+      <mat-card-title>Attributes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f fd-c" formGroupName="attributes">
+      <mat-radio-group *ngFor="let a of getControlNames(attributes)" class="mb-10" [formControlName]="a">
+        <mat-label class="d-ib mr-10 tt-c fixed-width-label">{{a}}</mat-label>
+        <mat-radio-button
+          *ngFor="let d of getDots(ATTRIBUTE_MAX)"
+          [value]="d"
+          [class.mat-radio-checked]="d <= attributes.controls[a].value">
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- SKILLS -->
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-header>
+      <mat-card-title>Skills</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f fd-c" formGroupName="skills">
+      <div *ngFor="let control of skills.controls;" class="d-f jc-sb ai-b">
+        <mat-radio-group class="mb-10" [formControl]="getValueFormControl(control)">
+          <mat-label class="d-ib mr-10 tt-c fixed-width-label">{{control.get('name').value}}</mat-label>
+          <button mat-icon-button type="button" class="clear-button" (click)="onClearSkillClick(control)">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <mat-radio-button
+            *ngFor="let d of getDots(SKILL_MAX)"
+            [value]="d"
+            [class.mat-radio-checked]="d <= control.get('value').value">
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="standard" class="ml-10 f-1">
+          <mat-chip-list #specializationsList>
+            <mat-chip *ngFor="let i of control.get('specialties').value" [removable]="true" (removed)="onSpecialtyRemove(control, i)">
+              {{i}}<mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="{{ control.get('name').value | titlecase }} specializations" class="w-100px"
+              [matChipInputFor]="specializationsList"
+              [matChipInputSeparatorKeyCodes]="SEPARATORS"
+              [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="onSpecialtyAdd(control, $event)">
+          </mat-chip-list>
+        </mat-form-field>
+        <mat-checkbox class="ml-10">Asset Skill</mat-checkbox>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- MERITS -->
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-header>
+      <mat-card-title class="d-f ai-c">
+        Merits
+        <button type="button" color="primary" mat-flat-button class="ml-10" [matMenuTriggerFor]="meritMenu">
+          <mat-icon class="mr-10">add</mat-icon>Add Merit
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-menu #meritMenu="matMenu">
+        <button mat-menu-item type="button" *ngFor="let merit of merits$ | async" (click)="onAddMeritClick(merit)">
+          {{merit.name}} ({{merit.dots.sort().join(', ')}})
+        </button>
+      </mat-menu>
+      <div *ngFor="let control of merits.controls; index as i;" class="d-f jc-sb ai-b">
+        <mat-radio-group class="mb-10" [formControl]="getValueFormControl(control)">
+          <mat-label class="d-ib mr-10 tt-c">
+            {{control.get('name').value}}
+            <span *ngIf="!!control.get('specialty').value">({{control.get('specialty').value}})</span>
+          </mat-label>
+          <mat-radio-button
+            *ngFor="let d of getDots(MERIT_MAX)"
+            [value]="d"
+            [disabled]="!control.get('dots').value.includes(d)"
+            [class.mat-radio-checked]="d <= control.get('value').value">
+          </mat-radio-button>
+        </mat-radio-group>
+        <button mat-icon-button type="button" class="clear-button" (click)="onClearMeritClick(i)">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- EQUIPMENT -->
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-header>
+      <mat-card-title class="d-f ai-c">
+        Equipment
+        <button type="button" color="primary" mat-flat-button class="ml-10" [matMenuTriggerFor]="equipmentMenu">
+          <mat-icon class="mr-10">add</mat-icon>Add Equipment
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-menu #equipmentMenu="matMenu">
+        <button mat-menu-item type="button" *ngFor="let i of equipment$ | async" (click)="onAddEquipmentClick(i)">
+          {{i.name}}
+        </button>
+      </mat-menu>
+      <mat-list>
+        <mat-list-item *ngFor="let control of equipment.controls; index as i;">
+          <span matLine>{{control.get('name').value}}</span>
+          <button mat-icon-button (click)="onClearEquipmentClick(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- OTHER TRAITS -->
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-dialog-content>
+      <p>
+        <span class="fw-b">Health</span>
+        <span class="ml-5 mr-10">(Size + Stamina):</span>
+        {{ form.get('size').value + attributes.get('stamina').value }}
+      </p>
+      <p>
+        <span class="fw-b">Willpower</span>
+        <span class="ml-5 mr-10">(Resolve + Composure):</span>
+        {{ attributes.get('resolve').value + attributes.get('composure').value }}
+      </p>
+      <p>
+        <span class="fw-b mr-10">Integrity:</span>
+        {{ form.get('integrity').value }}
+      </p>
+      <p>
+        <span class="fw-b mr-10">Size:</span>
+        {{ form.get('size').value }}
+      </p>
+      <p>
+        <span class="fw-b">Speed</span>
+        <span class="ml-5 mr-10">(Strength + Dexterity + 5):</span>
+        {{ attributes.get('strength').value + attributes.get('dexterity').value + 5 }}
+      </p>
+      <p>
+        <span class="fw-b">Initiative</span>
+        <span class="ml-5 mr-10">(Dexterity + Composure):</span>
+        {{ attributes.get('dexterity').value + attributes.get('composure').value }}
+      </p>
+      <p>
+        <span class="fw-b">Defence</span>
+        <span class="ml-5 mr-10">(Lower of Wits/Dexterity + Athletics):</span>
+        {{ defence }}
+      </p>
+    </mat-dialog-content>
+  </mat-card>
+
+  <mat-card class="mat-elevation-z4 mb-10">
+    <mat-card-content>
+      <button mat-flat-button color="primary" type="submit">Submit</button>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+
+W&W
+Zigzag
+Kosatka
+
+Parovoz Speak Easy
+Alchemist Bar
+Loggerhead
+Hendrick's bar
+Barman Dictat
+
+Pink Freud

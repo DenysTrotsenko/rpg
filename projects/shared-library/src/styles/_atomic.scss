@@ -1,0 +1,44 @@
+.p-r { position: relative !important; }
+
+.d-b { display: block !important; }
+.d-ib { display: inline-block !important; }
+
+.d-f { display: flex !important; }
+.fd-c { flex-direction: column !important; }
+.jc-sb { justify-content: space-between !important; }
+.jc-fe { justify-content: flex-end !important; }
+.ai-fs { align-items: flex-start !important; }
+.ai-b { align-items: baseline !important; }
+.ai-c { align-items: center !important; }
+.ai-s { align-items: stretch !important; }
+.fw-w { flex-wrap: wrap !important; }
+.as-fs { align-self: flex-start !important; }
+.f-0 { flex: 0 0 auto !important; }
+.f-1 { flex: 1 !important; }
+
+.w-100 { width: 100% !important; }
+
+.m-0 { margin: 0 !important; }
+.mt-5 { margin-top: 5px !important; }
+.mt-10 { margin-top: 10px !important; }
+.mt-15 { margin-top: 15px !important; }
+.mr-5 { margin-right: 5px !important; }
+.mr-10 { margin-right: 10px !important; }
+.mr-15 { margin-right: 15px !important; }
+.mb-5 { margin-bottom: 5px !important; }
+.mb-10 { margin-bottom: 10px !important; }
+.mb-15 { margin-bottom: 15px !important; }
+.ml-5 { margin-left: 5px !important; }
+.ml-10 { margin-left: 10px !important; }
+.ml-15 { margin-left: 15px !important; }
+
+.p-5 { padding: 5px !important; }
+.p-10 { padding: 10px !important; }
+.p-15 { padding: 15px !important; }
+
+/* Mobile-only styles */
+@media only screen and (max-width: 600px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}

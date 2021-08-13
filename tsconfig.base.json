@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@shared": [
+        "projects/shared-library/src/public-api",
+        "dist/shared-library/shared-library",
+        "dist/shared-library"
+      ],
+      "@bloodbound/*": ["projects/bloodbound/src/*"],
+      "@bloodbound-world/*": ["projects/bloodbound-world/src/*"],
+      "@cod/*": ["projects/chronicles-of-darkness/src/*"],
+      "@shadowrun/*": ["projects/shadowrun/src/*"]
+    }
+  }
+}

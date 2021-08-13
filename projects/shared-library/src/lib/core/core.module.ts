@@ -1,0 +1,33 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { CacheService } from './cache.service';
+import { HttpService } from './http.service';
+import { FirestoreService } from './firestore.service';
+import { StorageService } from './storage.service';
+import { DialogModule } from '../dialog/dialog.module';
+import { SnackbarModule } from '../snackbar/snackbar.module';
+
+@NgModule({
+  exports: [
+    CommonModule,
+    HttpClientModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    DialogModule,
+    SnackbarModule
+  ],
+  providers: [
+    AuthGuard,
+    AuthService,
+    CacheService,
+    HttpService,
+    FirestoreService,
+    StorageService
+  ]
+})
+export class CoreModule {}

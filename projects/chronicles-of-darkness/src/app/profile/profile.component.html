@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <h1 class="mr-10">Profile</h1>
+  <span class="f-1"></span>
+  <button mat-flat-button color="primary" (click)="onSignOut()">Sign Out</button>
+</mat-toolbar>
+<div class="p-10">
+  <form *ngIf="user$ | async as user" class="d-f fd-c" [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+    <mat-form-field appearance="outline" class="f-1">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+    </mat-form-field>
+    <button mat-flat-button type="submit" color="primary" [disabled]="form.pristine || !form.valid">
+      Save Changes
+    </button>
+  </form>
+</div>
