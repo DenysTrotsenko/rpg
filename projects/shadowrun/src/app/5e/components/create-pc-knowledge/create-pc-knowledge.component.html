@@ -1,0 +1,31 @@
+<mat-card class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Knowledge</mat-card-title>
+    <button mat-button type="button" (click)="onAddKnowledgeClick()">
+      <mat-icon>add</mat-icon> Add
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let i of form.controls;" class="d-f ai-b fw-nw">
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Category</mat-label>
+        <mat-select [formControl]="i.get('category')">
+          <mat-option *ngFor="let category of data.skillCategories" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [formControl]="i.get('name')">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Rating</mat-label>
+        <input matInput type="number" [formControl]="i.get('rating')" [min]="i.get('min').value" [max]="i.get('max').value">
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="onRemoveKnowledgeClick(i.get('id').value)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

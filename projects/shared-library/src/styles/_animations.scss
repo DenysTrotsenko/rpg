@@ -4,12 +4,12 @@
   -webkit-animation: color-change 10s infinite;
 }
 @-webkit-keyframes color-change {
-  0% {color: $color-red;}
-  15% {color: $color-orange;}
-  30% {color: $color-yellow;}
-  45% {color: $color-green;}
-  60% {color: $color-light-blue;}
-  75% {color: $color-blue;}
-  90% {color: $color-purple;}
-  100% {color: $color-red;}
+  0% {color: $color-red !important;}
+  15% {color: $color-orange !important;}
+  30% {color: $color-yellow !important;}
+  45% {color: $color-green !important;}
+  60% {color: $color-light-blue !important;}
+  75% {color: $color-blue !important;}
+  90% {color: $color-purple !important;}
+  100% {color: $color-red !important;}
 }

@@ -1,32 +1,60 @@
 <form [formGroup]="form">
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Metatype</mat-label>
-    <mat-select formControlName="metatype">
-      <mat-option *ngFor="let i of data.metatypes" [value]="i.id">
-        {{i.name}} ({{i.cost}})
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Awakening</mat-label>
-    <mat-select formControlName="awakening">
-      <mat-option *ngFor="let i of data.awakenings" [value]="i.id">
-        {{i.name}} ({{i.cost}})
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Personal</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Metatype</mat-label>
+        <mat-select formControlName="metatype">
+          <mat-option *ngFor="let i of data.metatypes" [value]="i.id">
+            {{i.name}} ({{i.cost}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Awakening</mat-label>
+        <mat-select formControlName="awakening">
+          <mat-option *ngFor="let i of data.awakenings" [value]="i.id">
+            {{i.name}} ({{i.cost}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
 
-  <div *ngFor="let item of attributes.controls; index as i;" class="d-f ai-b">
-    <mat-form-field appearance="outline">
-      <mat-label>{{ data.attributes | find: 'id' : item.get('id').value | map: 'name' }}</mat-label>
-      <input matInput type="number"
-        [min]="getAttributeMin(item.get('id').value)"
-        [max]="getAttributeMax(item.get('id').value)"
-        [formControl]="attributes.controls[i].get('value')" [readonly]="item.get('id').value === 'attribute:essence'">
-    </mat-form-field>
-  </div>
+  <s5e-create-pc-qualities formControlName="qualities"
+    [awakening]="form.get('awakening').value"
+    [metatype]="form.get('metatype').value">
+  </s5e-create-pc-qualities>
+
+  <s5e-create-pc-attributes formControlName="attributes"
+    [awakening]="form.get('awakening').value"
+    [metatype]="form.get('metatype').value">
+  </s5e-create-pc-attributes>
+
+  <s5e-create-pc-skills formControlName="skills"
+    [awakening]="form.get('awakening').value"
+    [metatype]="form.get('metatype').value">
+  </s5e-create-pc-skills>
+
+  <s5e-create-pc-knowledge formControlName="knowledge"
+    [qualities]="form.get('qualities').value">
+  </s5e-create-pc-knowledge>
+
+  <s5e-create-pc-contacts formControlName="contacts"></s5e-create-pc-contacts>
+
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
 </form>

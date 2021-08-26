@@ -1,0 +1,31 @@
+<mat-card class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Contacts</mat-card-title>
+    <button mat-button type="button" (click)="onAddContactClick()">
+      <mat-icon>add</mat-icon> Add
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let i of form.controls;" class="d-f ai-b fw-nw">
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [formControl]="i.get('name')">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Connection</mat-label>
+        <input matInput type="number" [formControl]="i.get('connection')" min="1" max="6">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Loyalty</mat-label>
+        <input matInput type="number" [formControl]="i.get('loyalty')" min="1" max="6">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Details</mat-label>
+        <input matInput type="text" [formControl]="i.get('details')">
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="onRemoveContactClick(i.get('id').value)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

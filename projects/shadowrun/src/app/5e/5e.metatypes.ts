@@ -17,8 +17,7 @@ export const METATYPES: Metatype[] = [
       [ATTRIBUTE_ID.INTUITION]: [1, 6],
       [ATTRIBUTE_ID.CHARISMA]: [1, 6],
       [ATTRIBUTE_ID.EDGE]: [2, 7],
-      [ATTRIBUTE_ID.ESSENCE]: [6, 6],
-      [ATTRIBUTE_ID.MAGIC]: [0, 0]
+      [ATTRIBUTE_ID.ESSENCE]: [6, 6]
     },
     cost: 0
   },
@@ -37,8 +36,7 @@ export const METATYPES: Metatype[] = [
       [ATTRIBUTE_ID.INTUITION]: [1, 6],
       [ATTRIBUTE_ID.CHARISMA]: [1, 6],
       [ATTRIBUTE_ID.EDGE]: [1, 6],
-      [ATTRIBUTE_ID.ESSENCE]: [6, 6],
-      [ATTRIBUTE_ID.MAGIC]: [0, 0]
+      [ATTRIBUTE_ID.ESSENCE]: [6, 6]
     },
     cost: 50
   },
@@ -57,8 +55,7 @@ export const METATYPES: Metatype[] = [
       [ATTRIBUTE_ID.INTUITION]: [1, 6],
       [ATTRIBUTE_ID.CHARISMA]: [3, 8],
       [ATTRIBUTE_ID.EDGE]: [1, 6],
-      [ATTRIBUTE_ID.ESSENCE]: [6, 6],
-      [ATTRIBUTE_ID.MAGIC]: [0, 0]
+      [ATTRIBUTE_ID.ESSENCE]: [6, 6]
     },
     cost: 40
   },
@@ -77,8 +74,7 @@ export const METATYPES: Metatype[] = [
       [ATTRIBUTE_ID.INTUITION]: [1, 6],
       [ATTRIBUTE_ID.CHARISMA]: [1, 5],
       [ATTRIBUTE_ID.EDGE]: [1, 6],
-      [ATTRIBUTE_ID.ESSENCE]: [6, 6],
-      [ATTRIBUTE_ID.MAGIC]: [0, 0]
+      [ATTRIBUTE_ID.ESSENCE]: [6, 6]
     },
     cost: 50
   },
@@ -97,8 +93,7 @@ export const METATYPES: Metatype[] = [
       [ATTRIBUTE_ID.INTUITION]: [1, 5],
       [ATTRIBUTE_ID.CHARISMA]: [1, 4],
       [ATTRIBUTE_ID.EDGE]: [1, 6],
-      [ATTRIBUTE_ID.ESSENCE]: [6, 6],
-      [ATTRIBUTE_ID.MAGIC]: [0, 0]
+      [ATTRIBUTE_ID.ESSENCE]: [6, 6]
     },
     cost: 90
   }

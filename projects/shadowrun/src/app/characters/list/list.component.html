@@ -1,1 +1,12 @@
-<p>list works!</p>
+<mat-nav-list>
+  <mat-list-item>
+    <img matListAvatar class="portrait" src="assets/images/portraits/pc_humanmale_00_faceless.png">
+    <a matLine [routerLink]="'create'">Create new PC</a>
+  </mat-list-item>
+  <mat-list-item *ngFor="let character of characters$ | async">
+    <img matListAvatar class="portrait" [src]="'assets/portraits/' + character.portrait">
+    <a matLine [routerLink]="['view', character.id]">{{ character.name }} (Karma: {{ character.karma }})</a>
+    <a mat-icon-button [routerLink]="['edit', character.id]"><mat-icon>edit</mat-icon></a>
+    <button mat-icon-button (click)="onDeleteClick(character.id)"><mat-icon>delete</mat-icon></button>
+  </mat-list-item>
+</mat-nav-list>

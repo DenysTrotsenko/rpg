@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-campaigns',
   templateUrl: './campaigns.component.html',
-  styleUrls: ['./campaigns.component.scss']
+  styleUrls: ['./campaigns.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CampaignsComponent implements OnInit {
 

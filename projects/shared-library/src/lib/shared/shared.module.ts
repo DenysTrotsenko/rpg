@@ -8,12 +8,14 @@ import { JoinPipe } from './pipes/join.pipe';
 import { MapPipe } from './pipes/map.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { FindPipe } from './pipes/find.pipe';
+import { UnsubscribeDirective } from './directives/unsubscribe.directive';
 
 const DECLARATIONS = [
   JoinPipe,
   MapPipe,
   FilterByPipe,
-  FindPipe
+  FindPipe,
+  UnsubscribeDirective
 ];
 
 const IMPORTS = [
