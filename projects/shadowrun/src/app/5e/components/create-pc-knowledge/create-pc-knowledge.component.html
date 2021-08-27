@@ -19,10 +19,12 @@
         <mat-label>Name</mat-label>
         <input matInput type="text" [formControl]="i.get('name')">
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Rating</mat-label>
-        <input matInput type="number" [formControl]="i.get('rating')" [min]="i.get('min').value" [max]="i.get('max').value">
-      </mat-form-field>
+      <number-input
+        [formControl]="i.get('rating')"
+        [min]="i.get('min').value"
+        [max]="i.get('max').value"
+        label="Rating">
+      </number-input>
       <button mat-icon-button type="button" (click)="onRemoveKnowledgeClick(i.get('id').value)">
         <mat-icon>delete</mat-icon>
       </button>

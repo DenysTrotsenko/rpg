@@ -7,6 +7,7 @@ import { CreatePcKnowledgeComponent } from './components/create-pc-knowledge/cre
 import { CreatePcQualitiesComponent } from './components/create-pc-qualities/create-pc-qualities.component';
 import { CreatePcContactsComponent } from './components/create-pc-contacts/create-pc-contacts.component';
 import { CreatePcSpellsComponent } from './components/create-pc-spells/create-pc-spells.component';
+import {UiModule} from '@shadowrun/app/ui/ui.module';
 
 const DECLARATIONS = [
   CreatePcAttributesComponent,
@@ -18,10 +19,12 @@ const DECLARATIONS = [
 
 @NgModule({
   exports: [
-    ...DECLARATIONS
+    ...DECLARATIONS,
+    CreatePcSpellsComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    UiModule
   ],
   providers: [
     FifthEditionService

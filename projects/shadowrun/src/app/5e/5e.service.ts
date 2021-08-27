@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Attribute, Awakening, Book, Knowledge, Metatype, Quality, Skill, SkillCategory } from './5e.models';
+import {Attribute, Awakening, Book, Knowledge, Metatype, Quality, Skill, SkillCategory, Spell} from './5e.models';
 import { ATTRIBUTES } from './5e.attributes';
 import { AWAKENINGS } from './5e.awakenings';
 import { BOOKS } from './5e.books';
 import { METATYPES } from './5e.metatypes';
 import { NEGATIVE_QUALITIES, POSITIVE_QUALITIES } from './5e.qualities';
 import { ACTIVE_SKILLS, KNOWLEDGE, SKILL_CATEGORIES } from './5e.skills';
+import { SPELLS } from './5e.spells';
 
 @Injectable()
 export class FifthEditionService {
@@ -17,4 +18,5 @@ export class FifthEditionService {
   readonly qualities: Quality[] = [...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
   readonly skillCategories: SkillCategory[] = SKILL_CATEGORIES;
   readonly skills: Skill[] = ACTIVE_SKILLS;
+  readonly spells: Spell[] = SPELLS;
 }

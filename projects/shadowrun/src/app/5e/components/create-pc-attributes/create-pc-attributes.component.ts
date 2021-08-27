@@ -56,8 +56,6 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
 
     this.data.attributes.forEach(attribute => {
       const range = !!awakening && !!metatype ? metatype.attributes[attribute.id] ?? awakening.attributes[attribute.id] : [1, 6];
-      // const current = attributes.find(i => i.id === attribute.id);
-      // const clamp = Math.max(range[0], Math.min(!!current ? current.value : range[0], range[1]));
       this.form.push(new FormGroup({
         id: new FormControl(attribute.id),
         min: new FormControl(range[0]),

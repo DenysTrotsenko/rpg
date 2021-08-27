@@ -22,7 +22,6 @@ import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
   ]
 })
 export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  @Input() set qualities(value: QualityId) { this.qualities$.next(value); }
   readonly form: FormArray = new FormArray([
     new FormGroup({
       id: new FormControl(`knowledge:${Date.now()}`),
@@ -34,20 +33,18 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       readonly: new FormControl(true)
     })
   ]);
-  private readonly qualities$: BehaviorSubject<QualityId> = new BehaviorSubject(null);
-  propagateChange = (_: any) => {};
+  onChange = (_: any) => {};
 
   constructor(public data: FifthEditionService) {
     super();
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.qualities$.subscribe();
-    this.subscriptions = this.form.valueChanges.subscribe(res => this.propagateChange(res));
+    this.subscriptions = this.form.valueChanges.subscribe(res => this.onChange(res));
   }
 
   writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
   onAddKnowledgeClick(): void {
@@ -55,8 +52,8 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       id: new FormControl(`knowledge:${Date.now()}`),
       name: new FormControl('', [Validators.required]),
       category: new FormControl(SKILL_CATEGORY_ID.ACADEMIC, [Validators.required]),
-      rating: new FormControl(1, [Validators.required, Validators.min(0), Validators.max(6)]),
-      min: new FormControl(0),
+      rating: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(6)]),
+      min: new FormControl(1),
       max: new FormControl(6),
       readonly: new FormControl(false)
     }));

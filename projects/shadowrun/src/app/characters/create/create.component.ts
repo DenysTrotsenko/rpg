@@ -39,6 +39,7 @@ export class CreateComponent implements OnInit {
     skills: new FormControl(null, [Validators.required]),
     knowledge: new FormControl(null, [Validators.required]),
     contacts: new FormControl(null, [Validators.required]),
+    spells: new FormControl(null, [Validators.required]),
   });
 
   constructor(public data: FifthEditionService) { }

@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/c
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
 import {UnsubscribeDirective} from '@shared';
-import {Spell} from '@shadowrun/app/5e/5e.models';
+import {QualityId, Spell, SpellId} from '@shadowrun/app/5e/5e.models';
 
 @Component({
   /* tslint:disable-next-line */
@@ -35,14 +35,19 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   registerOnTouched(fn: any): void {}
 
   onAddClick(): void {
-    const first: Spell = this.data.spells.find(i => true);
+    const spell: Spell = this.data.spells.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
     this.form.push(new FormGroup({
-      id: new FormControl(first.id, [Validators.required]),
-      name: new FormControl(first.name, [Validators.required]),
+      id: new FormControl(spell.id, [Validators.required]),
+      name: new FormControl(spell.name, [Validators.required]),
+      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : [])
     }));
   }
 
   onRemoveClick(id: string): void {
     this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+  }
+
+  isOptionDisabled(id: SpellId): boolean {
+    return !!this.form.value.find(i => i.id === id) && !this.data.spells.find(i => i.id === id).specialty;
   }
 }

@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCES
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map, shareReplay, tap} from 'rxjs/operators';
 import { UnsubscribeDirective } from '@shared';
-import { Awakening, AwakeningId, Metatype, MetatypeId, Quality, QualityId } from '@shadowrun/app/5e/5e.models';
+import {Awakening, AwakeningId, Metatype, MetatypeId, Quality, QualityId, SpellId} from '@shadowrun/app/5e/5e.models';
 import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
 import { NEGATIVE_QUALITIES_MAX_COST, POSITIVE_QUALITIES_MAX_COST } from '@shadowrun/app/5e/5e.variables';
 
@@ -63,15 +63,15 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   registerOnTouched(fn: any): void {}
 
   isOptionDisabled(id: QualityId): boolean {
-    return false;
+    return !!this.form.value.find(i => i.id === id) && !this.data.qualities.find(i => i.id === id).specialty;
   }
 
   onAddQualityClick(): void {
-    const first: Quality = this.data.qualities.find(i => true);
+    const quality: Quality = this.data.qualities.find(q => !this.form.value.find(i => i.id === q.id && !q.specialty));
     this.form.push(new FormGroup({
-      id: new FormControl(first.id, [Validators.required]),
-      rating: new FormControl(first.ratings[0], [Validators.required]),
-      specialty: new FormControl(null, !!first.specialty ? [Validators.required] : [])
+      id: new FormControl(quality.id, [Validators.required]),
+      rating: new FormControl(quality.ratings[0], [Validators.required]),
+      specialty: new FormControl(null, !!quality.specialty ? [Validators.required] : [])
     }));
   }
 
