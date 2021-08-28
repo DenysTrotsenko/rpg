@@ -11,18 +11,13 @@
         <mat-label>Name</mat-label>
         <input matInput type="text" [formControl]="i.get('name')">
       </mat-form-field>
+      <number-input class="mr-5" label="Connection" min="1" max="6" [formControl]="i.get('connection')"></number-input>
+      <number-input class="mr-5" label="Loyalty" min="1" max="6" [formControl]="i.get('loyalty')"></number-input>
       <mat-form-field appearance="outline">
-        <mat-label>Connection</mat-label>
-        <input matInput type="number" [formControl]="i.get('connection')" min="1" max="6">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Loyalty</mat-label>
-        <input matInput type="number" [formControl]="i.get('loyalty')" min="1" max="6">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="mr-5">
         <mat-label>Details</mat-label>
         <input matInput type="text" [formControl]="i.get('details')">
       </mat-form-field>
+      <span class="f-1"></span>
       <button mat-icon-button type="button" (click)="onRemoveContactClick(i.get('id').value)">
         <mat-icon>delete</mat-icon>
       </button>

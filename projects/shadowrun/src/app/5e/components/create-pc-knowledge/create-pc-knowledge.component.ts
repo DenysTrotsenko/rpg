@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {UnsubscribeDirective} from '@shared';
-import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
 import {SKILL_CATEGORIES, SkillCategory} from '@shadowrun/app/5e';
 
@@ -27,7 +27,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       rating: new FormControl(6, [Validators.required, Validators.min(6), Validators.max(6)]),
       min: new FormControl(6),
       max: new FormControl(6),
-      readonly: new FormControl(true)
+      deletable: new FormControl(false)
     })
   ]);
   readonly categories: SkillCategory[] = SKILL_CATEGORIES;
@@ -45,6 +45,10 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
+  isDeletable(i: AbstractControl): boolean {
+    return i.get('deletable').value;
+  }
+
   onAddKnowledgeClick(): void {
     this.form.push(new FormGroup({
       id: new FormControl(`knowledge:${Date.now()}`),
@@ -53,7 +57,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       rating: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(6)]),
       min: new FormControl(1),
       max: new FormControl(6),
-      readonly: new FormControl(false)
+      deletable: new FormControl(true)
     }));
   }
 
