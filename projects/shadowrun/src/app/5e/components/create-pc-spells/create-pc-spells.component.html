@@ -11,33 +11,33 @@
         <mat-label>Spell</mat-label>
         <mat-select [formControl]="group.get('id')">
           <mat-optgroup label="Combat Spells">
-            <mat-option *ngFor="let i of data.spells | filterBy: 'category':1" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+            <mat-option *ngFor="let i of spells | filterBy: 'category':1" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
               {{i.name}}
             </mat-option>
           </mat-optgroup>
           <mat-optgroup label="Detection Spells">
-            <mat-option *ngFor="let i of data.spells | filterBy: 'category':2" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+            <mat-option *ngFor="let i of spells | filterBy: 'category':2" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
               {{i.name}}
             </mat-option>
           </mat-optgroup>
           <mat-optgroup label="Health Spells">
-            <mat-option *ngFor="let i of data.spells | filterBy: 'category':3" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+            <mat-option *ngFor="let i of spells | filterBy: 'category':3" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
               {{i.name}}
             </mat-option>
           </mat-optgroup>
           <mat-optgroup label="Illusion Spells">
-            <mat-option *ngFor="let i of data.spells | filterBy: 'category':4" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+            <mat-option *ngFor="let i of spells | filterBy: 'category':4" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
               {{i.name}}
             </mat-option>
           </mat-optgroup>
           <mat-optgroup label="Manipulation Spells">
-            <mat-option *ngFor="let i of data.spells | filterBy: 'category':5" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+            <mat-option *ngFor="let i of spells | filterBy: 'category':5" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
               {{i.name}}
             </mat-option>
           </mat-optgroup>
         </mat-select>
       </mat-form-field>
-      <mat-form-field *ngIf="data.spells | find: 'id' : group.get('id').value | map: 'specialty'" appearance="outline">
+      <mat-form-field *ngIf="spells | find: 'id' : group.get('id').value | map: 'specialty'" appearance="outline">
         <mat-label>Specialty</mat-label>
         <input matInput type="text" [formControl]="group.get('specialty')">
       </mat-form-field>

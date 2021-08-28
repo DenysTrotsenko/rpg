@@ -1,11 +1,71 @@
-import {BookId, Quality, QualityId} from './5e.models';
-import {BOOK_ID, QUALITY_ID} from './5e.enums';
+import { Quality } from './5e.models';
+import { BOOK_ID, QUALITY_ID } from './5e.enums';
+
+export const RACIAL_QUALITIES: Quality[] = [
+  {
+    id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION,
+    name: 'Low Light Vision',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [{ name: '', cost: 0 }],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+  {
+    id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION,
+    name: 'Thermographic Vision',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [{ name: '', cost: 0 }],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+  {
+    id: QUALITY_ID.RACIAL_PATHOGENS_RESISTANCE,
+    name: 'Pathogen & Toxin Resistance',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [{ name: '+2 Dice', cost: 0 }],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+  {
+    id: QUALITY_ID.RACIAL_REACH,
+    name: 'Reach',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [{ name: '+1', cost: 0 }],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+  {
+    id: QUALITY_ID.RACIAL_DERMAL_ARMOR,
+    name: 'Dermal Armor',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [{ name: '+1', cost: 0 }],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+  {
+    id: QUALITY_ID.RACIAL_LIFESTYLE,
+    name: 'Lifestyle Cost',
+    book: BOOK_ID.CORE_RULEBOOK,
+    ratings: [
+      { name: '+20%', cost: 0 },
+      { name: '+100%', cost: 0 }
+    ],
+    multiple: false,
+    specialty: false,
+    formula: null
+  },
+];
 
 export const POSITIVE_QUALITIES: Quality[] = [
   {
-    id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+    id: QUALITY_ID.AMBIDEXTROUS,
     name: 'Ambidextrous',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 4 }
     ],
@@ -14,9 +74,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ANALYTICAL_MIND as QualityId,
+    id: QUALITY_ID.ANALYTICAL_MIND,
     name: 'Analytical Mind',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 5 }
     ],
@@ -25,9 +85,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.APTITUDE as QualityId,
+    id: QUALITY_ID.APTITUDE,
     name: 'Aptitude',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 14 }
     ],
@@ -36,9 +96,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ASTRAL_CHAMELEON as QualityId,
+    id: QUALITY_ID.ASTRAL_CHAMELEON,
     name: 'Astral Chameleon',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -47,9 +107,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.BILINGUAL as QualityId,
+    id: QUALITY_ID.BILINGUAL,
     name: 'Bilingual',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 5 }
     ],
@@ -58,9 +118,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.BLANDNESS as QualityId,
+    id: QUALITY_ID.BLANDNESS,
     name: 'Blandness',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 8 }
     ],
@@ -69,9 +129,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.CATLIKE as QualityId,
+    id: QUALITY_ID.CATLIKE,
     name: 'Catlike',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 7 }
     ],
@@ -80,9 +140,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.CODESLINGER as QualityId,
+    id: QUALITY_ID.CODESLINGER,
     name: 'Codeslinger',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -91,9 +151,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.DOUBLE_JOINTED as QualityId,
+    id: QUALITY_ID.DOUBLE_JOINTED,
     name: 'Double-Jointed',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 6 }
     ],
@@ -102,9 +162,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.EXCEPTIONAL_ATTRIBUTE as QualityId,
+    id: QUALITY_ID.EXCEPTIONAL_ATTRIBUTE,
     name: 'Exceptional Attribute',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 14 }
     ],
@@ -113,9 +173,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.FIRST_IMPRESSION as QualityId,
+    id: QUALITY_ID.FIRST_IMPRESSION,
     name: 'First Impression',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 11 }
     ],
@@ -124,9 +184,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.FOCUSED_CONCENTRATION as QualityId,
+    id: QUALITY_ID.FOCUSED_CONCENTRATION,
     name: 'Focused Concentration',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 4 },
       { name: 'Rating 2', cost: 8 },
@@ -140,9 +200,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.GEARHEAD as QualityId,
+    id: QUALITY_ID.GEARHEAD,
     name: 'Gearhead',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 11 }
     ],
@@ -151,9 +211,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.GUTS as QualityId,
+    id: QUALITY_ID.GUTS,
     name: 'Guts',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -162,9 +222,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.HIGH_PAIN_TOLERANCE as QualityId,
+    id: QUALITY_ID.HIGH_PAIN_TOLERANCE,
     name: 'High Pain Tolerance',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 7 },
       { name: 'Rating 2', cost: 14 },
@@ -175,9 +235,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.HOME_GROUND as QualityId,
+    id: QUALITY_ID.HOME_GROUND,
     name: 'Home Ground',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -186,9 +246,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.HUMAN_LOOKING as QualityId,
+    id: QUALITY_ID.HUMAN_LOOKING,
     name: 'Human-Looking',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 6 }
     ],
@@ -197,9 +257,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.INDOMITABLE as QualityId,
+    id: QUALITY_ID.INDOMITABLE,
     name: 'Indomitable',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 8 },
       { name: 'Rating 2', cost: 16 },
@@ -210,9 +270,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.JURYRIGGER as QualityId,
+    id: QUALITY_ID.JURYRIGGER,
     name: 'Juryrigger',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -221,9 +281,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.LUCKY as QualityId,
+    id: QUALITY_ID.LUCKY,
     name: 'Lucky',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 12 }
     ],
@@ -232,9 +292,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.MAGIC_RESISTANCE as QualityId,
+    id: QUALITY_ID.MAGIC_RESISTANCE,
     name: 'Magic Resistance',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 6 },
       { name: 'Rating 2', cost: 12 },
@@ -246,9 +306,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.MENTOR_SPIRIT as QualityId,
+    id: QUALITY_ID.MENTOR_SPIRIT,
     name: 'Mentor Spirit',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 5 }
     ],
@@ -257,9 +317,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.NATURAL_ATHLETE as QualityId,
+    id: QUALITY_ID.NATURAL_ATHLETE,
     name: 'Natural Athlete',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 7 }
     ],
@@ -268,9 +328,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.NATURAL_HARDENING as QualityId,
+    id: QUALITY_ID.NATURAL_HARDENING,
     name: 'Natural Hardening',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 10 }
     ],
@@ -279,9 +339,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.NATURAL_IMMUNITY as QualityId,
+    id: QUALITY_ID.NATURAL_IMMUNITY,
     name: 'Natural Immunity',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 4 },
       { name: 'Rating 2', cost: 10 }
@@ -291,9 +351,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.PHOTOGRAPHIC_MEMORY as QualityId,
+    id: QUALITY_ID.PHOTOGRAPHIC_MEMORY,
     name: 'Photographic Memory',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 6 }
     ],
@@ -302,9 +362,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.QUICK_HEALER as QualityId,
+    id: QUALITY_ID.QUICK_HEALER,
     name: 'Quick Healer',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 3 }
     ],
@@ -313,9 +373,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.RESISTANCE_TO_PATHOGENS as QualityId,
+    id: QUALITY_ID.RESISTANCE_TO_PATHOGENS,
     name: 'Resistance to Pathogens/Toxins',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 4 },
       { name: 'Rating 2', cost: 8 }
@@ -325,9 +385,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SPIRIT_AFFINITY as QualityId,
+    id: QUALITY_ID.SPIRIT_AFFINITY,
     name: 'Spirit Affinity',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 7 }
     ],
@@ -336,9 +396,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.TOUGHNESS as QualityId,
+    id: QUALITY_ID.TOUGHNESS,
     name: 'Toughness',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 9 }
     ],
@@ -347,9 +407,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.WILL_TO_LIVE as QualityId,
+    id: QUALITY_ID.WILL_TO_LIVE,
     name: 'Will To Live',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: 3 },
       { name: 'Rating 2', cost: 6 },
@@ -360,171 +420,171 @@ export const POSITIVE_QUALITIES: Quality[] = [
     formula: null
   },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
@@ -534,9 +594,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
 
 export const NEGATIVE_QUALITIES: Quality[] = [
   {
-    id: QUALITY_ID.ADDICTION as QualityId,
+    id: QUALITY_ID.ADDICTION,
     name: 'Addiction',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Mild', cost: -4 },
       { name: 'Moderate', cost: -9 },
@@ -548,9 +608,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ALLERGY as QualityId,
+    id: QUALITY_ID.ALLERGY,
     name: 'Allergy',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Uncommon Mild', cost: -5 },
       { name: 'Uncommon Moderate', cost: -10 },
@@ -566,9 +626,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ASTRAL_BEACON as QualityId,
+    id: QUALITY_ID.ASTRAL_BEACON,
     name: 'Astral Beacon',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 },
     ],
@@ -577,9 +637,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.BAD_LUCK as QualityId,
+    id: QUALITY_ID.BAD_LUCK,
     name: 'Bad Luck',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -12 },
     ],
@@ -588,9 +648,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.BAD_REP as QualityId,
+    id: QUALITY_ID.BAD_REP,
     name: 'Bad Rep',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -7 },
     ],
@@ -599,9 +659,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.CODE_OF_HONOR as QualityId,
+    id: QUALITY_ID.CODE_OF_HONOR,
     name: 'Code of Honor',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -15 },
     ],
@@ -610,9 +670,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.CODEBLOCK as QualityId,
+    id: QUALITY_ID.CODEBLOCK,
     name: 'Codeblock',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 },
     ],
@@ -621,9 +681,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.COMBAT_PARALYSIS as QualityId,
+    id: QUALITY_ID.COMBAT_PARALYSIS,
     name: 'Combat Paralysis',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Mild', cost: -12 },
     ],
@@ -632,9 +692,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.DEPENDENTS as QualityId,
+    id: QUALITY_ID.DEPENDENTS,
     name: 'Dependends',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -3 },
       { name: 'Rating 2', cost: -6 },
@@ -645,9 +705,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.DISTINCTIVE_STYLE as QualityId,
+    id: QUALITY_ID.DISTINCTIVE_STYLE,
     name: 'Distinctive Style',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -5 },
     ],
@@ -656,9 +716,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ELF_POSER as QualityId,
+    id: QUALITY_ID.ELF_POSER,
     name: 'Elf Poser',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -6 },
     ],
@@ -667,9 +727,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.GREMLINS as QualityId,
+    id: QUALITY_ID.GREMLINS,
     name: 'Gremlins',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -4 },
       { name: 'Rating 2', cost: -8 },
@@ -681,9 +741,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.INCOMPETENT as QualityId,
+    id: QUALITY_ID.INCOMPETENT,
     name: 'Incompetent',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -5 },
     ],
@@ -692,9 +752,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.INSOMNIA as QualityId,
+    id: QUALITY_ID.INSOMNIA,
     name: 'Insomnia',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 },
       { name: 'Rating 2', cost: -15 },
@@ -704,9 +764,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.LOSS_OF_CONFIDENCE as QualityId,
+    id: QUALITY_ID.LOSS_OF_CONFIDENCE,
     name: 'Loss of Confidence',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 }
     ],
@@ -715,9 +775,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.LOW_PAIN_TOLERANCE as QualityId,
+    id: QUALITY_ID.LOW_PAIN_TOLERANCE,
     name: 'Low Pain Tolerance',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -9 },
     ],
@@ -726,9 +786,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.ORK_POSER as QualityId,
+    id: QUALITY_ID.ORK_POSER,
     name: 'Ork Poser',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -6 }
     ],
@@ -737,9 +797,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.PREJUDICED as QualityId,
+    id: QUALITY_ID.PREJUDICED,
     name: 'Prejudiced',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Common Biased', cost: -5 },
       { name: 'Common Outspoken', cost: -7 },
@@ -753,9 +813,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SCORCHED as QualityId,
+    id: QUALITY_ID.SCORCHED,
     name: 'Scorched',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 }
     ],
@@ -764,9 +824,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SENSITIVE_SYSTEM as QualityId,
+    id: QUALITY_ID.SENSITIVE_SYSTEM,
     name: 'Sensitive System',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -12 }
     ],
@@ -775,9 +835,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SIMSENSE_VERTIGO as QualityId,
+    id: QUALITY_ID.SIMSENSE_VERTIGO,
     name: 'Simsense Vertigo',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -5 }
     ],
@@ -786,9 +846,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SINNER as QualityId,
+    id: QUALITY_ID.SINNER,
     name: 'Sinner',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'National SIN', cost: -5 },
       { name: 'Criminal SIN', cost: -10 },
@@ -800,9 +860,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SOCIAL_STRESS as QualityId,
+    id: QUALITY_ID.SOCIAL_STRESS,
     name: 'Social Stress',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -8 }
     ],
@@ -811,9 +871,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.SPIRIT_BANE as QualityId,
+    id: QUALITY_ID.SPIRIT_BANE,
     name: 'Spirit Bane',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -7 }
     ],
@@ -822,9 +882,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.UNCOUTH as QualityId,
+    id: QUALITY_ID.UNCOUTH,
     name: 'Uncouth',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -14 }
     ],
@@ -833,9 +893,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.UNEDUCATED as QualityId,
+    id: QUALITY_ID.UNEDUCATED,
     name: 'Uneducated',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -8 }
     ],
@@ -844,9 +904,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.UNSTEADY_HANDS as QualityId,
+    id: QUALITY_ID.UNSTEADY_HANDS,
     name: 'Unsteady Hands',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -7 }
     ],
@@ -855,9 +915,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   {
-    id: QUALITY_ID.WEAK_IMMUNE_SYSTEM as QualityId,
+    id: QUALITY_ID.WEAK_IMMUNE_SYSTEM,
     name: 'Weak Immune System',
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
       { name: 'Rating 1', cost: -10 }
     ],
@@ -866,207 +926,207 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     formula: null
   },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,
   //   formula: null
   // },
   // {
-  //   id: QUALITY_ID.AMBIDEXTROUS as QualityId,
+  //   id: QUALITY_ID.AMBIDEXTROUS,
   //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK as BookId,
+  //   book: BOOK_ID.CORE_RULEBOOK,
   //   ratings: [],
   //   multiple: false,
   //   specialty: false,

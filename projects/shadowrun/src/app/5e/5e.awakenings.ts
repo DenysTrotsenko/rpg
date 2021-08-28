@@ -1,9 +1,9 @@
-import { Awakening, AwakeningId } from './5e.models';
-import {ATTRIBUTE_ID, AWAKENING_ID} from './5e.enums';
+import { Awakening } from './5e.models';
+import { ATTRIBUTE_ID, AWAKENING_ID } from './5e.enums';
 
 export const AWAKENINGS: Awakening[] = [
   {
-    id: AWAKENING_ID.MUNDANE as AwakeningId,
+    id: AWAKENING_ID.MUNDANE,
     name: 'Mundane',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [0, 0],
@@ -12,7 +12,7 @@ export const AWAKENINGS: Awakening[] = [
     cost: 0
   },
   {
-    id: AWAKENING_ID.ADEPT as AwakeningId,
+    id: AWAKENING_ID.ADEPT,
     name: 'Adept',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [1, 6],
@@ -21,7 +21,7 @@ export const AWAKENINGS: Awakening[] = [
     cost: 20
   },
   {
-    id: AWAKENING_ID.ASPECTED_MAGICIAN as AwakeningId,
+    id: AWAKENING_ID.ASPECTED_MAGICIAN,
     name: 'Aspected Magician',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [1, 6],
@@ -30,7 +30,7 @@ export const AWAKENINGS: Awakening[] = [
     cost: 15
   },
   {
-    id: AWAKENING_ID.MAGICIAN as AwakeningId,
+    id: AWAKENING_ID.MAGICIAN,
     name: 'Magician',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [1, 6],
@@ -39,7 +39,7 @@ export const AWAKENINGS: Awakening[] = [
     cost: 30
   },
   {
-    id: AWAKENING_ID.MYSTIC_ADEPT as AwakeningId,
+    id: AWAKENING_ID.MYSTIC_ADEPT,
     name: 'Mystic Adept',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [1, 6],
@@ -48,7 +48,7 @@ export const AWAKENINGS: Awakening[] = [
     cost: 35
   },
   {
-    id: AWAKENING_ID.TECHNOMANCER as AwakeningId,
+    id: AWAKENING_ID.TECHNOMANCER,
     name: 'Technomancer',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [0, 0],

@@ -41,6 +41,12 @@ export enum METATYPE_ID {
 }
 
 export enum QUALITY_ID {
+  RACIAL_LOW_LIGHT_VISION = 'quality:racial_low_light_vision',
+  RACIAL_THERMOGRAPHIC_VISION = 'quality:racial_thermographic_vision',
+  RACIAL_PATHOGENS_RESISTANCE = 'quality:racial_pathogens_resistance',
+  RACIAL_REACH = 'quality:racial_reach',
+  RACIAL_DERMAL_ARMOR = 'quality:racial_dermal_armor',
+  RACIAL_LIFESTYLE = 'quality:racial_lifestyle',
   AMBIDEXTROUS = 'quality:ambidextrous',
   ANALYTICAL_MIND = 'quality:analytical_mind',
   APTITUDE = 'quality:aptitude',
@@ -72,7 +78,6 @@ export enum QUALITY_ID {
   SPIRIT_AFFINITY = 'quality:spirit_affinity',
   TOUGHNESS = 'quality:toughness',
   WILL_TO_LIVE = 'quality:will_to_live',
-  // ****
   ADDICTION = 'quality:addiction',
   ALLERGY = 'quality:allergy',
   ASTRAL_BEACON = 'quality:astral_beacon',

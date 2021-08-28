@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { UnsubscribeDirective } from '@shared';
-import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
 
 @Component({
   /* tslint:disable-next-line */
@@ -21,7 +20,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
   readonly form: FormArray = new FormArray([]);
   propagateChange = (_: any) => {};
 
-  constructor(public data: FifthEditionService) {
+  constructor() {
     super();
   }
 

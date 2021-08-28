@@ -8,7 +8,7 @@
         [formControl]="i.get('rating')"
         [min]="i.get('min').value"
         [max]="i.get('max').value"
-        [label]="data.skills | find: 'id' : i.get('id').value | map: 'name'">
+        [label]="skills | find: 'id' : i.get('id').value | map: 'name'">
       </number-input>
     </div>
   </mat-card-content>

@@ -3,8 +3,10 @@ import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCES
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UnsubscribeDirective } from '@shared';
-import { Awakening, AwakeningId, Metatype, MetatypeId } from '@shadowrun/app/5e/5e.models';
-import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
+import {
+  Attribute,
+  ATTRIBUTES, Awakening, AWAKENING_ID, AWAKENINGS, Metatype, METATYPE_ID, METATYPES
+} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -21,11 +23,12 @@ import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
   ]
 })
 export class CreatePcAttributesComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  @Input() set awakening(value: AwakeningId) { this.awakening$.next(value); }
-  @Input() set metatype(value: MetatypeId) { this.metatype$.next(value); }
+  @Input() set awakening(value: AWAKENING_ID) { this.awakening$.next(value); }
+  @Input() set metatype(value: METATYPE_ID) { this.metatype$.next(value); }
   readonly form: FormArray = new FormArray([]);
-  private readonly awakening$: BehaviorSubject<AwakeningId> = new BehaviorSubject(null);
-  private readonly metatype$: BehaviorSubject<MetatypeId> = new BehaviorSubject(null);
+  readonly attributes: Attribute[] = ATTRIBUTES;
+  private readonly awakening$: BehaviorSubject<AWAKENING_ID> = new BehaviorSubject(null);
+  private readonly metatype$: BehaviorSubject<METATYPE_ID> = new BehaviorSubject(null);
   private readonly attributes$ = combineLatest([
     this.awakening$.asObservable(), this.metatype$.asObservable()
   ]).pipe(
@@ -35,7 +38,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
   );
   propagateChange = (_: any) => {};
 
-  constructor(public data: FifthEditionService) {
+  constructor() {
     super();
   }
 
@@ -48,13 +51,13 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
   registerOnChange(fn: any): void { this.propagateChange = fn; }
   registerOnTouched(fn: any): void {}
 
-  private setAttributes(awakeningId: AwakeningId, metatypeId: MetatypeId): void {
-    const awakening: Awakening = this.data.awakenings.find(i => i.id === awakeningId);
-    const metatype: Metatype = this.data.metatypes.find(i => i.id === metatypeId);
+  private setAttributes(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
+    const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
+    const metatype: Metatype = METATYPES.find(i => i.id === metatypeId);
 
     this.form.clear();
 
-    this.data.attributes.forEach(attribute => {
+    ATTRIBUTES.forEach(attribute => {
       const range = !!awakening && !!metatype ? metatype.attributes[attribute.id] ?? awakening.attributes[attribute.id] : [1, 6];
       this.form.push(new FormGroup({
         id: new FormControl(attribute.id),

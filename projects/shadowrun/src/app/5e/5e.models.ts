@@ -1,34 +1,20 @@
-import { Opaque } from '@shared';
 import {
-  ATTRIBUTE_ID,
+  ATTRIBUTE_ID, ATTRIBUTE_TYPE_ID, AWAKENING_ID, BOOK_ID, METATYPE_ID, QUALITY_ID, SKILL_CATEGORY_ID, SKILL_ID,
   SPELL_CATEGORY_ID,
   SPELL_DAMAGE_ID,
-  SPELL_DURATION_ID, SPELL_KIND_ID,
+  SPELL_DURATION_ID, SPELL_ID,
   SPELL_RANGE_ID, SPELL_SUBCATEGORY_ID,
   SPELL_TYPE_ID
-} from '@shadowrun/app/5e/5e.enums';
-
-export type AttributeId = Opaque<string, 'AttributeId'>;
-export type AttributeTypeId = Opaque<string, 'AttributeTypeId'>;
-export type AwakeningId = Opaque<string, 'AwakeningId'>;
-export type BookId = Opaque<string, 'BookId'>;
-export type ContactId = Opaque<string, 'ContactId'>;
-export type GearId = Opaque<string, 'GearId'>;
-export type MetatypeId = Opaque<string, 'MetatypeId'>;
-export type QualityId = Opaque<string, 'QualityId'>;
-export type ShadowrunnerId = Opaque<string, 'ShadowrunnerId'>;
-export type SkillId = Opaque<string, 'SkillId'>;
-export type SpellId = Opaque<string, 'SpellId'>;
-export type SkillCategoryId = Opaque<string, 'SkillCategoryId'>;
+} from './5e.enums';
 
 export interface Attribute {
-  id: AttributeId;
+  id: ATTRIBUTE_ID;
   name: string;
-  type: AttributeTypeId;
+  type: ATTRIBUTE_TYPE_ID;
 }
 
 export interface Awakening {
-  id: AwakeningId;
+  id: AWAKENING_ID;
   name: string;
   attributes: {
     [ATTRIBUTE_ID.MAGIC]: [number, number];
@@ -38,19 +24,19 @@ export interface Awakening {
 }
 
 export interface Book {
-  id: BookId;
+  id: BOOK_ID;
   name: string;
 }
 
 export interface Contact {
-  id: ContactId;
+  id: string;
   name: string;
   connection: number;
   loyalty: number;
 }
 
 export interface Gear {
-  id: BookId;
+  id: BOOK_ID;
   name: string;
   cost: number;
   quantity: number;
@@ -59,15 +45,15 @@ export interface Gear {
 export interface Knowledge {
   id?: string;
   name: string;
-  category: SkillCategoryId;
+  category: SKILL_CATEGORY_ID;
   specializations?: string[];
 }
 
 export interface Metatype {
-  id: MetatypeId;
-  book: BookId;
+  id: METATYPE_ID;
+  book: BOOK_ID;
   name: string;
-  qualities: QualityId[];
+  qualities: { id: QUALITY_ID; rating: number; }[];
   attributes: {
     [ATTRIBUTE_ID.BODY]: [number, number];
     [ATTRIBUTE_ID.AGILITY]: [number, number];
@@ -84,8 +70,8 @@ export interface Metatype {
 }
 
 export interface Quality {
-  id: QualityId;
-  book: BookId;
+  id: QUALITY_ID;
+  book: BOOK_ID;
   name: string;
   ratings: { name: string; cost: number; }[];
   multiple: boolean;
@@ -94,16 +80,16 @@ export interface Quality {
 }
 
 export interface Skill {
-  id: SkillId;
+  id: SKILL_ID;
   name: string;
-  attribute: AttributeId;
+  attribute: ATTRIBUTE_ID;
   default: boolean;
   specializations: string[];
 }
 
 export interface Spell {
-  id: SpellId;
-  book: BookId;
+  id: SPELL_ID;
+  book: BOOK_ID;
   name: string;
   category: SPELL_CATEGORY_ID;
   subcategories: SPELL_SUBCATEGORY_ID[];
@@ -116,7 +102,7 @@ export interface Spell {
 }
 
 export interface SkillCategory {
-  id: SkillCategoryId;
+  id: SKILL_CATEGORY_ID;
   name: string;
-  attribute: AttributeId;
+  attribute: ATTRIBUTE_ID;
 }

@@ -1,14 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {combineLatest, Observable, Subject} from 'rxjs';
-import {distinctUntilChanged, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {tap} from 'rxjs/operators';
 import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
-import {Awakening, AwakeningId, Metatype, MetatypeId, Quality, QualityId} from '@shadowrun/app/5e/5e.models';
-import {AWAKENING_ID, METATYPE_ID, SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
+import {AWAKENING_ID, METATYPE_ID} from '@shadowrun/app/5e/5e.enums';
 import {
-  KARMA_PER_ACTIVE_SKILL,
-  KARMA_PER_ATTRIBUTE,
-  KARMA_PER_KNOWLEDGE,
   NEGATIVE_QUALITIES_MAX_COST,
   POSITIVE_QUALITIES_MAX_COST
 } from '@shadowrun/app/5e/5e.variables';

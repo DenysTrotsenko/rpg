@@ -1,11 +1,8 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input, forwardRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {UnsubscribeDirective} from '@shared';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {Awakening, AwakeningId, Metatype, MetatypeId, QualityId} from '@shadowrun/app/5e/5e.models';
-import {BehaviorSubject, combineLatest} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
 import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
+import {SKILL_CATEGORIES, SkillCategory} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -33,9 +30,10 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       readonly: new FormControl(true)
     })
   ]);
+  readonly categories: SkillCategory[] = SKILL_CATEGORIES;
   onChange = (_: any) => {};
 
-  constructor(public data: FifthEditionService) {
+  constructor() {
     super();
   }
 

@@ -3,9 +3,9 @@ import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESS
 import {BehaviorSubject, combineLatest} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {UnsubscribeDirective} from '@shared';
-import {Awakening, AwakeningId, Metatype, MetatypeId} from '@shadowrun/app/5e/5e.models';
-import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
-import {ATTRIBUTE_ID} from '@shadowrun/app/5e/5e.enums';
+import {
+  Awakening, Metatype, ATTRIBUTE_ID, AWAKENING_ID, METATYPE_ID, AWAKENINGS, METATYPES, ACTIVE_SKILLS, Skill
+} from '@shadowrun/app/5e';
 
 const SKILL_MIN = 0;
 const SKILL_MAX = 6;
@@ -25,11 +25,12 @@ const SKILL_MAX = 6;
   ]
 })
 export class CreatePcSkillsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  @Input() set awakening(value: AwakeningId) { this.awakening$.next(value); }
-  @Input() set metatype(value: MetatypeId) { this.metatype$.next(value); }
+  @Input() set awakening(value: AWAKENING_ID) { this.awakening$.next(value); }
+  @Input() set metatype(value: METATYPE_ID) { this.metatype$.next(value); }
   readonly form: FormArray = new FormArray([]);
-  private readonly awakening$: BehaviorSubject<AwakeningId> = new BehaviorSubject(null);
-  private readonly metatype$: BehaviorSubject<MetatypeId> = new BehaviorSubject(null);
+  readonly skills: Skill[] = ACTIVE_SKILLS;
+  private readonly awakening$: BehaviorSubject<AWAKENING_ID> = new BehaviorSubject(null);
+  private readonly metatype$: BehaviorSubject<METATYPE_ID> = new BehaviorSubject(null);
   private readonly skills$ = combineLatest([
     this.awakening$.asObservable(), this.metatype$.asObservable()
   ]).pipe(
@@ -39,7 +40,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
   );
   propagateChange = (_: any) => {};
 
-  constructor(public data: FifthEditionService) {
+  constructor() {
     super();
   }
 
@@ -52,13 +53,13 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
   registerOnChange(fn: any): void { this.propagateChange = fn; }
   registerOnTouched(fn: any): void {}
 
-  private setSkills(awakeningId: AwakeningId, metatypeId: MetatypeId): void {
+  private setSkills(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
     this.form.clear();
 
-    const awakening: Awakening = this.data.awakenings.find(i => i.id === awakeningId);
-    const metatype: Metatype = this.data.metatypes.find(i => i.id === metatypeId);
+    const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
+    const metatype: Metatype = METATYPES.find(i => i.id === metatypeId);
 
-    this.data.skills
+    ACTIVE_SKILLS
       .filter(skill => { // Filter out Magic/Resonance skills
         if (skill.attribute === ATTRIBUTE_ID.MAGIC) {
           return awakening.attributes[ATTRIBUTE_ID.MAGIC][0] > 0;

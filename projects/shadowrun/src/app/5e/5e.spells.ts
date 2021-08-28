@@ -8,7 +8,7 @@ import {
   SPELL_SUBCATEGORY_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
-import {BookId, Spell, SpellId} from './5e.models';
+import { Spell } from './5e.models';
 
 export const SPELL_DAMAGE = [
   { id: SPELL_DAMAGE_ID.PHYSICAL, name: 'Physical', alias: 'P' },
@@ -62,8 +62,8 @@ export const SPELL_TYPES = [
 
 export const SPELLS: Spell[] = [
   {
-    id: SPELL_ID.ACID_STREAM as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ACID_STREAM,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Acid Stream',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -75,8 +75,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.TOXIC_WAVE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.TOXIC_WAVE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Toxic Wave',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -88,8 +88,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.PUNCH as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.PUNCH,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Punch',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT],
@@ -101,8 +101,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CLOUT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CLOUT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Clout',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT],
@@ -114,8 +114,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.BLAST as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.BLAST,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Blast',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT],
@@ -127,8 +127,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DEATH_TOUCH as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DEATH_TOUCH,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Death Touch',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -140,8 +140,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MANABOLT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MANABOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Manabolt',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -153,8 +153,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MANABALL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MANABALL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Manaball',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -166,8 +166,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.FLAMETHROWER as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.FLAMETHROWER,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Flamethrower',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -179,8 +179,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.FIREBALL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.FIREBALL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Fireball',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -192,8 +192,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.LIGHTNING_BOLT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.LIGHTNING_BOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Lightning Bolt',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -205,8 +205,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.BALL_LIGHTNING as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.BALL_LIGHTNING,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ball Lightning',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.INDIRECT, SPELL_SUBCATEGORY_ID.ELEMENTAL],
@@ -218,8 +218,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.SHATTER as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.SHATTER,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Shatter',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -231,8 +231,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.POWERBOLT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.POWERBOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'PowerBolt',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -244,8 +244,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.POWERBALL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.POWERBALL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'PowerBall',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -257,8 +257,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.KNOCKOUT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.KNOCKOUT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Knockout',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -270,8 +270,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.STUNBOLT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.STUNBOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'StunBolt',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -283,8 +283,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.STUNBALL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.STUNBALL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'StunBall',
     category: SPELL_CATEGORY_ID.COMBAT,
     subcategories: [SPELL_SUBCATEGORY_ID.DIRECT],
@@ -296,8 +296,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ANALYZE_DEVICE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ANALYZE_DEVICE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Analyze Device',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -308,8 +308,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ANALYZE_MAGIC as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ANALYZE_MAGIC,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Analyze Magic',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -320,8 +320,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ANALYZE_TRUTH as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ANALYZE_TRUTH,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Analyze Truth',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -332,8 +332,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CLAIRAUDIENCE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CLAIRAUDIENCE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Clairaudience',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.PASSIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -344,8 +344,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CLAIRVOYANCE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CLAIRVOYANCE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Clairvoyance',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.PASSIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -356,8 +356,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.COMBAT_SENSE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.COMBAT_SENSE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Combat Sense',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.PASSIVE, SPELL_SUBCATEGORY_ID.PSYCHIC],
@@ -368,8 +368,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_ENEMIES as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_ENEMIES,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Enemies',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -380,8 +380,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_ENEMIES_EXTENDED as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_ENEMIES_EXTENDED,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Enemies, Extended',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.EXTENDED_AREA],
@@ -392,8 +392,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_INDIVIDUAL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_INDIVIDUAL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Individual',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -404,8 +404,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_LIFE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_LIFE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Life',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -416,8 +416,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_LIFE_EXTENDED as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_LIFE_EXTENDED,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Life, Extended',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.EXTENDED_AREA],
@@ -428,8 +428,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_LIFE_FORM as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_LIFE_FORM,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect [Life Form]',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -440,8 +440,8 @@ export const SPELLS: Spell[] = [
     specialty: true
   },
   {
-    id: SPELL_ID.DETECT_LIFE_FORM_EXTENDED as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_LIFE_FORM_EXTENDED,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect [Life Form], Extended',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.EXTENDED_AREA],
@@ -452,8 +452,8 @@ export const SPELLS: Spell[] = [
     specialty: true
   },
   {
-    id: SPELL_ID.DETECT_MAGIC as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_MAGIC,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Magic',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -464,8 +464,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_MAGIC_EXTENDED as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_MAGIC_EXTENDED,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Magic, Extended',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.EXTENDED_AREA],
@@ -476,8 +476,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DETECT_OBJECT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETECT_OBJECT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detect Object',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.AREA],
@@ -488,8 +488,8 @@ export const SPELLS: Spell[] = [
     specialty: true
   },
   {
-    id: SPELL_ID.MINDLINK as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MINDLINK,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'MindLink',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.PSYCHIC],
@@ -500,8 +500,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MIND_PROBE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MIND_PROBE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mind Probe',
     category: SPELL_CATEGORY_ID.DETECTION,
     subcategories: [SPELL_SUBCATEGORY_ID.ACTIVE, SPELL_SUBCATEGORY_ID.DIRECTIONAL],
@@ -512,8 +512,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ANTIDOTE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ANTIDOTE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Antidote',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -524,8 +524,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CURE_DISEASE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CURE_DISEASE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Cure Disease',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [SPELL_SUBCATEGORY_ID.ESSENCE],
@@ -536,8 +536,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.DECREASE_ATTRIBUTE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DECREASE_ATTRIBUTE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Decrease [Attribute]',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [SPELL_SUBCATEGORY_ID.ESSENCE],
@@ -548,8 +548,8 @@ export const SPELLS: Spell[] = [
     specialty: true
   },
   {
-    id: SPELL_ID.DETOX as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.DETOX,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Detox',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -560,8 +560,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.HEAL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.HEAL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Heal',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [SPELL_SUBCATEGORY_ID.ESSENCE],
@@ -572,8 +572,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.INCREASE_ATTRIBUTE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.INCREASE_ATTRIBUTE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Increase [Attribute]',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [SPELL_SUBCATEGORY_ID.ESSENCE],
@@ -584,8 +584,8 @@ export const SPELLS: Spell[] = [
     specialty: true
   },
   {
-    id: SPELL_ID.INCREASE_REFLEXES as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.INCREASE_REFLEXES,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Increase Reflexes',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [SPELL_SUBCATEGORY_ID.ESSENCE],
@@ -596,8 +596,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.OXYGENATE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.OXYGENATE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Oxygenate',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -608,8 +608,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.PROPHYLAXIS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.PROPHYLAXIS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Prophylaxis',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -620,8 +620,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.RESIST_PAIN as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.RESIST_PAIN,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Resist Pain',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -632,8 +632,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.STABILIZE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.STABILIZE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Stabilize',
     category: SPELL_CATEGORY_ID.HEALTH,
     subcategories: [],
@@ -644,8 +644,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.AGONY as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.AGONY,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Agony',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE],
@@ -656,8 +656,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MASS_AGONY as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MASS_AGONY,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mass Agony',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE],
@@ -668,8 +668,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.BUGS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.BUGS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Bugs',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -680,8 +680,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.SWARM as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.SWARM,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Swarm',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -692,8 +692,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CONFUSION as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CONFUSION,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Confusion',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -704,8 +704,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MASS_CONFUSION as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MASS_CONFUSION,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mass Confusion',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -716,8 +716,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CHAOS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CHAOS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Chaos',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -728,8 +728,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CHAOTIC_WORLD as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CHAOTIC_WORLD,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Chaotic World',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -740,8 +740,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ENTERTAINMENT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ENTERTAINMENT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Entertainment',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.OBVIOUS, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -752,8 +752,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.TRID_ENTERTAINMENT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.TRID_ENTERTAINMENT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Trid Entertainment',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.OBVIOUS, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -764,8 +764,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.INVISIBILITY as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.INVISIBILITY,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Invisibility',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE],
@@ -776,8 +776,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.IMPROVED_INVISIBILITY as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.IMPROVED_INVISIBILITY,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Improved Invisibility',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE],
@@ -788,8 +788,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MASK as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MASK,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mask',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -800,8 +800,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.PHYSICAL_MASK as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.PHYSICAL_MASK,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Physical Mask',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE],
@@ -812,8 +812,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.PHANTASM as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.PHANTASM,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Phantasm',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -824,8 +824,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.TRID_PHANTASM as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.TRID_PHANTASM,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Trid Phantasm',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.MULTI_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -836,8 +836,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.HUSH as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.HUSH,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Hush',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -848,8 +848,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.SILENCE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.SILENCE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Silence',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE, SPELL_SUBCATEGORY_ID.AREA],
@@ -860,8 +860,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.STEALTH as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.STEALTH,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Stealth',
     category: SPELL_CATEGORY_ID.ILLUSION,
     subcategories: [SPELL_SUBCATEGORY_ID.REALISTIC, SPELL_SUBCATEGORY_ID.SINGLE_SENSE],
@@ -872,8 +872,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ANIMATE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ANIMATE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Animate',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL],
@@ -884,8 +884,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MASS_ANIMATE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MASS_ANIMATE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mass Animate',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -896,8 +896,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ARMOR as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ARMOR,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Armor',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL],
@@ -908,8 +908,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CONTROL_ACTIONS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CONTROL_ACTIONS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Control Actions',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.MENTAL],
@@ -920,8 +920,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MOB_CONTROL as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MOB_CONTROL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mob Control',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.MENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -932,8 +932,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.CONTROL_THOUGHTS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.CONTROL_THOUGHTS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Control Thoughts',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.MENTAL],
@@ -944,8 +944,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MOB_MIND as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MOB_MIND,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mob Mind',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.MENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -956,8 +956,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.FLING as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.FLING,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Fling',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL, SPELL_SUBCATEGORY_ID.DAMAGING],
@@ -968,8 +968,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.ICE_SHEET as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.ICE_SHEET,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ice Sheet',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -980,8 +980,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.IGNITE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.IGNITE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ignite',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL],
@@ -992,8 +992,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.INFLUENCE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.INFLUENCE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Influence',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.MENTAL],
@@ -1004,8 +1004,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.LEVITATE as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.LEVITATE,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Levitate',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL],
@@ -1016,8 +1016,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.LIGHT as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.LIGHT,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Light',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -1028,8 +1028,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MAGIC_FINGERS as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MAGIC_FINGERS,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Magic Fingers',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.PHYSICAL],
@@ -1040,8 +1040,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.MANA_BARRIER as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.MANA_BARRIER,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Mana Barrier',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -1052,8 +1052,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.PHYSICAL_BARRIER as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.PHYSICAL_BARRIER,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Physical Barrier',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -1064,8 +1064,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.POLTERGEIST as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.POLTERGEIST,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Poltergeist',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],
@@ -1076,8 +1076,8 @@ export const SPELLS: Spell[] = [
     specialty: false
   },
   {
-    id: SPELL_ID.SHADOW as SpellId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: SPELL_ID.SHADOW,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Shadow',
     category: SPELL_CATEGORY_ID.MANIPULATION,
     subcategories: [SPELL_SUBCATEGORY_ID.ENVIRONMENTAL, SPELL_SUBCATEGORY_ID.AREA],

@@ -1,10 +1,10 @@
-import {BookId, Metatype, MetatypeId} from './5e.models';
-import {ATTRIBUTE_ID, BOOK_ID, METATYPE_ID} from '@shadowrun/app/5e/5e.enums';
+import { Metatype } from './5e.models';
+import { ATTRIBUTE_ID, BOOK_ID, METATYPE_ID, QUALITY_ID } from '@shadowrun/app/5e/5e.enums';
 
 export const METATYPES: Metatype[] = [
   {
-    id: METATYPE_ID.HUMAN as MetatypeId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: METATYPE_ID.HUMAN,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Human',
     qualities: [],
     attributes: {
@@ -22,10 +22,14 @@ export const METATYPES: Metatype[] = [
     cost: 0
   },
   {
-    id: METATYPE_ID.DWARF as MetatypeId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: METATYPE_ID.DWARF,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Dwarf',
-    qualities: [],
+    qualities: [
+      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0 },
+      { id: QUALITY_ID.RACIAL_PATHOGENS_RESISTANCE, rating: 0 },
+      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 0 }
+    ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [3, 8],
       [ATTRIBUTE_ID.AGILITY]: [1, 6],
@@ -41,10 +45,12 @@ export const METATYPES: Metatype[] = [
     cost: 50
   },
   {
-    id: METATYPE_ID.ELF as MetatypeId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: METATYPE_ID.ELF,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Elf',
-    qualities: [],
+    qualities: [
+      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0 }
+    ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [1, 6],
       [ATTRIBUTE_ID.AGILITY]: [2, 7],
@@ -60,10 +66,12 @@ export const METATYPES: Metatype[] = [
     cost: 40
   },
   {
-    id: METATYPE_ID.ORK as MetatypeId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: METATYPE_ID.ORK,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ork',
-    qualities: [],
+    qualities: [
+      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0 }
+    ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [4, 9],
       [ATTRIBUTE_ID.AGILITY]: [1, 6],
@@ -79,10 +87,15 @@ export const METATYPES: Metatype[] = [
     cost: 50
   },
   {
-    id: METATYPE_ID.TROLL as MetatypeId,
-    book: BOOK_ID.CORE_RULEBOOK as BookId,
+    id: METATYPE_ID.TROLL,
+    book: BOOK_ID.CORE_RULEBOOK,
     name: 'Troll',
-    qualities: [],
+    qualities: [
+      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0 },
+      { id: QUALITY_ID.RACIAL_REACH, rating: 0 },
+      { id: QUALITY_ID.RACIAL_DERMAL_ARMOR, rating: 0 },
+      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 1 }
+    ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [5, 10],
       [ATTRIBUTE_ID.AGILITY]: [1, 5],
