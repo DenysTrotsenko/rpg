@@ -1,0 +1,21 @@
+:host {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+
+  .btn {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+  }
+  .back {
+    left: 0;
+  }
+  .forward {
+    right: 0;
+  }
+  .list {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

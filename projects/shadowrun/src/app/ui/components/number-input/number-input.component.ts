@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   /* tslint:disable-next-line */
