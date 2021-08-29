@@ -1,25 +1,27 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {UnsubscribeDirective} from '@shared';
-import {Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
+import {ComplexForm} from '@shadowrun/app/5e/5e.models';
+import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-spells',
-  templateUrl: './create-pc-spells.component.html',
-  styleUrls: ['./create-pc-spells.component.scss'],
+  selector: 's5e-create-pc-complex-forms',
+  templateUrl: './create-pc-complex-forms.component.html',
+  styleUrls: ['./create-pc-complex-forms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcSpellsComponent),
+      useExisting: forwardRef(() => CreatePcComplexFormsComponent),
       multi: true
     }
   ]
 })
-export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcComplexFormsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
-  readonly spells: Spell[] = SPELLS;
+  readonly items: ComplexForm[] = COMPLEX_FORMS;
   onChange = (_: any) => {};
 
   constructor() {
@@ -37,21 +39,23 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
+  isAddDisabled(value: { id: COMPLEX_FORM_ID; }[]): boolean {
+    return COMPLEX_FORMS.every(cf => value.find(i => i.id === cf.id));
+  }
+
+  isOptionDisabled(id: COMPLEX_FORM_ID): boolean {
+    return !!this.form.value.find(i => i.id === id);
+  }
+
   onAddClick(): void {
-    const spell: Spell = SPELLS.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
+    const cf: ComplexForm = COMPLEX_FORMS.find(s => !this.form.value.find(i => i.id === s.id));
     const group: FormGroup = new FormGroup({
-      id: new FormControl(spell.id, [Validators.required]),
-      name: new FormControl(spell.name, [Validators.required]),
-      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : [])
+      id: new FormControl(cf.id, [Validators.required])
     });
     this.form.push(group);
   }
 
   onRemoveClick(id: string): void {
     this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
-  }
-
-  isOptionDisabled(id: SPELL_ID): boolean {
-    return !!this.form.value.find(i => i.id === id) && !SPELLS.find(i => i.id === id).specialty;
   }
 }

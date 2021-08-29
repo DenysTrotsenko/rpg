@@ -1,11 +1,28 @@
 import {
-  ATTRIBUTE_ID, ATTRIBUTE_TYPE_ID, AWAKENING_ID, BOOK_ID, METATYPE_ID, QUALITY_ID, SKILL_CATEGORY_ID, SKILL_ID,
+  ADEPT_POWER_ID,
+  ATTRIBUTE_ID,
+  ATTRIBUTE_TYPE_ID,
+  AWAKENING_ID,
+  BOOK_ID, COMPLEX_FORM_DURATION_ID,
+  COMPLEX_FORM_ID,
+  COMPLEX_FORM_TARGET_ID,
+  METATYPE_ID,
+  QUALITY_ID,
+  SKILL_CATEGORY_ID,
+  SKILL_ID,
   SPELL_CATEGORY_ID,
   SPELL_DAMAGE_ID,
-  SPELL_DURATION_ID, SPELL_ID,
-  SPELL_RANGE_ID, SPELL_SUBCATEGORY_ID,
+  SPELL_DURATION_ID,
+  SPELL_ID,
+  SPELL_RANGE_ID,
+  SPELL_SUBCATEGORY_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
+
+export interface AdeptPower {
+  id: ADEPT_POWER_ID;
+  name: string;
+}
 
 export interface Attribute {
   id: ATTRIBUTE_ID;
@@ -26,6 +43,14 @@ export interface Awakening {
 export interface Book {
   id: BOOK_ID;
   name: string;
+}
+
+export interface ComplexForm {
+  id: COMPLEX_FORM_ID;
+  name: string;
+  target: COMPLEX_FORM_TARGET_ID;
+  duration: COMPLEX_FORM_DURATION_ID;
+  fading: number;
 }
 
 export interface Contact {

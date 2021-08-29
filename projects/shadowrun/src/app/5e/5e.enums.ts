@@ -1,3 +1,5 @@
+export enum ADEPT_POWER_ID {}
+
 export enum ATTRIBUTE_ID {
   BODY = 'attribute:body',
   AGILITY = 'attribute:agility',
@@ -30,6 +32,43 @@ export enum AWAKENING_ID {
 
 export enum BOOK_ID {
   CORE_RULEBOOK = '5e:core_rulebook'
+}
+
+export enum COMPLEX_FORM_ID {
+  CLEANER = 'complex_form:cleaner',
+  DIFFUSION_OF_ATTACK = 'complex_form:diffusion_of_attack',
+  DIFFUSION_OF_SLEAZE = 'complex_form:diffusion_of_sleaze',
+  DIFFUSION_OF_DATA_PROCESSING = 'complex_form:diffusion_of_data_processing',
+  DIFFUSION_OF_FIREWALL = 'complex_form:diffusion_of_firewall',
+  EDITOR = 'complex_form:editor',
+  INFUSION_OF_ATTACK = 'complex_form:infusion_of_attack',
+  INFUSION_OF_SLEAZE = 'complex_form:infusion_of_sleaze',
+  INFUSION_OF_DATA_PROCESSING = 'complex_form:infusion_of_data_processing',
+  INFUSION_OF_FIREWALL = 'complex_form:infusion_of_firewall',
+  STATIC_VEIL = 'complex_form:static_veil',
+  PULSE_STORM = 'complex_form:pulse_storm',
+  PUPPETEER = 'complex_form:puppeteer',
+  RESONANCE_CHANNEL = 'complex_form:resonance_channel',
+  RESONANCE_SPIKE = 'complex_form:resonance_spike',
+  RESONANCE_VEIL = 'complex_form:resonance_veil',
+  STATIC_BOMB = 'complex_form:static_bomb',
+  STITCHES = 'complex_form:stitches',
+  TRANSCENDENT_GRID = 'complex_form:transcendent_grid',
+  TATTLETALE = 'complex_form:tattletale'
+}
+
+export enum COMPLEX_FORM_TARGET_ID {
+  SELF = 1,
+  DEVICE,
+  PERSONA,
+  SPRITE,
+  FILE
+}
+
+export enum COMPLEX_FORM_DURATION_ID {
+  IMMEDIATE = 1,
+  SUSTAINED,
+  PERMANENT
 }
 
 export enum METATYPE_ID {

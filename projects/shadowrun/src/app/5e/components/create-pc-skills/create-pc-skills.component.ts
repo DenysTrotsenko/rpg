@@ -49,7 +49,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     this.awakening$.asObservable(), this.metatype$.asObservable()
   ]).pipe(
     map(res => {
-      this.setSkills(res[0], res[1]);
+      this.setInitialValue(res[0], res[1]);
     })
   );
 
@@ -70,11 +70,14 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
           });
         })
       )
-      .subscribe(res => this.propagateChange(res));
+      .subscribe(() => {
+        const value = this.form.getRawValue();
+        this.onChange(value);
+      });
   }
-  propagateChange = (_: any) => {};
+  onChange = (_: any) => {};
   writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
   getSpecializations(control: AbstractControl): string[] {
@@ -96,7 +99,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     control.setValue((control.value ?? []).filter(i => i !== specialization));
   }
 
-  private setSkills(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
+  private setInitialValue(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
     this.form.clear();
 
     const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);

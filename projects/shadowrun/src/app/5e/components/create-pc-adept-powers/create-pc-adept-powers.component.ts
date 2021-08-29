@@ -5,19 +5,19 @@ import {Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-spells',
-  templateUrl: './create-pc-spells.component.html',
-  styleUrls: ['./create-pc-spells.component.scss'],
+  selector: 's5e-create-pc-adept-powers',
+  templateUrl: './create-pc-adept-powers.component.html',
+  styleUrls: ['./create-pc-adept-powers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcSpellsComponent),
+      useExisting: forwardRef(() => CreatePcAdeptPowersComponent),
       multi: true
     }
   ]
 })
-export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcAdeptPowersComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
   readonly spells: Spell[] = SPELLS;
   onChange = (_: any) => {};

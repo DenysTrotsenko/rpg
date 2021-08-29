@@ -18,18 +18,21 @@ import { UnsubscribeDirective } from '@shared';
 })
 export class CreatePcContactsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
-  propagateChange = (_: any) => {};
+  onChange = (_: any) => {};
 
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.form.valueChanges.subscribe(res => this.propagateChange(res));
+    this.subscriptions = this.form.valueChanges.subscribe(() => {
+      const value = this.form.getRawValue();
+      this.onChange(value);
+    });
   }
 
   writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
   onAddContactClick(): void {

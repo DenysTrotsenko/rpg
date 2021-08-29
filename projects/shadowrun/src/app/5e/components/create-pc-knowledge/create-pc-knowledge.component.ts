@@ -19,17 +19,7 @@ import {SKILL_CATEGORIES, SkillCategory} from '@shadowrun/app/5e';
   ]
 })
 export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  readonly form: FormArray = new FormArray([
-    new FormGroup({
-      id: new FormControl(`knowledge:${Date.now()}`),
-      name: new FormControl('', [Validators.required]),
-      category: new FormControl(SKILL_CATEGORY_ID.LANGUAGE, [Validators.required]),
-      rating: new FormControl(6, [Validators.required, Validators.min(6), Validators.max(6)]),
-      min: new FormControl(6),
-      max: new FormControl(6),
-      deletable: new FormControl(false)
-    })
-  ]);
+  readonly form: FormArray = new FormArray([]);
   readonly categories: SkillCategory[] = SKILL_CATEGORIES;
   onChange = (_: any) => {};
 
@@ -38,7 +28,11 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.form.valueChanges.subscribe(res => this.onChange(res));
+    this.setInitialValue();
+    this.subscriptions = this.form.valueChanges.subscribe(() => {
+      const value = this.form.getRawValue();
+      this.onChange(value);
+    });
   }
 
   writeValue(obj: any): void {}
@@ -46,7 +40,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
   registerOnTouched(fn: any): void {}
 
   isDeletable(i: AbstractControl): boolean {
-    return i.get('deletable').value;
+    return !i.get('readonly').value;
   }
 
   onAddKnowledgeClick(): void {
@@ -57,11 +51,27 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       rating: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(6)]),
       min: new FormControl(1),
       max: new FormControl(6),
-      deletable: new FormControl(true)
+      readonly: new FormControl(false)
     }));
   }
 
   onRemoveKnowledgeClick(id: string): void {
     this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+  }
+
+  setInitialValue(): void {
+    const readonly = true;
+    const group = new FormGroup({
+      id: new FormControl(`knowledge:${Date.now()}`),
+      name: new FormControl('', [Validators.required]),
+      category: new FormControl(SKILL_CATEGORY_ID.LANGUAGE, [Validators.required]),
+      rating: new FormControl(6, [Validators.required, Validators.min(6), Validators.max(6)]),
+      min: new FormControl(6),
+      max: new FormControl(6),
+      readonly: new FormControl(readonly)
+    });
+    this.form.push(group);
+    !!readonly ? group.get('category').disable() : group.get('category').enable();
+    !!readonly ? group.get('rating').disable() : group.get('rating').enable();
   }
 }

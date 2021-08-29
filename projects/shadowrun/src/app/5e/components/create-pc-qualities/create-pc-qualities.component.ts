@@ -34,7 +34,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     this.awakening$.asObservable(), this.metatype$.asObservable()
   ]).pipe(
     tap(res => {
-      this.setQualities(res[0], res[1]);
+      this.setInitialValue(res[0], res[1]);
     }),
     map(() => [...RACIAL_QUALITIES, ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES]),
     shareReplay(1)
@@ -42,7 +42,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   readonly racial$: Observable<Quality[]> = of(RACIAL_QUALITIES);
   readonly positive$: Observable<Quality[]> = of(POSITIVE_QUALITIES);
   readonly negative$: Observable<Quality[]> = of(NEGATIVE_QUALITIES);
-  propagateChange = (_: any) => {};
+  onChange = (_: any) => {};
 
   get negativeQualitiesMaxCost(): number { return -25; } // TODO: change magic numbers
   get positiveQualitiesMaxCost(): number { return 25; } // TODO: change magic numbers
@@ -59,11 +59,14 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
 
   ngOnInit(): void {
     this.subscriptions = this.qualities$.subscribe();
-    this.subscriptions = this.form.valueChanges.subscribe(res => this.propagateChange(res));
+    this.subscriptions = this.form.valueChanges.subscribe(() => {
+      const value = this.form.getRawValue();
+      this.onChange(value);
+    });
   }
 
   writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
   isOptionDisabled(id: QUALITY_ID): boolean {
@@ -72,7 +75,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   }
 
   isDeletable(i: AbstractControl): boolean {
-    return i.get('deletable').value;
+    return !i.get('readonly').value;
   }
 
   onAddQualityClick(): void {
@@ -83,7 +86,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
       id: new FormControl(quality.id, [Validators.required]),
       rating: new FormControl(0, [Validators.required]),
       specialty: new FormControl(null, !!quality.specialty ? [Validators.required] : []),
-      deletable: new FormControl(true, [Validators.required])
+      readonly: new FormControl(false, [Validators.required])
     }));
   }
 
@@ -91,19 +94,22 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
   }
 
-  private setQualities(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
+  private setInitialValue(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
     const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
     const metatype: Metatype = METATYPES.find(i => i.id === metatypeId);
 
     this.form.clear();
 
     metatype.qualities.forEach(quality => {
-      this.form.push(new FormGroup({
+      const readonly: boolean = true;
+      const group: FormGroup = new FormGroup({
         id: new FormControl(quality.id),
         rating: new FormControl(quality.rating, [Validators.required]),
         specialty: new FormControl(null),
-        deletable: new FormControl(false, [Validators.required])
-      }));
+        readonly: new FormControl(readonly, [Validators.required])
+      });
+      this.form.push(group);
+      !!readonly ? group.disable({ emitEvent: false }) : group.enable({ emitEvent: false });
     });
   }
 }

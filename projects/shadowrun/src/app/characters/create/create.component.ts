@@ -36,6 +36,8 @@ export class CreateComponent implements OnInit {
     knowledge: new FormControl(null, [Validators.required]),
     contacts: new FormControl(null, [Validators.required]),
     spells: new FormControl(null, [Validators.required]),
+    complex_forms: new FormControl(null, [Validators.required]),
+    adept_powers: new FormControl(null, [Validators.required]),
   });
 
   constructor(public data: FifthEditionService) { }
@@ -82,5 +84,9 @@ export class CreateComponent implements OnInit {
     //
     // return karma.reduce((acc, cur) => acc + cur, 0);
     return 0;
+  }
+
+  onSubmit(character): void {
+    console.log(character);
   }
 }

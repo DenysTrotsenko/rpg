@@ -35,7 +35,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field *ngIf="qualities$ | async | find: 'id' : i.get('id').value | map: 'specialty'" appearance="outline">
+      <mat-form-field *ngIf="qualities$ | async | find: 'id' : i.get('id').value | map: 'specialty'" appearance="outline" floatLabel="always">
         <mat-label>Specialty</mat-label>
         <input matInput type="text" [formControl]="i.get('specialty')">
       </mat-form-field>
