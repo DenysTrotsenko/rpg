@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
-import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {UnsubscribeDirective} from '@shared';
 import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
 import {ComplexForm} from '@shadowrun/app/5e/5e.models';
@@ -22,7 +22,6 @@ import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
 export class CreatePcComplexFormsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
   readonly items: ComplexForm[] = COMPLEX_FORMS;
-  onChange = (_: any) => {};
 
   constructor() {
     super();
@@ -35,9 +34,14 @@ export class CreatePcComplexFormsComponent extends UnsubscribeDirective implemen
     });
   }
 
+  onChange = (_: any) => {};
   writeValue(obj: any): void {}
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
+
+  getId(group: AbstractControl): FormControl {
+    return group.get('id') as FormControl;
+  }
 
   isAddDisabled(value: { id: COMPLEX_FORM_ID; }[]): boolean {
     return COMPLEX_FORMS.every(cf => value.find(i => i.id === cf.id));

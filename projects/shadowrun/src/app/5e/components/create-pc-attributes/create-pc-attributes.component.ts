@@ -36,7 +36,6 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
       this.setAttributes(res[0], res[1]);
     })
   );
-  propagateChange = (_: any) => {};
 
   constructor() {
     super();
@@ -44,11 +43,12 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
 
   ngOnInit(): void {
     this.subscriptions = this.attributes$.subscribe();
-    this.subscriptions = this.form.valueChanges.subscribe(res => this.propagateChange(res));
+    this.subscriptions = this.form.valueChanges.subscribe(res => this.onChange(res));
   }
 
+  onChange = (_: any) => {};
   writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
   private setAttributes(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
