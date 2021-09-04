@@ -1,5 +1,5 @@
 import { Quality } from './5e.models';
-import { BOOK_ID, QUALITY_ID } from './5e.enums';
+import {ATTRIBUTE_ID, BOOK_ID, QUALITY_ID} from './5e.enums';
 
 export const RACIAL_QUALITIES: Quality[] = [
   {
@@ -289,7 +289,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formula: null
+    formula: {
+      [ATTRIBUTE_ID.EDGE]: { max: 1 }
+    }
   },
   {
     id: QUALITY_ID.MAGIC_RESISTANCE,

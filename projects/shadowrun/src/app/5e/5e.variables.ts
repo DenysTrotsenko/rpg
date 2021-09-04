@@ -1,3 +1,5 @@
+export const DEFAULT_ATTRIBUTE_RANGE = [1, 6];
+
 export const KARMA_PER_ATTRIBUTE = 5;
 export const KARMA_PER_ACTIVE_SKILL = 2;
 export const KARMA_PER_KNOWLEDGE = 1;

@@ -48,7 +48,7 @@ export class CreatePcAdeptPowersComponent extends UnsubscribeDirective implement
   }
 
   onRemoveClick(id: string): void {
-    this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 
   isOptionDisabled(id: SPELL_ID): boolean {

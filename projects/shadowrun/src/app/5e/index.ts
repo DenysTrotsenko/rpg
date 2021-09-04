@@ -7,7 +7,8 @@ export {
   SPELL_RANGE_ID, SPELL_SUBCATEGORY_ID, SPELL_TYPE_ID
 } from './5e.enums';
 export {
-  Attribute, Awakening, Book, Contact, Gear, Knowledge, Metatype, Quality, Skill, Spell, SkillCategory
+  Attribute, Awakening, Book, Contact, Gear, Knowledge, Metatype, Quality, Skill, Spell, SkillCategory,
+  CharacterAttribute, CharacterQuality
 } from './5e.models';
 export { METATYPES } from './5e.metatypes';
 export { NEGATIVE_QUALITIES, POSITIVE_QUALITIES, RACIAL_QUALITIES } from './5e.qualities';
@@ -16,6 +17,7 @@ export {
   SPELLS, SPELL_DAMAGE, SPELL_DURATIONS, SPELL_KINDS, SPELL_RANGES, SPELL_SUBCATEGORIES, SPELL_TYPES
 } from './5e.spells';
 export {
+  DEFAULT_ATTRIBUTE_RANGE,
   KARMA_PER_ATTRIBUTE, KARMA_PER_ACTIVE_SKILL, KARMA_PER_KNOWLEDGE, KARMA_PER_SPECIALIZATION,
   KARMA_PER_COMPLEX_FORM, KARMA_PER_SPELL, KARMA_PER_INITIATE, MAX_KNOWN_SPELLS, FREE_KNOWLEDGE,
   FREE_CONTACTS

@@ -1,10 +1,10 @@
 <mat-form-field appearance="outline" floatLabel="always" style="max-width:200px;">
   <mat-label>{{label}}</mat-label>
   <input matInput type="number" [(ngModel)]="value" [disabled]="disabled" readonly>
-  <button mat-icon-button matPrefix [disabled]="isRemoveDisabled()" (click)="onRemoveClick()">
+  <button type="button" mat-icon-button matPrefix [disabled]="isRemoveDisabled()" (click)="onRemoveClick()">
     <mat-icon>remove</mat-icon>
   </button>
-  <button mat-icon-button matSuffix [disabled]="isAddDisabled()" (click)="onAddClick()">
+  <button type="button" mat-icon-button matSuffix [disabled]="isAddDisabled()" (click)="onAddClick()">
     <mat-icon>add</mat-icon>
   </button>
 </mat-form-field>

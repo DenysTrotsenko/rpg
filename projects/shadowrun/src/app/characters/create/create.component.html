@@ -39,7 +39,8 @@
 
   <s5e-create-pc-attributes formControlName="attributes"
     [awakening]="form.get('awakening').value"
-    [metatype]="form.get('metatype').value">
+    [metatype]="form.get('metatype').value"
+    [qualities]="form.get('qualities').value">
   </s5e-create-pc-attributes>
 
   <s5e-create-pc-skills formControlName="skills"
@@ -59,7 +60,7 @@
 
 
   <mat-card class="mb-15">
-    <mat-card-content></mat-card-content>
+<!--    <mat-card-content></mat-card-content>-->
     <mat-card-actions>
       <button type="reset" mat-button class="mr-15">Reset</button>
       <button type="submit" mat-flat-button color="primary">Save</button>

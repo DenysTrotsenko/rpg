@@ -6,10 +6,10 @@
     </button>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let i of form.controls;" class="d-f ai-b fw-nw">
+    <div *ngFor="let control of form.controls;" class="d-f ai-b fw-nw">
       <mat-form-field appearance="outline" class="mr-5">
         <mat-label>Quality</mat-label>
-        <mat-select [formControl]="i.get('id')">
+        <mat-select [formControl]="control.get('id')">
           <mat-optgroup label="Racial Qualities">
             <mat-option *ngFor="let quality of racial$ | async" [value]="quality.id" [disabled]="true">
               {{quality.name}}
@@ -29,18 +29,18 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="mr-5">
         <mat-label>Rating</mat-label>
-        <mat-select [formControl]="i.get('rating')">
-          <mat-option *ngFor="let rating of qualities$ | async | find: 'id' : i.get('id').value | map: 'ratings'; index as i;" [value]="i">
+        <mat-select [formControl]="control.get('rating')">
+          <mat-option *ngFor="let rating of qualities$ | async | find: 'id' : control.get('id').value | map: 'ratings'; index as i;" [value]="i">
             {{rating.name}} ({{rating.cost}})
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field *ngIf="qualities$ | async | find: 'id' : i.get('id').value | map: 'specialty'" appearance="outline" floatLabel="always">
+      <mat-form-field *ngIf="qualities$ | async | find: 'id' : control.get('id').value | map: 'specialty'" appearance="outline" floatLabel="always">
         <mat-label>Specialty</mat-label>
-        <input matInput type="text" [formControl]="i.get('specialty')">
+        <input matInput type="text" [formControl]="control.get('specialty')">
       </mat-form-field>
       <span class="f-1"></span>
-      <button *ngIf="isDeletable(i)" mat-icon-button type="button" (click)="onRemoveQualityClick(i.get('id').value)">
+      <button *ngIf="isDeletable(control)" mat-icon-button type="button" (click)="onRemoveQualityClick(control.get('id').value)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

@@ -46,6 +46,6 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
   }
 
   onRemoveContactClick(id: string): void {
-    this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 }

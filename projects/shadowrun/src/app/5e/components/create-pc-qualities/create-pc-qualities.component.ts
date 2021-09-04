@@ -91,12 +91,13 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   }
 
   onRemoveQualityClick(id: QUALITY_ID): void {
-    this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 
   private setInitialValue(awakeningId: AWAKENING_ID, metatypeId: METATYPE_ID): void {
     const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
     const metatype: Metatype = METATYPES.find(i => i.id === metatypeId);
+    const values = this.form.disabled ? [] : this.form.value;
 
     this.form.clear();
 
@@ -110,6 +111,16 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
       });
       this.form.push(group);
       !!readonly ? group.disable({ emitEvent: false }) : group.enable({ emitEvent: false });
+    });
+    values.forEach(quality => {
+      const group: FormGroup = new FormGroup({
+        id: new FormControl(quality.id),
+        rating: new FormControl(quality.rating, [Validators.required]),
+        specialty: new FormControl(quality.specialty),
+        readonly: new FormControl(quality.readonly, [Validators.required])
+      });
+      this.form.push(group);
+      !!quality.readonly ? group.disable({ emitEvent: false }) : group.enable({ emitEvent: false });
     });
   }
 }

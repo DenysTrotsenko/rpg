@@ -131,3 +131,16 @@ export interface SkillCategory {
   name: string;
   attribute: ATTRIBUTE_ID;
 }
+
+export interface CharacterAttribute {
+  id: ATTRIBUTE_ID;
+  min: number;
+  max: number;
+  rating: number;
+}
+
+export interface CharacterQuality {
+  id: QUALITY_ID;
+  rating: number;
+  specialty: string;
+}

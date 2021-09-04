@@ -56,7 +56,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
   }
 
   onRemoveKnowledgeClick(id: string): void {
-    this.form.removeAt(this.form.value.map(i => i.id).indexOf(id));
+    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 
   setInitialValue(): void {
