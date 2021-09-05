@@ -71,6 +71,16 @@ export enum COMPLEX_FORM_DURATION_ID {
   PERMANENT
 }
 
+export enum GEAR_ID {
+  CYBERDECK = 'gear:cyberdeck',
+  RCC = 'gear:rcc'
+}
+
+export enum GEAR_TYPE_ID {
+  CYBERDECK = 'gt:cyberdeck',
+  RCC = 'gt:rcc'
+}
+
 export enum METATYPE_ID {
   HUMAN = 'metatype:human',
   DWARF = 'metatype:dwarf',
@@ -225,11 +235,11 @@ export enum SKILL_ID {
 }
 
 export enum SKILL_CATEGORY_ID {
-  ACADEMIC = 'academic',
-  INTERESTS = 'interests',
-  PROFESSIONAL = 'professional',
-  STREET = 'street',
-  LANGUAGE = 'language'
+  ACADEMIC = 'sc:academic',
+  INTERESTS = 'sc:interests',
+  PROFESSIONAL = 'sc:professional',
+  STREET = 'sc:street',
+  LANGUAGE = 'sc:language'
 }
 
 export enum SPELL_ID {

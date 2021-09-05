@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from '@shared';
+import { UserService } from '@cod/app/core/user.service';
 
 @Component({
   templateUrl: './index.component.html',
@@ -8,12 +10,10 @@ import { Observable, of } from 'rxjs';
 })
 export class IndexComponent {
   expanded = true;
-  // readonly logged$: Observable<boolean> = this.auth.logged$;
-  readonly logged$: Observable<boolean> = of(true);
+  readonly logged$: Observable<boolean> = this.auth.logged$;
   // readonly admin$: Observable<boolean> = this.user.isAdmin();
-  readonly admin$: Observable<boolean> = of(true);
 
-  // constructor(private auth: AuthService, private user: UserService) {}
+  constructor(private auth: AuthService) {}
 
   onToggleSidenavClick(): void {
     this.expanded = !this.expanded;

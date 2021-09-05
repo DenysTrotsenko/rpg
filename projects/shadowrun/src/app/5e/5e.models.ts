@@ -6,6 +6,7 @@ import {
   BOOK_ID, COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
   COMPLEX_FORM_TARGET_ID,
+  GEAR_ID, GEAR_TYPE_ID,
   METATYPE_ID,
   QUALITY_ID,
   SKILL_CATEGORY_ID,
@@ -18,6 +19,7 @@ import {
   SPELL_SUBCATEGORY_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
+import {JsonString} from '@shared';
 
 export interface AdeptPower {
   id: ADEPT_POWER_ID;
@@ -61,9 +63,19 @@ export interface Contact {
 }
 
 export interface Gear {
-  id: BOOK_ID;
+  id: GEAR_ID;
+  book: BOOK_ID;
   name: string;
-  cost: number;
+  type: GEAR_TYPE_ID;
+  ratings: {
+    name: string;
+    rating: number;
+    availability: number;
+    restricted: boolean;
+    forbidden: boolean;
+    cost: number;
+    data?: object;
+  }[];
   quantity: number;
 }
 
