@@ -15,7 +15,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Metatype</mat-label>
           <mat-select formControlName="metatype">
-            <mat-option *ngFor="let i of data.metatypes" [value]="i.id">
+            <mat-option *ngFor="let i of METATYPES" [value]="i.id">
               {{i.name}} ({{i.cost}})
             </mat-option>
           </mat-select>
@@ -23,7 +23,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Awakening</mat-label>
           <mat-select formControlName="awakening">
-            <mat-option *ngFor="let i of data.awakenings" [value]="i.id">
+            <mat-option *ngFor="let i of AWAKENINGS" [value]="i.id">
               {{i.name}} ({{i.cost}})
             </mat-option>
           </mat-select>

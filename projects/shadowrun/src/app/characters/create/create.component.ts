@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
-import {AWAKENING_ID, METATYPE_ID} from '@shadowrun/app/5e/5e.enums';
+import {DialogService, FirestoreService} from '@shared';
+import {Awakening, AWAKENING_ID, AWAKENINGS, Metatype, METATYPE_ID, METATYPES} from '@shadowrun/app/5e';
 import {
   NEGATIVE_QUALITIES_MAX_COST,
   POSITIVE_QUALITIES_MAX_COST
@@ -26,6 +27,7 @@ export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
 })
 export class CreateComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
+    id: new FormControl(this.id),
     portrait: new FormControl(null, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
@@ -35,12 +37,18 @@ export class CreateComponent implements OnInit {
     skills: new FormControl(null, [Validators.required]),
     knowledge: new FormControl(null, [Validators.required]),
     contacts: new FormControl(null, [Validators.required]),
-    spells: new FormControl(null, [Validators.required]),
-    complex_forms: new FormControl(null, [Validators.required]),
-    adept_powers: new FormControl(null, [Validators.required]),
+    spells: new FormControl(null),
+    complex_forms: new FormControl(null),
+    adept_powers: new FormControl(null),
   });
+  readonly AWAKENINGS: Awakening[] = AWAKENINGS;
+  readonly METATYPES: Metatype[] = METATYPES;
 
-  constructor(public data: FifthEditionService) { }
+  get id(): string {
+    return (Date.now() + Math.random()).toString(36).replace('.', '');
+  }
+
+  constructor(private readonly firestore: FirestoreService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.form.valueChanges
@@ -88,5 +96,11 @@ export class CreateComponent implements OnInit {
 
   onSubmit(character): void {
     console.log(character);
+    this.firestore
+      .update(`characters/${character.id}`, character)
+      .pipe(
+        tap(() => this.router.navigate(['..']))
+      )
+      .subscribe();
   }
 }

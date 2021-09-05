@@ -1,10 +1,10 @@
-import {Component, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
+import {Component, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {PORTRAITS} from './portrait-select.models';
-import {DialogService} from '@shared';
-import {PortraitSelectDialogComponent} from '@shadowrun/app/ui/components/portrait-select/portrait-select-dialog.component';
-import {filter, tap} from 'rxjs/operators';
 import {BehaviorSubject} from 'rxjs';
+import {filter, tap} from 'rxjs/operators';
+import {DialogService} from '@shared';
+import {PortraitSelectDialogComponent} from './portrait-select-dialog.component';
+import {PORTRAITS} from '@shadowrun/app/ui/ui.models';
 
 @Component({
   /* tslint:disable-next-line */

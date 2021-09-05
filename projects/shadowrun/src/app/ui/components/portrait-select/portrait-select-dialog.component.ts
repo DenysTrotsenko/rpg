@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PORTRAITS } from './portrait-select.models';
+import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
+
 
 @Component({
   templateUrl: './portrait-select-dialog.component.html',
