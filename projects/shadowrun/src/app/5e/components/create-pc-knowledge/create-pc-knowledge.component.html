@@ -19,14 +19,11 @@
         <mat-label>Name</mat-label>
         <input matInput type="text" [formControl]="i.get('name')">
       </mat-form-field>
-      <number-input
-        [formControl]="i.get('rating')"
-        [min]="i.get('min').value"
-        [max]="i.get('max').value"
-        label="Rating">
+      <number-input [formControl]="i.get('rating')" [min]="i.get('min').value" [max]="i.get('max').value">
+        Rating
       </number-input>
       <span class="f-1"></span>
-      <button *ngIf="isDeletable(i)" mat-icon-button type="button" (click)="onRemoveKnowledgeClick(i.get('id').value)">
+      <button mat-icon-button type="button" [disabled]="!isDeletable(i)" (click)="onRemoveKnowledgeClick(i.get('id').value)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

@@ -82,7 +82,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
         : DEFAULT_ATTRIBUTE_RANGE;
       const min: number = range[0];
       const max: number = range[1] + QUALITIES.reduce((acc, cur) => {
-        return acc + (!!(cur.formula ?? {})[attribute.id] ? cur.formula[attribute.id].max : 0);
+        return acc + (!!(cur.formulas ?? {})[attribute.id] ? cur.formulas[attribute.id].max : 0);
       }, 0);
       const value: CharacterAttribute | null = values.find(i => i.id === attribute.id);
       const rating: number = !!value ? value.rating - value.min + min : min;

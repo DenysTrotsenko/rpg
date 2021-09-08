@@ -44,14 +44,14 @@ export class PortraitSelectComponent implements ControlValueAccessor {
   onBackClick(): void {
     this.markAsTouched();
     this.value = this.value - 1 < 0 ? PORTRAITS.length - 1 : this.value - 1;
-    this.onChange(this.value);
+    this.onChange(this.portraits[this.value]);
     this.src$.next(this.getPortrait());
   }
 
   onForwardClick(): void {
     this.markAsTouched();
     this.value = this.value + 1 > PORTRAITS.length - 1 ? 0 : this.value + 1;
-    this.onChange(this.value);
+    this.onChange(this.portraits[this.value]);
     this.src$.next(this.getPortrait());
   }
 
@@ -64,7 +64,7 @@ export class PortraitSelectComponent implements ControlValueAccessor {
         filter(res => !!res),
         tap(res => {
           this.value = res;
-          this.onChange(this.value);
+          this.onChange(this.portraits[this.value]);
           this.src$.next(this.getPortrait());
         })
       )

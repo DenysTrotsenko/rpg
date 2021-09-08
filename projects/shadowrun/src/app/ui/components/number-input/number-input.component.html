@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline" floatLabel="always" style="max-width:200px;">
-  <mat-label>{{label}}</mat-label>
+  <mat-label><ng-content></ng-content></mat-label>
   <input matInput type="number" [(ngModel)]="value" [disabled]="disabled" readonly>
   <button type="button" mat-icon-button matPrefix [disabled]="isRemoveDisabled()" (click)="onRemoveClick()">
     <mat-icon>remove</mat-icon>

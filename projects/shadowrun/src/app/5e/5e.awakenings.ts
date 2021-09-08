@@ -21,8 +21,26 @@ export const AWAKENINGS: Awakening[] = [
     cost: 20
   },
   {
-    id: AWAKENING_ID.ASPECTED_MAGICIAN,
-    name: 'Aspected Magician',
+    id: AWAKENING_ID.ASPECTED_MAGICIAN_SPELLCASTER,
+    name: 'Aspected Magician (Spellcaster)',
+    attributes: {
+      [ATTRIBUTE_ID.MAGIC]: [1, 6],
+      [ATTRIBUTE_ID.RESONANCE]: [0, 0]
+    },
+    cost: 15
+  },
+  {
+    id: AWAKENING_ID.ASPECTED_MAGICIAN_SUMMONER,
+    name: 'Aspected Magician (Summoner)',
+    attributes: {
+      [ATTRIBUTE_ID.MAGIC]: [1, 6],
+      [ATTRIBUTE_ID.RESONANCE]: [0, 0]
+    },
+    cost: 15
+  },
+  {
+    id: AWAKENING_ID.ASPECTED_MAGICIAN_ALCHEMIST,
+    name: 'Aspected Magician (Alchemist)',
     attributes: {
       [ATTRIBUTE_ID.MAGIC]: [1, 6],
       [ATTRIBUTE_ID.RESONANCE]: [0, 0]

@@ -24,7 +24,9 @@ export enum ATTRIBUTE_TYPE_ID {
 export enum AWAKENING_ID {
   MUNDANE = 'awakening:mundane',
   ADEPT = 'awakening:adept',
-  ASPECTED_MAGICIAN = 'awakening:aspected_magician',
+  ASPECTED_MAGICIAN_SPELLCASTER = 'awakening:aspected_magician_spellcaster',
+  ASPECTED_MAGICIAN_SUMMONER = 'awakening:aspected_magician_summoner',
+  ASPECTED_MAGICIAN_ALCHEMIST = 'awakening:aspected_magician_alchemist',
   MAGICIAN = 'awakening:magician',
   MYSTIC_ADEPT = 'awakening:mystic_adept',
   TECHNOMANCER = 'awakening:technomancer'
@@ -73,12 +75,38 @@ export enum COMPLEX_FORM_DURATION_ID {
 
 export enum GEAR_ID {
   CYBERDECK = 'gear:cyberdeck',
-  RCC = 'gear:rcc'
+  RCC = 'gear:rcc',
+  ENCHANTING_FOCUS = 'gear:enchanting_focus',
+  METAMAGIC_FOCUS = 'gear:metamagic_focus',
+  POWER_FOCUS = 'gear:power_focus',
+  QI_FOCUS = 'gear:qi_focus',
+  SPELL_FOCUS = 'gear:spell_focus',
+  SPIRIT_FOCUS = 'gear:spirit_focus',
+  WEAPON_FOCUS = 'gear:weapon_focus',
 }
 
 export enum GEAR_TYPE_ID {
   CYBERDECK = 'gt:cyberdeck',
-  RCC = 'gt:rcc'
+  RCC = 'gt:rcc',
+  FOCI = 'gt:foci'
+}
+
+export enum LIFESTYLE_ID {
+  LUXURY = 'ls:luxury',
+  HIGH = 'ls:high',
+  MIDDLE = 'ls:middle',
+  LOW = 'ls:low',
+  SQUATTER = 'ls:squatter',
+  STREETS = 'ls:streets',
+  HOSPITALIZED = 'ls:hospitalized'
+}
+
+export enum LIFESTYLE_OPTION_ID {
+  SPECIAL_WORK_AREA = 'lso:special_work_area',
+  EXTRA_SECURE = 'lso:extra_secure',
+  OBSCURE_DIFFICULT_TO_FIND = 'lso:obscure_difficult_to_find',
+  CRAMPED = 'lso:cramped',
+  DANGEROUS_AREA = 'lso:dangerous_area'
 }
 
 export enum METATYPE_ID {
@@ -386,4 +414,13 @@ export enum SPELL_SUBCATEGORY_ID {
 export enum SPELL_TYPE_ID {
   PHYSICAL = 1,
   MANA
+}
+
+export enum SPIRIT_ID {
+  AIR = 'spirit:air',
+  BEAST = 'spirit:beast',
+  EARTH = 'spirit:earth',
+  FIRE = 'spirit:fire',
+  MAN = 'spirit:man',
+  WATER = 'spirit:water',
 }

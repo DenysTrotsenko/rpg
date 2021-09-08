@@ -40,7 +40,7 @@
         <input matInput type="text" [formControl]="control.get('specialty')">
       </mat-form-field>
       <span class="f-1"></span>
-      <button *ngIf="isDeletable(control)" mat-icon-button type="button" (click)="onRemoveQualityClick(control.get('id').value)">
+      <button mat-icon-button type="button" [disabled]="!isDeletable(control)" (click)="onRemoveQualityClick(control.get('id').value)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

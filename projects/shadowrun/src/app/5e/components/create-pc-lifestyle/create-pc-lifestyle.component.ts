@@ -1,27 +1,29 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {UnsubscribeDirective} from '@shared';
+import {ComplexForm, Lifestyle, LifestyleOption} from '@shadowrun/app/5e/5e.models';
 import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
-import {ComplexForm} from '@shadowrun/app/5e/5e.models';
 import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {UnsubscribeDirective} from '@shared';
+import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-complex-forms',
-  templateUrl: './create-pc-complex-forms.component.html',
-  styleUrls: ['./create-pc-complex-forms.component.scss'],
+  selector: 's5e-create-pc-lifestyle',
+  templateUrl: './create-pc-lifestyle.component.html',
+  styleUrls: ['./create-pc-lifestyle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcComplexFormsComponent),
+      useExisting: forwardRef(() => CreatePcLifestyleComponent),
       multi: true
     }
   ]
 })
-export class CreatePcComplexFormsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcLifestyleComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
-  readonly items: ComplexForm[] = COMPLEX_FORMS;
+  readonly LIFESTYLES: Lifestyle[] = LIFESTYLES;
+  readonly LIFESTYLE_OPTIONS: LifestyleOption[] = LIFESTYLE_OPTIONS;
 
   constructor() {
     super();
@@ -39,22 +41,17 @@ export class CreatePcComplexFormsComponent extends UnsubscribeDirective implemen
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
-  getId(group: AbstractControl): FormControl {
-    return group.get('id') as FormControl;
-  }
-
-  isAddDisabled(value: { id: COMPLEX_FORM_ID; }[]): boolean {
-    return COMPLEX_FORMS.every(cf => value.find(i => i.id === cf.id));
-  }
-
-  isOptionDisabled(id: COMPLEX_FORM_ID): boolean {
-    return !!this.form.value.find(i => i.id === id);
+  getFormControl(abstract: AbstractControl, name: string): FormControl {
+    return abstract.get(name) as FormControl;
   }
 
   onAddClick(): void {
-    const cf: ComplexForm = COMPLEX_FORMS.find(s => !this.form.value.find(i => i.id === s.id));
+    const lifestyle: Lifestyle = LIFESTYLES[0];
     const group: FormGroup = new FormGroup({
-      id: new FormControl(cf.id, [Validators.required])
+      id: new FormControl(lifestyle.id, [Validators.required]),
+      options: new FormControl(null),
+      details: new FormControl(null),
+      term: new FormControl(null)
     });
     this.form.push(group);
   }

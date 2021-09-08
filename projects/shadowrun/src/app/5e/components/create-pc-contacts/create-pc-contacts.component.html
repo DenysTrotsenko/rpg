@@ -7,13 +7,17 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngFor="let i of form.controls;" class="d-f ai-b fw-nw">
-      <mat-form-field appearance="outline" class="mr-5">
+      <number-input class="mr-5" min="1" max="6" [formControl]="i.get('connection')">
+        Connection
+      </number-input>
+      <number-input class="mr-5" min="1" max="6" [formControl]="i.get('loyalty')">
+        Loyalty
+      </number-input>
+      <mat-form-field appearance="outline" floatLabel="always" class="mr-5">
         <mat-label>Name</mat-label>
         <input matInput type="text" [formControl]="i.get('name')">
       </mat-form-field>
-      <number-input class="mr-5" label="Connection" min="1" max="6" [formControl]="i.get('connection')"></number-input>
-      <number-input class="mr-5" label="Loyalty" min="1" max="6" [formControl]="i.get('loyalty')"></number-input>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>Details</mat-label>
         <input matInput type="text" [formControl]="i.get('details')">
       </mat-form-field>

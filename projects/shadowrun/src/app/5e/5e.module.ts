@@ -10,20 +10,28 @@ import { CreatePcContactsComponent } from './components/create-pc-contacts/creat
 import { CreatePcSpellsComponent } from './components/create-pc-spells/create-pc-spells.component';
 import { CreatePcComplexFormsComponent } from './components/create-pc-complex-forms/create-pc-complex-forms.component';
 import { CreatePcAdeptPowersComponent } from './components/create-pc-adept-powers/create-pc-adept-powers.component';
+import { CreatePcGearComponent } from './components/create-pc-gear/create-pc-gear.component';
+import { CreatePcWareComponent } from './components/create-pc-ware/create-pc-ware.component';
+import { CreatePcLifestyleComponent } from './components/create-pc-lifestyle/create-pc-lifestyle.component';
 
 const DECLARATIONS = [
+  CreatePcAdeptPowersComponent,
   CreatePcAttributesComponent,
+  CreatePcComplexFormsComponent,
   CreatePcContactsComponent,
+  CreatePcGearComponent,
   CreatePcKnowledgeComponent,
+  CreatePcLifestyleComponent,
   CreatePcQualitiesComponent,
   CreatePcSkillsComponent,
-  CreatePcSpellsComponent
+  CreatePcSpellsComponent,
+  CreatePcWareComponent
 ];
 
 @NgModule({
-  exports: [...DECLARATIONS, CreatePcComplexFormsComponent, CreatePcAdeptPowersComponent],
+  exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS, CreatePcComplexFormsComponent, CreatePcAdeptPowersComponent]
+  declarations: [...DECLARATIONS]
 })
 export class FifthEditionModule {}

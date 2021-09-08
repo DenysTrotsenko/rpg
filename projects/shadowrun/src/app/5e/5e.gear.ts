@@ -1,14 +1,5 @@
-import {BOOK_ID, GEAR_ID, GEAR_TYPE_ID} from './5e.enums';
+import {ATTRIBUTE_ID, BOOK_ID, GEAR_ID, GEAR_TYPE_ID} from './5e.enums';
 import {Gear} from './5e.models';
-
-export const LIFESTYLE = [
-  {
-    id: 1,
-    name: '',
-    cost: 1,
-    quantity: 1
-  }
-];
 
 export const GEAR: Gear[] = [
   {
@@ -98,6 +89,9 @@ export const GEAR: Gear[] = [
         data: { attributes: [9, 8, 7, 6], programs: 6 }
       }
     ],
+    restricted: true,
+    forbidden: false,
+    specialty: false,
     quantity: 1
   },
   {
@@ -206,9 +200,28 @@ export const GEAR: Gear[] = [
         data: { data_processing: 8, firewall: 7 }
       }
     ],
+    restricted: true,
+    forbidden: false,
+    specialty: false,
+    quantity: 1
+  },
+  {
+    id: GEAR_ID.ENCHANTING_FOCUS,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Enchanting Focus',
+    type: GEAR_TYPE_ID.FOCI,
+    ratings: [],
+    formulas: {
+      availability: (rating: number): number => rating * 3,
+      cost: (rating: number): number => rating * 5000,
+    },
+    restricted: true,
+    forbidden: false,
+    specialty: true,
     quantity: 1
   }
 ];
+
 // export const GEAR = [];
 // export const GEAR = [];
 // export const GEAR = [];

@@ -8,24 +8,4 @@ import { ACTIVE_SKILLS, KNOWLEDGE, SKILL_CATEGORIES } from './5e.skills';
 import { SPELLS } from './5e.spells';
 
 @Injectable()
-export class FifthEditionService {
-  readonly attributes: Attribute[] = ATTRIBUTES;
-  readonly awakenings: Awakening[] = AWAKENINGS;
-  readonly books: Book[] = BOOKS;
-  readonly knowledge: Knowledge[] = KNOWLEDGE;
-  readonly metatypes: Metatype[] = METATYPES;
-  // readonly qualities: Quality[] = [...RACIAL_QUALITIES, ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
-  readonly skillCategories: SkillCategory[] = SKILL_CATEGORIES;
-  readonly skills: Skill[] = ACTIVE_SKILLS;
-  readonly spells: Spell[] = SPELLS;
-
-  // readonly attributes$: Attribute[] = ATTRIBUTES;
-  // readonly awakenings$: Awakening[] = AWAKENINGS;
-  // readonly books$: Book[] = BOOKS;
-  // readonly knowledge$: Knowledge[] = KNOWLEDGE;
-  // readonly metatypes$: Metatype[] = METATYPES;
-  // readonly qualities$: Quality[] = [...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
-  // readonly skillCategories$: SkillCategory[] = SKILL_CATEGORIES;
-  // readonly skills$: Skill[] = ACTIVE_SKILLS;
-  // readonly spells$: Spell[] = SPELLS;
-}
+export class FifthEditionService {}

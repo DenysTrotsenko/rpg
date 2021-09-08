@@ -4,11 +4,8 @@
   </mat-card-header>
   <mat-card-content>
     <div *ngFor="let i of form.controls;" class="d-f ai-b">
-      <number-input
-        [formControl]="i.get('rating')"
-        [min]="i.get('min').value"
-        [max]="i.get('max').value"
-        [label]="attributes | find: 'id' : i.get('id').value | map: 'name'">
+      <number-input [formControl]="i.get('rating')" [min]="i.get('min').value" [max]="i.get('max').value">
+        {{attributes | find: 'id' : i.get('id').value | map: 'name'}}
       </number-input>
     </div>
   </mat-card-content>

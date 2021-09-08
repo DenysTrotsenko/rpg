@@ -1,25 +1,25 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {UnsubscribeDirective} from '@shared';
-import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
 import {ComplexForm} from '@shadowrun/app/5e/5e.models';
+import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
 import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {UnsubscribeDirective} from '@shared';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-complex-forms',
-  templateUrl: './create-pc-complex-forms.component.html',
-  styleUrls: ['./create-pc-complex-forms.component.scss'],
+  selector: 's5e-create-pc-gear',
+  templateUrl: './create-pc-gear.component.html',
+  styleUrls: ['./create-pc-gear.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcComplexFormsComponent),
+      useExisting: forwardRef(() => CreatePcGearComponent),
       multi: true
     }
   ]
 })
-export class CreatePcComplexFormsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcGearComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
   readonly items: ComplexForm[] = COMPLEX_FORMS;
 

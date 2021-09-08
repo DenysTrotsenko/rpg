@@ -40,6 +40,7 @@ export class CreateComponent implements OnInit {
     spells: new FormControl(null),
     complex_forms: new FormControl(null),
     adept_powers: new FormControl(null),
+    lifestyles: new FormControl(null, [Validators.required]),
   });
   readonly AWAKENINGS: Awakening[] = AWAKENINGS;
   readonly METATYPES: Metatype[] = METATYPES;
@@ -61,7 +62,7 @@ export class CreateComponent implements OnInit {
       .subscribe();
   }
 
-  // getCalculatedEssence(): void {}
+  getCalculatedEssence(): void {}
   getCalculatedKarma(form): number {
     // const metatype: number = this.data.metatypes.find(i => i.id === form.metatype).cost;
     // const awakening: number = this.data.awakenings.find(i => i.id === form.awakening).cost;
@@ -93,11 +94,40 @@ export class CreateComponent implements OnInit {
     // return karma.reduce((acc, cur) => acc + cur, 0);
     return 0;
   }
+  getCalculatedNuyen(): void {}
 
-  onSubmit(character): void {
-    console.log(character);
+  isAdeptPowersAvailable(form): boolean {
+    const canUseAdeptPowers = [
+      AWAKENING_ID.MYSTIC_ADEPT,
+      AWAKENING_ID.ADEPT
+    ];
+
+    return canUseAdeptPowers.includes(form.awakening);
+  }
+
+  isComplexFormsAvailable(form): boolean {
+    const canUseComplexForms = [
+      AWAKENING_ID.TECHNOMANCER
+    ];
+
+    return canUseComplexForms.includes(form.awakening);
+  }
+
+  isSpellsAvailable(form): boolean {
+    const canUseSpells = [
+      AWAKENING_ID.MYSTIC_ADEPT,
+      AWAKENING_ID.MAGICIAN,
+      AWAKENING_ID.ASPECTED_MAGICIAN_ALCHEMIST,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SPELLCASTER
+    ];
+
+    return canUseSpells.includes(form.awakening);
+  }
+
+  onSubmit(form): void {
+    console.log(form);
     this.firestore
-      .update(`characters/${character.id}`, character)
+      .update(`characters/${form.id}`, form)
       .pipe(
         tap(() => this.router.navigate(['..']))
       )
