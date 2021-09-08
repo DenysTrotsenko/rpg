@@ -200,3 +200,10 @@ export interface CharacterQuality {
   rating: number;
   specialty: string;
 }
+
+export interface CharacterLifestyle {
+  id: LIFESTYLE_ID;
+  options: LIFESTYLE_OPTION_ID[];
+  term: number;
+  details: string;
+}
