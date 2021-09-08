@@ -1,3 +1,5 @@
+@import "variables";
+
 .p-r { position: relative !important; }
 
 .d-b { display: block !important; }
@@ -38,6 +40,28 @@
 .p-15 { padding: 15px !important; }
 
 .lh-0 { line-height: 0 !important; }
+
+.c-red { color: $color-red !important; }
+.c-pink { color: $color-pink !important; }
+.c-purple { color: $color-purple !important; }
+.c-deep-purple { color: $color-deep-purple !important; }
+.c-indigo { color: $color-indigo !important; }
+.c-blue { color: $color-blue !important; }
+.c-light-blue { color: $color-light-blue !important; }
+.c-cyan { color: $color-cyan !important; }
+.c-teal { color: $color-teal !important; }
+.c-green { color: $color-green !important; }
+.c-light-green { color: $color-light-green !important; }
+.c-lime { color: $color-lime !important; }
+.c-yellow { color: $color-yellow !important; }
+.c-amber { color: $color-amber !important; }
+.c-orange { color: $color-orange !important; }
+.c-deep-orange { color: $color-deep-orange !important; }
+.c-brown { color: $color-brown !important; }
+.c-gray { color: $color-gray !important; }
+.c-blue-gray { color: $color-blue-gray !important; }
+
+
 
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {
