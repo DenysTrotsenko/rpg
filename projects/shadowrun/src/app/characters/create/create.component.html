@@ -60,26 +60,9 @@
 
   <s5e-create-pc-lifestyle formControlName="lifestyles"></s5e-create-pc-lifestyle>
 
+  <s5e-create-pc-final-calculations [character]="form.value"></s5e-create-pc-final-calculations>
+
   <mat-card class="mb-15">
-    <mat-card-content>
-      Initiative: (INT+REA)+1D6
-      Astral Initiative: (INTx2)+2D6
-      Matrix AR Initiative: (INT+REA)+1D6
-      Matrix VR Initiative (Cold Sim): (Data Processing + INT) + 3D6
-      Matrix VR Initiative (Hot Sim): (Data Processing + INT) + 4D6
-      Mental Limit [(LOGx2)+INT+WIL]/3 (round up)
-      Physical Limit [(STRx2)+BOD+REA]/3 (round up)
-      Social Limit [(CHAx2)+WIL+ESS]/3 (round up)
-      Physical Condition Monitor: [(BOD + Augmentations)/2]+8 (round up)
-      Stun Condition Monitor: [(WIL + Augmentations)/2]+8 (round up)
-      Overflow: Body + Augmentation bonuses
-      Composure: CHA + WIL
-      Judge Intentions: CHA + INT
-      Lifting/Carrying: BOD + STR
-      Memory: LOG + WIL
-      Walk Movement Rate: Agility x 2
-      Run Movement Rate: Agility x 4
-    </mat-card-content>
     <mat-card-actions>
       <button type="reset" mat-button class="mr-15">Reset</button>
       <button type="submit" mat-flat-button color="primary">Save</button>

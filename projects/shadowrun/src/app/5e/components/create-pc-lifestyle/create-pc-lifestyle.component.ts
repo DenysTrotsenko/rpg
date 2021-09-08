@@ -1,10 +1,9 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {ComplexForm, Lifestyle, LifestyleOption} from '@shadowrun/app/5e/5e.models';
-import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
-import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {Lifestyle, LifestyleOption} from '@shadowrun/app/5e/5e.models';
 import {UnsubscribeDirective} from '@shared';
 import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun/app/5e';
+import {LIFESTYLE_ID} from '@shadowrun/app/5e/5e.enums';
 
 @Component({
   /* tslint:disable-next-line */
@@ -56,7 +55,7 @@ export class CreatePcLifestyleComponent extends UnsubscribeDirective implements 
     this.form.push(group);
   }
 
-  onRemoveClick(id: COMPLEX_FORM_ID): void {
+  onRemoveClick(id: LIFESTYLE_ID): void {
     this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 }

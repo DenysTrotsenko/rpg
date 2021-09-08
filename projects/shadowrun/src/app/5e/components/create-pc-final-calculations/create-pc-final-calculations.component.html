@@ -1,0 +1,15 @@
+<mat-card class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Final Calculations</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="mat-table">
+      <tbody>
+        <tr *ngFor="let i of CALCULATIONS" class="mat-row">
+          <td class="mat-cell" [matTooltip]="i.labels.tooltip">{{i.name}}</td>
+          <td class="mat-cell">{{i.value()}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

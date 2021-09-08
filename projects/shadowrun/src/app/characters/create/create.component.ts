@@ -60,6 +60,7 @@ export class CreateComponent implements OnInit {
     this.form.valueChanges
       .pipe(
         tap(value => {
+          console.log(value);
           // console.log(this.getCalculatedKarma(value));
         })
       )
