@@ -8,6 +8,7 @@ import {
   NEGATIVE_QUALITIES_MAX_COST,
   POSITIVE_QUALITIES_MAX_COST
 } from '@shadowrun/app/5e/5e.variables';
+import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
 
 /** A maximum cost of positive qualities shouldn't exceed */
 export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
@@ -49,13 +50,16 @@ export class CreateComponent implements OnInit {
     return (Date.now() + Math.random()).toString(36).replace('.', '');
   }
 
-  constructor(private readonly firestore: FirestoreService, private readonly router: Router) {}
+  constructor(
+    private readonly firestore: FirestoreService,
+    private readonly router: Router,
+    private readonly service: FifthEditionService
+  ) {}
 
   ngOnInit(): void {
     this.form.valueChanges
       .pipe(
         tap(value => {
-          // console.log(value.portrait);
           // console.log(this.getCalculatedKarma(value));
         })
       )

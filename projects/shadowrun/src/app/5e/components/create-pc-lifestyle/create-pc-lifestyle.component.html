@@ -27,7 +27,7 @@
         <mat-label>Details</mat-label>
         <input matInput type="text" [formControl]="getFormControl(group, 'details')">
       </mat-form-field>
-      <number-input [formControl]="getFormControl(group, 'term')" [min]="1" [max]="20">
+      <number-input [formControl]="getFormControl(group, 'term')" [min]="1" [max]="24">
         Term (Months)
       </number-input>
       <button mat-icon-button type="button" (click)="onRemoveClick(group.get('id').value)">

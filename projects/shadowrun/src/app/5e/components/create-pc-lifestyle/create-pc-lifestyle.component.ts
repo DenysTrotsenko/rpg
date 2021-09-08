@@ -51,7 +51,7 @@ export class CreatePcLifestyleComponent extends UnsubscribeDirective implements 
       id: new FormControl(lifestyle.id, [Validators.required]),
       options: new FormControl(null),
       details: new FormControl(null),
-      term: new FormControl(null)
+      term: new FormControl(1)
     });
     this.form.push(group);
   }

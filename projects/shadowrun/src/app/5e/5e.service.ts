@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Attribute, Awakening, Book, Knowledge, Metatype, Quality, Skill, SkillCategory, Spell } from './5e.models';
-import { ATTRIBUTES } from './5e.attributes';
-import { AWAKENINGS } from './5e.awakenings';
-import { BOOKS } from './5e.books';
-import { METATYPES } from './5e.metatypes';
-import { ACTIVE_SKILLS, KNOWLEDGE, SKILL_CATEGORIES } from './5e.skills';
-import { SPELLS } from './5e.spells';
+import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun/app/5e/5e.lifestyle';
+import {Lifestyle, LifestyleOption} from '@shadowrun/app/5e/5e.models';
 
 @Injectable()
-export class FifthEditionService {}
+export class FifthEditionService {
+  getLifestyleCost(character: any): number {
+    return character.lifestyles.reduce((sum, cur) => {
+      const lifestyle: Lifestyle = LIFESTYLES.find(i => i.id === cur.id);
+      const options: LifestyleOption[] = LIFESTYLE_OPTIONS.filter(i => (cur.options ?? []).includes(i.id));
+      const month: number = lifestyle.cost + options.map(i => i.cost(lifestyle.cost)).reduce((a, b) => a + b, 0);
+      return sum + (month * (cur.term ?? 0));
+    }, 0);
+  }
+}
