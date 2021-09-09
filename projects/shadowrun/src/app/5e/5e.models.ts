@@ -6,7 +6,7 @@ import {
   BOOK_ID, COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
   COMPLEX_FORM_TARGET_ID,
-  GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID,
+  GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID,
   METATYPE_ID,
   QUALITY_ID,
   SKILL_CATEGORY_ID,
@@ -103,6 +103,25 @@ export interface LifestyleOption {
   book: BOOK_ID;
   name: string;
   cost: (value: number) => number;
+}
+
+export interface MagicTradition {
+  id: MAGICAL_TRADITION_ID;
+  book: BOOK_ID;
+  name: string;
+  spirits: {
+    combat: SPIRIT_ID;
+    health: SPIRIT_ID;
+    manipulation: SPIRIT_ID;
+    detection: SPIRIT_ID;
+    illusion: SPIRIT_ID;
+  };
+  formulas: {
+    drain: (value: any) => number;
+  };
+  labels: {
+    drain: string;
+  };
 }
 
 export interface Metatype {
@@ -206,4 +225,12 @@ export interface CharacterLifestyle {
   options: LIFESTYLE_OPTION_ID[];
   term: number;
   details: string;
+}
+
+export interface Character {
+  id: string;
+  name: string;
+  metatype: METATYPE_ID;
+  awakening: AWAKENING_ID;
+  attributes: CharacterAttribute[];
 }

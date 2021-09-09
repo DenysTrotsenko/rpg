@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { DialogService, FirestoreService } from '@shared';
-import { Shadowrunner } from '@shadowrun/app/5e/shadowrunner';
+import { Shadowrunner } from '@shadowrun/app/5e/5e.shadowrunner';
 import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
 
 @Component({

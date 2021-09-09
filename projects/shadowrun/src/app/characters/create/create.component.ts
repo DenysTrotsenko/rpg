@@ -3,7 +3,10 @@ import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from 
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {DialogService, FirestoreService} from '@shared';
-import {Awakening, AWAKENING_ID, AWAKENINGS, Metatype, METATYPE_ID, METATYPES} from '@shadowrun/app/5e';
+import {
+  Awakening, AWAKENING_ID, AWAKENINGS, MAGIC_TRADITIONS, MagicTradition, Metatype, METATYPE_ID,
+  METATYPES
+} from '@shadowrun/app/5e';
 import {
   NEGATIVE_QUALITIES_MAX_COST,
   POSITIVE_QUALITIES_MAX_COST
@@ -33,6 +36,7 @@ export class CreateComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
     awakening: new FormControl(AWAKENING_ID.MUNDANE, [Validators.required]),
+    magic_tradition: new FormControl(null, [Validators.required]),
     qualities: new FormControl(null, [positiveQualitiesMaxCostValidator(POSITIVE_QUALITIES_MAX_COST)]),
     attributes: new FormControl(null, [Validators.required]),
     skills: new FormControl(null, [Validators.required]),
@@ -45,6 +49,7 @@ export class CreateComponent implements OnInit {
   });
   readonly AWAKENINGS: Awakening[] = AWAKENINGS;
   readonly METATYPES: Metatype[] = METATYPES;
+  readonly MAGIC_TRADITIONS: MagicTradition[] = MAGIC_TRADITIONS;
 
   get id(): string {
     return (Date.now() + Math.random()).toString(36).replace('.', '');
@@ -116,6 +121,18 @@ export class CreateComponent implements OnInit {
     ];
 
     return canUseComplexForms.includes(form.awakening);
+  }
+
+  isMagicTraditionAvailable(form): boolean {
+    const hasMagicTradition = [
+      AWAKENING_ID.MYSTIC_ADEPT,
+      AWAKENING_ID.MAGICIAN,
+      AWAKENING_ID.ASPECTED_MAGICIAN_ALCHEMIST,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SPELLCASTER,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SUMMONER
+    ];
+
+    return hasMagicTradition.includes(form.awakening);
   }
 
   isSpellsAvailable(form): boolean {

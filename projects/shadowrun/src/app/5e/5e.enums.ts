@@ -109,6 +109,11 @@ export enum LIFESTYLE_OPTION_ID {
   DANGEROUS_AREA = 'lso:dangerous_area'
 }
 
+export enum MAGICAL_TRADITION_ID {
+  HERMETIC = 'mt:hermetic',
+  SHAMAN = 'mt:shaman'
+}
+
 export enum METATYPE_ID {
   HUMAN = 'metatype:human',
   DWARF = 'metatype:dwarf',
