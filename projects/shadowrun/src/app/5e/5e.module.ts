@@ -14,6 +14,7 @@ import { CreatePcGearComponent } from './components/create-pc-gear/create-pc-gea
 import { CreatePcWareComponent } from './components/create-pc-ware/create-pc-ware.component';
 import { CreatePcLifestyleComponent } from './components/create-pc-lifestyle/create-pc-lifestyle.component';
 import { CreatePcFinalCalculationsComponent } from './components/create-pc-final-calculations/create-pc-final-calculations.component';
+import { ViewSpellsComponent } from './components/view-spells/view-spells.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -27,7 +28,8 @@ const DECLARATIONS = [
   CreatePcSkillsComponent,
   CreatePcSpellsComponent,
   CreatePcWareComponent,
-  CreatePcFinalCalculationsComponent
+  CreatePcFinalCalculationsComponent,
+  ViewSpellsComponent
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { DialogService, FirestoreService } from '@shared';
-import { Shadowrunner } from '@shadowrun/app/5e/5e.shadowrunner';
+import { Character } from '@shadowrun/app/5e/5e.models';
 import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
 
 @Component({
@@ -12,11 +12,11 @@ import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
 })
 export class ListComponent {
   readonly portraits = PORTRAITS;
-  readonly characters$: Observable<Shadowrunner[]> = this.firestore.collection<Shadowrunner>('characters');
+  readonly characters$: Observable<Character[]> = this.firestore.collection<Character>('characters');
 
   constructor(private readonly dialog: DialogService, private readonly firestore: FirestoreService) {}
 
-  onDeleteClick(i: Shadowrunner): void {
+  onDeleteClick(i: Character): void {
     this.dialog
       .confirm({
         data: {

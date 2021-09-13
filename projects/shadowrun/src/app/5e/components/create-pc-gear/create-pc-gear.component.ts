@@ -1,9 +1,10 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {ComplexForm} from '@shadowrun/app/5e/5e.models';
+import {ComplexForm, Gear} from '@shadowrun/app/5e/5e.models';
 import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
-import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {COMPLEX_FORM_ID, GEAR_ID} from '@shadowrun/app/5e/5e.enums';
 import {UnsubscribeDirective} from '@shared';
+import {GEAR} from '@shadowrun/app/5e/5e.gear';
 
 @Component({
   /* tslint:disable-next-line */
@@ -21,7 +22,7 @@ import {UnsubscribeDirective} from '@shared';
 })
 export class CreatePcGearComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   readonly form: FormArray = new FormArray([]);
-  readonly items: ComplexForm[] = COMPLEX_FORMS;
+  readonly items: Gear[] = GEAR;
 
   constructor() {
     super();
@@ -43,23 +44,23 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
     return group.get('id') as FormControl;
   }
 
-  isAddDisabled(value: { id: COMPLEX_FORM_ID; }[]): boolean {
-    return COMPLEX_FORMS.every(cf => value.find(i => i.id === cf.id));
+  isAddDisabled(value: { id: GEAR_ID; }[]): boolean {
+    return false;
   }
 
-  isOptionDisabled(id: COMPLEX_FORM_ID): boolean {
-    return !!this.form.value.find(i => i.id === id);
+  isOptionDisabled(id: GEAR_ID): boolean {
+    return false;
   }
 
   onAddClick(): void {
-    const cf: ComplexForm = COMPLEX_FORMS.find(s => !this.form.value.find(i => i.id === s.id));
+    const item: Gear = GEAR.find(s => !this.form.value.find(i => i.id === s.id));
     const group: FormGroup = new FormGroup({
-      id: new FormControl(cf.id, [Validators.required])
+      id: new FormControl(item.id, [Validators.required])
     });
     this.form.push(group);
   }
 
-  onRemoveClick(id: COMPLEX_FORM_ID): void {
+  onRemoveClick(id: GEAR_ID): void {
     this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 }

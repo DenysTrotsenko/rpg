@@ -7,7 +7,7 @@ import {
   COMPLEX_FORM_ID,
   COMPLEX_FORM_TARGET_ID,
   GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID,
-  METATYPE_ID,
+  METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID,
   QUALITY_ID,
   SKILL_CATEGORY_ID,
   SKILL_ID,
@@ -16,10 +16,9 @@ import {
   SPELL_DURATION_ID,
   SPELL_ID,
   SPELL_RANGE_ID,
-  SPELL_SUBCATEGORY_ID,
+  SPELL_TAG_ID,
   SPELL_TYPE_ID, SPIRIT_ID
 } from './5e.enums';
-import {JsonString} from '@shared';
 
 export interface AdeptPower {
   id: ADEPT_POWER_ID;
@@ -63,25 +62,21 @@ export interface Contact {
 }
 
 export interface Gear {
-  id: GEAR_ID;
+  id: GEAR_ID | null;
   book: BOOK_ID;
   name: string;
   type: GEAR_TYPE_ID;
-  ratings: {
-    name: string;
-    rating: number;
-    availability: number;
-    restricted: boolean;
-    forbidden: boolean;
-    cost: number;
-    data?: object;
-  }[];
-  formulas?: object;
-  labels?: { [k: string]: string; };
+  ratings: number[];
   restricted: boolean;
   forbidden: boolean;
-  specialty: boolean;
-  quantity: number;
+  data?: object;
+  formulas?: {
+    availability: (item: CharacterGear) => number;
+    cost: (item: CharacterGear) => number;
+  };
+  labels?: { [k: string]: string; };
+  specialty?: boolean;
+  quantity?: number;
 }
 
 export interface Knowledge {
@@ -144,6 +139,19 @@ export interface Metatype {
   cost: number;
 }
 
+export interface Power {
+  id: POWER_ID;
+  book: BOOK_ID;
+  name: string;
+  type: POWER_TYPE_ID;
+  range: POWER_RANGE_ID;
+  action: POWER_ACTION_ID;
+  duration: POWER_DURATION_ID;
+  labels: {
+    description: string;
+  };
+}
+
 export interface Quality {
   id: QUALITY_ID;
   book: BOOK_ID;
@@ -167,14 +175,22 @@ export interface Spell {
   book: BOOK_ID;
   name: string;
   category: SPELL_CATEGORY_ID;
-  subcategories: SPELL_SUBCATEGORY_ID[];
+  tags: SPELL_TAG_ID[];
   type: SPELL_TYPE_ID;
   range: SPELL_RANGE_ID;
-  damage?: SPELL_DAMAGE_ID;
   duration: SPELL_DURATION_ID;
   drain: number;
+  damage?: SPELL_DAMAGE_ID;
   specialty: boolean;
+  labels: {
+    description: string;
+  };
 }
+
+export interface SpellTag { id: SPELL_TAG_ID; name: string; labels: { description: string; }; }
+export interface SpellType { id: SPELL_TYPE_ID; name: string; alias: string; }
+export interface SpellRange { id: SPELL_RANGE_ID; name: string; alias: string; }
+export interface SpellDuration { id: SPELL_DURATION_ID; name: string; alias: string; }
 
 export interface SkillCategory {
   id: SKILL_CATEGORY_ID;
@@ -202,8 +218,8 @@ export interface Spirit {
   initiative: (force: number) => number;
   astral_initiative: (force: number) => number;
   skills: SKILL_ID[];
-  powers: [];
-  optional_powers: [];
+  powers: Power[];
+  optional_powers: Power[];
   special: [];
 }
 
@@ -214,9 +230,19 @@ export interface CharacterAttribute {
   rating: number;
 }
 
+export interface CharacterGear {
+  id: GEAR_ID;
+  rating: number;
+}
+
 export interface CharacterQuality {
   id: QUALITY_ID;
   rating: number;
+  specialty: string;
+}
+
+export interface CharacterSpell {
+  id: SPELL_ID;
   specialty: string;
 }
 
@@ -230,6 +256,7 @@ export interface CharacterLifestyle {
 export interface Character {
   id: string;
   name: string;
+  portrait: string;
   metatype: METATYPE_ID;
   awakening: AWAKENING_ID;
   attributes: CharacterAttribute[];

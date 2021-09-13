@@ -74,8 +74,26 @@ export enum COMPLEX_FORM_DURATION_ID {
 }
 
 export enum GEAR_ID {
-  CYBERDECK = 'gear:cyberdeck',
-  RCC = 'gear:rcc',
+  ERIKA_MCD_1 = 'gear:erika_mcd_1',
+  MICRODECK_SUMMIT = 'gear:microdeck_summit',
+  MICROTRONICA_AZTECA_200 = 'gear:microtronica_azteca_200',
+  HERMES_CHARIOT = 'gear:hermes_chariot',
+  NOVATECH_NAVIGATOR = 'gear:novatech_navigator',
+  RENRAKU_TSURUGI = 'gear:renraku_tsurugi',
+  SONY_CIY_720 = 'gear:sony_ciy_720',
+  SHIAWASE_CYBER_5 = 'gear:shiawase_cyber_5',
+  FAIRLIGHT_EXCALIBUR = 'gear:fairlight_excalibur',
+  SCRATCH_BUILT_JUNK = 'gear:scratch_built_junk',
+  RADIO_SHACK_REMOTE_CONTROLLER = 'gear:radio_shack_remote_controller',
+  ESSY_MOTORS_DRONEMASTER = 'gear:essy_motors_dronemaster',
+  COMPUFORCE_TASKMASTER = 'gear:compuforce_taskmaster',
+  MAERSK_SPIDER = 'gear:maersk_spider',
+  MASER_INDUSTRIAL_ELECTRONICS = 'gear:maser_industrial_electronics',
+  VULCAN_LIEGELORD = 'gear:vulcan_liegelord',
+  PROTEUS_POSEIDON = 'gear:proteus_poseidon',
+  LONE_STAR_REMOTE_COMMANDER = 'gear:lone_star_remote_commander',
+  MCT_DRONE_WEB = 'gear:mct_drone_web',
+  TRIOX_UBERMENSCH = 'gear:triox_ubermensch',
   ENCHANTING_FOCUS = 'gear:enchanting_focus',
   METAMAGIC_FOCUS = 'gear:metamagic_focus',
   POWER_FOCUS = 'gear:power_focus',
@@ -83,12 +101,73 @@ export enum GEAR_ID {
   SPELL_FOCUS = 'gear:spell_focus',
   SPIRIT_FOCUS = 'gear:spirit_focus',
   WEAPON_FOCUS = 'gear:weapon_focus',
+  ENCHANTING_FOCUS_FORMULA = 'gear:enchanting_focus_formula',
+  METAMAGIC_FOCUS_FORMULA = 'gear:metamagic_focus_formula',
+  POWER_FOCUS_FORMULA = 'gear:power_focus_formula',
+  QI_FOCUS_FORMULA = 'gear:qi_focus_formula',
+  SPELL_FOCUS_FORMULA = 'gear:spell_focus_formula',
+  SPIRIT_FOCUS_FORMULA = 'gear:spirit_focus_formula',
+  WEAPON_FOCUS_FORMULA = 'gear:weapon_focus_formula',
+  COMBAT_SPELL_FORMULA = 'gear:combat_spell_formula',
+  DETECTION_SPELL_FORMULA = 'gear:detection_spell_formula',
+  HEALTH_SPELL_FORMULA = 'gear:health_spell_formula',
+  ILLUSION_SPELL_FORMULA = 'gear:illusion_spell_formula',
+  MANIPULATION_SPELL_FORMULA = 'gear:manipulation_spell_formula',
+  MAGICAL_LODGE_MATERIALS = 'gt:magical_lodge_materials',
+  REAGENTS = 'gt:reagents',
+  CS_TEAR_GAS = 'gt:cs_tear_gas',
+  GAMMA_SCOPOLAMINE = 'gt:gamma_scopolamine',
+  NARCOJET = 'gt:narcojet',
+  NAUSEA_GAS = 'gt:nausea_gas',
+  NEURO_STUN_VIII = 'gt:neuro_stun_viii',
+  NEURO_STUN_IX = 'gt:neuro_stun_ix',
+  NEURO_STUN_X = 'gt:neuro_stun_x',
+  PEPPER_PUNCH = 'gt:pepper_punch',
+  SEVEN_7 = 'gt:seven_7',
+  BLISS = 'gt:bliss',
+  CRAM = 'gt:cram',
+  DEEPWEED = 'gt:deepweed',
+  JAZZ = 'gt:jazz',
+  KAMIKAZE = 'gt:kamikaze',
+  LONG_HAUL = 'gt:long_haul',
+  NITRO = 'gt:nitro',
+  NOVACOKE = 'gt:novacoke',
+  PSYCHE = 'gt:psyche',
+  ZEN = 'gt:zen',
+  DREAMCHIP = 'gt:dreamchip',
+  MOODCHIP = 'gt:moodchip',
+  PERSONAFIX = 'gt:personafix',
+  TRIPCHIP = 'gt:tripchip',
+  COMBAT_AXE = 'gt:combat_axe',
+  COMBAT_KNIFE = 'gt:combat_knife',
+  FOREARM_SNAP_BLADES = 'gt:forearm_snap_blades',
+  KATANA = 'gt:katana',
+  KNIFE = 'gt:knife',
+  POLEARM = 'gt:polearm',
+  SURVIVAL_KNIFE = 'gt:survival_knife',
+  SWORD = 'gt:sword',
+  CLUB = 'gt:club',
+  EXTENDABLE_BATON = 'gt:extendable_baton',
+  SAP = 'gt:sap',
+  STAFF = 'gt:staff',
+  STUN_BATON = 'gt:stun_baton',
+  TELESCOPING_STAFF = 'gt:telescoping_staff',
+  KNUCKS = 'gt:knucks',
+  MONOFILAMENT_WHIP = 'gt:monofilament_whip',
+  SHOCK_GLOVES = 'gt:shock_gloves',
 }
 
 export enum GEAR_TYPE_ID {
   CYBERDECK = 'gt:cyberdeck',
   RCC = 'gt:rcc',
-  FOCI = 'gt:foci'
+  FOCUS = 'gt:foci',
+  FORMULA = 'gt:formula',
+  MAGIC_SUPPLIES = 'gt:magic_supplies',
+  TOXIN = 'gt:toxin',
+  DRUG = 'gt:drug',
+  BTL = 'gt:btl',
+  MELEE_WEAPONS = 'gt:melee_weapons',
+  // BTL = 'gt:btl',
 }
 
 export enum LIFESTYLE_ID {
@@ -120,6 +199,74 @@ export enum METATYPE_ID {
   ELF = 'metatype:elf',
   ORK = 'metatype:ork',
   TROLL = 'metatype:troll'
+}
+
+export enum POWER_ID {
+  ACCIDENT = 'power:accident',
+  ANIMAL_CONTROL = 'power:animal_control',
+  ARMOR = 'power:armor',
+  ASTRAL_FORM = 'power:astral_form',
+  BINDING = 'power:binding',
+  COMPULSION = 'power:compulsion',
+  CONCEALMENT = 'power:concealment',
+  CONFUSION = 'power:confusion',
+  CORROSIVE_SPIT = 'power:corrosive_spit',
+  DRAGONSPEECH = 'power:dragonspeech',
+  DUAL_NATURED = 'power:dual_natured',
+  ELEMENTAL_ATTACK = 'power:elemental_attack',
+  ENERGY_AURA = 'power:energy_aura',
+  ENGULF = 'power:engulf',
+  ENHANCED_SENSES = 'power:enhanced_senses',
+  ESSENCE_DRAIN = 'power:essence_drain',
+  FEAR = 'power:fear',
+  GUARD = 'power:guard',
+  HARDENED_ARMOR = 'power:hardened_armor',
+  HARDENED_MYSTIC_ARMOR = 'power:hardened_mystic_armor',
+  IMMUNITY = 'power:immunity',
+  INFECTION = 'power:infection',
+  INFLUENCE = 'power:influence',
+  INNATE_SPELL = 'power:INNATE_SPELL',
+  MATERIALIZATION = 'power:materialization',
+  MIMICRY = 'power:mimicry',
+  MIST_FORM = 'power:mist_form',
+  MOVEMENT = 'power:movement',
+  MYSTIC_ARMOR = 'power:mystic_armor',
+  NATURAL_WEAPON = 'power:natural_weapon',
+  NOXIOUS_BREATH = 'power:noxious_breath',
+  PARALYZING_HOWL = 'power:paralyzing_howl',
+  PARALYZING_TOUCH = 'power:paralyzing_touch',
+  PETRIFICATION = 'power:petrification',
+  PSYCHOKINESIS = 'power:psychokinesis',
+  REGENERATION = 'power:regeneration',
+  SAPIENCE = 'power:sapience',
+  SEARCH = 'power:search',
+  VENOM = 'power:venom',
+  WEATHER_CONTROL = 'power:weather_control'
+}
+
+export enum POWER_ACTION_ID {
+  SIMPLE = 'pa:simple',
+  COMPLEX = 'pa:complex',
+  AUTO = 'pa:auto'
+}
+
+export enum POWER_DURATION_ID {
+  ALWAYS = 'pd:always',
+  INSTANT = 'pd:instant',
+  SUSTAINED = 'pd:sustained',
+  PERMANENT = 'pd:permanent'
+}
+
+export enum POWER_RANGE_ID {
+  SELF = 'pr:self',
+  TOUCH = 'pr:touch',
+  LINE_OF_SIGHT = 'pr:line_of_sight',
+  LINE_OF_SIGHT_AREA = 'pr:line_of_sight_area'
+}
+
+export enum POWER_TYPE_ID {
+  PHYSICAL = 'pt:physical',
+  MANA = 'pt:mana'
 }
 
 export enum QUALITY_ID {
@@ -395,7 +542,7 @@ export enum SPELL_RANGE_ID {
   LINE_OF_SIGHT_AREA
 }
 
-export enum SPELL_SUBCATEGORY_ID {
+export enum SPELL_TAG_ID {
   DIRECT = 1,
   INDIRECT,
   ELEMENTAL,
@@ -410,15 +557,15 @@ export enum SPELL_SUBCATEGORY_ID {
   REALISTIC,
   SINGLE_SENSE,
   MULTI_SENSE,
-  MENTAL,
-  PHYSICAL,
+  DAMAGING,
   ENVIRONMENTAL,
-  DAMAGING
+  MENTAL,
+  PHYSICAL
 }
 
 export enum SPELL_TYPE_ID {
-  PHYSICAL = 1,
-  MANA
+  PHYSICAL = 'st:physical',
+  MANA = 'st:mana'
 }
 
 export enum SPIRIT_ID {

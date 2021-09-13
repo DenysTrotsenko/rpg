@@ -1,0 +1,30 @@
+<mat-card class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Spells</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="mat-table">
+      <thead>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell">Name</th>
+          <th class="mat-header-cell">Type</th>
+          <th class="mat-header-cell">Range</th>
+          <th class="mat-header-cell">Duration</th>
+          <th class="mat-header-cell">Drain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of spells$ | async;" class="mat-row">
+          <td class="mat-cell">
+            <span [matTooltip]="i.description">{{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}</span>
+            <span *ngFor="let tag of i.tags;" class="ml-5 c-gray" [matTooltip]="tag.labels.description">{{tag.name}}</span>
+          </td>
+          <td class="mat-cell" [matTooltip]="i.type?.name">{{i.type?.alias}}</td>
+          <td class="mat-cell" [matTooltip]="i.range?.name">{{i.range?.alias}}</td>
+          <td class="mat-cell" [matTooltip]="i.duration?.name">{{i.duration?.alias}}</td>
+          <td class="mat-cell">{{i.drain}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

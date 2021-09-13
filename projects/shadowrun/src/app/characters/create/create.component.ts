@@ -32,7 +32,7 @@ export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
 export class CreateComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(this.id),
-    portrait: new FormControl(null, [Validators.required]),
+    portrait: new FormControl('pc_humanmale_00_faceless.png', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
     awakening: new FormControl(AWAKENING_ID.MUNDANE, [Validators.required]),
@@ -65,7 +65,7 @@ export class CreateComponent implements OnInit {
     this.form.valueChanges
       .pipe(
         tap(value => {
-          console.log(value);
+          console.log(value.portrait);
           // console.log(this.getCalculatedKarma(value));
         })
       )

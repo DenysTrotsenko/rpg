@@ -41,7 +41,6 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     const spell: Spell = SPELLS.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
     const group: FormGroup = new FormGroup({
       id: new FormControl(spell.id, [Validators.required]),
-      name: new FormControl(spell.name, [Validators.required]),
       specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : [])
     });
     this.form.push(group);

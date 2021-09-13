@@ -31,7 +31,10 @@ export class PortraitSelectComponent implements ControlValueAccessor {
 
   constructor(private dialog: DialogService) {}
 
-  writeValue(value: number): void { this.value = value ?? 0; }
+  writeValue(value: string): void {
+    this.value = PORTRAITS.indexOf(value) ?? 0;
+    this.src$.next(this.getPortrait());
+  }
   registerOnChange(fn: any): void { this.onChange = fn; }
   registerOnTouched(fn: any): void {}
 
