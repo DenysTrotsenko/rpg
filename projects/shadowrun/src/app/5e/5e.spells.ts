@@ -113,28 +113,28 @@ export const SPELL_TAGS: SpellTag[] = [
     id: SPELL_TAG_ID.DIRECTIONAL,
     name: 'Directional',
     labels: {
-      description: ''
+      description: 'Works in one direction, like normal sense (ex: sight).'
     }
   },
   {
     id: SPELL_TAG_ID.AREA,
     name: 'Area',
     labels: {
-      description: ''
+      description: 'The standard range of the sense a Detection spell grants is the spell’s Force x caster’s Magic in meters as a radius from the target of the spell.'
     }
   },
   {
     id: SPELL_TAG_ID.EXTENDED_AREA,
     name: 'Extended Area',
     labels: {
-      description: ''
+      description: 'Extended-range detection spells have a Force x Magic x 10 meter range. '
     }
   },
   {
     id: SPELL_TAG_ID.PSYCHIC,
     name: 'Psychic',
     labels: {
-      description: ''
+      description: 'Psychic spells providing some other special sense such as telepathy or precognition.'
     }
   },
   {
@@ -349,7 +349,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell create an explosion of flames that flash into existence and scorch the target, giving them the double benefit of causing pain and being intimidating as hell. These spells deal Fire damage (p.171).These flames burn out after striking the target, but their secondary effects may ignite flammable materials that continue to burn after the spell is exhausted. Flamethrower is a single-target spell.'
     }
   },
   {
@@ -365,7 +365,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell create an explosion of flames that flash into existence and scorch the targets, giving them the double benefit of causing pain and being intimidating as hell. These spells deal Fire damage (p.171).These flames burn out after striking the target, but their secondary effects may ignite flammable materials that continue to burn after the spell is exhausted. Fireball is an area spell.'
     }
   },
   {
@@ -381,7 +381,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell create and direct vicious strikes of electricity that cause Electricity damage (p. 170). Lightning Bolt is a single target spell.'
     }
   },
   {
@@ -397,7 +397,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell create and direct vicious strikes of electricity that cause Electricity damage (p. 170). Ball Lightning is an area spell.'
     }
   },
   {
@@ -413,7 +413,7 @@ export const SPELLS: Spell[] = [
     drain: -6,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell channel destructive magical power into the targets causing Physical damage. The target is cooked from the inside, like magically microwaving a hot dog. As physical energies, they can affect both living and non-living targets and are resisted by the target’s Body. Shatter requires you to touch the target.'
     }
   },
   {
@@ -429,7 +429,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell channel destructive magical power into the targets causing Physical damage. The target is cooked from the inside, like magically microwaving a hot dog. As physical energies, they can affect both living and non-living targets and are resisted by the target’s Body. Powerbolt affects a single target.'
     }
   },
   {
@@ -445,7 +445,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell channel destructive magical power into the targets causing Physical damage. The target is cooked from the inside, like magically microwaving a hot dog. As physical energies, they can affect both living and non-living targets and are resisted by the target’s Body. Powerball is an area spell.'
     }
   },
   {
@@ -461,7 +461,7 @@ export const SPELLS: Spell[] = [
     drain: -6,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Knockout requires the magician to touch the target.'
     }
   },
   {
@@ -477,7 +477,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunbolt affects a single target.'
     }
   },
   {
@@ -493,7 +493,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunball is an area spell.'
     }
   },
   {
@@ -508,7 +508,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell allows the subject to analyze the purpose and operation of a device or piece of equipment within range of the sense. The casting of the spell is opposed by the object’s resistance (p. 295). Each net hit can be used to provide a piece of information about the device that would not be readily apparent (for example, it would not give the information that it is a Renraku-manufactured device if the thing is emblazoned with a huge Renraku logo, but it might say what the basic function of the thing is). Each net hit also gives the subject a bonus die while operating the device and allows the subject to ignore any skill-defaulting modifiers for using it as long as the spell is sustained.'
     }
   },
   {
@@ -523,7 +523,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell allows the subject to analyze the purpose of a magical object (e.g., foci, alchemical preparations, magical lodges, active rituals). Treat the net hits from the Spellcasting Test as hits on the Assensing Table (p. 313), except the subject isn’t required to be perceiving astrally.'
     }
   },
   {
@@ -538,7 +538,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can tell whether a target’s statements are the truth (or at least if the subject honestly believes them to be true).The spell needs at least 1 net hit to determine validity of a selected statement. The spell does not work on written materials or items recorded through any sort of technological medium. The subject must hear a statement in person (with the target within range) to be able to judge its truth.'
     }
   },
   {
@@ -553,7 +553,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can hear distant sounds as if physically present at a chosen point within the sensory range of the spell. The listening point may be moved to any other point within range of the spell as a Complex Action. While using Clairaudience, the subject cannot use her normal hearing. This spell doesn’t translate visual images, only sounds (and only sounds within the subject’s natural range of hearing; augmented hearing does not apply).'
     }
   },
   {
@@ -568,7 +568,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can see distant scenes as if physically present at a chosen point within the sensory range of the spell. The visual point may be moved to any other point within range of the spell as a Complex Action. The subject can’t use normal vision or astral perception while using Clairvoyance. This spell doesn’t translate sound, only vision, and it doesn’t work with augmented vision. You can’t target spells through Clairvoyance.'
     }
   },
   {
@@ -583,7 +583,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can subconsciously analyze combat and other dangerous situations within range, sensing events a split-second before they happen. Every hit on the Spellcasting Test adds 1 die for Reaction on Surprise Tests, and also to rolls made when defending against ranged and melee attacks as long as the spell remains in effect.'
     }
   },
   {
@@ -598,7 +598,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can detect living targets within range who have hostile intentions toward him. The spell does not detect traps (since they aren’t alive), nor can it detect someone about to shoot into a crowd at random (since the hostility is not directed at the subject of the spell). The spell can detect targets preparing an ambush or other surprise attack directed at the subject.'
     }
   },
   {
@@ -613,7 +613,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can detect living targets within range who have hostile intentions toward him. The spell does not detect traps (since they aren’t alive), nor can it detect someone about to shoot into a crowd at random (since the hostility is not directed at the subject of the spell). The spell can detect targets preparing an ambush or other surprise attack directed at the subject.'
     }
   },
   {
@@ -628,7 +628,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can detect the presence of a particular individual anywhere within range of the sense. You need to specify the individual during casting, someone you know or at least have met in the past.'
     }
   },
   {
@@ -643,7 +643,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject detects all living beings (but not spirits) within range of the sense and knows their number and relative location. In a crowded area, the spell is virtually useless, picking up a blurred mass of traces of life.'
     }
   },
   {
@@ -658,7 +658,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject detects all living beings (but not spirits) within range of the sense and knows their number and relative location. In a crowded area, the spell is virtually useless, picking up a blurred mass of traces of life.'
     }
   },
   {
@@ -673,7 +673,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: true,
     labels: {
-      description: ''
+      description: 'The subject detects all of a specified type of life form within the range of the sense and knows their number and relative location. This is actually several different spells that must be learned separately, one for each type of life form that a caster might like to detect (Detect Orks, Detect Elves, Detect Dragons, and so forth), which are learned separately.'
     }
   },
   {
@@ -688,7 +688,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: true,
     labels: {
-      description: ''
+      description: 'The subject detects all of a specified type of life form within the range of the sense and knows their number and relative location. This is actually several different spells that must be learned separately, one for each type of life form that a caster might like to detect (Detect Orks, Detect Elves, Detect Dragons, and so forth), which are learned separately.'
     }
   },
   {
@@ -703,7 +703,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can detect the presence of all foci, spells, wards, magical lodges, alchemical preparations, active rituals, and spirits within range of the sense. It does not detect Awakened characters or critters, astral signatures, alchemical preparations that that have expired or already triggered, or the effects of permanent spells once they have become permanent.'
     }
   },
   {
@@ -718,13 +718,13 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The subject can detect the presence of all foci, spells, wards, magical lodges, alchemical preparations, active rituals, and spirits within range of the sense. It does not detect Awakened characters or critters, astral signatures, alchemical preparations that that have expired or already triggered, or the effects of permanent spells once they have become permanent.'
     }
   },
   {
     id: SPELL_ID.DETECT_OBJECT,
     book: BOOK_ID.CORE_RULEBOOK,
-    name: 'Detect Object',
+    name: 'Detect [Object]',
     category: SPELL_CATEGORY_ID.DETECTION,
     tags: [SPELL_TAG_ID.ACTIVE, SPELL_TAG_ID.AREA],
     type: SPELL_TYPE_ID.PHYSICAL,
@@ -733,7 +733,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: true,
     labels: {
-      description: ''
+      description: 'The subject detects all of a specified type of object within range of the sense and knows their number and relative location. Each type of object requires a separate spell (Detect Guns, Detect Computers, Detect Explosives, and so forth). These spells must all be learned and cast separately.'
     }
   },
   {
@@ -748,7 +748,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Mindlink allows the magician and one voluntary subject to communicate mentally, exchanging conversation, emotions, and mental images. One hit on the Spellcasting Test is enough to establish the link. The subject must remain within range of the magician for the Mindlink to work.'
     }
   },
   {
@@ -763,7 +763,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell allows the subject to telepathically probe the mind of a specific target within range of the sense (chosen when the spell is cast). The target is aware of the probing, though they may not know the source of the spell. The number of net hits you get on the spell determines what kind of information the subject can read, given on the table. The subject may probe for one piece of information per Complex Action while the spell is sustained. Additional uses of Mind Probe against the same target within a number of hours equal to the target’s Willpower inflict a –2 dice pool modifier on the Spellcasting attempt.\n\nNet Hits / Results\n1-2 - The subject can read the target’s surface thoughts only.\n3-4 - The subject can find out anything the target consciously knows and view the target’s recent memories (up to 72 hours).\n5+ - The subject can probe the target’s subconscious, gaining information the target may not even be consciously aware of, like psychological quirks, deep fears, or hidden memories.'
     }
   },
   {
@@ -778,7 +778,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell helps a poisoned subject overcome a toxin. Casters use it after the target has been poisoned, but be- fore the target needs to make her Toxin Resistance Test, based on the Speed of the toxin. Add the hits from this spell directly to the hits from the Toxin Resistance Test.'
     }
   },
   {
@@ -793,7 +793,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell is used at any point after infection to help a patient overcome illness. The infected character receives a number of additional dice on her Disease Resistance Test equal to the spell’s net hits until the patient recovers (or dies). It does not heal any damage already inflicted by the disease (that requires a separate Healing spell).'
     }
   },
   {
@@ -808,7 +808,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: true,
     labels: {
-      description: ''
+      description: 'This spell weakens the target by decreasing a designated Attribute. A version of this spell exists for each Physical and Mental attribute, but not for Special attributes (Initiative, Edge, Essence, Magic, or Resonance). It affects both natural and augmented Attributes. This spell is cast with an Opposed Spellcasting + Magic [Force] v. (targeted Attribute) + Willpower Test. If the magician wins, the Attribute is reduced by the spell’s net hits. If a Physical Attribute is reduced to 0, the victim is incapacitated and paralyzed. If a Mental Attribute is reduced to 0, the victim stands still, mindlessly confused. Decreasing an Attribute also affects any other derived statistics that use it (for example, if Reaction or Intuition is lowered, Initiative is lowered as well) as long as the spell is sustained.'
     }
   },
   {
@@ -823,7 +823,7 @@ export const SPELLS: Spell[] = [
     drain: -6,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Detox relieves the side effects of a drug or poison. The Force of the spell must equal or exceed the toxin’s base DV. A single hit is sufficient to eliminate all symp- toms. Detox does not heal or prevent damage done by toxins, but it eliminates any side effects they may have on the victim (dizziness, hallucinations, nausea, pain, and so forth). Detox is the hangover cure of choice among those who can afford it.'
     }
   },
   {
@@ -838,7 +838,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Heal repairs physical injuries. It heals a number of boxes of Physical damage equal to the spell’s hits from the Spellcasting Test. Hits can also be used to reduce the base time for the spell to become permanent; each hit spent this way shaves off 1 Combat Turn (you can split hits between healing and reducing time). Any boxes of Physical damage your target still has after any boxes are healed magically can only be healed by time and rest.'
     }
   },
   {
@@ -853,7 +853,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: true,
     labels: {
-      description: ''
+      description: 'This spell increases an Attribute (natural or augmented) on a voluntary subject. A version of this spell exists for each Physical and Mental attribute, but not for Special Attributes (Initiative, Edge, Essence, Magic, or Resonance). The Force of the spell must equal or exceed the (augmented) value of the Attribute being affected. The Attribute is increased by an amount equal to the hits scored, up to the target’s augmented maximum (any hits that would increase the Attribute beyond its augmented maximum are ignored). Each Attribute can only be affected by a single Increase Attribute spell at a time. Note that increasing an Attribute may affect other derived statistics (Increase Reaction also affects Initiative, for example, while Increase Body adds extra boxes to the character’s Physical Condition Monitor for as long as the spell lasts).'
     }
   },
   {
@@ -868,7 +868,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell increases the initiative of a subject. Each hit rolled on the Spellcasting Test adds +1 to the target’s Initiative, and every two hits adds one Initiative Die. A character can only be affected by a single Increase Reflexes spell at a time, and the maximum Initiative Dice anyone can have is +5D6.'
     }
   },
   {
@@ -883,7 +883,7 @@ export const SPELLS: Spell[] = [
     drain: -5,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell oxygenates the blood of a voluntary subject, providing extra Body dice (1 die for every hit) to resist suffocation, strangulation, the effects of inhaled gas, or any other effect of oxygen deprivation. The spell also allows the subject to breathe underwater.'
     }
   },
   {
@@ -898,7 +898,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell provides an extra die per hit for a subject to resist infection, drugs, or toxins. The spell does not discriminate between harmful and beneficial drugs, so the subject also resists medicines and other helpful drugs while under its effects. Reduce the bonuses of a beneficial drug by 1 for every hit rolled in the casting; three or more hits block effects that do not have a bonus or penalty associated with them.'
     }
   },
   {
@@ -913,7 +913,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Resist Pain allows the subject to ignore the pain of injuries, reducing penalties from Physical or Stun damage. Each hit on the Spellcasting Test removes the effect of one box of damage from each of the subject’s Condition Monitor tracks. It does not remove the damage itself; it only eliminates the modifiers. If all of the boxes on the track are filled, the character still falls unconscious. The spell is permanent in that the boost to the patient’s endorphin levels does not wear off. If the subject’s damage rises above the level at which the patient is resisting pain or if the existing injuries heal, the spell dissipates. A person can only be under the effects of one Resist Pain spell at a time (the one with the most hits).'
     }
   },
   {
@@ -928,7 +928,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'When applied to a character with a filled Physical damage track, this spell stabilizes all vital functions and prevents the character from dying. The spell’s Force must equal or exceed the overflow damage already taken when the spell starts. The full time must be taken for the spell to become permanent before the character is truly stabilized; hits reduce the time it takes by 1 Combat Turn each. If successful, the spell prevents the character from taking further damage from Physical Damage Overflow (p. 209).'
     }
   },
   {
