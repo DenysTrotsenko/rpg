@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
-import {CharacterSpell, Spell, SpellDuration, SpellRange, SpellTag, SpellType} from '@shadowrun/app/5e/5e.models';
+import {CharacterSpell, Spell, SpellCategory, SpellDuration, SpellRange, SpellTag, SpellType} from '@shadowrun/app/5e/5e.models';
 import {
   SPELL_DURATIONS,
   SPELL_RANGES,
@@ -8,8 +8,10 @@ import {
   SPELLS
 } from '@shadowrun/app/5e';
 import {BehaviorSubject} from 'rxjs';
+import {SPELL_CATEGORIES} from '@shadowrun/app/5e/5e.spells';
 
 interface SpellView {
+  category: SpellCategory;
   name: string;
   specialty: string;
   tags: SpellTag[];
@@ -32,6 +34,7 @@ export class ViewSpellsComponent implements OnInit {
     const spells: SpellView[] = (value ?? []).map(i => {
       const spell: Spell = SPELLS.find(j => j.id === i.id);
       return {
+        category: SPELL_CATEGORIES.find(j => spell?.category === j.id),
         name: spell?.name,
         specialty: i.specialty,
         tags: SPELL_TAGS.filter(j => (spell.tags ?? []).includes(j.id)),
@@ -41,7 +44,6 @@ export class ViewSpellsComponent implements OnInit {
         drain: `F${!!spell?.drain ? (spell.drain > 0 ? ` + ${spell.drain}` : ` - ${Math.abs(spell.drain)}`) : ''}`,
         description: spell?.labels?.description
       } as SpellView;
-      // category: SPELL_CATEGORY_ID;
       // damage?: SPELL_DAMAGE_ID;
     });
     this.spells$.next(spells);

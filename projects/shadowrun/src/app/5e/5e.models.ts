@@ -19,6 +19,7 @@ import {
   SPELL_TAG_ID,
   SPELL_TYPE_ID, SPIRIT_ID
 } from './5e.enums';
+import {ICON} from '@shadowrun/app/ui/ui.enums';
 
 export interface AdeptPower {
   id: ADEPT_POWER_ID;
@@ -187,6 +188,7 @@ export interface Spell {
   };
 }
 
+export interface SpellCategory { id: SPELL_CATEGORY_ID; name: string; labels: { description: string; }; }
 export interface SpellTag { id: SPELL_TAG_ID; name: string; labels: { description: string; }; }
 export interface SpellType { id: SPELL_TYPE_ID; name: string; alias: string; }
 export interface SpellRange { id: SPELL_RANGE_ID; name: string; alias: string; }

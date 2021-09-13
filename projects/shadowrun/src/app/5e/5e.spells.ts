@@ -8,48 +8,43 @@ import {
   SPELL_TAG_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
-import {Spell, SpellDuration, SpellRange, SpellTag, SpellType} from './5e.models';
+import {Spell, SpellCategory, SpellDuration, SpellRange, SpellTag, SpellType} from './5e.models';
 import {ICON} from '@shadowrun/app/ui/ui.enums';
 
-export const SPELL_CATEGORIES = [
+export const SPELL_CATEGORIES: SpellCategory[] = [
   {
     id: SPELL_CATEGORY_ID.COMBAT,
     name: 'Combat',
     labels: {
-      description: '',
-      icon: ICON.COMBAT
+      description: ''
     }
   },
   {
     id: SPELL_CATEGORY_ID.DETECTION,
     name: 'Detection',
     labels: {
-      description: '',
-      icon: ICON.DETECTION
+      description: ''
     }
   },
   {
     id: SPELL_CATEGORY_ID.HEALTH,
     name: 'Health',
     labels: {
-      description: '',
-      icon: ICON.HEALTH
+      description: ''
     }
   },
   {
     id: SPELL_CATEGORY_ID.ILLUSION,
     name: 'Illusion',
     labels: {
-      description: 'No matter how realistic they are, illusions cannot directly cause physical harm. They can cause distractions, loss of balance or orientation, and even symptoms like nausea or pain. All such effects vanish, though, as soon as the magician drops the illusion. Illusions can certainly cause harm by manipulating the senses so a victim walks into traffic or off a high building, for example, but they cannot directly cause damage.\nMana-based Illusion spells affect the mind and are ineffective against technological viewing systems like cameras. Mana illusions are resisted by Logic + Willpower. Some mana illusions affect the target’s senses directly; others affect the senses of anyone perceiving the subject of the spell (though you’re never affected by your own illusion spell). Though mana-based illusions can be created on the astral plane, their magical auras give them away as illusions to anyone who makes a successful Assensing Test — illusions can’t fool Assensing and cannot be used to disguise or create auras.\nPhysical illusion spells create actual images or alter physical properties, such as light or sound. Physical illusions can be used on both living and technological systems. They are resisted by Intuition + Logic; non-living devices resist with their Object Resistance. The magician must generate more hits than the observer for the illusion to be considered real. If the spell is not completely resisted, the target is fully affected by the illusion.',
-      icon: ICON.ILLUSION
+      description: 'No matter how realistic they are, illusions cannot directly cause physical harm. They can cause distractions, loss of balance or orientation, and even symptoms like nausea or pain. All such effects vanish, though, as soon as the magician drops the illusion. Illusions can certainly cause harm by manipulating the senses so a victim walks into traffic or off a high building, for example, but they cannot directly cause damage.\nMana-based Illusion spells affect the mind and are ineffective against technological viewing systems like cameras. Mana illusions are resisted by Logic + Willpower. Some mana illusions affect the target’s senses directly; others affect the senses of anyone perceiving the subject of the spell (though you’re never affected by your own illusion spell). Though mana-based illusions can be created on the astral plane, their magical auras give them away as illusions to anyone who makes a successful Assensing Test — illusions can’t fool Assensing and cannot be used to disguise or create auras.\nPhysical illusion spells create actual images or alter physical properties, such as light or sound. Physical illusions can be used on both living and technological systems. They are resisted by Intuition + Logic; non-living devices resist with their Object Resistance. The magician must generate more hits than the observer for the illusion to be considered real. If the spell is not completely resisted, the target is fully affected by the illusion.'
     }
   },
   {
     id: SPELL_CATEGORY_ID.MANIPULATION,
     name: 'Manipulation',
     labels: {
-      description: '',
-      icon: ICON.MANIPULATION
+      description: ''
     }
   }
 ];
