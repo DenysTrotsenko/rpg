@@ -9,41 +9,47 @@ import {
   SPELL_TYPE_ID
 } from './5e.enums';
 import {Spell, SpellDuration, SpellRange, SpellTag, SpellType} from './5e.models';
+import {ICON} from '@shadowrun/app/ui/ui.enums';
 
 export const SPELL_CATEGORIES = [
   {
     id: SPELL_CATEGORY_ID.COMBAT,
     name: 'Combat',
     labels: {
-      description: ''
+      description: '',
+      icon: ICON.COMBAT
     }
   },
   {
     id: SPELL_CATEGORY_ID.DETECTION,
     name: 'Detection',
     labels: {
-      description: ''
+      description: '',
+      icon: ICON.DETECTION
     }
   },
   {
     id: SPELL_CATEGORY_ID.HEALTH,
     name: 'Health',
     labels: {
-      description: ''
+      description: '',
+      icon: ICON.HEALTH
     }
   },
   {
     id: SPELL_CATEGORY_ID.ILLUSION,
     name: 'Illusion',
     labels: {
-      description: 'No matter how realistic they are, illusions cannot directly cause physical harm. They can cause distractions, loss of balance or orientation, and even symptoms like nausea or pain. All such effects vanish, though, as soon as the magician drops the illusion. Illusions can certainly cause harm by manipulating the senses so a victim walks into traffic or off a high building, for example, but they cannot directly cause damage.\nMana-based Illusion spells affect the mind and are ineffective against technological viewing systems like cameras. Mana illusions are resisted by Logic + Willpower. Some mana illusions affect the target’s senses directly; others affect the senses of anyone perceiving the subject of the spell (though you’re never affected by your own illusion spell). Though mana-based illusions can be created on the astral plane, their magical auras give them away as illusions to anyone who makes a successful Assensing Test — illusions can’t fool Assensing and cannot be used to disguise or create auras.\nPhysical illusion spells create actual images or alter physical properties, such as light or sound. Physical illusions can be used on both living and technological systems. They are resisted by Intuition + Logic; non-living devices resist with their Object Resistance. The magician must generate more hits than the observer for the illusion to be considered real. If the spell is not completely resisted, the target is fully affected by the illusion.'
+      description: 'No matter how realistic they are, illusions cannot directly cause physical harm. They can cause distractions, loss of balance or orientation, and even symptoms like nausea or pain. All such effects vanish, though, as soon as the magician drops the illusion. Illusions can certainly cause harm by manipulating the senses so a victim walks into traffic or off a high building, for example, but they cannot directly cause damage.\nMana-based Illusion spells affect the mind and are ineffective against technological viewing systems like cameras. Mana illusions are resisted by Logic + Willpower. Some mana illusions affect the target’s senses directly; others affect the senses of anyone perceiving the subject of the spell (though you’re never affected by your own illusion spell). Though mana-based illusions can be created on the astral plane, their magical auras give them away as illusions to anyone who makes a successful Assensing Test — illusions can’t fool Assensing and cannot be used to disguise or create auras.\nPhysical illusion spells create actual images or alter physical properties, such as light or sound. Physical illusions can be used on both living and technological systems. They are resisted by Intuition + Logic; non-living devices resist with their Object Resistance. The magician must generate more hits than the observer for the illusion to be considered real. If the spell is not completely resisted, the target is fully affected by the illusion.',
+      icon: ICON.ILLUSION
     }
   },
   {
     id: SPELL_CATEGORY_ID.MANIPULATION,
     name: 'Manipulation',
     labels: {
-      description: ''
+      description: '',
+      icon: ICON.MANIPULATION
     }
   }
 ];
@@ -89,10 +95,32 @@ export const SPELL_TAGS: SpellTag[] = [
     }
   },
   {
-    id: SPELL_TAG_ID.ELEMENTAL,
-    name: 'Elemental',
+    id: SPELL_TAG_ID.ELEMENTAL_ACID,
+    name: 'Acid',
     labels: {
-      description: 'These spells cause extra damage (Special Damage Types, p. 170). The specific type is listed in the spell description.'
+      description: 'Acid damage is Physical. In addition to its normal damage, it also reduces the rating of any Armor it hits by 1. If the acid isn’t removed from the target (by washing it off, or because the acid is from a spell and evaporates into mana after the spell ends), then the acid continues to burn. Each Combat Turn the base DV of the acid is decreased by 1 and damage is applied again. The acid also continues to burn through armor reducing the target’s Armor rating by 1 until the acid is removed, neutralized, or loses all its base DV. The Armor reduction should be applied to worn Armor first but could be applied to Armor accessories (+Armor items) if the gamemaster allows. At the gamemaster’s discretion, acid can also create Light Smoke conditions in an area around the target.'
+    }
+  },
+  {
+    id: SPELL_TAG_ID.ELEMENTAL_COLD,
+    name: 'Cold',
+    labels: {
+      description: 'Cold is just the absence of heat, but it hurts when too much heat is absent, and calling cold “absent heat” doesn’t make it any less painful. Cold damage is Physical. Additionally, cold damage can make armor brittle, liquids freeze, lubricants gum up, etc. Make a simple Armor Test for anything directly hit. If the armor gets no hits, it breaks and cannot be used as armor. It can be repaired with the Building & Repairing rules, p. 145. In the case of a glitch, it’s destroyed irreparably. With a critical glitch the armor breaks irreparably in a dangerous way.'
+    }
+  },
+  {
+    id: SPELL_TAG_ID.ELEMENTAL_ELECTRICITY,
+    name: 'Electricity',
+    labels: {
+      description: 'A wide variety of nonlethal weapons are designed to incapacitate targets with electrical shock attacks, including stun batons, tasers, cyberware shock hands, and similar electrically charged weapons. These weapons rely on a contact discharge of electricity rather than kinetic energy. Spells and critter powers such as Lightning Bolt and Energy Aura cause similar effects.\nElectrical damage is treated as Stun or Physical damage depending on the source and/or target. The Non-conductivity armor upgrade (p. 438) adds its full rating to the Armor value. The gamemaster can also decide which (if any) other factors may modify the target’s damage, such as extra conductivity for a character covered in water.\nAn Electricity attack that does damage can stun and incapacitate the target as well, though if there is no damage, there is no secondary effect at all.\nSecondary effects for characters injured by Electricity damage include a –1 dice pool penalty on all actions and Defense Tests, but not Damage Resistance Tests, for 1 Combat Turn and an immediate Initiative Score reduction of 5. The dice pool penalty and Initiative Score reduction do not accumulate with multiple attacks, but the length of the penalty is extended by 1 Combat Turn for each successful damaging attack while a character is affected. If the character’s Initiative Score is reduced to 0 or below, they lose their last action. If they have no Initiative Score left the reduction comes on the start of the next Combat Turn.\nElectronic equipment and drones can also be affected by Electricity damage. They never suffer Stun damage so Electricity damage is Physical when used against electronics and drones. They resist damage as usual and suffer a secondary effect if they take even a single box of damage.\nThe secondary effect for electronics and drones damaged by Electricity damage is shorting out or overloading. In game terms this is reflected as secondary Matrix damage equal to half the Physical damage rounded down.\nVehicles can be damaged by Electricity attacks but do not suffer any secondary effects. Specific systems of vehicles can be targeted by a Called Shots (p. 195).'
+    }
+  },
+  {
+    id: SPELL_TAG_ID.ELEMENTAL_FIRE,
+    name: 'Fire',
+    labels: {
+      description: 'Fire damage is Physical. It can also make things catch fire. To determine if something catches fire, roll Armor Value + Fire Resistance – Fire AP (see Fire Armor Piercing Ratings table, below). The threshold on this test is the net hits rolled on the fire-based attack. If the item succeeds, it is not on fire (for now). Armor accessories are excluded from the test but the gamemaster may require them to make their own test.\n' +
+        'When something catches fire, the fire has an initial Damage Value of 3. This damage is caused at the end of each Combat Turn, and the DV increases by 1 at the start of each subsequent Combat Turn until the item is completely destroyed or the fire is put out. You can fight the fire a number of ways (water, smothering, etc.), making an Agility + Intuition Test and reducing the fire’s DV by 1 for each hit. Remember, as long as the fire is burning it can ignite any nearby flammables, including furniture, vehicles, foliage, and elves.'
     }
   },
   {
@@ -213,7 +241,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Acid Stream',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_ACID],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -229,7 +257,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Toxic Wave',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_ACID],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT_AREA,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -341,7 +369,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Flamethrower',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_FIRE],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -357,7 +385,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Fireball',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_FIRE],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT_AREA,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -373,7 +401,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Lightning Bolt',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_ELECTRICITY],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -389,7 +417,7 @@ export const SPELLS: Spell[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ball Lightning',
     category: SPELL_CATEGORY_ID.COMBAT,
-    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL],
+    tags: [SPELL_TAG_ID.INDIRECT, SPELL_TAG_ID.ELEMENTAL_ELECTRICITY],
     type: SPELL_TYPE_ID.PHYSICAL,
     range: SPELL_RANGE_ID.LINE_OF_SIGHT_AREA,
     damage: SPELL_DAMAGE_ID.PHYSICAL,
@@ -461,7 +489,7 @@ export const SPELLS: Spell[] = [
     drain: -6,
     specialty: false,
     labels: {
-      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Knockout requires the magician to touch the target.'
+      description: 'This spell channel magical energy directly into the target, causing Stun damage. It is sometimes referred to as “sleep” spell because it can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Knockout requires the magician to touch the target.'
     }
   },
   {
@@ -477,7 +505,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunbolt affects a single target.'
+      description: 'This spell channel magical energy directly into the target, causing Stun damage. It is sometimes referred to as “sleep” spell because it can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunbolt affects a single target.'
     }
   },
   {
@@ -493,7 +521,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: 'These spells channel magical energy directly into the target, causing Stun damage. They are sometimes referred to as “sleep” spells because they can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunball is an area spell.'
+      description: 'This spell channel magical energy directly into the target, causing Stun damage. It is sometimes referred to as “sleep” spell because it can render targets unconscious but keep them alive, in the cases where you’d prefer more polite violence. Stunball is an area spell.'
     }
   },
   {
@@ -943,7 +971,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'A favorite of mages going through bad break-ups, Agony inflicts an illusion of terrible pain on the target. Each net hit scored by the magician temporarily inflicts 1 box of Physical and 1 box of Stun damage on the target. It is not actual damage, only a measure of the effect of the spell. The target is affected the same as if the damage were real, with the usual injury penalties. If the target’s damage boxes are completely filled, he is racked with pain, unable to move or act. Once the spell is ended, the pain and damage boxes immediately go away. Agony affects a single target.'
     }
   },
   {
@@ -958,7 +986,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'A favorite of mages going through bad break-ups, Agony inflicts an illusion of terrible pain on the target. Each net hit scored by the magician temporarily inflicts 1 box of Physical and 1 box of Stun damage on the target. It is not actual damage, only a measure of the effect of the spell. The target is affected the same as if the damage were real, with the usual injury penalties. If the target’s damage boxes are completely filled, he is racked with pain, unable to move or act. Once the spell is ended, the pain and damage boxes immediately go away. Mass Agony is an area spell.'
     }
   },
   {
@@ -973,7 +1001,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell make the target believe that small bugs of various persuasions are crawling over their entire body, biting them, scurrying about, and crawling into assorted orifices. The bugs look, feel, smell, and even taste real. The illusion is usually enough to make any target who fails to resist freak out. For each net hit you get, the target loses 2 from their Initiative Score. If you sustain the spell, they lose the same amount from their Initiative Score at the beginning of each Combat Turn. Bugs affects a single target.'
     }
   },
   {
@@ -988,7 +1016,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell make the target believe that small bugs of various persuasions are crawling over their entire body, biting them, scurrying about, and crawling into assorted orifices. The bugs look, feel, smell, and even taste real. The illusion is usually enough to make any target who fails to resist freak out. For each net hit you get, the target loses 2 from their Initiative Score. If you sustain the spell, they lose the same amount from their Initiative Score at the beginning of each Combat Turn. Swarm is an area spell.'
     }
   },
   {
@@ -1003,7 +1031,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell produce a storm of conflicting sensations and images to confuse the senses. For each net hit on the Spellcasting Test, the target suffers a –1 dice pool modifier to all tests due to the distraction. Confusion affects a single target.'
     }
   },
   {
@@ -1018,7 +1046,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell produce a storm of conflicting sensations and images to confuse the senses. For each net hit on the Spellcasting Test, the target suffers a –1 dice pool modifier to all tests due to the distraction. Mass Confusion is an area spell.'
     }
   },
   {
@@ -1033,7 +1061,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell produce a storm of conflicting sensations and images to confuse the senses. For each net hit on the Spellcasting Test, the target suffers a –1 dice pool modifier to all tests due to the distraction. The Chaos spell is a physical version of Confusion (affects a single target), so it also affects technological systems and sensing devices.'
     }
   },
   {
@@ -1048,7 +1076,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell produce a storm of conflicting sensations and images to confuse the senses. For each net hit on the Spellcasting Test, the target suffers a –1 dice pool modifier to all tests due to the distraction. The Chaotic World spell is a physical version of Mass Confusion (an area spell), so it also affects technological systems and sensing devices.'
     }
   },
   {
