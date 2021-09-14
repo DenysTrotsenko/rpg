@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.getRawValue())">
   <mat-card class="mb-15">
     <mat-card-header>
       <mat-card-title>Personal</mat-card-title>
@@ -28,7 +28,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field *ngIf="isMagicTraditionAvailable(form.value)" appearance="outline">
+        <mat-form-field *ngIf="isMagicTraditionAvailable(form.getRawValue())" appearance="outline">
           <mat-label>Magic Tradition</mat-label>
           <mat-select formControlName="magic_tradition">
             <mat-option *ngFor="let i of MAGIC_TRADITIONS" [value]="i.id">
@@ -46,6 +46,7 @@
   </s5e-create-pc-qualities>
 
   <s5e-create-pc-attributes formControlName="attributes"
+    [initial]="character$ | async"
     [awakening]="form.get('awakening').value"
     [metatype]="form.get('metatype').value"
     [qualities]="form.get('qualities').value">
@@ -60,15 +61,15 @@
 
   <s5e-create-pc-contacts formControlName="contacts"></s5e-create-pc-contacts>
 
-  <s5e-create-pc-spells *ngIf="isSpellsAvailable(form.value)" formControlName="spells"></s5e-create-pc-spells>
+  <s5e-create-pc-spells *ngIf="isSpellsAvailable(form.getRawValue())" formControlName="spells"></s5e-create-pc-spells>
 
-  <s5e-create-pc-adept-powers *ngIf="isAdeptPowersAvailable(form.value)" formControlName="adept_powers"></s5e-create-pc-adept-powers>
+  <s5e-create-pc-adept-powers *ngIf="isAdeptPowersAvailable(form.getRawValue())" formControlName="adept_powers"></s5e-create-pc-adept-powers>
 
-  <s5e-create-pc-complex-forms *ngIf="isComplexFormsAvailable(form.value)" formControlName="complex_forms"></s5e-create-pc-complex-forms>
+  <s5e-create-pc-complex-forms *ngIf="isComplexFormsAvailable(form.getRawValue())" formControlName="complex_forms"></s5e-create-pc-complex-forms>
 
   <s5e-create-pc-lifestyle formControlName="lifestyles"></s5e-create-pc-lifestyle>
 
-  <s5e-create-pc-final-calculations [character]="form.value"></s5e-create-pc-final-calculations>
+  <s5e-create-pc-final-calculations [character]="form.getRawValue()"></s5e-create-pc-final-calculations>
 
   <mat-card class="mb-15">
     <mat-card-actions>

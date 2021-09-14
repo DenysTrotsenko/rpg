@@ -71,8 +71,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
         })
       )
       .subscribe(() => {
-        const value = this.form.getRawValue();
-        this.onChange(value);
+        this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
       });
   }
 

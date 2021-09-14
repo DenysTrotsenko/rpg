@@ -261,5 +261,16 @@ export interface Character {
   portrait: string;
   metatype: METATYPE_ID;
   awakening: AWAKENING_ID;
+  magic_tradition: MAGICAL_TRADITION_ID;
+  qualities: CharacterQuality[];
   attributes: CharacterAttribute[];
+  skills: any[];
+  knowledge: any[];
+  contacts: any[];
+  spells: CharacterSpell[];
+  complex_forms: any[];
+  adept_powers: any[];
+  lifestyles: CharacterLifestyle[];
+  ware: any[];
+  gear: CharacterGear[];
 }

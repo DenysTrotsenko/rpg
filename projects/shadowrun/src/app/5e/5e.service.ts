@@ -4,6 +4,10 @@ import {CharacterLifestyle, Lifestyle, LifestyleOption} from '@shadowrun/app/5e/
 
 @Injectable()
 export class FifthEditionService {
+  getId(): string {
+    return (Date.now() + Math.random()).toString(36).replace('.', '');
+  }
+
   getLifestylesCost(lifestyles: CharacterLifestyle[]): number {
     return lifestyles.reduce((sum, cur) => {
       const lifestyle: Lifestyle = LIFESTYLES.find(i => i.id === cur.id);

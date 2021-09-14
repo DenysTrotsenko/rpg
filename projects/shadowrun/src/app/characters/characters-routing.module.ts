@@ -12,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: ListComponent },
       { path: 'pc/create', component: CreateComponent },
+      { path: 'pc/update/:id', component: CreateComponent },
       { path: 'pc/view/:id', component: ViewComponent },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]

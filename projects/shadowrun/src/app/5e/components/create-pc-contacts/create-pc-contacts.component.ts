@@ -26,8 +26,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
 
   ngOnInit(): void {
     this.subscriptions = this.form.valueChanges.subscribe(() => {
-      const value = this.form.getRawValue();
-      this.onChange(value);
+      this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
     });
   }
 

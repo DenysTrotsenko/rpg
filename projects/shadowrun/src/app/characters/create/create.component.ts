@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {tap} from 'rxjs/operators';
-import {DialogService, FirestoreService} from '@shared';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
+import {DialogService, FirestoreService, UnsubscribeDirective} from '@shared';
 import {
   Awakening, AWAKENING_ID, AWAKENINGS, MAGIC_TRADITIONS, MagicTradition, Metatype, METATYPE_ID,
   METATYPES
@@ -12,6 +12,8 @@ import {
   POSITIVE_QUALITIES_MAX_COST
 } from '@shadowrun/app/5e/5e.variables';
 import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
+import {Observable} from 'rxjs';
+import {Character} from '@shadowrun/app/5e/5e.models';
 
 /** A maximum cost of positive qualities shouldn't exceed */
 export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
@@ -24,15 +26,17 @@ export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
   };
 }
 
+const DEFAULT_PORTRAIT = 'pc_humanmale_00_faceless.png';
+
 @Component({
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly form: FormGroup = new FormGroup({
-    id: new FormControl(this.id),
-    portrait: new FormControl('pc_humanmale_00_faceless.png', [Validators.required]),
+    id: new FormControl(null),
+    portrait: new FormControl(DEFAULT_PORTRAIT, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
     awakening: new FormControl(AWAKENING_ID.MUNDANE, [Validators.required]),
@@ -46,26 +50,67 @@ export class CreateComponent implements OnInit {
     complex_forms: new FormControl(null),
     adept_powers: new FormControl(null),
     lifestyles: new FormControl(null, [Validators.required]),
+    ware: new FormControl(null, [Validators.required]),
+    gear: new FormControl(null, [Validators.required]),
   });
   readonly AWAKENINGS: Awakening[] = AWAKENINGS;
   readonly METATYPES: Metatype[] = METATYPES;
   readonly MAGIC_TRADITIONS: MagicTradition[] = MAGIC_TRADITIONS;
+  readonly character$: Observable<Character> = this.route.paramMap
+    .pipe(
+      map(res => res.get('id')),
+      switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
+      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
+      tap(res => {
+        this.form.patchValue({
+          id: !!res ? res.id : this.service.getId(),
+          portrait: !!res ? res.portrait : DEFAULT_PORTRAIT,
+          name: !!res ? res.name : '',
+          metatype: !!res ? res.metatype : null,
+          awakening: !!res ? res.awakening : null,
+          magic_tradition: !!res ? res.magic_tradition : null,
+          qualities: !!res ? res.qualities : null,
+          attributes: !!res ? res.attributes : null,
+          skills: !!res ? res.skills : null,
+          knowledge: !!res ? res.knowledge : null,
+          contacts: !!res ? res.contacts : null,
+          spells: !!res ? res.spells : null,
+          complex_forms: !!res ? res.complex_forms : null,
+          adept_powers: !!res ? res.adept_powers : null,
+          lifestyles: !!res ? res.lifestyles : null,
+          ware: !!res ? res.ware : null,
+          gear: !!res ? res.gear : null,
+        }, { emitEvent: false });
+        // !!res ? this.portrait.disable() : this.portrait.enable();
+        // !!res ? this.name.disable() : this.name.enable();
+        // !!res ? this.metatype.disable() : this.metatype.enable();
+        // !!res ? this.awakening.disable() : this.awakening.enable();
+        // !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
+      }),
+      shareReplay(1)
+    );
 
-  get id(): string {
-    return (Date.now() + Math.random()).toString(36).replace('.', '');
-  }
+  get portrait(): AbstractControl { return this.form.get('portrait'); }
+  get name(): AbstractControl { return this.form.get('name'); }
+  get metatype(): AbstractControl { return this.form.get('metatype'); }
+  get awakening(): AbstractControl { return this.form.get('awakening'); }
+  get magic_tradition(): AbstractControl { return this.form.get('magic_tradition'); }
 
   constructor(
     private readonly firestore: FirestoreService,
+    private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly service: FifthEditionService
-  ) {}
+    private readonly service: FifthEditionService,
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.form.valueChanges
+    this.subscriptions = this.character$.subscribe();
+    this.subscriptions = this.form.valueChanges
       .pipe(
         tap(value => {
-          console.log(value.portrait);
+          // console.log(value.portrait);
           // console.log(this.getCalculatedKarma(value));
         })
       )
@@ -148,11 +193,11 @@ export class CreateComponent implements OnInit {
 
   onSubmit(form): void {
     console.log(form);
-    this.firestore
-      .update(`characters/${form.id}`, form)
-      .pipe(
-        tap(() => this.router.navigate(['..']))
-      )
-      .subscribe();
+    // this.firestore
+    //   .update(`characters/${form.id}`, form)
+    //   .pipe(
+    //     tap(() => this.router.navigate(['characters/list']))
+    //   )
+    //   .subscribe();
   }
 }
