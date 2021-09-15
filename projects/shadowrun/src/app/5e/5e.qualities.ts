@@ -1,5 +1,5 @@
 import {CharacterQuality, Quality} from './5e.models';
-import {ATTRIBUTE_ID, BOOK_ID, QUALITY_ID} from './5e.enums';
+import {ATTRIBUTE_ID, BOOK_ID, QUALITY_ID, SKILL_ID} from './5e.enums';
 
 export const RACIAL_QUALITIES: Quality[] = [
   {
@@ -117,7 +117,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null,
+    formulas: {
+      SKILL_MAX: (quality: CharacterQuality, id: SKILL_ID) => quality.specialty === id ? 1 : 0
+    },
     labels: {
       description: ''
     }
@@ -216,16 +218,11 @@ export const POSITIVE_QUALITIES: Quality[] = [
     multiple: false,
     specialty: true,
     formulas: {
-      [ATTRIBUTE_ID.BODY]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.BODY ? 1 : 0 },
-      [ATTRIBUTE_ID.AGILITY]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.AGILITY ? 1 : 0 },
-      [ATTRIBUTE_ID.REACTION]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.REACTION ? 1 : 0 },
-      [ATTRIBUTE_ID.STRENGTH]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.STRENGTH ? 1 : 0 },
-      [ATTRIBUTE_ID.WILLPOWER]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.WILLPOWER ? 1 : 0 },
-      [ATTRIBUTE_ID.LOGIC]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.LOGIC ? 1 : 0 },
-      [ATTRIBUTE_ID.INTUITION]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.INTUITION ? 1 : 0 },
-      [ATTRIBUTE_ID.CHARISMA]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.CHARISMA ? 1 : 0 },
-      [ATTRIBUTE_ID.MAGIC]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.MAGIC ? 1 : 0 },
-      [ATTRIBUTE_ID.RESONANCE]: { max: (quality: CharacterQuality) => quality?.specialty === ATTRIBUTE_ID.RESONANCE ? 1 : 0 }
+      ATTRIBUTE_MAX: (quality: CharacterQuality, id: ATTRIBUTE_ID) => [
+        ATTRIBUTE_ID.BODY, ATTRIBUTE_ID.AGILITY, ATTRIBUTE_ID.REACTION, ATTRIBUTE_ID.STRENGTH,
+        ATTRIBUTE_ID.WILLPOWER, ATTRIBUTE_ID.LOGIC, ATTRIBUTE_ID.INTUITION, ATTRIBUTE_ID.CHARISMA,
+        ATTRIBUTE_ID.MAGIC, ATTRIBUTE_ID.RESONANCE
+      ].includes(id) && quality.specialty === id ? 1 : 0
     },
     labels: {
       description: ''
@@ -376,7 +373,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     multiple: false,
     specialty: false,
     formulas: {
-      [ATTRIBUTE_ID.EDGE]: { max: (quality: CharacterQuality) => 1 }
+      ATTRIBUTE_MAX: (quality: CharacterQuality, id: ATTRIBUTE_ID) => ATTRIBUTE_ID.EDGE === id ? 1 : 0
     },
     labels: {
       description: ''

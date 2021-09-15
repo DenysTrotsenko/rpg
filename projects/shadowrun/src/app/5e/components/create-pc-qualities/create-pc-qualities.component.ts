@@ -103,8 +103,8 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     }));
   }
 
-  onRemoveQualityClick(id: QUALITY_ID): void {
-    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
+  onRemoveQualityClick(index: number): void {
+    this.form.removeAt(index);
   }
 
   private setInitialValue(initial: Character): void {
