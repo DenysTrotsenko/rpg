@@ -1,13 +1,5 @@
 @use '~@angular/material' as mat;
 
-$app-primary-palette: mat.$purple-palette;
-$app-accent-palette: mat.$amber-palette;
-$app-warn-palette: mat.$red-palette;
-
-$color-primary: mat.get-color-from-palette($app-primary-palette, 500);
-$color-accent: mat.get-color-from-palette($app-accent-palette, 500);
-$color-warn: mat.get-color-from-palette($app-warn-palette, 500);
-
 $color-black: #000000;
 $color-white: #FFFFFF;
 $color-red: mat.get-color-from-palette(mat.$red-palette, 500);

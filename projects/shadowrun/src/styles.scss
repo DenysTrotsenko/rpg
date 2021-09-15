@@ -1,3 +1,29 @@
+@use '~@angular/material' as mat;
+@import 'variables';
+
+$general-typography: mat.define-typography-config(
+  $font-family: '"Catamaran", sans-serif'
+);
+
+@include mat.core($general-typography);
+
+$app-primary-palette: mat.$cyan-palette;
+$app-accent-palette: mat.$amber-palette;
+$app-warn-palette: mat.$red-palette;
+
+$color-primary: mat.get-color-from-palette($app-primary-palette, 500);
+$color-accent: mat.get-color-from-palette($app-accent-palette, 500);
+$color-warn: mat.get-color-from-palette($app-warn-palette, 500);
+
+$app-primary: mat.define-palette($app-primary-palette, 500);
+$app-accent: mat.define-palette($app-accent-palette, 500);
+$app-warn: mat.define-palette($app-warn-palette, 500);
+$app-theme: mat.define-dark-theme($app-primary, $app-accent, $app-warn);
+
+@include mat.all-component-themes($app-theme);
+
+// *****
+
 table.mat-table {
   border: 1px solid gray;
   border-radius: 4px;
@@ -9,4 +35,9 @@ table.mat-table {
 
 .mat-tooltip {
   white-space: pre-line;
+}
+
+.snackbar-error {
+  color: $color-white;
+  background-color: $color-warn;
 }

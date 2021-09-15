@@ -19,7 +19,6 @@ import {
   SPELL_TAG_ID,
   SPELL_TYPE_ID, SPIRIT_ID
 } from './5e.enums';
-import {ICON} from '@shadowrun/app/ui/ui.enums';
 
 export interface AdeptPower {
   id: ADEPT_POWER_ID;
@@ -235,6 +234,10 @@ export interface CharacterAttribute {
   rating: number;
 }
 
+export interface CharacterComplexForm {
+  id: COMPLEX_FORM_ID;
+}
+
 export interface CharacterGear {
   id: GEAR_ID;
   rating: number;
@@ -271,7 +274,7 @@ export interface Character {
   knowledge: any[];
   contacts: any[];
   spells: CharacterSpell[];
-  complex_forms: any[];
+  complex_forms: CharacterComplexForm[];
   adept_powers: any[];
   lifestyles: CharacterLifestyle[];
   ware: any[];

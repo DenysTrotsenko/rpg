@@ -65,12 +65,19 @@
   <s5e-create-pc-contacts formControlName="contacts"
     [initial]="character$ | async"></s5e-create-pc-contacts>
 
-  <s5e-create-pc-spells *ngIf="isSpellsAvailable(form.getRawValue())" formControlName="spells"
-    [initial]="character$ | async"></s5e-create-pc-spells>
+  <s5e-create-pc-spells
+    *ngIf="isSpellsAvailable(form.getRawValue())"
+    formControlName="spells"
+    [initial]="character$ | async">
+  </s5e-create-pc-spells>
 
   <s5e-create-pc-adept-powers *ngIf="isAdeptPowersAvailable(form.getRawValue())" formControlName="adept_powers"></s5e-create-pc-adept-powers>
 
-  <s5e-create-pc-complex-forms *ngIf="isComplexFormsAvailable(form.getRawValue())" formControlName="complex_forms"></s5e-create-pc-complex-forms>
+  <s5e-create-pc-complex-forms
+    *ngIf="isComplexFormsAvailable(form.getRawValue())"
+    [initial]="character$ | async"
+    formControlName="complex_forms">
+  </s5e-create-pc-complex-forms>
 
   <s5e-create-pc-lifestyle formControlName="lifestyles"></s5e-create-pc-lifestyle>
 

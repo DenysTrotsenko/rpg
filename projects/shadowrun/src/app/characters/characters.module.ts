@@ -7,6 +7,7 @@ import { CharactersComponent } from './characters.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
+import { CloneDialogComponent } from './clone-dialog/clone-dialog.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ViewComponent } from './view/view.component';
     CharactersComponent,
     CreateComponent,
     ListComponent,
-    ViewComponent
+    ViewComponent,
+    CloneDialogComponent
   ],
   imports: [
     SharedModule,

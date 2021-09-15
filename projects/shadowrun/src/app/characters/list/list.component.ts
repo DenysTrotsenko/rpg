@@ -4,6 +4,8 @@ import { filter, switchMap } from 'rxjs/operators';
 import { DialogService, FirestoreService } from '@shared';
 import { Character } from '@shadowrun/app/5e/5e.models';
 import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
+import {CloneDialogComponent} from '@shadowrun/app/characters/clone-dialog/clone-dialog.component';
+import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -14,7 +16,27 @@ export class ListComponent {
   readonly portraits = PORTRAITS;
   readonly characters$: Observable<Character[]> = this.firestore.collection<Character>('characters');
 
-  constructor(private readonly dialog: DialogService, private readonly firestore: FirestoreService) {}
+  constructor(
+    private readonly dialog: DialogService,
+    private readonly firestore: FirestoreService,
+    private readonly service: FifthEditionService
+  ) {}
+
+  onCloneClick(i: Character): void {
+    this.dialog
+      .open(CloneDialogComponent, { data: i.name })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(res => {
+          const id = this.service.getId();
+          const name = res;
+
+          return this.firestore.update(`characters/${id}`, { ...i, id, name });
+        })
+      )
+      .subscribe();
+  }
 
   onDeleteClick(i: Character): void {
     this.dialog
