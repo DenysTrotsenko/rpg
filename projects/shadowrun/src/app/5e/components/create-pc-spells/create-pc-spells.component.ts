@@ -1,8 +1,9 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {UnsubscribeDirective} from '@shared';
-import {Character, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
-import {BehaviorSubject} from 'rxjs';
+import {Character, CharacterSpell, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
   /* tslint:disable-next-line */
@@ -19,10 +20,11 @@ import {BehaviorSubject} from 'rxjs';
   ]
 })
 export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  @Input() set initial(value: Character) { this.initial$.next(value); }
+  @Input() set initial(value: Character) { this.character$.next(value); }
   readonly form: FormArray = new FormArray([]);
   readonly spells: Spell[] = SPELLS;
-  private readonly initial$: BehaviorSubject<Character> = new BehaviorSubject(null);
+  private readonly character$: BehaviorSubject<Character> = new BehaviorSubject(null);
+  private readonly initial$ = this.character$.pipe(tap(res => this.setInitial(res)));
   onChange = (_: any) => {};
 
   constructor() {
@@ -30,6 +32,7 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   }
 
   ngOnInit(): void {
+    this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
     });
@@ -43,7 +46,8 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     const spell: Spell = SPELLS.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
     const group: FormGroup = new FormGroup({
       id: new FormControl(spell.id, [Validators.required]),
-      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : [])
+      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : []),
+      readonly: new FormControl(false, [Validators.required])
     });
     this.form.push(group);
   }
@@ -52,7 +56,24 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 
+  isDeletable(i: AbstractControl): boolean {
+    return !i.get('readonly').value;
+  }
+
   isOptionDisabled(id: SPELL_ID): boolean {
     return !!this.form.value.find(i => i.id === id) && !SPELLS.find(i => i.id === id).specialty;
+  }
+
+  private setInitial(character: Character): void {
+    const starting: CharacterSpell[] = character?.spells ?? [];
+    starting.forEach(spell => {
+      const group: FormGroup = new FormGroup({
+        id: new FormControl(spell.id),
+        specialty: new FormControl(spell.specialty),
+        readonly: new FormControl(true)
+      });
+      this.form.push(group);
+      group.disable();
+    });
   }
 }
