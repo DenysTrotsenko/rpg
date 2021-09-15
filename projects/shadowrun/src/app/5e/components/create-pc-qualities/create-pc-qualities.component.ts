@@ -1,12 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import { UnsubscribeDirective } from '@shared';
+import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
   AWAKENING_ID, Character, CharacterQuality, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES,
-  POSITIVE_QUALITIES, Quality, QUALITY_ID,
-  RACIAL_QUALITIES
+  POSITIVE_QUALITIES, Quality, QUALITY_ID, RACIAL_QUALITIES
 } from '@shadowrun/app/5e';
 
 
@@ -69,6 +68,13 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     this.subscriptions = this.initial$.pipe(tap(res => { this.setInitialValue(res); })).subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
+      if (this.form.valid) {
+        const allowed: string[] = ['id', 'rating', 'specialty'];
+        const value: CharacterQuality[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+        this.onChange(value);
+      } else {
+        this.onChange(null);
+      }
     });
   }
 

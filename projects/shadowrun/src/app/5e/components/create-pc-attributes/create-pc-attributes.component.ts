@@ -2,23 +2,10 @@ import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {getFilteredObject, UnsubscribeDirective} from '@shared';
+import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
-  Attribute,
-  ATTRIBUTES,
-  Awakening,
-  AWAKENING_ID,
-  AWAKENINGS,
-  Character,
-  CharacterAttribute,
-  CharacterQuality, CharacterSkill,
-  DEFAULT_ATTRIBUTE_RANGE,
-  Metatype,
-  METATYPE_ID,
-  METATYPES,
-  NEGATIVE_QUALITIES,
-  POSITIVE_QUALITIES,
-  Quality,
+  Attribute, ATTRIBUTES, Awakening, AWAKENING_ID, AWAKENINGS, Character, CharacterAttribute, CharacterQuality,
+  DEFAULT_ATTRIBUTE_RANGE, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES, POSITIVE_QUALITIES, Quality,
   RACIAL_QUALITIES
 } from '@shadowrun/app/5e';
 
@@ -66,7 +53,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
         const allowed: string[] = ['id', 'rating'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject<CharacterSkill>(res, allowed));
+        const value: CharacterAttribute[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
         this.onChange(value);
       } else {
         this.onChange(null);
@@ -100,9 +87,11 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
         ? METATYPE.attributes[attribute.id] ?? AWAKENING.attributes[attribute.id]
         : DEFAULT_ATTRIBUTE_RANGE;
       const min: number = !!previous ? previous.rating : range[0];
-      const max: number = range[1] + QUALITIES.reduce((acc, cur) => {
-        return acc + (!!(cur.formulas ?? {})[attribute.id] ? cur.formulas[attribute.id].max : 0);
-      }, 0);
+      const max: number = range[1] + QUALITIES
+        .filter(i => !!i.formulas && i.formulas[attribute.id])
+        .reduce((acc, cur) => {
+          return acc + cur.formulas[attribute.id].max(qualities.find(i => i.id === cur.id));
+        }, 0);
       const value = values.find(i => i.id === attribute.id);
       const rating: number = !!value
         ? value.rating - value.min + min

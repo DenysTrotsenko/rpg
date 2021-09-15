@@ -6,13 +6,8 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
-  ACTIVE_SKILLS,
-  ATTRIBUTE_ID,
-  Awakening,
-  AWAKENING_ID,
-  AWAKENINGS, Character, CharacterSkill,
-  Skill,
-  SKILL_ID, SKILL_MAX_ON_CREATION, SKILL_MAX_ON_UPGRADE, SKILL_MIN, SPECIALIZATIONS_MAX
+  ACTIVE_SKILLS, ATTRIBUTE_ID, Awakening, AWAKENING_ID, AWAKENINGS, Character, CharacterSkill, Skill, SKILL_ID,
+  SKILL_MAX_ON_CREATION, SKILL_MAX_ON_UPGRADE, SKILL_MIN, SPECIALIZATIONS_MAX
 } from '@shadowrun/app/5e';
 
 @Component({
@@ -56,7 +51,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
       .subscribe(() => {
         if (this.form.valid) {
           const allowed: string[] = ['id', 'rating', 'specializations'];
-          const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject<CharacterSkill>(res, allowed));
+          const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
           this.onChange(value);
         } else {
           this.onChange(null);
