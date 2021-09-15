@@ -21,9 +21,6 @@
         "dist/shared-library/shared-library",
         "dist/shared-library"
       ],
-      "@bloodbound/*": ["projects/bloodbound/src/*"],
-      "@bloodbound-world/*": ["projects/bloodbound-world/src/*"],
-      "@cod/*": ["projects/chronicles-of-darkness/src/*"],
       "@shadowrun/*": ["projects/shadowrun/src/*"]
     }
   }

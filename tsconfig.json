@@ -8,46 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/chronicles-of-darkness/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/chronicles-of-darkness/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/virtual-tabletop/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/virtual-tabletop/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/shared-library/tsconfig.lib.json"
     },
     {
       "path": "./projects/shared-library/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/bloodbound/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/bloodbound/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/starfinder/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/starfinder/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/unsorted/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/unsorted/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/bloodbound-world/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/bloodbound-world/tsconfig.spec.json"
     },
     {
       "path": "./projects/shadowrun/tsconfig.app.json"
