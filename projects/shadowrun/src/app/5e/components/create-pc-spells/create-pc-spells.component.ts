@@ -1,7 +1,8 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {UnsubscribeDirective} from '@shared';
-import {Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {Character, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   /* tslint:disable-next-line */
@@ -18,8 +19,10 @@ import {Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
   ]
 })
 export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+  @Input() set initial(value: Character) { this.initial$.next(value); }
   readonly form: FormArray = new FormArray([]);
   readonly spells: Spell[] = SPELLS;
+  private readonly initial$: BehaviorSubject<Character> = new BehaviorSubject(null);
   onChange = (_: any) => {};
 
   constructor() {

@@ -12,6 +12,8 @@ export const MAX_KNOWN_SPELLS = (magic: number): number => magic * 2;
 export const FREE_KNOWLEDGE = (intuiton: number, logic: number): number => (intuiton + logic) * 2;
 export const FREE_CONTACTS = (charisma: number): number => charisma * 3;
 
-
 export const POSITIVE_QUALITIES_MAX_COST = 25;
 export const NEGATIVE_QUALITIES_MAX_COST = -25;
+
+export const SKILL_MAX_ON_CREATION = 6;
+export const SKILL_MAX_ON_UPGRADE = 12;

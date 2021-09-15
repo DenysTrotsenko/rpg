@@ -50,8 +50,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     complex_forms: new FormControl(null),
     adept_powers: new FormControl(null),
     lifestyles: new FormControl(null, [Validators.required]),
-    ware: new FormControl(null, [Validators.required]),
-    gear: new FormControl(null, [Validators.required]),
+    ware: new FormControl(null),
+    gear: new FormControl(null),
   });
   readonly AWAKENINGS: Awakening[] = AWAKENINGS;
   readonly METATYPES: Metatype[] = METATYPES;
@@ -66,8 +66,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
           id: !!res ? res.id : this.service.getId(),
           portrait: !!res ? res.portrait : DEFAULT_PORTRAIT,
           name: !!res ? res.name : '',
-          metatype: !!res ? res.metatype : null,
-          awakening: !!res ? res.awakening : null,
+          metatype: !!res ? res.metatype : METATYPE_ID.HUMAN,
+          awakening: !!res ? res.awakening : AWAKENING_ID.MUNDANE,
           magic_tradition: !!res ? res.magic_tradition : null,
           qualities: !!res ? res.qualities : null,
           attributes: !!res ? res.attributes : null,
@@ -81,11 +81,11 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
           ware: !!res ? res.ware : null,
           gear: !!res ? res.gear : null,
         }, { emitEvent: false });
-        // !!res ? this.portrait.disable() : this.portrait.enable();
-        // !!res ? this.name.disable() : this.name.enable();
-        // !!res ? this.metatype.disable() : this.metatype.enable();
-        // !!res ? this.awakening.disable() : this.awakening.enable();
-        // !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
+        !!res ? this.portrait.disable() : this.portrait.enable();
+        !!res ? this.name.disable() : this.name.enable();
+        !!res ? this.metatype.disable() : this.metatype.enable();
+        !!res ? this.awakening.disable() : this.awakening.enable();
+        !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
       }),
       shareReplay(1)
     );
@@ -193,11 +193,11 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   onSubmit(form): void {
     console.log(form);
-    // this.firestore
-    //   .update(`characters/${form.id}`, form)
-    //   .pipe(
-    //     tap(() => this.router.navigate(['characters/list']))
-    //   )
-    //   .subscribe();
+    this.firestore
+      .update(`characters/${form.id}`, form)
+      .pipe(
+        tap(() => this.router.navigate(['characters/list']))
+      )
+      .subscribe();
   }
 }

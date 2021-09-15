@@ -41,6 +41,7 @@
   </mat-card>
 
   <s5e-create-pc-qualities formControlName="qualities"
+    [initial]="character$ | async"
     [awakening]="form.get('awakening').value"
     [metatype]="form.get('metatype').value">
   </s5e-create-pc-qualities>
@@ -53,15 +54,19 @@
   </s5e-create-pc-attributes>
 
   <s5e-create-pc-skills formControlName="skills"
+    [initial]="character$ | async"
     [awakening]="form.get('awakening').value"
     [metatype]="form.get('metatype').value">
   </s5e-create-pc-skills>
 
-  <s5e-create-pc-knowledge formControlName="knowledge"></s5e-create-pc-knowledge>
+  <s5e-create-pc-knowledge formControlName="knowledge"
+    [initial]="character$ | async"></s5e-create-pc-knowledge>
 
-  <s5e-create-pc-contacts formControlName="contacts"></s5e-create-pc-contacts>
+  <s5e-create-pc-contacts formControlName="contacts"
+    [initial]="character$ | async"></s5e-create-pc-contacts>
 
-  <s5e-create-pc-spells *ngIf="isSpellsAvailable(form.getRawValue())" formControlName="spells"></s5e-create-pc-spells>
+  <s5e-create-pc-spells *ngIf="isSpellsAvailable(form.getRawValue())" formControlName="spells"
+    [initial]="character$ | async"></s5e-create-pc-spells>
 
   <s5e-create-pc-adept-powers *ngIf="isAdeptPowersAvailable(form.getRawValue())" formControlName="adept_powers"></s5e-create-pc-adept-powers>
 

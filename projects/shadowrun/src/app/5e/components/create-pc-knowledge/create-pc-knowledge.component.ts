@@ -1,11 +1,12 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {UnsubscribeDirective} from '@shared';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
-import {SKILL_CATEGORIES, SkillCategory} from '@shadowrun/app/5e';
+import {Character, SKILL_CATEGORIES, SkillCategory} from '@shadowrun/app/5e';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {tap} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
 
 const SPECIALIZATIONS_MAX = 1;
 const SPECIALIZATIONS_MIN_SKILL_RANK = 3;
@@ -25,9 +26,11 @@ const SPECIALIZATIONS_MIN_SKILL_RANK = 3;
   ]
 })
 export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+  @Input() set initial(value: Character) { this.initial$.next(value); }
   readonly form: FormArray = new FormArray([]);
   readonly categories: SkillCategory[] = SKILL_CATEGORIES;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  private readonly initial$: BehaviorSubject<Character> = new BehaviorSubject(null);
   onChange = (_: any) => {};
 
   constructor() {

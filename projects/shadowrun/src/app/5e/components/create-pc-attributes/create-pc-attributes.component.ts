@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {BehaviorSubject, combineLatest} from 'rxjs';
-import {map, switchAll, switchMap, tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {UnsubscribeDirective} from '@shared';
 import {
   Attribute,
@@ -9,7 +9,10 @@ import {
   ATTRIBUTES,
   Awakening,
   AWAKENING_ID,
-  AWAKENINGS, CharacterAttribute,
+  AWAKENINGS,
+  Character,
+  CharacterAttribute,
+  CharacterQuality,
   DEFAULT_ATTRIBUTE_RANGE,
   Metatype,
   METATYPE_ID,
@@ -19,7 +22,6 @@ import {
   Quality,
   RACIAL_QUALITIES
 } from '@shadowrun/app/5e';
-import {Character, CharacterQuality} from '@shadowrun/app/5e/5e.models';
 
 @Component({
   /* tslint:disable-next-line */
@@ -49,27 +51,11 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
   private readonly dependencies$ = combineLatest([
     this.awakening$.asObservable(),
     this.metatype$.asObservable(),
-    this.qualities$.asObservable()
+    this.qualities$.asObservable(),
+    this.initial$.asObservable()
   ]);
-  private readonly attributes$ = this.initial$.pipe(
-    tap(res => {
-      if (!res) { return; }
-      // this.form.clear();
-      // res.attributes.forEach(attribute => {
-      //   this.form.push(new FormGroup({
-      //     id: new FormControl(attribute.id),
-      //     min: new FormControl(attribute.min),
-      //     max: new FormControl(attribute.max),
-      //     rating: new FormControl(attribute.rating, [
-      //       Validators.required,
-      //       Validators.min(attribute.min),
-      //       Validators.max(attribute.max)
-      //     ])
-      //   }));
-      // });
-    }),
-    switchMap(() => this.dependencies$),
-    tap(res => this.setAttributes(res[0], res[1], res[2]))
+  private readonly attributes$ = this.dependencies$.pipe(
+    tap(res => this.setAttributes(res[0], res[1], res[2], res[3]))
   );
 
   constructor() {
@@ -91,11 +77,11 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
   private setAttributes(
     awakeningId: AWAKENING_ID,
     metatypeId: METATYPE_ID,
-    qualities: CharacterQuality[]
+    qualities: CharacterQuality[],
+    initial: Character
   ): void {
-    console.log(awakeningId, metatypeId);
-    const awakening: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
-    const metatype: Metatype = METATYPES.find(i => i.id === metatypeId);
+    const AWAKENING: Awakening = AWAKENINGS.find(i => i.id === awakeningId);
+    const METATYPE: Metatype = METATYPES.find(i => i.id === metatypeId);
     const values: CharacterAttribute[] = this.form.value;
     const QUALITIES: Quality[] = [
       ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES, ...RACIAL_QUALITIES
@@ -104,21 +90,26 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
     this.form.clear();
 
     ATTRIBUTES.forEach(attribute => {
-      const range = !!awakening && !!metatype
-        ? metatype.attributes[attribute.id] ?? awakening.attributes[attribute.id]
+      const previous: CharacterAttribute | null = (initial?.attributes ?? []).find(i => i.id === attribute.id);
+      const range: [number, number] = !!AWAKENING && !!METATYPE
+        ? METATYPE.attributes[attribute.id] ?? AWAKENING.attributes[attribute.id]
         : DEFAULT_ATTRIBUTE_RANGE;
-      const min: number = range[0];
+      const min: number = !!previous ? previous.rating : range[0];
       const max: number = range[1] + QUALITIES.reduce((acc, cur) => {
         return acc + (!!(cur.formulas ?? {})[attribute.id] ? cur.formulas[attribute.id].max : 0);
       }, 0);
       const value: CharacterAttribute | null = values.find(i => i.id === attribute.id);
-      const rating: number = !!value ? value.rating - value.min + min : min;
+      const rating: number = !!value
+        ? value.rating - value.min + min
+        : min;
       const clamp: number = Math.min(Math.max(rating, min), max);
       this.form.push(new FormGroup({
         id: new FormControl(attribute.id),
         min: new FormControl(min),
         max: new FormControl(max),
-        rating: new FormControl(clamp, [Validators.required, Validators.min(min), Validators.max(max)])
+        rating: new FormControl(clamp, [
+          Validators.required, Validators.min(min), Validators.max(max)
+        ])
       }));
     });
   }

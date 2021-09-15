@@ -10,7 +10,7 @@ import {
   ATTRIBUTE_ID,
   Awakening,
   AWAKENING_ID,
-  AWAKENINGS,
+  AWAKENINGS, Character,
   Metatype,
   METATYPE_ID,
   METATYPES,
@@ -38,11 +38,13 @@ const SPECIALIZATIONS_MIN_SKILL_RANK = 3;
   ]
 })
 export class CreatePcSkillsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+  @Input() set initial(value: Character) { this.initial$.next(value); }
   @Input() set awakening(value: AWAKENING_ID) { this.awakening$.next(value); }
   @Input() set metatype(value: METATYPE_ID) { this.metatype$.next(value); }
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   readonly form: FormArray = new FormArray([]);
   readonly skills: Skill[] = ACTIVE_SKILLS;
+  private readonly initial$: BehaviorSubject<Character> = new BehaviorSubject(null);
   private readonly awakening$: BehaviorSubject<AWAKENING_ID> = new BehaviorSubject(null);
   private readonly metatype$: BehaviorSubject<METATYPE_ID> = new BehaviorSubject(null);
   private readonly skills$ = combineLatest([
