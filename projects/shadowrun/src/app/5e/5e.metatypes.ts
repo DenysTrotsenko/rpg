@@ -26,9 +26,9 @@ export const METATYPES: Metatype[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Dwarf',
     qualities: [
-      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0 },
-      { id: QUALITY_ID.RACIAL_PATHOGENS_RESISTANCE, rating: 0 },
-      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 0 }
+      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0, specialty: null },
+      { id: QUALITY_ID.RACIAL_PATHOGENS_RESISTANCE, rating: 0, specialty: null },
+      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 0, specialty: null }
     ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [3, 8],
@@ -49,7 +49,7 @@ export const METATYPES: Metatype[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Elf',
     qualities: [
-      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0 }
+      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0, specialty: null }
     ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [1, 6],
@@ -70,7 +70,7 @@ export const METATYPES: Metatype[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Ork',
     qualities: [
-      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0 }
+      { id: QUALITY_ID.RACIAL_LOW_LIGHT_VISION, rating: 0, specialty: null }
     ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [4, 9],
@@ -91,10 +91,10 @@ export const METATYPES: Metatype[] = [
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Troll',
     qualities: [
-      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0 },
-      { id: QUALITY_ID.RACIAL_REACH, rating: 0 },
-      { id: QUALITY_ID.RACIAL_DERMAL_ARMOR, rating: 0 },
-      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 1 }
+      { id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION, rating: 0, specialty: null },
+      { id: QUALITY_ID.RACIAL_REACH, rating: 0, specialty: null },
+      { id: QUALITY_ID.RACIAL_DERMAL_ARMOR, rating: 0, specialty: null },
+      { id: QUALITY_ID.RACIAL_LIFESTYLE, rating: 1, specialty: null }
     ],
     attributes: {
       [ATTRIBUTE_ID.BODY]: [5, 10],

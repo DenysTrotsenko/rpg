@@ -9,7 +9,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ratings: [{ name: '', cost: 0 }],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RACIAL_THERMOGRAPHIC_VISION,
@@ -18,7 +21,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ratings: [{ name: '', cost: 0 }],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RACIAL_PATHOGENS_RESISTANCE,
@@ -27,7 +33,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ratings: [{ name: '+2 Dice', cost: 0 }],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RACIAL_REACH,
@@ -36,7 +45,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ratings: [{ name: '+1', cost: 0 }],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RACIAL_DERMAL_ARMOR,
@@ -45,7 +57,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ratings: [{ name: '+1', cost: 0 }],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RACIAL_LIFESTYLE,
@@ -57,7 +72,10 @@ export const RACIAL_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
 ];
 
@@ -71,7 +89,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ANALYTICAL_MIND,
@@ -82,7 +103,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.APTITUDE,
@@ -93,7 +117,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ASTRAL_CHAMELEON,
@@ -104,7 +131,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.BILINGUAL,
@@ -115,7 +145,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.BLANDNESS,
@@ -126,7 +159,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.CATLIKE,
@@ -137,7 +173,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.CODESLINGER,
@@ -148,7 +187,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.DOUBLE_JOINTED,
@@ -159,7 +201,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.EXCEPTIONAL_ATTRIBUTE,
@@ -170,7 +215,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.FIRST_IMPRESSION,
@@ -181,7 +229,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.FOCUSED_CONCENTRATION,
@@ -197,7 +248,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.GEARHEAD,
@@ -208,7 +262,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.GUTS,
@@ -219,7 +276,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.HIGH_PAIN_TOLERANCE,
@@ -232,7 +292,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.HOME_GROUND,
@@ -243,7 +306,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.HUMAN_LOOKING,
@@ -254,7 +320,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.INDOMITABLE,
@@ -267,7 +336,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.JURYRIGGER,
@@ -278,7 +350,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.LUCKY,
@@ -291,6 +366,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: {
       [ATTRIBUTE_ID.EDGE]: { max: 1 }
+    },
+    labels: {
+      description: ''
     }
   },
   {
@@ -305,7 +383,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.MENTOR_SPIRIT,
@@ -316,7 +397,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.NATURAL_ATHLETE,
@@ -327,7 +411,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.NATURAL_HARDENING,
@@ -338,7 +425,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.NATURAL_IMMUNITY,
@@ -350,7 +440,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.PHOTOGRAPHIC_MEMORY,
@@ -361,7 +454,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.QUICK_HEALER,
@@ -372,7 +468,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.RESISTANCE_TO_PATHOGENS,
@@ -384,7 +483,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SPIRIT_AFFINITY,
@@ -395,7 +497,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.TOUGHNESS,
@@ -406,7 +511,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.WILL_TO_LIVE,
@@ -419,179 +527,11 @@ export const POSITIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
 ];
 
 export const NEGATIVE_QUALITIES: Quality[] = [
@@ -607,7 +547,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ALLERGY,
@@ -625,7 +568,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ASTRAL_BEACON,
@@ -636,7 +582,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.BAD_LUCK,
@@ -647,7 +596,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.BAD_REP,
@@ -658,7 +610,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.CODE_OF_HONOR,
@@ -669,7 +624,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.CODEBLOCK,
@@ -680,7 +638,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.COMBAT_PARALYSIS,
@@ -691,7 +652,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.DEPENDENTS,
@@ -704,7 +668,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.DISTINCTIVE_STYLE,
@@ -715,7 +682,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ELF_POSER,
@@ -726,7 +696,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.GREMLINS,
@@ -740,7 +713,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.INCOMPETENT,
@@ -751,7 +727,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.INSOMNIA,
@@ -763,7 +742,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.LOSS_OF_CONFIDENCE,
@@ -774,7 +756,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.LOW_PAIN_TOLERANCE,
@@ -785,7 +770,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.ORK_POSER,
@@ -796,7 +784,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.PREJUDICED,
@@ -812,7 +803,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SCORCHED,
@@ -823,7 +817,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SENSITIVE_SYSTEM,
@@ -834,7 +831,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SIMSENSE_VERTIGO,
@@ -845,7 +845,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SINNER,
@@ -859,7 +862,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SOCIAL_STRESS,
@@ -870,7 +876,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.SPIRIT_BANE,
@@ -881,7 +890,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: true,
     specialty: true,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.UNCOUTH,
@@ -892,7 +904,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.UNEDUCATED,
@@ -903,7 +918,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.UNSTEADY_HANDS,
@@ -914,7 +932,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
   {
     id: QUALITY_ID.WEAK_IMMUNE_SYSTEM,
@@ -925,213 +946,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     ],
     multiple: false,
     specialty: false,
-    formulas: null
+    formulas: null,
+    labels: {
+      description: ''
+    }
   },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
-  // {
-  //   id: QUALITY_ID.AMBIDEXTROUS,
-  //   name: '',
-  //   book: BOOK_ID.CORE_RULEBOOK,
-  //   ratings: [],
-  //   multiple: false,
-  //   specialty: false,
-  //   formulas: null
-  // },
 ];

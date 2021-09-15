@@ -124,7 +124,7 @@ export interface Metatype {
   id: METATYPE_ID;
   book: BOOK_ID;
   name: string;
-  qualities: { id: QUALITY_ID; rating: number; }[];
+  qualities: { id: QUALITY_ID; rating: number; specialty: string; }[];
   attributes: {
     [ATTRIBUTE_ID.BODY]: [number, number];
     [ATTRIBUTE_ID.AGILITY]: [number, number];
@@ -160,7 +160,10 @@ export interface Quality {
   ratings: { name: string; cost: number; }[];
   multiple: boolean;
   specialty: boolean;
-  formulas?: any;
+  formulas: any;
+  labels: {
+    description: string;
+  };
 }
 
 export interface Skill {
