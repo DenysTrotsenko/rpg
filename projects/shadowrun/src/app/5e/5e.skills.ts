@@ -88,14 +88,14 @@ export const ACTIVE_SKILLS: Skill[] = [
   },
   {
     id: SKILL_ID.THROWING_WEAPONS,
-    name: 'Archery',
+    name: 'Throwing Weapons',
     attribute: ATTRIBUTE_ID.AGILITY,
     default: true,
     specializations: []
   },
   {
     id: SKILL_ID.UNARMED_COMBAT,
-    name: 'Archery',
+    name: 'Unarmed Combat',
     attribute: ATTRIBUTE_ID.AGILITY,
     default: true,
     specializations: []

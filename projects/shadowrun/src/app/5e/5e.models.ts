@@ -229,8 +229,6 @@ export interface Spirit {
 
 export interface CharacterAttribute {
   id: ATTRIBUTE_ID;
-  min: number;
-  max: number;
   rating: number;
 }
 
@@ -247,6 +245,12 @@ export interface CharacterQuality {
   id: QUALITY_ID;
   rating: number;
   specialty: string;
+}
+
+export interface CharacterSkill {
+  id: SKILL_ID;
+  rating: number;
+  specializations: string[];
 }
 
 export interface CharacterSpell {
@@ -270,7 +274,7 @@ export interface Character {
   magic_tradition: MAGICAL_TRADITION_ID;
   qualities: CharacterQuality[];
   attributes: CharacterAttribute[];
-  skills: any[];
+  skills: CharacterSkill[];
   knowledge: any[];
   contacts: any[];
   spells: CharacterSpell[];
