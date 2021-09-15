@@ -67,7 +67,6 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   ngOnInit(): void {
     this.subscriptions = this.initial$.pipe(tap(res => { this.setInitialValue(res); })).subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
-      this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
       if (this.form.valid) {
         const allowed: string[] = ['id', 'rating', 'specialty'];
         const value: CharacterQuality[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
@@ -87,6 +86,10 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     return !!this.form.value.find(i => i.id === id) && !qualities.find(i => i.id === id).specialty;
   }
 
+  isRatingOptionDisabled(i: number, control: AbstractControl): boolean {
+    return i < (control.get('initialRating').value ?? 0);
+  }
+
   isDeletable(i: AbstractControl): boolean {
     return !i.get('readonly').value;
   }
@@ -99,7 +102,8 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
       id: new FormControl(quality.id, [Validators.required]),
       rating: new FormControl(0, [Validators.required]),
       specialty: new FormControl(null, !!quality.specialty ? [Validators.required] : []),
-      readonly: new FormControl(false, [Validators.required])
+      readonly: new FormControl(false),
+      initialRating: new FormControl(0)
     }));
   }
 
@@ -116,7 +120,8 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
         id: new FormControl(quality.id),
         rating: new FormControl(quality.rating, [Validators.required]),
         specialty: new FormControl(quality.specialty),
-        readonly: new FormControl(true, [Validators.required])
+        readonly: new FormControl(true),
+        initialRating: new FormControl(quality.rating),
       });
       this.form.push(group);
       group.disable({ emitEvent: false });
