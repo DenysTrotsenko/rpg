@@ -1,23 +1,27 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./projects/shared-library/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/shared-library/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/shadowrun/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/shadowrun/tsconfig.spec.json"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@shared": [
+        "projects/shared-library/src/public-api",
+        "dist/shared-library/shared-library",
+        "dist/shared-library"
+      ],
+      "@shadowrun/*": ["projects/shadowrun/src/*"]
     }
-]
+  }
 }
