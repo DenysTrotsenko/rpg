@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkModule } from '../cdk/cdk.module';
 import { MaterialModule } from '../material/material.module';
@@ -21,7 +20,6 @@ const DECLARATIONS = [
 const IMPORTS = [
   CommonModule,
   CdkModule,
-  FlexLayoutModule,
   FormsModule,
   MaterialModule,
   ReactiveFormsModule

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared';
 import { NumberInputComponent } from './components/number-input/number-input.component';
 import { PortraitSelectComponent } from './components/portrait-select/portrait-select.component';
@@ -13,6 +12,6 @@ const DECLARATIONS = [
 @NgModule({
   declarations: [...DECLARATIONS, PortraitSelectDialogComponent],
   exports: [...DECLARATIONS],
-  imports: [CommonModule, SharedModule]
+  imports: [SharedModule]
 })
 export class UiModule {}

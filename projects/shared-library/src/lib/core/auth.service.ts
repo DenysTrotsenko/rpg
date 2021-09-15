@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
 @Injectable()
 export class AuthService {
