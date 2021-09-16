@@ -12,6 +12,7 @@ export * from './5e.models';
 export * from './5e.powers';
 export * from './5e.qualities';
 export * from './5e.skills';
+export * from './5e.service';
 export * from './5e.spells';
 export * from './5e.spirits';
 export * from './5e.traditions';

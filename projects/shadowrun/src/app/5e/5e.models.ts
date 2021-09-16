@@ -190,10 +190,27 @@ export interface Spell {
   };
 }
 
-export interface SpellCategory { id: SPELL_CATEGORY_ID; name: string; labels: { description: string; }; }
+export interface SpellCategory {
+  id: SPELL_CATEGORY_ID;
+  name: string;
+  labels: { description: string; };
+}
+
+export interface SpellDamage { id: SPELL_DAMAGE_ID; name: string; alias: string; }
+
 export interface SpellTag { id: SPELL_TAG_ID; name: string; labels: { description: string; }; }
-export interface SpellType { id: SPELL_TYPE_ID; name: string; alias: string; }
+
+export interface SpellType {
+  id: SPELL_TYPE_ID;
+  name: string;
+  labels: {
+    alias: string;
+    [SPELL_CATEGORY_ID.ILLUSION]: string;
+  };
+}
+
 export interface SpellRange { id: SPELL_RANGE_ID; name: string; alias: string; }
+
 export interface SpellDuration { id: SPELL_DURATION_ID; name: string; alias: string; }
 
 export interface SkillCategory {
@@ -283,4 +300,18 @@ export interface Character {
   lifestyles: CharacterLifestyle[];
   ware: any[];
   gear: CharacterGear[];
+}
+
+export interface SpellView {
+  category: SpellCategory;
+  name: string;
+  specialty: string;
+  tags: SpellTag[];
+  damage: SpellDamage;
+  type: SpellType;
+  range: SpellRange;
+  duration: SpellDuration;
+  drain: string;
+  description: string;
+  tooltip: string;
 }

@@ -18,10 +18,10 @@
         <tr *ngFor="let i of spells$ | async;" class="mat-row">
           <td class="mat-cell" [matTooltip]="i.category?.name">{{i.category?.name[0]}}</td>
           <td class="mat-cell">
-            <span [matTooltip]="i.description">{{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}</span>
+            <span [matTooltip]="i.tooltip">{{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}</span>
             <span *ngFor="let tag of i.tags;" class="ml-5 c-gray" [matTooltip]="tag.labels.description">{{tag.name}}</span>
           </td>
-          <td class="mat-cell" [matTooltip]="i.type?.name">{{i.type?.alias}}</td>
+          <td class="mat-cell" [matTooltip]="getTypeTooltip(i)">{{i.type?.labels?.alias}}</td>
           <td class="mat-cell" [matTooltip]="i.range?.name">{{i.range?.alias}}</td>
           <td class="mat-cell" [matTooltip]="i.duration?.name">{{i.duration?.alias}}</td>
           <td class="mat-cell">{{i.drain}}</td>

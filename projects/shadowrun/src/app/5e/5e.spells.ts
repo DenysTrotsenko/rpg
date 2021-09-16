@@ -8,8 +8,7 @@ import {
   SPELL_TAG_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
-import {Spell, SpellCategory, SpellDuration, SpellRange, SpellTag, SpellType} from './5e.models';
-import {ICON} from '@shadowrun/app/ui/ui.enums';
+import { Spell, SpellCategory, SpellDamage, SpellDuration, SpellRange, SpellTag, SpellType } from './5e.models';
 
 export const SPELL_CATEGORIES: SpellCategory[] = [
   {
@@ -49,7 +48,7 @@ export const SPELL_CATEGORIES: SpellCategory[] = [
   }
 ];
 
-export const SPELL_DAMAGE = [
+export const SPELL_DAMAGE: SpellDamage[] = [
   { id: SPELL_DAMAGE_ID.PHYSICAL, name: 'Physical', alias: 'P' },
   { id: SPELL_DAMAGE_ID.STUN, name: 'Stun', alias: 'S' }
 ];
@@ -226,8 +225,22 @@ export const SPELL_TAGS: SpellTag[] = [
 ];
 
 export const SPELL_TYPES: SpellType[] = [
-  { id: SPELL_TYPE_ID.PHYSICAL, name: 'Physical', alias: 'P' },
-  { id: SPELL_TYPE_ID.MANA, name: 'Mana', alias: 'M' }
+  {
+    id: SPELL_TYPE_ID.PHYSICAL,
+    name: 'Physical',
+    labels: {
+      alias: 'P',
+      [SPELL_CATEGORY_ID.ILLUSION]: 'Physical illusion spells create actual images or alter physical properties, such as light or sound. Physical illusions can be used on both living and technological systems. They are resisted by Intuition + Logic; non-living devices resist with their Object Resistance. The magician must generate more hits than the observer for the illusion to be considered real. If the spell is not completely resisted, the target is fully affected by the illusion.'
+    }
+  },
+  {
+    id: SPELL_TYPE_ID.MANA,
+    name: 'Mana',
+    labels: {
+      alias: 'M',
+      [SPELL_CATEGORY_ID.ILLUSION]: 'Mana-based Illusion spells affect the mind and are ineffective against technological viewing systems like cameras. Mana illusions are resisted by Logic + Willpower. Some mana illusions affect the target’s senses directly; others affect the senses of anyone perceiving the subject of the spell (though you’re never affected by your own illusion spell). Though mana-based illusions can be created on the astral plane, their magical auras give them away as illusions to anyone who makes a successful Assensing Test — illusions can’t fool Assensing and cannot be used to disguise or create auras.'
+    }
+  }
 ];
 
 export const SPELLS: Spell[] = [
