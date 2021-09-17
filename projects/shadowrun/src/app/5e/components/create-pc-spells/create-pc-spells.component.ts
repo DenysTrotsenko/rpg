@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {UnsubscribeDirective} from '@shared';
-import {Character, CharacterSpell, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {getFilteredObject, UnsubscribeDirective} from '@shared';
+import {Character, CharacterSkill, CharacterSpell, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
@@ -34,7 +34,13 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   ngOnInit(): void {
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
-      this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
+      if (this.form.valid) {
+        const allowed: string[] = ['id', 'specialty'];
+        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+        this.onChange(value);
+      } else {
+        this.onChange(null);
+      }
     });
   }
 
@@ -66,6 +72,7 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
 
   private setInitial(character: Character): void {
     const starting: CharacterSpell[] = character?.spells ?? [];
+    this.form.clear();
     starting.forEach(spell => {
       const group: FormGroup = new FormGroup({
         id: new FormControl(spell.id),

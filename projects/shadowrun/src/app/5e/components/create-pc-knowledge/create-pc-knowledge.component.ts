@@ -29,9 +29,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   private readonly character$: BehaviorSubject<Character> = new BehaviorSubject(null);
   private readonly knowledge$ = this.character$.pipe(
-    tap(res => {
-      this.setInitialValue(res);
-    })
+    tap(res => this.setInitialValue(res))
   );
   onChange = (_: any) => {};
 

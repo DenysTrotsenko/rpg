@@ -68,9 +68,16 @@ export enum COMPLEX_FORM_TARGET_ID {
 }
 
 export enum COMPLEX_FORM_DURATION_ID {
-  IMMEDIATE = 1,
-  SUSTAINED,
-  PERMANENT
+  IMMEDIATE = 'cfd:immediate',
+  SUSTAINED = 'cfd:sustained',
+  PERMANENT = 'cfd:permanent'
+}
+
+export enum CONTACT_TYPE_ID {
+  CUSTOM = 'ct:custom',
+  FIXER = 'ct:fixer',
+  JOHNSON = 'ct:johnson',
+  TALISMONGER = 'ct:talismonger'
 }
 
 export enum GEAR_ID {

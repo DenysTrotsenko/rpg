@@ -5,7 +5,7 @@ import {
   AWAKENING_ID,
   BOOK_ID, COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
-  COMPLEX_FORM_TARGET_ID,
+  COMPLEX_FORM_TARGET_ID, CONTACT_TYPE_ID,
   GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID,
   METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID,
   QUALITY_ID,
@@ -251,6 +251,15 @@ export interface CharacterAttribute {
 
 export interface CharacterComplexForm {
   id: COMPLEX_FORM_ID;
+}
+
+export interface CharacterContact {
+  id: string;
+  connection: number;
+  loyalty: number;
+  type: CONTACT_TYPE_ID;
+  name: string;
+  details: string;
 }
 
 export interface CharacterGear {
