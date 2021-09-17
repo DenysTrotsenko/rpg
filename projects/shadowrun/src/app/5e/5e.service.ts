@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun/app/5e/5e.lifestyle';
 import {
+  Attribute,
+  AttributeView,
+  CharacterAttribute,
   CharacterLifestyle, CharacterSpell,
   Lifestyle,
   LifestyleOption,
@@ -12,6 +15,7 @@ import {
   SpellView
 } from '@shadowrun/app/5e/5e.models';
 import {SPELL_CATEGORIES, SPELL_DAMAGE, SPELL_DURATIONS, SPELL_RANGES, SPELL_TAGS, SPELL_TYPES, SPELLS} from '@shadowrun/app/5e/5e.spells';
+import {ATTRIBUTES} from '@shadowrun/app/5e/5e.attributes';
 
 @Injectable()
 export class FifthEditionService {
@@ -26,6 +30,21 @@ export class FifthEditionService {
       const month: number = lifestyle.cost + options.map(i => i.cost(lifestyle.cost)).reduce((a, b) => a + b, 0);
       return sum + (month * (cur.term ?? 0));
     }, 0);
+  }
+
+  getAttributeView(value: CharacterAttribute): AttributeView {
+    const attribute: Attribute = ATTRIBUTES.find(i => i.id === value.id);
+    const name: string = attribute?.name ?? '';
+    const rating: number = value?.rating ?? 1;
+    const description: string = attribute?.labels?.description;
+    const tooltip: string = [
+      `${name.toLocaleUpperCase()}\n`,
+      `Base: ${rating}`,
+      `Bonus:`,
+      `\n${description}`
+    ].filter(i => !!i).join('\n');
+
+    return { name, rating, tooltip } as AttributeView;
   }
 
   getSpellView(cspell: CharacterSpell): SpellView {

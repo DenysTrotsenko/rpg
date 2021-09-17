@@ -1,1 +1,27 @@
-<p>view-attributes works!</p>
+<p *ngIf="view === 'concise'">
+  <b>Attributes:</b>
+  <span *ngFor="let i of attributes$ | async;" class="comma-separated" [matTooltip]="i.tooltip">
+    {{i.name}} {{i.rating}}
+  </span>
+</p>
+<mat-card *ngIf="view === 'full'" class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Attributes</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="mat-table">
+      <thead>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell">Name</th>
+          <th class="mat-header-cell">Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of attributes$ | async;" class="mat-row">
+          <td class="mat-cell"><span [matTooltip]="i.tooltip">{{i.name}}</span></td>
+          <td class="mat-cell">{{i.rating}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

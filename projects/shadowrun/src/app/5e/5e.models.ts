@@ -23,12 +23,19 @@ import {
 export interface AdeptPower {
   id: ADEPT_POWER_ID;
   name: string;
+  labels: {
+    description: string;
+  };
 }
 
 export interface Attribute {
   id: ATTRIBUTE_ID;
   name: string;
   type: ATTRIBUTE_TYPE_ID;
+  labels: {
+    alias: string;
+    description: string;
+  };
 }
 
 export interface Awakening {
@@ -317,6 +324,13 @@ export interface Character {
   lifestyles: CharacterLifestyle[];
   ware: any[];
   gear: CharacterGear[];
+}
+
+export interface AttributeView {
+  name: string;
+  rating: number;
+  description: string;
+  tooltip: string;
 }
 
 export interface SpellView {

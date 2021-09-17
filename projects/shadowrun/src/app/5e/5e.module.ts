@@ -17,6 +17,7 @@ import { CreatePcFinalCalculationsComponent } from './components/create-pc-final
 import { ViewSpellsComponent } from './components/view-spells/view-spells.component';
 import { ViewAttributesComponent } from './components/view-attributes/view-attributes.component';
 import { ViewSkillsComponent } from './components/view-skills/view-skills.component';
+import { ViewPersonalComponent } from './components/view-personal/view-personal.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -31,6 +32,9 @@ const DECLARATIONS = [
   CreatePcSpellsComponent,
   CreatePcWareComponent,
   CreatePcFinalCalculationsComponent,
+  ViewAttributesComponent,
+  ViewPersonalComponent,
+  ViewSkillsComponent,
   ViewSpellsComponent
 ];
 
@@ -38,6 +42,6 @@ const DECLARATIONS = [
   exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS, ViewAttributesComponent, ViewSkillsComponent]
+  declarations: [...DECLARATIONS]
 })
 export class FifthEditionModule {}

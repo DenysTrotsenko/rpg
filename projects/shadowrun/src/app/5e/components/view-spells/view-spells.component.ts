@@ -2,8 +2,6 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { FifthEditionService, CharacterSpell, SpellView } from '@shadowrun/app/5e';
 
-
-
 @Component({
   /* tslint:disable-next-line */
   selector: 's5e-view-spells',
