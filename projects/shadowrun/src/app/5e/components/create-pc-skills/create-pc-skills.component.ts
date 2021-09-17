@@ -3,7 +3,7 @@ import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGrou
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
   ACTIVE_SKILLS,
@@ -53,7 +53,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     this.qualities$.asObservable(),
     this.character$.asObservable()
   ]).pipe(
-    map(res => {
+    tap(res => {
       this.setInitialValue(res[0], res[1], res[2]);
     })
   );
@@ -64,16 +64,15 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
 
   ngOnInit(): void {
     this.subscriptions = this.skills$.subscribe();
-    this.subscriptions = this.form.valueChanges
-      .subscribe(() => {
-        if (this.form.valid) {
-          const allowed: string[] = ['id', 'rating', 'specializations'];
-          const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-          this.onChange(value);
-        } else {
-          this.onChange(null);
-        }
-      });
+    this.subscriptions = this.form.valueChanges.subscribe(() => {
+      if (this.form.valid) {
+        const allowed: string[] = ['id', 'rating', 'specializations'];
+        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+        this.onChange(value);
+      } else {
+        this.onChange(null);
+      }
+    });
   }
 
   onChange = (_: any) => {};

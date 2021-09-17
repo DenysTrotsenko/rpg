@@ -1,1 +1,11 @@
-<s5e-view-spells [spells]="spells$ | async"></s5e-view-spells>
+<mat-toolbar class="toolbar-main">
+  <h1>Character View</h1>
+  <span class="f-1"></span>
+  <button mat-icon-button (click)="view$.next('concise')" matTooltip="Concise View">
+    <mat-icon>unfold_less</mat-icon>
+  </button>
+  <button mat-icon-button (click)="view$.next('full')" matTooltip="Full View">
+    <mat-icon>unfold_more</mat-icon>
+  </button>
+</mat-toolbar>
+<s5e-view-spells [spells]="spells$ | async" [view]="view$ | async"></s5e-view-spells>

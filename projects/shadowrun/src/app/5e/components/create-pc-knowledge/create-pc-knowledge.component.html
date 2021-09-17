@@ -27,7 +27,7 @@
         <mat-chip-list #chipList aria-label="Fruit selection">
           <mat-chip class="specialization-chip"
             *ngFor="let specialization of getSpecializations(i.get('specializations'))"
-            [removable]="true"
+            [disabled]="isSpecializationDisabled(i, specialization)"
             (removed)="onRemoveSpecialization(specialization, i.get('specializations'))">
             {{specialization}}
             <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>

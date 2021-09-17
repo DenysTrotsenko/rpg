@@ -1,4 +1,10 @@
-<mat-card class="mb-15">
+<p *ngIf="view === 'concise'">
+  <b>Spells:</b>
+  <span *ngFor="let i of spells$ | async;" class="comma-separated" [matTooltip]="i.tooltip">
+    {{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}
+  </span>
+</p>
+<mat-card *ngIf="view === 'full'" class="mb-15">
   <mat-card-header class="ai-fs">
     <mat-card-title>Spells</mat-card-title>
   </mat-card-header>

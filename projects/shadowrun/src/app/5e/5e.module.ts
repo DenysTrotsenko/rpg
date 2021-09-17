@@ -15,6 +15,8 @@ import { CreatePcWareComponent } from './components/create-pc-ware/create-pc-war
 import { CreatePcLifestyleComponent } from './components/create-pc-lifestyle/create-pc-lifestyle.component';
 import { CreatePcFinalCalculationsComponent } from './components/create-pc-final-calculations/create-pc-final-calculations.component';
 import { ViewSpellsComponent } from './components/view-spells/view-spells.component';
+import { ViewAttributesComponent } from './components/view-attributes/view-attributes.component';
+import { ViewSkillsComponent } from './components/view-skills/view-skills.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -36,6 +38,6 @@ const DECLARATIONS = [
   exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS]
+  declarations: [...DECLARATIONS, ViewAttributesComponent, ViewSkillsComponent]
 })
 export class FifthEditionModule {}

@@ -1,8 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {ComplexForm, Gear} from '@shadowrun/app/5e/5e.models';
-import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
-import {COMPLEX_FORM_ID, GEAR_ID} from '@shadowrun/app/5e/5e.enums';
+import { Gear} from '@shadowrun/app/5e/5e.models';
+import { GEAR_ID} from '@shadowrun/app/5e/5e.enums';
 import {UnsubscribeDirective} from '@shared';
 import {GEAR} from '@shadowrun/app/5e/5e.gear';
 

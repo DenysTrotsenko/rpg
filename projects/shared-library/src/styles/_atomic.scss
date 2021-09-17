@@ -61,7 +61,7 @@
 .c-gray { color: $color-gray !important; }
 .c-blue-gray { color: $color-blue-gray !important; }
 
-
+.comma-separated:not(:last-child)::after { content: ', ' !important; }
 
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {

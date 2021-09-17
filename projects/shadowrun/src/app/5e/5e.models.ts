@@ -258,6 +258,21 @@ export interface CharacterGear {
   rating: number;
 }
 
+export interface CharacterKnowledge {
+  id: string;
+  name: string;
+  category: SKILL_CATEGORY_ID;
+  rating: number;
+  specializations: string[];
+}
+
+export interface CharacterLifestyle {
+  id: LIFESTYLE_ID;
+  options: LIFESTYLE_OPTION_ID[];
+  term: number;
+  details: string;
+}
+
 export interface CharacterQuality {
   id: QUALITY_ID;
   rating: number;
@@ -273,13 +288,6 @@ export interface CharacterSkill {
 export interface CharacterSpell {
   id: SPELL_ID;
   specialty: string;
-}
-
-export interface CharacterLifestyle {
-  id: LIFESTYLE_ID;
-  options: LIFESTYLE_OPTION_ID[];
-  term: number;
-  details: string;
 }
 
 export interface Character {

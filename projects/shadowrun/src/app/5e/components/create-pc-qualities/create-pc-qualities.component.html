@@ -55,10 +55,18 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field *ngIf="qualities$ | async | find: 'id' : control.get('id').value | map: 'specialty'" appearance="outline" floatLabel="always">
-        <mat-label>Specialty</mat-label>
-        <input matInput type="text" [formControl]="control.get('specialty')">
-      </mat-form-field>
+      <ng-container *ngIf="qualities$ | async | find: 'id' : control.get('id').value as quality;">
+        <mat-form-field *ngIf="!!quality.specialty && !quality.formulas?.SPECIALTIES" appearance="outline" floatLabel="always">
+          <mat-label>Specialty</mat-label>
+          <input matInput type="text" [formControl]="control.get('specialty')">
+        </mat-form-field>
+        <mat-form-field *ngIf="!!quality.specialty && !!quality.formulas?.SPECIALTIES" appearance="outline" class="mr-5">
+          <mat-label>Specialty</mat-label>
+          <mat-select [formControl]="control.get('specialty')">
+            <mat-option *ngFor="let s of quality.formulas?.SPECIALTIES(control.value);" [value]="s.id">{{s.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
       <span class="f-1"></span>
       <button mat-icon-button type="button" [disabled]="!isDeletable(control)" (click)="onRemoveQualityClick(j)">
         <mat-icon>delete</mat-icon>

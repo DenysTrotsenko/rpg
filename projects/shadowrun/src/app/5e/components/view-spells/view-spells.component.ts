@@ -12,6 +12,7 @@ import { FifthEditionService, CharacterSpell, SpellView } from '@shadowrun/app/5
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewSpellsComponent {
+  @Input() view: 'concise' | 'full' = 'full';
   @Input() set spells(value: CharacterSpell[]) {
     const spells: SpellView[] = (value ?? []).map(i => this.service.getSpellView(i));
     this.spells$.next(spells);

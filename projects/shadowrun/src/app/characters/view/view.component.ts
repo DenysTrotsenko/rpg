@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
 import {Character, CharacterSpell} from '@shadowrun/app/5e/5e.models';
@@ -23,6 +23,7 @@ export class ViewComponent implements OnInit {
     .pipe(
       map(res => res.spells)
     );
+  readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('full');
 
   constructor(private readonly route: ActivatedRoute, private readonly firestore: FirestoreService) {}
 

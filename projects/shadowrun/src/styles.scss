@@ -34,10 +34,16 @@ table.mat-table {
 }
 
 .mat-tooltip {
+  line-height: 1.25;
   white-space: pre-line;
 }
 
 .snackbar-error {
   color: $color-white;
   background-color: $color-warn;
+}
+
+.toolbar-main {
+  margin: -10px -10px 10px -10px !important;
+  box-sizing: content-box !important;
 }
