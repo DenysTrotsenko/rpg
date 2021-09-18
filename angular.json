@@ -58,7 +58,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shadowrun",
+            "outputPath": "projects/shadowrun/public",
             "index": "projects/shadowrun/src/index.html",
             "main": "projects/shadowrun/src/main.ts",
             "polyfills": "projects/shadowrun/src/polyfills.ts",
