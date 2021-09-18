@@ -38,6 +38,10 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     id: new FormControl(null),
     portrait: new FormControl(DEFAULT_PORTRAIT, [Validators.required]),
     name: new FormControl('', [Validators.required]),
+    miscellaneous: new FormGroup({
+      biography: new FormControl(null, [Validators.required]),
+      gender: new FormControl(null, [Validators.required]),
+    }),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
     awakening: new FormControl(AWAKENING_ID.MUNDANE, [Validators.required]),
     magic_tradition: new FormControl(null, [Validators.required]),

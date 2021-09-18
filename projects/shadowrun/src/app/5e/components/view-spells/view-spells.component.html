@@ -1,10 +1,10 @@
-<p *ngIf="view === 'concise'">
+<p *ngIf="view === 'concise' && spells$ | async as spells">
   <b>Spells:</b>
-  <span *ngFor="let i of spells$ | async;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+  <span *ngFor="let i of spells;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
     {{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}
   </span>
 </p>
-<mat-card *ngIf="view === 'full'" class="mb-15">
+<mat-card *ngIf="view === 'full' && spells$ | async as spells" class="mb-15">
   <mat-card-header class="ai-fs">
     <mat-card-title>Spells</mat-card-title>
   </mat-card-header>
@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of spells$ | async;" class="mat-row">
+        <tr *ngFor="let i of spells;" class="mat-row">
           <td class="mat-cell" [matTooltip]="i.category?.name">{{i.category?.name[0]}}</td>
           <td class="mat-cell">
             <span [matTooltip]="i.tooltip">{{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}</span>

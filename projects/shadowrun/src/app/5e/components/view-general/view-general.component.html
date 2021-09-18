@@ -1,0 +1,31 @@
+<p *ngIf="view === 'concise' && general$ | async as i;">
+  <b>{{(i?.name ?? '').toLocaleUpperCase()}}</b> ({{i?.gender}} {{i?.metatype}}, {{i?.awakening}})
+</p>
+<mat-card *ngIf="view === 'full' && general$ | async as i;" class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>General</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="d-f ai-fs">
+    <img *ngIf="!!i?.portrait" [src]="'assets/images/portraits/' + i?.portrait" class="portrait" alt="Character Portrait">
+    <table class="mat-table ml-10">
+      <tbody>
+        <tr class="mat-row">
+          <td class="mat-cell">Name</td>
+          <td class="mat-cell">{{i?.name}}</td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">Gender</td>
+          <td class="mat-cell">{{i?.gender}}</td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">Metatype</td>
+          <td class="mat-cell">{{i?.metatype}}</td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">Awakening</td>
+          <td class="mat-cell">{{i?.awakening}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

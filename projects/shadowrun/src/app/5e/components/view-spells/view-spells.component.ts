@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FifthEditionService, CharacterSpell, SpellView } from '@shadowrun/app/5e';
+import { FifthEditionService, SpellView, Character } from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -11,8 +11,8 @@ import { FifthEditionService, CharacterSpell, SpellView } from '@shadowrun/app/5
 })
 export class ViewSpellsComponent {
   @Input() view: 'concise' | 'full' = 'full';
-  @Input() set spells(value: CharacterSpell[]) {
-    const spells: SpellView[] = (value ?? []).map(i => this.service.getSpellView(i));
+  @Input() set character(value: Character) {
+    const spells: SpellView[] = (value?.spells ?? []).map(i => this.service.getSpellView(i));
     this.spells$.next(spells);
   }
   readonly spells$: BehaviorSubject<SpellView[]> = new BehaviorSubject<SpellView[]>([]);

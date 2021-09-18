@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CharacterQuality, FifthEditionService, QualityView } from '@shadowrun/app/5e';
+import { Character, CharacterQuality, FifthEditionService, Metatype, METATYPES, QualityView } from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -11,8 +11,14 @@ import { CharacterQuality, FifthEditionService, QualityView } from '@shadowrun/a
 })
 export class ViewQualitiesComponent {
   @Input() view: 'concise' | 'full' = 'full';
-  @Input() set attributes(value: CharacterQuality[]) {
-    this.qualities$.next((value ?? []).map(i => this.service.getQualityView(i)));
+  @Input() set character(value: Character) {
+    const metatype: Metatype = METATYPES.find(i => i.id === value?.metatype);
+    const qualities: CharacterQuality[] = [
+      ...(metatype?.qualities ?? []),
+      ...(value?.qualities ?? [])
+    ];
+
+    this.qualities$.next(qualities.map(i => this.service.getQualityView(i)));
   }
   readonly qualities$: BehaviorSubject<QualityView[]> = new BehaviorSubject<QualityView[]>([]);
   constructor(private readonly service: FifthEditionService) {}

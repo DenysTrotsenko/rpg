@@ -53,12 +53,26 @@ export interface Book {
   name: string;
 }
 
+export interface ComplexFormTarget {
+  id: COMPLEX_FORM_TARGET_ID;
+  name: string;
+}
+
+export interface ComplexFormDuration {
+  id: COMPLEX_FORM_DURATION_ID;
+  name: string;
+  alias: string;
+}
+
 export interface ComplexForm {
   id: COMPLEX_FORM_ID;
   name: string;
   target: COMPLEX_FORM_TARGET_ID;
   duration: COMPLEX_FORM_DURATION_ID;
   fading: number;
+  labels?: {
+    description: string;
+  };
 }
 
 export interface Contact {
@@ -278,6 +292,17 @@ export interface CharacterGear {
   rating: number;
 }
 
+export interface CharacterGeneral {
+  portrait: string;
+  name: string;
+  miscellaneous: {
+    biography?: string;
+    gender?: string;
+  };
+  awakening: AWAKENING_ID;
+  metatype: METATYPE_ID;
+}
+
 export interface CharacterKnowledge {
   id: string;
   name: string;
@@ -314,6 +339,10 @@ export interface Character {
   id: string;
   name: string;
   portrait: string;
+  miscellaneous: {
+    biography: string;
+    gender: string;
+  };
   metatype: METATYPE_ID;
   awakening: AWAKENING_ID;
   magic_tradition: MAGICAL_TRADITION_ID;
@@ -335,6 +364,23 @@ export interface AttributeView {
   rating: number;
   description: string;
   tooltip: string;
+}
+
+export interface ComplexFormView {
+  name: string;
+  target: ComplexFormTarget;
+  duration: ComplexFormDuration;
+  fading: string;
+  description: string;
+  tooltip: string;
+}
+
+export interface GeneralView {
+  portrait: string;
+  name: string;
+  gender: string;
+  metatype: string;
+  awakening: string;
 }
 
 export interface QualityView {

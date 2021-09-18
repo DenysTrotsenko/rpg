@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewPersonalComponent } from './view-personal.component';
+import { ViewGeneralComponent } from './view-general.component';
 
-describe('ViewPersonalComponent', () => {
-  let component: ViewPersonalComponent;
-  let fixture: ComponentFixture<ViewPersonalComponent>;
+describe('ViewGeneralComponent', () => {
+  let component: ViewGeneralComponent;
+  let fixture: ComponentFixture<ViewGeneralComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewPersonalComponent ]
+      declarations: [ ViewGeneralComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewPersonalComponent);
+    fixture = TestBed.createComponent(ViewGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

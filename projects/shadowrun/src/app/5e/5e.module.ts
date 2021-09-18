@@ -17,8 +17,9 @@ import { CreatePcFinalCalculationsComponent } from './components/create-pc-final
 import { ViewSpellsComponent } from './components/view-spells/view-spells.component';
 import { ViewAttributesComponent } from './components/view-attributes/view-attributes.component';
 import { ViewSkillsComponent } from './components/view-skills/view-skills.component';
-import { ViewPersonalComponent } from './components/view-personal/view-personal.component';
 import { ViewQualitiesComponent } from './components/view-qualities/view-qualities.component';
+import { ViewGeneralComponent } from './components/view-general/view-general.component';
+import { ViewComplexFormsComponent } from './components/view-complex-forms/view-complex-forms.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -34,15 +35,17 @@ const DECLARATIONS = [
   CreatePcWareComponent,
   CreatePcFinalCalculationsComponent,
   ViewAttributesComponent,
-  ViewPersonalComponent,
+  ViewComplexFormsComponent,
+  ViewGeneralComponent,
+  ViewQualitiesComponent,
   ViewSkillsComponent,
   ViewSpellsComponent
 ];
 
 @NgModule({
-    exports: [...DECLARATIONS, ViewQualitiesComponent],
+  exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS, ViewQualitiesComponent]
+  declarations: [...DECLARATIONS]
 })
 export class FifthEditionModule {}
