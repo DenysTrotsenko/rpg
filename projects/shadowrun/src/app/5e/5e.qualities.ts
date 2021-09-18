@@ -87,7 +87,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Ambidextrous',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 4 }
+      { name: '', cost: 4 }
     ],
     multiple: false,
     specialty: false,
@@ -101,7 +101,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Analytical Mind',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 5 }
+      { name: '', cost: 5 }
     ],
     multiple: false,
     specialty: false,
@@ -115,7 +115,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Aptitude',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 14 }
+      { name: '', cost: 14 }
     ],
     multiple: false,
     specialty: true,
@@ -132,7 +132,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Astral Chameleon',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: false,
     specialty: false,
@@ -146,7 +146,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Bilingual',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 5 }
+      { name: '', cost: 5 }
     ],
     multiple: false,
     specialty: false,
@@ -160,7 +160,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Blandness',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 8 }
+      { name: '', cost: 8 }
     ],
     multiple: false,
     specialty: false,
@@ -174,7 +174,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Catlike',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 7 }
+      { name: '', cost: 7 }
     ],
     multiple: false,
     specialty: false,
@@ -188,7 +188,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Codeslinger',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: false,
     specialty: false,
@@ -202,7 +202,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Double-Jointed',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 6 }
+      { name: '', cost: 6 }
     ],
     multiple: false,
     specialty: false,
@@ -216,7 +216,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Exceptional Attribute',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 14 }
+      { name: '', cost: 14 }
     ],
     multiple: false,
     specialty: true,
@@ -239,7 +239,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'First Impression',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 11 }
+      { name: '', cost: 11 }
     ],
     multiple: false,
     specialty: false,
@@ -253,12 +253,12 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Focused Concentration',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 4 },
-      { name: 'Rating 2', cost: 8 },
-      { name: 'Rating 3', cost: 12 },
-      { name: 'Rating 4', cost: 16 },
-      { name: 'Rating 5', cost: 20 },
-      { name: 'Rating 6', cost: 24 }
+      { name: 'I', cost: 4 },
+      { name: 'II', cost: 8 },
+      { name: 'III', cost: 12 },
+      { name: 'IV', cost: 16 },
+      { name: 'V', cost: 20 },
+      { name: 'VI', cost: 24 }
     ],
     multiple: true,
     specialty: false,
@@ -272,7 +272,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Gearhead',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 11 }
+      { name: '', cost: 11 }
     ],
     multiple: false,
     specialty: false,
@@ -286,7 +286,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Guts',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: false,
     specialty: false,
@@ -300,9 +300,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'High Pain Tolerance',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 7 },
-      { name: 'Rating 2', cost: 14 },
-      { name: 'Rating 3', cost: 21 }
+      { name: 'I', cost: 7 },
+      { name: 'II', cost: 14 },
+      { name: 'III', cost: 21 }
     ],
     multiple: false,
     specialty: false,
@@ -316,7 +316,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Home Ground',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: true,
     specialty: true,
@@ -330,7 +330,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Human-Looking',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 6 }
+      { name: '', cost: 6 }
     ],
     multiple: false,
     specialty: false,
@@ -344,9 +344,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Indomitable',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 8 },
-      { name: 'Rating 2', cost: 16 },
-      { name: 'Rating 3', cost: 24 }
+      { name: 'I', cost: 8 },
+      { name: 'II', cost: 16 },
+      { name: 'III', cost: 24 }
     ],
     multiple: false,
     specialty: true,
@@ -360,7 +360,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Juryrigger',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: false,
     specialty: false,
@@ -374,7 +374,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Lucky',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 12 }
+      { name: '', cost: 12 }
     ],
     multiple: false,
     specialty: false,
@@ -390,10 +390,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Magic Resistance',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 6 },
-      { name: 'Rating 2', cost: 12 },
-      { name: 'Rating 3', cost: 18 },
-      { name: 'Rating 4', cost: 24 }
+      { name: 'I', cost: 6 },
+      { name: 'II', cost: 12 },
+      { name: 'III', cost: 18 },
+      { name: 'IV', cost: 24 }
     ],
     multiple: false,
     specialty: false,
@@ -407,7 +407,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Mentor Spirit',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 5 }
+      { name: '', cost: 5 }
     ],
     multiple: false,
     specialty: true,
@@ -421,7 +421,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Natural Athlete',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 7 }
+      { name: '', cost: 7 }
     ],
     multiple: false,
     specialty: false,
@@ -435,7 +435,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Natural Hardening',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 10 }
+      { name: '', cost: 10 }
     ],
     multiple: false,
     specialty: false,
@@ -449,8 +449,8 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Natural Immunity',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 4 },
-      { name: 'Rating 2', cost: 10 }
+      { name: 'I', cost: 4 },
+      { name: 'II', cost: 10 }
     ],
     multiple: false,
     specialty: true,
@@ -464,7 +464,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Photographic Memory',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 6 }
+      { name: '', cost: 6 }
     ],
     multiple: false,
     specialty: false,
@@ -478,7 +478,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Quick Healer',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 3 }
+      { name: '', cost: 3 }
     ],
     multiple: false,
     specialty: false,
@@ -492,8 +492,8 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Resistance to Pathogens/Toxins',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 4 },
-      { name: 'Rating 2', cost: 8 }
+      { name: 'I', cost: 4 },
+      { name: 'II', cost: 8 }
     ],
     multiple: false,
     specialty: false,
@@ -507,10 +507,10 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Spirit Affinity',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 7 }
+      { name: '', cost: 7 }
     ],
-    multiple: false,
-    specialty: false,
+    multiple: true,
+    specialty: true,
     formulas: null,
     labels: {
       description: 'Available only to magic users, the Spirit Affinity quality allows a character to be attuned to one type of spirit (see Spirits, p. 303). These spirits find the character interesting, are drawn to her, and are more inclined to assist her. They may be reluctant to attack the character, and if forced to do so they are likely to use nonlethal power. Watchers and minions do not count for this quality as they are constructed and are not summoned like normal spirits. Spirit Affinity provides magicians with 1 additional spirit service for each spirit of that type, and it also provides a +1 dice pool modifier for Binding Tests. Magic users may possess this quality for a type of spirit that is not part of their magical tradition.'
@@ -521,7 +521,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Toughness',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 9 }
+      { name: '', cost: 9 }
     ],
     multiple: false,
     specialty: false,
@@ -535,9 +535,9 @@ export const POSITIVE_QUALITIES: Quality[] = [
     name: 'Will To Live',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: 3 },
-      { name: 'Rating 2', cost: 6 },
-      { name: 'Rating 3', cost: 9 }
+      { name: 'I', cost: 3 },
+      { name: 'II', cost: 6 },
+      { name: 'III', cost: 9 }
     ],
     multiple: false,
     specialty: false,
@@ -592,7 +592,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Astral Beacon',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 },
+      { name: '', cost: -10 },
     ],
     multiple: false,
     specialty: false,
@@ -606,7 +606,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Bad Luck',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -12 },
+      { name: '', cost: -12 },
     ],
     multiple: false,
     specialty: false,
@@ -620,7 +620,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Bad Rep',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -7 },
+      { name: '', cost: -7 },
     ],
     multiple: false,
     specialty: false,
@@ -634,7 +634,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Code of Honor',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -15 },
+      { name: '', cost: -15 },
     ],
     multiple: false,
     specialty: true,
@@ -648,7 +648,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Codeblock',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 },
+      { name: '', cost: -10 },
     ],
     multiple: false,
     specialty: false,
@@ -676,9 +676,9 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Dependends',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -3 },
-      { name: 'Rating 2', cost: -6 },
-      { name: 'Rating 3', cost: -9 }
+      { name: 'I', cost: -3 },
+      { name: 'II', cost: -6 },
+      { name: 'III', cost: -9 }
     ],
     multiple: false,
     specialty: true,
@@ -692,7 +692,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Distinctive Style',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -5 },
+      { name: '', cost: -5 },
     ],
     multiple: false,
     specialty: false,
@@ -706,7 +706,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Elf Poser',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -6 },
+      { name: '', cost: -6 },
     ],
     multiple: false,
     specialty: false,
@@ -720,10 +720,10 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Gremlins',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -4 },
-      { name: 'Rating 2', cost: -8 },
-      { name: 'Rating 3', cost: -12 },
-      { name: 'Rating 4', cost: -16 }
+      { name: 'I', cost: -4 },
+      { name: 'II', cost: -8 },
+      { name: 'III', cost: -12 },
+      { name: 'IV', cost: -16 }
     ],
     multiple: false,
     specialty: false,
@@ -737,7 +737,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Incompetent',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -5 },
+      { name: '', cost: -5 },
     ],
     multiple: false,
     specialty: true,
@@ -751,8 +751,8 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Insomnia',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 },
-      { name: 'Rating 2', cost: -15 },
+      { name: 'I', cost: -10 },
+      { name: 'II', cost: -15 },
     ],
     multiple: false,
     specialty: false,
@@ -766,7 +766,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Loss of Confidence',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 }
+      { name: '', cost: -10 }
     ],
     multiple: true,
     specialty: true,
@@ -780,7 +780,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Low Pain Tolerance',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -9 },
+      { name: '', cost: -9 },
     ],
     multiple: false,
     specialty: false,
@@ -794,7 +794,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Ork Poser',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -6 }
+      { name: '', cost: -6 }
     ],
     multiple: false,
     specialty: false,
@@ -827,7 +827,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Scorched',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 }
+      { name: '', cost: -10 }
     ],
     multiple: false,
     specialty: true,
@@ -841,7 +841,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Sensitive System',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -12 }
+      { name: '', cost: -12 }
     ],
     multiple: false,
     specialty: false,
@@ -855,7 +855,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Simsense Vertigo',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -5 }
+      { name: '', cost: -5 }
     ],
     multiple: false,
     specialty: false,
@@ -886,7 +886,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Social Stress',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -8 }
+      { name: '', cost: -8 }
     ],
     multiple: false,
     specialty: false,
@@ -900,7 +900,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Spirit Bane',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -7 }
+      { name: '', cost: -7 }
     ],
     multiple: true,
     specialty: true,
@@ -914,7 +914,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Uncouth',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -14 }
+      { name: '', cost: -14 }
     ],
     multiple: false,
     specialty: false,
@@ -928,7 +928,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Uneducated',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -8 }
+      { name: '', cost: -8 }
     ],
     multiple: false,
     specialty: false,
@@ -942,7 +942,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Unsteady Hands',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -7 }
+      { name: '', cost: -7 }
     ],
     multiple: false,
     specialty: false,
@@ -956,7 +956,7 @@ export const NEGATIVE_QUALITIES: Quality[] = [
     name: 'Weak Immune System',
     book: BOOK_ID.CORE_RULEBOOK,
     ratings: [
-      { name: 'Rating 1', cost: -10 }
+      { name: '', cost: -10 }
     ],
     multiple: false,
     specialty: false,

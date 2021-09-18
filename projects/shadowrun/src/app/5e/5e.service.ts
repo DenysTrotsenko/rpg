@@ -4,9 +4,9 @@ import {
   Attribute,
   AttributeView,
   CharacterAttribute,
-  CharacterLifestyle, CharacterSkill, CharacterSpell,
+  CharacterLifestyle, CharacterQuality, CharacterSkill, CharacterSpell,
   Lifestyle,
-  LifestyleOption, Skill, SkillView,
+  LifestyleOption, Quality, QualityView, Skill, SkillView,
   Spell,
   SpellCategory, SpellDamage, SpellDuration,
   SpellRange,
@@ -17,6 +17,7 @@ import {
 import {SPELL_CATEGORIES, SPELL_DAMAGE, SPELL_DURATIONS, SPELL_RANGES, SPELL_TAGS, SPELL_TYPES, SPELLS} from '@shadowrun/app/5e/5e.spells';
 import {ATTRIBUTES} from '@shadowrun/app/5e/5e.attributes';
 import {ACTIVE_SKILLS} from '@shadowrun/app/5e/5e.skills';
+import {NEGATIVE_QUALITIES, POSITIVE_QUALITIES, RACIAL_QUALITIES} from '@shadowrun/app/5e/5e.qualities';
 
 @Injectable()
 export class FifthEditionService {
@@ -46,6 +47,23 @@ export class FifthEditionService {
     ].filter(i => !!i).join('\n');
 
     return { name, rating, tooltip } as AttributeView;
+  }
+
+  getQualityView(value: CharacterQuality): QualityView {
+    const QUALITIES = [...RACIAL_QUALITIES, ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
+    const quality: Quality = QUALITIES.find(i => i.id === value.id);
+    const name: string = quality?.name;
+    const rating: string = (quality?.ratings ?? [])[value?.rating ?? 0]?.name;
+    const specialty: string = !!quality?.formulas?.SPECIALTIES
+      ? quality.formulas.SPECIALTIES.find(i => i.id === value?.specialty)?.name
+      : value?.specialty;
+    const description: string = quality?.labels?.description;
+    const tooltip: string = [
+      `${name.toLocaleUpperCase()}\n`,
+      `${description}`
+    ].filter(i => !!i).join('\n');
+
+    return { name, rating, specialty, description, tooltip } as QualityView;
   }
 
   getSkillView(value: CharacterSkill): SkillView {

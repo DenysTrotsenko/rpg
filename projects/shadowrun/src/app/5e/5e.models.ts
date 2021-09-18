@@ -166,7 +166,11 @@ export interface Quality {
   ratings: { name: string; cost: number; }[];
   multiple: boolean;
   specialty: boolean;
-  formulas: any;
+  formulas: {
+    ATTRIBUTE_MAX?: any;
+    SKILL_MAX?: any;
+    SPECIALTIES?: any;
+  };
   labels: {
     description: string;
   };
@@ -329,6 +333,14 @@ export interface Character {
 export interface AttributeView {
   name: string;
   rating: number;
+  description: string;
+  tooltip: string;
+}
+
+export interface QualityView {
+  name: string;
+  rating: string;
+  specialty: string;
   description: string;
   tooltip: string;
 }

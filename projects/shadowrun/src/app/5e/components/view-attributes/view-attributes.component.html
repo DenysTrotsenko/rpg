@@ -1,6 +1,6 @@
 <p *ngIf="view === 'concise'">
   <b>Attributes:</b>
-  <span *ngFor="let i of attributes$ | async;" class="comma-separated" [matTooltip]="i.tooltip">
+  <span *ngFor="let i of attributes$ | async;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
     {{i.name}} {{i.rating}}
   </span>
 </p>

@@ -1,6 +1,6 @@
 <p *ngIf="view === 'concise'">
   <b>Spells:</b>
-  <span *ngFor="let i of spells$ | async;" class="comma-separated" [matTooltip]="i.tooltip">
+  <span *ngFor="let i of spells$ | async;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
     {{i.name}}{{i.specialty ? ' (' + i.specialty + ')' : ''}}
   </span>
 </p>

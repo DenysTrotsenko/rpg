@@ -18,6 +18,7 @@ import { ViewSpellsComponent } from './components/view-spells/view-spells.compon
 import { ViewAttributesComponent } from './components/view-attributes/view-attributes.component';
 import { ViewSkillsComponent } from './components/view-skills/view-skills.component';
 import { ViewPersonalComponent } from './components/view-personal/view-personal.component';
+import { ViewQualitiesComponent } from './components/view-qualities/view-qualities.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -39,9 +40,9 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  exports: [...DECLARATIONS],
+    exports: [...DECLARATIONS, ViewQualitiesComponent],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS]
+  declarations: [...DECLARATIONS, ViewQualitiesComponent]
 })
 export class FifthEditionModule {}

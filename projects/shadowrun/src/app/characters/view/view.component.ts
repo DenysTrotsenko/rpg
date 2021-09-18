@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { FirestoreService } from '@shared';
-import { Character, CharacterAttribute, CharacterSkill, CharacterSpell } from '@shadowrun/app/5e/5e.models';
+import { Character, CharacterAttribute, CharacterQuality, CharacterSkill, CharacterSpell } from '@shadowrun/app/5e/5e.models';
 
 @Component({
   templateUrl: './view.component.html',
@@ -18,6 +18,7 @@ export class ViewComponent {
       tap(res => console.log(res)),
       shareReplay(1)
     );
+  readonly qualities$: Observable<CharacterQuality[]> = this.character$.pipe(map(res => res.qualities));
   readonly attributes$: Observable<CharacterAttribute[]> = this.character$.pipe(map(res => res.attributes));
   readonly skills$: Observable<CharacterSkill[]> = this.character$.pipe(map(res => res.skills));
   readonly spells$: Observable<CharacterSpell[]> = this.character$.pipe(map(res => res.spells));
