@@ -4,8 +4,8 @@ import { filter, switchMap } from 'rxjs/operators';
 import { DialogService, FirestoreService } from '@shared';
 import { Character } from '@shadowrun/app/5e/5e.models';
 import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
-import {CloneDialogComponent} from '@shadowrun/app/characters/clone-dialog/clone-dialog.component';
-import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
+import { CloneDialogComponent } from '@shadowrun/app/characters/clone-dialog/clone-dialog.component';
+import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
 
 @Component({
   templateUrl: './list.component.html',
