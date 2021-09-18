@@ -4,9 +4,9 @@ import {
   Attribute,
   AttributeView,
   CharacterAttribute,
-  CharacterLifestyle, CharacterSpell,
+  CharacterLifestyle, CharacterSkill, CharacterSpell,
   Lifestyle,
-  LifestyleOption,
+  LifestyleOption, Skill, SkillView,
   Spell,
   SpellCategory, SpellDamage, SpellDuration,
   SpellRange,
@@ -16,6 +16,7 @@ import {
 } from '@shadowrun/app/5e/5e.models';
 import {SPELL_CATEGORIES, SPELL_DAMAGE, SPELL_DURATIONS, SPELL_RANGES, SPELL_TAGS, SPELL_TYPES, SPELLS} from '@shadowrun/app/5e/5e.spells';
 import {ATTRIBUTES} from '@shadowrun/app/5e/5e.attributes';
+import {ACTIVE_SKILLS} from '@shadowrun/app/5e/5e.skills';
 
 @Injectable()
 export class FifthEditionService {
@@ -45,6 +46,22 @@ export class FifthEditionService {
     ].filter(i => !!i).join('\n');
 
     return { name, rating, tooltip } as AttributeView;
+  }
+
+  getSkillView(value: CharacterSkill): SkillView {
+    const skill: Skill = ACTIVE_SKILLS.find(i => i.id === value.id);
+    const name: string = skill?.name ?? '';
+    const rating: number = value?.rating ?? 0;
+    const specializations: string = (value?.specializations ?? []).join(', ');
+    // const description: string = skill?.labels?.description;
+    const tooltip: string = [
+      `${name.toLocaleUpperCase()}\n`,
+      `Base: ${rating}`,
+      `Specializations: ${specializations}`,
+      // `\n${description}`
+    ].filter(i => !!i).join('\n');
+
+    return { name, rating, specializations, tooltip } as SkillView;
   }
 
   getSpellView(cspell: CharacterSpell): SpellView {

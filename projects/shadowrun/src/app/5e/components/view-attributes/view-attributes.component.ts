@@ -12,7 +12,7 @@ import { AttributeView, CharacterAttribute, FifthEditionService } from '@shadowr
 export class ViewAttributesComponent {
   @Input() view: 'concise' | 'full' = 'full';
   @Input() set attributes(value: CharacterAttribute[]) {
-    this.attributes$.next((value ?? []).map(i => this.service.getAttributeView(i)));
+    this.attributes$.next((value ?? []).filter(i => !!i.rating).map(i => this.service.getAttributeView(i)));
   }
   readonly attributes$: BehaviorSubject<AttributeView[]> = new BehaviorSubject<AttributeView[]>([]);
   constructor(private readonly service: FifthEditionService) {}

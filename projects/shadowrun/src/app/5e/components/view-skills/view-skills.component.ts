@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { CharacterSkill, FifthEditionService, SkillView} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -8,5 +10,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewSkillsComponent {
-  constructor() { }
+  @Input() view: 'concise' | 'full' = 'full';
+  @Input() set skills(value: CharacterSkill[]) {
+    this.skills$.next((value ?? []).filter(i => !!i.rating).map(i => this.service.getSkillView(i)));
+  }
+  readonly skills$: BehaviorSubject<SkillView[]> = new BehaviorSubject<SkillView[]>([]);
+  constructor(private readonly service: FifthEditionService) {}
 }

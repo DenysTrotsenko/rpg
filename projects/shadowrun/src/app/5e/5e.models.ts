@@ -333,6 +333,14 @@ export interface AttributeView {
   tooltip: string;
 }
 
+export interface SkillView {
+  name: string;
+  rating: number;
+  specializations: string;
+  description: string;
+  tooltip: string;
+}
+
 export interface SpellView {
   category: SpellCategory;
   name: string;
