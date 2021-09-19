@@ -23,7 +23,7 @@ import {AngularFireFunctionsModule, REGION, USE_EMULATOR} from '@angular/fire/co
     FifthEditionModule
   ],
   providers: [
-    // { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
   ],
   bootstrap: [AppComponent]
 })
