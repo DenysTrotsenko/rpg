@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { catchError, distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
+import {catchError, distinctUntilChanged, map, shareReplay, switchAll, switchMap, take, tap} from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
+import User = firebase.User;
+import {AuthWithEmailAndPassword} from '../models';
 
 @Injectable()
 export class AuthService {
@@ -28,7 +30,17 @@ export class AuthService {
       .subscribe();
   }
 
-  signIn(data): Observable<firebase.auth.UserCredential> {
+  deleteUser(data: AuthWithEmailAndPassword): Observable<User> {
+    return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
+      switchMap(res => res.user.delete()),
+      catchError((err: firebase.auth.Error) => {
+        this.snackbar.error(err.message);
+        return of(null);
+      })
+    );
+  }
+
+  signIn(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       catchError((err: firebase.auth.Error) => {
         this.snackbar.error(err.message);
@@ -46,7 +58,7 @@ export class AuthService {
     );
   }
 
-  signUp(data): Observable<firebase.auth.UserCredential> {
+  signUp(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe(
       catchError((err: firebase.auth.Error) => {
         this.snackbar.error(err.message);

@@ -6002,14 +6002,14 @@ const SPIRITS = [
         special: []
     },
     {
-        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.AIR,
+        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.BEAST,
         book: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.BOOK_ID.CORE_RULEBOOK,
-        name: 'Air',
+        name: 'Beast',
         attributes: {
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force + 2),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force + 1),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force + 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.WILLPOWER]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force),
@@ -6020,22 +6020,27 @@ const SPIRITS = [
         },
         initiative: (force) => force,
         astral_initiative: (force) => force,
-        skills: [],
+        skills: [
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASSENSING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASTRAL_COMBAT,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.PERCEPTION,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.UNARMED_COMBAT
+        ],
         powers: [],
         optional_powers: [],
         special: []
     },
     {
-        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.AIR,
+        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.EARTH,
         book: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.BOOK_ID.CORE_RULEBOOK,
-        name: 'Air',
+        name: 'Earth',
         attributes: {
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force + 4),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force - 2),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force - 1),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force + 4),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.WILLPOWER]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force - 1),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.CHARISMA]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.EDGE]: (force) => Math.max(1, force / 2),
@@ -6044,23 +6049,29 @@ const SPIRITS = [
         },
         initiative: (force) => force,
         astral_initiative: (force) => force,
-        skills: [],
+        skills: [
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASSENSING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASTRAL_COMBAT,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.EXOTIC_RANGED_WEAPON,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.PERCEPTION,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.UNARMED_COMBAT
+        ],
         powers: [],
         optional_powers: [],
         special: []
     },
     {
-        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.AIR,
+        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.FIRE,
         book: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.BOOK_ID.CORE_RULEBOOK,
-        name: 'Air',
+        name: 'Fire',
         attributes: {
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force + 1),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force + 2),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force + 3),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force - 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.WILLPOWER]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force + 1),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.CHARISMA]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.EDGE]: (force) => Math.max(1, force / 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.ESSENCE]: (force) => Math.max(1, force),
@@ -6068,23 +6079,29 @@ const SPIRITS = [
         },
         initiative: (force) => force,
         astral_initiative: (force) => force,
-        skills: [],
+        skills: [
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASSENSING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASTRAL_COMBAT,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.EXOTIC_RANGED_WEAPON,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.PERCEPTION,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.UNARMED_COMBAT
+        ],
         powers: [],
         optional_powers: [],
         special: []
     },
     {
-        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.AIR,
+        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.MAN,
         book: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.BOOK_ID.CORE_RULEBOOK,
-        name: 'Air',
+        name: 'Man',
         attributes: {
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force + 1),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force + 2),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force - 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.WILLPOWER]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.INTUITION]: (force) => Math.max(1, force + 1),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.CHARISMA]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.EDGE]: (force) => Math.max(1, force / 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.ESSENCE]: (force) => Math.max(1, force),
@@ -6092,19 +6109,25 @@ const SPIRITS = [
         },
         initiative: (force) => force,
         astral_initiative: (force) => force,
-        skills: [],
+        skills: [
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASSENSING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASTRAL_COMBAT,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.PERCEPTION,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.SPELLCASTING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.UNARMED_COMBAT
+        ],
         powers: [],
         optional_powers: [],
         special: []
     },
     {
-        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.AIR,
+        id: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SPIRIT_ID.WATER,
         book: _5e_enums__WEBPACK_IMPORTED_MODULE_0__.BOOK_ID.CORE_RULEBOOK,
-        name: 'Air',
+        name: 'Water',
         attributes: {
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.BODY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force),
-            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.AGILITY]: (force) => Math.max(1, force + 1),
+            [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.REACTION]: (force) => Math.max(1, force + 2),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.STRENGTH]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.WILLPOWER]: (force) => Math.max(1, force),
             [_5e_enums__WEBPACK_IMPORTED_MODULE_0__.ATTRIBUTE_ID.LOGIC]: (force) => Math.max(1, force),
@@ -6116,7 +6139,13 @@ const SPIRITS = [
         },
         initiative: (force) => force,
         astral_initiative: (force) => force,
-        skills: [],
+        skills: [
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASSENSING,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.ASTRAL_COMBAT,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.EXOTIC_RANGED_WEAPON,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.PERCEPTION,
+            _5e_enums__WEBPACK_IMPORTED_MODULE_0__.SKILL_ID.UNARMED_COMBAT
+        ],
         powers: [],
         optional_powers: [],
         special: []
@@ -11068,14 +11097,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 6491);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 4361);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 1134);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs */ 1134);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 3720);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 2597);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 8636);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 3927);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 8293);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_fire_compat_auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat/auth */ 7018);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 9902);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ 8293);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_fire_compat_auth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/fire/compat/auth */ 7018);
 /* harmony import */ var _snackbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../snackbar */ 3759);
 
 
@@ -11098,27 +11128,33 @@ class AuthService {
     }
     get auth$() { return this.authObservable; }
     get logged$() { return this.auth$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.map)(res => !!res)); }
-    signIn(data) {
-        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.catchError)((err) => {
+    deleteUser(data) {
+        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.switchMap)(res => res.user.delete()), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.catchError)((err) => {
             this.snackbar.error(err.message);
-            return (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.of)(null);
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(null);
+        }));
+    }
+    signIn(data) {
+        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.catchError)((err) => {
+            this.snackbar.error(err.message);
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(null);
         }));
     }
     signOut() {
-        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.signOut()).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.catchError)((err) => {
+        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.signOut()).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.catchError)((err) => {
             this.snackbar.error(err.message);
-            return (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.of)(null);
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(null);
         }));
     }
     signUp(data) {
-        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.catchError)((err) => {
+        return (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.from)(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.catchError)((err) => {
             this.snackbar.error(err.message);
-            return (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.of)(null);
+            return (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.of)(null);
         }));
     }
 }
-AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_angular_fire_compat_auth__WEBPACK_IMPORTED_MODULE_10__.AngularFireAuth), _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵinject"](_snackbar__WEBPACK_IMPORTED_MODULE_0__.SnackbarService)); };
-AuthService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵdefineInjectable"]({ token: AuthService, factory: AuthService.ɵfac });
+AuthService.ɵfac = function AuthService_Factory(t) { return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵinject"](_angular_fire_compat_auth__WEBPACK_IMPORTED_MODULE_11__.AngularFireAuth), _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵinject"](_snackbar__WEBPACK_IMPORTED_MODULE_0__.SnackbarService)); };
+AuthService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_10__["ɵɵdefineInjectable"]({ token: AuthService, factory: AuthService.ɵfac });
 
 
 /***/ }),

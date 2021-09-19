@@ -4,14 +4,14 @@
       <mat-card-title class="m-0">
         <h2 class="m-0">Sign In</h2>
       </mat-card-title>
-      <button mat-button type="button" routerLink="/auth/sign-up">Go to Sign Up</button>
+      <button mat-button type="button" color="accent" routerLink="/auth/sign-up">Go to Sign Up</button>
     </mat-card-header>
 
     <div class="progress-container">
       <mat-progress-bar *ngIf="progress$| async" mode="indeterminate"></mat-progress-bar>
     </div>
 
-    <mat-card-content class="d-f fd-c ai-c">
+    <mat-card-content class="d-f fd-c ai-s">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput type="email" required formControlName="email">
