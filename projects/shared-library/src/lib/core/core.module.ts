@@ -11,6 +11,8 @@ import { FirestoreService } from './firestore.service';
 import { StorageService } from './storage.service';
 import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
+import { FunctionsService } from './functions.service';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 
 @NgModule({
   exports: [
@@ -18,6 +20,7 @@ import { SnackbarModule } from '../snackbar/snackbar.module';
     HttpClientModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireFunctionsModule,
     DialogModule,
     SnackbarModule
   ],
@@ -27,6 +30,7 @@ import { SnackbarModule } from '../snackbar/snackbar.module';
     CacheService,
     HttpService,
     FirestoreService,
+    FunctionsService,
     StorageService
   ]
 })

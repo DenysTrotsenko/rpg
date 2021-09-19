@@ -14,7 +14,7 @@ import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
 })
 export class ListComponent {
   readonly portraits = PORTRAITS;
-  readonly characters$: Observable<Character[]> = this.firestore.collection<Character>('characters').pipe(tap(res => console.log(res)));
+  readonly characters$: Observable<Character[]> = this.firestore.collection<Character>('characters');
 
   constructor(
     private readonly dialog: DialogService,
