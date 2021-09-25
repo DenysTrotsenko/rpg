@@ -336,6 +336,7 @@ export interface CharacterSpell {
 }
 
 export interface Character {
+  author: string;
   id: string;
   name: string;
   portrait: string;

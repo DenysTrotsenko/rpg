@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
-import {DialogService, FirestoreService, UnsubscribeDirective} from '@shared';
+import {AuthService, FirestoreService, FunctionsService, UnsubscribeDirective} from '@shared';
 import {
   Awakening, AWAKENING_ID, AWAKENINGS, MAGIC_TRADITIONS, MagicTradition, Metatype, METATYPE_ID,
   METATYPES
@@ -101,10 +101,12 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   get magic_tradition(): AbstractControl { return this.form.get('magic_tradition'); }
 
   constructor(
+    private readonly auth: AuthService,
     private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly service: FifthEditionService,
+    private readonly functions: FunctionsService
   ) {
     super();
   }
@@ -196,9 +198,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
-    console.log(form);
-    this.firestore
-      .update(`characters/${form.id}`, form)
+    this.firestore.update(`characters/${form.id}`, form)
       .pipe(
         tap(() => this.router.navigate(['characters/list']))
       )

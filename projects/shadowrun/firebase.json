@@ -1,14 +1,11 @@
 {
+  "functions": {
+    "source": "functions",
+    "predeploy": "npm --prefix \"$RESOURCE_DIR\" run build"
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
-  },
-  "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint",
-      "npm --prefix \"$RESOURCE_DIR\" run build"
-    ],
-    "source": "functions"
   },
   "hosting": {
     "public": "public",
@@ -36,6 +33,9 @@
     },
     "hosting": {
       "port": 5000
+    },
+    "storage": {
+      "port": 9199
     },
     "ui": {
       "enabled": true

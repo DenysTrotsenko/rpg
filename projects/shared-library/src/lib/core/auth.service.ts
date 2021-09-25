@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import {catchError, distinctUntilChanged, map, shareReplay, switchAll, switchMap, take, tap} from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
 import User = firebase.User;
-import {AuthWithEmailAndPassword} from '../models';
+import { AuthWithEmailAndPassword } from '../models';
 
 @Injectable()
 export class AuthService {
