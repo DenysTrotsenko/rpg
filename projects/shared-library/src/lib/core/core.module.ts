@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthGuard } from './auth.guard';
+import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { CacheService } from './cache.service';
 import { HttpService } from './http.service';
@@ -26,6 +27,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
   ],
   providers: [
     AuthGuard,
+    AuthResolver,
     AuthService,
     CacheService,
     HttpService,

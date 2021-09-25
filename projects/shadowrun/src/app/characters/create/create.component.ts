@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {AuthService, FirestoreService, FunctionsService, UnsubscribeDirective} from '@shared';
 import {
@@ -12,8 +13,9 @@ import {
   POSITIVE_QUALITIES_MAX_COST
 } from '@shadowrun/app/5e/5e.variables';
 import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
-import {Observable} from 'rxjs';
 import {Character} from '@shadowrun/app/5e/5e.models';
+import firebase from 'firebase/compat/app';
+import User = firebase.User;
 
 /** A maximum cost of positive qualities shouldn't exceed */
 export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
@@ -105,8 +107,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly service: FifthEditionService,
-    private readonly functions: FunctionsService
+    private readonly service: FifthEditionService
   ) {
     super();
   }
@@ -198,7 +199,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
-    this.firestore.update(`characters/${form.id}`, form)
+    this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
       .pipe(
         tap(() => this.router.navigate(['characters/list']))
       )

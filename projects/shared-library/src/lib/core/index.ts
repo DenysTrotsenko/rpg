@@ -1,8 +1,9 @@
-export * from './core.module';
-export * from './auth.guard';
-export * from './auth.service';
-export * from './cache.service';
-export * from './http.service';
-export * from './firestore.service';
-export * from './functions.service';
-export * from './storage.service';
+export { CoreModule } from './core.module';
+export { AuthGuard } from './auth.guard';
+export { AuthResolver } from './auth.resolver';
+export { AuthService } from './auth.service';
+export { CacheService } from './cache.service';
+export { HttpService } from './http.service';
+export { FirestoreService } from './firestore.service';
+export { FunctionsService } from './functions.service';
+export { StorageService } from './storage.service';

@@ -6,6 +6,7 @@ import { Character } from '@shadowrun/app/5e/5e.models';
 import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
 import { CloneDialogComponent } from '@shadowrun/app/characters/clone-dialog/clone-dialog.component';
 import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   templateUrl: './list.component.html',
@@ -22,6 +23,7 @@ export class ListComponent {
     private readonly auth: AuthService,
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService,
+    private readonly route: ActivatedRoute,
     private readonly service: FifthEditionService
   ) {}
 
@@ -34,8 +36,9 @@ export class ListComponent {
         switchMap(res => {
           const id = this.service.getId();
           const name = res;
+          const author = this.route.snapshot.data?.user?.uid;
 
-          return this.firestore.update(`characters/${id}`, { ...i, id, name });
+          return this.firestore.update(`characters/${id}`, { ...i, id, name, author });
         })
       )
       .subscribe();
