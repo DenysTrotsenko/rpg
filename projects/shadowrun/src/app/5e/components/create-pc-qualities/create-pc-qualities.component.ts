@@ -97,7 +97,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   onAddQualityClick(): void {
     const qualities: Quality[] = [...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
     const quality: Quality = qualities.find(q => !this.form.value.find(i => i.id === q.id && !q.specialty));
-
+    if (!quality) { return; }
     this.form.push(new FormGroup({
       id: new FormControl(quality.id, [Validators.required]),
       rating: new FormControl(0, [Validators.required]),

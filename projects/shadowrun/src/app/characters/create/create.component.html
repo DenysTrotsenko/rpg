@@ -77,18 +77,34 @@
   <s5e-create-pc-spells
     *ngIf="isSpellsAvailable(form.getRawValue())"
     formControlName="spells"
-    [initial]="character$ | async">
+    [previous]="character$ | async">
   </s5e-create-pc-spells>
 
-  <s5e-create-pc-adept-powers *ngIf="isAdeptPowersAvailable(form.getRawValue())" formControlName="adept_powers"></s5e-create-pc-adept-powers>
+  <s5e-create-pc-rituals
+    *ngIf="isSpellsAvailable(form.getRawValue())"
+    formControlName="rituals"
+    [previous]="character$ | async">
+  </s5e-create-pc-rituals>
 
-  <s5e-create-pc-complex-forms
+  <s5e-create-pc-initiation
+    *ngIf="isInitiationAvailable(form.getRawValue())"
+    formControlName="metamagic"
+    [previous]="character$ | async">
+  </s5e-create-pc-initiation>
+
+  <s5e-create-pc-adept-powers formControlName="adept_powers"
+    *ngIf="isAdeptPowersAvailable(form.getRawValue())"
+    [previous]="character$ | async">
+  </s5e-create-pc-adept-powers>
+
+  <s5e-create-pc-complex-forms formControlName="complex_forms"
     *ngIf="isComplexFormsAvailable(form.getRawValue())"
-    [initial]="character$ | async"
-    formControlName="complex_forms">
+    [previous]="character$ | async">
   </s5e-create-pc-complex-forms>
 
-  <s5e-create-pc-lifestyle formControlName="lifestyles"></s5e-create-pc-lifestyle>
+  <s5e-create-pc-lifestyle formControlName="lifestyles"
+    [previous]="character$ | async">
+  </s5e-create-pc-lifestyle>
 
   <s5e-create-pc-final-calculations [character]="form.getRawValue()"></s5e-create-pc-final-calculations>
 

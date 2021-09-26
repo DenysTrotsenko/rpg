@@ -1,28 +1,35 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
-import {Character, CharacterSkill, CharacterSpell, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {
+  Character,
+  CharacterRitual,
+  CharacterSkill,
+  Ritual,
+  RITUAL_ID,
+  RITUALS,
+} from '@shadowrun/app/5e';
+import {BehaviorSubject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-spells',
-  templateUrl: './create-pc-spells.component.html',
-  styleUrls: ['./create-pc-spells.component.scss'],
+  selector: 's5e-create-pc-rituals',
+  templateUrl: './create-pc-rituals.component.html',
+  styleUrls: ['./create-pc-rituals.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcSpellsComponent),
+      useExisting: forwardRef(() => CreatePcRitualsComponent),
       multi: true
     }
   ]
 })
-export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcRitualsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   @Input() set previous(value: Character) { this.previous$.next(value); }
   readonly form: FormArray = new FormArray([]);
-  readonly spells: Spell[] = SPELLS;
+  readonly rituals: Ritual[] = RITUALS;
   private readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
   private readonly initial$ = this.previous$.pipe(tap(res => this.setInitial(res)));
   onChange = (_: any) => {};
@@ -35,8 +42,8 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'specialty'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+        const allowed: string[] = ['id'];
+        const value: CharacterRitual[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
         this.onChange(value);
       } else {
         this.onChange(null);
@@ -49,11 +56,11 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   registerOnTouched(fn: any): void {}
 
   onAddClick(): void {
-    const spell: Spell = SPELLS.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
-    if (!spell) { return; }
+    const ritual: Ritual = RITUALS.find(s => !this.form.value.find(i => i.id === s.id));
+    if (!ritual) { return; }
     const group: FormGroup = new FormGroup({
-      id: new FormControl(spell.id, [Validators.required]),
-      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : []),
+      id: new FormControl(ritual.id, [Validators.required]),
+      /* *** */
       readonly: new FormControl(false, [Validators.required])
     });
     this.form.push(group);
@@ -67,17 +74,16 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     return !i.get('readonly').value;
   }
 
-  isOptionDisabled(id: SPELL_ID): boolean {
-    return !!this.form.value.find(i => i.id === id) && !SPELLS.find(i => i.id === id).specialty;
+  isOptionDisabled(id: RITUAL_ID): boolean {
+    return !!this.form.value.find(i => i.id === id);
   }
 
-  private setInitial(character: Character): void {
-    const starting: CharacterSpell[] = character?.spells ?? [];
+  private setInitial(previous: Character): void {
+    const starting: CharacterRitual[] = previous?.rituals ?? [];
     this.form.clear({ emitEvent: false });
-    starting.forEach(spell => {
+    starting.forEach(ritual => {
       const group: FormGroup = new FormGroup({
-        id: new FormControl(spell.id),
-        specialty: new FormControl(spell.specialty),
+        id: new FormControl(ritual.id),
         /* *** */
         readonly: new FormControl(true)
       });

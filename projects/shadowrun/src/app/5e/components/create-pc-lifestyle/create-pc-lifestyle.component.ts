@@ -77,13 +77,14 @@ export class CreatePcLifestyleComponent extends UnsubscribeDirective implements 
 
   private setInitial(previous: Character): void {
     const lifestyles: CharacterLifestyle[] = previous?.lifestyles ?? [];
-    this.form.clear();
+    this.form.clear({ emitEvent: false });
     lifestyles.forEach(i => {
       const group: FormGroup = new FormGroup({
         id: new FormControl(i.id),
         options: new FormControl(i.options),
         details: new FormControl(i.details),
         term: new FormControl(i.term),
+        /* *** */
         readonly: new FormControl(true)
       });
       this.form.push(group);

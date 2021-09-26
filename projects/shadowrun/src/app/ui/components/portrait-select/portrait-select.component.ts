@@ -41,7 +41,7 @@ export class PortraitSelectComponent implements ControlValueAccessor {
   isDisabled(): boolean { return this.disabled; }
 
   getPortrait(): string {
-    return 'gs://shadowrun-681be.appspot.com/portraits/' + this.portraits[this.value];
+    return 'assets/images/portraits/' + this.portraits[this.value];
   }
 
   onBackClick(): void {

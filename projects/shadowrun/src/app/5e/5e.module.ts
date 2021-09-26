@@ -20,6 +20,8 @@ import { ViewSkillsComponent } from './components/view-skills/view-skills.compon
 import { ViewQualitiesComponent } from './components/view-qualities/view-qualities.component';
 import { ViewGeneralComponent } from './components/view-general/view-general.component';
 import { ViewComplexFormsComponent } from './components/view-complex-forms/view-complex-forms.component';
+import { CreatePcRitualsComponent } from './components/create-pc-rituals/create-pc-rituals.component';
+import { CreatePcInitiationComponent } from './components/create-pc-initiation/create-pc-initiation.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -33,6 +35,8 @@ const DECLARATIONS = [
   CreatePcSkillsComponent,
   CreatePcSpellsComponent,
   CreatePcWareComponent,
+  CreatePcRitualsComponent,
+  CreatePcInitiationComponent,
   CreatePcFinalCalculationsComponent,
   ViewAttributesComponent,
   ViewComplexFormsComponent,
@@ -46,6 +50,6 @@ const DECLARATIONS = [
   exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS]
+  declarations: [...DECLARATIONS, ]
 })
 export class FifthEditionModule {}

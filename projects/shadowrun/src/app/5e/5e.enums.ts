@@ -200,6 +200,18 @@ export enum MAGICAL_TRADITION_ID {
   SHAMAN = 'mt:shaman'
 }
 
+export enum METAMAGIC_ID {
+  ADEPT_CENTERING = 'mm:adept_centering',
+  CENTERING = 'mm:centering',
+  FIXATION = 'mm:fixation',
+  FLEXIBLE_SIGNATURE = 'mm:flexible_signature',
+  MASKING = 'mm:masking',
+  POWER_POINT = 'mm:power_point',
+  QUICKENING = 'mm:quickening',
+  SPELL_SHAPING = 'mm:spell_shaping',
+  SHIELDING = 'mm:shielding'
+}
+
 export enum METATYPE_ID {
   HUMAN = 'metatype:human',
   DWARF = 'metatype:dwarf',
@@ -341,7 +353,27 @@ export enum QUALITY_ID {
   UNCOUTH = 'quality:uncouth',
   UNEDUCATED = 'quality:uneducated',
   UNSTEADY_HANDS = 'quality:unsteady_hands',
-  WEAK_IMMUNE_SYSTEM = 'quality:weak_immune_system'
+  WEAK_IMMUNE_SYSTEM = 'quality:weak_immune_system',
+}
+
+export enum RITUAL_ID {
+  CURSE = 'ritual:curse',
+  PRODIGAL_SPELL = 'ritual:prodigal_spell',
+  REMOTE_SENSING = 'ritual:remote_sensing',
+  WARD = 'ritual:ward',
+  CIRCLE_OF_PROTECTION = 'ritual:circle_of_protection',
+  CIRCLE_OF_HEALING = 'ritual:circle_of_healing',
+  RENASCENCE = 'ritual:renascence',
+  WATCHER = 'ritual:watcher',
+  HOMUNCULUS = 'ritual:homunculus',
+}
+
+export enum RITUAL_KEYWORD_ID {
+  ANCHORED = 'rk:anchored',
+  MATERIAL_LINK = 'rk:material_link',
+  MINION = 'rk:minion',
+  SPELL = 'rk:spell',
+  SPOTTER = 'rk:spotter'
 }
 
 export enum SKILL_ID {

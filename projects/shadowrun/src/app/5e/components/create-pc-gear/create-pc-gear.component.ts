@@ -52,6 +52,7 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
 
   onAddClick(): void {
     const item: Gear = GEAR.find(s => !this.form.value.find(i => i.id === s.id));
+    if (!item) { return; }
     const group: FormGroup = new FormGroup({
       id: new FormControl(item.id, [Validators.required])
     });

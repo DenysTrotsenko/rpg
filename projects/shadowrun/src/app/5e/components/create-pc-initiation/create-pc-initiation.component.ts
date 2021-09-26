@@ -1,28 +1,34 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
-import {Character, CharacterSkill, CharacterSpell, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {
+  Character,
+  CharacterMetamagic,
+  METAMAGIC,
+  Metamagic,
+  METAMAGIC_ID
+} from '@shadowrun/app/5e';
+import {BehaviorSubject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
 @Component({
   /* tslint:disable-next-line */
-  selector: 's5e-create-pc-spells',
-  templateUrl: './create-pc-spells.component.html',
-  styleUrls: ['./create-pc-spells.component.scss'],
+  selector: 's5e-create-pc-initiation',
+  templateUrl: './create-pc-initiation.component.html',
+  styleUrls: ['./create-pc-initiation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CreatePcSpellsComponent),
+      useExisting: forwardRef(() => CreatePcInitiationComponent),
       multi: true
     }
   ]
 })
-export class CreatePcSpellsComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcInitiationComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   @Input() set previous(value: Character) { this.previous$.next(value); }
   readonly form: FormArray = new FormArray([]);
-  readonly spells: Spell[] = SPELLS;
+  readonly metamagic: Metamagic[] = METAMAGIC;
   private readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
   private readonly initial$ = this.previous$.pipe(tap(res => this.setInitial(res)));
   onChange = (_: any) => {};
@@ -35,8 +41,8 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'specialty'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+        const allowed: string[] = ['id', 'rating'];
+        const value: CharacterMetamagic[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
         this.onChange(value);
       } else {
         this.onChange(null);
@@ -49,12 +55,12 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
   registerOnTouched(fn: any): void {}
 
   onAddClick(): void {
-    const spell: Spell = SPELLS.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
-    if (!spell) { return; }
+    const metamagic: Metamagic = METAMAGIC.find(s => !this.form.value.find(i => i.id === s.id && !s.multiple));
+    if (!metamagic) { return; }
     const group: FormGroup = new FormGroup({
-      id: new FormControl(spell.id, [Validators.required]),
-      specialty: new FormControl(null, !!spell.specialty ? [Validators.required] : []),
-      readonly: new FormControl(false, [Validators.required])
+      id: new FormControl(metamagic.id),
+      rating: new FormControl(metamagic.multiple ? 1 : null),
+      readonly: new FormControl(false)
     });
     this.form.push(group);
   }
@@ -67,18 +73,17 @@ export class CreatePcSpellsComponent extends UnsubscribeDirective implements Con
     return !i.get('readonly').value;
   }
 
-  isOptionDisabled(id: SPELL_ID): boolean {
-    return !!this.form.value.find(i => i.id === id) && !SPELLS.find(i => i.id === id).specialty;
+  isOptionDisabled(id: METAMAGIC_ID): boolean {
+    return !!this.form.value.find(i => i.id === id) && !METAMAGIC.find(i => i.id === id).multiple;
   }
 
-  private setInitial(character: Character): void {
-    const starting: CharacterSpell[] = character?.spells ?? [];
+  private setInitial(previous: Character): void {
+    const starting: CharacterMetamagic[] = previous?.metamagic ?? [];
     this.form.clear({ emitEvent: false });
-    starting.forEach(spell => {
+    starting.forEach(metamagic => {
       const group: FormGroup = new FormGroup({
-        id: new FormControl(spell.id),
-        specialty: new FormControl(spell.specialty),
-        /* *** */
+        id: new FormControl(metamagic.id),
+        rating: new FormControl(metamagic.rating ?? null),
         readonly: new FormControl(true)
       });
       this.form.push(group);

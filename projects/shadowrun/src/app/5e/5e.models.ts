@@ -6,9 +6,9 @@ import {
   BOOK_ID, COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
   COMPLEX_FORM_TARGET_ID, CONTACT_TYPE_ID,
-  GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID,
+  GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID, METAMAGIC_ID,
   METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID,
-  QUALITY_ID,
+  QUALITY_ID, RITUAL_ID, RITUAL_KEYWORD_ID,
   SKILL_CATEGORY_ID,
   SKILL_ID,
   SPELL_CATEGORY_ID,
@@ -140,6 +140,16 @@ export interface MagicTradition {
   };
 }
 
+export interface Metamagic {
+  id: METAMAGIC_ID;
+  book: BOOK_ID;
+  name: string;
+  multiple: boolean;
+  labels: {
+    description: string;
+  };
+}
+
 export interface Metatype {
   id: METATYPE_ID;
   book: BOOK_ID;
@@ -189,6 +199,17 @@ export interface Quality {
     description: string;
   };
 }
+
+export interface Ritual {
+  id: RITUAL_ID;
+  name: string;
+  keywords: RITUAL_KEYWORD_ID[];
+  labels: {
+    description: string;
+  };
+}
+
+export interface RitualKeyword { id: RITUAL_KEYWORD_ID; name: string; labels: { description: string; }; }
 
 export interface Skill {
   id: SKILL_ID;
@@ -318,6 +339,11 @@ export interface CharacterLifestyle {
   details: string;
 }
 
+export interface CharacterMetamagic {
+  id: METAMAGIC_ID;
+  rating: number;
+}
+
 export interface CharacterQuality {
   id: QUALITY_ID;
   rating: number;
@@ -328,6 +354,10 @@ export interface CharacterSkill {
   id: SKILL_ID;
   rating: number;
   specializations: string[];
+}
+
+export interface CharacterRitual {
+  id: RITUAL_ID;
 }
 
 export interface CharacterSpell {
@@ -353,6 +383,8 @@ export interface Character {
   knowledge: any[];
   contacts: any[];
   spells: CharacterSpell[];
+  rituals: CharacterRitual[];
+  metamagic: CharacterMetamagic[];
   complex_forms: CharacterComplexForm[];
   adept_powers: any[];
   lifestyles: CharacterLifestyle[];

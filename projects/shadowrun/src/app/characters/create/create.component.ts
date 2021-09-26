@@ -53,6 +53,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     knowledge: new FormControl(null, [Validators.required]),
     contacts: new FormControl(null, [Validators.required]),
     spells: new FormControl(null),
+    rituals: new FormControl(null),
+    metamagic: new FormControl(null),
     complex_forms: new FormControl(null),
     adept_powers: new FormControl(null),
     lifestyles: new FormControl(null, [Validators.required]),
@@ -81,6 +83,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
           knowledge: !!res ? res.knowledge : null,
           contacts: !!res ? res.contacts : null,
           spells: !!res ? res.spells : null,
+          rituals: !!res ? res.rituals : null,
+          metamagic: !!res ? res.metamagic : null,
           complex_forms: !!res ? res.complex_forms : null,
           adept_powers: !!res ? res.adept_powers : null,
           lifestyles: !!res ? res.lifestyles : null,
@@ -157,6 +161,19 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     return 0;
   }
   getCalculatedNuyen(): void {}
+
+  isInitiationAvailable(form): boolean {
+    const canUseInitiation = [
+      AWAKENING_ID.ADEPT,
+      AWAKENING_ID.MYSTIC_ADEPT,
+      AWAKENING_ID.MAGICIAN,
+      AWAKENING_ID.ASPECTED_MAGICIAN_ALCHEMIST,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SUMMONER,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SPELLCASTER
+    ];
+
+    return canUseInitiation.includes(form.awakening);
+  }
 
   isAdeptPowersAvailable(form): boolean {
     const canUseAdeptPowers = [

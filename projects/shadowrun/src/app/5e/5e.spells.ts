@@ -1,14 +1,130 @@
 import {
   BOOK_ID,
+  RITUAL_ID,
+  RITUAL_KEYWORD_ID,
   SPELL_CATEGORY_ID,
   SPELL_DAMAGE_ID,
-  SPELL_DURATION_ID, SPELL_ID,
+  SPELL_DURATION_ID,
+  SPELL_ID,
   SPELL_KIND_ID,
   SPELL_RANGE_ID,
   SPELL_TAG_ID,
   SPELL_TYPE_ID
 } from './5e.enums';
-import { Spell, SpellCategory, SpellDamage, SpellDuration, SpellRange, SpellTag, SpellType } from './5e.models';
+import {Ritual, RitualKeyword, Spell, SpellCategory, SpellDamage, SpellDuration, SpellRange, SpellTag, SpellType} from './5e.models';
+
+export const RITUAL_KEYWORDS: RitualKeyword[] = [
+  {
+    id: RITUAL_KEYWORD_ID.ANCHORED,
+    name: 'Anchored',
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_KEYWORD_ID.MATERIAL_LINK,
+    name: 'Material Link',
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_KEYWORD_ID.MINION,
+    name: 'Minion',
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_KEYWORD_ID.SPELL,
+    name: 'Spell',
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_KEYWORD_ID.SPOTTER,
+    name: 'Spotter',
+    labels: {
+      description: ''
+    }
+  },
+];
+
+export const RITUALS: Ritual[] = [
+  {
+    id: RITUAL_ID.CURSE,
+    name: 'Curse',
+    keywords: [RITUAL_KEYWORD_ID.MATERIAL_LINK, RITUAL_KEYWORD_ID.SPELL],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.PRODIGAL_SPELL,
+    name: 'Prodigal Spell',
+    keywords: [RITUAL_KEYWORD_ID.SPELL, RITUAL_KEYWORD_ID.SPOTTER],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.REMOTE_SENSING,
+    name: 'Remote Sensing',
+    keywords: [RITUAL_KEYWORD_ID.SPELL, RITUAL_KEYWORD_ID.SPOTTER],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.WARD,
+    name: 'Ward',
+    keywords: [RITUAL_KEYWORD_ID.ANCHORED],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.CIRCLE_OF_PROTECTION,
+    name: 'Circle of Protection',
+    keywords: [RITUAL_KEYWORD_ID.ANCHORED],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.CIRCLE_OF_HEALING,
+    name: 'Circle of Healing',
+    keywords: [RITUAL_KEYWORD_ID.ANCHORED],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.RENASCENCE,
+    name: 'Renascence',
+    keywords: [RITUAL_KEYWORD_ID.ANCHORED, RITUAL_KEYWORD_ID.SPELL],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.WATCHER,
+    name: 'Watcher',
+    keywords: [RITUAL_KEYWORD_ID.MINION],
+    labels: {
+      description: ''
+    }
+  },
+  {
+    id: RITUAL_ID.HOMUNCULUS,
+    name: 'Homunculus',
+    keywords: [RITUAL_KEYWORD_ID.MINION],
+    labels: {
+      description: ''
+    }
+  },
+];
 
 export const SPELL_CATEGORIES: SpellCategory[] = [
   {

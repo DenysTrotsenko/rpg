@@ -81,7 +81,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
   }
 
   setInitialValue(character: Character): void {
-    this.form.clear();
+    this.form.clear({ emitEvent: false });
     const starting: CharacterContact[] = character?.contacts ?? [];
     starting.forEach(i => {
       const group: FormGroup = new FormGroup({
