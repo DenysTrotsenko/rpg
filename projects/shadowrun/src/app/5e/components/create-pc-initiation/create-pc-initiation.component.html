@@ -8,14 +8,13 @@
   <mat-card-content>
     <div *ngFor="let group of form.controls;" class="d-f ai-b fw-nw">
       <mat-form-field appearance="outline" class="mr-5">
-        <mat-label>Ritual</mat-label>
+        <mat-label>Metamagic</mat-label>
         <mat-select [formControl]="group.get('id')">
-          <mat-option *ngFor="let i of metamagic" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
+          <mat-option *ngFor="let i of metamagic$ | async" [value]="i.id" [disabled]="isOptionDisabled(i.id)">
             {{i.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <number-input *ngIf="!!group.get('rating').value" [formControl]="group.get('rating')" [min]="1"></number-input>
       <span class="f-1"></span>
       <button mat-icon-button type="button" [disabled]="!isDeletable(group)" (click)="onRemoveClick(group.get('id').value)">
         <mat-icon>delete</mat-icon>

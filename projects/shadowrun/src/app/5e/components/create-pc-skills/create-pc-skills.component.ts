@@ -54,7 +54,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     this.character$.asObservable()
   ]).pipe(
     tap(res => {
-      this.setInitialValue(res[0], res[1], res[2]);
+      this.setInitial(res[0], res[1], res[2]);
     })
   );
 
@@ -66,9 +66,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     this.subscriptions = this.skills$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'rating', 'specializations'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -103,7 +101,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
     control.setValue((control.value ?? []).filter(i => i !== specialization));
   }
 
-  private setInitialValue(
+  private setInitial(
     awakeningId: AWAKENING_ID,
     qualities: CharacterQuality[],
     character: Character
@@ -113,7 +111,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
       ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES, ...RACIAL_QUALITIES
     ].filter(i => (qualities ?? []).map(q => q.id).includes(i.id));
 
-    this.form.clear();
+    this.form.clear({ emitEvent: false });
 
     ACTIVE_SKILLS
       .filter(skill => {
@@ -143,5 +141,12 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
           initialSpecializations: new FormControl(specializations),
         }));
       });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'rating', 'specializations'];
+    const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
-  AWAKENING_ID, Character, CharacterQuality, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES,
+  AWAKENING_ID, Character, CharacterQuality, CharacterRitual, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES,
   POSITIVE_QUALITIES, Quality, QUALITY_ID, RACIAL_QUALITIES
 } from '@shadowrun/app/5e';
 
@@ -65,12 +65,10 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.initial$.pipe(tap(res => { this.setInitialValue(res); })).subscribe();
+    this.subscriptions = this.initial$.pipe(tap(res => { this.setInitial(res); })).subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'rating', 'specialty'];
-        const value: CharacterQuality[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -111,7 +109,7 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     this.form.removeAt(index);
   }
 
-  private setInitialValue(initial: Character): void {
+  private setInitial(initial: Character): void {
     const qualities = initial?.qualities ?? [];
 
     this.form.clear();
@@ -127,5 +125,12 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
       group.disable({ emitEvent: false });
       group.get('rating').enable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'rating', 'specialty'];
+    const value: CharacterQuality[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

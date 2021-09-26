@@ -42,9 +42,7 @@ export class CreatePcRitualsComponent extends UnsubscribeDirective implements Co
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id'];
-        const value: CharacterRitual[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -90,5 +88,12 @@ export class CreatePcRitualsComponent extends UnsubscribeDirective implements Co
       this.form.push(group);
       group.disable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id'];
+    const value: CharacterRitual[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

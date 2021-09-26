@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
-import {ADEPT_POWERS, AdeptPower, Character, CharacterComplexForm, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
+import {ADEPT_POWERS, AdeptPower, Character, CharacterComplexForm, CharacterMetamagic, Spell, SPELL_ID, SPELLS} from '@shadowrun/app/5e';
 import {BehaviorSubject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
@@ -34,14 +34,11 @@ export class CreatePcAdeptPowersComponent extends UnsubscribeDirective implement
   ngOnInit(): void {
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
-      // if (this.form.valid) {
-      //   const allowed: string[] = ['id'];
-      //   const value: CharacterComplexForm[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-      //   this.onChange(value);
-      // } else {
-      //   this.onChange(null);
-      // }
-      this.form.valid ? this.onChange(this.form.getRawValue()) : this.onChange(null);
+      if (this.form.valid) {
+        this.setChange();
+      } else {
+        this.onChange(null);
+      }
     });
   }
 
@@ -69,6 +66,8 @@ export class CreatePcAdeptPowersComponent extends UnsubscribeDirective implement
   }
 
   private setInitial(character: Character): void {
+    this.form.clear({ emitEvent: false });
+
     const starting: CharacterComplexForm[] = character?.adept_powers ?? [];
     starting.forEach(cf => {
       const group: FormGroup = new FormGroup({
@@ -78,5 +77,12 @@ export class CreatePcAdeptPowersComponent extends UnsubscribeDirective implement
       this.form.push(group);
       group.disable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id'];
+    const value: CharacterComplexForm[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

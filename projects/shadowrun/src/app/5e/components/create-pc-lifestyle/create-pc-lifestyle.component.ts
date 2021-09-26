@@ -1,6 +1,11 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {Character, CharacterLifestyle, CharacterSkill, CharacterSpell, Lifestyle, LifestyleOption} from '@shadowrun/app/5e/5e.models';
+import {
+  Character,
+  CharacterLifestyle,
+  Lifestyle,
+  LifestyleOption
+} from '@shadowrun/app/5e/5e.models';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
 import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun/app/5e';
 import {LIFESTYLE_ID} from '@shadowrun/app/5e/5e.enums';
@@ -37,9 +42,7 @@ export class CreatePcLifestyleComponent extends UnsubscribeDirective implements 
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'options', 'details', 'term'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -90,5 +93,12 @@ export class CreatePcLifestyleComponent extends UnsubscribeDirective implements 
       this.form.push(group);
       group.disable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'options', 'details', 'term'];
+    const value: CharacterLifestyle[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

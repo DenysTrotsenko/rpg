@@ -6,7 +6,15 @@ import {BehaviorSubject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
 import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
-import {Character, CharacterKnowledge, CharacterSkill, SKILL_CATEGORIES, SkillCategory, SPECIALIZATIONS_MAX} from '@shadowrun/app/5e';
+import {
+  Character,
+  CharacterKnowledge,
+  CharacterQuality,
+  CharacterSkill,
+  SKILL_CATEGORIES,
+  SkillCategory,
+  SPECIALIZATIONS_MAX
+} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -41,9 +49,7 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
     this.subscriptions = this.knowledge$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'category', 'name', 'rating', 'specializations'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -136,5 +142,12 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       group.get('category').disable();
       group.get('rating').disable();
     }
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'category', 'name', 'rating', 'specializations'];
+    const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

@@ -144,6 +144,7 @@ export interface Metamagic {
   id: METAMAGIC_ID;
   book: BOOK_ID;
   name: string;
+  type: 'adept' | 'all';
   multiple: boolean;
   labels: {
     description: string;

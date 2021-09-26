@@ -87,9 +87,10 @@
   </s5e-create-pc-rituals>
 
   <s5e-create-pc-initiation
-    *ngIf="isInitiationAvailable(form.getRawValue())"
+    *ngIf="isInitiationAvailable$ | async"
     formControlName="metamagic"
-    [previous]="character$ | async">
+    [previous]="character$ | async"
+    [awakening]="form.get('awakening').value">
   </s5e-create-pc-initiation>
 
   <s5e-create-pc-adept-powers formControlName="adept_powers"

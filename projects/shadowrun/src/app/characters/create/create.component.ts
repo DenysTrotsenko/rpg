@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {AuthService, FirestoreService, FunctionsService, UnsubscribeDirective} from '@shared';
 import {
@@ -77,19 +77,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
           metatype: !!res ? res.metatype : METATYPE_ID.HUMAN,
           awakening: !!res ? res.awakening : AWAKENING_ID.MUNDANE,
           magic_tradition: !!res ? res.magic_tradition : null,
-          qualities: !!res ? res.qualities : null,
-          attributes: !!res ? res.attributes : null,
-          skills: !!res ? res.skills : null,
-          knowledge: !!res ? res.knowledge : null,
-          contacts: !!res ? res.contacts : null,
-          spells: !!res ? res.spells : null,
-          rituals: !!res ? res.rituals : null,
-          metamagic: !!res ? res.metamagic : null,
-          complex_forms: !!res ? res.complex_forms : null,
-          adept_powers: !!res ? res.adept_powers : null,
-          lifestyles: !!res ? res.lifestyles : null,
-          ware: !!res ? res.ware : null,
-          gear: !!res ? res.gear : null,
         }, { emitEvent: false });
         !!res ? this.portrait.disable() : this.portrait.enable();
         !!res ? this.name.disable() : this.name.enable();
@@ -99,6 +86,23 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       }),
       shareReplay(1)
     );
+  readonly isInitiationAvailable$: Observable<boolean> = combineLatest([
+    this.character$,
+    this.form.get('awakening').valueChanges
+  ]).pipe(map(res => {
+    const character = res[0];
+    const awakening = res[1];
+    const canUseInitiation = [
+      AWAKENING_ID.ADEPT,
+      AWAKENING_ID.MYSTIC_ADEPT,
+      AWAKENING_ID.MAGICIAN,
+      AWAKENING_ID.ASPECTED_MAGICIAN_ALCHEMIST,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SUMMONER,
+      AWAKENING_ID.ASPECTED_MAGICIAN_SPELLCASTER
+    ];
+
+    return !!character && canUseInitiation.includes(awakening);
+  }));
 
   get portrait(): AbstractControl { return this.form.get('portrait'); }
   get name(): AbstractControl { return this.form.get('name'); }

@@ -4,7 +4,7 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
-  Attribute, ATTRIBUTES, Awakening, AWAKENING_ID, AWAKENINGS, Character, CharacterAttribute, CharacterQuality,
+  Attribute, ATTRIBUTES, Awakening, AWAKENING_ID, AWAKENINGS, Character, CharacterAttribute, CharacterMetamagic, CharacterQuality,
   DEFAULT_ATTRIBUTE_RANGE, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES, POSITIVE_QUALITIES, Quality,
   RACIAL_QUALITIES
 } from '@shadowrun/app/5e';
@@ -52,9 +52,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
     this.subscriptions = this.attributes$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'rating'];
-        const value: CharacterAttribute[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -79,7 +77,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
       ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES, ...RACIAL_QUALITIES
     ].filter(i => (qualities ?? []).map(q => q.id).includes(i.id));
 
-    this.form.clear();
+    this.form.clear({ emitEvent: false });
 
     ATTRIBUTES.forEach(attribute => {
       const previous: CharacterAttribute | null = (character?.attributes ?? []).find(i => i.id === attribute.id);
@@ -106,5 +104,12 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
         ])
       }));
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'rating'];
+    const value: CharacterAttribute[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

@@ -4,7 +4,7 @@ import {getFilteredObject, UnsubscribeDirective} from '@shared';
 import {
   Character,
   CharacterContact,
-  CharacterKnowledge,
+  CharacterKnowledge, CharacterMetamagic,
   CharacterSkill,
   CharacterSpell,
   CONTACT_TYPE_ID,
@@ -32,7 +32,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
   readonly form: FormArray = new FormArray([]);
   private readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
   private readonly initial$: Observable<Character> = this.previous$.pipe(
-    tap(res => this.setInitialValue(res))
+    tap(res => this.setInitial(res))
   );
   onChange = (_: any) => {};
 
@@ -44,9 +44,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id', 'connection', 'loyalty', 'type', 'name', 'details'];
-        const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -80,7 +78,7 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
     this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
   }
 
-  setInitialValue(character: Character): void {
+  setInitial(character: Character): void {
     this.form.clear({ emitEvent: false });
     const starting: CharacterContact[] = character?.contacts ?? [];
     starting.forEach(i => {
@@ -100,5 +98,12 @@ export class CreatePcContactsComponent extends UnsubscribeDirective implements C
       group.get('name').disable();
       group.get('type').disable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id', 'connection', 'loyalty', 'type', 'name', 'details'];
+    const value: CharacterSkill[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }

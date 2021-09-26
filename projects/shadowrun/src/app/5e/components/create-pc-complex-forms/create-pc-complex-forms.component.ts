@@ -3,7 +3,15 @@ import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGrou
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
-import {Character, CharacterComplexForm, ComplexForm, COMPLEX_FORMS, COMPLEX_FORM_ID, CharacterAttribute} from '@shadowrun/app/5e';
+import {
+  Character,
+  CharacterComplexForm,
+  ComplexForm,
+  COMPLEX_FORMS,
+  COMPLEX_FORM_ID,
+  CharacterAttribute,
+  CharacterMetamagic
+} from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -34,9 +42,7 @@ export class CreatePcComplexFormsComponent extends UnsubscribeDirective implemen
     this.subscriptions = this.initial$.subscribe();
     this.subscriptions = this.form.valueChanges.subscribe(() => {
       if (this.form.valid) {
-        const allowed: string[] = ['id'];
-        const value: CharacterComplexForm[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-        this.onChange(value);
+        this.setChange();
       } else {
         this.onChange(null);
       }
@@ -88,5 +94,12 @@ export class CreatePcComplexFormsComponent extends UnsubscribeDirective implemen
       this.form.push(group);
       group.disable();
     });
+    this.setChange();
+  }
+
+  private setChange(): void {
+    const allowed: string[] = ['id'];
+    const value: CharacterComplexForm[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
+    this.onChange(value);
   }
 }
