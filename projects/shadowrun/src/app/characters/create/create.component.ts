@@ -41,7 +41,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     portrait: new FormControl(DEFAULT_PORTRAIT, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     miscellaneous: new FormGroup({
-      biography: new FormControl(null, [Validators.required]),
+      biography: new FormControl(null),
       gender: new FormControl(null, [Validators.required]),
     }),
     metatype: new FormControl(METATYPE_ID.HUMAN, [Validators.required]),
