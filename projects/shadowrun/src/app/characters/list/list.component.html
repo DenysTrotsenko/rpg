@@ -3,11 +3,11 @@
 </mat-toolbar>
 <mat-nav-list>
   <mat-list-item>
-    <img matListAvatar class="portrait" src="assets/images/portraits/pc_humanmale_00_faceless.png" alt="Default portrait">
+    <img matListAvatar class="portrait" src="gs://shadowrun-681be.appspot.com/portraits/pc_humanmale_00_faceless.png" alt="Default portrait">
     <a matLine routerLink="../pc/create">Create new PC</a>
   </mat-list-item>
   <mat-list-item *ngFor="let character of characters$ | async">
-    <img matListAvatar class="portrait" [src]="'assets/images/portraits/' + character.portrait" alt="Character portrait">
+    <img matListAvatar class="portrait" [src]="'gs://shadowrun-681be.appspot.com/portraits/' + character.portrait" alt="Character portrait">
     <a matLine [routerLink]="['../pc/view', character.id]">{{ character.name }}</a>
     <a mat-icon-button [routerLink]="['../pc/update', character.id]" matTooltip="Upgrade">
       <mat-icon color="primary">keyboard_double_arrow_up</mat-icon>
