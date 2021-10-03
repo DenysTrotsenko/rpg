@@ -111,8 +111,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     const character = res[0];
     const awakening = res[1];
 
-    // return !!character && awakening === AWAKENING_ID.TECHNOMANCER;
-    return awakening === AWAKENING_ID.TECHNOMANCER;
+    return !!character && awakening === AWAKENING_ID.TECHNOMANCER;
   }));
 
 

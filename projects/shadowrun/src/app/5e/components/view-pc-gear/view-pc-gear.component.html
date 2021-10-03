@@ -1,0 +1,31 @@
+<p *ngIf="view === 'concise' && items$ | async as items;">
+  <b>Gear:</b>
+  <span *ngFor="let i of items;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+    {{i.name}}
+  </span>
+</p>
+<mat-card *ngIf="view === 'full' && items$ | async as items" class="mb-15">
+  <mat-card-header class="ai-fs">
+    <mat-card-title>Gear</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="mat-table">
+      <thead>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Name</th>
+<!--        <th class="mat-header-cell">Target</th>-->
+<!--        <th class="mat-header-cell">Duration</th>-->
+<!--        <th class="mat-header-cell">Fading</th>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of items;" class="mat-row">
+        <td class="mat-cell"><span [matTooltip]="i.tooltip">{{i?.name}}</span></td>
+<!--        <td class="mat-cell" [matTooltip]="i.target?.name">{{i?.target?.name}}</td>-->
+<!--        <td class="mat-cell" [matTooltip]="i.duration?.name">{{i.duration?.alias}}</td>-->
+<!--        <td class="mat-cell">{{i?.fading}}</td>-->
+      </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

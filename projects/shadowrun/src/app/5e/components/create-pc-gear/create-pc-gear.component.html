@@ -23,9 +23,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <number-input [formControl]="group.get('rating')" [min]="group.get('min').value" [max]="group.get('max').value">
+        Rating
+      </number-input>
       <span class="f-1"></span>
       <number-input [formControl]="group.get('quantity')" [min]="1" [max]="9999"></number-input>
-      <button mat-icon-button type="button" (click)="onRemoveClick(group.get('id').value)">
+      <button mat-icon-button type="button" (click)="onRemoveClick(i)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

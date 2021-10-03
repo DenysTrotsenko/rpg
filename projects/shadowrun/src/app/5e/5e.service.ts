@@ -41,7 +41,15 @@ import {
   LIFESTYLES,
   CharacterComplexForm,
   ComplexFormView,
-  ComplexForm, COMPLEX_FORMS, COMPLEX_FORM_TARGETS, COMPLEX_FORM_DURATIONS, ComplexFormTarget, ComplexFormDuration
+  ComplexForm,
+  COMPLEX_FORMS,
+  COMPLEX_FORM_TARGETS,
+  COMPLEX_FORM_DURATIONS,
+  ComplexFormTarget,
+  ComplexFormDuration,
+  GearView,
+  CharacterGear,
+  Gear, GEAR
 } from '@shadowrun/app/5e';
 
 @Injectable()
@@ -90,6 +98,24 @@ export class FifthEditionService {
     ].filter(i => !!i).join('\n');
 
     return { name, target, duration, fading, description, tooltip } as ComplexFormView;
+  }
+
+  getGearView(value: CharacterGear): GearView {
+    const item: Gear = GEAR.find(i => i.id === value.id);
+    const name: string = item?.name;
+    const availability: string = item?.labels?.availability;
+    const cost: string = item?.labels?.cost;
+    const description = item?.labels?.description;
+    const data: string = Object.entries(item?.data ?? {}).map(i => `${i[0]}: ${i[1]}`).join(', ');
+    const tooltip: string = [
+      `${name}\n`,
+      `${data}`,
+      `${description}`,
+      `Availability: ${availability}`,
+      `Cost: ${cost}`,
+    ].filter(i => !!i).join('\n');
+
+    return { tooltip } as GearView;
   }
 
   getGeneralView(value: CharacterGeneral): GeneralView {

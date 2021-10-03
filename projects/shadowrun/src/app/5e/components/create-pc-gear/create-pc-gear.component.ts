@@ -57,16 +57,19 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
     if (!item) { return; }
     const group: FormGroup = new FormGroup({
       id: new FormControl(item.id, [Validators.required]),
+      rating: new FormControl(item.ratings[0], [Validators.required]),
       quantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(9999)]),
       /* *** */
       readonly: new FormControl(false),
-      type: new FormControl(item.type)
+      type: new FormControl(item.type),
+      min: new FormControl(item.ratings[0]),
+      max: new FormControl(item.ratings[item.ratings.length - 1]),
     });
     this.form.push(group);
   }
 
-  onRemoveClick(id: GEAR_ID): void {
-    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
+  onRemoveClick(index: number): void {
+    this.form.removeAt(index);
   }
 
   private setInitial(previous: Character): void {
@@ -76,10 +79,13 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
       const item: Gear = GEAR.find(g => g.id === i.id);
       this.form.push(new FormGroup({
         id: new FormControl({ value: i.id, disabled: true }, [Validators.required]),
+        rating: new FormControl({ value: i.rating , disabled: true }, [Validators.required]),
         quantity: new FormControl(i.quantity, [Validators.required, Validators.min(1), Validators.max(9999)]),
         /* *** */
         readonly: new FormControl(true),
-        type: new FormControl(item.type)
+        type: new FormControl(item.type),
+        min: new FormControl(i.rating),
+        max: new FormControl(item.ratings[item.ratings.length - 1]),
       }));
     });
     this.setChange();

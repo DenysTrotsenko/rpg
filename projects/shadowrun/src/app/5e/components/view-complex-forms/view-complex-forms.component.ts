@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {Character, ComplexFormView, FifthEditionService, SpellView} from '@shadowrun/app/5e';
+import { Character, ComplexFormView, FifthEditionService } from '@shadowrun/app/5e';
 
 @Component({
   /* tslint:disable-next-line */

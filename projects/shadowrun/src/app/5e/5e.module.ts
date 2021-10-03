@@ -23,6 +23,8 @@ import { ViewComplexFormsComponent } from './components/view-complex-forms/view-
 import { CreatePcRitualsComponent } from './components/create-pc-rituals/create-pc-rituals.component';
 import { CreatePcInitiationComponent } from './components/create-pc-initiation/create-pc-initiation.component';
 import { CreatePcSubmersionComponent } from './components/create-pc-submersion/create-pc-submersion.component';
+import { ViewPcGearComponent } from './components/view-pc-gear/view-pc-gear.component';
+import { ViewPcWareComponent } from './components/view-pc-ware/view-pc-ware.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -45,13 +47,15 @@ const DECLARATIONS = [
   ViewGeneralComponent,
   ViewQualitiesComponent,
   ViewSkillsComponent,
-  ViewSpellsComponent
+  ViewSpellsComponent,
+  ViewPcGearComponent,
+  ViewPcWareComponent
 ];
 
 @NgModule({
   exports: [...DECLARATIONS],
   imports: [SharedModule, UiModule],
   providers: [FifthEditionService],
-  declarations: [...DECLARATIONS ]
+  declarations: [...DECLARATIONS]
 })
 export class FifthEditionModule {}

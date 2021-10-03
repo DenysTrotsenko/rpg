@@ -443,6 +443,11 @@ export interface ComplexFormView {
   tooltip: string;
 }
 
+export interface GearView {
+  name: string;
+  tooltip: string;
+}
+
 export interface GeneralView {
   portrait: string;
   name: string;
