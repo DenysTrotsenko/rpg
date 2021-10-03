@@ -114,6 +114,10 @@
     [previous]="character$ | async">
   </s5e-create-pc-lifestyle>
 
+  <s5e-create-pc-gear formControlName="gear"
+    [previous]="character$ | async">
+  </s5e-create-pc-gear>
+
   <s5e-create-pc-final-calculations [character]="form.getRawValue()"></s5e-create-pc-final-calculations>
 
   <mat-card class="mb-15">

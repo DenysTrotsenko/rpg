@@ -95,6 +95,11 @@ export interface Echo {
   };
 }
 
+export interface GearType {
+  id: GEAR_TYPE_ID;
+  name: string;
+}
+
 export interface Gear {
   id: GEAR_ID | null;
   book: BOOK_ID;
@@ -330,9 +335,16 @@ export interface CharacterContact {
   details: string;
 }
 
+export interface CharacterEcho {
+  id: ECHO_ID;
+  rating: number;
+  specialty: string;
+}
+
 export interface CharacterGear {
   id: GEAR_ID;
   rating: number;
+  quantity: number;
 }
 
 export interface CharacterGeneral {
@@ -368,12 +380,6 @@ export interface CharacterMetamagic {
 
 export interface CharacterQuality {
   id: QUALITY_ID;
-  rating: number;
-  specialty: string;
-}
-
-export interface CharacterEcho {
-  id: ECHO_ID;
   rating: number;
   specialty: string;
 }

@@ -1,7 +1,7 @@
 import { BOOK_ID, GEAR_ID, GEAR_TYPE_ID } from './5e.enums';
-import {CharacterGear, Gear} from './5e.models';
+import {CharacterGear, Gear, GearType} from './5e.models';
 
-export const GEAR_CATEGORIES = [
+export const GEAR_TYPES: GearType[] = [
   {
     id: GEAR_TYPE_ID.CYBERDECK,
     name: 'Cyberdeck'

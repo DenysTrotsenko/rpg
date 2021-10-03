@@ -76,9 +76,9 @@ export class CreatePcSubmersionComponent extends UnsubscribeDirective implements
 
   private setInitial(previous: Character): void {
     const starting: CharacterEcho[] = previous?.echoes ?? [];
-    const echo: Echo = ECHOES.find(s => !this.form.value.find(i => i.id === s.id && !s.specialty));
     this.form.clear({ emitEvent: false });
     starting.forEach(i => {
+      const echo: Echo = ECHOES.find(e => e.id === i.id);
       const group: FormGroup = new FormGroup({
         id: new FormControl({ value: i.id, disabled: true }),
         rating: new FormControl(i.rating),
