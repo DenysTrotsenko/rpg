@@ -97,11 +97,12 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
       const clamp: number = Math.min(Math.max(rating, min), max);
       this.form.push(new FormGroup({
         id: new FormControl(attribute.id),
-        min: new FormControl(min),
-        max: new FormControl(max),
         rating: new FormControl(clamp, [
           Validators.required, Validators.min(min), Validators.max(max)
-        ])
+        ]),
+        /* *** */
+        min: new FormControl(min),
+        max: new FormControl(max)
       }));
     });
     this.setChange();

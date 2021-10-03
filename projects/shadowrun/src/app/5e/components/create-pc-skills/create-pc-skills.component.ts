@@ -136,6 +136,7 @@ export class CreatePcSkillsComponent extends UnsubscribeDirective implements Con
           id: new FormControl(skill.id),
           rating: new FormControl(rating, [Validators.required, Validators.min(min), Validators.max(max)]),
           specializations: new FormControl(specializations),
+          /* *** */
           min: new FormControl(min),
           max: new FormControl(max),
           initialSpecializations: new FormControl(specializations),

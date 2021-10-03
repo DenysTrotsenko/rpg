@@ -6,7 +6,6 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 
 @Component({
-  /* tslint:disable-next-line */
   selector: 's5e-create-pc-initiation',
   templateUrl: './create-pc-initiation.component.html',
   styleUrls: ['./create-pc-initiation.component.scss'],
@@ -94,17 +93,16 @@ export class CreatePcInitiationComponent extends UnsubscribeDirective implements
     this.form.clear({ emitEvent: false });
     starting.forEach(metamagic => {
       const group: FormGroup = new FormGroup({
-        id: new FormControl(metamagic.id),
+        id: new FormControl({ value: metamagic.id, disabled: true }),
         readonly: new FormControl(true)
       });
       this.form.push(group);
-      group.disable();
     });
     this.setChange();
   }
 
   private setChange(): void {
-    const allowed: string[] = ['id', 'rating'];
+    const allowed: string[] = ['id'];
     const value: CharacterMetamagic[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
     this.onChange(value);
   }

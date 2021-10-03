@@ -80,6 +80,18 @@ export enum CONTACT_TYPE_ID {
   TALISMONGER = 'ct:talismonger'
 }
 
+export enum ECHO_ID {
+  ATTACK_UPGRADE = 'echo:attack_upgrade',
+  DATA_PROCESSING_UPGRADE = 'echo:data_processing_upgrade',
+  FIREWALL_UPGRADE = 'echo:firewall_upgrade',
+  MIND_OVER_MACHINE = 'echo:mind_over_machine',
+  NEUROFILTER = 'echo:neurofilter',
+  OVERCLOCKING = 'echo:overclocking',
+  RESONANCE_LINK = 'echo:resonance_link',
+  SLEAZE_UPGRADE = 'echo:sleaze_upgrade',
+  RESONANCE_PROGRAM = 'echo:resonance_program',
+}
+
 export enum GEAR_ID {
   ERIKA_MCD_1 = 'gear:erika_mcd_1',
   MICRODECK_SUMMIT = 'gear:microdeck_summit',
@@ -166,6 +178,7 @@ export enum GEAR_ID {
 
 export enum GEAR_TYPE_ID {
   CYBERDECK = 'gt:cyberdeck',
+  PROGRAM = 'gt:program',
   RCC = 'gt:rcc',
   FOCUS = 'gt:foci',
   FORMULA = 'gt:formula',
@@ -286,6 +299,35 @@ export enum POWER_RANGE_ID {
 export enum POWER_TYPE_ID {
   PHYSICAL = 'pt:physical',
   MANA = 'pt:mana'
+}
+
+export enum PROGRAM_ID {
+  BROWSE = 'program:browse',
+  CONFIGURATOR = 'program:configurator',
+  EDIT = 'program:edit',
+  ENCRYPTION = 'program:encryption',
+  SIGNAL_SCRUB = 'program:signal_scrub',
+  TOOLBOX = 'program:toolbox',
+  VIRTUAL_MACHINE = 'program:virtual_machine',
+  ARMOR = 'program:armor',
+  BABY_MONITOR = 'program:baby_monitor',
+  BIOFEEDBACK = 'program:biofeedback',
+  BIOFEEDBACK_FILTER = 'program:biofeedback_filter',
+  BLACKOUT = 'program:blackout',
+  DECRYPTION = 'program:decryption',
+  DEFUSE = 'program:defuse',
+  DEMOLITION = 'program:demolition',
+  EXPLOIT = 'program:exploit',
+  FORK = 'program:fork',
+  GUARD = 'program:guard',
+  HAMMER = 'program:hammer',
+  LOCKDOWN = 'program:lockdown',
+  MUGGER = 'program:mugger',
+  SHELL = 'program:shell',
+  SNEAK = 'program:sneak',
+  STEALTH = 'program:stealth',
+  TRACK = 'program:track',
+  WRAPPER = 'program:wrapper',
 }
 
 export enum QUALITY_ID {

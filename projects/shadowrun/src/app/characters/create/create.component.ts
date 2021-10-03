@@ -56,6 +56,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     rituals: new FormControl(null),
     metamagic: new FormControl(null),
     complex_forms: new FormControl(null),
+    echoes: new FormControl(null),
     adept_powers: new FormControl(null),
     lifestyles: new FormControl(null, [Validators.required]),
     ware: new FormControl(null),
@@ -103,6 +104,17 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
     return !!character && canUseInitiation.includes(awakening);
   }));
+  readonly isSubmersionAvailable$: Observable<boolean> = combineLatest([
+    this.character$,
+    this.form.get('awakening').valueChanges
+  ]).pipe(map(res => {
+    const character = res[0];
+    const awakening = res[1];
+
+    // return !!character && awakening === AWAKENING_ID.TECHNOMANCER;
+    return awakening === AWAKENING_ID.TECHNOMANCER;
+  }));
+
 
   get portrait(): AbstractControl { return this.form.get('portrait'); }
   get name(): AbstractControl { return this.form.get('name'); }

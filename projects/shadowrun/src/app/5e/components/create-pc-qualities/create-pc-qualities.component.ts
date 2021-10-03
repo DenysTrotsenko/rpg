@@ -109,15 +109,16 @@ export class CreatePcQualitiesComponent extends UnsubscribeDirective implements 
     this.form.removeAt(index);
   }
 
-  private setInitial(initial: Character): void {
-    const qualities = initial?.qualities ?? [];
+  private setInitial(previous: Character): void {
+    const starting = previous?.qualities ?? [];
 
     this.form.clear();
-    qualities.forEach(quality => {
+    starting.forEach(quality => {
       const group: FormGroup = new FormGroup({
         id: new FormControl(quality.id),
         rating: new FormControl(quality.rating, [Validators.required]),
         specialty: new FormControl(quality.specialty),
+        /* *** */
         readonly: new FormControl(true),
         initialRating: new FormControl(quality.rating),
       });

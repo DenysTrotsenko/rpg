@@ -5,9 +5,9 @@ import {
   AWAKENING_ID,
   BOOK_ID, COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
-  COMPLEX_FORM_TARGET_ID, CONTACT_TYPE_ID,
+  COMPLEX_FORM_TARGET_ID, CONTACT_TYPE_ID, ECHO_ID,
   GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID, METAMAGIC_ID,
-  METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID,
+  METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID, PROGRAM_ID,
   QUALITY_ID, RITUAL_ID, RITUAL_KEYWORD_ID,
   SKILL_CATEGORY_ID,
   SKILL_ID,
@@ -80,6 +80,19 @@ export interface Contact {
   name: string;
   connection: number;
   loyalty: number;
+}
+
+export interface Echo {
+  id: ECHO_ID;
+  name: string;
+  max: number;
+  specialty?: boolean;
+  labels: {
+    description: string;
+  };
+  formulas?: {
+    SPECIALTIES?: any;
+  };
 }
 
 export interface Gear {
@@ -179,6 +192,14 @@ export interface Power {
   range: POWER_RANGE_ID;
   action: POWER_ACTION_ID;
   duration: POWER_DURATION_ID;
+  labels: {
+    description: string;
+  };
+}
+
+export interface Program {
+  id: PROGRAM_ID;
+  name: string;
   labels: {
     description: string;
   };
@@ -351,6 +372,12 @@ export interface CharacterQuality {
   specialty: string;
 }
 
+export interface CharacterEcho {
+  id: ECHO_ID;
+  rating: number;
+  specialty: string;
+}
+
 export interface CharacterSkill {
   id: SKILL_ID;
   rating: number;
@@ -387,6 +414,7 @@ export interface Character {
   rituals: CharacterRitual[];
   metamagic: CharacterMetamagic[];
   complex_forms: CharacterComplexForm[];
+  echoes: CharacterEcho[];
   adept_powers: any[];
   lifestyles: CharacterLifestyle[];
   ware: any[];

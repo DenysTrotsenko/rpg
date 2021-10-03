@@ -86,6 +86,11 @@
     [previous]="character$ | async">
   </s5e-create-pc-rituals>
 
+  <s5e-create-pc-adept-powers formControlName="adept_powers"
+    *ngIf="isAdeptPowersAvailable(form.getRawValue())"
+    [previous]="character$ | async">
+  </s5e-create-pc-adept-powers>
+
   <s5e-create-pc-initiation
     *ngIf="isInitiationAvailable$ | async"
     formControlName="metamagic"
@@ -93,15 +98,17 @@
     [awakening]="form.get('awakening').value">
   </s5e-create-pc-initiation>
 
-  <s5e-create-pc-adept-powers formControlName="adept_powers"
-    *ngIf="isAdeptPowersAvailable(form.getRawValue())"
-    [previous]="character$ | async">
-  </s5e-create-pc-adept-powers>
-
   <s5e-create-pc-complex-forms formControlName="complex_forms"
     *ngIf="isComplexFormsAvailable(form.getRawValue())"
     [previous]="character$ | async">
   </s5e-create-pc-complex-forms>
+
+  <s5e-create-pc-submersion
+    *ngIf="isSubmersionAvailable$ | async"
+    formControlName="echoes"
+    [previous]="character$ | async"
+    [awakening]="form.get('awakening').value">
+  </s5e-create-pc-submersion>
 
   <s5e-create-pc-lifestyle formControlName="lifestyles"
     [previous]="character$ | async">
