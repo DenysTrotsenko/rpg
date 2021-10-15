@@ -8,9 +8,11 @@
     <mat-icon>unfold_more</mat-icon>
   </button>
 </mat-toolbar>
+
 <s5e-view-general [character]="character$ | async" [view]="view$ | async"></s5e-view-general>
 <s5e-view-qualities [character]="character$ | async" [view]="view$ | async"></s5e-view-qualities>
 <s5e-view-attributes [character]="character$ | async" [view]="view$ | async"></s5e-view-attributes>
 <s5e-view-skills [character]="character$ | async" [view]="view$ | async"></s5e-view-skills>
+<s5e-view-knowledge [character]="character$ | async" [view]="view$ | async"></s5e-view-knowledge>
 <s5e-view-spells [character]="character$ | async" [view]="view$ | async"></s5e-view-spells>
 <s5e-view-complex-forms [character]="character$ | async" [view]="view$ | async"></s5e-view-complex-forms>

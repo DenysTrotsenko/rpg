@@ -49,7 +49,7 @@ import {
   ComplexFormDuration,
   GearView,
   CharacterGear,
-  Gear, GEAR
+  Gear, GEAR, CharacterKnowledge, KnowledgeView, SKILL_CATEGORY_ID, Knowledge, KNOWLEDGE, SKILL_CATEGORIES, SkillCategory
 } from '@shadowrun/app/5e';
 
 @Injectable()
@@ -133,6 +133,24 @@ export class FifthEditionService {
     return { portrait, name, gender, metatype, awakening } as GeneralView;
   }
 
+  getKnowledgeView(value: CharacterKnowledge): KnowledgeView {
+    const name: string = value?.name ?? '';
+    const category: SkillCategory = SKILL_CATEGORIES.find(i => i.id === value.category);
+    const attribute: Attribute = ATTRIBUTES.find(i => i.id === category.attribute);
+    const rating: number = value?.rating ?? 0;
+    const specializations: string = (value?.specializations ?? []).join(', ');
+    const tooltip: string = [
+      `${name.toLocaleUpperCase()}\n`,
+      `Category: ${category.name} (${attribute.labels.alias})`,
+      `Rating: ${rating}`,
+      `Specializations: ${specializations}`
+    ].filter(i => !!i).join('\n');
+
+    return {
+      name, category, rating, specializations, tooltip
+    } as KnowledgeView;
+  }
+
   getQualityView(value: CharacterQuality): QualityView {
     const QUALITIES = [...RACIAL_QUALITIES, ...POSITIVE_QUALITIES, ...NEGATIVE_QUALITIES];
     const quality: Quality = QUALITIES.find(i => i.id === value.id);
@@ -158,7 +176,7 @@ export class FifthEditionService {
     // const description: string = skill?.labels?.description;
     const tooltip: string = [
       `${name.toLocaleUpperCase()}\n`,
-      `Base: ${rating}`,
+      `Rating: ${rating}`,
       `Specializations: ${specializations}`,
       // `\n${description}`
     ].filter(i => !!i).join('\n');

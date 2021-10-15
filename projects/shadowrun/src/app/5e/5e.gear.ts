@@ -1193,6 +1193,7 @@ export const GEAR: Gear[] = [
     name: 'Combat Axe',
     type: GEAR_TYPE_ID.MELEE_WEAPONS,
     ratings: [0],
+    data: { accuracy: 4, reach: 2, ap: -4 },
     formulas: {
       availability: (item: CharacterGear): number => 12,
       cost: (item: CharacterGear): number => 4000
@@ -1223,5 +1224,148 @@ export const GEAR: Gear[] = [
     restricted: false,
     forbidden: false
   },
-
+  {
+    id: GEAR_ID.FOREARM_SNAP_BLADES,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Forearm Snap Blade',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 7,
+      cost: (item: CharacterGear): number => 200
+    },
+    labels: {
+      description: '',
+      availability: '7R',
+      cost: '200',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.KATANA,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Katana',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 9,
+      cost: (item: CharacterGear): number => 1000
+    },
+    labels: {
+      description: '',
+      availability: '9R',
+      cost: '1000',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.KNIFE,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Knife',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 0,
+      cost: (item: CharacterGear): number => 10
+    },
+    labels: {
+      description: '',
+      availability: '-',
+      cost: '10',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.POLEARM,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Polearm',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 6,
+      cost: (item: CharacterGear): number => 1000
+    },
+    labels: {
+      description: '',
+      availability: '6R',
+      cost: '1000',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.SURVIVAL_KNIFE,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Survival Knife',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 0,
+      cost: (item: CharacterGear): number => 100
+    },
+    labels: {
+      description: '',
+      availability: '-',
+      cost: '100',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.SWORD,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Sword',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 5,
+      cost: (item: CharacterGear): number => 500
+    },
+    labels: {
+      description: '',
+      availability: '5R',
+      cost: '500',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.COMBAT_KNIFE,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Combat Knife',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 300
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '300',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.COMBAT_KNIFE,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Combat Knife',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 300
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '300',
+    },
+    restricted: false,
+    forbidden: false
+  },
 ];

@@ -456,6 +456,14 @@ export interface GeneralView {
   awakening: string;
 }
 
+export interface KnowledgeView {
+  name: string;
+  category: SkillCategory;
+  rating: number;
+  specializations: string;
+  tooltip: string;
+}
+
 export interface QualityView {
   name: string;
   rating: string;

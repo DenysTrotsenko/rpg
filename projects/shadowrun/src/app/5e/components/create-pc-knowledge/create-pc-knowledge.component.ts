@@ -9,7 +9,6 @@ import {SKILL_CATEGORY_ID} from '@shadowrun/app/5e/5e.enums';
 import {
   Character,
   CharacterKnowledge,
-  CharacterQuality,
   CharacterSkill,
   SKILL_CATEGORIES,
   SkillCategory,

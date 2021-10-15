@@ -14,8 +14,6 @@ import {
 } from '@shadowrun/app/5e/5e.variables';
 import {FifthEditionService} from '@shadowrun/app/5e/5e.service';
 import {Character} from '@shadowrun/app/5e/5e.models';
-import firebase from 'firebase/compat/app';
-import User = firebase.User;
 
 /** A maximum cost of positive qualities shouldn't exceed */
 export function positiveQualitiesMaxCostValidator(max: number): ValidatorFn {
@@ -90,9 +88,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly isInitiationAvailable$: Observable<boolean> = combineLatest([
     this.character$,
     this.form.get('awakening').valueChanges
-  ]).pipe(map(res => {
-    const character = res[0];
-    const awakening = res[1];
+  ]).pipe(map(([character, awakening]) => {
     const canUseInitiation = [
       AWAKENING_ID.ADEPT,
       AWAKENING_ID.MYSTIC_ADEPT,
@@ -107,12 +103,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly isSubmersionAvailable$: Observable<boolean> = combineLatest([
     this.character$,
     this.form.get('awakening').valueChanges
-  ]).pipe(map(res => {
-    const character = res[0];
-    const awakening = res[1];
-
-    return !!character && awakening === AWAKENING_ID.TECHNOMANCER;
-  }));
+  ]).pipe(map(([character, awakening]) => !!character && awakening === AWAKENING_ID.TECHNOMANCER));
 
 
   get portrait(): AbstractControl { return this.form.get('portrait'); }

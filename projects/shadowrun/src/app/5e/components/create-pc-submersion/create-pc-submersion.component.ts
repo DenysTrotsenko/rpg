@@ -57,7 +57,7 @@ export class CreatePcSubmersionComponent extends UnsubscribeDirective implements
       specialty: new FormControl(null),
       readonly: new FormControl(false),
       min: new FormControl(1),
-      max: new FormControl(true),
+      max: new FormControl(echo.max),
     });
     this.form.push(group);
   }

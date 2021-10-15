@@ -25,6 +25,8 @@ import { CreatePcInitiationComponent } from './components/create-pc-initiation/c
 import { CreatePcSubmersionComponent } from './components/create-pc-submersion/create-pc-submersion.component';
 import { ViewPcGearComponent } from './components/view-pc-gear/view-pc-gear.component';
 import { ViewPcWareComponent } from './components/view-pc-ware/view-pc-ware.component';
+import { ViewPcKnowledgeComponent } from './components/view-pc-knowledge/view-pc-knowledge.component';
+import { ViewPcContactsComponent } from './components/view-pc-contacts/view-pc-contacts.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -49,7 +51,9 @@ const DECLARATIONS = [
   ViewSkillsComponent,
   ViewSpellsComponent,
   ViewPcGearComponent,
-  ViewPcWareComponent
+  ViewPcWareComponent,
+  ViewPcKnowledgeComponent,
+  ViewPcContactsComponent
 ];
 
 @NgModule({

@@ -3,7 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { Character, FifthEditionService, SkillView } from '@shadowrun/app/5e';
 
 @Component({
-  /* tslint:disable-next-line */
   selector: 's5e-view-skills',
   templateUrl: './view-skills.component.html',
   styleUrls: ['./view-skills.component.scss'],

@@ -1215,7 +1215,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These area spells create obvious, but entertaining, illusions. Hits on the Spellcasting Test measure how detailed, interesting, and captivating the audience finds the illusion. The magician can reproduce just about anything from her imagination, or re-create something she has experienced.\nEntertainment affects the minds of the subjects and cannot be detected by non-living sensors.\nThis spell is used for amusement as well as art. The entertainment industry uses illusionists as literal special effects wizards. Magical designers and artists work to create new and interesting sensations, including sensations that can’t otherwise be experienced in the real world. Only the wealthy can afford the unique experiences offered by such magicians firsthand.'
     }
   },
   {
@@ -1230,7 +1230,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These area spells create obvious, but entertaining, illusions. Hits on the Spellcasting Test measure how detailed, interesting, and captivating the audience finds the illusion. The magician can reproduce just about anything from her imagination, or re-create something she has experienced.\nTrid Entertainment is a physical spell and can be perceived by both living subjects and non-living sensors.\nThis spell is used for amusement as well as art. The entertainment industry uses illusionists as literal special effects wizards. Magical designers and artists work to create new and interesting sensations, including sensations that can’t otherwise be experienced in the real world. Only the wealthy can afford the unique experiences offered by such magicians firsthand.'
     }
   },
   {
@@ -1245,7 +1245,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell makes the subject more difficult to detect by normal visual senses (including low-light, thermographic, and other senses that rely on the visual spectrum). The subject is completely tangible and detectable by the other senses (hearing, smell, touch, and even taste, if it somehow comes to that). Her aura is still visible to astral perception.\nAnyone who might be in a position to perceive the subject must first successfully resist the spell. Simply make one Spellcasting Test and use the hits scored as the threshold for anyone that resists at a later point. Even if the spell is resisted, the subject might remain undetected if she’s good enough with her Sneaking Test. An invisible character may still be detected by non-visual means, such as hearing or smell. Attacks against invisible targets suffer the Blind Fire modifier if the attacker is unable to see or otherwise sense the subject of the spell.\nInvisibility affects the minds of viewers.'
     }
   },
   {
@@ -1260,7 +1260,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell makes the subject more difficult to detect by normal visual senses (including low-light, thermographic, and other senses that rely on the visual spectrum). The subject is completely tangible and detectable by the other senses (hearing, smell, touch, and even taste, if it somehow comes to that). Her aura is still visible to astral perception.\nAnyone who might be in a position to perceive the subject must first successfully resist the spell. Simply make one Spellcasting Test and use the hits scored as the threshold for anyone that resists at a later point. Even if the spell is resisted, the subject might remain undetected if she’s good enough with her Sneaking Test. An invisible character may still be detected by non-visual means, such as hearing or smell. Attacks against invisible targets suffer the Blind Fire modifier if the attacker is unable to see or otherwise sense the subject of the spell.\nImproved Invisibility mimics the subject’s surroundings from all angles and affects minds of viewers & technological sensors as well.'
     }
   },
   {
@@ -1275,7 +1275,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The Mask spell requires the magician to touch the subject. The subject assumes a different physical appearance (of the same basic size and shape as her natural form) chosen by the magician. This spell can alter the subject’s voice, scent, and other physical characteristics as well.\nAnyone who might see through the disguise must first successfully resist the spell. Simply make one Spell- casting Test and use the hits scored as the threshold for anyone that resists at a later point. Mask affects the minds of viewers.'
     }
   },
   {
@@ -1290,7 +1290,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The Mask spell requires the magician to touch the subject. The subject assumes a different physical appearance (of the same basic size and shape as her natural form) chosen by the magician. This spell can alter the subject’s voice, scent, and other physical characteristics as well.\nAnyone who might see through the disguise must first successfully resist the spell. Simply make one Spell- casting Test and use the hits scored as the threshold for anyone that resists at a later point.Physical Mask creates an illusion that affects minds of viewers & technological sensors.'
     }
   },
   {
@@ -1305,7 +1305,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These area spells create convincing illusions of any object, creature, or scene the magician desires. They can create an illusion of anything the magician has seen before, from a flower or a credstick to a dragon breathing fire, as long as the illusion is no larger than the spell’s area of effect.\nAnyone who might pierce the illusion must successfully resist the spell. Simply make one Spellcasting Test and use the hits scored as the threshold for anyone attempting to resist at a later point.\nPhantasm only affects living beings.'
     }
   },
   {
@@ -1320,7 +1320,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These area spells create convincing illusions of any object, creature, or scene the magician desires. They can create an illusion of anything the magician has seen before, from a flower or a credstick to a dragon breathing fire, as long as the illusion is no larger than the spell’s area of effect.\nAnyone who might pierce the illusion must successfully resist the spell. Simply make one Spellcasting Test and use the hits scored as the threshold for anyone attempting to resist at a later point.\nTrid Phantasm affects living beings & technological sensors.'
     }
   },
   {
@@ -1335,7 +1335,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These spells create an area that dampens sound. Sonic attacks into or out of the field, as well as critter powers using a sonic medium (such as Paralyzing Howl), are reduced by –1 per hit on the Spellcasting Test. Anyone attempting to hear a sound from within or across the silenced area must successfully resist the spell. Hush is a mana spell and so only affects living beings and magic sonic attacks.'
     }
   },
   {
@@ -1350,7 +1350,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'These spells create an area that dampens sound. Sonic attacks into or out of the field, as well as critter powers using a sonic medium (such as Paralyzing Howl), are reduced by –1 per hit on the Spellcasting Test. Anyone attempting to hear a sound from within or across the silenced area must successfully resist the spell. Silence affects living beings and magic sonic attacks & technological devices and is useful for jamming alarms, detection devices, sonar, and tactical communications, as well as technological sonic weapons.'
     }
   },
   {
@@ -1365,7 +1365,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Stealth makes the subject less audible to normal and augmented hearing. The subject moves in silence, making less or no noise. Things not directly touched by the subject can still make noise, so a character under a Stealth spell would make no noise knocking on a door, but the door would make noise hitting the floor or wall if it was kicked in.\nAnyone who might hear the subject must first successfully resist the spell. Make a single Spellcasting Test and use the hits scored as the threshold for anyone who resists at a later point. Even if the spell is resisted, the subject might remain unnoticed if her Sneaking Tests are up to par.'
     }
   },
   {
@@ -1380,7 +1380,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell causes inanimate objects to move. The object moves according to its structure (balls can roll, rugs may crawl, humanoid statues can walk, and so on). The spell imparts a limited flexibility, allowing solid objects such as statues to shamble a bit as if they had joints. You need to get net successes against the target’s Object Resistance (p. 295); larger items (over 200 kilograms) have their resistance increased by 2 for every full 200 kilos they weigh. Controlling the object takes only a Simple Action; objects can also be ordered to maintain their movement while you direct your attention elsewhere. You only have rough control over the object’s movement and can’t manipulate individual parts or components (finer control requires a spell like Magic Fingers, p. 294). The maximum movement rate for objects is (Force) meters per turn, subject to the gamemaster’s discretion. If the object is held by someone else, you need to win an Opposed Test using Force x 2 against the holder’s Strength + Body to break the object free. If it’s fastened, make this Force x 2 Success Test against an appropriate gamemaster-determined threshold.\nAnimate affects a single non-living object.'
     }
   },
   {
@@ -1395,7 +1395,7 @@ export const SPELLS: Spell[] = [
     drain: 1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell causes inanimate objects to move. The object moves according to its structure (balls can roll, rugs may crawl, humanoid statues can walk, and so on). The spell imparts a limited flexibility, allowing solid objects such as statues to shamble a bit as if they had joints. You need to get net successes against the target’s Object Resistance (p. 295); larger items (over 200 kilograms) have their resistance increased by 2 for every full 200 kilos they weigh. Controlling the object takes only a Simple Action; objects can also be ordered to maintain their movement while you direct your attention elsewhere. You only have rough control over the object’s movement and can’t manipulate individual parts or components (finer control requires a spell like Magic Fingers, p. 294). The maximum movement rate for objects is (Force) meters per turn, subject to the gamemaster’s discretion. If the object is held by someone else, you need to win an Opposed Test using Force x 2 against the holder’s Strength + Body to break the object free. If it’s fastened, make this Force x 2 Success Test against an appropriate gamemaster-determined threshold.\nMass Animate is an area spell that can get a number of objects moving at once (like a room full of brooms, for example).'
     }
   },
   {
@@ -1410,7 +1410,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell creates a glowing field of magical energy around the subject that protects against Physical Damage. It provides Armor equal to the hits scored and is cumulative with other armor. It is not included in any calculations to determine armor encumbrance (see Armor and Encumbrance, p. 169).'
     }
   },
   {
@@ -1425,7 +1425,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'You control the physical actions of your target like a puppeteer pulling strings. The victim’s consciousness is unaffected, but you control the victim’s body. Use your own skills when forcing your target to perform actions. It takes a Complex Action to make the target perform any action.\nControl Actions only affects a single target.'
     }
   },
   {
@@ -1440,7 +1440,7 @@ export const SPELLS: Spell[] = [
     drain: 1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'You control the physical actions of your target like a puppeteer pulling strings. The victim’s consciousness is unaffected, but you control the victim’s body. Use your own skills when forcing your target to perform actions. It takes a Complex Action to make the target perform any action.\nMob Control affects any living targets within the area of effect. Victims of Mob Control may be manipulated individually (with separate actions) or issued the same command as a group (with a single action).'
     }
   },
   {
@@ -1455,7 +1455,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The magician seizes control of the target’s mind, directing everything the target thinks. The magician mentally gives commands with a Standard Action, and the target is compelled to obey as if it were his own idea.\nControl Thoughts affects a single target.'
     }
   },
   {
@@ -1470,7 +1470,7 @@ export const SPELLS: Spell[] = [
     drain: 1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The magician seizes control of the target’s mind, directing everything the target thinks. The magician mentally gives commands with a Standard Action, and the target is compelled to obey as if it were his own idea.\nMob Mind affects any living targets within the area of effect. Victims of a Mob Mind may be manipulated individually (with separate actions) or issued the same command as a group (with a single action).'
     }
   },
   {
@@ -1485,7 +1485,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell psychokinetically hurls a single object of no more than (Force) kilograms at a designated target. Use your Spellcasting Test in place of a normal Ranged Combat Test for the purposes of the item hitting the target, and use your Magic instead of Strength for determining Damage Value and range. Use standard grenade ranges (see Range Table, p. 185)'
     }
   },
   {
@@ -1500,7 +1500,7 @@ export const SPELLS: Spell[] = [
     drain: 0,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell creates a slippery sheet of ice over the area of effect. Characters crossing the ice must make an Agility + Reaction Test with a threshold equal to the hits you score to avoid falling prone. Vehicles must make an immediate Crash Test (p. 201). The sheet melts at a rate of 1 square meter per minute at room temperature (faster when it’s hotter, slower when it’s colder, or not at all if it’s below freezing).'
     }
   },
   {
@@ -1515,7 +1515,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'The Ignite spell accelerates molecular motion in the target, causing it to catch fire once the spell becomes permanent. Against non-living targets, the magician must succeed against the target’s Object Resistance dice pool. Once the target ignites, it burns normally until it is consumed or extinguished.\nAgainst living targets, treat Ignite as a Spellcasting + Magic [Force] v. Body + Reaction Test. If successful, the spell wraps a living target in heat and flames, eventually setting the target on fire (Fire Damage p. 171).'
     }
   },
   {
@@ -1530,7 +1530,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'You implant a single suggestion in the victim’s mind, like a powerful post-hypnotic command. For example, you might have your target think that FizzyFluid is the best drink on the market, or that he can’t remember his best friend’s name, or that he should let you past a locked door. The target carries out this suggestion as if it were his own idea. If confronted with the wrongness of the suggestion (like when the reality of the flavor of FizzyFluid in his mouth contrasts with his belief that it’s good), the subject can attempt to overcome it using the rules for overcoming mental manipulations (p. 292). In any case, the suggestion fades naturally after a number of minutes equal to your net hits.'
     }
   },
   {
@@ -1545,7 +1545,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Levitate allows you to telekinetically lift a person or object and move it around. You have to beat a threshold equal to the subject’s mass divided by 200 kilograms, rounded up. The subject of the spell can be moved anywhere in your line of sight at a movement rate equal to the spell’s Force in meters per Combat Turn.\nIf you’re trying to levitate an item held by a living being, or levitate an unwilling living being, that being can defend against the Spellcasting Test with Strength + Body. You can use this spell to levitate yourself, if you need a view from a higher perspective or desire some parachute-free sky diving.'
     }
   },
   {
@@ -1560,7 +1560,7 @@ export const SPELLS: Spell[] = [
     drain: -4,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell creates a mobile point of light, illuminating a radius around it equal to the spell’s Force in meters. The spell cannot be used to blind a target, but it offsets darkness visibility modifiers. Each hit on the Spellcasting Test counters a –1 die penalty due to light conditions.'
     }
   },
   {
@@ -1575,7 +1575,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Magic Fingers creates a psychokinetic effect as a sort of invisible hand that can hold or manipulate items. The hits on the Spellcasting + Magic Test become the spell’s effective Strength and Agility. You can use skills remotely with Magic Fingers, replacing your inherent limits with the spell’s Force. The spell has problems with fine control, so even simple actions such as picking up a coin may require a test (at the gamemaster’s discretion). You can fight, pick a lock, or perform any other action, using the magic fingers as if they were your real hands. The magic fingers can manipulate objects within your line of sight, but only objects within a meter or so of one another at any given moment (the “hands” can’t be farther away from each other than your arm span). This spell comes in very handy (no pun intended) for disarming bombs and handling other hazardous work from a safe distance.'
     }
   },
   {
@@ -1590,7 +1590,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Mana Barrier creates an invisible barrier of magi- cal energy. It has a barrier rating equal to the net hits scored and follows the rules for mana barriers (p. 315). This barrier does not restrict living beings or physical objects, but it impedes spirits, foci, dual beings, and spells on the plane in which you cast it (physical or astral). If cast on the astral plane, it also impedes astral forms and reduces visibility.'
     }
   },
   {
@@ -1605,7 +1605,7 @@ export const SPELLS: Spell[] = [
     drain: -1,
     specialty: false,
     labels: {
-      description: ''
+      description: 'This spell creates a glowing, translucent force field with 1 point of both Armor and Structure rating per hit. You can form the barrier as a dome with a radius and height equal to the spell’s normal radius. Alternately, you can use it to form a wall with a height equal to the spell’s Force and a length equal to its Force x 2. Physical Barrier creates a physical wall. Anything the size of a molecule (or less) can pass through the barrier, including air or other gases. Anything bigger treats the barrier as a normal physical wall. The wall is translucent but shimmers, the equivalent of Light Fog (p. 175). The barrier does not impede spellcasting (other than visibility penalties), except for spells with physical components like indirect combat spells. The barrier can be brought down by physical attacks, but as long as you sustain it will regenerate all of its Structure Rating at the beginning of each Combat Turn. If the barrier is reduced to Structure Rating 0, it collapses and the spell ends.'
     }
   },
   {
@@ -1620,7 +1620,7 @@ export const SPELLS: Spell[] = [
     drain: -2,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Poltergeist picks up all small objects (up to a kilogram in mass) within the spell’s area and whirls them around in random patterns. This creates the equivalent visibility penalty of Light Fog (p. 175). The spell inflicts 2 boxes of Stun damage (resisted with Body + Armor) to anyone in the area each Combat Turn, whacking them with flying debris. Poltergeist may do more damage in cluttered environments, or inflict Physical damage if the gamemaster feels the debris is sufficiently dangerous (broken glass and nails, for example). If there is no debris lying around, this spell doesn’t do much more than make a spooky noise.'
     }
   },
   {
@@ -1635,7 +1635,7 @@ export const SPELLS: Spell[] = [
     drain: -3,
     specialty: false,
     labels: {
-      description: ''
+      description: 'Shadow creates a globe of darkness with a radius equal to the spell’s Force in meters. For every two hits, increase the light penalty (p. 175) by one catagory — 2 hits for Partial Light, 4 hits for Dim Light, and 6 hits for Total Darkness. This spell doesn’t cause more than Total Darkness.'
     }
   },
 ];

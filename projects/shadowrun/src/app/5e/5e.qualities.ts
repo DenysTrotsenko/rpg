@@ -93,7 +93,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'The Ambidextrous character can handle objects equally well with either hand. Without this quality, any action performed solely with the off–hand (i.e., firing a gun) suffers a –2 dice pool modifier (see Attacker Using Off-Hand Weapon, p. 178).'
     }
   },
   {
@@ -107,7 +107,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'Analytical Mind describes the uncanny ability to logically analyze information, deduce solutions to problems, or separate vital information from distractions and noise. It’s useful in cracking cyphers, solving puzzles, figuring out traps, and sifting through data. This quality gives the character a +2 dice pool modifier to any Logic Tests involving pattern recognition, evidence analysis, clue hunting, or solving puzzles. This quality also reduces the time it takes the character to solve a problem by half.'
     }
   },
   {
@@ -124,7 +124,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
       SKILL_MAX: (quality: CharacterQuality, id: SKILL_ID) => quality.specialty === id ? 1 : 0
     },
     labels: {
-      description: ''
+      description: 'This quality is how you become even better than the best in the world. The standard limit for skills is 12. Every so often, there is a character who can exceed limitations and be truly exceptional in a particular skill. With this particular quality, the character can have one skill rated at 7 at character creation, and may eventually build that skill up to rating 13. Characters may only take the Aptitude quality once.'
     }
   },
   {
@@ -138,7 +138,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'With the Astral Chameleon quality, the character’s astral signature blends into the background of astral space and is difficult to detect. All signatures left by the character last only half as long as other astral signatures. Any individuals assensing astral signatures left behind by a character with this quality receive a –2 dice pool modifier for the Assensing Test. Only characters with a Magic rating and capable of leaving astral signatures may have this quality.'
     }
   },
   {
@@ -152,7 +152,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'A character with this quality reads, writes, and speaks a second language fluently. They can list a second language as a native tongue (see Language Skills, p. 150). This quality can only be acquired at character creation; selecting it gives the character a second free language skill during Step Five: Purchase Active, Knowledge, and Language Skills, (p. 88).'
     }
   },
   {
@@ -166,7 +166,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'This character blends into a crowd; he’s seldom noticed and easily forgotten. He is unremarkable in every aspect of physical appearance. Anyone attempting to describe the character cannot come up with anything more precise than “average height, average build, average hair, etc.”\nIncrease the threshold for anyone to recall specific details about the character by 1. This means a Memory Test with a difficulty of Average (threshold of 2) becomes a Hard test (threshold of 3).\nIndividuals attempting to shadow or physically locate a character with the Blandness quality in a populated setting receive a –2 dice pool modifier on all tests related to their search. The same penalty applies if they’re asking around about the person based on the individual’s physical appearance. The modifier does not, however, apply to magical or Matrix searches. If the character acquires any visible tattoos, scars, obvious cyberware, or other distinguishing features, the bonuses from the Blandness quality go away until the distinctive features are removed from the character’s appearance.\nIn certain circumstances and specific situations, the gamemaster may determine that Blandness does not apply. For example, a troll with the Blandness quality still towers head and shoulders over a crowd of humans and so still stands out, no matter how average their horns may be. The character only regains his bonus by leaving the situation where he stands out.'
     }
   },
   {
@@ -180,7 +180,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'A character with the Catlike quality is gifted with an uncanny elegance, a stealthy gait, and an almost preternatural ability to move without making a sound. They also claim they land on their feet when dropped, though they tend not to let people test this. This quality adds a +2 dice pool modifier to Sneaking skill tests.'
     }
   },
   {
@@ -194,7 +194,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'Ones and zeroes are practically a native language to a Codeslinger. The character is adept at performing a particular Matrix action (which she selects when she selects this quality) and receives a +2 dice pool modifier to that Matrix action. This can only be selected for Matrix Actions (p. 237) that have a test associated with them.'
     }
   },
   {
@@ -208,7 +208,7 @@ export const POSITIVE_QUALITIES: Quality[] = [
     specialty: false,
     formulas: null,
     labels: {
-      description: ''
+      description: 'A Double-Jointed character has unusually flexible joints and can bend and contort his body into extreme positions. The character receives a +2 dice pool modifier for Escape Artist tests. The character may also be able to squeeze into small, cramped spaces where less limber characters cannot. They’re also great at parties and bars.'
     }
   },
   {

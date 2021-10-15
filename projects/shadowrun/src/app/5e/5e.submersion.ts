@@ -1,6 +1,5 @@
 import {ECHO_ID} from '@shadowrun/app/5e/5e.enums';
-import {CharacterQuality, Echo} from '@shadowrun/app/5e/5e.models';
-import {ACTIVE_SKILLS} from '@shadowrun/app/5e/5e.skills';
+import {Echo} from '@shadowrun/app/5e/5e.models';
 import {PROGRAMS} from '@shadowrun/app/5e/5e.programs';
 
 export const ECHOES: Echo[] = [
