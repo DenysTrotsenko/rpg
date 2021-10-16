@@ -70,15 +70,19 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
         this.form.patchValue({
-          id: !!res ? res.id : this.service.getId(),
-          portrait: !!res ? res.portrait : DEFAULT_PORTRAIT,
-          name: !!res ? res.name : '',
-          metatype: !!res ? res.metatype : METATYPE_ID.HUMAN,
-          awakening: !!res ? res.awakening : AWAKENING_ID.MUNDANE,
-          magic_tradition: !!res ? res.magic_tradition : null,
+          id: res?.id ?? this.service.getId(),
+          portrait: res?.portrait ?? DEFAULT_PORTRAIT,
+          name: res?.name ?? '',
+          miscellaneous: {
+            gender: res?.miscellaneous?.gender ?? 'Male'
+          },
+          metatype: res?.metatype ?? METATYPE_ID.HUMAN,
+          awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
+          magic_tradition: res?.magic_tradition ?? null,
         }, { emitEvent: false });
         !!res ? this.portrait.disable() : this.portrait.enable();
         !!res ? this.name.disable() : this.name.enable();
+        !!res ? this.gender.disable() : this.gender.enable();
         !!res ? this.metatype.disable() : this.metatype.enable();
         !!res ? this.awakening.disable() : this.awakening.enable();
         !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
@@ -108,6 +112,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   get portrait(): AbstractControl { return this.form.get('portrait'); }
   get name(): AbstractControl { return this.form.get('name'); }
+  get gender(): AbstractControl { return this.form.get('miscellaneous.gender'); }
   get metatype(): AbstractControl { return this.form.get('metatype'); }
   get awakening(): AbstractControl { return this.form.get('awakening'); }
   get magic_tradition(): AbstractControl { return this.form.get('magic_tradition'); }

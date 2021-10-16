@@ -1,11 +1,11 @@
 <mat-toolbar class="toolbar-main">
   <h1>Character View</h1>
   <span class="f-1"></span>
-  <button mat-icon-button (click)="view$.next('concise')" matTooltip="Concise View">
-    <mat-icon>unfold_less</mat-icon>
-  </button>
-  <button mat-icon-button (click)="view$.next('full')" matTooltip="Full View">
-    <mat-icon>unfold_more</mat-icon>
+  <button *ngIf="view$ | async as view"
+    mat-icon-button
+    (click)="view$.next(view === 'full' ? 'concise' : 'full')"
+    [matTooltip]="view === 'full' ? 'Concise View' : 'Full View'">
+    <mat-icon>{{view === 'full' ? 'unfold_less' : 'unfold_more'}}</mat-icon>
   </button>
 </mat-toolbar>
 

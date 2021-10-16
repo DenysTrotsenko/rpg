@@ -1,5 +1,14 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormArray,
+  FormControl,
+  FormGroup,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  Validators
+} from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {BehaviorSubject} from 'rxjs';
@@ -25,6 +34,11 @@ import {
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CreatePcKnowledgeComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: CreatePcKnowledgeComponent,
       multi: true
     }
   ]
@@ -91,10 +105,10 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       id: new FormControl(`knowledge:${Date.now()}`),
       name: new FormControl('', [Validators.required]),
       category: new FormControl(SKILL_CATEGORY_ID.ACADEMIC, [Validators.required]),
-      min: new FormControl(1),
-      max: new FormControl(6),
       rating: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(6)]),
       specializations: new FormControl(null),
+      min: new FormControl(1),
+      max: new FormControl(6),
       initialSpecializations: new FormControl(null),
       readonly: new FormControl(false)
     }));
@@ -113,10 +127,10 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
           id: new FormControl(i.id),
           name: new FormControl(i.name, [Validators.required]),
           category: new FormControl(i.category, [Validators.required]),
-          min: new FormControl(i.rating),
-          max: new FormControl(6),
           rating: new FormControl(i.rating, [Validators.required]),
           specializations: new FormControl(i.specializations),
+          min: new FormControl(i.rating),
+          max: new FormControl(6),
           initialSpecializations: new FormControl(i.specializations),
           readonly: new FormControl(true)
         });
@@ -142,6 +156,10 @@ export class CreatePcKnowledgeComponent extends UnsubscribeDirective implements 
       group.get('rating').disable();
     }
     this.setChange();
+  }
+
+  validate({ value }: FormControl): object {
+    return this.form.valid ? null : { invalid: true };
   }
 
   private setChange(): void {
