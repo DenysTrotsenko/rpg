@@ -312,8 +312,8 @@ export interface Spirit {
   initiative: (force: number) => number;
   astral_initiative: (force: number) => number;
   skills: SKILL_ID[];
-  powers: Power[];
-  optional_powers: Power[];
+  powers: POWER_ID[];
+  optional_powers: POWER_ID[];
   special: [];
 }
 
@@ -492,4 +492,8 @@ export interface SpellView {
   drain: string;
   description: string;
   tooltip: string;
+}
+
+export interface SpiritView {
+  name: string;
 }

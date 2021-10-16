@@ -27,6 +27,8 @@ import { ViewPcGearComponent } from './components/view-pc-gear/view-pc-gear.comp
 import { ViewPcWareComponent } from './components/view-pc-ware/view-pc-ware.component';
 import { ViewPcKnowledgeComponent } from './components/view-pc-knowledge/view-pc-knowledge.component';
 import { ViewPcContactsComponent } from './components/view-pc-contacts/view-pc-contacts.component';
+import { ViewRitualsComponent } from './components/view-rituals/view-rituals.component';
+import { ViewSpiritsComponent } from './components/view-spirits/view-spirits.component';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
@@ -53,7 +55,9 @@ const DECLARATIONS = [
   ViewPcGearComponent,
   ViewPcWareComponent,
   ViewPcKnowledgeComponent,
-  ViewPcContactsComponent
+  ViewPcContactsComponent,
+  ViewRitualsComponent,
+  ViewSpiritsComponent
 ];
 
 @NgModule({

@@ -49,7 +49,17 @@ import {
   ComplexFormDuration,
   GearView,
   CharacterGear,
-  Gear, GEAR, CharacterKnowledge, KnowledgeView, SKILL_CATEGORY_ID, Knowledge, KNOWLEDGE, SKILL_CATEGORIES, SkillCategory
+  Gear,
+  GEAR,
+  CharacterKnowledge,
+  KnowledgeView,
+  SKILL_CATEGORY_ID,
+  Knowledge,
+  KNOWLEDGE,
+  SKILL_CATEGORIES,
+  SkillCategory,
+  SPIRIT_ID,
+  SpiritView, Spirit, SPIRITS, Power, POWERS
 } from '@shadowrun/app/5e';
 
 @Injectable()
@@ -210,5 +220,32 @@ export class FifthEditionService {
     return {
       category, name, specialty, tags, damage, type, range, duration, drain, description, tooltip
     } as SpellView;
+  }
+
+  getSpiritView(id: SPIRIT_ID, category: string): SpiritView {
+    const spirit: Spirit = SPIRITS.find(i => i.id === id);
+    const name: string = spirit?.name ?? '';
+    const skills: Skill[] = ACTIVE_SKILLS.filter(i => (spirit.skills ?? []).includes(i.id));
+    const powers: Power[] = POWERS.filter(i => (spirit.powers ?? []).includes(i.id));
+    // const type: SpellType = SPELL_TYPES.find(i => spell?.type === i.id);
+    // const range: SpellRange = SPELL_RANGES.find(i => spell?.range === i.id);
+    // const duration: SpellDuration = SPELL_DURATIONS.find(i => spell?.duration === i.id);
+    // const damage: SpellDamage = SPELL_DAMAGE.find(i => spell?.damage === i.id);
+    // const drain: string = `F${!!spell?.drain ? (spell.drain > 0 ? ` + ${spell.drain}` : ` - ${Math.abs(spell.drain)}`) : ''}`;
+    // const description: string = spell?.labels?.description;
+    const tooltip: string = [
+      `${name.toLocaleUpperCase()}`,
+    //   `(${tags?.map(tag => tag.name).join(', ')})\n`,
+    //   `Type: ${type?.labels?.alias}`,
+    //   `Range: ${range?.alias}`,
+    //   `Duration: ${duration?.alias}`,
+    //   damage ? `Damage: ${damage?.alias}` : null,
+    //   `Drain: ${drain}`,
+    //   `\n${description}`
+    ].filter(i => !!i).join('\n');
+
+    return {
+      name, category, tooltip
+    } as SpiritView;
   }
 }

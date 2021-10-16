@@ -3,7 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { FifthEditionService, SpellView, Character } from '@shadowrun/app/5e';
 
 @Component({
-  /* tslint:disable-next-line */
   selector: 's5e-view-spells',
   templateUrl: './view-spells.component.html',
   styleUrls: ['./view-spells.component.scss'],
@@ -16,6 +15,7 @@ export class ViewSpellsComponent {
     this.spells$.next(spells);
   }
   readonly spells$: BehaviorSubject<SpellView[]> = new BehaviorSubject<SpellView[]>([]);
+
   constructor(private readonly service: FifthEditionService) {}
 
   getTypeTooltip(i: SpellView): string {
