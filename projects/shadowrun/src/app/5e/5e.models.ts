@@ -1,14 +1,31 @@
 import {
   ADEPT_POWER_ID,
   ATTRIBUTE_ID,
-  ATTRIBUTE_TYPE_ID,
+  ATTRIBUTE_TYPE_ID, AUGMENTATION_GRADE_ID,
+  AUGMENTATION_ID, AUGMENTATION_SLOT_ID,
   AWAKENING_ID,
-  BOOK_ID, COMPLEX_FORM_DURATION_ID,
+  BOOK_ID,
+  COMPLEX_FORM_DURATION_ID,
   COMPLEX_FORM_ID,
-  COMPLEX_FORM_TARGET_ID, CONTACT_TYPE_ID, ECHO_ID,
-  GEAR_ID, GEAR_TYPE_ID, LIFESTYLE_ID, LIFESTYLE_OPTION_ID, MAGICAL_TRADITION_ID, METAMAGIC_ID,
-  METATYPE_ID, POWER_ACTION_ID, POWER_DURATION_ID, POWER_ID, POWER_RANGE_ID, POWER_TYPE_ID, PROGRAM_ID,
-  QUALITY_ID, RITUAL_ID, RITUAL_KEYWORD_ID,
+  COMPLEX_FORM_TARGET_ID,
+  CONTACT_TYPE_ID,
+  ECHO_ID,
+  GEAR_ID,
+  GEAR_TYPE_ID,
+  LIFESTYLE_ID,
+  LIFESTYLE_OPTION_ID,
+  MAGICAL_TRADITION_ID,
+  METAMAGIC_ID,
+  METATYPE_ID,
+  POWER_ACTION_ID,
+  POWER_DURATION_ID,
+  POWER_ID,
+  POWER_RANGE_ID,
+  POWER_TYPE_ID,
+  PROGRAM_ID,
+  QUALITY_ID,
+  RITUAL_ID,
+  RITUAL_KEYWORD_ID,
   SKILL_CATEGORY_ID,
   SKILL_ID,
   SPELL_CATEGORY_ID,
@@ -17,7 +34,8 @@ import {
   SPELL_ID,
   SPELL_RANGE_ID,
   SPELL_TAG_ID,
-  SPELL_TYPE_ID, SPIRIT_ID
+  SPELL_TYPE_ID,
+  SPIRIT_ID
 } from './5e.enums';
 
 export interface AdeptPower {
@@ -35,6 +53,34 @@ export interface Attribute {
   labels: {
     alias: string;
     description: string;
+  };
+}
+
+export interface Augmentation {
+  id: AUGMENTATION_ID;
+  name: string;
+  slots: AUGMENTATION_SLOT_ID[];
+  ratings: { name: string; capacity: number; cost: number; availability: number; }[];
+  data?: object;
+  labels?: {
+    availability: string;
+    cost: string;
+    description: string;
+  };
+}
+
+export interface AugmentationGrade {
+  id: AUGMENTATION_GRADE_ID;
+  name: string;
+  formulas: {
+    availability: (availability: number) => number;
+    cost: (cost: number) => number;
+    essence: (essence: number) => number;
+  };
+  labels: {
+    availability: string;
+    cost: string;
+    essence: string;
   };
 }
 
@@ -397,6 +443,12 @@ export interface CharacterRitual {
 export interface CharacterSpell {
   id: SPELL_ID;
   specialty: string;
+}
+
+export interface CharacterAugmentation {
+  id: AUGMENTATION_ID;
+  grade: AUGMENTATION_GRADE_ID;
+  rating: number;
 }
 
 export interface Character {

@@ -7,6 +7,7 @@
     "e2e": "ng e2e",
     "test:shared": "ng test --project=shared-library",
     "start:shared": "ng serve --project=shared-library",
+    "start:shared:hmr": "ng serve --hmr --project=shared-library",
     "build:shared": "ng build --configuration=production --project=shared-library",
     "start:shadowrun": "ng serve --project=shadowrun",
     "build:shadowrun": "ng build --configuration=production --project=shadowrun",

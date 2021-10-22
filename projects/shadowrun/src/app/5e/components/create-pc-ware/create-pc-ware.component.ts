@@ -1,9 +1,13 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {UnsubscribeDirective} from '@shared';
-import {ComplexForm} from '@shadowrun/app/5e/5e.models';
+import {getFilteredObject, UnsubscribeDirective} from '@shared';
+import {Character, CharacterSkill, CharacterSpell, ComplexForm, Gear, GearView} from '@shadowrun/app/5e/5e.models';
 import {COMPLEX_FORMS} from '@shadowrun/app/5e/5e.complex-forms';
-import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {AUGMENTATION_ID, COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
+import {GEAR} from '@shadowrun/app/5e';
+import {BehaviorSubject} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {CreatePc, CreatePcBase} from '@shadowrun/app/5e/components/create-pc-base';
 
 @Component({
   /* tslint:disable-next-line */
@@ -19,36 +23,21 @@ import {COMPLEX_FORM_ID} from '@shadowrun/app/5e/5e.enums';
     }
   ]
 })
-export class CreatePcWareComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
+export class CreatePcWareComponent extends CreatePcBase implements CreatePc {
+  readonly allowed: string[] = ['id'];
   readonly form: FormArray = new FormArray([]);
-  readonly items: ComplexForm[] = COMPLEX_FORMS;
+  readonly items: Gear[] = GEAR;
 
   constructor() {
     super();
   }
 
-  ngOnInit(): void {
-    this.subscriptions = this.form.valueChanges.subscribe(() => {
-      const value = this.form.getRawValue();
-      this.onChange(value);
-    });
+  isAddDisabled(form): boolean {
+    return false;
   }
 
-  onChange = (_: any) => {};
-  writeValue(obj: any): void {}
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void {}
-
-  getId(group: AbstractControl): FormControl {
-    return group.get('id') as FormControl;
-  }
-
-  isAddDisabled(value: { id: COMPLEX_FORM_ID; }[]): boolean {
-    return COMPLEX_FORMS.every(cf => value.find(i => i.id === cf.id));
-  }
-
-  isOptionDisabled(id: COMPLEX_FORM_ID): boolean {
-    return !!this.form.value.find(i => i.id === id);
+  isOptionDisabled(id): boolean {
+    return false;
   }
 
   onAddClick(): void {
@@ -59,7 +48,21 @@ export class CreatePcWareComponent extends UnsubscribeDirective implements Contr
     this.form.push(group);
   }
 
-  onRemoveClick(id: COMPLEX_FORM_ID): void {
-    this.form.removeAt(this.form.getRawValue().map(i => i.id).indexOf(id));
+  onRemoveClick(index: number): void {
+    this.form.removeAt(index);
+  }
+
+  onSetInitial(character: Character): void {
+    this.form.clear({ emitEvent: false });
+    // starting.forEach(spell => {
+    //   const group: FormGroup = new FormGroup({
+    //     id: new FormControl(spell.id),
+    //     specialty: new FormControl(spell.specialty),
+    //     /* *** */
+    //     readonly: new FormControl(true)
+    //   });
+    //   this.form.push(group);
+    //   group.disable();
+    // });
   }
 }

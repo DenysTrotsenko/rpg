@@ -1221,6 +1221,7 @@ export const GEAR: Gear[] = [
       availability: '4',
       cost: '300',
     },
+    data: { accuracy: 6, reach: 0, ap: -3 },
     restricted: false,
     forbidden: false
   },
@@ -1239,6 +1240,7 @@ export const GEAR: Gear[] = [
       availability: '7R',
       cost: '200',
     },
+    data: { accuracy: 4, reach: 0, ap: -2 },
     restricted: true,
     forbidden: false
   },
@@ -1257,6 +1259,7 @@ export const GEAR: Gear[] = [
       availability: '9R',
       cost: '1000',
     },
+    data: { accuracy: 7, reach: 1, ap: -3 },
     restricted: true,
     forbidden: false
   },
@@ -1275,6 +1278,7 @@ export const GEAR: Gear[] = [
       availability: '-',
       cost: '10',
     },
+    data: { accuracy: 5, reach: 0, ap: -1 },
     restricted: false,
     forbidden: false
   },
@@ -1293,6 +1297,7 @@ export const GEAR: Gear[] = [
       availability: '6R',
       cost: '1000',
     },
+    data: { accuracy: 5, reach: 3, ap: -2 },
     restricted: true,
     forbidden: false
   },
@@ -1311,6 +1316,7 @@ export const GEAR: Gear[] = [
       availability: '-',
       cost: '100',
     },
+    data: { accuracy: 5, reach: 0, ap: -1 },
     restricted: false,
     forbidden: false
   },
@@ -1329,31 +1335,182 @@ export const GEAR: Gear[] = [
       availability: '5R',
       cost: '500',
     },
+    data: { accuracy: 6, reach: 1, ap: -2 },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.CLUB,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Club',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 0,
+      cost: (item: CharacterGear): number => 30
+    },
+    labels: {
+      description: '',
+      availability: '-',
+      cost: '30',
+    },
+    data: { accuracy: 4, reach: 1, ap: 0 },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.EXTENDABLE_BATON,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Extendable Baton',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 100
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '100',
+    },
+    data: { accuracy: 5, reach: 1, ap: 0 },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.SAP,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Sap',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 2,
+      cost: (item: CharacterGear): number => 30
+    },
+    labels: {
+      description: '',
+      availability: '2',
+      cost: '30',
+    },
+    data: { accuracy: 5, reach: 0, ap: 0 },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.STAFF,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Staff',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 3,
+      cost: (item: CharacterGear): number => 100
+    },
+    labels: {
+      description: '',
+      availability: '3',
+      cost: '100',
+    },
+    data: { accuracy: 6, reach: 2, ap: 0 },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.STUN_BATON,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Combat',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 6,
+      cost: (item: CharacterGear): number => 750
+    },
+    labels: {
+      description: '',
+      availability: '6',
+      cost: '750',
+    },
+    data: { accuracy: 4, reach: 1, ap: -5 },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.TELESCOPING_STAFF,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Telescoping Staff',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 350
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '350',
+    },
+    data: { accuracy: 4, reach: 2, ap: 0 },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.KNUCKS,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Knucks',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 2,
+      cost: (item: CharacterGear): number => 100
+    },
+    labels: {
+      description: '',
+      availability: '2',
+      cost: '100',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.MONOFILAMENT_WHIP,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Monofilament Whip',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 12,
+      cost: (item: CharacterGear): number => 10000
+    },
+    labels: {
+      description: '',
+      availability: '12',
+      cost: '10000',
+    },
+    restricted: false,
+    forbidden: true
+  },
+  {
+    id: GEAR_ID.SHOCK_GLOVES,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Shock Gloves',
+    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 6,
+      cost: (item: CharacterGear): number => 550
+    },
+    labels: {
+      description: '',
+      availability: '6',
+      cost: '550',
+    },
     restricted: true,
     forbidden: false
   },
   {
     id: GEAR_ID.COMBAT_KNIFE,
     book: BOOK_ID.CORE_RULEBOOK,
-    name: 'Combat Knife',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
-    ratings: [0],
-    formulas: {
-      availability: (item: CharacterGear): number => 4,
-      cost: (item: CharacterGear): number => 300
-    },
-    labels: {
-      description: '',
-      availability: '4',
-      cost: '300',
-    },
-    restricted: false,
-    forbidden: false
-  },
-  {
-    id: GEAR_ID.COMBAT_KNIFE,
-    book: BOOK_ID.CORE_RULEBOOK,
-    name: 'Combat Knife',
+    name: 'Combat',
     type: GEAR_TYPE_ID.MELEE_WEAPONS,
     ratings: [0],
     formulas: {

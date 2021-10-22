@@ -660,3 +660,33 @@ export enum SPIRIT_ID {
   MAN = 'spirit:man',
   WATER = 'spirit:water',
 }
+
+export enum AUGMENTATION_ID {
+  COMMLINK = 'aug:commlink',
+  CONTROL_RIG = 'aug:control_rig',
+  CORTEX_BOMB = 'aug:cortex_bomb',
+  CYBERDECK = 'aug:cyberdeck',
+  DATAJACK = 'aug:datajack',
+  DATA_LOCK = 'aug:data_lock',
+  OLFACTORY_BOOSTER = 'aug:olfactory_booster',
+  SIMRIG = 'aug:simrig',
+  SKILLJACK = 'aug:skilljack',
+  TASTE_BOOSTER = 'aug:taste_booster',
+  TOOTH_COMPARTMENT = 'aug:tooth_compartment',
+  ULTRASOUND_SENSOR = 'aug:ultrasound_sensor',
+  VOICE_MODULATOR = 'aug:voice_modulator',
+}
+
+export enum AUGMENTATION_GRADE_ID {
+  STANDARD = 'ag:standart',
+  ALPHAWARE = 'ag:standart',
+  BETAWARE = 'ag:standart',
+  DELTAWARE = 'ag:standart',
+  USED = 'ag:standart',
+}
+
+export enum AUGMENTATION_SLOT_ID {
+  HEADWARE = 'headware',
+  EYEWARE = 'eyeware',
+  EARWARE = 'earware',
+}
