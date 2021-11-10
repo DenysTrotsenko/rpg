@@ -5,6 +5,7 @@ import {GEAR_ID, GEAR_TYPE_ID} from '@shadowrun/app/5e/5e.enums';
 import {GEAR, GEAR_TYPES} from '@shadowrun/app/5e/5e.gear';
 import {CreatePcBase} from '@shadowrun/app/5e/components/create-pc-base';
 import {FifthEditionService} from '@shadowrun/app/5e';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 's5e-create-pc-gear',
@@ -43,17 +44,31 @@ export class CreatePcGearComponent extends CreatePcBase {
   }
 
   onAddClick(): void {
-    const item: Gear = GEAR[0];
     const group: FormGroup = new FormGroup({
-      id: new FormControl(item.id, [Validators.required]),
-      rating: new FormControl(item.ratings[0], [Validators.required]),
+      id: new FormControl(GEAR[0].id, [Validators.required]),
+      rating: new FormControl(GEAR[0].ratings[0], [Validators.required]),
       quantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(9999)]),
       /* *** */
       readonly: new FormControl(false),
-      type: new FormControl(item.type),
-      min: new FormControl(item.ratings[0]),
-      max: new FormControl(item.ratings[item.ratings.length - 1]),
+      type: new FormControl(GEAR[0].type),
+      min: new FormControl(GEAR[0].ratings[0]),
+      max: new FormControl(GEAR[0].ratings[GEAR[0].ratings.length - 1]),
     });
+    this.subscriptions = group.get('type').valueChanges.pipe(tap(type => {
+      const item: Gear = GEAR.filter(i => i.type === type)[0];
+      group.patchValue({
+        id: item.id
+      });
+    })).subscribe();
+    this.subscriptions = group.get('id').valueChanges.pipe(tap(id => {
+      const item: Gear = GEAR.find(i => i.id === id);
+      group.patchValue({
+        rating: item.ratings[0],
+        /* *** */
+        min: item.ratings[0],
+        max: item.ratings[item.ratings.length - 1],
+      });
+    })).subscribe();
     this.form.push(group);
   }
 
