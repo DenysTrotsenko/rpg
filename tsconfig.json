@@ -17,9 +17,9 @@
     ],
     "paths": {
       "@shared": [
-        "projects/shared-library/src/public-api",
-        "dist/shared-library/shared-library",
-        "dist/shared-library"
+        "projects/std/src/public-api",
+        "dist/std/std",
+        "dist/std"
       ],
       "@shadowrun/*": ["projects/shadowrun/src/*"]
     }

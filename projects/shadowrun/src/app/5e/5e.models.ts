@@ -496,6 +496,8 @@ export interface ComplexFormView {
 }
 
 export interface GearView {
+  availability: string;
+  cost: string;
   name: string;
   tooltip: string;
 }

@@ -113,10 +113,13 @@ export class FifthEditionService {
   getGearView(value: CharacterGear): GearView {
     const item: Gear = GEAR.find(i => i.id === value.id);
     const name: string = item?.name;
-    const availability: string = item?.labels?.availability;
-    const cost: string = item?.labels?.cost;
+    const availability: string = item?.labels?.availability ?? `${item?.formulas?.availability(value)}${item?.restricted ? 'R' : ''}${item?.forbidden ? 'F' : ''}`;
+    const cost: string = item?.labels?.cost ?? `¥${item?.formulas?.cost(value)}`;
     const description = item?.labels?.description;
-    const data: string = Object.entries(item?.data ?? {}).map(i => `${i[0]}: ${i[1]}`).join(', ');
+    const data: string = Object
+      .entries(item?.data ?? {})
+      .map(i => `${i[0].split('_').map(w => w.charAt(0).toLocaleUpperCase() + w.slice(1)).join(' ')}: ${i[1]}`)
+      .join('\n');
     const tooltip: string = [
       `${name}\n`,
       `${data}`,
@@ -125,7 +128,7 @@ export class FifthEditionService {
       `Cost: ${cost}`,
     ].filter(i => !!i).join('\n');
 
-    return { tooltip } as GearView;
+    return { availability, cost, name, tooltip } as GearView;
   }
 
   getGeneralView(value: CharacterGeneral): GeneralView {

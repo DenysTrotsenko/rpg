@@ -1,5 +1,5 @@
 /*
- * Public API Surface of shared-library
+ * Public API Surface of std
  */
 export * from './lib/core';
 export * from './lib/dialog';

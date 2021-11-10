@@ -1,5 +1,5 @@
 {
-  "name": "shared-library",
+  "name": "std",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/cdk": "^10.2.0",

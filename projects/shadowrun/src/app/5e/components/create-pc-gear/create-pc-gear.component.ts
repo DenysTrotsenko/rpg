@@ -1,11 +1,10 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {BehaviorSubject} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {Character, CharacterGear, Gear, GearType} from '@shadowrun/app/5e/5e.models';
+import {Component, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {Character, CharacterGear, Gear, GearType, GearView} from '@shadowrun/app/5e/5e.models';
 import {GEAR_ID, GEAR_TYPE_ID} from '@shadowrun/app/5e/5e.enums';
-import {getFilteredObject, UnsubscribeDirective} from '@shared';
 import {GEAR, GEAR_TYPES} from '@shadowrun/app/5e/5e.gear';
+import {CreatePcBase} from '@shadowrun/app/5e/components/create-pc-base';
+import {FifthEditionService} from '@shadowrun/app/5e';
 
 @Component({
   selector: 's5e-create-pc-gear',
@@ -20,27 +19,14 @@ import {GEAR, GEAR_TYPES} from '@shadowrun/app/5e/5e.gear';
     }
   ]
 })
-export class CreatePcGearComponent extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
-  @Input() set previous(value: Character) { this.previous$.next(value); }
+export class CreatePcGearComponent extends CreatePcBase {
+  readonly allowed: string[] = ['id', 'rating', 'quantity'];
   readonly form: FormArray = new FormArray([]);
   readonly items: Gear[] = GEAR;
   readonly types: GearType[] = GEAR_TYPES;
-  private readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
-  private readonly initial$ = this.previous$.pipe(tap(res => this.setInitial(res)));
 
-  constructor() {
+  constructor(private service: FifthEditionService) {
     super();
-  }
-
-  ngOnInit(): void {
-    this.subscriptions = this.initial$.subscribe();
-    this.subscriptions = this.form.valueChanges.subscribe(() => {
-      if (this.form.valid) {
-        this.setChange();
-      } else {
-        this.onChange(null);
-      }
-    });
   }
 
   onChange = (_: any) => {};
@@ -52,9 +38,12 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
     return GEAR.filter(i => i.type === type);
   }
 
+  getView(i: CharacterGear): GearView {
+    return this.service.getGearView(i);
+  }
+
   onAddClick(): void {
-    const item: Gear = GEAR.find(s => !this.form.value.find(i => i.id === s.id));
-    if (!item) { return; }
+    const item: Gear = GEAR[0];
     const group: FormGroup = new FormGroup({
       id: new FormControl(item.id, [Validators.required]),
       rating: new FormControl(item.ratings[0], [Validators.required]),
@@ -72,7 +61,7 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
     this.form.removeAt(index);
   }
 
-  private setInitial(previous: Character): void {
+  setInitial(previous: Character): void {
     const gear: CharacterGear[] = previous?.gear ?? [];
     this.form.clear({ emitEvent: false });
     gear.forEach(i => {
@@ -88,12 +77,5 @@ export class CreatePcGearComponent extends UnsubscribeDirective implements Contr
         max: new FormControl(item.ratings[item.ratings.length - 1]),
       }));
     });
-    this.setChange();
-  }
-
-  private setChange(): void {
-    const allowed: string[] = ['id', 'rating', 'quantity'];
-    const value: CharacterGear[] = this.form.getRawValue().map(res => getFilteredObject(res, allowed));
-    this.onChange(value);
   }
 }

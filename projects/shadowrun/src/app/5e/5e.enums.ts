@@ -286,19 +286,22 @@ export enum POWER_DURATION_ID {
   ALWAYS = 'pd:always',
   INSTANT = 'pd:instant',
   SUSTAINED = 'pd:sustained',
-  PERMANENT = 'pd:permanent'
+  PERMANENT = 'pd:permanent',
+  SPECIAL = 'pd:special'
 }
 
 export enum POWER_RANGE_ID {
   SELF = 'pr:self',
   TOUCH = 'pr:touch',
   LINE_OF_SIGHT = 'pr:line_of_sight',
-  LINE_OF_SIGHT_AREA = 'pr:line_of_sight_area'
+  LINE_OF_SIGHT_AREA = 'pr:line_of_sight_area',
+  SPECIAL = 'pr:special'
 }
 
 export enum POWER_TYPE_ID {
   PHYSICAL = 'pt:physical',
-  MANA = 'pt:mana'
+  MANA = 'pt:mana',
+  SPECIAL = 'pt:special'
 }
 
 export enum PROGRAM_ID {

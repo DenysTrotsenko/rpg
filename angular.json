@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shared-library": {
+    "std": {
       "projectType": "library",
-      "root": "projects/shared-library",
-      "sourceRoot": "projects/shared-library/src",
+      "root": "projects/std",
+      "sourceRoot": "projects/std/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/shared-library/tsconfig.lib.json",
-            "project": "projects/shared-library/ng-package.json"
+            "tsConfig": "projects/std/tsconfig.lib.json",
+            "project": "projects/std/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/shared-library/tsconfig.lib.prod.json"
+              "tsConfig": "projects/std/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/shared-library/src/test.ts",
-            "tsConfig": "projects/shared-library/tsconfig.spec.json",
-            "karmaConfig": "projects/shared-library/karma.conf.js"
+            "main": "projects/std/src/test.ts",
+            "tsConfig": "projects/std/tsconfig.spec.json",
+            "karmaConfig": "projects/std/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/shared-library/tsconfig.lib.json",
-              "projects/shared-library/tsconfig.spec.json"
+              "projects/std/tsconfig.lib.json",
+              "projects/std/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -69,11 +69,11 @@
             ],
             "styles": [
               "projects/shadowrun/src/styles.scss",
-              "projects/shared-library/src/index.scss"
+              "projects/std/src/index.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/shared-library/src/styles/"
+                "projects/std/src/styles/"
               ]
             },
             "scripts": [],
@@ -177,7 +177,7 @@
       }
     }
   },
-  "defaultProject": "shared-library",
+  "defaultProject": "std",
   "cli": {
     "analytics": false
   }

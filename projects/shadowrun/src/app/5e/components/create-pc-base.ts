@@ -18,8 +18,8 @@ export interface CreatePc {
 @Directive()
 export class CreatePcBase extends UnsubscribeDirective implements ControlValueAccessor, OnInit {
   @Input() set previous(value: Character) { this.previous$.next(value); }
-  private readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
-  private readonly initial$ = this.previous$.pipe(tap(res => this.setInitial(res)));
+  protected readonly previous$: BehaviorSubject<Character> = new BehaviorSubject(null);
+  protected readonly initial$ = this.previous$.pipe(tap(res => this.setInitial(res)));
   allowed: string[] = [];
   form: FormGroup | FormArray;
 
@@ -45,12 +45,12 @@ export class CreatePcBase extends UnsubscribeDirective implements ControlValueAc
 
   onSetInitial(character: Character): void {}
 
-  private setInitial(character: Character): void {
+  protected setInitial(character: Character): void {
     this.onSetInitial(character);
     this.setChange(this.allowed);
   }
 
-  private setChange(allowed: string[]): void {
+  protected setChange(allowed: string[]): void {
     this.onChange(this.form.getRawValue().map(res => getFilteredObject(res, allowed)));
   }
 }

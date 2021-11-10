@@ -1,4 +1,4 @@
-import {ATTRIBUTE_ID, BOOK_ID, SKILL_ID, SPIRIT_ID} from './5e.enums';
+import {ATTRIBUTE_ID, BOOK_ID, POWER_ID, SKILL_ID, SPIRIT_ID} from './5e.enums';
 import {Spirit} from './5e.models';
 
 export const SPIRITS: Spirit[] = [
@@ -118,8 +118,22 @@ export const SPIRITS: Spirit[] = [
       SKILL_ID.PERCEPTION,
       SKILL_ID.UNARMED_COMBAT
     ],
-    powers: [],
-    optional_powers: [],
+    powers: [
+      POWER_ID.ACCIDENT,
+      POWER_ID.ASTRAL_FORM,
+      POWER_ID.CONFUSION,
+      POWER_ID.ELEMENTAL_ATTACK,
+      POWER_ID.ENERGY_AURA,
+      POWER_ID.ENGULF,
+      POWER_ID.MATERIALIZATION,
+      POWER_ID.SAPIENCE
+    ],
+    optional_powers: [
+      POWER_ID.FEAR,
+      POWER_ID.GUARD,
+      POWER_ID.NOXIOUS_BREATH,
+      POWER_ID.SEARCH
+    ],
     special: []
   },
   {
@@ -148,7 +162,13 @@ export const SPIRITS: Spirit[] = [
       SKILL_ID.SPELLCASTING,
       SKILL_ID.UNARMED_COMBAT
     ],
-    powers: [],
+    powers: [
+      POWER_ID.ACCIDENT,
+      POWER_ID.ASTRAL_FORM,
+      POWER_ID.CONCEALMENT,
+      POWER_ID.CONFUSION,
+      POWER_ID.ENHANCED_SENSES,
+    ],
     optional_powers: [],
     special: []
   },
@@ -178,8 +198,24 @@ export const SPIRITS: Spirit[] = [
       SKILL_ID.PERCEPTION,
       SKILL_ID.UNARMED_COMBAT
     ],
-    powers: [],
-    optional_powers: [],
+    powers: [
+      POWER_ID.ASTRAL_FORM,
+      POWER_ID.CONCEALMENT,
+      POWER_ID.CONFUSION,
+      POWER_ID.ENGULF,
+      POWER_ID.MATERIALIZATION,
+      POWER_ID.MOVEMENT,
+      POWER_ID.SAPIENCE,
+      POWER_ID.SEARCH
+    ],
+    optional_powers: [
+      POWER_ID.ACCIDENT,
+      POWER_ID.BINDING,
+      POWER_ID.ELEMENTAL_ATTACK,
+      POWER_ID.ENERGY_AURA,
+      POWER_ID.GUARD,
+      POWER_ID.WEATHER_CONTROL
+    ],
     special: []
   },
 ];
