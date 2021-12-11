@@ -13,6 +13,10 @@
     "start:shadowrun:hmr": "ng serve --hmr --project=shadowrun",
     "build:shadowrun": "ng build --configuration=production --project=shadowrun",
     "watch:shadowrun": "ng build --project=shadowrun --watch",
+    "start:dm": "ng serve --project=danse-macabre",
+    "start:dm:hmr": "ng serve --hmr --project=danse-macabre",
+    "build:dm": "ng build --configuration=production --project=danse-macabre",
+    "watch:dm": "ng build --project=danse-macabre --watch",
     "deploy:shadowrun": "cd projects/shadowrun && firebase deploy",
     "deploy-functions:shadowrun": "cd projects/shadowrun && firebase deploy --only functions",
     "emulator:shadowrun": "cd projects/shadowrun && firebase emulators:start --only functions"

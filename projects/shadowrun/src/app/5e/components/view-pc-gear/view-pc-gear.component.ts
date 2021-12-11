@@ -3,7 +3,7 @@ import {Character, FifthEditionService, GearView} from '@shadowrun/app/5e';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
-  selector: 'app-view-pc-gear',
+  selector: 's5e-view-gear',
   templateUrl: './view-pc-gear.component.html',
   styleUrls: ['./view-pc-gear.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

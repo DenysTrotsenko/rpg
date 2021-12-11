@@ -14,5 +14,6 @@
 <s5e-view-attributes [character]="character$ | async" [view]="view$ | async"></s5e-view-attributes>
 <s5e-view-skills [character]="character$ | async" [view]="view$ | async"></s5e-view-skills>
 <s5e-view-knowledge [character]="character$ | async" [view]="view$ | async"></s5e-view-knowledge>
-<s5e-view-spells [character]="character$ | async" [view]="view$ | async"></s5e-view-spells>
-<s5e-view-complex-forms [character]="character$ | async" [view]="view$ | async"></s5e-view-complex-forms>
+<s5e-view-spells *ngIf="isSpells$ | async" [character]="character$ | async" [view]="view$ | async"></s5e-view-spells>
+<s5e-view-complex-forms *ngIf="isComplexForms$ | async" [character]="character$ | async" [view]="view$ | async"></s5e-view-complex-forms>
+<s5e-view-gear [character]="character$ | async" [view]="view$ | async"></s5e-view-gear>

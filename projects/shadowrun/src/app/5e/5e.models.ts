@@ -499,6 +499,7 @@ export interface GearView {
   availability: string;
   cost: string;
   name: string;
+  quantity: number;
   tooltip: string;
 }
 

@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '@shadowrun/environments/environment';
 import { FifthEditionModule } from '@shadowrun/app/5e/5e.module';
-import { REGION, USE_EMULATOR } from '@angular/fire/compat/functions';
 
 @NgModule({
   declarations: [
@@ -20,10 +19,6 @@ import { REGION, USE_EMULATOR } from '@angular/fire/compat/functions';
     AngularFireModule.initializeApp(environment.firebase, 'shadowrun'),
     CoreModule,
     FifthEditionModule
-  ],
-  providers: [
-    // { provide: REGION, useValue: 'europe-west3' },
-    // { provide: USE_EMULATOR, useValue: ['localhost', 5001] },
   ],
   bootstrap: [AppComponent]
 })

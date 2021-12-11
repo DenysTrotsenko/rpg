@@ -13,7 +13,7 @@
       <thead>
       <tr class="mat-header-row">
         <th class="mat-header-cell">Name</th>
-<!--        <th class="mat-header-cell">Target</th>-->
+        <th class="mat-header-cell">Quantity</th>
 <!--        <th class="mat-header-cell">Duration</th>-->
 <!--        <th class="mat-header-cell">Fading</th>-->
       </tr>
@@ -21,7 +21,7 @@
       <tbody>
       <tr *ngFor="let i of items;" class="mat-row">
         <td class="mat-cell"><span [matTooltip]="i.tooltip">{{i?.name}}</span></td>
-<!--        <td class="mat-cell" [matTooltip]="i.target?.name">{{i?.target?.name}}</td>-->
+        <td class="mat-cell">x{{i?.quantity}}</td>
 <!--        <td class="mat-cell" [matTooltip]="i.duration?.name">{{i.duration?.alias}}</td>-->
 <!--        <td class="mat-cell">{{i?.fading}}</td>-->
       </tr>

@@ -1,9 +1,7 @@
 import {Directive, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
 
-@Directive({
-  selector: '[libUnsubscribe]'
-})
+@Directive()
 export class UnsubscribeDirective implements OnDestroy {
   private subscription: Subscription = new Subscription();
 

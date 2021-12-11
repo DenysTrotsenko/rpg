@@ -115,7 +115,8 @@ export class FifthEditionService {
     const name: string = item?.name;
     const availability: string = item?.labels?.availability ?? `${item?.formulas?.availability(value)}${item?.restricted ? 'R' : ''}${item?.forbidden ? 'F' : ''}`;
     const cost: string = item?.labels?.cost ?? `¥${item?.formulas?.cost(value)}`;
-    const description = item?.labels?.description;
+    const description: string = item?.labels?.description;
+    const quantity: number = value.quantity;
     const data: string = Object
       .entries(item?.data ?? {})
       .map(i => `${i[0].split('_').map(w => w.charAt(0).toLocaleUpperCase() + w.slice(1)).join(' ')}: ${i[1]}`)
@@ -128,7 +129,7 @@ export class FifthEditionService {
       `Cost: ${cost}`,
     ].filter(i => !!i).join('\n');
 
-    return { availability, cost, name, tooltip } as GearView;
+    return { availability, cost, name, quantity, tooltip } as GearView;
   }
 
   getGeneralView(value: CharacterGeneral): GeneralView {

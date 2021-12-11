@@ -1191,7 +1191,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.COMBAT_AXE,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Combat Axe',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     data: { accuracy: 4, reach: 2, ap: -4 },
     formulas: {
@@ -1210,7 +1210,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.COMBAT_KNIFE,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Combat Knife',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 4,
@@ -1229,7 +1229,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.FOREARM_SNAP_BLADES,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Forearm Snap Blade',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 7,
@@ -1248,7 +1248,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.KATANA,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Katana',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 9,
@@ -1267,7 +1267,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.KNIFE,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Knife',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 0,
@@ -1286,7 +1286,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.POLEARM,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Polearm',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 6,
@@ -1305,7 +1305,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.SURVIVAL_KNIFE,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Survival Knife',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 0,
@@ -1324,7 +1324,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.SWORD,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Sword',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.BLADES,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 5,
@@ -1343,7 +1343,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.CLUB,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Club',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 0,
@@ -1362,7 +1362,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.EXTENDABLE_BATON,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Extendable Baton',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 4,
@@ -1381,7 +1381,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.SAP,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Sap',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 2,
@@ -1400,7 +1400,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.STAFF,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Staff',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 3,
@@ -1419,7 +1419,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.STUN_BATON,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Combat',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 6,
@@ -1438,7 +1438,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.TELESCOPING_STAFF,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Telescoping Staff',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.CLUBS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 4,
@@ -1457,7 +1457,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.KNUCKS,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Knucks',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.OTHER_MELEE,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 2,
@@ -1475,7 +1475,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.MONOFILAMENT_WHIP,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Monofilament Whip',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.OTHER_MELEE,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 12,
@@ -1493,7 +1493,7 @@ export const GEAR: Gear[] = [
     id: GEAR_ID.SHOCK_GLOVES,
     book: BOOK_ID.CORE_RULEBOOK,
     name: 'Shock Gloves',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    type: GEAR_TYPE_ID.OTHER_MELEE,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 6,
@@ -1508,21 +1508,489 @@ export const GEAR: Gear[] = [
     forbidden: false
   },
   {
-    id: GEAR_ID.COMBAT_KNIFE,
+    id: GEAR_ID.BOW,
     book: BOOK_ID.CORE_RULEBOOK,
-    name: 'Combat',
-    type: GEAR_TYPE_ID.MELEE_WEAPONS,
+    name: 'Bow',
+    type: GEAR_TYPE_ID.BOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => item.rating,
+      cost: (item: CharacterGear): number => item.rating * 100
+    },
+    labels: {
+      description: '',
+      availability: 'Rating',
+      cost: 'Rating x 100',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.ARROW,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Arrow',
+    type: GEAR_TYPE_ID.BOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => item.rating,
+      cost: (item: CharacterGear): number => item.rating * 2
+    },
+    labels: {
+      description: '',
+      availability: 'Rating',
+      cost: 'Rating x 2',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.INJECTION_ARROW,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Injection Arrow',
+    type: GEAR_TYPE_ID.BOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => item.rating + 2,
+      cost: (item: CharacterGear): number => item.rating * 20
+    },
+    labels: {
+      description: '',
+      availability: '(Rating + 2)',
+      cost: 'Rating x 20',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.LIGHT_CROSSBOW,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Light Crossbow',
+    type: GEAR_TYPE_ID.CROSSBOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 2,
+      cost: (item: CharacterGear): number => 300
+    },
+    labels: {
+      description: '',
+      availability: '2',
+      cost: '300',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.MEDIUM_CROSSBOW,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Medium Crossbow',
+    type: GEAR_TYPE_ID.CROSSBOWS,
     ratings: [0],
     formulas: {
       availability: (item: CharacterGear): number => 4,
-      cost: (item: CharacterGear): number => 300
+      cost: (item: CharacterGear): number => 500
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '500',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.HEAVY_CROSSBOW,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Heavy Crossbow',
+    type: GEAR_TYPE_ID.CROSSBOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 8,
+      cost: (item: CharacterGear): number => 1000
+    },
+    labels: {
+      description: '',
+      availability: '8',
+      cost: '1000',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.BOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Bolt',
+    type: GEAR_TYPE_ID.CROSSBOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 2,
+      cost: (item: CharacterGear): number => 5
+    },
+    labels: {
+      description: '',
+      availability: '2',
+      cost: '5',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.INJECTION_BOLT,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Injection Bolt',
+    type: GEAR_TYPE_ID.CROSSBOWS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 8,
+      cost: (item: CharacterGear): number => 50
     },
     labels: {
       description: '',
       availability: '4',
       cost: '300',
     },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.DEFIANCE_EX_SHOCKER,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Defiance EX Shocker',
+    type: GEAR_TYPE_ID.TASERS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 0,
+      cost: (item: CharacterGear): number => 250
+    },
+    labels: {
+      description: '',
+      availability: '-',
+      cost: '250',
+    },
     restricted: false,
     forbidden: false
   },
+  {
+    id: GEAR_ID.YAMAHA_PULSAR,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Yamaha Pulsar',
+    type: GEAR_TYPE_ID.TASERS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 0,
+      cost: (item: CharacterGear): number => 180
+    },
+    labels: {
+      description: '',
+      availability: '-',
+      cost: '180',
+    },
+    restricted: false,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.FICHETTI_TIFFANI_NEEDLER,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Fichettin Tiffani Needler',
+    type: GEAR_TYPE_ID.HOLD_OUTS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 5,
+      cost: (item: CharacterGear): number => 1000
+    },
+    labels: {
+      description: '',
+      availability: '5',
+      cost: '1000',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.STREETLINE_SPECIAL,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Streetline Special',
+    type: GEAR_TYPE_ID.HOLD_OUTS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 120
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '120',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.WALTHER_PALM_PISTOL,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Walther Palm Pistol',
+    type: GEAR_TYPE_ID.HOLD_OUTS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 180
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '180',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.ARES_LIGHT_FIRE_75,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Ares Light Fire 75',
+    type: GEAR_TYPE_ID.LIGHT_PISTOLS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 6,
+      cost: (item: CharacterGear): number => 1250
+    },
+    labels: {
+      description: '',
+      availability: '6',
+      cost: '1250',
+    },
+    restricted: false,
+    forbidden: true
+  },
+  {
+    id: GEAR_ID.ARES_LIGHT_FIRE_70,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Ares Light Fire 70',
+    type: GEAR_TYPE_ID.LIGHT_PISTOLS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 3,
+      cost: (item: CharacterGear): number => 200
+    },
+    labels: {
+      description: '',
+      availability: '3',
+      cost: '200',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.BERETTA_201T,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Beretta 201T',
+    type: GEAR_TYPE_ID.LIGHT_PISTOLS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 7,
+      cost: (item: CharacterGear): number => 210
+    },
+    labels: {
+      description: '',
+      availability: '7',
+      cost: '210',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  {
+    id: GEAR_ID.COLT_AMERICA_L36,
+    book: BOOK_ID.CORE_RULEBOOK,
+    name: 'Colt America L36',
+    type: GEAR_TYPE_ID.LIGHT_PISTOLS,
+    ratings: [0],
+    formulas: {
+      availability: (item: CharacterGear): number => 4,
+      cost: (item: CharacterGear): number => 320
+    },
+    labels: {
+      description: '',
+      availability: '4',
+      cost: '320',
+    },
+    restricted: true,
+    forbidden: false
+  },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
+  // {
+  //   id: GEAR_ID.COMBAT_KNIFE,
+  //   book: BOOK_ID.CORE_RULEBOOK,
+  //   name: 'Combat',
+  //   type: GEAR_TYPE_ID.BLADES,
+  //   ratings: [0],
+  //   formulas: {
+  //     availability: (item: CharacterGear): number => 4,
+  //     cost: (item: CharacterGear): number => 300
+  //   },
+  //   labels: {
+  //     description: '',
+  //     availability: '4',
+  //     cost: '300',
+  //   },
+  //   restricted: false,
+  //   forbidden: false
+  // },
 ];
