@@ -1,7 +1,7 @@
-import {Drawback} from './models';
+import {Trait} from './models';
 import {DrawbackId} from './enums';
 
-export const DRAWBACKS: Drawback[] = [
+export const DRAWBACKS: Trait[] = [
   {
     id: DrawbackId.BAD_TICKER,
     name: 'Bad Ticker',
@@ -209,5 +209,37 @@ export const DRAWBACKS: Drawback[] = [
       description: 'You have suffered a terrible injury at some point, making it difficult to breath. You may have fallen on a fencepost as a youth and grown up with the use of only one lung. Perhaps you were stabbed by a vicious rival and now exhibit an audible wheezing.',
       effect: 'Whenever you suffer physical Peril, move one additional step down the Peril Condition Track negatively while suffering 1 Corruption.'
     }
-  }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.CRUEL_TUTELAGE,
+    name: 'Cruel Tutelage',
+    labels: {
+      description: 'As Cultists are wholly self-taught in the ways of Magick, the practice of their spells is messy and chaotic. Fortunate for Abyssal Princes sensitive to this errant way of thinking, Cultists and their ilk make easy prey, leading them down a path towards the blackest and most soul-corrupting of Magicks.',
+      effect: 'When you generate face ‘1’ or ‘6’ with Chaos Dice, you invoke a Chaos Manifestation. See Chapter 10: Grimoire.'
+    }
+  },
+  {
+    id: DrawbackId.THE_END_IS_NIGH,
+    name: 'The End Is Nigh',
+    labels: {
+      description: 'Unfortunately, the process of ritual scarification has led its votaries toward the brink of madness.',
+      effect: 'You can never be restored to Unharmed on your Damage Condition Track, only to Lightly Wounded.'
+    }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
 ];

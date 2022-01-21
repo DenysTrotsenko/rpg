@@ -1,4 +1,4 @@
-import {AncestryId, ArchetypeId, AttributeId, DrawbackId, ProfessionId, SkillId, TraitId, UpbringingId} from './enums';
+import {AncestryId, ArchetypeId, AttributeId, DrawbackId, ProfessionId, SkillId, TalentId, TraitId, UpbringingId} from './enums';
 
 export interface Ancestry {
   id: AncestryId;
@@ -21,18 +21,15 @@ export interface Attribute {
   };
 }
 
-export interface Drawback {
-  id: DrawbackId;
-  name: string;
-  labels: {
-    description: string;
-    effect: string;
-  };
-}
-
 export interface Profession {
   id: ProfessionId;
   name: string;
+  traits: (TraitId | DrawbackId)[];
+  advancements: {
+    bonuses: [];
+    skills: [];
+    talents: [];
+  };
   labels: {
     description: string;
   };
@@ -41,10 +38,18 @@ export interface Profession {
 export interface Skill {
   id: SkillId;
   name: string;
+  attribute: AttributeId;
+  type: 'common' | 'special';
+  focuses: string[];
+  labels?: {
+    description: string;
+    focuses: string;
+    difficulties: string;
+  };
 }
 
 export interface Trait {
-  id: TraitId;
+  id: TraitId | TalentId | DrawbackId;
   name: string;
   labels: {
     description: string;
