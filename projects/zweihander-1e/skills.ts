@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 import {Skill} from './models';
 import {AttributeId, SkillId} from './enums';
 

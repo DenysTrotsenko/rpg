@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 import {Trait} from './models';
 import {DrawbackId} from './enums';
 
@@ -214,8 +215,8 @@ export const DRAWBACKS: Trait[] = [
     id: DrawbackId.LURE_OF_POWER,
     name: 'Lure of Power',
     labels: {
-      description: '',
-      effect: ''
+      description: 'The lust for Magickal power corrupts all, indistinct from its most brazen or conservative practitioners.',
+      effect: 'Whenever you generate face ‘6’ with Chaos Dice, you invoke a Chaos Manifestation. See Chapter 10: Grimoire.'
     }
   },
   {
@@ -232,6 +233,110 @@ export const DRAWBACKS: Trait[] = [
     labels: {
       description: 'Unfortunately, the process of ritual scarification has led its votaries toward the brink of madness.',
       effect: 'You can never be restored to Unharmed on your Damage Condition Track, only to Lightly Wounded.'
+    }
+  },
+  {
+    id: DrawbackId.WHEN_THE_DEALINS_DONE,
+    name: 'When The Dealin’s Done',
+    labels: {
+      description: 'Living forever is boring and the Gambler will burn out before they fade away. And when you play the devil’s game, you eventually get the devil’s reward.',
+      effect: 'When you use a Fortune Point for Luck of the Draw, you move one step down the Peril Condition Track negatively.'
+    }
+  },
+  {
+    id: DrawbackId.CRESTFALLEN,
+    name: 'Crestfallen',
+    labels: {
+      description: 'Hedge Knights are restricted by a code, a set of principles and guidelines they adhere to. When they bend or even break this code, they make themselves susceptible to chaos’ influence.',
+      effect: 'When you suffer Corruption, increase the number of points you gain by one. This means that if you suffer 3 Corruption, you gain 4 instead.'
+    }
+  },
+  {
+    id: DrawbackId.ABSTAIN_FROM_VIOLENCE,
+    name: 'Abstain From Violence',
+    labels: {
+      description: 'You have given yourself to the god’s mercy, taking no part in the selfish passions nor acts of violence. You are a pacifist at heart and it brings you great sorrow when you do hurt another – even if they would intend to kill you.',
+      effect: 'Should you intentionally bring harm upon a creature classified as a Humanoid (including player Ancestries), you are unable to call upon your White Witchery abilities for three days.'
+    }
+  },
+  {
+    id: DrawbackId.SALT_OF_THE_EARTH,
+    name: 'Salt Of The Earth',
+    labels: {
+      description: 'Despicable wretch! Lowly worm! Kneel before your betters, and polish my boots while you’re at it!',
+      effect: 'When you enter this Profession, immediately change your Social Class to Lowborn.'
+    }
+  },
+  {
+    id: DrawbackId.NOTORIOUS_MOOCHER,
+    name: 'Notorious Moocher',
+    labels: {
+      description: 'Living off the hard work of others, you manage to get by with but what’s in your pockets or what’s been given to you. Unfortunately, this casts an ill-light upon your reliability as you burn through your associates’ charity all too quickly.',
+      effect: 'When interacting with people who you know, you must flip the results to fail Fellowship-based Skill Tests.'
+    }
+  },
+  {
+    id: DrawbackId.WASHED_UP,
+    name: 'Washed Up',
+    labels: {
+      description: 'Leaving behind the life they once lived, the Rake is now forced to rub elbows with the friends they’ve got, as opposed to the ones they had.',
+      effect: 'When you enter this Profession, immediately change your Social Class to Lowborn.'
+    }
+  },
+  {
+    id: DrawbackId.DEATH_WISH,
+    name: 'Death Wish',
+    labels: {
+      description: 'Unfortunately, the path of the Slayer is a difficult one that only the truly insane would possibly follow.',
+      effect: 'In order to follow the Slayer’s Path, you can never wear armor as it violates this tenet. Should you don armor, you do not gain the benefits of any Professional Trait – Slayer or otherwise – that you possess.'
+    }
+  },
+  {
+    id: DrawbackId.ALTER_EGO,
+    name: 'Alter Ego',
+    labels: {
+      description: 'The powers-above will not cast their favor upon you, until you don the mask of a Vigilante.',
+      effect: 'When in places where you may be recognized as anyone other than your moniker, you cannot use Fate Points.'
+    }
+  },
+  {
+    id: DrawbackId.WARP_DISSONANCE,
+    name: 'Warp Dissonance',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.LURE_OF_POWER,
+    name: 'Lure of Power',
+    labels: {
+      description: '',
+      effect: ''
     }
   },
   {

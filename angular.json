@@ -182,37 +182,43 @@
         }
       }
     },
-    "danse-macabre": {
+    "blades-in-the-dark": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "changeDetection": "OnPush",
           "style": "scss"
         },
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/danse-macabre",
-      "sourceRoot": "projects/danse-macabre/src",
+      "root": "projects/blades-in-the-dark",
+      "sourceRoot": "projects/blades-in-the-dark/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/danse-macabre",
-            "index": "projects/danse-macabre/src/index.html",
-            "main": "projects/danse-macabre/src/main.ts",
-            "polyfills": "projects/danse-macabre/src/polyfills.ts",
-            "tsConfig": "projects/danse-macabre/tsconfig.app.json",
+            "outputPath": "dist/blades-in-the-dark",
+            "index": "projects/blades-in-the-dark/src/index.html",
+            "main": "projects/blades-in-the-dark/src/main.ts",
+            "polyfills": "projects/blades-in-the-dark/src/polyfills.ts",
+            "tsConfig": "projects/blades-in-the-dark/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/danse-macabre/src/favicon.ico",
-              "projects/danse-macabre/src/assets"
+              "projects/blades-in-the-dark/src/favicon.ico",
+              "projects/blades-in-the-dark/src/assets"
             ],
             "styles": [
-              "projects/danse-macabre/src/styles.scss",
-              "projects/std/src/index.scss"
+              "projects/std/src/index.scss",
+              "projects/blades-in-the-dark/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/std/src/styles/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -231,8 +237,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/danse-macabre/src/environments/environment.ts",
-                  "with": "projects/danse-macabre/src/environments/environment.prod.ts"
+                  "replace": "projects/blades-in-the-dark/src/environments/environment.ts",
+                  "with": "projects/blades-in-the-dark/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -252,10 +258,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "danse-macabre:build:production"
+              "browserTarget": "blades-in-the-dark:build:production"
             },
             "development": {
-              "browserTarget": "danse-macabre:build:development"
+              "browserTarget": "blades-in-the-dark:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -263,23 +269,23 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "danse-macabre:build"
+            "browserTarget": "blades-in-the-dark:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/danse-macabre/src/test.ts",
-            "polyfills": "projects/danse-macabre/src/polyfills.ts",
-            "tsConfig": "projects/danse-macabre/tsconfig.spec.json",
-            "karmaConfig": "projects/danse-macabre/karma.conf.js",
+            "main": "projects/blades-in-the-dark/src/test.ts",
+            "polyfills": "projects/blades-in-the-dark/src/polyfills.ts",
+            "tsConfig": "projects/blades-in-the-dark/tsconfig.spec.json",
+            "karmaConfig": "projects/blades-in-the-dark/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/danse-macabre/src/favicon.ico",
-              "projects/danse-macabre/src/assets"
+              "projects/blades-in-the-dark/src/favicon.ico",
+              "projects/blades-in-the-dark/src/assets"
             ],
             "styles": [
-              "projects/danse-macabre/src/styles.scss"
+              "projects/blades-in-the-dark/src/styles.scss"
             ],
             "scripts": []
           }

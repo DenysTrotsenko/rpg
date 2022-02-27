@@ -21,8 +21,7 @@
         "dist/std/std",
         "dist/std"
       ],
-      "@shadowrun/*": ["projects/shadowrun/src/*"],
-      "@dm/*": ["projects/danse-macabre/src/*"]
+      "@bind/*": ["projects/blades-in-the-dark/src/*"]
     }
   }
 }

@@ -854,7 +854,7 @@ export const TRAITS: Trait[] = [
     }
   },
   {
-    id: TraitId.TURN_THE_OTHER_CHEEK,
+    id: TraitId.LUCK_OF_THE_DRAW,
     name: '',
     labels: {
       description: '',
@@ -862,7 +862,7 @@ export const TRAITS: Trait[] = [
     }
   },
   {
-    id: TraitId.TURN_THE_OTHER_CHEEK,
+    id: TraitId.WARDEN_OF_THE_WILD,
     name: '',
     labels: {
       description: '',
@@ -870,7 +870,7 @@ export const TRAITS: Trait[] = [
     }
   },
   {
-    id: TraitId.TURN_THE_OTHER_CHEEK,
+    id: TraitId.I_SELL_THE_DEAD,
     name: '',
     labels: {
       description: '',
@@ -878,7 +878,7 @@ export const TRAITS: Trait[] = [
     }
   },
   {
-    id: TraitId.TURN_THE_OTHER_CHEEK,
+    id: TraitId.ARTFUL_DODGER,
     name: '',
     labels: {
       description: '',
@@ -886,7 +886,7 @@ export const TRAITS: Trait[] = [
     }
   },
   {
-    id: TraitId.TURN_THE_OTHER_CHEEK,
+    id: TraitId.ISSUE_CHALLENGE,
     name: '',
     labels: {
       description: '',

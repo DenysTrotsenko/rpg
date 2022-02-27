@@ -26,9 +26,9 @@ export interface Profession {
   name: string;
   traits: (TraitId | DrawbackId)[];
   advancements: {
-    bonuses: [];
-    skills: [];
-    talents: [];
+    bonuses: AttributeId[];
+    skills: SkillId[];
+    talents: TalentId[];
   };
   labels: {
     description: string;

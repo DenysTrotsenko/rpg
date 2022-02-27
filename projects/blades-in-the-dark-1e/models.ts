@@ -38,6 +38,7 @@ export interface Heritage {
 export interface Item {
   id: ItemId;
   name: string;
+  load: number;
   labels: {
     description: string;
   };

@@ -229,7 +229,7 @@ export const PLAYBOOKS: Playbook[] = [
       SpecialAbilityId.WARDED
     ],
     contacts: [
-      ContactId.NYRYX,
+      ContactId.NYRYX_2,
       ContactId.SCURLOCK,
       ContactId.SETARRA,
       ContactId.QUELLYN,
