@@ -1,0 +1,23 @@
+<h3>ATTRIBUTES</h3>
+<mat-list>
+  <mat-list-item *ngFor="let i of attributes;">
+    <h3 matLine>
+      {{i.name}}
+    </h3>
+    <p matLine>
+      <span>{{i.labels.description}}</span>
+      <span> {{i.labels.bonus}}</span>
+    </p>
+  </mat-list-item>
+</mat-list>
+<h3>SKILLS</h3>
+<mat-list>
+  <mat-list-item *ngFor="let i of skills;">
+    <h3 matLine>
+      {{i.name}} ({{i.attribute}})
+    </h3>
+    <p matLine>
+      <span>{{i.labels.description}}</span>
+    </p>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,14 @@
+<mat-nav-list>
+  <mat-list-item>
+    <a matLine routerLink="../pc/create">Create new PC</a>
+  </mat-list-item>
+  <mat-list-item *ngFor="let character of characters$ | async">
+    <a matLine [routerLink]="['../pc/view', character.id]">{{ character.name }}</a>
+    <a mat-icon-button [routerLink]="['../pc/update', character.id]" matTooltip="Upgrade">
+      <mat-icon>keyboard_double_arrow_up</mat-icon>
+    </a>
+    <button mat-icon-button (click)="onDeleteClick(character)" matTooltip="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

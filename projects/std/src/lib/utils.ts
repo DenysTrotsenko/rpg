@@ -10,6 +10,10 @@ export function getFilteredObject<T>(obj: object, allowed: string[]): T {
   return filtered;
 }
 
+export function getId(): string {
+  return (Date.now() + Math.random()).toString(36).replace('.', '');
+}
+
 export function getParsedJson<T>(value: JsonString<T>): T {
   try {
     return JSON.parse(value) as T;

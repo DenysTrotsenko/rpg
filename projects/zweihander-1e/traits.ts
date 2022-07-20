@@ -855,7 +855,7 @@ export const TRAITS: Trait[] = [
   },
   {
     id: TraitId.LUCK_OF_THE_DRAW,
-    name: '',
+    name: 'LUCK OF THE DRAW',
     labels: {
       description: '',
       effect: ''

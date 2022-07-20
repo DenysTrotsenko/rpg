@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthGuard } from './auth.guard';
 import { AuthResolver } from './auth.resolver';
+import { AppService } from './app.service';
 import { AuthService } from './auth.service';
 import { CacheService } from './cache.service';
 import { HttpService } from './http.service';
@@ -17,6 +20,8 @@ import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 
 @NgModule({
   exports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
     AngularFireAuthModule,
@@ -26,6 +31,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
     SnackbarModule
   ],
   providers: [
+    AppService,
     AuthGuard,
     AuthResolver,
     AuthService,

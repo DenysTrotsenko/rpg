@@ -1,4 +1,5 @@
 export { CoreModule } from './core.module';
+export { AppService, AppConfig } from './app.service';
 export { AuthGuard } from './auth.guard';
 export { AuthResolver } from './auth.resolver';
 export { AuthService } from './auth.service';

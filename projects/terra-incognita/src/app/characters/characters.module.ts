@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { CharactersRoutingModule } from './characters-routing.module';
+import { SharedModule } from '@shared';
+import { CharactersComponent } from './characters.component';
+import { CreateComponent } from './create/create.component';
+import { ListComponent } from './list/list.component';
+import { ViewComponent } from './view/view.component';
+import { EditComponent } from './edit/edit.component';
+
+
+@NgModule({
+  declarations: [
+    CharactersComponent,
+    CreateComponent,
+    ListComponent,
+    ViewComponent,
+    EditComponent
+  ],
+  imports: [
+    SharedModule,
+    CharactersRoutingModule
+  ]
+})
+export class CharactersModule { }

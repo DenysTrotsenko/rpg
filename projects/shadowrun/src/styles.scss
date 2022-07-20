@@ -5,7 +5,19 @@
 @include mat.core($general-typography);
 @include mat.all-component-themes($app-theme);
 
-// *****
+$font-gothic-1: 'IM Fell English SC';
+$font-gothic-2: 'IM Fell English';
+// TEXT
+.font-gothic-h {
+  font-family: $font-gothic-1, serif !important;
+}
+.font-gothic-p {
+  font-family: $font-gothic-2, serif !important;
+}
+
+
+
+// Material Overrides
 
 table.mat-table {
   border: 1px solid gray;

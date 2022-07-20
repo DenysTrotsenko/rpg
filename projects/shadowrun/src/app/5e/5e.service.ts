@@ -3,64 +3,36 @@ import {
   Attribute,
   AttributeView,
   CharacterAttribute,
-  CharacterGeneral,
-  CharacterLifestyle,
-  CharacterQuality,
-  CharacterSkill,
-  CharacterSpell,
-  GeneralView,
-  Lifestyle,
-  LifestyleOption,
-  Quality,
-  QualityView,
-  Skill,
-  SkillView,
-  Spell,
-  SpellCategory,
-  SpellDamage,
-  SpellDuration,
-  SpellRange,
-  SpellTag,
-  SpellType,
-  SpellView,
-  ATTRIBUTES,
-  AWAKENINGS,
-  METATYPES,
-  ACTIVE_SKILLS,
-  SPELL_CATEGORIES,
-  SPELL_DAMAGE,
-  SPELL_DURATIONS,
-  SPELL_RANGES,
-  SPELL_TAGS,
-  SPELL_TYPES,
-  SPELLS,
-  NEGATIVE_QUALITIES,
-  POSITIVE_QUALITIES,
-  RACIAL_QUALITIES,
-  LIFESTYLE_OPTIONS,
-  LIFESTYLES,
   CharacterComplexForm,
-  ComplexFormView,
-  ComplexForm,
-  COMPLEX_FORMS,
-  COMPLEX_FORM_TARGETS,
-  COMPLEX_FORM_DURATIONS,
-  ComplexFormTarget,
-  ComplexFormDuration,
-  GearView,
   CharacterGear,
-  Gear,
-  GEAR,
+  CharacterGeneral,
   CharacterKnowledge,
+  CharacterLifestyle,
+  CharacterQuality, CharacterSkill, CharacterSpell,
+  ComplexForm,
+  ComplexFormDuration,
+  ComplexFormTarget,
+  ComplexFormView,
+  Gear,
+  GearView,
+  GeneralView,
   KnowledgeView,
-  SKILL_CATEGORY_ID,
-  Knowledge,
-  KNOWLEDGE,
-  SKILL_CATEGORIES,
-  SkillCategory,
-  SPIRIT_ID,
-  SpiritView, Spirit, SPIRITS, Power, POWERS
-} from '@shadowrun/app/5e';
+  Lifestyle,
+  LifestyleOption, Power, Quality, QualityView, Skill,
+  SkillCategory, SkillView, Spell, SpellCategory, SpellDamage, SpellDuration, SpellRange, SpellTag, SpellType, SpellView, Spirit, SpiritView
+} from '@shadowrun-5e/models';
+import {LIFESTYLE_OPTIONS, LIFESTYLES} from '@shadowrun-5e/lifestyle';
+import {ATTRIBUTES} from '@shadowrun-5e/attributes';
+import {COMPLEX_FORM_DURATIONS, COMPLEX_FORM_TARGETS, COMPLEX_FORMS} from '@shadowrun-5e/complex-forms';
+import {GEAR} from '@shadowrun-5e/gear';
+import {METATYPES} from '@shadowrun-5e/metatypes';
+import {AWAKENINGS} from '@shadowrun-5e/awakenings';
+import {ACTIVE_SKILLS, SKILL_CATEGORIES} from '@shadowrun-5e/skills';
+import {NEGATIVE_QUALITIES, POSITIVE_QUALITIES, RACIAL_QUALITIES} from '@shadowrun-5e/qualities';
+import {SPELL_CATEGORIES, SPELL_DAMAGE, SPELL_DURATIONS, SPELL_RANGES, SPELL_TAGS, SPELL_TYPES, SPELLS} from '@shadowrun-5e/spells';
+import {SPIRIT_ID} from '@shadowrun-5e/enums';
+import {SPIRITS} from '@shadowrun-5e/spirits';
+import {POWERS} from '@shadowrun-5e/powers';
 
 @Injectable()
 export class FifthEditionService {

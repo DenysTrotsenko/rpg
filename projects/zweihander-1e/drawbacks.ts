@@ -303,45 +303,125 @@ export const DRAWBACKS: Trait[] = [
     id: DrawbackId.WARP_DISSONANCE,
     name: 'Warp Dissonance',
     labels: {
-      description: '',
-      effect: ''
+      description: 'The mind reels at the complexities of the Ætheric Winds and how they pass into the Material Realm. The mortal soul is not properly equipped to deal with these confounding majesties and can easily overwhelm even its most learned of practitioners. It takes solemnity and inner grace to properly balance oneself against the buffeting Winds of the Æther, one that must be unburdened by woe.',
+      effect: 'Whenever you are suffering from 6 or more Corruption, you cannot Channel Power.'
     }
   },
   {
-    id: DrawbackId.LURE_OF_POWER,
-    name: 'Lure of Power',
+    id: DrawbackId.ASSASSINS_CREED,
+    name: 'Assasin\'s Creed',
+    labels: {
+      description: 'One must have a callous indifference towards the sanctity of life to become an Assassin. This career tends to draw the bloodthirsty and insane to its ranks. Assassins who are consumed by the act of killing are utterly corrupted, while others who maintain proper decorum will remain untainted by their grisly work.',
+      effect: 'When you take an innocent life unprovoked, you automatically gain 1 permanent Chaos Rank.'
+    }
+  },
+  {
+    id: DrawbackId.THE_CUSTODIANS_COMMANDMENTS,
+    name: 'The Custodian’s Commandments',
+    labels: {
+      description: 'The Custodian makes specific demands from Her priesthood. They must remain steady foes to the befouled Crouching One, taking all means to bring their cult to an end. They must defend places where the dead are buried and cannot disturb those who have been chosen by the Custodian to enter Her sacred realms. But of all Her strictures, none is more demanding than that which states all necromancers and those who’d raise the dead unnaturally must be hunted down.',
+      effect: 'When you would normally invoke a Chaos Manifestation, you instead provoke Punishments of the Custodian. In addition, you are bound by the commandments of your god, as outlined in Chapter 10: Grimoire. You must seek atonement if you violate these commandments.'
+    }
+  },
+  {
+    id: DrawbackId.ENJOY_THE_SILENCE,
+    name: 'Enjoy The Silence',
+    labels: {
+      description: 'Badlanders enjoy the solitude of the wilderness more than others. They treat others with extreme discrimination, seeing their presence as more a distraction than a boon.',
+      effect: 'You never Critically Succeed at Fellowship-based Skill Tests, even if you roll a Match. In addition, you cannot take advantage of Talents, Traits, Magick or Fortune Points to modify any Fellowship-based Skill Test.'
+    }
+  },
+  {
+    id: DrawbackId.UNTRUSTWORTHY,
+    name: 'Untrustworthy',
+    labels: {
+      description: 'Despite having both the backing of the law and schooling, you are roundly mistrusted by others. Many see you as a blood-sucking, money-grubbing parasite of society. Inquisitors may even believe you may be, in fact, a blood-sucking vampire!',
+      effect: 'When you fail any Fellowship-based Skill Test, you suffer 1 Corruption.'
+    }
+  },
+  {
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
+    labels: {
+      description: 'Unfortunately, the power you wield is highly destructive – not only to others, but to your very soul.',
+      effect: 'Any time you gain a Disorder, you gain a Malignancy as well. Malignancies are covered in Chapter 10: Grimoire.'
+    }
+  },
+  {
+    id: DrawbackId.THE_CROUCHING_ONES_COMMANDMENTS,
+    name: 'The Crouching One’s Commandments',
+    labels: {
+      description: 'The Crouching One makes specific demands from His priesthood. His Bloodmongers must spill the blood of animals in contrition and bleed themselves of foul humours often. Sometimes, they must carry out dangerous, ritualistic missions to assassinate specific people who displease the god. Rarer still they must indoctrinate their victim’s children into their sacred order, turning them into hired killers or worse.',
+      effect: 'When you would normally invoke a Chaos Manifestation, you instead provoke Punishments of the Crouching One. In addition, you are bound by the commandments of your god, as outlined in Chapter 10: Grimoire. You must seek atonement if you violate these commandments.'
+    }
+  },
+  {
+    id: DrawbackId.PUBLIC_ENEMY,
+    name: 'Public Enemy',
+    labels: {
+      description: 'Your face and name are well-known. Very likely, there’s a reeve, bounty hunter or worse on your tail. As such, you are forced to live a life in the shadows, using trusted confidantes to carry out your tasks in public.',
+      effect: 'When in places where you may be recognized, you cannot use Fortune Points unless you make means to hide your true identity. The GM will likely ask you to make a Secret Test for Disguise when in public, only revealing the results at the most inopportune of times.'
+    }
+  },
+  {
+    id: DrawbackId.DIABOLICAL_MARK,
+    name: 'Diabolical Mark',
+    labels: {
+      description: 'You have denied the gods outright and they have now denied you in return. It doesn’t necessarily mean that your prayers go unanswered. In fact, they’re still granted, but by new masters. For your subservience, you are branded with a mark, sealing your obedience to the Abyssal Princes of the endless pit.',
+      effect: 'You no longer suffer from Divine Punishment, but instead invoke Chaos Manifestations as if you were using Arcane Magick. In addition, you must always Channel Power when casting Magick, costing 0 AP to do so in combat. When you Critically Fail an Incantation Test to cast Magick, your skin is branded with a permanent ‘devil’s mark’. For each mark, you automatically gain one Chaos Rank.'
+    }
+  },
+  {
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
     labels: {
       description: '',
       effect: ''
     }
   },
   {
-    id: DrawbackId.LURE_OF_POWER,
-    name: 'Lure of Power',
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
     labels: {
       description: '',
       effect: ''
     }
   },
   {
-    id: DrawbackId.LURE_OF_POWER,
-    name: 'Lure of Power',
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
     labels: {
       description: '',
       effect: ''
     }
   },
   {
-    id: DrawbackId.LURE_OF_POWER,
-    name: 'Lure of Power',
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
     labels: {
       description: '',
       effect: ''
     }
   },
   {
-    id: DrawbackId.LURE_OF_POWER,
-    name: 'Lure of Power',
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
+    labels: {
+      description: '',
+      effect: ''
+    }
+  },
+  {
+    id: DrawbackId.DAMNED,
+    name: 'Damned',
     labels: {
       description: '',
       effect: ''

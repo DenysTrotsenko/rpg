@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
-import { Character } from '@shadowrun/app/5e/5e.models';
-import { PORTRAITS } from '@shadowrun/app/ui/ui.models';
-import { CloneDialogComponent } from '@shadowrun/app/characters/clone-dialog/clone-dialog.component';
-import { FifthEditionService } from '@shadowrun/app/5e/5e.service';
 import {ActivatedRoute} from '@angular/router';
+import {PORTRAITS} from '@sr/app/ui/ui.models';
+import {Character} from '@shadowrun-5e/models';
+import {FifthEditionService} from '@sr/app/5e';
+import {CloneDialogComponent} from '@sr/app/characters/clone-dialog/clone-dialog.component';
 
 @Component({
   templateUrl: './list.component.html',

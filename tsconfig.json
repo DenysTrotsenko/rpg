@@ -21,7 +21,11 @@
         "dist/std/std",
         "dist/std"
       ],
-      "@bind/*": ["projects/blades-in-the-dark/src/*"]
+      "@flames-of-freedom-1e/*": ["projects/flames-of-freedom-1e/*"],
+      "@shadowrun-5e/*": ["projects/shadowrun-5e/*"],
+      "@bind/*": ["projects/blades-in-the-dark/src/*"],
+      "@sr/*": ["projects/shadowrun/src/*"],
+      "@ti/*": ["projects/terra-incognita/src/*"]
     }
   }
 }

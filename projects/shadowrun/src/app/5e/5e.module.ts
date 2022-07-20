@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
-import { UiModule } from '@shadowrun/app/ui/ui.module';
 import { FifthEditionService } from './5e.service';
 import { CreatePcAttributesComponent } from './components/create-pc-attributes/create-pc-attributes.component';
 import { CreatePcSkillsComponent } from './components/create-pc-skills/create-pc-skills.component';
@@ -29,6 +28,7 @@ import { ViewPcKnowledgeComponent } from './components/view-pc-knowledge/view-pc
 import { ViewPcContactsComponent } from './components/view-pc-contacts/view-pc-contacts.component';
 import { ViewRitualsComponent } from './components/view-rituals/view-rituals.component';
 import { ViewSpiritsComponent } from './components/view-spirits/view-spirits.component';
+import {UiModule} from '@sr/app/ui/ui.module';
 
 const DECLARATIONS = [
   CreatePcAdeptPowersComponent,
