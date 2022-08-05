@@ -1,0 +1,242 @@
+<mat-toolbar class="toolbar-main">
+  <h1>Character Creation / Upgrade</h1>
+</mat-toolbar>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.getRawValue())">
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Character Background</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f fd-c">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Allegiance</mat-label>
+        <mat-select formControlName="allegiance">
+          <mat-option *ngFor="let i of ALLEGIANCES" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Culture</mat-label>
+        <mat-select formControlName="culture">
+          <mat-option *ngFor="let i of CULTURES" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Belief & Flaw</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Belief</mat-label>
+        <mat-select formControlName="belief">
+          <mat-option *ngFor="let i of BELIEFS" [value]="i.id" [matTooltip]="i.labels.description">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Flaw</mat-label>
+        <mat-select formControlName="flaw">
+          <mat-option *ngFor="let i of FLAWS" [value]="i.id" [matTooltip]="i.labels.description">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Attributes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content formGroupName="attributes" class="d-f jc-sb cg-5">
+      <mat-form-field *ngFor="let i of ATTRIBUTES;" appearance="outline" class="f-1">
+        <mat-label>{{i.name}}</mat-label>
+        <input matInput type="number" min="25" max="55" [formControlName]="i.id">
+        <mat-hint>{{i.name.slice(0,1).toLocaleUpperCase()}}B {{getAttributeBonus(i.id)}}</mat-hint>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Secondary Attributes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Determination</mat-label>
+        <input matInput formControlName="determination" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Damage Thresholds</mat-label>
+        <input matInput readonly [value]="damageThresholds$ | async">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Peril Thresholds</mat-label>
+        <input matInput readonly [value]="perilThresholds$ | async">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Encumbrance Limit</mat-label>
+        <input matInput readonly [value]="encumbranceLimit$ | async">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Initiative</mat-label>
+        <input matInput readonly [value]="initiative$ | async">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Movement</mat-label>
+        <input matInput readonly [value]="movement$ | async">
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Archetype & Trait</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Archetype</mat-label>
+        <mat-select formControlName="archetype">
+          <mat-option *ngFor="let i of ARCHETYPES;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Trait</mat-label>
+        <mat-select formControlName="trait">
+          <mat-option *ngFor="let i of traits$ | async;" [value]="i.id" [matTooltip]="">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content *ngIf="!!form.get('archetype').value">
+      <p><b>Starting wares, weapons & money: </b>{{getArchetype(form.get('archetype').value)?.labels?.wares}}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Tier & Professions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline">
+        <mat-label>Tier</mat-label>
+        <mat-select formControlName="tier">
+          <mat-option *ngFor="let i of TIERS;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Basic Profession</mat-label>
+        <mat-select formControlName="basic">
+          <mat-option *ngFor="let i of basicProfessions$ | async;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Intermediate Profession</mat-label>
+        <mat-select formControlName="intermediate">
+          <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Advanced Profession</mat-label>
+        <mat-select formControlName="advanced">
+          <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Physical Appearance</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Age</mat-label>
+        <mat-select formControlName="age">
+          <mat-option *ngFor="let i of AGES" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Stature</mat-label>
+        <mat-select formControlName="stature">
+          <mat-option *ngFor="let i of STATURE" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Build</mat-label>
+        <mat-select formControlName="build">
+          <mat-option *ngFor="let i of BUILD" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Style</mat-label>
+        <mat-select formControlName="style">
+          <mat-option *ngFor="let i of STYLE" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Eyes</mat-label>
+        <mat-select formControlName="eyes">
+          <mat-option *ngFor="let i of EYES" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Hair Length</mat-label>
+        <mat-select formControlName="hair_length">
+          <mat-option *ngFor="let i of HAIR_LENGTH" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Hair Style</mat-label>
+        <mat-select formControlName="hair_style">
+          <mat-option *ngFor="let i of HAIR_STYLE" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Hair Color</mat-label>
+        <mat-select formControlName="hair_color">
+          <mat-option *ngFor="let i of HAIR_COLOR" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
+        <mat-label>Mark</mat-label>
+        <mat-select formControlName="mark">
+          <mat-option *ngFor="let i of MARKS" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
+    <mat-card-actions>
+      <button type="reset" mat-button class="mr-15">Reset</button>
+      <button type="submit" mat-flat-button color="primary">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

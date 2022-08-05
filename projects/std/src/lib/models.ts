@@ -5,3 +5,7 @@ export interface AuthWithEmailAndPassword {
   email: string;
   password: string;
 }
+
+export interface HasId<T> {
+  id: T;
+}

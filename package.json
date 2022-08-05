@@ -16,13 +16,13 @@
     "deploy:bind": "cd projects/blades-in-the-dark && firebase deploy",
     "deploy-functions:bind": "cd projects/blades-in-the-dark && firebase deploy --only functions",
     "emulator:bind": "cd projects/blades-in-the-dark && firebase emulators:start --only functions",
-    "start:ti": "ng serve --project=terra-incognita",
-    "start:ti:hmr": "ng serve --hmr --project=terra-incognita",
-    "build:ti": "ng build --configuration=production --project=terra-incognita",
-    "watch:ti": "ng build --project=terra-incognita --watch",
-    "deploy:ti": "cd projects/terra-incognita && firebase deploy",
-    "deploy-functions:ti": "cd projects/terra-incognita && firebase deploy --only functions",
-    "emulator:ti": "cd projects/terra-incognita && firebase emulators:start --only functions"
+    "start:ti": "ng serve --project=anno-1800",
+    "start:ti:hmr": "ng serve --hmr --project=anno-1800",
+    "build:ti": "ng build --configuration=production --project=anno-1800",
+    "watch:ti": "ng build --project=anno-1800 --watch",
+    "deploy:ti": "cd projects/anno-1800 && firebase deploy",
+    "deploy-functions:ti": "cd projects/anno-1800 && firebase deploy --only functions",
+    "emulator:ti": "cd projects/anno-1800 && firebase emulators:start --only functions"
   },
   "private": true,
   "dependencies": {

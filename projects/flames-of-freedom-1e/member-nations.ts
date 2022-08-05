@@ -1,0 +1,18 @@
+export const MEMBER_NATIONS: string[] = [
+  'Abenaki',
+  'Algonquin',
+  'Apalachee',
+  'Atikamekw',
+  'Catawba',
+  'Chickasaw',
+  'Haudenosaunee',
+  'Innu',
+  'Lenape',
+  'Mahican',
+  'Massachusett',
+  'Powhatan',
+  'Seminole',
+  'Shawnee',
+  'Tsalagi',
+  'Wampanoag',
+];

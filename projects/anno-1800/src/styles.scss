@@ -1,0 +1,35 @@
+@use '~@angular/material' as mat;
+@import 'variables';
+@import './styles/variables';
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
+@include mat.core($general-typography);
+@include mat.all-component-themes($app-theme);
+
+// *****
+
+table.mat-table {
+  border: 1px solid gray;
+  border-radius: 4px;
+
+  .mat-cell {
+    padding: 0 5px;
+  }
+}
+
+.mat-tooltip {
+  line-height: 1.25;
+  white-space: pre-line;
+}
+
+.snackbar-error {
+  color: white;
+  background-color: $color-warn;
+}
+
+.toolbar-main {
+  margin: -10px -10px 10px -10px !important;
+  box-sizing: content-box !important;
+}
+

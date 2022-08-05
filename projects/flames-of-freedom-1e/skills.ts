@@ -8,7 +8,7 @@ export const SKILLS: Skill[] = [
     attribute: AttributeId.INTELLIGENCE,
     type: SkillTypeId.SPECIAL,
     labels: {
-      description: '',
+      description: 'Alchemy represents your ability to divine the hidden secrets of transmutation. Its everyday use tends to consist of concocting abortifacients, pain relievers, serums and other medicines. An alchemist’s laboratory tends to be a strange amalgam of scientific notes, erudite magical symbols and boiling baubles.',
       difficulties: ''
     }
   },
@@ -18,7 +18,7 @@ export const SKILLS: Skill[] = [
     attribute: AttributeId.BRAWN,
     type: SkillTypeId.COMMON,
     labels: {
-      description: '',
+      description: 'Athletics represents your prowess in physical activities. It reflects your ability to scale up surfaces and ropes, tread water and swim without tiring, propel vessels while rowing, overpower others in contests of strength and push heavy objects. It also aids you when lifting heavy objects or in great feats of stamina, such as lifting a tree trunk, which has pinned an ally in place, or running many miles to deliver word of an army’s movement.',
       difficulties: ''
     }
   },
@@ -28,7 +28,7 @@ export const SKILLS: Skill[] = [
     attribute: AttributeId.PERCEPTION,
     type: SkillTypeId.COMMON,
     labels: {
-      description: '',
+      description: 'Awareness represents your ability to notice minute details and sounds, watch for ambushes and spot snares designed to trap or kill. You’ll also use it to gather information through smell, taste and touch. This Skill doesn’t allow you to see through lies or sense motives—refer to Scrutinize and Eavesdrop to listen to hidden conversations.',
       difficulties: ''
     }
   },
@@ -38,7 +38,7 @@ export const SKILLS: Skill[] = [
     attribute: AttributeId.FELLOWSHIP,
     type: SkillTypeId.COMMON,
     labels: {
-      description: '',
+      description: 'Bargain represents your ability to interpret the underlying factors of a commercial transaction. You also use it to haggle over prices, find common ground with another group, grease the wheels of commerce through the use of bribery, appraise the worth of objets d’art and even procure illegal contraband.',
       difficulties: ''
     }
   },

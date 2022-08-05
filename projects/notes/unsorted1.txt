@@ -1,1 +1,48 @@
-Энки
+кордиал из бузины + настойка опия
+
+
+-----
+25
+21
+21
+20
+19
+15
+6
+
+
+59 - Mature
+77 - Multicultural
+Lawbreaker
+White Feathered
+Gambler
+Recognition
+Selfishness
+
+
+C - 40
+B - 31
+A - 45
+P - 44
+I - 46
+W - 46
+F - 50
+
+FORTUNE IS PLEASED
+I might not believe in much, but the one thing I do know is that I’m Fortune’s favorite.
+Effect: Whenever you spend a Coin to re-roll a failed Skill Test, you don’t need to roll, as you Critically Succeed instead.
+
+QUIRK: FORTUNE IS VEXED
+Divine Providence is f ickle: one minute She shines down upon you, and the next, She reminds you that nothing is certain.
+Effect: When you spend a Coin for Fortune Is Pleased, you move one step down the Peril Condition Track negatively.
+
+Awareness
+Charm
+Gamble
+Guile
+Martial Ranged
+Rumor
+Scrutinize
+Simple Melee
+Simple Ranged
+Skulduggery

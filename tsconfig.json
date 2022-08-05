@@ -25,7 +25,7 @@
       "@shadowrun-5e/*": ["projects/shadowrun-5e/*"],
       "@bind/*": ["projects/blades-in-the-dark/src/*"],
       "@sr/*": ["projects/shadowrun/src/*"],
-      "@ti/*": ["projects/terra-incognita/src/*"]
+      "@ti/*": ["projects/anno-1800/src/*"]
     }
   }
 }
