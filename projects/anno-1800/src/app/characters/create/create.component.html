@@ -116,6 +116,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Tier</mat-label>
+        <mat-select formControlName="tier">
+          <mat-option *ngFor="let i of TIERS;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
     <mat-card-content *ngIf="!!form.get('archetype').value">
       <p><b>Starting wares, weapons & money: </b>{{getArchetype(form.get('archetype').value)?.labels?.wares}}</p>
@@ -124,41 +132,127 @@
 
   <mat-card class="mb-15">
     <mat-card-header>
-      <mat-card-title>Tier & Professions</mat-card-title>
+      <mat-card-title>Professions & Advancements</mat-card-title>
     </mat-card-header>
     <mat-card-content class="d-f jc-sb cg-5">
-      <mat-form-field appearance="outline">
-        <mat-label>Tier</mat-label>
-        <mat-select formControlName="tier">
-          <mat-option *ngFor="let i of TIERS;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Basic Profession</mat-label>
-        <mat-select formControlName="basic">
-          <mat-option *ngFor="let i of basicProfessions$ | async;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
-            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Intermediate Profession</mat-label>
-        <mat-select formControlName="intermediate">
-          <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
-            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Advanced Profession</mat-label>
-        <mat-select formControlName="advanced">
-          <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
-            {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <ng-container formGroupName="professions">
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Basic Profession</mat-label>
+          <mat-select formControlName="basic">
+            <mat-option *ngFor="let i of basicProfessions$ | async;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+              {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container formGroupName="advancements" *ngIf="isBasicAdvancesAvailable() as profession;">
+        <ng-container formGroupName="basic">
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Attribute Bonus</mat-label>
+            <mat-select multiple formControlName="bonuses">
+              <mat-option *ngFor="let i of profession?.advancements?.bonuses;" [value]="i">
+                {{(i | getById: 'attributes').name.slice(0,1).toLocaleUpperCase()}}B
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Skills</mat-label>
+            <mat-select multiple formControlName="skills">
+              <mat-option *ngFor="let i of profession?.advancements?.skills;" [value]="i">
+                {{(i | getById: 'skills').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Talents</mat-label>
+            <mat-select multiple formControlName="talents">
+              <mat-option *ngFor="let i of profession?.advancements?.talents;" [value]="i">
+                {{(i | getById: 'talents').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-content class="d-f jc-sb cg-5" *ngIf="form.get('tier').value > 1">
+      <ng-container formGroupName="professions">
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Intermediate Profession</mat-label>
+          <mat-select formControlName="intermediate">
+            <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+              {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container formGroupName="advancements" *ngIf="isIntermediateAdvancesAvailable() as profession;">
+        <ng-container formGroupName="intermediate">
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Attribute Bonus</mat-label>
+            <mat-select multiple formControlName="bonuses">
+              <mat-option *ngFor="let i of profession.advancements.bonuses;" [value]="i">
+                {{(i | getById: 'attributes').name.slice(0,1).toLocaleUpperCase()}}B
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Skills</mat-label>
+            <mat-select multiple formControlName="skills">
+              <mat-option *ngFor="let i of profession.advancements.skills;" [value]="i">
+                {{(i | getById: 'skills').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Talents</mat-label>
+            <mat-select multiple formControlName="talents">
+              <mat-option *ngFor="let i of profession.advancements.talents;" [value]="i">
+                {{(i | getById: 'talents').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-content class="d-f jc-sb cg-5" *ngIf="form.get('tier').value > 2">
+      <ng-container formGroupName="professions">
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Advanced Profession</mat-label>
+          <mat-select formControlName="advanced">
+            <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id)">
+              {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      <ng-container formGroupName="advancements" *ngIf="isAdvancedAdvancesAvailable() as profession;">
+        <ng-container formGroupName="advanced">
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Attribute Bonus</mat-label>
+            <mat-select multiple formControlName="bonuses">
+              <mat-option *ngFor="let i of profession.advancements.bonuses;" [value]="i">
+                {{(i | getById: 'attributes').name.slice(0,1).toLocaleUpperCase()}}B
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Skills</mat-label>
+            <mat-select multiple formControlName="skills">
+              <mat-option *ngFor="let i of profession.advancements.skills;" [value]="i">
+                {{(i | getById: 'skills').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="f-1">
+            <mat-label>Talents</mat-label>
+            <mat-select multiple formControlName="talents">
+              <mat-option *ngFor="let i of profession.advancements.talents;" [value]="i">
+                {{(i | getById: 'talents').name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
     </mat-card-content>
   </mat-card>
 

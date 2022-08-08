@@ -103,16 +103,20 @@ export interface Mark {
   name: string;
 }
 
+export interface AdvancementScheme {
+  traits?: TraitId[];
+  quirks?: QuirkId[];
+  bonuses?: AttributeId[];
+  skills?: SkillId[];
+  talents?: TalentId[];
+}
+
 export interface Profession extends HasId<ProfessionId> {
   id: ProfessionId;
   name: string;
   traits: TraitId[];
   quirks: QuirkId[];
-  advancements: {
-    bonuses: AttributeId[];
-    skills: SkillId[];
-    talents: TalentId[];
-  };
+  advancements: AdvancementScheme;
   labels?: {
     description: string;
   };

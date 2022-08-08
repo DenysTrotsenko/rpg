@@ -1,27 +1,37 @@
-<h3>ATTRIBUTES</h3>
+<h3 class="ff-g">ATTRIBUTES</h3>
 <mat-list>
   <mat-list-item *ngFor="let i of attributes;">
-    <h3 matLine>
-      {{i.name}}
-    </h3>
+    <h3 matLine>{{i.name}}</h3>
     <p matLine>
       <span>{{i.labels.description}}</span>
       <span> {{i.labels.bonus}}</span>
     </p>
   </mat-list-item>
 </mat-list>
-<h3>SKILLS</h3>
+<h3 class="ff-g">SKILLS</h3>
 <mat-list>
   <mat-list-item *ngFor="let i of skills;">
-    <h3 matLine>
-      {{i.name}} ({{i.attribute}})
-    </h3>
-    <p matLine>
-      <span>{{i.labels.description}}</span>
-    </p>
+    <h3 matLine>{{i.name}} ({{i.attribute}})</h3>
+    <p matLine>{{i.labels.description}}</p>
   </mat-list-item>
 </mat-list>
-<h3>PROFESSIONS</h3>
+<h3 class="ff-g">TALENTS</h3>
+<mat-list>
+  <mat-list-item *ngFor="let i of talents;">
+    <h3 matLine>{{i.name}}</h3>
+    <p matLine><i>{{i.labels.description}}</i></p>
+    <p matLine><b>Effect:</b> {{i.labels.effect}}</p>
+  </mat-list-item>
+</mat-list>
+<h3 class="ff-g">TRAITS</h3>
+<mat-list>
+  <mat-list-item *ngFor="let i of traits;">
+    <h3 matLine>{{i.name}}</h3>
+    <p matLine><i>{{i.labels.description}}</i></p>
+    <p matLine><b>Effect:</b> {{i.labels.effect}}</p>
+  </mat-list-item>
+</mat-list>
+<h3 class="ff-g">PROFESSIONS</h3>
 <mat-accordion>
   <mat-expansion-panel *ngFor="let i of professions;" hideToggle>
     <mat-expansion-panel-header>

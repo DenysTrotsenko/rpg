@@ -20,10 +20,10 @@ Recognition
 Selfishness
 
 
-C - 40
-B - 31
-A - 45
-P - 44
+C - 44
+B - 45
+A - 42
+P - 40
 I - 46
 W - 46
 F - 50

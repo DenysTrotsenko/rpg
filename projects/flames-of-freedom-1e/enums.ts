@@ -74,7 +74,7 @@ export enum BuildId {
 }
 
 export enum CultureId {
-  BLACK,
+  BLACK = 1,
   BRITISH,
   COLONIAL,
   FRENCH,

@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
-import {map, shareReplay, startWith, tap} from 'rxjs/operators';
+import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService, UnsubscribeDirective} from '@shared';
 import {ALLEGIANCES} from '@flames-of-freedom-1e/allegiances';
 import {
@@ -19,7 +19,17 @@ import {
   Tier,
   Trait
 } from '@flames-of-freedom-1e/models';
-import {AgeId, AllegianceId, ArchetypeId, AttributeId, CultureId, ProfessionId} from '@flames-of-freedom-1e/enums';
+import {
+  AgeId,
+  AllegianceId,
+  ArchetypeId,
+  AttributeId,
+  CultureId,
+  ProfessionId,
+  SkillId,
+  TalentId,
+  TraitId
+} from '@flames-of-freedom-1e/enums';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {BELIEFS} from '@flames-of-freedom-1e/beliefs';
 import {FLAWS} from '@flames-of-freedom-1e/flaws';
@@ -72,16 +82,36 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       [AttributeId.FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
     }, [Validators.required]),
     archetype: new FormControl(ArchetypeId.COMMONER, [Validators.required]),
-    trait: new FormControl(null, [Validators.required]),
+    trait: new FormControl(TraitId.ITS_OWN_REWARD, [Validators.required]),
     tier: new FormControl(1, [Validators.required]),
-    basic: new FormControl(null, [Validators.required]),
-    intermediate: new FormControl(null, [Validators.required]),
-    advanced: new FormControl(null, [Validators.required]),
-    skills: new FormControl(null, [Validators.required]),
-    talents: new FormControl(null, [Validators.required]),
-    spells: new FormControl(null),
-    rituals: new FormControl(null),
-    gear: new FormControl(null),
+    professions: new FormGroup({
+      basic: new FormControl(null, [Validators.required]),
+      intermediate: new FormControl(null, [Validators.required]),
+      advanced: new FormControl(null, [Validators.required]),
+    }),
+    advancements: new FormGroup({
+      basic: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+      intermediate: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+      advanced: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+    })
   });
 
   AGES: Age[] = AGES;
@@ -169,41 +199,47 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     map((id: ArchetypeId) => {
       const archetype: Archetype = ARCHETYPES.find(i => i.id === id);
       return ARCHETYPE_TRAIT.filter(i => archetype.traits.includes(i.id));
-    })
+    }),
+    shareReplay(1)
   );
   readonly basicProfessions$: Observable<Profession[]> = this.archetype$.pipe(
     map((id: ArchetypeId) => {
       const archetype: Archetype = ARCHETYPES.find(i => i.id === id);
       return PROFESSIONS.filter(i => archetype.professions.includes(i.id));
-    })
+    }),
+    shareReplay(1)
   );
+  // readonly professions$: Observable<any> = this.form.get('professions').valueChanges;
+  readonly basicProfession$: Observable<any> = this.form.get('professions.basic').valueChanges;
+  readonly intermediateProfession$: Observable<any> = this.form.get('professions.intermediate').valueChanges;
+  readonly advancedProfession$: Observable<any> = this.form.get('professions.advanced').valueChanges;
 
-  // readonly character$: Observable<Character> = this.route.paramMap
-  //   .pipe(
-  //     map(res => res.get('id')),
-  //     switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
-  //     distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
-  //     tap(res => {
-  //       this.form.patchValue({
-  //         id: res?.id ?? this.service.getId(),
-  //         portrait: res?.portrait ?? DEFAULT_PORTRAIT,
-  //         name: res?.name ?? '',
-  //         miscellaneous: {
-  //           gender: res?.miscellaneous?.gender ?? 'Male'
-  //         },
-  //         metatype: res?.metatype ?? METATYPE_ID.HUMAN,
-  //         awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
-  //         magic_tradition: res?.magic_tradition ?? null,
-  //       }, { emitEvent: false });
-  //       !!res ? this.portrait.disable() : this.portrait.enable();
-  //       !!res ? this.name.disable() : this.name.enable();
-  //       !!res ? this.gender.disable() : this.gender.enable();
-  //       !!res ? this.metatype.disable() : this.metatype.enable();
-  //       !!res ? this.awakening.disable() : this.awakening.enable();
-  //       !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
-  //     }),
-  //     shareReplay(1)
-  //   );
+  readonly character$: Observable<any> = this.route.paramMap
+    .pipe(
+      map(res => res.get('id')),
+      switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<any>),
+      distinctUntilChanged((p: any, q: any) => JSON.stringify(p) === JSON.stringify(q)),
+      tap(res => {
+        // this.form.patchValue({
+        //   id: res?.id ?? this.service.getId(),
+        //   portrait: res?.portrait ?? DEFAULT_PORTRAIT,
+        //   name: res?.name ?? '',
+        //   miscellaneous: {
+        //     gender: res?.miscellaneous?.gender ?? 'Male'
+        //   },
+        //   metatype: res?.metatype ?? METATYPE_ID.HUMAN,
+        //   awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
+        //   magic_tradition: res?.magic_tradition ?? null,
+        // }, { emitEvent: false });
+        // !!res ? this.portrait.disable() : this.portrait.enable();
+        // !!res ? this.name.disable() : this.name.enable();
+        // !!res ? this.gender.disable() : this.gender.enable();
+        // !!res ? this.metatype.disable() : this.metatype.enable();
+        // !!res ? this.awakening.disable() : this.awakening.enable();
+        // !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
+      }),
+      shareReplay(1)
+    );
 
   constructor(
     private readonly firestore: FirestoreService,
@@ -214,7 +250,23 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     super();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.basicProfession$
+      .pipe(
+        tap((id: ProfessionId) => {
+          console.log(this.form.getRawValue());
+          const profession: Profession = this.getProfession(id);
+          this.form.get('advancements.basic').setValue({
+            traits: [],
+            quirks: [],
+            bonuses: [],
+            skills: profession.advancements.skills.slice(),
+            talents: [],
+          });
+        })
+      )
+      .subscribe();
+  }
 
   getArchetype(id: ArchetypeId): Archetype {
     return ARCHETYPES.find(i => i.id === id);
@@ -225,11 +277,33 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     return getAttributeBonus(attribute);
   }
 
+  getProfession(id: ProfessionId): Profession {
+    return PROFESSIONS.find(i => i.id === id);
+  }
+
   isProfessionHidden(id: ProfessionId): boolean {
-    const basic: ProfessionId = this.form.get('basic').value;
-    const intermediate: ProfessionId = this.form.get('intermediate').value;
-    const advanced: ProfessionId = this.form.get('advanced').value;
+    const basic: ProfessionId = this.form.get('professions.basic').value;
+    const intermediate: ProfessionId = this.form.get('professions.intermediate').value;
+    const advanced: ProfessionId = this.form.get('professions.advanced').value;
     return [basic, intermediate, advanced].includes(id);
+  }
+
+  isBasicAdvancesAvailable(): Profession {
+    const id: ProfessionId = this.form.get('professions.basic').value;
+    const profession: Profession = this.getProfession(id);
+    return profession;
+  }
+
+  isIntermediateAdvancesAvailable(): Profession {
+    const id: ProfessionId = this.form.get('professions.intermediate').value;
+    const profession: Profession = this.getProfession(id);
+    return profession;
+  }
+
+  isAdvancedAdvancesAvailable(): Profession {
+    const id: ProfessionId = this.form.get('professions.advanced').value;
+    const profession: Profession = this.getProfession(id);
+    return profession;
   }
 
   isMagicalProfession(id: ProfessionId): boolean {
@@ -238,10 +312,11 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
-    this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
-      .pipe(
-        tap(() => this.router.navigate(['characters/list']))
-      )
-      .subscribe();
+    // this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
+    //   .pipe(
+    //     tap(() => this.router.navigate(['characters/list']))
+    //   )
+    //   .subscribe();
+    console.log(this.form.getRawValue());
   }
 }
