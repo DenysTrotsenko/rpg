@@ -29,8 +29,7 @@ export const EYES: Eyes[] = [
   { id: EyesId.FIERY_DARK, name: 'Fiery dark' },
   { id: EyesId.GRASS_GREEN, name: 'Grass green' },
   { id: EyesId.GREEN_WISTFUL, name: 'Green, wistful' },
-  // { id: '', name: '' },
-  // { id: '', name: '' },
+  // { id: EyesId., name: '' },
 ];
 
 export const HAIR_LENGTH: HairLength[] = [

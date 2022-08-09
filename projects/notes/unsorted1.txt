@@ -22,10 +22,10 @@ Selfishness
 
 C - 44
 B - 45
-A - 42
+A - 46
 P - 40
 I - 46
-W - 46
+W - 42
 F - 50
 
 FORTUNE IS PLEASED

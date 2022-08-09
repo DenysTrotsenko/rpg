@@ -1,1 +1,45 @@
-<p>view works!</p>
+<mat-toolbar class="toolbar-main">
+  <h1>Character View</h1>
+  <span class="f-1"></span>
+  <button *ngIf="view$ | async as view"
+    mat-icon-button
+    (click)="view$.next(view === 'full' ? 'concise' : 'full')"
+    [matTooltip]="view === 'full' ? 'Concise View' : 'Full View'">
+    <mat-icon>{{view === 'full' ? 'unfold_less' : 'unfold_more'}}</mat-icon>
+  </button>
+</mat-toolbar>
+<ng-container *ngIf="character$ | async as character;">
+  <ng-container *ngIf="(view$ | async) === 'concise'">
+    <p>
+      <b>Attributes:</b>
+      <span *ngFor="let i of attributes;" class="comma-separated ws-pw">
+        {{(i.id | getById: 'attributes')?.name}} {{i.value}}% ({{i.bonus}})
+      </span>
+    </p>
+    <p>
+      <b>Skills:</b>
+      <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+        {{(i.id | getById: 'skills')?.name}}{{i.type === 2 ? '*' : ''}} +{{i.value}}%
+      </span>
+    </p>
+    <p>
+      <b>Talents:</b>
+      <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+        {{(i.id | getById: 'talents')?.name}}
+      </span>
+    </p>
+    <p>
+      <b>Traits:</b>
+      <span *ngFor="let i of traits;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+        {{(i.id | getById: 'traits')?.name}}
+      </span>
+    </p>
+    <p>
+      <b>Quirks:</b>
+      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+        {{(i.id | getById: 'quirks')?.name}}
+      </span>
+    </p>
+  </ng-container>
+  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>
+</ng-container>

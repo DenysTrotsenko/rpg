@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
@@ -26,8 +26,6 @@ import {
   AttributeId,
   CultureId,
   ProfessionId,
-  SkillId,
-  TalentId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
@@ -220,8 +218,9 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<any>),
       distinctUntilChanged((p: any, q: any) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
-        // this.form.patchValue({
-        //   id: res?.id ?? this.service.getId(),
+        this.form.patchValue({
+          ...res,
+          id: res?.id ?? this.getId(),
         //   portrait: res?.portrait ?? DEFAULT_PORTRAIT,
         //   name: res?.name ?? '',
         //   miscellaneous: {
@@ -230,7 +229,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         //   metatype: res?.metatype ?? METATYPE_ID.HUMAN,
         //   awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
         //   magic_tradition: res?.magic_tradition ?? null,
-        // }, { emitEvent: false });
+        }, { emitEvent: false });
         // !!res ? this.portrait.disable() : this.portrait.enable();
         // !!res ? this.name.disable() : this.name.enable();
         // !!res ? this.gender.disable() : this.gender.enable();
@@ -251,21 +250,53 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.basicProfession$
+    this.subscriptions = this.character$.subscribe();
+    this.subscriptions = this.basicProfession$
       .pipe(
         tap((id: ProfessionId) => {
-          console.log(this.form.getRawValue());
           const profession: Profession = this.getProfession(id);
           this.form.get('advancements.basic').setValue({
-            traits: [],
-            quirks: [],
+            traits: profession.traits.slice(),
+            quirks: profession.quirks.slice(),
             bonuses: [],
             skills: profession.advancements.skills.slice(),
-            talents: [],
+            talents: []
           });
         })
       )
       .subscribe();
+    this.subscriptions = this.intermediateProfession$
+      .pipe(
+        tap((id: ProfessionId) => {
+          const profession: Profession = this.getProfession(id);
+          this.form.get('advancements.intermediate').setValue({
+            traits: profession.traits.slice(),
+            quirks: profession.quirks.slice(),
+            bonuses: [],
+            skills: [],
+            talents: []
+          });
+        })
+      )
+      .subscribe();
+    this.subscriptions = this.advancedProfession$
+      .pipe(
+        tap((id: ProfessionId) => {
+          const profession: Profession = this.getProfession(id);
+          this.form.get('advancements.advanced').setValue({
+            traits: profession.traits.slice(),
+            quirks: profession.quirks.slice(),
+            bonuses: [],
+            skills: [],
+            talents: []
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  getId(): string {
+    return (Date.now() + Math.random()).toString(36).replace('.', '');
   }
 
   getArchetype(id: ArchetypeId): Archetype {
@@ -312,11 +343,10 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
-    // this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
-    //   .pipe(
-    //     tap(() => this.router.navigate(['characters/list']))
-    //   )
-    //   .subscribe();
-    console.log(this.form.getRawValue());
+    this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
+      .pipe(
+        tap(() => this.router.navigate(['characters/list']))
+      )
+      .subscribe();
   }
 }

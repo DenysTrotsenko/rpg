@@ -7,7 +7,7 @@ export const QUIRKS: Quirk[] = [
     name: 'Method Actor',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you break character or fail in your Disguise, you gain 1 Conflict.'
     }
   },
   {
@@ -23,7 +23,7 @@ export const QUIRKS: Quirk[] = [
     name: 'AN OUTSIDER IN ALL WAYS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When interacting directly with anyone who is not classified as an Animal or Beast, you must flip the results to fail Fellowship-based Skill Tests.'
     }
   },
   {
@@ -31,7 +31,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THEOREM, DEDUCTION, OUTCOME',
     labels: {
       description: '',
-      effect: ''
+      effect: 'After a person has used one of your medicines and goes to Sleep, roll a 1D6 Chaos Die. On a result of face ‘1–5,’ nothing happens. On a result of face ‘6,’ the person awakens Imperiled.'
     }
   },
   {
@@ -39,7 +39,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THE CORNERS BETRAY',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Resolve Test to withstand Stress, Fear or Terror afflicted by threats classified as Abyssal or Supernatural, you suffer an additional 1D10+1 Peril and 3 Conflict.'
     }
   },
   {
@@ -47,7 +47,7 @@ export const QUIRKS: Quirk[] = [
     name: 'A TORTURED ARTIST',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever in Fleeting Shadows and Total Darkness, you must flip the results to fail Resolve Tests.'
     }
   },
   {
@@ -55,7 +55,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THERE IS SO MUCH TO KNOW',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When attempting Intelligence-based Skill Tests, you cannot take advantage of the Coin Pool or gain Assist Dice.'
     }
   },
   {
@@ -63,7 +63,7 @@ export const QUIRKS: Quirk[] = [
     name: 'STRANGER IN A STRANGE LAND',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must flip the results to fail all Fellowship- based Skill Tests when interacting with cultures other than your own.'
     }
   },
   {
@@ -71,7 +71,7 @@ export const QUIRKS: Quirk[] = [
     name: 'MY HUBRIS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever your Flaw causes you to gain Conflict, you gain 3 additional Conflict.'
     }
   },
   {
@@ -79,7 +79,7 @@ export const QUIRKS: Quirk[] = [
     name: 'WORLDS OLDEST PROFESSION',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you as a Bawd, you cannot gain an Assist for Skill Tests.'
     }
   },
   {
@@ -87,7 +87,7 @@ export const QUIRKS: Quirk[] = [
     name: 'TOO MUCH TIME AT SEA',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Willpower by -9%.'
     }
   },
   {
@@ -95,7 +95,7 @@ export const QUIRKS: Quirk[] = [
     name: 'BAD POSTURE',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot take advantage of Long or Extreme Distances with ranged weapons.'
     }
   },
   {
@@ -103,7 +103,7 @@ export const QUIRKS: Quirk[] = [
     name: 'I ANSWER TO ONE LAW',
     labels: {
       description: '',
-      effect: ''
+      effect: 'If you reach 10 Conflict during a game session, you temporarily lose your ability to cast Spells until the next game session.'
     }
   },
   {
@@ -111,7 +111,7 @@ export const QUIRKS: Quirk[] = [
     name: 'JUST A SIP',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never gain the positive effects associated with Intoxication.'
     }
   },
   {
@@ -119,7 +119,7 @@ export const QUIRKS: Quirk[] = [
     name: 'STABLE STENCH',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you spend a Coin in a social situation, roll a 1D6 Chaos Die. If the result is face ‘6,’ you must spend two Coins instead.'
     }
   },
   {
@@ -127,7 +127,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THE ONLY LAW',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever your Flaw causes you to gain Conflict, you gain 3 additional Conflict.'
     }
   },
   {
@@ -135,7 +135,7 @@ export const QUIRKS: Quirk[] = [
     name: 'TIRED EYES',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You have difficulty seeing in low-light conditions, treating Fleeting Shadows as if it were Total Darkness.'
     }
   },
   {
@@ -143,7 +143,7 @@ export const QUIRKS: Quirk[] = [
     name: 'EVERYONE SUSPECTS ME',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever attempting to buy, sell or trade counterfeited objects or fake cash, you cannot use Coins to modify your Skill Test results.'
     }
   },
   {
@@ -151,7 +151,7 @@ export const QUIRKS: Quirk[] = [
     name: 'NOT ABOVE SUSPICION',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you by your real name or by your crimes, you suffer from Stress.'
     }
   },
   {
@@ -159,7 +159,7 @@ export const QUIRKS: Quirk[] = [
     name: 'WANTED',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you as a Deserter, you cannot take advantage of Determination.'
     }
   },
   {
@@ -167,7 +167,7 @@ export const QUIRKS: Quirk[] = [
     name: 'CAN’T FEND FOR MYSELF',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail or Critically Fail at Skill Tests, gain 1 Conflict.'
     }
   },
   {
@@ -175,7 +175,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THINK BEFORE ACTING',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever your Turn in combat comes up, roll a 1D6 Chaos Die. If it results in face ‘6,’ you lose 1 Action Point on this Turn.'
     }
   },
   {
@@ -183,7 +183,7 @@ export const QUIRKS: Quirk[] = [
     name: 'I DISLIKE CROWDS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes outnumber you 3:1 or more in an Engagement, they add a 1D6 Chaos Die to determine Injuries against you.'
     }
   },
   {
@@ -191,7 +191,7 @@ export const QUIRKS: Quirk[] = [
     name: 'NO RESPECT',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you attempt to re-roll Fellowship-based Skill Tests using Coins, you must spend two Coins instead.'
     }
   },
   {
@@ -199,7 +199,7 @@ export const QUIRKS: Quirk[] = [
     name: 'PHYSIQUE OF AN ARTIST',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Combat by -9%.'
     }
   },
   {
@@ -207,7 +207,7 @@ export const QUIRKS: Quirk[] = [
     name: 'BAD LUCK',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you generate a Critical Success, roll 1D6 Chaos Die. If it lands on a face ‘6,’ it is instead treated as a Critical Failure.'
     }
   },
   {
@@ -215,7 +215,7 @@ export const QUIRKS: Quirk[] = [
     name: 'BIGMOUTH STRIKES AGAIN',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes attempt to hit you with Attack Actions and Rough & Tumble, they gain a +10% Base Chance to hit.'
     }
   },
   {
@@ -223,7 +223,7 @@ export const QUIRKS: Quirk[] = [
     name: 'LIFE IS PRECIOUS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you take an innocent life of another threat classified as an Animal or Humanoid (including player cultures) unprovoked, you are unable to call upon your Spells for three days.'
     }
   },
   {
@@ -239,7 +239,7 @@ export const QUIRKS: Quirk[] = [
     name: 'RISKY BUSINESS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you sell illegal or stolen wares & weapons to a contact, roll 1D6 Chaos Die. If it results in face ‘6,’ you’ve been ‘sold out’ and will have to contend with an important NPC in the next twenty-four hours.'
     }
   },
   {
@@ -247,7 +247,7 @@ export const QUIRKS: Quirk[] = [
     name: 'A HIGH PRICE TO PAY',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Perception by -9%.'
     }
   },
   {
@@ -263,7 +263,7 @@ export const QUIRKS: Quirk[] = [
     name: 'OUT OF MY DEPTH',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you use Simple Ranged or Martial Ranged, each Skill Rank counts for +5% instead of the normal +10%.'
     }
   },
   {
@@ -271,7 +271,7 @@ export const QUIRKS: Quirk[] = [
     name: 'MY EARS STILL RING',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must flip the results to fail Skill Tests that rely on hearing.'
     }
   },
   {
@@ -279,7 +279,7 @@ export const QUIRKS: Quirk[] = [
     name: 'LONER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot give nor gain the benefits of Assist Dice unless you’re 3 yards or closer to an Assisting ally.'
     }
   },
   {
@@ -287,7 +287,7 @@ export const QUIRKS: Quirk[] = [
     name: 'PHANTOM LIMB',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot Take Aim with weapons other than those with the Blackpowder Quality.'
     }
   },
   {
@@ -295,7 +295,7 @@ export const QUIRKS: Quirk[] = [
     name: 'BLOODLESS HANDS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you take an innocent life unprovoked, you gain 9 Conflict.'
     }
   },
   {
@@ -303,7 +303,7 @@ export const QUIRKS: Quirk[] = [
     name: 'STUBBORN AS A MULE',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever attempting to buy, sell or trade wares & weapons, you cannot use Coins to modify your Skill Test results.'
     }
   },
   {
@@ -311,7 +311,7 @@ export const QUIRKS: Quirk[] = [
     name: 'TOO MANY SECRETS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You begin gameplay with a nemesis, a ‘named’ enemy you will create with the Historian. Whenever you are face-to-face with this enemy, you cannot take advantage of the Coin Pool. Once this enemy is defeated, the Historian will secretly create another nemesis and will tell you who they are only at the most inopportune moment.'
     }
   },
   {
@@ -319,7 +319,7 @@ export const QUIRKS: Quirk[] = [
     name: 'LIGHT SENSITIVE',
     labels: {
       description: '',
-      effect: ''
+      effect: 'In Perfect Light, reduce Distances by -3.'
     }
   },
   {
@@ -327,7 +327,7 @@ export const QUIRKS: Quirk[] = [
     name: 'UNYIELDING IN ALL THINGS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time your die rolls result in a Critical Failure, gain 3 Conflict.'
     }
   },
   {
@@ -335,7 +335,7 @@ export const QUIRKS: Quirk[] = [
     name: 'PLUCK THE DAY',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever confronted with drugs, luxurious things and new experiences, you must indulge or else gain 3 Conflict.'
     }
   },
   {
@@ -343,7 +343,7 @@ export const QUIRKS: Quirk[] = [
     name: 'EVEN-HANDED',
     labels: {
       description: '',
-      effect: ''
+      effect: 'After you use Judgment Is Here, the Coin is immediately discarded for the rest of the game session.'
     }
   },
   {
@@ -351,7 +351,7 @@ export const QUIRKS: Quirk[] = [
     name: 'SEA LEGS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When not borne upon water or a boat, reduce your Initiative by your Flaw Ranks.'
     }
   },
   {
@@ -359,7 +359,7 @@ export const QUIRKS: Quirk[] = [
     name: 'ASCETICISM',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot own more than 10 pounds (£) in coins, or have more wares & weapons than you can carry. If you do, you cannot take advantage of Skill Ranks until you donate it or give it away.'
     }
   },
   {
@@ -367,7 +367,7 @@ export const QUIRKS: Quirk[] = [
     name: 'NOSEBLEEDS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you manipulate objects using No Mere Phenomena, you move one step down the Peril Condition Track negatively. If you become Incapacitated! due to this, you also begin Bleeding.'
     }
   },
   {
@@ -375,7 +375,7 @@ export const QUIRKS: Quirk[] = [
     name: 'HUSTLE & FLOW',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Fellowship-based Skill Test, you move one step down the Peril Condition Track negatively.'
     }
   },
   {
@@ -383,7 +383,7 @@ export const QUIRKS: Quirk[] = [
     name: 'THE OLD WAYS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever attempting to Perform Surgery or Trepanation, you must flip the results to fail Heal Tests.'
     }
   },
   {
@@ -391,7 +391,7 @@ export const QUIRKS: Quirk[] = [
     name: 'TOO INDEPENDENT',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When interacting directly with those of an Allegiance other than your primary one, you must flip the results to fail Fellowship-based Skill Tests.'
     }
   },
   {
@@ -399,7 +399,7 @@ export const QUIRKS: Quirk[] = [
     name: 'MAD HATTER SYNDROME',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You gain one permanent Flaw Rank.'
     }
   },
   {
@@ -407,7 +407,7 @@ export const QUIRKS: Quirk[] = [
     name: 'NOT YOUR SOLDIER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you use the Simple Ranged or Martial Ranged Skills, each Skill Rank counts for +5% instead of the normal +10%.'
     }
   },
   {
@@ -415,7 +415,7 @@ export const QUIRKS: Quirk[] = [
     name: 'TROUBLEMAKER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you as a Mutineer, you must attempt to hide your true identity. The Historian will likely ask you to make a Secret Test for Disguise when in public, only revealing the results at the most inopportune of times.'
     }
   },
   {
@@ -423,7 +423,7 @@ export const QUIRKS: Quirk[] = [
     name: 'ARMS FOR THE POOR',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must donate one out of 9 pence (p) you have to the local militia.'
     }
   },
   {
@@ -431,7 +431,7 @@ export const QUIRKS: Quirk[] = [
     name: 'SERPENT EATING ITS TAIL',
     labels: {
       description: '',
-      effect: ''
+      effect: 'For every failed Skill Test in combat, you suffer 1D10+1 Peril.'
     }
   },
   {
@@ -439,7 +439,7 @@ export const QUIRKS: Quirk[] = [
     name: 'OVERLY CAUTIOUS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must triple the time required to make Skill Tests outside of combat.'
     }
   },
   {
@@ -447,7 +447,7 @@ export const QUIRKS: Quirk[] = [
     name: 'OVERLY SKEPTICAL',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail at Skill Tests to withstand Peril, you suffer an additional 1D10+1 Peril.'
     }
   },
   {
@@ -455,7 +455,7 @@ export const QUIRKS: Quirk[] = [
     name: 'ANGRY READERSHIP',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you as a Printer, you cannot succeed at Charm or Leadership Tests.'
     }
   },
   {
@@ -463,7 +463,7 @@ export const QUIRKS: Quirk[] = [
     name: 'NO HOME PORT',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you as a Privateer, you cannot succeed at Bargain or Rumor Tests.'
     }
   },
   {
@@ -471,7 +471,7 @@ export const QUIRKS: Quirk[] = [
     name: 'DEBT IS OWED',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must donate one out of 9 pence (p) you have to the local tavern.'
     }
   },
   {
@@ -479,7 +479,7 @@ export const QUIRKS: Quirk[] = [
     name: 'FRAIDY CAT',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You treat failed Resolve Skill Tests to withstand Stress, Fear and Terror as Critical Failures instead.'
     }
   },
   {
@@ -487,7 +487,7 @@ export const QUIRKS: Quirk[] = [
     name: 'ANTISOCIAL',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot recover your Peril Condition Track in urban areas.'
     }
   },
   {
@@ -495,7 +495,7 @@ export const QUIRKS: Quirk[] = [
     name: 'GUILTLESS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you take the life of a threat classified as a Humanoid (including player cultures), you gain 6 Conflict instead of the normal 3.'
     }
   },
   {
@@ -503,7 +503,7 @@ export const QUIRKS: Quirk[] = [
     name: 'GRAVE STENCH',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You treat failed Fellowship-based Skill Tests as Critical Failures instead.'
     }
   },
   {
@@ -511,7 +511,7 @@ export const QUIRKS: Quirk[] = [
     name: 'COWARD’S HEART',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes outnumber you 3:1 or more in an Engagement, you cannot Defend.'
     }
   },
   {
@@ -519,7 +519,7 @@ export const QUIRKS: Quirk[] = [
     name: 'LOW CLASS',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must flip the result to fail at Skill Tests to interact with threats classified as Humanoid (including player cultures) of a Risk Factor or Tier higher than your Tier. As an example, if you are of Basic Tier and they are of Intermediate Risk Factor or Tier, you flip the results to fail to interact with them.'
     }
   },
   {
@@ -527,7 +527,7 @@ export const QUIRKS: Quirk[] = [
     name: 'A HEAVY BURDEN',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you spend Coins or sacrifice Determination for the benefits above, you take on the effects yourself.'
     }
   },
   {
@@ -535,7 +535,7 @@ export const QUIRKS: Quirk[] = [
     name: 'FORGE-SCARRED',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Fellowship by -9%.'
     }
   },
   {
@@ -543,7 +543,7 @@ export const QUIRKS: Quirk[] = [
     name: 'I SEE DEAD PEOPLE',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you Critically Fail to communicate with Supernatural threats, you suffer from Terror.'
     }
   },
   {
@@ -551,7 +551,7 @@ export const QUIRKS: Quirk[] = [
     name: 'BEFUDDLED',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail to Resist Spells and Spell-like effects, treat it as a Critical Failure instead.'
     }
   },
   {
@@ -559,7 +559,7 @@ export const QUIRKS: Quirk[] = [
     name: 'ALONE RANGER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You treat failed Charm and Rumor Skill Tests to interact with others as Critical Failures instead.'
     }
   },
   {
@@ -567,7 +567,7 @@ export const QUIRKS: Quirk[] = [
     name: 'OUT IN THE OPEN',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail to use Charm or Bargain, you cannot use Coins to change the results.'
     }
   },
   {
@@ -575,7 +575,7 @@ export const QUIRKS: Quirk[] = [
     name: 'DISCERNING TASTES',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must pay the full price for anything you buy.'
     }
   },
   {
@@ -583,7 +583,7 @@ export const QUIRKS: Quirk[] = [
     name: 'POLITICAL RESPONSIBILITIES',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must donate one out of 9 pence (p) you have to the local government.'
     }
   },
   {
@@ -591,7 +591,7 @@ export const QUIRKS: Quirk[] = [
     name: 'FISH OUT OF WATER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you enter public spaces, you must succeed at a Resolve Test or else suffer Stress.'
     }
   },
   {
@@ -599,7 +599,7 @@ export const QUIRKS: Quirk[] = [
     name: 'HELP ME, STRANGER',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail in a Skill Test in rural areas, you gain 1 Conflict.'
     }
   },
   {
@@ -607,7 +607,7 @@ export const QUIRKS: Quirk[] = [
     name: 'PERSONAL HANG-UP',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot use Fellowship-based Skill Tests to interact with those of an opposing Allegiance unless you spend one Coin first.'
     }
   },
   {
@@ -623,7 +623,7 @@ export const QUIRKS: Quirk[] = [
     name: 'SKILL DETRIMENT',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You must spend an additional 50 RP for Skill Ranks outside those the Translator provides to you.'
     }
   },
   {
@@ -631,7 +631,7 @@ export const QUIRKS: Quirk[] = [
     name: 'MARKED FOR DEATH',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You begin gameplay with a nemesis, a ‘named’ enemy you will create with the Historian. Whenever you are face-to-face with this enemy, you cannot take advantage of the Coin pool. Once this enemy is defeated, the Historian will secretly create another nemesis and will tell you who they are only at the most inopportune moment.'
     }
   },
   {
@@ -639,7 +639,7 @@ export const QUIRKS: Quirk[] = [
     name: 'UNHEALTHY',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Brawn by -9%.'
     }
   },
   {
@@ -647,7 +647,7 @@ export const QUIRKS: Quirk[] = [
     name: 'A TANGLED WEB',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever there are no Coins remaining in your respective pool, you cannot use Determination.'
     }
   },
   {
@@ -655,7 +655,7 @@ export const QUIRKS: Quirk[] = [
     name: 'WHITE WHALE, HOLY GRAIL',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you’re immersed and you cannot see the water’s bottom, you must succeed at a Resolve Test or suffer from Stress.'
     }
   },
   {
@@ -663,7 +663,7 @@ export const QUIRKS: Quirk[] = [
     name: 'HACK-HAND',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Reduce your Agility by -9%.'
     }
   },
   {
@@ -671,7 +671,7 @@ export const QUIRKS: Quirk[] = [
     name: 'PEN NAME',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When foes or strangers recognize you by your real name or by your works, you suffer from Stress.'
     }
   }
 ];

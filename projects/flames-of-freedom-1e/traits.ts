@@ -7,7 +7,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Its Own Reward',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never suffer Peril because of failed or Critically Failed Toughness Tests.'
     },
   },
   {
@@ -15,7 +15,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Jack Of All Trades',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Add +5% Base Chance to any Skill you don’t have a Skill Rank in.'
     }
   },
   {
@@ -23,7 +23,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Keep It Simple',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When in combat, you never gain Conflict because of failed and Critically Failed Skill Tests, nor from Injuries.'
     }
   },
   {
@@ -31,7 +31,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Low Profile',
     labels: {
       description: '',
-      effect: ''
+      effect: 'All threats classified as Humanoid (including player cultures) suffer a -20% Base Chance to hit you until you initiate violence toward them or their allies.'
     }
   },
   {
@@ -39,7 +39,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Makeshift Tools',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can construct any tool smaller than an ox with materials you have on-hand without fail. After using the tool once, roll a 1D6 Chaos Die. On a result of face ‘1-5,’ nothing happens. On a result of face ‘6,’ the tool breaks and its user suffers 2D10+2 Peril.'
     }
   },
   {
@@ -47,7 +47,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Nose To The Grindstone',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you triple the time required to make a Skill Test, ignore Peril Condition Track penalties when calculating Total Chance for success.'
     }
   },
   {
@@ -55,7 +55,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Salt Of The Earth',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Bargain or Rumor Test, re- roll to generate a better result (but you must accept the outcome).'
     }
   },
   {
@@ -63,7 +63,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Show The Heels',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you Charge or Run, add +6 yards to Movement on foot.'
     }
   },
   {
@@ -71,7 +71,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Skeleton Key',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Providing you can narratively justify it, you can substitute any Primary Attribute in place of another when making a Skill Test.'
     }
   },
   {
@@ -79,7 +79,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Work, Work, Work',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You do not suffer the ill-effects of Peril until you are at ‘Ignore 3 Skill Ranks’ on the Peril Condition Track.'
     }
   },
   {
@@ -87,7 +87,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'A Tall Tale',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Are you abnormally short or extraordinarily tall? Choose one. If Tall, you automatically inflict Moderate Injuries when fighting bare-handed in combat, but permanently reduce your Initiative by -1. If Slight, permanently add +1 to your Damage Threshold, but you cannot use two-handed melee weapons. When you come to determining stature, select the aforementioned size.'
     }
   },
   {
@@ -95,7 +95,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Diamond In The Rough',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Immediately after you suffer Damage from a melee or ranged weapon, spend a Coin to ignore it.'
     }
   },
   {
@@ -103,7 +103,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Fortuitous Outcomes',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you gain an Affliction, immediately gain one Belief Rank. You’ll learn more about Afflictions in Article 8: Healing, Hazards & Horror.'
     }
   },
   {
@@ -111,7 +111,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Frontier-Walker',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When moving through uninhabited rural areas, you leave no trace of your passing and cannot be found with Skills or Spells.'
     }
   },
   {
@@ -119,7 +119,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Gut Founded',
     labels: {
       description: '',
-      effect: ''
+      effect: 'In rural areas, you can always provide yourself with food and water to live on, never suffering from the effects of Starvation.'
     }
   },
   {
@@ -127,7 +127,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Hands Of A Healer',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail or Critically Fail a Heal Test, spend a Coin to turn it into a Critical Success.'
     }
   },
   {
@@ -135,7 +135,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Hit The Hay',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You only need three hours of Sleep to restore your Peril Condition Track. In addition, you are always restored to Unhindered after Sleeping, even in unsafe places or when traveling.'
     }
   },
   {
@@ -143,7 +143,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Shadows Begone',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You treat Total Darkness as if it is Perfect Light, able to see in the dark.'
     }
   },
   {
@@ -151,7 +151,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Sleep Tight',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you awaken from six hours of Sleep, you move one step up the Damage Condition Track positively.'
     }
   },
   {
@@ -159,7 +159,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'To The Bitter End',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever rolling to determine which Injury you suffer, roll twice and choose the preferred results.'
     }
   },
   {
@@ -167,7 +167,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'By The Book',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You treat all Special Skills as Common Skills.'
     }
   },
   {
@@ -175,7 +175,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Chaos Is A Ladder',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever combat begins, you always gain the benefits of Surprise on your first Turn.'
     }
   },
   {
@@ -183,7 +183,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Encyclopedic Memory',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When attempting to recall written numbers or copy content, you automatically succeed at the Skill Test.'
     }
   },
   {
@@ -191,7 +191,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Enfant Terrible',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever someone fails an Intelligence-based Skill Test, you can interject and have them re-roll using your Base Chance without spending Coins. However, they gain 3 Conflict.'
     }
   },
   {
@@ -199,7 +199,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Fit As A Fiddle',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You are immune to Smallpox. Whenever you are exposed to an Ailment, sacrifice one Determination to become immune to it.'
     }
   },
   {
@@ -207,7 +207,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Hold On A Moment',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Foes will never attack you on their first Turn of combat.'
     }
   },
   {
@@ -215,7 +215,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Knowledge Is Power',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you succeed at an Education Test, spend a Coin to provoke Stress in one foe who can see and hear you clearly.'
     }
   },
   {
@@ -223,7 +223,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Logician',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may substitute Education when it comes to Resisting Spells and Spell-like effects.'
     }
   },
   {
@@ -231,7 +231,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Stiff Upper Lip',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When in a social situation, you never gain Conflict because of failed or Critically Failed Skill Tests.'
     }
   },
   {
@@ -239,7 +239,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Tongue-Lashing',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you inflict an Injury, your foe moves one step down the Peril Condition Track negatively if they suffer a Moderate Injury; two steps down if a Serious Injury; or, three steps down if a Grievous Injury. This only works on foes who can see and hear you clearly.'
     }
   },
   {
@@ -247,7 +247,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Better Lucky Than Good',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you spend a Coin to re-roll a Skill Test, if you fail the Test, put the Coin back into your respective pool (but you must accept the results of the die roll).'
     }
   },
   {
@@ -255,7 +255,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Dead To Rights',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any Skill Rank you gain in Eavesdrop, Guile and Skulduggery modify your Base Chance by +15, instead of +10.'
     }
   },
   {
@@ -263,7 +263,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Entrepreneurial Spirit',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you succeed at Skill Test to cheat, lie or steal, roll a D6 Chaos Die. If it lands on face ‘6,’ move one Coin from one Pool into another Pool.'
     }
   },
   {
@@ -271,7 +271,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Fake It Till I Make It',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never suffer the effects of Critical Failures in Skills you don’t have Skill Ranks in.'
     }
   },
   {
@@ -279,7 +279,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Mostly Harmless',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Add +1 to your Damage & Peril Thresholds.'
     }
   },
   {
@@ -287,7 +287,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Take A Mulligan',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you spend a Coin to re-roll a Skill Test and fail, re-roll a final time (but you must accept the results of this final roll).'
     }
   },
   {
@@ -295,7 +295,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Treachery',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you deal Damage against a foe for the first time, add a 1D6 Fury Die to Total Damage. You can take advantage of this in combat by switching between multiple foes.'
     }
   },
   {
@@ -303,7 +303,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Ring Of Truth',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Add an Assist Die whenever you make Guile Tests. In addition, you always succeed at Skill Tests to tell lies.'
     }
   },
   {
@@ -311,7 +311,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Windfall',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Anytime you generate a Critical Failure, gain a Coin for yourself. Once spent, discard it permanently. It must be used before the end of the game session, or else it expires.'
     }
   },
   {
@@ -327,7 +327,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Abracadabra',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When moving through crowded urban areas, you leave no trace of your passing and cannot be found with Skills or Spells.'
     }
   },
   {
@@ -335,7 +335,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Absolution',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never gain Conflict for actions you can justify to the Historian are religiously or spiritually motivated.'
     }
   },
   {
@@ -343,7 +343,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Devil In The Eye',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can use any Fellowship-based Skill to directly communicate with Abyssal threats you can see and hear clearly. This empathy acts as an all but paranormal type of communication, the complexity determined by the Historian. In addition, you are immune to being Compelled (a Trait that some threats possess).'
     }
   },
   {
@@ -351,7 +351,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Hand Of God',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any weapon you hold is treated as magically enhanced for purposes of striking threats that can only be affected by Spells or weapons imbued with it.'
     }
   },
   {
@@ -359,7 +359,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'No Illusions',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You are immune to mind control and can see through illusions.'
     }
   },
   {
@@ -367,7 +367,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Ritualistic',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you awaken from six hours Sleep, make a Resolve Test to pray. If successful, you add +1 to three different Bonus Advances until you rest once again. These effects are not cumulative day over day.'
     }
   },
   {
@@ -375,7 +375,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Second Sight',
     labels: {
       description: '',
-      effect: ''
+      effect: 'With a successful Scrutinize Test, you can detect the presence of supernatural phenomena nearby. If you Critically Succeed this Skill Test, you can accurately track where the phenomena is (as if you were tracking someone using Survival).'
     }
   },
   {
@@ -383,7 +383,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Twist Of Fate',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you spend a Coin, roll a 1D6 Chaos Die. If the result is face ‘6,’ the Coin doesn’t convert to the other pool.'
     }
   },
   {
@@ -391,7 +391,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Well-Grounded',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you suffer from Stress, Fear and Terror provoked by threats classified as Supernatural, you do not gain Conflict.'
     }
   },
   {
@@ -399,7 +399,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Witches’ Mark',
     labels: {
       description: '',
-      effect: ''
+      effect: ' Whenever you fail or Critically Fail an Incantation Test, you may turn it into a Critical Success. You move one step down the Peril Condition Track negatively as a result.'
     }
   },
   {
@@ -407,7 +407,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Between Two Worlds',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Immediately after you suffer Peril from a threat classified as Abyssal, Supernatural or other situations deemed otherworldly, spend a Coin to ignore it.'
     }
   },
   {
@@ -415,7 +415,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Dyed In The Wool',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you gain Conflict, decrease the number you gain by three (to a minimum of 1). This means that if you gain 6 Conflict, you gain 3 instead.'
     }
   },
   {
@@ -423,7 +423,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'E Pluribus Unum',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you Assist Skill Tests, the ally you’re helping gains one additional Assist Die.'
     }
   },
   {
@@ -431,7 +431,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Fostering Community',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever using social-based Skill Tests, gain two Assist Dice, using the best of all the results you roll.'
     }
   },
   {
@@ -439,7 +439,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Level-Headed',
     labels: {
       description: '',
-      effect: ''
+      effect: 'At the end of the game session, roll two Conflict Dice and choose the preferred results.'
     }
   },
   {
@@ -447,7 +447,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'People Person',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can sway any number of people who can clearly see and hear you with Fellowship-based Skill Tests. This includes actions such as Words As Weapons in combat.'
     }
   },
   {
@@ -455,7 +455,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Self-Reliant',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never have to spend money on clothing, food or lodging, as you always have enough spare coins to pay for yourself and stable a horse.'
     }
   },
   {
@@ -463,7 +463,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Seventh Sense',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you interact with others using Fellowship-based Skill Tests, treat their Social Disposition as Helpful. You can learn more about Dispositions in Article 6: Narrative Tools.'
     }
   },
   {
@@ -471,7 +471,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Titan Of Industry',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any object you craft with your own hands cannot be broken or destroyed by normal means.'
     }
   },
   {
@@ -479,7 +479,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Vox Populi',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Treat each Bonus Advance in Fellowship Bonus [FB] as if it were three times its normal value.This means if you had a [FB] 6, treat it as [FB] 18 instead.'
     }
   },
   {
@@ -487,7 +487,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Armed To The Teeth',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Add both the Punishing and Vicious Qualities to any melee weapons you wield.'
     }
   },
   {
@@ -495,7 +495,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Battle Hymn',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you suffer an Injury, immediately move one step up the Damage & Peril Condition Tracks positively.'
     }
   },
   {
@@ -503,7 +503,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Bite The Bullet',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you suffer an Injury, ignore its effects until one hour later.'
     }
   },
   {
@@ -511,7 +511,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Bloody-Minded',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You do not flinch from scenes of blood and viscera, nor gain Conflict because of it.'
     }
   },
   {
@@ -519,7 +519,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Feather In The Cap',
     labels: {
       description: '',
-      effect: ''
+      effect: ' Immediately gain 1 Determination.'
     }
   },
   {
@@ -527,7 +527,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Liberty Or Death',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you would be Slain!, you gain 3 Action Points that must be used immediately. If you kill the foe who slew you, you are Grievously Wounded instead.'
     }
   },
   {
@@ -535,7 +535,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Lock, Stock & Barrel',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you use Fury Dice to determine ranged weapon Damage, the dice explode on face ‘5–6.’'
     }
   },
   {
@@ -543,7 +543,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Make A Beeline',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you Charge, add +3 to your Damage Threshold until the beginning of your next Turn. When you Run, add +6 instead. This does not stack with the action of Take Cover in combat.'
     }
   },
   {
@@ -551,7 +551,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Set My Sights',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you inflict Damage from a Targeted Attack, they also suffer an equal amount of Peril.'
     }
   },
   {
@@ -559,7 +559,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
     name: 'Turn The Tables',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever a Coin is about to be spent, call out that you ‘turn the tables.’ The benefit of the Coin doesn’t take effect, and it is permanently discarded from both pools until the next game session. You can do this once a game session.'
     }
   },
 ];
@@ -570,7 +570,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Persona, Come Forth!',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Disguise Tests. When you succeed, it is always considered a Critical Success. In addition, when you successfully masquerade as a specific person, you can perfectly mimic their Allegiance.'
     },
   },
   {
@@ -585,7 +585,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     id: TraitId.WAY_OF_THE_BEAST,
     name: 'Way Of The Beast',
     labels: {
-      description: '',
+      description: 'Threats classified as Animals or Beasts will never make you a target of attacks until you initiate violence toward them or their allies.',
       effect: ''
     },
   },
@@ -594,7 +594,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'What’s Old Is New',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You know the Alchemical Art of Create Medicine (from Article 9: Hexenmeister’s Almanack) and randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Laudanum you create moves a person two steps up the Damage Condition Track positively, while Smelling Salt you create moves a person two steps up the Peril Condition Track positively. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -602,7 +602,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'The Golden Ratio',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You automatically succeed at any Skill Test to determine distances. In addition, you treat Extreme and Long Distances as Medium Distance for purposes of using ranged weapons.'
     },
   },
   {
@@ -610,7 +610,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'The Artist’s Eye',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You gain a muse, which may be an object, person or place. When in the presence of your muse, you ignore Peril Condition penalties when creating works of art. You’ll gain new muses at each Tier.'
     },
   },
   {
@@ -618,7 +618,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'In Tune With Æther',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you hold an amulet and Risk Backlash, you must roll two or more face ‘6s’ on Chaos Dice to trigger it. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -626,7 +626,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Honed By Conflict',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you make an Attack Action using a ranged weapon, foes must flip the results to fail to Defend or Resist it.'
     },
   },
   {
@@ -634,7 +634,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'At Ease, My Friend',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You ignore Peril Condition penalties associated with Skill Tests to heal people. In addition, your medicinal practices never result in a patient suffering from Sepsis. Finally, add an Assist Die when using any Healing Practice (as indicated in Article 8: Healing, Hazards & Horror).'
     },
   },
   {
@@ -642,7 +642,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Your Secrets Revealed',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Charm or Stealth Test, you may re-roll to generate a better result, but must accept the outcome. In addition, whenever you hide in urban environments during a Combat Encounter, it only costs 1 AP.'
     },
   },
   {
@@ -650,7 +650,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Knotted Rope',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Pilot Tests. When you succeed, it is always considered a Critical Success. In addition, when using the Movement subtype of Rowing, you do not have to add the additional 1 Action Point cost.'
     },
   },
   {
@@ -658,7 +658,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'In The Margins',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail Counterfeit or Scrutinize Tests, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests for mathematical exercises.'
     },
   },
   {
@@ -666,7 +666,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Find The Hidden Word',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you bear a symbol of faith in hand, add +1 to your Damage and Peril Thresholds. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -674,7 +674,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'I Have Tasted It All',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You know the Alchemical Art of Create Drugs (from Article 9: Hexenmeister’s Almanack). With a sip, you automatically succeed at any Skill Test to determine if drinks have been drugged. Finally, you never suffer from the negative effects associated with Intoxication.'
     },
   },
   {
@@ -682,7 +682,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Devil In The Saddle',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Every time you inflict Damage on horseback using Actions In Combat, temporarily increase your Total Damage by +1 cumulatively, lasting until you are Slain! or combat ends.'
     },
   },
   {
@@ -690,7 +690,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Heaven Sent',
     labels: {
       description: '',
-      effect: ''
+      effect: 'All foes classified as Abyssal or Supernatural suffer a -10% Base Chance to hit you, regardless of the actions you take against them.'
     },
   },
   {
@@ -698,7 +698,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Stroke Of My Quill',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You reduce the time required to use Counterfeit Tests by half (suggestions include faking a seal, writing propaganda, determining false documentation, etc.). In addition, you automatically succeed at all Skill Tests to decipher counterfeited writing.'
     },
   },
   {
@@ -706,7 +706,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Mark Of Inauthenticity',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any object you counterfeit is treated and appraised at its full value. Furthermore, you may flip the results to succeed Skill Tests to identify and create counterfeited objects.'
     },
   },
   {
@@ -714,7 +714,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'What I Do In Shadows',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail a Skulduggery or Stealth Test, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests to disable locks.'
     },
   },
   {
@@ -722,7 +722,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Sense For Danger',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you are Surprised, roll an Awareness Test. If successful, you and a number of allies equal to [PB] avoid Surprise.'
     },
   },
   {
@@ -730,7 +730,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Little Bit Of Everything',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you gain the benefits of an Assist Die, you gain two instead.'
     },
   },
   {
@@ -738,7 +738,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Read The Room',
     labels: {
       description: '',
-      effect: ''
+      effect: 'By presenting a passport, you determine the Allegiance, culture and Disposition of any person you interact with. Dispositions are covered in Article 6: Narrative Tools.'
     },
   },
   {
@@ -746,7 +746,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Born In The Saddle',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail a Handle Animal or Ride Test, you may re-roll to generate a better result, but must accept the outcome. In addition, when using the Movement subtype of Riding, you do not have to add the additional 1 Action Point cost.'
     },
   },
   {
@@ -754,7 +754,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Tell Me What You Seek',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever attempting to track a threat classified as Humanoid (including player cultures), find a source of water or navigate to a location using a divining rod, substitute Incantation in place of other Skills required to do so. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -762,7 +762,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Steady Hands',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any object you engrave is treated and appraised at its full value. Furthermore, you may flip the results to succeed at Skill Tests to identify and create engraved objects.'
     },
   },
   {
@@ -770,7 +770,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Farmer’s Almanac',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can accurately predict the weather without having to make a Skill Test. In addition, you do not suffer from the effects of Rough Terrain in combat or while traveling.'
     },
   },
   {
@@ -778,7 +778,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Open-Minded',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Select any three Special Skills, and circle them on your character sheet. They are now treated as Common Skills.'
     },
   },
   {
@@ -786,7 +786,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'We Are The Light',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Join hands with up to two allies, and all of you make an Incantation or Resolve Test to Bind Wounds. For every successful Skill Test, the person is restored one additional step up the Damage Condition Track positively. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -802,7 +802,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Within My Reach',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Guile or Intimidate Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to resell illegal wares & weapons.'
     },
   },
   {
@@ -810,7 +810,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Beast Slayer',
     labels: {
       description: '',
-      effect: ''
+      effect: 'After you have successfully defeated any threat classified as an Animal or Beast, its kind becomes your chosen enemy. When striking chosen enemies, add an additional 1D6 Fury Die to Total Damage with ranged weapons. Note that there is no upper limit to the number of chosen enemy types you may have.'
     },
   },
   {
@@ -826,7 +826,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Fair Price',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Bargain or Rumor Test, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests to haggle down prices for legal wares & weapons.'
     },
   },
   {
@@ -834,7 +834,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Forlorn Hope',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Warfare Tests. When you succeed, it is considered a Critical Success. In addition, add 1D6 Fury Die to Damage with any weapon with the Bomb Quality.'
     },
   },
   {
@@ -842,7 +842,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Ambush Tactics',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you deal Damage, spend a Coin to hide immediately or to remain hidden (thereby gaining Surprise on your next Turn).'
     },
   },
   {
@@ -850,7 +850,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'My Retribution',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You know the Alchemical Art of Create Blackpowder (from Article 9: Hexenmeister’s Almanack), as you learn it as a free Unique Ability. Any weapons you craft of the Blackpowder Quality do not take on the negative effects imparted by their Qualities and don’t misfire.'
     },
   },
   {
@@ -858,7 +858,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Trace Of Life',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever attempting to track a threat classified as an Animal or find a place using a sacred tool, substitute Incantation in place of other Skills required to do so. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -866,7 +866,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Rough Work',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Toughness Tests. When you succeed, it is always considered a Critical Success. Furthermore, you never reduce your Movement due to Overage.'
     },
   },
   {
@@ -874,7 +874,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Shadow Broker',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can dig up sensitive information on a character who has been listed in a broadsheet (newspaper) or magazine. Using this information, you then gain an Assist Die to interact with them in social situations. You can take advantage of this Trait once a game session.'
     },
   },
   {
@@ -882,7 +882,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Night Sight',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can see in the dark, treating Fleeting Shadows and Total Darkness as if it were Perfect Light.'
     },
   },
   {
@@ -890,7 +890,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Truth Shall Set You Free',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can determine if someone is lying without making a Skill Test, providing you can clearly see and hear them. In addition, your lies are seen as being truthful by others, unless aided by Spells or by another Lawyer.'
     },
   },
   {
@@ -898,7 +898,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Well, Actually...',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you attempt to determine whether you have heard of someone, a story or other folktale, roll a 1D6 Chaos Die. If the result is face ‘6,’ you immediately recall a factoid about it.'
     },
   },
   {
@@ -906,7 +906,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Judgment Is Here',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you or an ally succeeds at a Skill Test, spend a Coin to turn it into a Critical Success.'
     },
   },
   {
@@ -914,7 +914,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Life At Sea',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Coordination Tests. When you succeed, it is always considered a Critical Success. In addition, when using the Movement subtype of Swimming, add your Initiative value to the Distance you swim.'
     },
   },
   {
@@ -922,7 +922,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Guiding Light',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever an ally fails or Critically Fails a Resolve Test to withstand Stress, Fear or Terror provoked by threats classified as Abyssal or Supernatural, make a Resolve Test. If successful, your ally ignores Stress, Fear and Terror provoked by it, providing they can see and hear you clearly. A Critical Success allows them to gain the benefit above and temporarily adds +3 to their Peril Threshold while in the presence of the threat.'
     },
   },
   {
@@ -930,7 +930,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'No Mere Phenomena',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can manipulate physical objects no larger than a book with your mind. This allows you to automatically hit a single foe within 3+[PB], as the foe suffers 1D10+1 Peril. You can also pair this with Skulduggery to make objects disappear and to reappear. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -938,7 +938,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Tip The Scales',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Bargain or Guile Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to resell legal wares & weapons.'
     },
   },
   {
@@ -946,7 +946,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Ease The Pain',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You know the Alchemical Art of Create Medicine (from Article 9: Hexenmeister’s Almanack), as you learn it as a free Unique Ability. Whenever you successfully Bind Wounds to heal Damage, your patient moves one additional step up the Damage Condition Track positively and an equal number of steps up the Peril Condition Track.'
     },
   },
   {
@@ -954,7 +954,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Don’t Tread On Me',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You never Bleed or suffer from Sepsis. Furthermore, you are never rendered Incapacitated! or made Unconscious from Injuries.'
     },
   },
   {
@@ -962,7 +962,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'It’s Just Business',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever using Skill Tests to interact with those of the same or different Allegiance, you gain an Assist Die.'
     },
   },
   {
@@ -970,7 +970,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Rising Anthem',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can attempt a Charm Test to perform with a musical instrument. If successful, a number of characters equal to your [FB] are Inspired (Words As Weapons in Article 7: Combat Encounters) for twenty-four hours. If you Critically Succeed, they also gain an Assist Die to Resist Stress, Fear and Terror. A character may only gain the benefit of this performance once a day, which takes at least an hour of time to perform.'
     },
   },
   {
@@ -978,7 +978,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Call To Arms',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you succeed at using the action in combat Words As Weapons, combatants double the benefits or penalties.'
     },
   },
   {
@@ -986,7 +986,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Battle Buddy',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Select one ally as combat begins. You both gain a +10% Base Chance to Defend and cannot be Flanked, providing you are able to clearly see and hear one another.'
     },
   },
   {
@@ -994,7 +994,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Mob Rule',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you and your allies face foes 6:1, both you and a number of allies equal to [FB] add 2D6 Fury Die to Total Damage, instead of the normal 1D6.'
     },
   },
   {
@@ -1002,7 +1002,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Art Of Compromise',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When using Skill Tests, you do not suffer any additional penalties due to differences in Allegiance.'
     },
   },
   {
@@ -1010,7 +1010,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Scholar & Student',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You only need to spend half the RP to buy Skill Ranks. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -1018,7 +1018,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Passive Knowledge',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You always gain access to use a printing press in any settlement you’re in. In addition, you can attempt to fluently communicate in any language you don’t know with a successful Education Test.'
     },
   },
   {
@@ -1026,7 +1026,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Fire In The Hole',
     labels: {
       description: '',
-      effect: ''
+      effect: 'After you make an Attack Action, immediately make a Counterattack with any one-handed ranged weapon on the same Turn.'
     },
   },
   {
@@ -1034,7 +1034,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Knows Your Name',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You always gain free room and board in any settlement you’re in. In addition, you always succeed at Skill Tests to recall a name, place or piece of information you’ve been told before.'
     },
   },
   {
@@ -1042,7 +1042,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Always Prepared',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you need a mundane item in hand valued less than 1 pound (£), you do not have to spend a Coin to edit the situation. You may take advantage of this Trait once a game session. The Historian may impose other limits.'
     },
   },
   {
@@ -1050,7 +1050,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Back Of My Hand',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You cannot get lost in the wilderness, and characters who are with you cannot either. You also always succeed at Skill Tests to withstand Peril while traveling.'
     },
   },
   {
@@ -1058,7 +1058,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Death Proof',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you are Moderately Wounded, temporarily add +1 to Damage Threshold. Whenever you are Seriously Wounded, temporarily add +2 to Damage Threshold instead. And finally, whenever you are Grievously Wounded, temporarily add +3 to Damage Threshold instead. These benefits do not stack and only count whenever you are in combat.'
     },
   },
   {
@@ -1066,7 +1066,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Very Sneaky',
     labels: {
       description: '',
-      effect: ''
+      effect: 'In Perfect Light, add an Assist Die to Stealth Tests. In Fleeing Shadows, you may flip the results to succeed Stealth Tests. In Total Darkness, you automatically Critically Succeed Stealth Tests.'
     },
   },
   {
@@ -1074,7 +1074,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Hello, Traveler',
     labels: {
       description: '',
-      effect: ''
+      effect: 'At your option, you may substitute the Charm Skill in place of Intimidate. In addition, you may substitute Charm in place of any Skill required to Defend against Actions In Combat.'
     },
   },
   {
@@ -1082,7 +1082,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Hide In Plain Sight',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail an Eavesdrop or Stealth Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to hide among crowds.'
     },
   },
   {
@@ -1090,7 +1090,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Give Your Sin Unto Me',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can spend a Coin to immediately remove a curse or dispel harmful Spell or Spell-like effects that ail another. In addition, you can sacrifice Determination to immediately reduce another character’s Flaw Ranks equal to your [WB]. You must be able to touch the person in order for them to be absolved. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -1098,7 +1098,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Technical Mastery',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Any time you use a Skill Test to create wares & weapons, add one Quality for free.'
     },
   },
   {
@@ -1106,7 +1106,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Speak With Spirits',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can use any Fellowship-based Skill to communicate with Supernatural threats using a spirit board. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
   {
@@ -1114,7 +1114,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'I Read About It Once',
     labels: {
       description: '',
-      effect: ''
+      effect: 'At your option, you may substitute the Education Skill in place of Incantation. In addition, you may substitute Education in place of any Skill required to Resist against Spells.'
     },
   },
   {
@@ -1122,7 +1122,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Land Reader',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You always Critically Succeed Skill Tests to find the three basic needs: food, water and shelter.'
     },
   },
   {
@@ -1130,7 +1130,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Rural Stalker',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You automatically succeed at all Skill Tests to sneak in rural areas, unless you give yourself away by running through them or making loud noises. In addition, whenever you hide in rural environments during a Combat Encounter, it only costs 1 AP.'
     },
   },
   {
@@ -1138,7 +1138,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Respect The Drip',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail a Charm or Eavesdrop Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to accurately estimate Distances.'
     },
   },
   {
@@ -1146,7 +1146,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Eyes In The Back Of My Head',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you fail a Bargain or Scrutinize Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to demand debt owed to you or another character.'
     },
   },
   {
@@ -1154,7 +1154,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Well-Read',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You only need to spend 25 RP to buy Unique Abilities (instead of the normal 100).'
     },
   },
   {
@@ -1162,7 +1162,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'A Simple Life',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever you succeed in a Fellowship-based Skill Test in urban areas, you can ask for the Historian to give you an important rumor from your investigations you may not have already thought of or overlooked. This benefit cannot be gained more than once a game session.'
     },
   },
   {
@@ -1170,7 +1170,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Don’t Shoot The Messenger',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You may flip the results to succeed at Skill Tests to Defend against ranged weapons and other Distance- based attacks.'
     },
   },
   {
@@ -1186,7 +1186,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Polyglot',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You can read and write every language, despite your [FB].'
     },
   },
   {
@@ -1194,7 +1194,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Fluid Allegiance',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You do not have to make Skill Tests to masquerade as someone of a different Allegiance, fitting in without fail.'
     },
   },
   {
@@ -1202,7 +1202,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Vagrant Story',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When you fail a Folklore or Navigation Test, you may re-roll to generate a better result, but must accept the outcome.'
     },
   },
   {
@@ -1210,7 +1210,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Threads Of Fate',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Whenever a game session begins, roll 3D6 Chaos Dice. For every die that lands on face ‘6,’ place an additional Coin into your respective pool. Whenever they are spent, they are immediately discarded for the rest of the game session.'
     },
   },
   {
@@ -1218,7 +1218,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Blood & Thunder',
     labels: {
       description: '',
-      effect: ''
+      effect: 'Threats who are Large Sized or Huge Sized only reference 1D6 Fury Die due to their Size to deal Damage to you (as opposed to their normal number of Fury Dice).'
     },
   },
   {
@@ -1226,7 +1226,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Master Builder',
     labels: {
       description: '',
-      effect: ''
+      effect: 'You always Critically Succeed Tradecraft Skill Tests to create objects larger than an oxen.'
     },
   },
   {
@@ -1234,7 +1234,7 @@ export const PROFESSIONAL_TRAITS: Trait[] = [
     name: 'Well-published',
     labels: {
       description: '',
-      effect: ''
+      effect: 'When strangers recognize you by your real name or by your works, you treat all successful social Skill Tests as a Critical Success.'
     },
   }
 ];

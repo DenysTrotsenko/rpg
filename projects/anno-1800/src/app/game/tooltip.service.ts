@@ -12,7 +12,6 @@ export class TooltipService {
   getSkillTooltip(id: SkillId): string {
     const skill: Skill = this.data[DataTypes.SKILLS].find(i => i.id === id);
     const attribute: Attribute = this.data[DataTypes.ATTRIBUTES].find(i => i.id === skill.attribute);
-
     return [
       `${skill.name} ${skill.type === 2 ? '*' : ''} (${attribute.name})\n`,
       `${skill.labels?.description}`,
@@ -21,7 +20,6 @@ export class TooltipService {
 
   getTalentTooltip(id: TalentId): string {
     const talent: Talent = this.data[DataTypes.TALENTS].find(i => i.id === id);
-
     return [
       `${talent.name}\n`,
       `${talent.labels?.description}\n`,
