@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyAwRK6JzPtnWUTzoKwobIjZhuQna_wg9mk',
-    authDomain: 'terraincognita-52a88.firebaseapp.com',
-    projectId: 'terraincognita-52a88',
-    storageBucket: 'terraincognita-52a88.appspot.com',
-    messagingSenderId: '555217534948',
-    appId: '1:555217534948:web:c6ccbc104775024470d1f1'
+    apiKey: 'AIzaSyBgt5gKm21WE-GZzKEHimBr-wtSr0-IC7Q',
+    authDomain: 'another-earth-947e3.firebaseapp.com',
+    projectId: 'another-earth-947e3',
+    storageBucket: 'another-earth-947e3.appspot.com',
+    messagingSenderId: '955730849017',
+    appId: '1:955730849017:web:e27fa5922965b61ca64628'
   }
 };
