@@ -1,0 +1,10 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of attributes;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine>{{i.labels.description}} {{i.labels.bonus}}</p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

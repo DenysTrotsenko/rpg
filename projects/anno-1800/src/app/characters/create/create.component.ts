@@ -28,19 +28,19 @@ import {
   ProfessionId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
-import {BELIEFS} from '@flames-of-freedom-1e/beliefs';
-import {FLAWS} from '@flames-of-freedom-1e/flaws';
-import {ARCHETYPES} from '@flames-of-freedom-1e/archetypes';
-import {CULTURES} from '@flames-of-freedom-1e/cultures';
-import {ARCHETYPE_TRAIT} from '@flames-of-freedom-1e/traits';
+// import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
+// import {BELIEFS} from '@flames-of-freedom-1e/beliefs';
+// import {FLAWS} from '@flames-of-freedom-1e/flaws';
+// import {ARCHETYPES} from '@flames-of-freedom-1e/archetypes';
+// import {CULTURES} from '@flames-of-freedom-1e/cultures';
+// import {ARCHETYPE_TRAIT} from '@flames-of-freedom-1e/traits';
 import {AGES} from '@flames-of-freedom-1e/age';
-import {PROFESSIONS} from '@flames-of-freedom-1e/professions';
+// import {PROFESSIONS} from '@flames-of-freedom-1e/professions';
 import {TIERS} from '@flames-of-freedom-1e/tiers';
 import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
-import {TooltipService} from '@ti/app/game/tooltip.service';
 import {BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, STATURE, STYLE} from '@flames-of-freedom-1e/appearance';
+import {DataService, DataTypes} from '@ti/app/game/data.service';
 
 @Component({
   templateUrl: './create.component.html',
@@ -48,28 +48,46 @@ import {BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, STATURE, STYLE}
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
+  AGES: Age[] = AGES;
+  ALLEGIANCES: Allegiance[] = ALLEGIANCES;
+  ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
+  ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
+  BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
+  BUILD: Build[] = BUILD;
+  CULTURES: Culture[] = this.data[DataTypes.CULTURES];
+  EYES: Eyes[] = EYES;
+  FLAWS: Flaw[] = this.data[DataTypes.FLAWS];
+  HAIR_LENGTH: HairLength[] = HAIR_LENGTH;
+  HAIR_STYLE: HairStyle[] = HAIR_STYLE;
+  HAIR_COLOR: HairColor[] = HAIR_COLOR;
+  MARKS: Mark[] = MARKS;
+  PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
+  STATURE: Stature[] = STATURE;
+  STYLE: Style[] = STYLE;
+  TIERS: Tier[] = TIERS;
+
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
     portrait: new FormControl(null, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     miscellaneous: new FormGroup({
       biography: new FormControl(''),
-      gender: new FormControl('Male', [Validators.required]),
-      age: new FormControl(AgeId.YOUNG, [Validators.required]),
-      stature: new FormControl(null, [Validators.required]),
-      build: new FormControl(null, [Validators.required]),
-      style: new FormControl(null, [Validators.required]),
-      eyes: new FormControl(null, [Validators.required]),
-      hair_length: new FormControl(null, [Validators.required]),
-      hair_style: new FormControl(null, [Validators.required]),
-      hair_color: new FormControl(null, [Validators.required]),
-      mark: new FormControl(null, [Validators.required]),
+      gender: new FormControl('Male'),
+      age: new FormControl(AgeId.YOUNG),
+      stature: new FormControl(null),
+      build: new FormControl(null),
+      style: new FormControl(null),
+      eyes: new FormControl(null),
+      hair_length: new FormControl(null),
+      hair_style: new FormControl(null),
+      hair_color: new FormControl(null),
+      mark: new FormControl(null),
     }),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
     allegiance: new FormControl(AllegianceId.THE_REBELS, [Validators.required]),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
-    belief: new FormControl(BELIEFS[0].id, [Validators.required]),
-    flaw: new FormControl(FLAWS[0].id, [Validators.required]),
+    belief: new FormControl(this.BELIEFS[0].id, [Validators.required]),
+    flaw: new FormControl(this.FLAWS[0].id, [Validators.required]),
     attributes: new FormGroup({
       [AttributeId.COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [AttributeId.BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
@@ -111,24 +129,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       }),
     })
   });
-
-  AGES: Age[] = AGES;
-  ALLEGIANCES: Allegiance[] = ALLEGIANCES;
-  ARCHETYPES: Archetype[] = ARCHETYPES;
-  ATTRIBUTES: Attribute[] = ATTRIBUTES;
-  BELIEFS: Belief[] = BELIEFS;
-  BUILD: Build[] = BUILD;
-  CULTURES: Culture[] = CULTURES;
-  EYES: Eyes[] = EYES;
-  FLAWS: Flaw[] = FLAWS;
-  HAIR_LENGTH: HairLength[] = HAIR_LENGTH;
-  HAIR_STYLE: HairStyle[] = HAIR_STYLE;
-  HAIR_COLOR: HairColor[] = HAIR_COLOR;
-  MARKS: Mark[] = MARKS;
-  PROFESSIONS: Profession[] = PROFESSIONS;
-  STATURE: Stature[] = STATURE;
-  STYLE: Style[] = STYLE;
-  TIERS: Tier[] = TIERS;
 
   readonly determination$: Observable<number> = this.form.get('determination').valueChanges.pipe(
     startWith(DEFAULT_DETERMINATION),
@@ -195,15 +195,15 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly traits$: Observable<Trait[]> = this.archetype$.pipe(
     tap(() => this.form.get('trait').setValue(null)),
     map((id: ArchetypeId) => {
-      const archetype: Archetype = ARCHETYPES.find(i => i.id === id);
-      return ARCHETYPE_TRAIT.filter(i => archetype.traits.includes(i.id));
+      const archetype: Archetype = this.ARCHETYPES.find(i => i.id === id);
+      return this.data[DataTypes.TRAITS].filter(i => archetype.traits.includes(i.id));
     }),
     shareReplay(1)
   );
   readonly basicProfessions$: Observable<Profession[]> = this.archetype$.pipe(
     map((id: ArchetypeId) => {
-      const archetype: Archetype = ARCHETYPES.find(i => i.id === id);
-      return PROFESSIONS.filter(i => archetype.professions.includes(i.id));
+      const archetype: Archetype = this.ARCHETYPES.find(i => i.id === id);
+      return this.PROFESSIONS.filter(i => archetype.professions.includes(i.id));
     }),
     shareReplay(1)
   );
@@ -244,7 +244,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly tooltip: TooltipService
+    private readonly data: DataService
   ) {
     super();
   }
@@ -300,7 +300,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   getArchetype(id: ArchetypeId): Archetype {
-    return ARCHETYPES.find(i => i.id === id);
+    return this.ARCHETYPES.find(i => i.id === id);
   }
 
   getAttributeBonus(id: AttributeId): number {
@@ -309,7 +309,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   getProfession(id: ProfessionId): Profession {
-    return PROFESSIONS.find(i => i.id === id);
+    return this.PROFESSIONS.find(i => i.id === id);
   }
 
   isProfessionHidden(id: ProfessionId): boolean {
@@ -338,7 +338,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   isMagicalProfession(id: ProfessionId): boolean {
-    const mages: ProfessionId[] = ARCHETYPES.find(i => i.id === ArchetypeId.MAGE).professions;
+    const mages: ProfessionId[] = this.getArchetype(ArchetypeId.MAGE).professions;
     return mages.includes(id);
   }
 

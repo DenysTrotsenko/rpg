@@ -24,20 +24,20 @@
     </p>
     <p>
       <b>Talents:</b>
-      <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{(i.id | getById: 'talents')?.name}}
+      <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
       </span>
     </p>
     <p>
       <b>Traits:</b>
-      <span *ngFor="let i of traits;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{(i.id | getById: 'traits')?.name}}
+      <span *ngFor="let i of traits;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
       </span>
     </p>
     <p>
       <b>Quirks:</b>
-      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{(i.id | getById: 'quirks')?.name}}
+      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
       </span>
     </p>
   </ng-container>

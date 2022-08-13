@@ -146,7 +146,7 @@ export const SKILLS: Skill[] = [
     id: SkillId.HANDLE_ANIMAL,
     name: 'Handle Animal',
     attribute: AttributeId.FELLOWSHIP,
-    type: SkillTypeId.SPECIAL,
+    type: SkillTypeId.COMMON,
     labels: {
       description: 'Handle Animal represents your ability to command, subdue and train threats classified as Animals. Although this Skill doesn’t allow those who use it to domesticate animals that are not meant to be domesticated, it does allow you to tame them. This Skill also teaches the proper way to care for and groom an animal, establishing a bond of trust and submission.',
       difficulties: ''
@@ -156,7 +156,7 @@ export const SKILLS: Skill[] = [
     id: SkillId.HEAL,
     name: 'Heal',
     attribute: AttributeId.INTELLIGENCE,
-    type: SkillTypeId.SPECIAL,
+    type: SkillTypeId.COMMON,
     labels: {
       description: 'Heal represents your ability to understand the body’s humors and how the wounded can be treated by paying heed to these temperaments. It is also used to tend to ache and pains, act as a midwife, render abortifacients and treat the injured. It helps you identify Ailments and other patterns of sickness (such as being drugged).',
       difficulties: ''
@@ -176,7 +176,7 @@ export const SKILLS: Skill[] = [
     id: SkillId.INTERROGATION,
     name: 'Interrogation',
     attribute: AttributeId.WILLPOWER,
-    type: SkillTypeId.SPECIAL,
+    type: SkillTypeId.COMMON,
     labels: {
       description: 'Interrogation represents your ability to draw answers from an unwilling subject using a variety of physical and emotional methods. It allows you to cause duress in your subject, inflicting mental fatigue upon them as you begin to get at the heart of the truth. Interrogation often relies on physical torture.',
       difficulties: ''
@@ -196,7 +196,7 @@ export const SKILLS: Skill[] = [
     id: SkillId.LEADERSHIP,
     name: 'Leadership',
     attribute: AttributeId.FELLOWSHIP,
-    type: SkillTypeId.SPECIAL,
+    type: SkillTypeId.COMMON,
     labels: {
       description: 'Leadership represents your ability to gain the support of allies, unifying them under your guidance against common foes or causes. You can use this Skill to give tactical orders to forces under your command, much like a general does on the battlefield, as well as to stir emotions and foment rebellion.',
       difficulties: ''
@@ -306,7 +306,7 @@ export const SKILLS: Skill[] = [
     id: SkillId.SKULDUGGERY,
     name: 'Skulduggery',
     attribute: AttributeId.AGILITY,
-    type: SkillTypeId.SPECIAL,
+    type: SkillTypeId.COMMON,
     labels: {
       description: 'Skulduggery represents your ability to use larcenous or illegal means. It can be used to bypass locked doors and chests without a key, disable security contrivances and elaborate traps, use simple prestidigitation to palm small objects and hide cards and conduct simple robberies, such as cutting coin purses and snatching bracelets.',
       difficulties: ''

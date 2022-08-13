@@ -1,7 +1,7 @@
 import {TraitId} from './enums';
 import {Trait} from './models';
 
-export const ARCHETYPE_TRAIT: Trait[] = [
+export const TRAITS: Trait[] = [
   {
     id: TraitId.ITS_OWN_REWARD,
     name: 'Its Own Reward',
@@ -562,9 +562,7 @@ export const ARCHETYPE_TRAIT: Trait[] = [
       effect: 'Whenever a Coin is about to be spent, call out that you ‘turn the tables.’ The benefit of the Coin doesn’t take effect, and it is permanently discarded from both pools until the next game session. You can do this once a game session.'
     }
   },
-];
-
-export const PROFESSIONAL_TRAITS: Trait[] = [
+  // PROFESSIONAL
   {
     id: TraitId.PERSONA_COME_FORTH,
     name: 'Persona, Come Forth!',

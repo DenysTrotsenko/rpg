@@ -64,7 +64,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "projects/shadowrun/public",
+            "outputPath": "projects/shadowrun/dist",
             "index": "projects/shadowrun/src/index.html",
             "main": "projects/shadowrun/src/main.ts",
             "polyfills": "projects/shadowrun/src/polyfills.ts",
@@ -108,8 +108,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -226,8 +226,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -310,7 +310,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/anno-1800",
+            "outputPath": "projects/anno-1800/dist",
             "index": "projects/anno-1800/src/index.html",
             "main": "projects/anno-1800/src/main.ts",
             "polyfills": "projects/anno-1800/src/polyfills.ts",
@@ -336,8 +336,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",

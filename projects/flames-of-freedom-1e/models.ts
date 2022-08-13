@@ -46,6 +46,7 @@ export interface Attribute extends HasId<AttributeId> {
   labels: {
     description: string;
     bonus: string;
+    tooltip?: string;
   };
 }
 
@@ -128,6 +129,7 @@ export interface Quirk {
   labels?: {
     description: string;
     effect: string;
+    tooltip?: string;
   };
 }
 
@@ -139,6 +141,7 @@ export interface Skill extends HasId<SkillId> {
   labels?: {
     description: string;
     difficulties: string;
+    tooltip?: string;
   };
 }
 
@@ -158,6 +161,7 @@ export interface Talent extends HasId<TalentId> {
   labels?: {
     description: string;
     effect: string;
+    tooltip?: string;
   };
 }
 
@@ -172,5 +176,6 @@ export interface Trait extends HasId<TraitId> {
   labels?: {
     description: string;
     effect: string;
+    tooltip?: string;
   };
 }

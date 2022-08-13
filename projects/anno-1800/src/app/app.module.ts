@@ -12,7 +12,7 @@ import { environment } from '@ti/environments/environment';
   imports: [
     CoreModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, 'anno-1800'),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

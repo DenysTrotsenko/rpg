@@ -1,73 +1,24 @@
-<h3 class="ff-g">ATTRIBUTES</h3>
-<mat-list>
-  <mat-list-item *ngFor="let i of attributes;">
-    <h3 matLine>{{i.name}}</h3>
-    <p matLine>
-      <span>{{i.labels.description}}</span>
-      <span> {{i.labels.bonus}}</span>
-    </p>
-  </mat-list-item>
-</mat-list>
-<h3 class="ff-g">SKILLS</h3>
-<mat-list>
-  <mat-list-item *ngFor="let i of skills;">
-    <h3 matLine>{{i.name}} ({{i.attribute}})</h3>
-    <p matLine>{{i.labels.description}}</p>
-  </mat-list-item>
-</mat-list>
-<h3 class="ff-g">TALENTS</h3>
-<mat-list>
-  <mat-list-item *ngFor="let i of talents;">
-    <h3 matLine>{{i.name}}</h3>
-    <p matLine><i>{{i.labels.description}}</i></p>
-    <p matLine><b>Effect:</b> {{i.labels.effect}}</p>
-  </mat-list-item>
-</mat-list>
-<h3 class="ff-g">TRAITS</h3>
-<mat-list>
-  <mat-list-item *ngFor="let i of traits;">
-    <h3 matLine>{{i.name}}</h3>
-    <p matLine><i>{{i.labels.description}}</i></p>
-    <p matLine><b>Effect:</b> {{i.labels.effect}}</p>
-  </mat-list-item>
-</mat-list>
-<h3 class="ff-g">PROFESSIONS</h3>
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let i of professions;" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>{{i.name}}</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-      <p>
-        <b>Trait: </b>
-        <span [matTooltip]="getTooltip(TYPES.TRAITS, i.traits[0])">
-          {{(i.traits[0] | getById:TYPES.TRAITS)?.name}}
-        </span>
-      </p>
-      <p>
-        <b>Quirk: </b>
-        <span [matTooltip]="getTooltip(TYPES.QUIRKS, i.quirks[0])">
-          {{(i.quirks[0] | getById:TYPES.QUIRKS)?.name}}
-        </span>
-      </p>
-      <p>
-        <b>Skill Ranks: </b>
-        <span *ngFor="let j of i.advancements.skills;" [matTooltip]="getTooltip(TYPES.SKILLS, j)">
-          {{(j | getById:TYPES.SKILLS)?.name}}
-        </span>
-      </p>
-      <p>
-        <b>Bonus Advances: </b>
-        <span *ngFor="let j of i.advancements.bonuses;">
-          {{(j | getById:TYPES.ATTRIBUTES)?.name}}
-        </span>
-      </p>
-      <p>
-        <b>Talents: </b>
-        <span *ngFor="let j of i.advancements.talents;" [matTooltip]="getTooltip(TYPES.TALENTS, j)">
-          {{(j | getById:TYPES.TALENTS)?.name}}
-        </span>
-      </p>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list dense>
+      <a mat-list-item routerLink="./attributes" routerLinkActive="active">
+        <span>Attributes</span>
+      </a>
+      <a mat-list-item routerLink="./professions" routerLinkActive="active">
+        <span>Professions</span>
+      </a>
+      <a mat-list-item routerLink="./skills" routerLinkActive="active">
+        <span>Skills</span>
+      </a>
+      <a mat-list-item routerLink="./talents" routerLinkActive="active">
+        <span>Talents</span>
+      </a>
+      <a mat-list-item routerLink="./traits" routerLinkActive="active">
+        <span>Traits</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
