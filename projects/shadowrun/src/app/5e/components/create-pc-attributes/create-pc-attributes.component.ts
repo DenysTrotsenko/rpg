@@ -5,9 +5,9 @@ import { tap } from 'rxjs/operators';
 import { getFilteredObject, UnsubscribeDirective } from '@shared';
 import {
   Attribute, ATTRIBUTES, Awakening, AWAKENING_ID, AWAKENINGS, Character, CharacterAttribute, CharacterMetamagic, CharacterQuality,
-  DEFAULT_ATTRIBUTE_RANGE, Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES, POSITIVE_QUALITIES, Quality,
+  Metatype, METATYPE_ID, METATYPES, NEGATIVE_QUALITIES, POSITIVE_QUALITIES, Quality,
   RACIAL_QUALITIES
-} from '@shadowrun/app/5e';
+} from '@shadowrun-5e';
 
 @Component({
   /* tslint:disable-next-line */
@@ -83,7 +83,7 @@ export class CreatePcAttributesComponent extends UnsubscribeDirective implements
       const previous: CharacterAttribute | null = (character?.attributes ?? []).find(i => i.id === attribute.id);
       const range: [number, number] = !!AWAKENING && !!METATYPE
         ? METATYPE.attributes[attribute.id] ?? AWAKENING.attributes[attribute.id]
-        : DEFAULT_ATTRIBUTE_RANGE;
+        : [1, 6];
       const min: number = !!previous ? previous.rating : range[0];
       const max: number = range[1] + QUALITIES
         .filter(i => !!i.formulas?.ATTRIBUTE_MAX)

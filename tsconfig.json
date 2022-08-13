@@ -21,9 +21,9 @@
         "dist/std/std",
         "dist/std"
       ],
-      "@flames-of-freedom-1e/*": ["projects/flames-of-freedom-1e/*"],
-      "@shadowrun-5e/*": ["projects/shadowrun-5e/*"],
-      "@bind/*": ["projects/blades-in-the-dark/src/*"],
+      "@flames-of-freedom-1e/*": ["projects/srd/flames-of-freedom-1e/*"],
+      "@shadowrun-5e": ["projects/srd/shadowrun-5e/index.ts"],
+      "@bind/*": ["projects/srd/blades-in-the-dark/src/*"],
       "@sr/*": ["projects/shadowrun/src/*"],
       "@ti/*": ["projects/anno-1800/src/*"]
     }

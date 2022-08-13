@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormArray, FormGroup} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {getFilteredObject, UnsubscribeDirective} from '@shared';
-import {Character} from '@shadowrun/app/5e';
+import {Character} from '@shadowrun-5e';
 
 export interface CreatePc {
   allowed: string[];
