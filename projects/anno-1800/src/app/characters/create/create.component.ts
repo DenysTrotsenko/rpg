@@ -213,9 +213,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
-        console.log('Character');
-        console.log(res);
-        console.log(res.trait);
         this.form.patchValue({
           ...res,
           id: res?.id ?? this.getId(),
