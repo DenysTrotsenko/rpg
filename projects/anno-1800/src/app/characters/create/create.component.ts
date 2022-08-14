@@ -41,6 +41,7 @@ import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
 import {BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, STATURE, STYLE} from '@flames-of-freedom-1e/appearance';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
+import {Character} from '@ti/app/game/models/character';
 
 @Component({
   templateUrl: './create.component.html',
@@ -208,16 +209,18 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     shareReplay(1)
   );
   // readonly professions$: Observable<any> = this.form.get('professions').valueChanges;
-  readonly basicProfession$: Observable<any> = this.form.get('professions.basic').valueChanges;
-  readonly intermediateProfession$: Observable<any> = this.form.get('professions.intermediate').valueChanges;
-  readonly advancedProfession$: Observable<any> = this.form.get('professions.advanced').valueChanges;
+  readonly basicProfession$: Observable<ProfessionId> = this.form.get('professions.basic').valueChanges;
+  readonly intermediateProfession$: Observable<ProfessionId> = this.form.get('professions.intermediate').valueChanges;
+  readonly advancedProfession$: Observable<ProfessionId> = this.form.get('professions.advanced').valueChanges;
 
-  readonly character$: Observable<any> = this.route.paramMap
+  readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
       map(res => res.get('id')),
-      switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<any>),
-      distinctUntilChanged((p: any, q: any) => JSON.stringify(p) === JSON.stringify(q)),
+      switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
+      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
+        console.log('Character');
+        console.log(res);
         this.form.patchValue({
           ...res,
           id: res?.id ?? this.getId(),
@@ -229,7 +232,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         //   metatype: res?.metatype ?? METATYPE_ID.HUMAN,
         //   awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
         //   magic_tradition: res?.magic_tradition ?? null,
-        }, { emitEvent: false });
+        }, { emitEvent: true });
         // !!res ? this.portrait.disable() : this.portrait.enable();
         // !!res ? this.name.disable() : this.name.enable();
         // !!res ? this.gender.disable() : this.gender.enable();
@@ -270,8 +273,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         tap((id: ProfessionId) => {
           const profession: Profession = this.getProfession(id);
           this.form.get('advancements.intermediate').setValue({
-            traits: profession.traits.slice(),
-            quirks: profession.quirks.slice(),
+            traits: profession?.traits?.slice() ?? [],
+            quirks: profession?.quirks?.slice() ?? [],
             bonuses: [],
             skills: [],
             talents: []
@@ -284,8 +287,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         tap((id: ProfessionId) => {
           const profession: Profession = this.getProfession(id);
           this.form.get('advancements.advanced').setValue({
-            traits: profession.traits.slice(),
-            quirks: profession.quirks.slice(),
+            traits: profession?.traits?.slice() ?? [],
+            quirks: profession?.quirks?.slice() ?? [],
             bonuses: [],
             skills: [],
             talents: []
