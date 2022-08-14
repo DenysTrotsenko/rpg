@@ -46,7 +46,7 @@ export interface Character {
     biography: string;
     build: number;
     eyes: number;
-    gender: string;
+    sex: number;
     hair_color: number;
     hair_length: number;
     hair_style: number;

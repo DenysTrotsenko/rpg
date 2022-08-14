@@ -7,7 +7,7 @@ import {
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, MarkId,
   ProfessionId,
-  QuirkId,
+  QuirkId, SexId,
   SkillId,
   SkillTypeId, StatureId, StyleId,
   TalentId,
@@ -131,6 +131,11 @@ export interface Quirk {
     effect: string;
     tooltip?: string;
   };
+}
+
+export interface Sex {
+  id: SexId;
+  name: string;
 }
 
 export interface Skill extends HasId<SkillId> {

@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
-import {FirestoreService, UnsubscribeDirective} from '@shared';
-import {ALLEGIANCES} from '@flames-of-freedom-1e/allegiances';
+import {FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
   Age,
   Allegiance,
@@ -14,7 +13,7 @@ import {
   Build,
   Culture, Eyes,
   Flaw, HairColor, HairLength, HairStyle, Mark,
-  Profession, Stature,
+  Profession, Sex, Stature,
   Style,
   Tier,
   Trait
@@ -23,16 +22,13 @@ import {
   AgeId,
   AllegianceId,
   ArchetypeId,
-  AttributeId,
-  CultureId,
-  ProfessionId,
+  AttributeId, BeliefId,
+  CultureId, FlawId,
+  ProfessionId, SexId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {AGES} from '@flames-of-freedom-1e/age';
-import {TIERS} from '@flames-of-freedom-1e/tiers';
 import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
-import {BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, STATURE, STYLE} from '@flames-of-freedom-1e/appearance';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
 
@@ -42,32 +38,33 @@ import {Character} from '@ti/app/game/models/character';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
-  AGES: Age[] = AGES;
-  ALLEGIANCES: Allegiance[] = ALLEGIANCES;
+  AGES: Age[] = this.data[DataTypes.AGES];
+  ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
   ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
   ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
   BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
-  BUILD: Build[] = BUILD;
+  BUILD: Build[] = this.data[DataTypes.BUILD];
   CULTURES: Culture[] = this.data[DataTypes.CULTURES];
-  EYES: Eyes[] = EYES;
+  EYES: Eyes[] = this.data[DataTypes.EYES];
   FLAWS: Flaw[] = this.data[DataTypes.FLAWS];
-  HAIR_LENGTH: HairLength[] = HAIR_LENGTH;
-  HAIR_STYLE: HairStyle[] = HAIR_STYLE;
-  HAIR_COLOR: HairColor[] = HAIR_COLOR;
-  MARKS: Mark[] = MARKS;
+  HAIR_LENGTH: HairLength[] = this.data[DataTypes.HAIR_LENGTH];
+  HAIR_STYLE: HairStyle[] = this.data[DataTypes.HAIR_STYLE];
+  HAIR_COLOR: HairColor[] = this.data[DataTypes.HAIR_COLOR];
+  MARKS: Mark[] = this.data[DataTypes.MARKS];
   PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
-  STATURE: Stature[] = STATURE;
-  STYLE: Style[] = STYLE;
+  SEX: Sex[] = this.data[DataTypes.SEX];
+  STATURE: Stature[] = this.data[DataTypes.STATURE];
+  STYLE: Style[] = this.data[DataTypes.STYLE];
   TRAITS: Trait[] = this.data[DataTypes.TRAITS];
-  TIERS: Tier[] = TIERS;
+  TIERS: Tier[] = this.data[DataTypes.TIERS];
 
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
-    portrait: new FormControl(null, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     miscellaneous: new FormGroup({
+      portrait: new FormControl(null),
       biography: new FormControl(''),
-      gender: new FormControl('Male'),
+      sex: new FormControl(SexId.MALE),
       age: new FormControl(AgeId.YOUNG),
       stature: new FormControl(null),
       build: new FormControl(null),
@@ -81,8 +78,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
     allegiance: new FormControl(AllegianceId.THE_REBELS, [Validators.required]),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
-    belief: new FormControl(this.BELIEFS[0].id, [Validators.required]),
-    flaw: new FormControl(this.FLAWS[0].id, [Validators.required]),
+    belief: new FormControl(BeliefId.ACHIEVEMENT, [Validators.required]),
+    flaw: new FormControl(FlawId.APPREHENSION, [Validators.required]),
     attributes: new FormGroup({
       [AttributeId.COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [AttributeId.BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
@@ -122,6 +119,23 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         skills: new FormControl([]),
         talents: new FormControl([]),
       }),
+    }),
+    // UPDATE ONLY
+    rp: new FormGroup({
+      total: new FormControl(0),
+      used: new FormControl(0),
+    }),
+    ranks: new FormGroup({
+      conflict: new FormControl(0),
+      belief: new FormControl(0),
+      flaw: new FormControl(0),
+    }),
+    damage: new FormControl(0),
+    peril: new FormControl(0),
+    injuries: new FormGroup({
+      moderate: new FormControl([]),
+      serious: new FormControl([]),
+      grievous: new FormControl([]),
     })
   });
 
@@ -129,19 +143,19 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     startWith(DEFAULT_DETERMINATION),
     shareReplay(1)
   );
-  readonly agility$: Observable<number> = this.form.get('attributes').get(`${AttributeId.AGILITY}`).valueChanges.pipe(
+  readonly agility$: Observable<number> = this.form.get(`attributes.${AttributeId.AGILITY}`).valueChanges.pipe(
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
-  readonly brawn$: Observable<number> = this.form.get('attributes').get(`${AttributeId.BRAWN}`).valueChanges.pipe(
+  readonly brawn$: Observable<number> = this.form.get(`attributes.${AttributeId.BRAWN}`).valueChanges.pipe(
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
-  readonly perception$: Observable<number> = this.form.get('attributes').get(`${AttributeId.PERCEPTION}`).valueChanges.pipe(
+  readonly perception$: Observable<number> = this.form.get(`attributes.${AttributeId.PERCEPTION}`).valueChanges.pipe(
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
-  readonly willpower$: Observable<number> = this.form.get('attributes').get(`${AttributeId.WILLPOWER}`).valueChanges.pipe(
+  readonly willpower$: Observable<number> = this.form.get(`attributes.${AttributeId.WILLPOWER}`).valueChanges.pipe(
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
@@ -202,25 +216,26 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     }),
     shareReplay(1)
   );
-  // readonly professions$: Observable<any> = this.form.get('professions').valueChanges;
   readonly basicProfession$: Observable<ProfessionId> = this.form.get('professions.basic').valueChanges;
   readonly intermediateProfession$: Observable<ProfessionId> = this.form.get('professions.intermediate').valueChanges;
   readonly advancedProfession$: Observable<ProfessionId> = this.form.get('professions.advanced').valueChanges;
 
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
-      map(res => res.get('id')),
+      map(params => params.get('id')),
       switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
+        const isNew = !res;
+
         this.form.patchValue({
           ...res,
-          id: res?.id ?? this.getId(),
+          id: res?.id ?? getId(),
         }, { emitEvent: true });
 
-        this.setFormEditable(!res, [
-          'archetype', 'attributes', 'belief', 'culture', 'flaw', 'miscellaneous', 'name', 'portrait', 'trait'
-        ]);
+        setFormControlsEditable(this.form, [
+          'archetype', 'attributes', 'belief', 'culture', 'flaw', 'miscellaneous', 'name', 'trait'
+        ], isNew);
       }),
       shareReplay(1)
     );
@@ -281,10 +296,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       .subscribe();
   }
 
-  getId(): string {
-    return (Date.now() + Math.random()).toString(36).replace('.', '');
-  }
-
   getArchetype(id: ArchetypeId): Archetype {
     return this.ARCHETYPES.find(i => i.id === id);
   }
@@ -340,13 +351,5 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         tap(() => this.router.navigate(['characters/list']))
       )
       .subscribe();
-  }
-
-  private setFormValues(): void {}
-  private setFormEditable(isEditable: boolean, controls: string[] = []): void {
-    controls.forEach(i => {
-      const control: AbstractControl = this.form.get(i);
-      isEditable ? control.enable() : control.disable();
-    });
   }
 }

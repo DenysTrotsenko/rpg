@@ -5,7 +5,7 @@ import {map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
-import {AttributeId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
 
@@ -25,6 +25,7 @@ export class ViewComponent {
       shareReplay(1),
       tap(character => {
         this.attributes = this.getAttributes(character);
+        this.description = this.getDescription(character);
         this.skills = this.getSkills(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
@@ -34,6 +35,7 @@ export class ViewComponent {
   readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
 
   attributes: AttributeView[];
+  description: string;
   skills: SkillView[];
   talents: Talent[];
   traits: Trait[];
@@ -51,6 +53,34 @@ export class ViewComponent {
       value: +entry[1],
       bonus: getAttributeBonus(+entry[1])
     }));
+  }
+
+  getDescription(character: Character): string {
+    const name = character.name;
+    const allegiance = this.data[DataTypes.ALLEGIANCES].find(i => i.id === character.allegiance);
+    const age = this.data[DataTypes.AGES].find(i => i.id === character.miscellaneous.age);
+    const culture = this.data[DataTypes.CULTURES].find(i => i.id === character.culture);
+    const sex = this.data[DataTypes.SEX].find(i => i.id === character.miscellaneous.sex);
+    const profession = this.data[DataTypes.PROFESSIONS].find(i => {
+      const professions: ProfessionId[] = [
+        character.professions.basic, character.professions.intermediate, character.professions.advanced
+      ].filter(j => !!j);
+      const current: ProfessionId = professions[professions.length - 1];
+      return i.id === current;
+    });
+    const stature = this.data[DataTypes.STATURE].find(i => i.id === character.miscellaneous.stature);
+    const build = this.data[DataTypes.BUILD].find(i => i.id === character.miscellaneous.build);
+    const style = this.data[DataTypes.STYLE].find(i => i.id === character.miscellaneous.style);
+    const eyes = this.data[DataTypes.EYES].find(i => i.id === character.miscellaneous.eyes);
+    const mark = this.data[DataTypes.MARKS].find(i => i.id === character.miscellaneous.mark);
+    const hairColor = this.data[DataTypes.HAIR_COLOR].find(i => i.id === character.miscellaneous.hair_color);
+    const hairLength = this.data[DataTypes.HAIR_LENGTH].find(i => i.id === character.miscellaneous.hair_length);
+    const hairStyle = this.data[DataTypes.HAIR_STYLE].find(i => i.id === character.miscellaneous.hair_style);
+    const hair = `${hairLength.name} ${hairStyle.name} ${hairColor.name}`;
+    return `My name is ${name} and I pledge my allegiance to the ${allegiance.name}.
+      I am a/an ${age.name} ${culture.name} ${sex.name} and have made my life as a/an ${profession.name}.
+      I am of a/an ${stature.name} stature, with a ${build.name} build.
+      I dress ${style.name} and have ${eyes.name} eyes, ${hair} hair and ${mark.name}.`;
   }
 
   getSkills(character: Character): SkillView[] {

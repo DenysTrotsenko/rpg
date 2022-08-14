@@ -262,10 +262,9 @@
     </mat-card-header>
     <mat-card-content class="d-f jc-sb cg-5">
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
-        <mat-label>Gender</mat-label>
-        <mat-select formControlName="gender">
-          <mat-option value="Male">Male</mat-option>
-          <mat-option value="Female">Female</mat-option>
+        <mat-label>Sex</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option *ngFor="let i of SEX" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">

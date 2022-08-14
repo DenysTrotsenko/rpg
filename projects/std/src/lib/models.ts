@@ -9,3 +9,11 @@ export interface AuthWithEmailAndPassword {
 export interface HasId<T> {
   id: T;
 }
+
+export interface HasCommonFields {
+  name: string;
+  labels?: {
+    description?: string;
+    tooltip?: string;
+  };
+}
