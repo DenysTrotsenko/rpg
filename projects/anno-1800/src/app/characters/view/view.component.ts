@@ -1,13 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map, shareReplay, switchMap, tap} from 'rxjs/operators';
+import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
 import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {FormControl, FormGroup} from '@angular/forms';
 
 interface AttributeView { id: AttributeId; value: number; bonus: number; }
 interface SkillView { id: SkillId; type: SkillTypeId; value: number; tooltip: string; }
@@ -17,11 +18,27 @@ interface SkillView { id: SkillId; type: SkillTypeId; value: number; tooltip: st
   styleUrls: ['./view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ViewComponent {
+export class ViewComponent implements OnDestroy {
+  readonly form: FormGroup = new FormGroup({
+    rp_total: new FormControl(0),
+    rp_used: new FormControl(0),
+    conflict: new FormControl(0),
+    belief_ranks: new FormControl(0),
+    flaw_ranks: new FormControl(0),
+    permanent_belief_ranks: new FormControl(0),
+    permanent_flaw_ranks: new FormControl(0),
+    damage: new FormControl(0),
+    peril: new FormControl(0),
+    moderate_injuries: new FormControl([]),
+    serious_injuries: new FormControl([]),
+    grievous_injuries: new FormControl([])
+  });
+  readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
       map(res => res.get('id')),
       switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
+      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       shareReplay(1),
       tap(character => {
         this.attributes = this.getAttributes(character);
@@ -30,9 +47,9 @@ export class ViewComponent {
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
         this.quirks = this.getQuirks(character);
+        this.form.patchValue(character.parameters);
       })
     );
-  readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
 
   attributes: AttributeView[];
   description: string;
@@ -46,6 +63,8 @@ export class ViewComponent {
     private readonly firestore: FirestoreService,
     private readonly data: DataService
   ) {}
+
+  ngOnDestroy(): void {}
 
   getAttributes(character: Character): AttributeView[] {
     return Object.entries(character.attributes).map(entry => ({

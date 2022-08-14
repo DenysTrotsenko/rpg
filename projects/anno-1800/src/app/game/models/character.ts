@@ -1,4 +1,5 @@
 import {AttributeId, QuirkId, SkillId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {FormControl} from '@angular/forms';
 
 export interface Character {
   advancements: {
@@ -42,6 +43,7 @@ export interface Character {
   flaw: number;
   id: string;
   miscellaneous: {
+    portrait: string;
     age: number;
     biography: string;
     build: number;
@@ -55,7 +57,6 @@ export interface Character {
     style: number;
   };
   name: string;
-  portrait: string;
   professions: {
     basic: number;
     intermediate: number;
@@ -63,4 +64,18 @@ export interface Character {
   };
   tier: number;
   trait: number;
+  parameters: {
+    rp_total: number;
+    rp_used: number;
+    conflict: number;
+    belief_ranks: number;
+    flaw_ranks: number;
+    permanent_belief_ranks: number;
+    permanent_flaw_ranks: number;
+    damage: number;
+    peril: number;
+    moderate_injuries: number[];
+    serious_injuries: number[];
+    grievous_injuries: number[];
+  };
 }

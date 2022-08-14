@@ -6,6 +6,7 @@
 .d-ib { display: inline-block !important; }
 
 .d-f { display: flex !important; }
+.d-if { display: inline-flex !important; }
 .fd-c { flex-direction: column !important; }
 .jc-sb { justify-content: space-between !important; }
 .jc-fe { justify-content: flex-end !important; }
@@ -22,6 +23,9 @@
 .cg-5 { column-gap: 5px !important; }
 .cg-10 { column-gap: 10px !important; }
 .cg-15 { column-gap: 15px !important; }
+.rg-5 { row-gap: 5px !important; }
+.rg-10 { row-gap: 10px !important; }
+.rg-15 { row-gap: 15px !important; }
 
 .w-100 { width: 100% !important; }
 

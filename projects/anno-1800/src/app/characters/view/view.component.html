@@ -48,4 +48,24 @@
     </p>
   </ng-container>
   <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>
+  <form [formGroup]="form" class="d-f cg-5">
+    <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="peril">
+      <mat-label>Peril Condition Track</mat-label>
+      <mat-radio-button [value]="0">UNHINDERED</mat-radio-button>
+      <mat-radio-button [value]="1">Imperiled</mat-radio-button>
+      <mat-radio-button [value]="2">Ignore 1 Skill Rank</mat-radio-button>
+      <mat-radio-button [value]="3">Ignore 2 Skill Ranks</mat-radio-button>
+      <mat-radio-button [value]="4">Ignore 3 Skill Ranks</mat-radio-button>
+      <mat-radio-button [value]="5">INCAPACITATED!</mat-radio-button>
+    </mat-radio-group>
+    <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="damage">
+      <mat-label>Damage Condition Track</mat-label>
+      <mat-radio-button [value]="0">UNHARMED</mat-radio-button>
+      <mat-radio-button [value]="1">Hurt</mat-radio-button>
+      <mat-radio-button [value]="2">Moderately Wounded (Injury 1D6)</mat-radio-button>
+      <mat-radio-button [value]="3">Seriously Wounded (Injury 2D6)</mat-radio-button>
+      <mat-radio-button [value]="4">Grievously Wounded (Injury 3D6)</mat-radio-button>
+      <mat-radio-button [value]="5">SLAIN!</mat-radio-button>
+    </mat-radio-group>
+  </form>
 </ng-container>
