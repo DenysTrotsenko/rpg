@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
@@ -28,14 +28,7 @@ import {
   ProfessionId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-// import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
-// import {BELIEFS} from '@flames-of-freedom-1e/beliefs';
-// import {FLAWS} from '@flames-of-freedom-1e/flaws';
-// import {ARCHETYPES} from '@flames-of-freedom-1e/archetypes';
-// import {CULTURES} from '@flames-of-freedom-1e/cultures';
-// import {ARCHETYPE_TRAIT} from '@flames-of-freedom-1e/traits';
 import {AGES} from '@flames-of-freedom-1e/age';
-// import {PROFESSIONS} from '@flames-of-freedom-1e/professions';
 import {TIERS} from '@flames-of-freedom-1e/tiers';
 import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
@@ -65,6 +58,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
   STATURE: Stature[] = STATURE;
   STYLE: Style[] = STYLE;
+  TRAITS: Trait[] = this.data[DataTypes.TRAITS];
   TIERS: Tier[] = TIERS;
 
   readonly form: FormGroup = new FormGroup({
@@ -99,7 +93,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       [AttributeId.FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
     }, [Validators.required]),
     archetype: new FormControl(ArchetypeId.COMMONER, [Validators.required]),
-    trait: new FormControl(TraitId.ITS_OWN_REWARD, [Validators.required]),
+    trait: new FormControl(null, [Validators.required]),
     tier: new FormControl(1, [Validators.required]),
     professions: new FormGroup({
       basic: new FormControl(null, [Validators.required]),
@@ -221,24 +215,15 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       tap(res => {
         console.log('Character');
         console.log(res);
+        console.log(res.trait);
         this.form.patchValue({
           ...res,
           id: res?.id ?? this.getId(),
-        //   portrait: res?.portrait ?? DEFAULT_PORTRAIT,
-        //   name: res?.name ?? '',
-        //   miscellaneous: {
-        //     gender: res?.miscellaneous?.gender ?? 'Male'
-        //   },
-        //   metatype: res?.metatype ?? METATYPE_ID.HUMAN,
-        //   awakening: res?.awakening ?? AWAKENING_ID.MUNDANE,
-        //   magic_tradition: res?.magic_tradition ?? null,
         }, { emitEvent: true });
-        // !!res ? this.portrait.disable() : this.portrait.enable();
-        // !!res ? this.name.disable() : this.name.enable();
-        // !!res ? this.gender.disable() : this.gender.enable();
-        // !!res ? this.metatype.disable() : this.metatype.enable();
-        // !!res ? this.awakening.disable() : this.awakening.enable();
-        // !!res ? this.magic_tradition.disable() : this.magic_tradition.enable();
+
+        this.setFormEditable(!res, [
+          'archetype', 'attributes', 'belief', 'culture', 'flaw', 'miscellaneous', 'name', 'portrait', 'trait'
+        ]);
       }),
       shareReplay(1)
     );
@@ -250,6 +235,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly data: DataService
   ) {
     super();
+    console.clear();
   }
 
   ngOnInit(): void {
@@ -322,6 +308,12 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     return [basic, intermediate, advanced].includes(id);
   }
 
+  isTraitHidden(id: TraitId): boolean {
+    const archetypeId: ArchetypeId = this.form.get('archetype').value;
+    const archetype = this.getArchetype(archetypeId);
+    return !archetype.traits.includes(id);
+  }
+
   isBasicAdvancesAvailable(): Profession {
     const id: ProfessionId = this.form.get('professions.basic').value;
     const profession: Profession = this.getProfession(id);
@@ -351,5 +343,13 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         tap(() => this.router.navigate(['characters/list']))
       )
       .subscribe();
+  }
+
+  private setFormValues(): void {}
+  private setFormEditable(isEditable: boolean, controls: string[] = []): void {
+    controls.forEach(i => {
+      const control: AbstractControl = this.form.get(i);
+      isEditable ? control.enable() : control.disable();
+    });
   }
 }

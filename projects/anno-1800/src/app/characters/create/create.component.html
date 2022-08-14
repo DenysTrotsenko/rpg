@@ -74,23 +74,23 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Damage Thresholds</mat-label>
-        <input matInput readonly [value]="damageThresholds$ | async">
+        <input matInput [disabled]="true" [value]="damageThresholds$ | async">
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Peril Thresholds</mat-label>
-        <input matInput readonly [value]="perilThresholds$ | async">
+        <input matInput [disabled]="true" [value]="perilThresholds$ | async">
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Encumbrance Limit</mat-label>
-        <input matInput readonly [value]="encumbranceLimit$ | async">
+        <input matInput [disabled]="true" [value]="encumbranceLimit$ | async">
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Initiative</mat-label>
-        <input matInput readonly [value]="initiative$ | async">
+        <input matInput [disabled]="true" [value]="initiative$ | async">
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Movement</mat-label>
-        <input matInput readonly [value]="movement$ | async">
+        <input matInput [disabled]="true" [value]="movement$ | async">
       </mat-form-field>
     </mat-card-content>
   </mat-card>
@@ -111,7 +111,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Trait</mat-label>
         <mat-select formControlName="trait">
-          <mat-option *ngFor="let i of traits$ | async;" [value]="i.id" [matTooltip]="">
+          <mat-option *ngFor="let i of TRAITS;" [value]="i.id"  [class.hide]="isTraitHidden(i.id)">
             {{i.name}}
           </mat-option>
         </mat-select>
