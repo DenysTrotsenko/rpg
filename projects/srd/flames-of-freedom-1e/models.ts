@@ -5,14 +5,14 @@ import {
   AttributeId,
   BeliefId, BuildId,
   CultureId, EyesId,
-  FlawId, HairColorId, HairLengthId, HairStyleId, MarkId,
+  FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   ProfessionId,
   QuirkId, SexId,
   SkillId,
-  SkillTypeId, StatureId, StyleId,
+  SkillTypeId, SpellId, StatureId, StyleId,
   TalentId,
   TierId,
-  TraitId
+  TraitId, WareId, WareTypeId
 } from './enums';
 
 export interface Age {
@@ -99,6 +99,11 @@ export interface HairLength {
   name: string;
 }
 
+export interface Language {
+  id: LanguageId;
+  name: string;
+}
+
 export interface Mark {
   id: MarkId;
   name: string;
@@ -150,6 +155,14 @@ export interface Skill extends HasId<SkillId> {
   };
 }
 
+export interface Spell {
+  id: SpellId;
+  name: string;
+  labels: {
+    description: string;
+  };
+}
+
 export interface Stature {
   id: StatureId;
   name: string;
@@ -181,6 +194,16 @@ export interface Trait extends HasId<TraitId> {
   labels?: {
     description: string;
     effect: string;
+    tooltip?: string;
+  };
+}
+
+export interface Ware {
+  id: WareId;
+  name: string;
+  type: WareTypeId;
+  labels?: {
+    description?: string;
     tooltip?: string;
   };
 }

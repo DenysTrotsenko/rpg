@@ -1,6 +1,7 @@
 import {Attribute} from './models';
 import {AttributeId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const ATTRIBUTES: Attribute[] = [
   {
     id: AttributeId.COMBAT,

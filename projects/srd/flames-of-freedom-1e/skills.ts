@@ -1,6 +1,7 @@
 import {Skill} from './models';
 import {AttributeId, SkillId, SkillTypeId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const SKILLS: Skill[] = [
   {
     id: SkillId.ALCHEMY,

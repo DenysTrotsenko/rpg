@@ -9,6 +9,9 @@ export enum AgeId {
 export enum AllegianceId {
   THE_REBELS = 1,
   THE_LOYALISTS,
+  //
+  THE_UNION,
+  THE_CONFEDERACY,
 }
 
 export enum ArchetypeId {
@@ -172,6 +175,39 @@ export enum HairColorId {
   BROWN,
   GREY,
   RED
+}
+
+export enum LanguageId {
+  ABENAKI = 1,
+  ALGONQUIN,
+  APALACHEE,
+  ATIKAMEKW,
+  CATAWBA,
+  CHICKASAW,
+  CREOLE,
+  DUTCH,
+  ENGLISH,
+  FRENCH,
+  GERMAN,
+  GREEK,
+  HAUDENOSAUNEE,
+  HEBREW,
+  INNU,
+  LATIN,
+  LENAPE,
+  LINGUA_FRANCA,
+  MAHICAN,
+  MASSACHUSETT,
+  PIDGIN,
+  PORTUGUESE,
+  POWHATAN,
+  RUSSIAN,
+  SEMINOLE,
+  SHAWNEE,
+  SPANISH,
+  SWEDISH,
+  TSALAGI,
+  WAMPANOAG
 }
 
 export enum MarkId {
@@ -500,6 +536,8 @@ export enum SkillTypeId {
   SPECIAL
 }
 
+export enum SpellId {}
+
 export enum StatureId {
   SLIGHT = 1,
   AVERAGE,
@@ -763,4 +801,12 @@ export enum TraitId {
   BLOOD_AND_THUNDER,
   MASTER_BUILDER,
   WELL_PUBLISHED
+}
+
+export enum WareId {
+  TEST = 1,
+}
+
+export enum WareTypeId {
+  ALCHEMICAL_DRUGS_MEDICINE = 1,
 }

@@ -42,6 +42,8 @@ export interface Character {
   determination: number;
   flaw: number;
   id: string;
+  languages: number[];
+  spells: number[];
   miscellaneous: {
     portrait: string;
     age: number;

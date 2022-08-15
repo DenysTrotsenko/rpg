@@ -1,6 +1,7 @@
 import {Culture} from './models';
 import {CultureId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const CULTURES: Culture[] = [
   {
     id: CultureId.BLACK,

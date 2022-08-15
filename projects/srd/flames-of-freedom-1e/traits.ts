@@ -1,6 +1,7 @@
 import {TraitId} from './enums';
 import {Trait} from './models';
 
+/* tslint:disable:max-line-length */
 export const TRAITS: Trait[] = [
   {
     id: TraitId.ITS_OWN_REWARD,

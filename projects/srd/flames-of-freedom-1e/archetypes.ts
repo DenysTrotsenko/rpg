@@ -1,6 +1,7 @@
 import {Archetype} from './models';
 import {ArchetypeId, ProfessionId, TraitId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const ARCHETYPES: Archetype[] = [
   {
     id: ArchetypeId.COMMONER,

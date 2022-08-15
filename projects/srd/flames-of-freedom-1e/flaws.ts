@@ -1,6 +1,7 @@
 import {Flaw} from './models';
 import {FlawId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const FLAWS: Flaw[] = [
   {
     id: FlawId.APPREHENSION,

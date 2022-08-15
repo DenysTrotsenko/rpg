@@ -1,6 +1,7 @@
 import {QuirkId} from './enums';
 import {Quirk} from './models';
 
+/* tslint:disable:max-line-length */
 export const QUIRKS: Quirk[] = [
   {
     id: QuirkId.METHOD_ACTOR,

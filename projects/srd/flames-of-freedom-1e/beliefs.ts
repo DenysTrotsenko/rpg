@@ -1,6 +1,7 @@
 import {Belief} from './models';
 import {BeliefId} from './enums';
 
+/* tslint:disable:max-line-length */
 export const BELIEFS: Belief[] = [
   {
     id: BeliefId.ACHIEVEMENT,

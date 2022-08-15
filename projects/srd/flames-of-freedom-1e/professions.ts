@@ -1,6 +1,7 @@
 import {AttributeId, ProfessionId, QuirkId, SkillId, TalentId, TraitId} from './enums';
 import {Profession} from './models';
 
+/* tslint:disable:max-line-length */
 export const PROFESSIONS: Profession[] = [
   {
     id: ProfessionId.ACTOR,
