@@ -19,13 +19,19 @@
     <p>
       <b class="c-gray">Attributes:</b>
       <span *ngFor="let i of attributes;" class="comma-separated ws-pw">
-        {{(i.id | getById: 'attributes')?.name}} {{i.value}}% ({{i.bonus}})
+        {{i.name}} {{i.value}}% ({{i.bonus}})
+      </span>
+    </p>
+    <p>
+      <b class="c-gray">Languages:</b>
+      <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pw">
+        {{i.name}}
       </span>
     </p>
     <p>
       <b class="c-gray">Skills:</b>
       <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{(i.id | getById: 'skills')?.name}}{{i.type === 2 ? '*' : ''}} +{{i.value}}%
+        {{i.name}}{{i.type === 2 ? '*' : ''}} +{{i.value}}%
       </span>
     </p>
     <p>

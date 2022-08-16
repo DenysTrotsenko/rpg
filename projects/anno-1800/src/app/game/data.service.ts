@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
   Age,
-  Allegiance,
+  // Allegiance,
   Archetype,
   Attribute,
   Belief, Build,
   Culture, Eyes,
-  Flaw, HairColor, HairLength, HairStyle, Mark,
+  Flaw, HairColor, HairLength, HairStyle, Language, Mark,
   Profession,
   Quirk, Sex,
   Skill, Stature, Style,
@@ -19,7 +19,10 @@ import {
   TalentId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import { ALLEGIANCES } from '@flames-of-freedom-1e/allegiances';
+import {
+  Allegiance
+} from '@powered-by-zweihander/models';
+import { ALLEGIANCES } from '@pbz-1850/allegiances';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
 import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
@@ -30,9 +33,10 @@ import { TRAITS } from '@flames-of-freedom-1e/traits';
 import { QUIRKS } from '@flames-of-freedom-1e/quirks';
 import { SKILLS } from '@flames-of-freedom-1e/skills';
 import { TALENTS } from '@flames-of-freedom-1e/talents';
-import {AGES} from '@flames-of-freedom-1e/age';
-import {BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE} from '@flames-of-freedom-1e/appearance';
-import {TIERS} from '@flames-of-freedom-1e/tiers';
+import { AGES } from '@flames-of-freedom-1e/age';
+import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
+import { TIERS } from '@flames-of-freedom-1e/tiers';
+import { LANGUAGES } from '@flames-of-freedom-1e/languages';
 
 export enum DataTypes {
   AGES = 'ages',
@@ -47,6 +51,7 @@ export enum DataTypes {
   HAIR_COLOR = 'hair_color',
   HAIR_LENGTH = 'hair_length',
   HAIR_STYLE = 'hair_style',
+  LANGUAGES = 'languages',
   MARKS = 'marks',
   PROFESSIONS = 'professions',
   QUIRKS = 'quirks',
@@ -75,6 +80,7 @@ export class DataService {
   readonly [DataTypes.HAIR_COLOR]: HairColor[] = HAIR_COLOR;
   readonly [DataTypes.HAIR_LENGTH]: HairLength[] = HAIR_LENGTH;
   readonly [DataTypes.HAIR_STYLE]: HairStyle[] = HAIR_STYLE;
+  readonly [DataTypes.LANGUAGES]: Language[] = LANGUAGES;
   readonly [DataTypes.MARKS]: Mark[] = MARKS;
   readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
   readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {

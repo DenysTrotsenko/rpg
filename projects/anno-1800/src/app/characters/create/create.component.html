@@ -23,6 +23,12 @@
           <mat-option *ngFor="let i of CULTURES" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Languages</mat-label>
+        <mat-select formControlName="languages" multiple>
+          <mat-option *ngFor="let i of LANGUAGES" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
   </mat-card>
 
@@ -58,7 +64,9 @@
       <mat-form-field *ngFor="let i of ATTRIBUTES;" appearance="outline" class="f-1">
         <mat-label>{{i.name}}</mat-label>
         <input matInput type="number" min="25" max="55" [formControlName]="i.id">
-        <mat-hint>{{i.name.slice(0,1).toLocaleUpperCase()}}B {{getAttributeBonus(i.id)}}</mat-hint>
+        <mat-hint>
+          {{i.name.slice(0,1).toLocaleUpperCase()}}B {{getAttributeBonus(i.id)}}
+        </mat-hint>
       </mat-form-field>
     </mat-card-content>
   </mat-card>
@@ -126,7 +134,7 @@
       </mat-form-field>
     </mat-card-content>
     <mat-card-content *ngIf="!!form.get('archetype').value">
-      <p><b>Starting wares, weapons & money: </b>{{getArchetype(form.get('archetype').value)?.labels?.wares}}</p>
+      <p><b>Starting wares, weapons & money: </b>{{(form.get('archetype').value | getById: 'archetypes')?.labels?.wares}}</p>
     </mat-card-content>
   </mat-card>
 
@@ -145,7 +153,7 @@
           </mat-select>
         </mat-form-field>
       </ng-container>
-      <ng-container formGroupName="advancements" *ngIf="isBasicAdvancesAvailable() as profession;">
+      <ng-container formGroupName="advancements" *ngIf="isAdvancesAvailable('professions.basic') as profession;">
         <ng-container formGroupName="basic">
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Attribute Bonus</mat-label>
@@ -185,7 +193,7 @@
           </mat-select>
         </mat-form-field>
       </ng-container>
-      <ng-container formGroupName="advancements" *ngIf="isIntermediateAdvancesAvailable() as profession;">
+      <ng-container formGroupName="advancements" *ngIf="isAdvancesAvailable('professions.intermediate') as profession;">
         <ng-container formGroupName="intermediate">
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Attribute Bonus</mat-label>
@@ -225,7 +233,7 @@
           </mat-select>
         </mat-form-field>
       </ng-container>
-      <ng-container formGroupName="advancements" *ngIf="isAdvancedAdvancesAvailable() as profession;">
+      <ng-container formGroupName="advancements" *ngIf="isAdvancesAvailable('professions.advanced') as profession;">
         <ng-container formGroupName="advanced">
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Attribute Bonus</mat-label>

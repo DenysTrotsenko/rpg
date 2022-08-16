@@ -21,6 +21,8 @@
         "dist/std/std",
         "dist/std"
       ],
+      "@powered-by-zweihander/*": ["projects/srd/powered-by-zweihander/*"],
+      "@pbz-1850/*": ["projects/srd/pbz-1850/*"],
       "@flames-of-freedom-1e/*": ["projects/srd/flames-of-freedom-1e/*"],
       "@shadowrun-5e": ["projects/srd/shadowrun-5e/index.ts"],
       "@bind/*": ["projects/srd/blades-in-the-dark/src/*"],

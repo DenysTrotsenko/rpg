@@ -7,8 +7,9 @@ export const WARE_TYPES = [
 
 export const WARES: Ware[] = [
   {
-    id: WareId.TEST,
-    name: '',
-    type: WareTypeId.ALCHEMICAL_DRUGS_MEDICINE
+    id: WareId.ANTIDOTE,
+    name: 'Antidote (by dose)',
+    type: WareTypeId.ALCHEMICAL_DRUGS_MEDICINE,
+    cost: 0
   }
 ];

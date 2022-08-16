@@ -12,7 +12,7 @@ import {
   Belief,
   Build,
   Culture, Eyes,
-  Flaw, HairColor, HairLength, HairStyle, Mark,
+  Flaw, HairColor, HairLength, HairStyle, Language, Mark,
   Profession, Sex, Stature,
   Style,
   Tier,
@@ -27,7 +27,7 @@ import {
   ProfessionId, SexId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
+import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-freedom-1e/utils';
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
@@ -50,6 +50,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   HAIR_LENGTH: HairLength[] = this.data[DataTypes.HAIR_LENGTH];
   HAIR_STYLE: HairStyle[] = this.data[DataTypes.HAIR_STYLE];
   HAIR_COLOR: HairColor[] = this.data[DataTypes.HAIR_COLOR];
+  LANGUAGES: Language[] = this.data[DataTypes.LANGUAGES];
   MARKS: Mark[] = this.data[DataTypes.MARKS];
   PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
   SEX: Sex[] = this.data[DataTypes.SEX];
@@ -78,6 +79,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
     allegiance: new FormControl(AllegianceId.THE_REBELS, [Validators.required]),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
+    languages: new FormControl([]),
     belief: new FormControl(BeliefId.ACHIEVEMENT, [Validators.required]),
     flaw: new FormControl(FlawId.APPREHENSION, [Validators.required]),
     attributes: new FormGroup({
@@ -161,35 +163,35 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     this.brawn$
   ]).pipe(
     map(([determination, brawn]) => {
-      const threshold: number = determination + getAttributeBonus(brawn);
+      const threshold: number = determination + getBonusFromAttribute(brawn);
       return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
     }),
     shareReplay(1)
   );
   readonly perilThresholds$: Observable<string> = this.willpower$.pipe(
     map(willpower => {
-      const threshold: number = 3 + getAttributeBonus(willpower);
+      const threshold: number = 3 + getBonusFromAttribute(willpower);
       return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
     }),
     shareReplay(1)
   );
   readonly encumbranceLimit$: Observable<string> = this.brawn$.pipe(
     map(brawn => {
-      const limit: number = 3 + getAttributeBonus(brawn);
+      const limit: number = 3 + getBonusFromAttribute(brawn);
       return `${limit}`;
     }),
     shareReplay(1)
   );
   readonly initiative$: Observable<string> = this.perception$.pipe(
     map(perception => {
-      const initiative: number = 3 + getAttributeBonus(perception);
+      const initiative: number = 3 + getBonusFromAttribute(perception);
       return `${initiative}`;
     }),
     shareReplay(1)
   );
   readonly movement$: Observable<string> = this.agility$.pipe(
     map(agility => {
-      const movement: number = 3 + getAttributeBonus(agility);
+      const movement: number = 3 + getBonusFromAttribute(agility);
       return `${movement}`;
     }),
     shareReplay(1)
@@ -252,7 +254,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     this.subscriptions = this.basicProfession$
       .pipe(
         tap((id: ProfessionId) => {
-          const profession: Profession = this.getProfession(id);
+          const profession: Profession = getProfession(id);
           this.form.get('advancements.basic').setValue({
             traits: profession.traits.slice(),
             quirks: profession.quirks.slice(),
@@ -266,7 +268,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     this.subscriptions = this.intermediateProfession$
       .pipe(
         tap((id: ProfessionId) => {
-          const profession: Profession = this.getProfession(id);
+          const profession: Profession = getProfession(id);
           this.form.get('advancements.intermediate').setValue({
             traits: profession?.traits?.slice() ?? [],
             quirks: profession?.quirks?.slice() ?? [],
@@ -280,7 +282,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     this.subscriptions = this.advancedProfession$
       .pipe(
         tap((id: ProfessionId) => {
-          const profession: Profession = this.getProfession(id);
+          const profession: Profession = getProfession(id);
           this.form.get('advancements.advanced').setValue({
             traits: profession?.traits?.slice() ?? [],
             quirks: profession?.quirks?.slice() ?? [],
@@ -293,17 +295,21 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       .subscribe();
   }
 
-  getArchetype(id: ArchetypeId): Archetype {
-    return this.ARCHETYPES.find(i => i.id === id);
-  }
-
   getAttributeBonus(id: AttributeId): number {
-    const attribute: number = this.form.get('attributes').get(`${id}`).value;
-    return getAttributeBonus(attribute);
+    return this.getBonusFromAdvances(id) + this.getBonusFromAttribute(id);
   }
 
-  getProfession(id: ProfessionId): Profession {
-    return this.PROFESSIONS.find(i => i.id === id);
+  getBonusFromAttribute(id: AttributeId): number {
+    const attribute: number = this.form.get('attributes').get(`${id}`).value;
+    return getBonusFromAttribute(attribute);
+  }
+
+  getBonusFromAdvances(id: AttributeId): number {
+    const advancements = this.form.get('advancements').value;
+    const basic: number = advancements.basic?.bonuses.filter(i => i === id).length;
+    const intermediate: number = advancements.intermediate?.bonuses.filter(i => i === id).length;
+    const advanced: number = advancements.advanced?.bonuses.filter(i => i === id).length;
+    return basic + intermediate + advanced;
   }
 
   isProfessionHidden(id: ProfessionId): boolean {
@@ -315,31 +321,18 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   isTraitHidden(id: TraitId): boolean {
     const archetypeId: ArchetypeId = this.form.get('archetype').value;
-    const archetype = this.getArchetype(archetypeId);
+    const archetype = getArchetype(archetypeId);
     return !archetype.traits.includes(id);
   }
 
-  isBasicAdvancesAvailable(): Profession {
-    const id: ProfessionId = this.form.get('professions.basic').value;
-    const profession: Profession = this.getProfession(id);
-    return profession;
-  }
-
-  isIntermediateAdvancesAvailable(): Profession {
-    const id: ProfessionId = this.form.get('professions.intermediate').value;
-    const profession: Profession = this.getProfession(id);
-    return profession;
-  }
-
-  isAdvancedAdvancesAvailable(): Profession {
-    const id: ProfessionId = this.form.get('professions.advanced').value;
-    const profession: Profession = this.getProfession(id);
-    return profession;
+  isAdvancesAvailable(control: string): Profession | null {
+    const id: ProfessionId = this.form.get(control).value;
+    return getProfession(id);
   }
 
   isMagicalProfession(id: ProfessionId): boolean {
-    const mages: ProfessionId[] = this.getArchetype(ArchetypeId.MAGE).professions;
-    return mages.includes(id);
+    const mageIds: ProfessionId[] = getArchetype(ArchetypeId.MAGE).professions;
+    return mageIds.includes(id);
   }
 
   onSubmit(form): void {

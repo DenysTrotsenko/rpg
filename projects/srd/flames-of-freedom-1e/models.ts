@@ -24,7 +24,7 @@ export interface Allegiance {
   id: AllegianceId;
   name: string;
   labels?: {
-    description: string;
+    description?: string;
   };
 }
 
@@ -37,7 +37,7 @@ export interface Archetype {
   };
   traits: TraitId[];
   professions: ProfessionId[];
-  money?: [number, number, number];
+  money?: number;
 }
 
 export interface Attribute extends HasId<AttributeId> {
@@ -202,6 +202,7 @@ export interface Ware {
   id: WareId;
   name: string;
   type: WareTypeId;
+  cost: number;
   labels?: {
     description?: string;
     tooltip?: string;

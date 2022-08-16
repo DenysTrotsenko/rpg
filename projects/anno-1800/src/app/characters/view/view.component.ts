@@ -4,14 +4,16 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
-import {getAttributeBonus} from '@flames-of-freedom-1e/utils';
+import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Language} from '@powered-by-zweihander/models';
+import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 
-interface AttributeView { id: AttributeId; value: number; bonus: number; }
-interface SkillView { id: SkillId; type: SkillTypeId; value: number; tooltip: string; }
+interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
+interface SkillView { id: SkillId; name: string; type: SkillTypeId; value: number; tooltip: string; }
 
 @Component({
   templateUrl: './view.component.html',
@@ -43,20 +45,22 @@ export class ViewComponent implements OnDestroy {
       tap(character => {
         this.attributes = this.getAttributes(character);
         this.description = this.getDescription(character);
+        this.languages = this.getLanguages(character);
+        this.quirks = this.getQuirks(character);
         this.skills = this.getSkills(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
-        this.quirks = this.getQuirks(character);
         this.form.patchValue(character.parameters);
       })
     );
 
   attributes: AttributeView[];
   description: string;
+  languages: Language[];
+  quirks: Quirk[];
   skills: SkillView[];
   talents: Talent[];
   traits: Trait[];
-  quirks: Quirk[];
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -69,8 +73,9 @@ export class ViewComponent implements OnDestroy {
   getAttributes(character: Character): AttributeView[] {
     return Object.entries(character.attributes).map(entry => ({
       id: +entry[0],
+      name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
       value: +entry[1],
-      bonus: getAttributeBonus(+entry[1])
+      bonus: getBonusFromAttribute(+entry[1])
     }));
   }
 
@@ -102,6 +107,10 @@ export class ViewComponent implements OnDestroy {
       I dress ${style.name} and have ${eyes.name} eyes, ${hair} hair and ${mark.name}.`;
   }
 
+  getLanguages(character: Character): Language[] {
+    return this.data[DataTypes.LANGUAGES].filter(language => character.languages.includes(language.id));
+  }
+
   getSkills(character: Character): SkillView[] {
     const skills: SkillId[] = [
       ...character.advancements.basic.skills,
@@ -110,6 +119,7 @@ export class ViewComponent implements OnDestroy {
     ];
     return this.data[DataTypes.SKILLS].map(skill => ({
       id: skill.id,
+      name: skill.name,
       type: skill.type,
       value: skills.filter(i => i === skill.id).length * 10,
       tooltip: skill.labels?.tooltip

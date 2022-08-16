@@ -1,5 +1,8 @@
+import {PrefixId} from '../prefixes';
+
+
 export enum AgeId {
-  YOUNG = 1,
+  YOUNG = PrefixId.FLAMES_OF_FREEDOM,
   ADULT,
   MATURE,
   AGING,
@@ -7,15 +10,12 @@ export enum AgeId {
 }
 
 export enum AllegianceId {
-  THE_REBELS = 1,
-  THE_LOYALISTS,
-  //
-  THE_UNION,
-  THE_CONFEDERACY,
+  THE_REBELS = PrefixId.FLAMES_OF_FREEDOM,
+  THE_LOYALISTS
 }
 
 export enum ArchetypeId {
-  COMMONER = 1,
+  COMMONER = PrefixId.FLAMES_OF_FREEDOM,
   FRONTIER,
   INTELLECTUAL,
   LAWBREAKER,
@@ -25,7 +25,7 @@ export enum ArchetypeId {
 }
 
 export enum AttributeId {
-  COMBAT = 1,
+  COMBAT = PrefixId.FLAMES_OF_FREEDOM,
   BRAWN,
   AGILITY,
   PERCEPTION,
@@ -35,7 +35,7 @@ export enum AttributeId {
 }
 
 export enum BeliefId {
-  ACHIEVEMENT = 1,
+  ACHIEVEMENT = PrefixId.FLAMES_OF_FREEDOM,
   AUTHORITY,
   AUTONOMY,
   BEAUTY,
@@ -71,13 +71,13 @@ export enum BeliefId {
 }
 
 export enum BuildId {
-  LEAN = 1,
+  LEAN = PrefixId.FLAMES_OF_FREEDOM,
   NORMAL,
   STOCKY
 }
 
 export enum CultureId {
-  BLACK = 1,
+  BLACK = PrefixId.FLAMES_OF_FREEDOM,
   BRITISH,
   COLONIAL,
   FRENCH,
@@ -87,7 +87,7 @@ export enum CultureId {
 }
 
 export enum EyesId {
-  BIG_BLUE = 1,
+  BIG_BLUE = PrefixId.FLAMES_OF_FREEDOM,
   BRIGHT_HAZEL,
   DARK_DEEP_SET,
   DARK_SOULFUL,
@@ -115,7 +115,7 @@ export enum EyesId {
 }
 
 export enum FlawId {
-  APPREHENSION = 1,
+  APPREHENSION = PrefixId.FLAMES_OF_FREEDOM,
   ARROGANCE,
   AVARICE,
   CALLOUSNESS,
@@ -151,7 +151,7 @@ export enum FlawId {
 }
 
 export enum HairLengthId {
-  CROPPED = 1,
+  CROPPED = PrefixId.FLAMES_OF_FREEDOM,
   LONG,
   MEDIUM,
   NEAR_SHAVED,
@@ -160,7 +160,7 @@ export enum HairLengthId {
 }
 
 export enum HairStyleId {
-  BRAIDED = 1,
+  BRAIDED = PrefixId.FLAMES_OF_FREEDOM,
   CURLY,
   NATURAL,
   STRAIGHT,
@@ -169,7 +169,7 @@ export enum HairStyleId {
 }
 
 export enum HairColorId {
-  AUBURN = 1,
+  AUBURN = PrefixId.FLAMES_OF_FREEDOM,
   BLACK,
   BLONDE,
   BROWN,
@@ -178,7 +178,7 @@ export enum HairColorId {
 }
 
 export enum LanguageId {
-  ABENAKI = 1,
+  ABENAKI = PrefixId.FLAMES_OF_FREEDOM,
   ALGONQUIN,
   APALACHEE,
   ATIKAMEKW,
@@ -211,7 +211,7 @@ export enum LanguageId {
 }
 
 export enum MarkId {
-  A_BALD_PATCH = 1,
+  A_BALD_PATCH = PrefixId.FLAMES_OF_FREEDOM,
   A_BIG_FOREHEAD,
   A_BULBOUS_NOSE,
   A_CHERUBIC_FACE,
@@ -314,7 +314,7 @@ export enum MarkId {
 }
 
 export enum ProfessionId {
-  ACTOR = 1,
+  ACTOR = PrefixId.FLAMES_OF_FREEDOM,
   ALCHEMIST,
   ANIMAL_WHISPERER,
   APOTHECARY,
@@ -401,7 +401,7 @@ export enum ProfessionId {
 }
 
 export enum QuirkId {
-  METHOD_ACTOR = 1,
+  METHOD_ACTOR = PrefixId.FLAMES_OF_FREEDOM,
   BOUND_TO_THE_FORGE,
   AN_OUTSIDER_IN_ALL_WAYS,
   THEOREM_DEDUCTION_OUTCOME,
@@ -488,12 +488,12 @@ export enum QuirkId {
 }
 
 export enum SexId {
-  MALE = 1,
-  FEMALE = 2
+  MALE = PrefixId.FLAMES_OF_FREEDOM,
+  FEMALE
 }
 
 export enum SkillId {
-  ALCHEMY = 1,
+  ALCHEMY = PrefixId.FLAMES_OF_FREEDOM,
   ATHLETICS,
   AWARENESS,
   BARGAIN,
@@ -532,26 +532,26 @@ export enum SkillId {
 }
 
 export enum SkillTypeId {
-  COMMON = 1,
+  COMMON = PrefixId.FLAMES_OF_FREEDOM,
   SPECIAL
 }
 
 export enum SpellId {}
 
 export enum StatureId {
-  SLIGHT = 1,
+  SLIGHT = PrefixId.FLAMES_OF_FREEDOM,
   AVERAGE,
   TALL
 }
 
 export enum StyleId {
-  SHABBILY = 1,
+  SHABBILY = PrefixId.FLAMES_OF_FREEDOM,
   MODESTLY,
   FASHIONABLY
 }
 
 export enum TalentId {
-  AMBIDEXTERITY = 1,
+  AMBIDEXTERITY = PrefixId.FLAMES_OF_FREEDOM,
   ANIMALISTIC,
   ARITHMETIC,
   ARTISTRY,
@@ -639,14 +639,14 @@ export enum TalentId {
 }
 
 export enum TierId {
-  BASIC = 1,
+  BASIC = PrefixId.FLAMES_OF_FREEDOM,
   INTERMEDIATE,
   ADVANCED
 }
 
 export enum TraitId {
   // ARCHETYPE TRAITS
-  ITS_OWN_REWARD = 1,
+  ITS_OWN_REWARD = PrefixId.FLAMES_OF_FREEDOM,
   JACK_OF_ALL_TRADES,
   KEEP_IT_SIMPLE,
   LOW_PROFILE,
@@ -804,9 +804,9 @@ export enum TraitId {
 }
 
 export enum WareId {
-  TEST = 1,
+  ANTIDOTE = PrefixId.FLAMES_OF_FREEDOM,
 }
 
 export enum WareTypeId {
-  ALCHEMICAL_DRUGS_MEDICINE = 1,
+  ALCHEMICAL_DRUGS_MEDICINE = PrefixId.FLAMES_OF_FREEDOM,
 }

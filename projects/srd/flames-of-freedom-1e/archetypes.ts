@@ -36,7 +36,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.WEAVER,
       ProfessionId.WRIGHT,
     ],
-    money: [0, 0, 22]
+    money: 22
   },
   {
     id: ArchetypeId.FRONTIER,
@@ -71,7 +71,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.SURVIVALIST,
       ProfessionId.WHALER,
     ],
-    money: [0, 0, 33]
+    money: 33
   },
   {
     id: ArchetypeId.INTELLECTUAL,
@@ -106,7 +106,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.TEACHER,
       ProfessionId.TRANSLATOR,
     ],
-    money: [0, 33, 0],
+    money: 396,
   },
   {
     id: ArchetypeId.LAWBREAKER,
@@ -141,7 +141,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.TURNCOAT,
       ProfessionId.VAGRANT,
     ],
-    money: [0, 0, 11],
+    money: 11,
   },
   {
     id: ArchetypeId.MAGE,
@@ -176,7 +176,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.SIN_EATER,
       ProfessionId.SPIRITUALIST,
     ],
-    money: [11, 0, 0],
+    money: 2640,
   },
   {
     id: ArchetypeId.URBANE,
@@ -211,7 +211,7 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.TOWN_CRIER,
       ProfessionId.WRITER,
     ],
-    money: [22, 0, 0],
+    money: 5280,
   },
   {
     id: ArchetypeId.WARRIOR,
@@ -246,6 +246,6 @@ export const ARCHETYPES: Archetype[] = [
       ProfessionId.REGULAR,
       ProfessionId.TRACKER,
     ],
-    money: [0, 0, 22],
+    money: 22,
   }
 ];
