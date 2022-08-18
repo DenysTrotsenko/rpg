@@ -1,7 +1,9 @@
-import {AttributeId, QuirkId, SkillId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
-import {FormControl} from '@angular/forms';
+import {ArchetypeId, AttributeId, BeliefId, CultureId, FlawId, QuirkId, SkillId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {AllegianceId} from '@pbz-1850/enums';
+// import {DispositionId} from '@powered-by-zweihander/enums';
 
 export interface Character {
+  id: string;
   advancements: {
     advanced: {
       bonuses: AttributeId[];
@@ -25,8 +27,11 @@ export interface Character {
       traits: TraitId[];
     };
   };
-  allegiance: number;
-  archetype: number;
+  // allegiances: {
+  //   [I in AllegianceId]: DispositionId;
+  // };
+  allegiances: AllegianceId[];
+  archetype: ArchetypeId;
   attributes: {
     1: number;
     2: number;
@@ -37,11 +42,10 @@ export interface Character {
     7: number;
   };
   author: string;
-  belief: number;
-  culture: number;
+  belief: BeliefId;
+  culture: CultureId;
+  flaw: FlawId;
   determination: number;
-  flaw: number;
-  id: string;
   languages: number[];
   spells: number[];
   miscellaneous: {

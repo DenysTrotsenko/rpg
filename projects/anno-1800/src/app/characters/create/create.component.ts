@@ -20,7 +20,6 @@ import {
 } from '@flames-of-freedom-1e/models';
 import {
   AgeId,
-  AllegianceId,
   ArchetypeId,
   AttributeId, BeliefId,
   CultureId, FlawId,
@@ -31,6 +30,8 @@ import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-fre
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
+// import {Disposition} from '@powered-by-zweihander/models';
+// import {DEFAULT_DISPOSITION_ID} from '@powered-by-zweihander/const';
 
 @Component({
   templateUrl: './create.component.html',
@@ -45,6 +46,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
   BUILD: Build[] = this.data[DataTypes.BUILD];
   CULTURES: Culture[] = this.data[DataTypes.CULTURES];
+  // DISPOSITIONS: Disposition[] = this.data[DataTypes.DISPOSITIONS];
   EYES: Eyes[] = this.data[DataTypes.EYES];
   FLAWS: Flaw[] = this.data[DataTypes.FLAWS];
   HAIR_LENGTH: HairLength[] = this.data[DataTypes.HAIR_LENGTH];
@@ -77,7 +79,10 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       mark: new FormControl(null),
     }),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
-    allegiance: new FormControl(AllegianceId.THE_REBELS, [Validators.required]),
+    // allegiances: new FormGroup(this.ALLEGIANCES.reduce((acc, cur) => ({
+    //   ...acc, [cur.id]: new FormControl(DEFAULT_DISPOSITION_ID)
+    // }), {})),
+    allegiances: new FormControl([]),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
     languages: new FormControl([]),
     belief: new FormControl(BeliefId.ACHIEVEMENT, [Validators.required]),
@@ -93,7 +98,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     }, [Validators.required]),
     archetype: new FormControl(ArchetypeId.COMMONER, [Validators.required]),
     trait: new FormControl(null, [Validators.required]),
-    tier: new FormControl(1, [Validators.required]),
+    tier: new FormControl(this.TIERS[0].id, [Validators.required]),
     professions: new FormGroup({
       basic: new FormControl(null, [Validators.required]),
       intermediate: new FormControl(null, [Validators.required]),
@@ -246,7 +251,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly data: DataService
   ) {
     super();
-    console.clear();
   }
 
   ngOnInit(): void {
@@ -293,6 +297,10 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  getAllegiances(): string[] {
+    return  Object.keys(this.form.get('allegiances').value);
   }
 
   getAttributeBonus(id: AttributeId): number {

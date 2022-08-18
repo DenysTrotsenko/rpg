@@ -9,10 +9,11 @@ import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, Trai
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Language} from '@powered-by-zweihander/models';
+import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 
-interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
+interface AttributeView { name: string; value: number; bonus: number; }
+interface DispositionView { name: string; value: string; tooltip: string; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; value: number; tooltip: string; }
 
 @Component({
@@ -50,11 +51,13 @@ export class ViewComponent implements OnDestroy {
         this.skills = this.getSkills(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
+        this.dispositions = this.getDispositions(character);
         this.form.patchValue(character.parameters);
       })
     );
 
   attributes: AttributeView[];
+  dispositions: DispositionView[];
   description: string;
   languages: Language[];
   quirks: Quirk[];
@@ -72,7 +75,6 @@ export class ViewComponent implements OnDestroy {
 
   getAttributes(character: Character): AttributeView[] {
     return Object.entries(character.attributes).map(entry => ({
-      id: +entry[0],
       name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
       value: +entry[1],
       bonus: getBonusFromAttribute(+entry[1])
@@ -81,7 +83,10 @@ export class ViewComponent implements OnDestroy {
 
   getDescription(character: Character): string {
     const name = character.name;
-    const allegiance = this.data[DataTypes.ALLEGIANCES].find(i => i.id === character.allegiance);
+    const allegiances = this.data[DataTypes.ALLEGIANCES]
+      .filter(i => character.allegiances.includes(i.id))
+      .map(i => i.name)
+      .join(', ');
     const age = this.data[DataTypes.AGES].find(i => i.id === character.miscellaneous.age);
     const culture = this.data[DataTypes.CULTURES].find(i => i.id === character.culture);
     const sex = this.data[DataTypes.SEX].find(i => i.id === character.miscellaneous.sex);
@@ -100,11 +105,20 @@ export class ViewComponent implements OnDestroy {
     const hairColor = this.data[DataTypes.HAIR_COLOR].find(i => i.id === character.miscellaneous.hair_color);
     const hairLength = this.data[DataTypes.HAIR_LENGTH].find(i => i.id === character.miscellaneous.hair_length);
     const hairStyle = this.data[DataTypes.HAIR_STYLE].find(i => i.id === character.miscellaneous.hair_style);
-    const hair = `${hairLength.name} ${hairStyle.name} ${hairColor.name}`;
-    return `My name is ${name} and I pledge my allegiance to the ${allegiance.name}.
-      I am a/an ${age.name} ${culture.name} ${sex.name} and have made my life as a/an ${profession.name}.
-      I am of a/an ${stature.name} stature, with a ${build.name} build.
-      I dress ${style.name} and have ${eyes.name} eyes, ${hair} hair and ${mark.name}.`;
+    const hair = `${hairLength?.name} ${hairStyle?.name} ${hairColor?.name}`;
+    return `My name is ${name} and I pledge my allegiance to the ${allegiances}. I am a/an ${age?.name} ${culture?.name} ${sex?.name} and have made my life as a/an ${profession?.name}. I am of a/an ${stature?.name} stature, with a ${build?.name} build. I dress ${style?.name} and have ${eyes?.name} eyes, ${hair} hair and ${mark?.name}.`;
+  }
+
+  getDispositions(character: Character): DispositionView[] {
+    return Object.keys(character.allegiances).map(i => {
+      const allegiance = this.data[DataTypes.ALLEGIANCES].find(j => j.id === +i);
+      const disposition = this.data[DataTypes.DISPOSITIONS].find(j => j.id === character.allegiances[+i]);
+      return {
+        name: allegiance?.name,
+        value: disposition?.name,
+        tooltip: disposition?.labels?.tooltip
+      };
+    });
   }
 
   getLanguages(character: Character): Language[] {

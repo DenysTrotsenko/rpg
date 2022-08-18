@@ -1,8 +1,0 @@
-<h2 mat-dialog-title>Choose a portrait</h2>
-<mat-dialog-content class="lh-0">
-  <img *ngFor="let src of portraits; index as i;" [class.selected]="value === i" [src]="'assets/images/portraits/' + src" (click)="value = i">
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button class="mr-15" mat-dialog-close>Cancel</button>
-  <button mat-flat-button color="primary" [mat-dialog-close]="value">Ok</button>
-</mat-dialog-actions>

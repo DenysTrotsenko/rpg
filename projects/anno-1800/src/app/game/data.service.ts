@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {
   Age,
-  // Allegiance,
   Archetype,
   Attribute,
   Belief, Build,
   Culture, Eyes,
-  Flaw, HairColor, HairLength, HairStyle, Language, Mark,
+  Flaw,
+  HairColor,
+  HairLength,
+  HairStyle,
+  Language,
+  Mark,
   Profession,
   Quirk, Sex,
   Skill, Stature, Style,
@@ -20,7 +24,8 @@ import {
   TraitId
 } from '@flames-of-freedom-1e/enums';
 import {
-  Allegiance
+  Allegiance,
+  Disposition
 } from '@powered-by-zweihander/models';
 import { ALLEGIANCES } from '@pbz-1850/allegiances';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
@@ -37,6 +42,7 @@ import { AGES } from '@flames-of-freedom-1e/age';
 import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
 import { TIERS } from '@flames-of-freedom-1e/tiers';
 import { LANGUAGES } from '@flames-of-freedom-1e/languages';
+import {DISPOSITIONS} from '@powered-by-zweihander/dispositions';
 
 export enum DataTypes {
   AGES = 'ages',
@@ -46,6 +52,7 @@ export enum DataTypes {
   BELIEFS = 'beliefs',
   BUILD = 'build',
   CULTURES = 'cultures',
+  DISPOSITIONS = 'dispositions',
   EYES = 'eyes',
   FLAWS = 'flaws',
   HAIR_COLOR = 'hair_color',
@@ -75,6 +82,7 @@ export class DataService {
   readonly [DataTypes.BELIEFS]: Belief[] = BELIEFS;
   readonly [DataTypes.BUILD]: Build[] = BUILD;
   readonly [DataTypes.CULTURES]: Culture[] = CULTURES;
+  readonly [DataTypes.DISPOSITIONS]: Disposition[] = DISPOSITIONS;
   readonly [DataTypes.EYES]: Eyes[] = EYES;
   readonly [DataTypes.FLAWS]: Flaw[] = FLAWS;
   readonly [DataTypes.HAIR_COLOR]: HairColor[] = HAIR_COLOR;

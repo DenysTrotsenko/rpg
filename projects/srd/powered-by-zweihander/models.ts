@@ -11,4 +11,13 @@ export interface HasLabels {
 }
 
 export interface Allegiance extends HasBase, HasLabels {}
+export interface Disposition extends HasBase, HasLabels {
+  labels?: {
+    description?: string;
+    tooltip?: string;
+    interact_check?: string;
+    social_tactics_same_allegiance?: string;
+    social_tactics_different_allegiance?: string;
+  };
+}
 export interface Language extends HasBase, HasLabels {}

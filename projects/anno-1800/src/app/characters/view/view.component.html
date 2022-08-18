@@ -23,6 +23,12 @@
       </span>
     </p>
     <p>
+      <b class="c-gray">Dispositions:</b>
+      <span *ngFor="let i of dispositions;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
+        {{i.name}} ({{i.value}})
+      </span>
+    </p>
+    <p>
       <b class="c-gray">Languages:</b>
       <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pw">
         {{i.name}}
@@ -31,7 +37,7 @@
     <p>
       <b class="c-gray">Skills:</b>
       <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{i.name}}{{i.type === 2 ? '*' : ''}} +{{i.value}}%
+        {{i.name}}{{i.type === 2001 ? '*' : ''}} +{{i.value}}%
       </span>
     </p>
     <p>

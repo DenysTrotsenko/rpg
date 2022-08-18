@@ -31,11 +31,5 @@ export const LANGUAGES: Language[] = [
   { id: LanguageId.SPANISH, name: 'Spanish' },
   { id: LanguageId.SWEDISH, name: 'Swedish' },
   { id: LanguageId.TSALAGI, name: 'Tsalagi' },
-  { id: LanguageId.WAMPANOAG, name: 'Wampanoag' },
-  //
-  // { id: LanguageId.GUARANI, name: 'Guaraní' },
-  // { id: LanguageId.CHEROKEE, name: 'Cherokee' },
-  // { id: LanguageId.CHIPEWYAN, name: 'Chipewyan' },
-  // { id: LanguageId.ESKIMO_ALEUT, name: 'Eskimo-Aleut' },
-  // { id: LanguageId.CHIPEWYAN, name: 'Chipewyan' },
+  { id: LanguageId.WAMPANOAG, name: 'Wampanoag' }
 ];

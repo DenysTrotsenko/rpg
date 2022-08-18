@@ -543,7 +543,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MAKE_A_BEELINE,
     name: 'Make A Beeline',
     labels: {
-      description: '',
+      description: 'When bullets and arrows reign down, I manage to find an out.',
       effect: 'Whenever you Charge, add +3 to your Damage Threshold until the beginning of your next Turn. When you Run, add +6 instead. This does not stack with the action of Take Cover in combat.'
     }
   },
@@ -551,7 +551,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SET_MY_SIGHTS,
     name: 'Set My Sights',
     labels: {
-      description: '',
+      description: 'Don’t f ire until you see the whites of their eyes, then fire low!',
       effect: 'Whenever you inflict Damage from a Targeted Attack, they also suffer an equal amount of Peril.'
     }
   },
@@ -559,7 +559,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TURN_THE_TABLES,
     name: 'Turn The Tables',
     labels: {
-      description: '',
+      description: 'I can call upon Providence to alter the course of events, but I dare not abuse Her favor.',
       effect: 'Whenever a Coin is about to be spent, call out that you ‘turn the tables.’ The benefit of the Coin doesn’t take effect, and it is permanently discarded from both pools until the next game session. You can do this once a game session.'
     }
   },
@@ -568,7 +568,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.PERSONA_COME_FORTH,
     name: 'Persona, Come Forth!',
     labels: {
-      description: '',
+      description: 'I slip into character as quickly as another may slip into costume, altering my appearance and mannerisms with only minutes of preparation.',
       effect: 'You may flip the results to succeed at Disguise Tests. When you succeed, it is always considered a Critical Success. In addition, when you successfully masquerade as a specific person, you can perfectly mimic their Allegiance.'
     },
   },
@@ -584,15 +584,15 @@ export const TRAITS: Trait[] = [
     id: TraitId.WAY_OF_THE_BEAST,
     name: 'Way Of The Beast',
     labels: {
-      description: 'Threats classified as Animals or Beasts will never make you a target of attacks until you initiate violence toward them or their allies.',
-      effect: ''
+      description: 'Beasts are pure, primal creatures who must be treated as equals—not as some potential trophy or cattle led to slaughter.',
+      effect: 'Threats classified as Animals or Beasts will never make you a target of attacks until you initiate violence toward them or their allies.'
     },
   },
   {
     id: TraitId.WHATS_OLD_IS_NEW,
     name: 'What’s Old Is New',
     labels: {
-      description: '',
+      description: 'Though I pride myself on keeping abreast of the latest developments of medicinal discoveries in Europe, I also possess deep knowledge of the ancient ways.',
       effect: 'You know the Alchemical Art of Create Medicine (from Article 9: Hexenmeister’s Almanack) and randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Laudanum you create moves a person two steps up the Damage Condition Track positively, while Smelling Salt you create moves a person two steps up the Peril Condition Track positively. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -600,7 +600,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.THE_GOLDEN_RATIO,
     name: 'The Golden Ratio',
     labels: {
-      description: '',
+      description: 'There is one precept in all mathematics I hold dearest: the divine golden ratio of triangles that returns again and again in both nature and Man’s creations.',
       effect: 'You automatically succeed at any Skill Test to determine distances. In addition, you treat Extreme and Long Distances as Medium Distance for purposes of using ranged weapons.'
     },
   },
@@ -608,7 +608,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.THE_ARTISTS_EYE,
     name: 'The Artist’s Eye',
     labels: {
-      description: '',
+      description: 'There is always some person, place or thing which wholly absorbs me and is my muse to create.',
       effect: 'You gain a muse, which may be an object, person or place. When in the presence of your muse, you ignore Peril Condition penalties when creating works of art. You’ll gain new muses at each Tier.'
     },
   },
@@ -616,7 +616,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.IN_TUNE_WITH_AETHER,
     name: 'In Tune With Æther',
     labels: {
-      description: '',
+      description: 'Though you might try to deny it for your own peace of mind, I feel a divine connection to something otherworldly.',
       effect: 'When you hold an amulet and Risk Backlash, you must roll two or more face ‘6s’ on Chaos Dice to trigger it. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -624,7 +624,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HONED_BY_CONFLICT,
     name: 'Honed By Conflict',
     labels: {
-      description: '',
+      description: 'To secure peace is to prepare for war.',
       effect: 'Whenever you make an Attack Action using a ranged weapon, foes must flip the results to fail to Defend or Resist it.'
     },
   },
@@ -632,7 +632,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.AT_EASE_MY_FRIEND,
     name: 'At Ease, My Friend',
     labels: {
-      description: '',
+      description: 'I am a people person; I know how to talk with them and how to ease their tensions.',
       effect: 'You ignore Peril Condition penalties associated with Skill Tests to heal people. In addition, your medicinal practices never result in a patient suffering from Sepsis. Finally, add an Assist Die when using any Healing Practice (as indicated in Article 8: Healing, Hazards & Horror).'
     },
   },
@@ -640,7 +640,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.YOUR_SECRETS_REVEALED,
     name: 'Your Secrets Revealed',
     labels: {
-      description: '',
+      description: 'I’ve always had a way with words, an ability to comfort others in their darkest moments.',
       effect: 'Whenever you fail a Charm or Stealth Test, you may re-roll to generate a better result, but must accept the outcome. In addition, whenever you hide in urban environments during a Combat Encounter, it only costs 1 AP.'
     },
   },
@@ -648,7 +648,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_KNOTTED_ROPE,
     name: 'A Knotted Rope',
     labels: {
-      description: '',
+      description: 'Not everyone can tie a rope so tight and firm that a man-o’-war won’t drift headlong into the shoals and scatter its precious cargo.',
       effect: 'You may flip the results to succeed at Pilot Tests. When you succeed, it is always considered a Critical Success. In addition, when using the Movement subtype of Rowing, you do not have to add the additional 1 Action Point cost.'
     },
   },
@@ -656,7 +656,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.IN_THE_MARGINS,
     name: 'In The Margins',
     labels: {
-      description: '',
+      description: 'I have an uncanny knack for seeing mistakes and making the numbers work for me, even if I have to exploit it to my advantage.',
       effect: 'Whenever you fail Counterfeit or Scrutinize Tests, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests for mathematical exercises.'
     },
   },
@@ -664,7 +664,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FIND_THE_HIDDEN_WORD,
     name: 'Find The Hidden Word',
     labels: {
-      description: '',
+      description: 'There is no greater act than adhering to the word of God, and he has rewarded me greatly for my penitence and devotion.',
       effect: 'Whenever you bear a symbol of faith in hand, add +1 to your Damage and Peril Thresholds. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -672,7 +672,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.I_HAVE_TASTED_IT_ALL,
     name: 'I Have Tasted It All',
     labels: {
-      description: '',
+      description: 'My palate is so refined that I know if something is not aged right or if something is made incorrectly, or perhaps even poisoned.',
       effect: 'You know the Alchemical Art of Create Drugs (from Article 9: Hexenmeister’s Almanack). With a sip, you automatically succeed at any Skill Test to determine if drinks have been drugged. Finally, you never suffer from the negative effects associated with Intoxication.'
     },
   },
@@ -680,7 +680,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DEVIL_IN_THE_SADDLE,
     name: 'Devil In The Saddle',
     labels: {
-      description: '',
+      description: 'I fear that my enemies have underestimated my power while in the saddle.',
       effect: 'Every time you inflict Damage on horseback using Actions In Combat, temporarily increase your Total Damage by +1 cumulatively, lasting until you are Slain! or combat ends.'
     },
   },
@@ -688,7 +688,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HEAVEN_SENT,
     name: 'Heaven Sent',
     labels: {
-      description: '',
+      description: 'It is through my devotion that I am shielded, and as such, I walk amongst the shadows with no fear.',
       effect: 'All foes classified as Abyssal or Supernatural suffer a -10% Base Chance to hit you, regardless of the actions you take against them.'
     },
   },
@@ -696,7 +696,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.STROKE_OF_MY_QUILL,
     name: 'Stroke Of My Quill',
     labels: {
-      description: '',
+      description: 'The long hours spent with a quill has trained me how to write in another’s hand.',
       effect: 'You reduce the time required to use Counterfeit Tests by half (suggestions include faking a seal, writing propaganda, determining false documentation, etc.). In addition, you automatically succeed at all Skill Tests to decipher counterfeited writing.'
     },
   },
@@ -704,7 +704,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MARK_OF_INAUTHENTICITY,
     name: 'Mark Of Inauthenticity',
     labels: {
-      description: '',
+      description: 'Franklin said, “To counterfeit is death.” What does his opinion really matter to me in the end?',
       effect: 'Any object you counterfeit is treated and appraised at its full value. Furthermore, you may flip the results to succeed Skill Tests to identify and create counterfeited objects.'
     },
   },
@@ -712,7 +712,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WHAT_I_DO_IN_SHADOWS,
     name: 'What I Do In Shadows',
     labels: {
-      description: '',
+      description: 'Chief among my skills is the ability to blend in with my surroundings and stick to the shadows.',
       effect: 'When you fail a Skulduggery or Stealth Test, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests to disable locks.'
     },
   },
@@ -720,7 +720,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_SENSE_FOR_DANGER,
     name: 'A Sense For Danger',
     labels: {
-      description: '',
+      description: 'To slip away from the military is a crime punishable by death, but I’m just someone who wishes to live a long life.',
       effect: 'Whenever you are Surprised, roll an Awareness Test. If successful, you and a number of allies equal to [PB] avoid Surprise.'
     },
   },
@@ -728,7 +728,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_LITTLE_BIT_OF_EVERYTHING,
     name: 'A Little Bit Of Everything',
     labels: {
-      description: '',
+      description: 'I’ve got friends in high and low places, and because of this, there’s always someone for me to lean on.',
       effect: 'Whenever you gain the benefits of an Assist Die, you gain two instead.'
     },
   },
@@ -736,7 +736,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.READ_THE_ROOM,
     name: 'Read The Room',
     labels: {
-      description: '',
+      description: 'Being skilled in the soft art of diplomacy has provided me a number of tools I have honed over the years.',
       effect: 'By presenting a passport, you determine the Allegiance, culture and Disposition of any person you interact with. Dispositions are covered in Article 6: Narrative Tools.'
     },
   },
@@ -744,7 +744,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BORN_IN_THE_SADDLE,
     name: 'Born In The Saddle',
     labels: {
-      description: '',
+      description: 'A life spent in the saddle has brought me much, including an empathetic bond with horses.',
       effect: 'When you fail a Handle Animal or Ride Test, you may re-roll to generate a better result, but must accept the outcome. In addition, when using the Movement subtype of Riding, you do not have to add the additional 1 Action Point cost.'
     },
   },
@@ -752,7 +752,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TELL_ME_WHAT_YOU_SEEK,
     name: 'Tell Me What You Seek',
     labels: {
-      description: '',
+      description: 'This simple forked stick allows me to commune with the earth, and I can ask it to provide me with her bounty.',
       effect: 'Whenever attempting to track a threat classified as Humanoid (including player cultures), find a source of water or navigate to a location using a divining rod, substitute Incantation in place of other Skills required to do so. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -760,7 +760,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.STEADY_HANDS,
     name: 'Steady Hands',
     labels: {
-      description: '',
+      description: 'Any little shake of the hand may ruin a piece, making me have to do the work all over again.',
       effect: 'Any object you engrave is treated and appraised at its full value. Furthermore, you may flip the results to succeed at Skill Tests to identify and create engraved objects.'
     },
   },
@@ -768,7 +768,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FARMERS_ALMANAC,
     name: 'Farmer’s Almanac',
     labels: {
-      description: '',
+      description: 'Some laugh at me for claiming such, but due to a life spent working the land, I have an uncanny sense of the weather.',
       effect: 'You can accurately predict the weather without having to make a Skill Test. In addition, you do not suffer from the effects of Rough Terrain in combat or while traveling.'
     },
   },
@@ -776,7 +776,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.OPEN_MINDED,
     name: 'Open-Minded',
     labels: {
-      description: '',
+      description: 'Through my willingness to debate,I’ve had many opportunities to come in contact with new people and new ideas.',
       effect: 'Select any three Special Skills, and circle them on your character sheet. They are now treated as Common Skills.'
     },
   },
@@ -784,7 +784,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WE_ARE_THE_LIGHT,
     name: 'We Are The Light',
     labels: {
-      description: '',
+      description: 'Together, we draw forth a healing power from the grass, the stone and the sky.',
       effect: 'Join hands with up to two allies, and all of you make an Incantation or Resolve Test to Bind Wounds. For every successful Skill Test, the person is restored one additional step up the Damage Condition Track positively. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -800,7 +800,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WITHIN_MY_REACH,
     name: 'Within My Reach',
     labels: {
-      description: '',
+      description: 'My life of trapping and hunting has taught me to know instantly where I am and where best to look for resources to survive the harsh wilds.',
       effect: 'Whenever you fail a Guile or Intimidate Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to resell illegal wares & weapons.'
     },
   },
@@ -824,7 +824,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_FAIR_PRICE,
     name: 'A Fair Price',
     labels: {
-      description: '',
+      description: 'Bargaining runs through my veins, and without the thrill of haggling, negotiating and debating, life would not be fun — or even worth living!',
       effect: 'Whenever you fail a Bargain or Rumor Test, you may re-roll to generate a better result but must accept the outcome. In addition, you always succeed at Skill Tests to haggle down prices for legal wares & weapons.'
     },
   },
@@ -832,7 +832,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FORLORN_HOPE,
     name: 'Forlorn Hope',
     labels: {
-      description: '',
+      description: 'We are the suicide squad, condemned to die on the battlef ield.',
       effect: 'You may flip the results to succeed at Warfare Tests. When you succeed, it is considered a Critical Success. In addition, add 1D6 Fury Die to Damage with any weapon with the Bomb Quality.'
     },
   },
@@ -840,7 +840,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.AMBUSH_TACTICS,
     name: 'Ambush Tactics',
     labels: {
-      description: '',
+      description: 'Strike first, strike hard and give them no mercy, friends!',
       effect: 'Whenever you deal Damage, spend a Coin to hide immediately or to remain hidden (thereby gaining Surprise on your next Turn).'
     },
   },
@@ -848,7 +848,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MY_RETRIBUTION,
     name: 'My Retribution',
     labels: {
-      description: '',
+      description: 'With a gun in hand, I bring fire and fury to my enemies.',
       effect: 'You know the Alchemical Art of Create Blackpowder (from Article 9: Hexenmeister’s Almanack), as you learn it as a free Unique Ability. Any weapons you craft of the Blackpowder Quality do not take on the negative effects imparted by their Qualities and don’t misfire.'
     },
   },
@@ -856,7 +856,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_TRACE_OF_LIFE,
     name: 'A Trace Of Life',
     labels: {
-      description: '',
+      description: 'Every plant, tree and blade of grass is attuned to the world’s seasons, and I am able to harness this power.',
       effect: 'Whenever attempting to track a threat classified as an Animal or find a place using a sacred tool, substitute Incantation in place of other Skills required to do so. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -864,7 +864,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ROUGH_WORK,
     name: 'Rough Work',
     labels: {
-      description: '',
+      description: 'It doesn’t matter if I am hurt, bleeding or sick — the work must be done.',
       effect: 'You may flip the results to succeed at Toughness Tests. When you succeed, it is always considered a Critical Success. Furthermore, you never reduce your Movement due to Overage.'
     },
   },
@@ -872,7 +872,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SHADOW_BROKER,
     name: 'Shadow Broker',
     labels: {
-      description: '',
+      description: 'I’ve got dirt on practically every person in this city.',
       effect: 'You can dig up sensitive information on a character who has been listed in a broadsheet (newspaper) or magazine. Using this information, you then gain an Assist Die to interact with them in social situations. You can take advantage of this Trait once a game session.'
     },
   },
@@ -880,7 +880,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.NIGHT_SIGHT,
     name: 'Night Sight',
     labels: {
-      description: '',
+      description: 'I have adapted to the dark more than others—I see better, hear better and, if need be, f ight better while shadowed.',
       effect: 'You can see in the dark, treating Fleeting Shadows and Total Darkness as if it were Perfect Light.'
     },
   },
@@ -888,7 +888,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TRUTH_SHALL_SET_YOU_FREE,
     name: 'Truth Shall Set You Free',
     labels: {
-      description: '',
+      description: 'My faith in the law has allowed me a keen insight into people, and I’m able to navigate past any lie or falsehood a client may tell me.',
       effect: 'You can determine if someone is lying without making a Skill Test, providing you can clearly see and hear them. In addition, your lies are seen as being truthful by others, unless aided by Spells or by another Lawyer.'
     },
   },
@@ -896,7 +896,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WELL_ACTUALLY,
     name: 'Well, Actually...',
     labels: {
-      description: '',
+      description: 'My freewheeling, indulgent ways have garnered me many unique experiences and diverse acquaintances, however brief our time together.',
       effect: 'Whenever you attempt to determine whether you have heard of someone, a story or other folktale, roll a 1D6 Chaos Die. If the result is face ‘6,’ you immediately recall a factoid about it.'
     },
   },
@@ -904,7 +904,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.JUDGMENT_IS_HERE,
     name: 'Judgment Is Here',
     labels: {
-      description: '',
+      description: 'I interpret the law, listen to the arguments, then render a judgment which is guaranteed fair and unbiased.',
       effect: 'Whenever you or an ally succeeds at a Skill Test, spend a Coin to turn it into a Critical Success.'
     },
   },
@@ -912,7 +912,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_LIFE_AT_SEA,
     name: 'A Life At Sea',
     labels: {
-      description: '',
+      description: 'Thanks to my life at sea, I’m sure-footed and nimble — otherwise, how would I keep my footing on icy decks or during rough storms?',
       effect: 'You may flip the results to succeed at Coordination Tests. When you succeed, it is always considered a Critical Success. In addition, when using the Movement subtype of Swimming, add your Initiative value to the Distance you swim.'
     },
   },
@@ -920,7 +920,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.GUIDING_LIGHT,
     name: 'Guiding Light',
     labels: {
-      description: '',
+      description: 'There is a light that never goes out inside of me.',
       effect: 'Whenever an ally fails or Critically Fails a Resolve Test to withstand Stress, Fear or Terror provoked by threats classified as Abyssal or Supernatural, make a Resolve Test. If successful, your ally ignores Stress, Fear and Terror provoked by it, providing they can see and hear you clearly. A Critical Success allows them to gain the benefit above and temporarily adds +3 to their Peril Threshold while in the presence of the threat.'
     },
   },
@@ -928,7 +928,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.NO_MERE_PHENOMENA,
     name: 'No Mere Phenomena',
     labels: {
-      description: '',
+      description: 'My mind is a finely honed weapon, trained to tap into forces that can alter reality.',
       effect: 'You can manipulate physical objects no larger than a book with your mind. This allows you to automatically hit a single foe within 3+[PB], as the foe suffers 1D10+1 Peril. You can also pair this with Skulduggery to make objects disappear and to reappear. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -936,7 +936,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TIP_THE_SCALES,
     name: 'Tip The Scales',
     labels: {
-      description: '',
+      description: 'Risky investments, speculative trading, slush funds — I know how to work money and trade in my interest, even if it means having to put all my cards on the table.',
       effect: 'Whenever you fail a Bargain or Guile Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to resell legal wares & weapons.'
     },
   },
@@ -944,7 +944,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.EASE_THE_PAIN,
     name: 'Ease The Pain',
     labels: {
-      description: '',
+      description: 'There, there ... hush now and let the pain flow outside your body.',
       effect: 'You know the Alchemical Art of Create Medicine (from Article 9: Hexenmeister’s Almanack), as you learn it as a free Unique Ability. Whenever you successfully Bind Wounds to heal Damage, your patient moves one additional step up the Damage Condition Track positively and an equal number of steps up the Peril Condition Track.'
     },
   },
@@ -952,7 +952,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DONT_TREAD_ON_ME,
     name: 'Don’t Tread On Me',
     labels: {
-      description: '',
+      description: 'Liberty or death!',
       effect: 'You never Bleed or suffer from Sepsis. Furthermore, you are never rendered Incapacitated! or made Unconscious from Injuries.'
     },
   },
@@ -960,7 +960,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ITS_JUST_BUSINESS,
     name: 'It’s Just Business',
     labels: {
-      description: '',
+      description: 'I leave my opinions at my shop’s door, which allows me to slip into whatever mannerisms endear me to my customers.',
       effect: 'Whenever using Skill Tests to interact with those of the same or different Allegiance, you gain an Assist Die.'
     },
   },
@@ -968,7 +968,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.RISING_ANTHEM,
     name: 'Rising Anthem',
     labels: {
-      description: '',
+      description: 'Music is a powerful tool — it can drive away fear, inspire others and even serve as a clever barb against an enemy.',
       effect: 'You can attempt a Charm Test to perform with a musical instrument. If successful, a number of characters equal to your [FB] are Inspired (Words As Weapons in Article 7: Combat Encounters) for twenty-four hours. If you Critically Succeed, they also gain an Assist Die to Resist Stress, Fear and Terror. A character may only gain the benefit of this performance once a day, which takes at least an hour of time to perform.'
     },
   },
@@ -976,7 +976,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.CALL_TO_ARMS,
     name: 'Call To Arms',
     labels: {
-      description: '',
+      description: 'I can inspire those around me, driving my allies to great deeds and feats they didn’t realize they could perform.',
       effect: 'Whenever you succeed at using the action in combat Words As Weapons, combatants double the benefits or penalties.'
     },
   },
@@ -984,7 +984,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BATTLE_BUDDY,
     name: 'Battle Buddy',
     labels: {
-      description: '',
+      description: 'My friends don’t follow me for a paycheck; they follow me for my leadership, charisma and camaraderie I have fostered among them.',
       effect: 'Select one ally as combat begins. You both gain a +10% Base Chance to Defend and cannot be Flanked, providing you are able to clearly see and hear one another.'
     },
   },
@@ -992,7 +992,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MOB_RULE,
     name: 'Mob Rule',
     labels: {
-      description: '',
+      description: 'The only way to get what you want is by force—anything else is just lip service.',
       effect: 'Whenever you and your allies face foes 6:1, both you and a number of allies equal to [FB] add 2D6 Fury Die to Total Damage, instead of the normal 1D6.'
     },
   },
@@ -1000,7 +1000,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ART_OF_COMPROMISE,
     name: 'Art Of Compromise',
     labels: {
-      description: '',
+      description: 'By weighing each side of an argument, I can assuredly find the area of common ground.',
       effect: 'When using Skill Tests, you do not suffer any additional penalties due to differences in Allegiance.'
     },
   },
@@ -1008,7 +1008,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SCHOLAR_AND_STUDENT,
     name: 'Scholar & Student',
     labels: {
-      description: '',
+      description: 'I’ve spent the bulk of my life as a student, and I cannot easily let go of my insatiable curiosity.',
       effect: 'You only need to spend half the RP to buy Skill Ranks. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -1016,7 +1016,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.PASSIVE_KNOWLEDGE,
     name: 'Passive Knowledge',
     labels: {
-      description: '',
+      description: 'You would be surprised what you pick up as a printer — I have a particular knack for learning uncommon tongues.',
       effect: 'You always gain access to use a printing press in any settlement you’re in. In addition, you can attempt to fluently communicate in any language you don’t know with a successful Education Test.'
     },
   },
@@ -1024,7 +1024,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FIRE_IN_THE_HOLE,
     name: 'Fire In The Hole',
     labels: {
-      description: '',
+      description: 'I fear nothing — I’ve looked devils in the face and spat in their eyes, laughing all the while.',
       effect: 'After you make an Attack Action, immediately make a Counterattack with any one-handed ranged weapon on the same Turn.'
     },
   },
@@ -1032,7 +1032,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.KNOWS_YOUR_NAME,
     name: 'Knows Your Name',
     labels: {
-      description: '',
+      description: 'I pride myself in knowing a place where people are all the same — and I make sure that I know everybody’s name.',
       effect: 'You always gain free room and board in any settlement you’re in. In addition, you always succeed at Skill Tests to recall a name, place or piece of information you’ve been told before.'
     },
   },
@@ -1040,7 +1040,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ALWAYS_PREPARED,
     name: 'Always Prepared',
     labels: {
-      description: '',
+      description: 'I would never come to a party without a gift, so why would you think I’d come unprepared for this trip?',
       effect: 'Whenever you need a mundane item in hand valued less than 1 pound (£), you do not have to spend a Coin to edit the situation. You may take advantage of this Trait once a game session. The Historian may impose other limits.'
     },
   },
@@ -1048,7 +1048,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BACK_OF_MY_HAND,
     name: 'Back Of My Hand',
     labels: {
-      description: '',
+      description: 'Whether I’m wandering lonely trails or familiar territory, I know the way back home.',
       effect: 'You cannot get lost in the wilderness, and characters who are with you cannot either. You also always succeed at Skill Tests to withstand Peril while traveling.'
     },
   },
@@ -1056,7 +1056,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DEATH_PROOF,
     name: 'Death Proof',
     labels: {
-      description: '',
+      description: 'I have fought on the battlefield so long that the horrors I see no longer have an effect on me.',
       effect: 'Whenever you are Moderately Wounded, temporarily add +1 to Damage Threshold. Whenever you are Seriously Wounded, temporarily add +2 to Damage Threshold instead. And finally, whenever you are Grievously Wounded, temporarily add +3 to Damage Threshold instead. These benefits do not stack and only count whenever you are in combat.'
     },
   },
@@ -1064,7 +1064,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.VERY_SNEAKY,
     name: 'Very Sneaky',
     labels: {
-      description: '',
+      description: 'To be a good resurrection-cove, I not only have to sneak into the graveyard, but also sneak out with a whole other person!',
       effect: 'In Perfect Light, add an Assist Die to Stealth Tests. In Fleeing Shadows, you may flip the results to succeed Stealth Tests. In Total Darkness, you automatically Critically Succeed Stealth Tests.'
     },
   },
@@ -1072,7 +1072,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HELLO_TRAVELER,
     name: 'Hello, Traveler',
     labels: {
-      description: '',
+      description: 'Well met ... now kindly hand me all your cash before you regret it.',
       effect: 'At your option, you may substitute the Charm Skill in place of Intimidate. In addition, you may substitute Charm in place of any Skill required to Defend against Actions In Combat.'
     },
   },
@@ -1080,7 +1080,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HIDE_IN_PLAIN_SIGHT,
     name: 'Hide In Plain Sight',
     labels: {
-      description: '',
+      description: 'My years of staying out of my betters’ way have taught me to blend into my surroundings without so much as a nod of acknowledgment.',
       effect: 'When you fail an Eavesdrop or Stealth Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to hide among crowds.'
     },
   },
@@ -1088,7 +1088,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.GIVE_YOUR_SIN_UNTO_ME,
     name: 'Give Your Sin Unto Me',
     labels: {
-      description: '',
+      description: 'I did not ask for this gift, but it is now my duty to rescue my people from damnation.',
       effect: 'You can spend a Coin to immediately remove a curse or dispel harmful Spell or Spell-like effects that ail another. In addition, you can sacrifice Determination to immediately reduce another character’s Flaw Ranks equal to your [WB]. You must be able to touch the person in order for them to be absolved. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -1096,7 +1096,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TECHNICAL_MASTERY,
     name: 'Technical Mastery',
     labels: {
-      description: '',
+      description: 'Through extensive study and years of training, I understand how to make the most of my materials.',
       effect: 'Any time you use a Skill Test to create wares & weapons, add one Quality for free.'
     },
   },
@@ -1104,7 +1104,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SPEAK_WITH_SPIRITS,
     name: 'Speak With Spirits',
     labels: {
-      description: '',
+      description: 'I have learned to speak with the spirits of the other world—all it takes is a little patience and bravery.',
       effect: 'You can use any Fellowship-based Skill to communicate with Supernatural threats using a spirit board. Randomly determine three Common Spells you learn as free Unique Abilities from the Common Spells Listings table. Finally, you can Risk Backlash and Unfetter your Spells (covered in Article 7: Combat Encounters and Article 9: Hexenmeister’s Almanack).'
     },
   },
@@ -1112,7 +1112,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.I_READ_ABOUT_IT_ONCE,
     name: 'I Read About It Once',
     labels: {
-      description: '',
+      description: 'My studies have taught me two things: how to intuit sorcery when I see it and all the ways to avoid it.',
       effect: 'At your option, you may substitute the Education Skill in place of Incantation. In addition, you may substitute Education in place of any Skill required to Resist against Spells.'
     },
   },
@@ -1120,7 +1120,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LAND_READER,
     name: 'Land Reader',
     labels: {
-      description: '',
+      description: 'My primary skill as a Surveyor is my ability to read and take note of the landscape around me.',
       effect: 'You always Critically Succeed Skill Tests to find the three basic needs: food, water and shelter.'
     },
   },
@@ -1128,7 +1128,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.RURAL_STALKER,
     name: 'Rural Stalker',
     labels: {
-      description: '',
+      description: 'I may not know much, but if there’s one thing I do, it’s how to move through the woods without being seen or heard.',
       effect: 'You automatically succeed at all Skill Tests to sneak in rural areas, unless you give yourself away by running through them or making loud noises. In addition, whenever you hide in rural environments during a Combat Encounter, it only costs 1 AP.'
     },
   },
@@ -1136,7 +1136,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.RESPECT_THE_DRIP,
     name: 'Respect The Drip',
     labels: {
-      description: '',
+      description: 'I cut, sew and measure—all the while keeping an eye on who’s coming and going.',
       effect: 'When you fail a Charm or Eavesdrop Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to accurately estimate Distances.'
     },
   },
@@ -1144,7 +1144,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.EYES_IN_THE_BACK_OF_MY_HEAD,
     name: 'Eyes In The Back Of My Head',
     labels: {
-      description: '',
+      description: 'I have to be careful when I’m doing my job, as I’ve collected more than a few scars from thrown rocks and broken bottles.',
       effect: 'Whenever you fail a Bargain or Scrutinize Test, you may re-roll to generate a better result, but must accept the outcome. In addition, you always succeed at Skill Tests to demand debt owed to you or another character.'
     },
   },
@@ -1152,7 +1152,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WELL_READ,
     name: 'Well-Read',
     labels: {
-      description: '',
+      description: 'I may not be a professor, but I’m well-read and knowledgeable enough to learn just about anything.',
       effect: 'You only need to spend 25 RP to buy Unique Abilities (instead of the normal 100).'
     },
   },
@@ -1160,7 +1160,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_SIMPLE_LIFE,
     name: 'A Simple Life',
     labels: {
-      description: '',
+      description: 'From every church, coffee shop and house of ill repute, nothing happens without my knowledge.',
       effect: 'Whenever you succeed in a Fellowship-based Skill Test in urban areas, you can ask for the Historian to give you an important rumor from your investigations you may not have already thought of or overlooked. This benefit cannot be gained more than once a game session.'
     },
   },
@@ -1168,7 +1168,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DONT_SHOOT_THE_MESSENGER,
     name: 'Don’t Shoot The Messenger',
     labels: {
-      description: '',
+      description: 'I am sometimes the bearer of bad news, and when people get upset, I’ve learned to tuck tail and run.',
       effect: 'You may flip the results to succeed at Skill Tests to Defend against ranged weapons and other Distance- based attacks.'
     },
   },
@@ -1184,7 +1184,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.POLYGLOT,
     name: 'Polyglot',
     labels: {
-      description: '',
+      description: 'Let’s use the universal greeting, “Bah Weep Granah Weep Nini Bong.”',
       effect: 'You can read and write every language, despite your [FB].'
     },
   },
@@ -1192,7 +1192,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FLUID_ALLEGIANCE,
     name: 'Fluid Allegiance',
     labels: {
-      description: '',
+      description: 'Whatever side offers me the best deal is the one I take, but they’d better watch their back if they change their minds about my usefulness.',
       effect: 'You do not have to make Skill Tests to masquerade as someone of a different Allegiance, fitting in without fail.'
     },
   },
@@ -1200,7 +1200,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.VAGRANT_STORY,
     name: 'Vagrant Story',
     labels: {
-      description: '',
+      description: 'I’ve seen far-flung places, shaken hands with strange people and always know my way along the path.',
       effect: 'When you fail a Folklore or Navigation Test, you may re-roll to generate a better result, but must accept the outcome.'
     },
   },
@@ -1208,7 +1208,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.THREADS_OF_FATE,
     name: 'Threads Of Fate',
     labels: {
-      description: '',
+      description: 'It is through the weaving that I am able to catch a glimpse of what is to come.',
       effect: 'Whenever a game session begins, roll 3D6 Chaos Dice. For every die that lands on face ‘6,’ place an additional Coin into your respective pool. Whenever they are spent, they are immediately discarded for the rest of the game session.'
     },
   },
@@ -1216,7 +1216,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BLOOD_AND_THUNDER,
     name: 'Blood & Thunder',
     labels: {
-      description: '',
+      description: 'I’ve seen the great baleen off the coasts, slaughtered man-eating walruses and fought against the leviathan of the Atlantic.',
       effect: 'Threats who are Large Sized or Huge Sized only reference 1D6 Fury Die due to their Size to deal Damage to you (as opposed to their normal number of Fury Dice).'
     },
   },
@@ -1224,7 +1224,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MASTER_BUILDER,
     name: 'Master Builder',
     labels: {
-      description: '',
+      description: 'You always Critically Succeed Tradecraft Skill Tests to create objects larger than an oxen.',
       effect: 'You always Critically Succeed Tradecraft Skill Tests to create objects larger than an oxen.'
     },
   },
@@ -1232,7 +1232,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WELL_PUBLISHED,
     name: 'Well-published',
     labels: {
-      description: '',
+      description: 'My writing is both admired and well-respected among those who deal in literary circles.',
       effect: 'When strangers recognize you by your real name or by your works, you treat all successful social Skill Tests as a Critical Success.'
     },
   }
