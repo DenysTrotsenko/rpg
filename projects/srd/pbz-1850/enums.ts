@@ -1,8 +1,13 @@
 import {PrefixId} from '../prefixes';
 
 export enum AllegianceId {
-  THE_UNION = PrefixId.PBZ_1850,
-  THE_CONFEDERACY,
+  UNION = PrefixId.PBZ_1850,
+  CONFEDERACY,
+  FREEMASONS,
+  INQUISITION,
+  KNIGHTS_TEMPLAR,
+  ROSICRUCIANS,
+  ROYAL_SOCIETY,
 }
 
 export enum LanguageId {
