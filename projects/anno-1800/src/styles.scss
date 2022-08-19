@@ -36,3 +36,8 @@ table.mat-table {
   box-sizing: content-box !important;
 }
 
+.no-padding-bottom {
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+}

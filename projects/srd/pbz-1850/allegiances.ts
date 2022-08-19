@@ -5,49 +5,49 @@ import {AllegianceId} from './enums';
 export const ALLEGIANCES: Allegiance[] = [
   {
     id: AllegianceId.UNION,
-    name: 'Union',
+    name: 'The Union',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.CONFEDERACY,
-    name: 'Confederacy',
+    name: 'The Confederacy',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.FREEMASONS,
-    name: 'Freemasons',
+    name: 'The Freemasons',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.INQUISITION,
-    name: 'Inquisition',
+    name: 'The Inquisition',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.KNIGHTS_TEMPLAR,
-    name: 'Knights Templar',
+    name: 'The Knights Templar',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.ROSICRUCIANS,
-    name: 'Rosicrucians',
+    name: 'The Rosicrucians',
     labels: {
       description: ''
     }
   },
   {
     id: AllegianceId.ROYAL_SOCIETY,
-    name: 'Royal Society',
+    name: 'The Royal Society',
     labels: {
       description: ''
     }

@@ -1,5 +1,5 @@
-import {Component, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, ChangeDetectionStrategy, OnDestroy, HostListener} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
@@ -23,18 +23,18 @@ interface SkillView { id: SkillId; name: string; type: SkillTypeId; value: numbe
 })
 export class ViewComponent implements OnDestroy {
   readonly form: FormGroup = new FormGroup({
-    rp_total: new FormControl(0),
-    rp_used: new FormControl(0),
+    damage: new FormControl(0),
+    peril: new FormControl(0),
     conflict: new FormControl(0),
     belief_ranks: new FormControl(0),
     flaw_ranks: new FormControl(0),
-    permanent_belief_ranks: new FormControl(0),
-    permanent_flaw_ranks: new FormControl(0),
-    damage: new FormControl(0),
-    peril: new FormControl(0),
-    moderate_injuries: new FormControl([]),
-    serious_injuries: new FormControl([]),
-    grievous_injuries: new FormControl([])
+    // rp_total: new FormControl(0),
+    // rp_used: new FormControl(0),
+    // permanent_belief_ranks: new FormControl(0),
+    // permanent_flaw_ranks: new FormControl(0),
+    // moderate_injuries: new FormControl([]),
+    // serious_injuries: new FormControl([]),
+    // grievous_injuries: new FormControl([])
   });
   readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
@@ -51,13 +51,16 @@ export class ViewComponent implements OnDestroy {
         this.skills = this.getSkills(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
-        this.dispositions = this.getDispositions(character);
-        this.form.patchValue(character.parameters);
+        // this.dispositions = this.getDispositions(character);
+        const temporary = localStorage.getItem(character.id);
+        if (temporary) {
+          this.form.patchValue(JSON.parse(temporary));
+        }
       })
     );
 
   attributes: AttributeView[];
-  dispositions: DispositionView[];
+  // dispositions: DispositionView[];
   description: string;
   languages: Language[];
   quirks: Quirk[];
@@ -65,13 +68,22 @@ export class ViewComponent implements OnDestroy {
   talents: Talent[];
   traits: Trait[];
 
+  @HostListener('window:beforeunload') onBrowserClose(): void {
+    this.ngOnDestroy();
+  }
+
   constructor(
     private readonly route: ActivatedRoute,
+    private readonly router: Router,
     private readonly firestore: FirestoreService,
     private readonly data: DataService
   ) {}
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    const id: string = this.route.snapshot.params.id;
+    const temporary = this.form.getRawValue();
+    localStorage.setItem(id, JSON.stringify(temporary));
+  }
 
   getAttributes(character: Character): AttributeView[] {
     return Object.entries(character.attributes).map(entry => ({
@@ -109,17 +121,17 @@ export class ViewComponent implements OnDestroy {
     return `My name is ${name} and I pledge my allegiance to the ${allegiances}. I am a/an ${age?.name} ${culture?.name} ${sex?.name} and have made my life as a/an ${profession?.name}. I am of a/an ${stature?.name} stature, with a ${build?.name} build. I dress ${style?.name} and have ${eyes?.name} eyes, ${hair} hair and ${mark?.name}.`;
   }
 
-  getDispositions(character: Character): DispositionView[] {
-    return Object.keys(character.allegiances).map(i => {
-      const allegiance = this.data[DataTypes.ALLEGIANCES].find(j => j.id === +i);
-      const disposition = this.data[DataTypes.DISPOSITIONS].find(j => j.id === character.allegiances[+i]);
-      return {
-        name: allegiance?.name,
-        value: disposition?.name,
-        tooltip: disposition?.labels?.tooltip
-      };
-    });
-  }
+  // getDispositions(character: Character): DispositionView[] {
+  //   return Object.keys(character.allegiances).map(i => {
+  //     const allegiance = this.data[DataTypes.ALLEGIANCES].find(j => j.id === +i);
+  //     const disposition = this.data[DataTypes.DISPOSITIONS].find(j => j.id === character.allegiances[+i]);
+  //     return {
+  //       name: allegiance?.name,
+  //       value: disposition?.name,
+  //       tooltip: disposition?.labels?.tooltip
+  //     };
+  //   });
+  // }
 
   getLanguages(character: Character): Language[] {
     return this.data[DataTypes.LANGUAGES].filter(language => character.languages.includes(language.id));

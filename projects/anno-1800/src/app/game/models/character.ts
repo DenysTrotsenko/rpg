@@ -70,18 +70,4 @@ export interface Character {
   };
   tier: number;
   trait: number;
-  parameters: {
-    rp_total: number;
-    rp_used: number;
-    conflict: number;
-    belief_ranks: number;
-    flaw_ranks: number;
-    permanent_belief_ranks: number;
-    permanent_flaw_ranks: number;
-    damage: number;
-    peril: number;
-    moderate_injuries: number[];
-    serious_injuries: number[];
-    grievous_injuries: number[];
-  };
 }

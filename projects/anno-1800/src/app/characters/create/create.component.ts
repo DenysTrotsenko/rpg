@@ -126,20 +126,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         skills: new FormControl([]),
         talents: new FormControl([]),
       }),
-    }),
-    parameters: new FormGroup({
-      rp_total: new FormControl(0),
-      rp_used: new FormControl(0),
-      conflict: new FormControl(0),
-      belief_ranks: new FormControl(0),
-      flaw_ranks: new FormControl(0),
-      permanent_belief_ranks: new FormControl(0),
-      permanent_flaw_ranks: new FormControl(0),
-      damage: new FormControl(0),
-      peril: new FormControl(0),
-      moderate_injuries: new FormControl([]),
-      serious_injuries: new FormControl([]),
-      grievous_injuries: new FormControl([]),
     })
   });
 
