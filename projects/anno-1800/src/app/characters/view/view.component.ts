@@ -7,7 +7,7 @@ import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {Belief, Flaw, Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
@@ -22,6 +22,7 @@ interface SkillView { id: SkillId; name: string; type: SkillTypeId; value: numbe
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent implements OnDestroy {
+  readonly SKILL_TYPE_SPECIAL = SkillTypeId.SPECIAL;
   readonly form: FormGroup = new FormGroup({
     damage: new FormControl(0),
     peril: new FormControl(0),
@@ -47,6 +48,7 @@ export class ViewComponent implements OnDestroy {
         this.attributes = this.getAttributes(character);
         this.description = this.getDescription(character);
         this.languages = this.getLanguages(character);
+        this.personality = this.getPersonality(character);
         this.quirks = this.getQuirks(character);
         this.skills = this.getSkills(character);
         this.talents = this.getTalents(character);
@@ -63,6 +65,7 @@ export class ViewComponent implements OnDestroy {
   // dispositions: DispositionView[];
   description: string;
   languages: Language[];
+  personality: [Belief, Flaw];
   quirks: Quirk[];
   skills: SkillView[];
   talents: Talent[];
@@ -135,6 +138,13 @@ export class ViewComponent implements OnDestroy {
 
   getLanguages(character: Character): Language[] {
     return this.data[DataTypes.LANGUAGES].filter(language => character.languages.includes(language.id));
+  }
+
+  getPersonality(character: Character): [Belief, Flaw] {
+    return [
+      this.data[DataTypes.BELIEFS].find(i => i.id === character.belief),
+      this.data[DataTypes.FLAWS].find(i => i.id === character.flaw)
+    ];
   }
 
   getSkills(character: Character): SkillView[] {

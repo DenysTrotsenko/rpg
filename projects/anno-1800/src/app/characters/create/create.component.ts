@@ -95,14 +95,14 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       [AttributeId.INTELLIGENCE]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [AttributeId.WILLPOWER]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [AttributeId.FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
-    }, [Validators.required]),
+    }),
     archetype: new FormControl(ArchetypeId.COMMONER, [Validators.required]),
     trait: new FormControl(null, [Validators.required]),
     tier: new FormControl(this.TIERS[0].id, [Validators.required]),
     professions: new FormGroup({
       basic: new FormControl(null, [Validators.required]),
-      intermediate: new FormControl(null, [Validators.required]),
-      advanced: new FormControl(null, [Validators.required]),
+      intermediate: new FormControl(null),
+      advanced: new FormControl(null),
     }),
     advancements: new FormGroup({
       basic: new FormGroup({

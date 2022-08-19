@@ -28,7 +28,7 @@ export interface Allegiance {
   };
 }
 
-export interface Archetype {
+export interface Archetype extends HasId<ArchetypeId> {
   id: ArchetypeId;
   name: string;
   labels?: {
@@ -128,7 +128,7 @@ export interface Profession extends HasId<ProfessionId> {
   };
 }
 
-export interface Quirk {
+export interface Quirk extends HasId<QuirkId> {
   id: QuirkId;
   name: string;
   labels?: {

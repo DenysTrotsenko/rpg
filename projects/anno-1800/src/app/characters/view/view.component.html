@@ -17,6 +17,12 @@
       <i>{{description}}</i>
     </p>
     <p>
+      <b class="c-gray">Belief & Flaw:</b>
+      <span *ngFor="let i of personality;" class="comma-separated ws-pw" [matTooltip]="i.labels?.description">
+        {{i.name}}
+      </span>
+    </p>
+    <p>
       <b class="c-gray">Attributes:</b>
       <span *ngFor="let i of attributes;" class="comma-separated ws-pw">
         {{i.name}} {{i.value}}% ({{i.bonus}})
@@ -37,7 +43,7 @@
     <p>
       <b class="c-gray">Skills:</b>
       <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{i.name}}{{i.type === 2001 ? '*' : ''}} +{{i.value}}%
+        {{i.name}}{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}} +{{i.value}}%
       </span>
     </p>
     <p>
