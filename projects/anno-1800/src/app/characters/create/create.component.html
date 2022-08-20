@@ -3,10 +3,13 @@
 </mat-toolbar>
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.getRawValue())">
   <mat-card class="mb-15">
-    <mat-card-header>
-      <mat-card-title>Character Background</mat-card-title>
-    </mat-card-header>
     <mat-card-content class="d-f fd-c">
+      <mat-form-field appearance="outline">
+        <mat-label>Campaign</mat-label>
+        <mat-select formControlName="campaign">
+          <mat-option *ngFor="let i of campaigns$ | async" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">

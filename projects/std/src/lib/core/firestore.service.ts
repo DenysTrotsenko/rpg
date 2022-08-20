@@ -7,7 +7,9 @@ export class FirestoreService {
   constructor(private afs: AngularFirestore) {}
 
   collection<T>(path: string, fn = null): Observable<T[]> {
-    return this.afs.collection<T>(path, fn).valueChanges();
+    return !!fn
+      ? this.afs.collection<T>(path, fn).valueChanges()
+      : this.afs.collection<T>(path).valueChanges();
   }
 
   doc<T>(path: string): Observable<T> {

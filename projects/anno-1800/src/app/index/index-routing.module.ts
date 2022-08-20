@@ -18,15 +18,15 @@ const routes: Routes = [
       //   canActivate: [AuthGuard]
       // },
       {
+        path: 'campaigns',
+        loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule),
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'characters',
         loadChildren: () => import('../characters/characters.module').then(m => m.CharactersModule),
         canActivate: [AuthGuard]
       },
-      // {
-      //   path: 'campaigns',
-      //   loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule),
-      //   canActivate: [AuthGuard]
-      // },
       {
         path: 'references',
         loadChildren: () => import('../references/references.module').then(m => m.ReferencesModule),

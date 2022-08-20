@@ -30,6 +30,7 @@ import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-fre
 import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
+import {Campaign} from '@ti/app/game/models/campaign';
 // import {Disposition} from '@powered-by-zweihander/models';
 // import {DEFAULT_DISPOSITION_ID} from '@powered-by-zweihander/const';
 
@@ -63,6 +64,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
+    campaign: new FormControl(null, [Validators.required]),
     name: new FormControl('', [Validators.required]),
     miscellaneous: new FormGroup({
       portrait: new FormControl(null),
@@ -229,6 +231,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       }),
       shareReplay(1)
     );
+  readonly campaigns$: Observable<Campaign[]> = this.firestore.collection<Campaign>('campaigns');
 
   constructor(
     private readonly firestore: FirestoreService,
@@ -330,6 +333,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
+    if (!this.form.valid) { return; }
     this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
       .pipe(
         tap(() => this.router.navigate(['characters/list']))

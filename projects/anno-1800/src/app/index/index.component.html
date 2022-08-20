@@ -12,9 +12,9 @@
       </a>
     </mat-nav-list>
     <mat-nav-list *ngIf="logged$ | async" dense>
-<!--      <a mat-list-item routerLink="campaigns" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Campaigns' }}">-->
-<!--        <mat-icon>grade</mat-icon><span class="ml-10 not-expanded-hide">Campaigns</span>-->
-<!--      </a>-->
+      <a mat-list-item routerLink="campaigns" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Campaigns' }}">
+        <mat-icon>grade</mat-icon><span class="ml-10 not-expanded-hide">Campaigns</span>
+      </a>
       <a mat-list-item routerLink="characters" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Characters' }}">
         <mat-icon>group</mat-icon><span class="ml-10 not-expanded-hide">Characters</span>
       </a>

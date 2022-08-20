@@ -1,0 +1,11 @@
+<mat-nav-list>
+  <mat-list-item>
+    <a matLine routerLink="../create">Create Campaign</a>
+  </mat-list-item>
+  <mat-list-item *ngFor="let i of campaigns$ | async">
+    <span matLine (click)="onSelectClick(i)">{{i.name}}</span>
+    <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

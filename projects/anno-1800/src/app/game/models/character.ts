@@ -4,6 +4,7 @@ import {AllegianceId} from '@pbz-1850/enums';
 
 export interface Character {
   id: string;
+  campaign: string;
   advancements: {
     advanced: {
       bonuses: AttributeId[];
