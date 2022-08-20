@@ -1,12 +1,12 @@
 <mat-toolbar class="toolbar-main">
   <h1>Character View</h1>
-  <span class="f-1"></span>
-  <button *ngIf="view$ | async as view"
-    mat-icon-button
-    (click)="view$.next(view === 'full' ? 'concise' : 'full')"
-    [matTooltip]="view === 'full' ? 'Concise View' : 'Full View'">
-    <mat-icon>{{view === 'full' ? 'unfold_less' : 'unfold_more'}}</mat-icon>
-  </button>
+<!--  <span class="f-1"></span>-->
+<!--  <button *ngIf="view$ | async as view"-->
+<!--    mat-icon-button-->
+<!--    (click)="view$.next(view === 'full' ? 'concise' : 'full')"-->
+<!--    [matTooltip]="view === 'full' ? 'Concise View' : 'Full View'">-->
+<!--    <mat-icon>{{view === 'full' ? 'unfold_less' : 'unfold_more'}}</mat-icon>-->
+<!--  </button>-->
 </mat-toolbar>
 <ng-container *ngIf="character$ | async as character;">
   <ng-container *ngIf="(view$ | async) === 'concise'">
@@ -50,14 +50,16 @@
       <b class="c-gray">Attributes & Skills:</b>
     </p>
     <table class="mat-table w-100 mb-15">
-      <tr class="mat-row">
+      <tr class="mat-row va-t h-32">
         <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
       </tr>
       <tr class="mat-row">
         <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
           <div class="d-f fd-c">
-            <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById" [matTooltip]="j.tooltip">
-              {{j.name}}<span class="c-amber">{{j.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span> +{{j.value}}%
+            <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById"
+              [class.c-gray]="j.type === SKILL_TYPE_SPECIAL && j.value === 0"
+              [matTooltip]="j.tooltip">
+              {{j.name}}{{j.type === SKILL_TYPE_SPECIAL ? '*' : ''}} +{{j.value}}%
             </span>
           </div>
         </td>
