@@ -12,9 +12,21 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 
-interface AttributeView { name: string; value: number; bonus: number; }
-interface DispositionView { name: string; value: string; tooltip: string; }
-interface SkillView { id: SkillId; name: string; type: SkillTypeId; value: number; tooltip: string; }
+interface AttributeView {
+  id: AttributeId;
+  name: string;
+  value: number;
+  bonus: number;
+}
+// interface DispositionView { name: string; value: string; tooltip: string; }
+interface SkillView {
+  id: SkillId;
+  name: string;
+  type: SkillTypeId;
+  attribute: AttributeId;
+  value: number;
+  tooltip: string;
+}
 
 @Component({
   templateUrl: './view.component.html',
@@ -89,11 +101,22 @@ export class ViewComponent implements OnDestroy {
   }
 
   getAttributes(character: Character): AttributeView[] {
-    return Object.entries(character.attributes).map(entry => ({
-      name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
-      value: +entry[1],
-      bonus: getBonusFromAttribute(+entry[1])
-    }));
+    const advancements: AttributeId[] = [
+      ...character.advancements.basic.bonuses,
+      ...character.advancements.intermediate.bonuses,
+      ...character.advancements.advanced.bonuses
+    ];
+
+    return Object.entries(character.attributes).map(entry => {
+      const id = +entry[0];
+      const value = +entry[1];
+      return {
+        id,
+        name: ATTRIBUTES.find(i => i.id === id).name,
+        value,
+        bonus: getBonusFromAttribute(value) + advancements.filter(i => i === id).length
+      };
+    });
   }
 
   getDescription(character: Character): string {
@@ -148,7 +171,7 @@ export class ViewComponent implements OnDestroy {
   }
 
   getSkills(character: Character): SkillView[] {
-    const skills: SkillId[] = [
+    const advancements: SkillId[] = [
       ...character.advancements.basic.skills,
       ...character.advancements.intermediate.skills,
       ...character.advancements.advanced.skills
@@ -157,7 +180,8 @@ export class ViewComponent implements OnDestroy {
       id: skill.id,
       name: skill.name,
       type: skill.type,
-      value: skills.filter(i => i === skill.id).length * 10,
+      attribute: skill.attribute,
+      value: advancements.filter(i => i === skill.id).length * 10,
       tooltip: skill.labels?.tooltip
     }));
   }
@@ -188,6 +212,12 @@ export class ViewComponent implements OnDestroy {
       ...character.advancements.advanced.quirks
     ];
     return this.data[DataTypes.QUIRKS].filter(i => quirks.includes(i.id));
+  }
+
+  filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {
+    console.log(skills);
+    console.log(id);
+    return skills.filter(skill => skill.attribute === id);
   }
 
   trackById(_, item): number {

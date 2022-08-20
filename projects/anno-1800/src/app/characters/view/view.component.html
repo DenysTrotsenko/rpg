@@ -22,12 +22,6 @@
         {{i.name}}
       </span>
     </p>
-    <p>
-      <b class="c-gray">Attributes:</b>
-      <span *ngFor="let i of attributes;" class="comma-separated ws-pw">
-        {{i.name}} {{i.value}}% ({{i.bonus}})
-      </span>
-    </p>
 <!--    <p>-->
 <!--      <b class="c-gray">Dispositions:</b>-->
 <!--      <span *ngFor="let i of dispositions;" class="comma-separated ws-pw" [matTooltip]="i.tooltip">-->
@@ -40,12 +34,37 @@
         {{i.name}}
       </span>
     </p>
-    <p>
-      <b class="c-gray">Skills:</b>
-      <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">
-        {{i.name}}{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}} +{{i.value}}%
-      </span>
+<!--    <p>-->
+<!--      <b class="c-gray">Attributes:</b>-->
+<!--      <span *ngFor="let i of attributes; trackBy: trackById;" class="comma-separated ws-pw">-->
+<!--        {{i.name}} {{i.value}}% ({{i.bonus}})-->
+<!--      </span>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <b class="c-gray">Skills:</b>-->
+<!--      <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">-->
+<!--        {{i.name}}<span class="c-amber">{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span> +{{i.value}}%-->
+<!--      </span>-->
+<!--    </p>-->
+    <p class="mb-0">
+      <b class="c-gray">Attributes & Skills:</b>
     </p>
+    <table class="mat-table w-100 mb-15">
+      <tr class="mat-row">
+        <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
+      </tr>
+      <tr class="mat-row">
+        <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
+          <div class="d-f fd-c">
+            <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById" [matTooltip]="j.tooltip">
+              {{j.name}}<span class="c-amber">{{j.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span> +{{j.value}}%
+            </span>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
     <p>
       <b class="c-gray">Talents:</b>
       <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">

@@ -3,7 +3,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title class="ff-g">
         {{i.name}}
-        <span class="c-cyan">{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span>
+        <span class="c-amber">{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span>
         <span class="ml-10 c-gray"> ({{(i.attribute | getById: 'attributes').name}})</span>
       </mat-panel-title>
     </mat-expansion-panel-header>

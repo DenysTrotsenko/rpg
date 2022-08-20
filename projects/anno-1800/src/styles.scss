@@ -10,8 +10,9 @@
 @include mat.all-component-themes($app-theme);
 
 // *****
-
 table.mat-table {
+  background: none;
+  border-spacing: 5px;
   border: 1px solid gray;
   border-radius: 4px;
 
