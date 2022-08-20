@@ -117,7 +117,8 @@ export class DataService {
     const attribute: Attribute = this[DataTypes.ATTRIBUTES].find(i => i.id === skill.attribute);
     return [
       `${skill.name} ${skill.type === 2 ? '*' : ''} (${attribute.name})\n`,
-      `${skill.labels?.description}`,
+      `${skill.labels?.description}\n`,
+      `${skill.labels?.difficulties}`,
     ].join('\n');
   }
 
