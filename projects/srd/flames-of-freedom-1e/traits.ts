@@ -7,7 +7,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ITS_OWN_REWARD,
     name: 'Its Own Reward',
     labels: {
-      description: '',
+      description: 'Nothing in life that’s worth anything is easy.',
       effect: 'You never suffer Peril because of failed or Critically Failed Toughness Tests.'
     },
   },
@@ -15,7 +15,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.JACK_OF_ALL_TRADES,
     name: 'Jack Of All Trades',
     labels: {
-      description: '',
+      description: 'I’ve always had a knack for learning.',
       effect: 'Add +5% Base Chance to any Skill you don’t have a Skill Rank in.'
     }
   },
@@ -23,7 +23,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.KEEP_IT_SIMPLE,
     name: 'Keep It Simple',
     labels: {
-      description: '',
+      description: 'A famous man once said, “ Those who expect to reap the blessings of freedom must undergo the fatigues of supporting it.”',
       effect: 'When in combat, you never gain Conflict because of failed and Critically Failed Skill Tests, nor from Injuries.'
     }
   },
@@ -31,7 +31,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LOW_PROFILE,
     name: 'Low Profile',
     labels: {
-      description: '',
+      description: 'I try to stay out of other peoples’ way by keeping to myself.',
       effect: 'All threats classified as Humanoid (including player cultures) suffer a -20% Base Chance to hit you until you initiate violence toward them or their allies.'
     }
   },
@@ -39,7 +39,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MAKESHIFT_TOOLS,
     name: 'Makeshift Tools',
     labels: {
-      description: '',
+      description: 'I’ve got a real ‘get ’er done’ attitude and don’t tarry over the details.',
       effect: 'You can construct any tool smaller than an ox with materials you have on-hand without fail. After using the tool once, roll a 1D6 Chaos Die. On a result of face ‘1-5,’ nothing happens. On a result of face ‘6,’ the tool breaks and its user suffers 2D10+2 Peril.'
     }
   },
@@ -47,7 +47,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.NOSE_TO_THE_GRINDSTONE,
     name: 'Nose To The Grindstone',
     labels: {
-      description: '',
+      description: 'I always say, “When the going gets tough, the tough get going.”',
       effect: 'Whenever you triple the time required to make a Skill Test, ignore Peril Condition Track penalties when calculating Total Chance for success.'
     }
   },
@@ -55,7 +55,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SALT_OF_THE_EARTH,
     name: 'Salt Of The Earth',
     labels: {
-      description: '',
+      description: 'My beginnings were humble, and people readily forgive my transgressions.',
       effect: 'Whenever you fail a Bargain or Rumor Test, re- roll to generate a better result (but you must accept the outcome).'
     }
   },
@@ -63,7 +63,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SHOW_THE_HEELS,
     name: 'Show The Heels',
     labels: {
-      description: '',
+      description: 'It’s better to run and survive than to stay behind to die.',
       effect: 'Whenever you Charge or Run, add +6 yards to Movement on foot.'
     }
   },
@@ -71,7 +71,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SKELETON_KEY,
     name: 'Skeleton Key',
     labels: {
-      description: '',
+      description: 'To call me overprepared is a vast understatement; I’m ready for anything you throw my way.',
       effect: 'Providing you can narratively justify it, you can substitute any Primary Attribute in place of another when making a Skill Test.'
     }
   },
@@ -79,7 +79,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WORK_WORK_WORK,
     name: 'Work, Work, Work',
     labels: {
-      description: '',
+      description: 'There’s always something left to do during the day, some tasks left incomplete.',
       effect: 'You do not suffer the ill-effects of Peril until you are at ‘Ignore 3 Skill Ranks’ on the Peril Condition Track.'
     }
   },
@@ -87,7 +87,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.A_TALL_TALE,
     name: 'A Tall Tale',
     labels: {
-      description: '',
+      description: 'I was born ‘bigger’ than most others—what big means is relative, I suppose.',
       effect: 'Are you abnormally short or extraordinarily tall? Choose one. If Tall, you automatically inflict Moderate Injuries when fighting bare-handed in combat, but permanently reduce your Initiative by -1. If Slight, permanently add +1 to your Damage Threshold, but you cannot use two-handed melee weapons. When you come to determining stature, select the aforementioned size.'
     }
   },
@@ -95,7 +95,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DIAMOND_IN_THE_ROUGH,
     name: 'Diamond In The Rough',
     labels: {
-      description: '',
+      description: 'Be at war with your vices, at peace with your neighbors and let every new year find you a better person.',
       effect: 'Immediately after you suffer Damage from a melee or ranged weapon, spend a Coin to ignore it.'
     }
   },
@@ -103,7 +103,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FORTUITOUS_OUTCOMES,
     name: 'Fortuitous Outcomes',
     labels: {
-      description: '',
+      description: 'Touched by the darkness, but yet, I persist.',
       effect: 'Whenever you gain an Affliction, immediately gain one Belief Rank. You’ll learn more about Afflictions in Article 8: Healing, Hazards & Horror.'
     }
   },
@@ -111,7 +111,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FRONTIER_WALKER,
     name: 'Frontier-Walker',
     labels: {
-      description: '',
+      description: 'I have learned the most important lesson of traveling in the wild—leave no evidence, extinguish the fire and stagger ones’ steps to avoid being found.',
       effect: 'When moving through uninhabited rural areas, you leave no trace of your passing and cannot be found with Skills or Spells.'
     }
   },
@@ -119,7 +119,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.GUT_FOUNDED,
     name: 'Gut Founded',
     labels: {
-      description: '',
+      description: 'Whether I’m in the frontier or the cold climes of New France, I always find a way to survive.',
       effect: 'In rural areas, you can always provide yourself with food and water to live on, never suffering from the effects of Starvation.'
     }
   },
@@ -127,7 +127,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HANDS_OF_A_HEALER,
     name: 'Hands Of A Healer',
     labels: {
-      description: '',
+      description: 'I have medical stigmata on my hands, and these have been present in our family.',
       effect: 'Whenever you fail or Critically Fail a Heal Test, spend a Coin to turn it into a Critical Success.'
     }
   },
@@ -135,7 +135,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HIT_THE_HAY,
     name: 'Hit The Hay',
     labels: {
-      description: '',
+      description: 'I can sleep anywhere: on the road, in the back alley and even with one eye closed on horseback.',
       effect: 'You only need three hours of Sleep to restore your Peril Condition Track. In addition, you are always restored to Unhindered after Sleeping, even in unsafe places or when traveling.'
     }
   },
@@ -143,7 +143,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SHADOWS_BEGONE,
     name: 'Shadows Begone',
     labels: {
-      description: '',
+      description: 'I was born with a gift, one that runs deep in our family.',
       effect: 'You treat Total Darkness as if it is Perfect Light, able to see in the dark.'
     }
   },
@@ -151,7 +151,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SLEEP_TIGHT,
     name: 'Sleep Tight',
     labels: {
-      description: '',
+      description: 'While the hand of a Barber or laudanum would be appreciated, I generally get by on my own.',
       effect: 'Whenever you awaken from six hours of Sleep, you move one step up the Damage Condition Track positively.'
     }
   },
@@ -159,7 +159,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TO_THE_BITTER_END,
     name: 'To The Bitter End',
     labels: {
-      description: '',
+      description: 'Those that can have patience can have what will be.',
       effect: 'Whenever rolling to determine which Injury you suffer, roll twice and choose the preferred results.'
     }
   },
@@ -167,7 +167,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BY_THE_BOOK,
     name: 'By The Book',
     labels: {
-      description: '',
+      description: 'There is a process and a procedure to everything.',
       effect: 'You treat all Special Skills as Common Skills.'
     }
   },
@@ -175,7 +175,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.CHAOS_IS_A_LADDER,
     name: 'Chaos Is A Ladder',
     labels: {
-      description: '',
+      description: 'In moments of violence, I can sense an opportunity.',
       effect: 'Whenever combat begins, you always gain the benefits of Surprise on your first Turn.'
     }
   },
@@ -183,7 +183,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ENCYCLOPEDIC_MEMORY,
     name: 'Encyclopedic Memory',
     labels: {
-      description: '',
+      description: 'I can absorb numbers and cipher at an alarming rate.',
       effect: 'When attempting to recall written numbers or copy content, you automatically succeed at the Skill Test.'
     }
   },
@@ -191,7 +191,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ENFANT_TERRIBLE,
     name: 'Enfant Terrible',
     labels: {
-      description: '',
+      description: 'My ways may be unorthodox and shocking, but it gets things done.',
       effect: 'Whenever someone fails an Intelligence-based Skill Test, you can interject and have them re-roll using your Base Chance without spending Coins. However, they gain 3 Conflict.'
     }
   },
@@ -199,7 +199,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FIT_AS_A_FIDDLE,
     name: 'Fit As A Fiddle',
     labels: {
-      description: '',
+      description: '“Cleanliness is next to godliness,” as they say.',
       effect: 'You are immune to Smallpox. Whenever you are exposed to an Ailment, sacrifice one Determination to become immune to it.'
     }
   },
@@ -207,7 +207,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HOLD_ON_A_MOMENT,
     name: 'Hold On A Moment',
     labels: {
-      description: '',
+      description: 'Surely, we can f ind a way out of this mess that’s both beneficial for you and us ...',
       effect: 'Foes will never attack you on their first Turn of combat.'
     }
   },
@@ -215,7 +215,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.KNOWLEDGE_IS_POWER,
     name: 'Knowledge Is Power',
     labels: {
-      description: '',
+      description: 'My words may be frightening, yes, but that’s precisely the point.',
       effect: 'When you succeed at an Education Test, spend a Coin to provoke Stress in one foe who can see and hear you clearly.'
     }
   },
@@ -223,7 +223,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LOGICIAN,
     name: 'Logician',
     labels: {
-      description: '',
+      description: 'I’ve learned the patterns of magic and can break it down into simple arithmetic.',
       effect: 'You may substitute Education when it comes to Resisting Spells and Spell-like effects.'
     }
   },
@@ -231,7 +231,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.STIFF_UPPER_LIP,
     name: 'Stiff Upper Lip',
     labels: {
-      description: '',
+      description: 'I’m just biding my time until the moment is ready to strike.',
       effect: 'When in a social situation, you never gain Conflict because of failed or Critically Failed Skill Tests.'
     }
   },
@@ -239,7 +239,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TONGUE_LASHING,
     name: 'Tongue-Lashing',
     labels: {
-      description: '',
+      description: 'As you grace death’s door, let me enumerate the ways in which you’ll be tormented...',
       effect: 'Whenever you inflict an Injury, your foe moves one step down the Peril Condition Track negatively if they suffer a Moderate Injury; two steps down if a Serious Injury; or, three steps down if a Grievous Injury. This only works on foes who can see and hear you clearly.'
     }
   },
@@ -247,7 +247,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BETTER_LUCKY_THAN_GOOD,
     name: 'Better Lucky Than Good',
     labels: {
-      description: '',
+      description: 'Some higher power is looking out for me, thank God.',
       effect: 'Whenever you spend a Coin to re-roll a Skill Test, if you fail the Test, put the Coin back into your respective pool (but you must accept the results of the die roll).'
     }
   },
@@ -255,7 +255,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DEAD_TO_RIGHTS,
     name: 'Dead To Rights',
     labels: {
-      description: '',
+      description: 'Snooping, cheating and stealing are my most valuable assets.',
       effect: 'Any Skill Rank you gain in Eavesdrop, Guile and Skulduggery modify your Base Chance by +15, instead of +10.'
     }
   },
@@ -263,7 +263,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ENTREPRENEURIAL_SPIRIT,
     name: 'Entrepreneurial Spirit',
     labels: {
-      description: '',
+      description: 'Flattery will get me everywhere.',
       effect: 'Whenever you succeed at Skill Test to cheat, lie or steal, roll a D6 Chaos Die. If it lands on face ‘6,’ move one Coin from one Pool into another Pool.'
     }
   },
@@ -271,7 +271,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FAKE_IT_TILL_I_MAKE_IT,
     name: 'Fake It Till I Make It',
     labels: {
-      description: '',
+      description: 'I’m good at pretending; it does what it says on the tin.',
       effect: 'You never suffer the effects of Critical Failures in Skills you don’t have Skill Ranks in.'
     }
   },
@@ -279,7 +279,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.MOSTLY_HARMLESS,
     name: 'Mostly Harmless',
     labels: {
-      description: '',
+      description: 'If I just lie here and pretend to be hurt, they’ll think I’m dead or at worst harmless...',
       effect: 'Add +1 to your Damage & Peril Thresholds.'
     }
   },
@@ -287,7 +287,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TAKE_A_MULLIGAN,
     name: 'Take A Mulligan',
     labels: {
-      description: '',
+      description: 'If at first I don’t succeed, I’ll try, try again.',
       effect: 'Whenever you spend a Coin to re-roll a Skill Test and fail, re-roll a final time (but you must accept the results of this final roll).'
     }
   },
@@ -295,7 +295,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TREACHERY,
     name: 'Treachery',
     labels: {
-      description: '',
+      description: 'I’ve learned to read people and know when to act treacherously, catching them unaware.',
       effect: 'Whenever you deal Damage against a foe for the first time, add a 1D6 Fury Die to Total Damage. You can take advantage of this in combat by switching between multiple foes.'
     }
   },
@@ -303,7 +303,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.RING_OF_TRUTH,
     name: 'Ring Of Truth',
     labels: {
-      description: '',
+      description: 'As Thomas Paine said, “Of more worth is one honest person to society and in the sight of God, than all the crowned ruffians.”',
       effect: 'Add an Assist Die whenever you make Guile Tests. In addition, you always succeed at Skill Tests to tell lies.'
     }
   },
@@ -311,7 +311,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WINDFALL,
     name: 'Windfall',
     labels: {
-      description: '',
+      description: 'The wheel turns and turns, in favor of the just and the unjust alike.',
       effect: 'Anytime you generate a Critical Failure, gain a Coin for yourself. Once spent, discard it permanently. It must be used before the end of the game session, or else it expires.'
     }
   },
@@ -327,7 +327,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ABRACADABRA,
     name: 'Abracadabra',
     labels: {
-      description: '',
+      description: 'It’s difficult to be discovered if you’re keeping to yourself and moving among the crowds.',
       effect: 'When moving through crowded urban areas, you leave no trace of your passing and cannot be found with Skills or Spells.'
     }
   },
@@ -335,7 +335,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ABSOLUTION,
     name: 'Absolution',
     labels: {
-      description: '',
+      description: 'Mine own sins shall be forgotten, for I carry a light which cannot be extinguished within.',
       effect: 'You never gain Conflict for actions you can justify to the Historian are religiously or spiritually motivated.'
     }
   },
@@ -343,7 +343,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DEVIL_IN_THE_EYE,
     name: 'Devil In The Eye',
     labels: {
-      description: '',
+      description: 'I’ve always spoken with the shadows, and they speak to me of a greater darkness at play here.',
       effect: 'You can use any Fellowship-based Skill to directly communicate with Abyssal threats you can see and hear clearly. This empathy acts as an all but paranormal type of communication, the complexity determined by the Historian. In addition, you are immune to being Compelled (a Trait that some threats possess).'
     }
   },
@@ -351,7 +351,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.HAND_OF_GOD,
     name: 'Hand Of God',
     labels: {
-      description: '',
+      description: 'There’s a power inside of me that I don’t yet understand, but it’s urging me to pick up iron to fight against the shadow...',
       effect: 'Any weapon you hold is treated as magically enhanced for purposes of striking threats that can only be affected by Spells or weapons imbued with it.'
     }
   },
@@ -359,7 +359,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.NO_ILLUSIONS,
     name: 'No Illusions',
     labels: {
-      description: '',
+      description: 'Conjurers of cheap tricks cannot persuade me!',
       effect: 'You are immune to mind control and can see through illusions.'
     }
   },
@@ -367,7 +367,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.RITUALISTIC,
     name: 'Ritualistic',
     labels: {
-      description: '',
+      description: 'I begin my mornings in prayer, giving thanks and offering succor for the bounty provided.',
       effect: 'Whenever you awaken from six hours Sleep, make a Resolve Test to pray. If successful, you add +1 to three different Bonus Advances until you rest once again. These effects are not cumulative day over day.'
     }
   },
@@ -375,7 +375,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SECOND_SIGHT,
     name: 'Second Sight',
     labels: {
-      description: '',
+      description: 'I have a gift that’s been passed down generations; I can see the ghosts that haunt these halls.',
       effect: 'With a successful Scrutinize Test, you can detect the presence of supernatural phenomena nearby. If you Critically Succeed this Skill Test, you can accurately track where the phenomena is (as if you were tracking someone using Survival).'
     }
   },
@@ -383,7 +383,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TWIST_OF_FATE,
     name: 'Twist Of Fate',
     labels: {
-      description: '',
+      description: 'I can see where the warp and weft of the world come together, and with a simple tug, I can cause it to come unraveled.',
       effect: 'Whenever you spend a Coin, roll a 1D6 Chaos Die. If the result is face ‘6,’ the Coin doesn’t convert to the other pool.'
     }
   },
@@ -391,7 +391,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WELL_GROUNDED,
     name: 'Well-Grounded',
     labels: {
-      description: '',
+      description: 'I have walked in the world of spirits, and the stain they leave on others’ souls I am able to simply shrug off.',
       effect: 'Whenever you suffer from Stress, Fear and Terror provoked by threats classified as Supernatural, you do not gain Conflict.'
     }
   },
@@ -399,7 +399,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.WITCHES_MARK,
     name: 'Witches’ Mark',
     labels: {
-      description: '',
+      description: 'I carry a terrible gift... one that could get me strung from a bridge if discovered.',
       effect: ' Whenever you fail or Critically Fail an Incantation Test, you may turn it into a Critical Success. You move one step down the Peril Condition Track negatively as a result.'
     }
   },
@@ -407,7 +407,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BETWEEN_TWO_WORLDS,
     name: 'Between Two Worlds',
     labels: {
-      description: '',
+      description: 'In these streets, I have seen things you couldn’t imagine— things best left unspoken.',
       effect: 'Immediately after you suffer Peril from a threat classified as Abyssal, Supernatural or other situations deemed otherworldly, spend a Coin to ignore it.'
     }
   },
@@ -415,7 +415,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.DYED_IN_THE_WOOL,
     name: 'Dyed In The Wool',
     labels: {
-      description: '',
+      description: 'My ways aren’t capricious; I believe in what I believe.',
       effect: 'Whenever you gain Conflict, decrease the number you gain by three (to a minimum of 1). This means that if you gain 6 Conflict, you gain 3 instead.'
     }
   },
@@ -423,7 +423,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.E_PLURIBUS_UNUM,
     name: 'E Pluribus Unum',
     labels: {
-      description: '',
+      description: 'Out of the many, there is one — one union, one strength and one that’s strengthened by our diversity.',
       effect: 'Whenever you Assist Skill Tests, the ally you’re helping gains one additional Assist Die.'
     }
   },
@@ -431,7 +431,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FOSTERING_COMMUNITY,
     name: 'Fostering Community',
     labels: {
-      description: '',
+      description: '“Talk less, smile more” is the best way to navigate the politics of our time.',
       effect: 'Whenever using social-based Skill Tests, gain two Assist Dice, using the best of all the results you roll.'
     }
   },
@@ -439,7 +439,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LEVEL_HEADED,
     name: 'Level-Headed',
     labels: {
-      description: '',
+      description: 'When it comes to resolving the hardships we’ve wrought, I’m less inclined to give in to melancholy.',
       effect: 'At the end of the game session, roll two Conflict Dice and choose the preferred results.'
     }
   },
@@ -447,7 +447,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.PEOPLE_PERSON,
     name: 'People Person',
     labels: {
-      description: '',
+      description: 'Don’t call me an effete doodle; I just like rubbing shoulders with everyone... and know what makes them tick.',
       effect: 'You can sway any number of people who can clearly see and hear you with Fellowship-based Skill Tests. This includes actions such as Words As Weapons in combat.'
     }
   },
@@ -455,7 +455,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SELF_RELIANT,
     name: 'Self-Reliant',
     labels: {
-      description: '',
+      description: 'I always persevere, despite my circumstances.',
       effect: 'You never have to spend money on clothing, food or lodging, as you always have enough spare coins to pay for yourself and stable a horse.'
     }
   },
@@ -463,7 +463,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SEVENTH_SENSE,
     name: 'Seventh Sense',
     labels: {
-      description: '',
+      description: 'I understand how to cultivate relationships and feel for the possibilities and nuances of societies and their expectations.',
       effect: 'Whenever you interact with others using Fellowship-based Skill Tests, treat their Social Disposition as Helpful. You can learn more about Dispositions in Article 6: Narrative Tools.'
     }
   },
@@ -471,7 +471,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.TITAN_OF_INDUSTRY,
     name: 'Titan Of Industry',
     labels: {
-      description: '',
+      description: 'My handiwork is unparalleled, and you’ve likely seen my maker’s mark before.',
       effect: 'Any object you craft with your own hands cannot be broken or destroyed by normal means.'
     }
   },
@@ -479,7 +479,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.VOX_POPULI,
     name: 'Vox Populi',
     labels: {
-      description: '',
+      description: 'Friends, people of Boston, countryfolk — lend me your ears!',
       effect: 'Treat each Bonus Advance in Fellowship Bonus [FB] as if it were three times its normal value.This means if you had a [FB] 6, treat it as [FB] 18 instead.'
     }
   },
@@ -487,7 +487,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.ARMED_TO_THE_TEETH,
     name: 'Armed To The Teeth',
     labels: {
-      description: '',
+      description: 'Anything — and I mean anything — I pick up I can turn into a deadly weapon.',
       effect: 'Add both the Punishing and Vicious Qualities to any melee weapons you wield.'
     }
   },
@@ -495,7 +495,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BATTLE_HYMN,
     name: 'Battle Hymn',
     labels: {
-      description: '',
+      description: 'Behold, growing strong and revered!',
       effect: 'Whenever you suffer an Injury, immediately move one step up the Damage & Peril Condition Tracks positively.'
     }
   },
@@ -503,7 +503,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BITE_THE_BULLET,
     name: 'Bite The Bullet',
     labels: {
-      description: '',
+      description: 'I power through the pain to get the job done.',
       effect: 'Whenever you suffer an Injury, ignore its effects until one hour later.'
     }
   },
@@ -511,7 +511,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.BLOODY_MINDED,
     name: 'Bloody-Minded',
     labels: {
-      description: '',
+      description: 'Feh, you don’t scare me — I’m just biding my time for the right moment to strike back.',
       effect: 'You do not flinch from scenes of blood and viscera, nor gain Conflict because of it.'
     }
   },
@@ -519,7 +519,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.FEATHER_IN_THE_CAP,
     name: 'Feather In The Cap',
     labels: {
-      description: '',
+      description: 'I’m a decorated warrior and earned every accolade I wear.',
       effect: ' Immediately gain 1 Determination.'
     }
   },
@@ -527,7 +527,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LIBERTY_OR_DEATH,
     name: 'Liberty Or Death',
     labels: {
-      description: '',
+      description: 'We fight, get beat, rise and fight again.',
       effect: 'Whenever you would be Slain!, you gain 3 Action Points that must be used immediately. If you kill the foe who slew you, you are Grievously Wounded instead.'
     }
   },
@@ -535,7 +535,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.LOCK_STOCK_AND_BARREL,
     name: 'Lock, Stock & Barrel',
     labels: {
-      description: '',
+      description: 'I’ve got everything a marksman needs to execute a foe at range.',
       effect: 'When you use Fury Dice to determine ranged weapon Damage, the dice explode on face ‘5–6.’'
     }
   },
@@ -551,7 +551,7 @@ export const TRAITS: Trait[] = [
     id: TraitId.SET_MY_SIGHTS,
     name: 'Set My Sights',
     labels: {
-      description: 'Don’t f ire until you see the whites of their eyes, then fire low!',
+      description: 'Don’t fire until you see the whites of their eyes, then fire low!',
       effect: 'Whenever you inflict Damage from a Targeted Attack, they also suffer an equal amount of Peril.'
     }
   },
