@@ -215,8 +215,6 @@ export class ViewComponent implements OnDestroy {
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {
-    console.log(skills);
-    console.log(id);
     return skills.filter(skill => skill.attribute === id);
   }
 
