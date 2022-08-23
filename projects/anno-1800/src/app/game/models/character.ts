@@ -1,6 +1,5 @@
 import {ArchetypeId, AttributeId, BeliefId, CultureId, FlawId, QuirkId, SkillId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {AllegianceId} from '@pbz-1850/enums';
-// import {DispositionId} from '@powered-by-zweihander/enums';
 
 export interface Character {
   id: string;
@@ -28,9 +27,6 @@ export interface Character {
       traits: TraitId[];
     };
   };
-  // allegiances: {
-  //   [I in AllegianceId]: DispositionId;
-  // };
   allegiances: AllegianceId[];
   archetype: ArchetypeId;
   attributes: {

@@ -43,6 +43,16 @@ import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, 
 import { TIERS } from '@flames-of-freedom-1e/tiers';
 import { LANGUAGES } from '@flames-of-freedom-1e/languages';
 import {DISPOSITIONS} from '@powered-by-zweihander/dispositions';
+import {Observable} from 'rxjs';
+import {Campaign} from '@ti/app/game/models/campaign';
+import {shareReplay, switchMap} from 'rxjs/operators';
+import {Character} from '@ti/app/game/models/character';
+import {AuthService, FirestoreService} from '@shared';
+
+export enum FirestoreCollection {
+  CHARACTERS = 'characters',
+  CAMPAIGNS = 'campaigns'
+}
 
 export enum DataTypes {
   AGES = 'ages',
@@ -75,6 +85,28 @@ export enum DataTypes {
   providedIn: 'root'
 })
 export class DataService {
+  readonly campaignsAll$: Observable<Campaign[]> = this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS).pipe(
+    shareReplay(1)
+  );
+  readonly campaignsOwn$: Observable<Campaign[]> = this.auth.auth$.pipe(
+    switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
+  );
+  readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
+    shareReplay(1)
+  );
+  readonly charactersOwn$: Observable<Character[]> = this.auth.auth$.pipe(
+    switchMap(user => this.firestore.collection<Character>(
+      FirestoreCollection.CHARACTERS, ref => ref.where('author', '==', user.uid)
+    )),
+    shareReplay(1)
+  );
+  readonly charactersOwnAndMaster$: Observable<Character[]> = this.auth.auth$.pipe(
+    switchMap(user => this.firestore.collection<Character>(
+      FirestoreCollection.CHARACTERS, ref => ref.where('authors', 'array-contains', user.uid)
+    )),
+    shareReplay(1)
+  );
+
   readonly [DataTypes.AGES]: Age[] = AGES;
   readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
   readonly [DataTypes.ARCHETYPES]: Archetype[] = ARCHETYPES;
@@ -111,6 +143,11 @@ export class DataService {
     i.labels.tooltip = this.getTraitTooltip(i.id);
     return i;
   });
+
+  constructor(
+    private readonly auth: AuthService,
+    private readonly firestore: FirestoreService
+  ) {}
 
   private getSkillTooltip(id: SkillId): string {
     const skill: Skill = SKILLS.find(i => i.id === id);

@@ -1,10 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {combineLatest, Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { AuthService, DialogService, FirestoreService, getId } from '@shared';
+import { AuthService, DialogService, FirestoreService } from '@shared';
 import { Character } from '@ti/app/game/models/character';
-import { Campaign } from '@ti/app/game/models/campaign';
+import {DataService} from '@ti/app/game/data.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -12,33 +11,14 @@ import { Campaign } from '@ti/app/game/models/campaign';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly campaigns$: Observable<Campaign[]> = this.firestore.collection<Campaign>('campaigns');
-  readonly characters$: Observable<Character[]> = combineLatest([
-    this.campaigns$, this.auth.auth$
-  ]).pipe(
-    switchMap(([campaigns, user]) => {
-      console.log('HERE!');
-      const author = user.uid;
-      const master = campaigns.filter(i => i.author === user.uid).map(i => i.id);
-      return this.firestore
-        .collection<Character>('characters', ref => ref.where('author', '==', author) || ref.where('campaign', 'in', master));
-    })
-  );
+  readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
 
   constructor(
     private readonly auth: AuthService,
+    private readonly data: DataService,
     private readonly dialog: DialogService,
-    private readonly firestore: FirestoreService,
-    private readonly route: ActivatedRoute
+    private readonly firestore: FirestoreService
   ) {}
-
-  onCloneClick(i: Character): void {
-    const id = getId();
-    const name = `${i.name} ${id}`;
-    const author = this.route.snapshot.data?.user?.uid;
-
-    this.firestore.update(`characters/${id}`, { ...i, id, name, author });
-  }
 
   onDeleteClick(i: Character): void {
     this.dialog

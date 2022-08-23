@@ -4,6 +4,7 @@ import { filter, switchMap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
 import { Campaign } from '@ti/app/game/models/campaign';
 import { CampaignService } from '@ti/app/game/campaign.service';
+import {DataService} from '@ti/app/game/data.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -11,12 +12,11 @@ import { CampaignService } from '@ti/app/game/campaign.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly campaigns$: Observable<Campaign[]> = this.auth.auth$.pipe(
-    switchMap(user => this.firestore.collection<Campaign>('campaigns', ref => ref.where('author', '==', user.uid)))
-  );
+  readonly campaigns$: Observable<Campaign[]> = this.data.campaignsOwn$;
 
   constructor(
     private readonly auth: AuthService,
+    private readonly data: DataService,
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService,
     private readonly campaign: CampaignService

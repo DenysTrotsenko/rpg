@@ -40,27 +40,26 @@ import {Campaign} from '@ti/app/game/models/campaign';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
-  AGES: Age[] = this.data[DataTypes.AGES];
-  ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
-  ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
-  ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
-  BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
-  BUILD: Build[] = this.data[DataTypes.BUILD];
-  CULTURES: Culture[] = this.data[DataTypes.CULTURES];
-  // DISPOSITIONS: Disposition[] = this.data[DataTypes.DISPOSITIONS];
-  EYES: Eyes[] = this.data[DataTypes.EYES];
-  FLAWS: Flaw[] = this.data[DataTypes.FLAWS];
-  HAIR_LENGTH: HairLength[] = this.data[DataTypes.HAIR_LENGTH];
-  HAIR_STYLE: HairStyle[] = this.data[DataTypes.HAIR_STYLE];
-  HAIR_COLOR: HairColor[] = this.data[DataTypes.HAIR_COLOR];
-  LANGUAGES: Language[] = this.data[DataTypes.LANGUAGES];
-  MARKS: Mark[] = this.data[DataTypes.MARKS];
-  PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
-  SEX: Sex[] = this.data[DataTypes.SEX];
-  STATURE: Stature[] = this.data[DataTypes.STATURE];
-  STYLE: Style[] = this.data[DataTypes.STYLE];
-  TRAITS: Trait[] = this.data[DataTypes.TRAITS];
-  TIERS: Tier[] = this.data[DataTypes.TIERS];
+  readonly AGES: Age[] = this.data[DataTypes.AGES];
+  readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
+  readonly ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
+  readonly ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
+  readonly BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
+  readonly BUILD: Build[] = this.data[DataTypes.BUILD];
+  readonly CULTURES: Culture[] = this.data[DataTypes.CULTURES];
+  readonly EYES: Eyes[] = this.data[DataTypes.EYES];
+  readonly FLAWS: Flaw[] = this.data[DataTypes.FLAWS];
+  readonly HAIR_LENGTH: HairLength[] = this.data[DataTypes.HAIR_LENGTH];
+  readonly HAIR_STYLE: HairStyle[] = this.data[DataTypes.HAIR_STYLE];
+  readonly HAIR_COLOR: HairColor[] = this.data[DataTypes.HAIR_COLOR];
+  readonly LANGUAGES: Language[] = this.data[DataTypes.LANGUAGES];
+  readonly MARKS: Mark[] = this.data[DataTypes.MARKS];
+  readonly PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
+  readonly SEX: Sex[] = this.data[DataTypes.SEX];
+  readonly STATURE: Stature[] = this.data[DataTypes.STATURE];
+  readonly STYLE: Style[] = this.data[DataTypes.STYLE];
+  readonly TIERS: Tier[] = this.data[DataTypes.TIERS];
+  readonly TRAITS: Trait[] = this.data[DataTypes.TRAITS];
 
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
@@ -81,9 +80,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       mark: new FormControl(null),
     }),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
-    // allegiances: new FormGroup(this.ALLEGIANCES.reduce((acc, cur) => ({
-    //   ...acc, [cur.id]: new FormControl(DEFAULT_DISPOSITION_ID)
-    // }), {})),
     allegiances: new FormControl([]),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
     languages: new FormControl([]),
@@ -231,13 +227,13 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       }),
       shareReplay(1)
     );
-  readonly campaigns$: Observable<Campaign[]> = this.firestore.collection<Campaign>('campaigns');
+  readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
 
   constructor(
-    private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly data: DataService
+    private readonly data: DataService,
+    private readonly firestore: FirestoreService
   ) {
     super();
   }
@@ -334,8 +330,16 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   onSubmit(form): void {
     if (!this.form.valid) { return; }
-    this.firestore.update(`characters/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
+
+    this.campaigns$
       .pipe(
+        map(campaigns => campaigns.find(i => i.id === form.campaign)),
+        switchMap(campaign => {
+          return this.firestore.update(`characters/${form.id}`, {
+            ...form,
+            authors: [this.route.snapshot.data?.user?.uid, campaign.author],
+          });
+        }),
         tap(() => this.router.navigate(['characters/list']))
       )
       .subscribe();
