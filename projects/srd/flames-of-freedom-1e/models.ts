@@ -1,5 +1,6 @@
 import { HasId } from '@shared';
 import {
+  AfflictionId,
   AgeId,
   AllegianceId, ArchetypeId,
   AttributeId,
@@ -18,6 +19,15 @@ import {
 export interface Age {
   id: AgeId;
   name: string;
+}
+
+export interface Affliction {
+  id: AfflictionId;
+  name: string;
+  labels?: {
+    description?: string;
+    effect?: string;
+  };
 }
 
 export interface Allegiance {

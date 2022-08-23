@@ -66,8 +66,7 @@
       </tr>
     </table>
 
-
-    <p>
+    <p *ngIf="talents.length > 0">
       <b class="c-gray">Talents:</b>
       <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
