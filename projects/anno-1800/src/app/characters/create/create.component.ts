@@ -331,13 +331,13 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   onSubmit(form): void {
     if (!this.form.valid) { return; }
 
-    this.campaigns$
+    combineLatest([this.character$, this.campaigns$])
       .pipe(
-        map(campaigns => campaigns.find(i => i.id === form.campaign)),
-        switchMap(campaign => {
+        map(([character, campaigns]) => [character, campaigns.find(i => i.id === form.campaign)]),
+        switchMap(([character, campaign]: [Character, Campaign]) => {
           return this.firestore.update(`characters/${form.id}`, {
             ...form,
-            authors: [this.route.snapshot.data?.user?.uid, campaign.author],
+            authors: !!character.authors ? [...character.authors] : [this.route.snapshot.data?.user?.uid, campaign.author],
           });
         }),
         tap(() => this.router.navigate(['characters/list']))
