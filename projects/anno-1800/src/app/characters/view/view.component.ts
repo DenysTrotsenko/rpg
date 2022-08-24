@@ -5,28 +5,16 @@ import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/opera
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
-import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {AfflictionId, AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Belief, Flaw, Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {Affliction, Belief, Flaw, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 
-interface AttributeView {
-  id: AttributeId;
-  name: string;
-  value: number;
-  bonus: number;
-}
-// interface DispositionView { name: string; value: string; tooltip: string; }
-interface SkillView {
-  id: SkillId;
-  name: string;
-  type: SkillTypeId;
-  attribute: AttributeId;
-  value: number;
-  tooltip: string;
-}
+interface AfflictionView { id: AfflictionId; name: string; tooltip: string; }
+interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
+interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
 
 @Component({
   templateUrl: './view.component.html',
@@ -41,6 +29,7 @@ export class ViewComponent implements OnDestroy {
     conflict: new FormControl(0),
     belief_ranks: new FormControl(0),
     flaw_ranks: new FormControl(0),
+    afflictions: new FormControl([]),
     // rp_total: new FormControl(0),
     // rp_used: new FormControl(0),
     // permanent_belief_ranks: new FormControl(0),
@@ -63,6 +52,7 @@ export class ViewComponent implements OnDestroy {
         this.personality = this.getPersonality(character);
         this.quirks = this.getQuirks(character);
         this.skills = this.getSkills(character);
+        this.spells = this.getSpells(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
         // this.dispositions = this.getDispositions(character);
@@ -80,8 +70,11 @@ export class ViewComponent implements OnDestroy {
   personality: [Belief, Flaw];
   quirks: Quirk[];
   skills: SkillView[];
+  spells: Spell[];
   talents: Talent[];
   traits: Trait[];
+
+  readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
 
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
@@ -184,6 +177,10 @@ export class ViewComponent implements OnDestroy {
       value: advancements.filter(i => i === skill.id).length * 10,
       tooltip: skill.labels?.tooltip
     }));
+  }
+
+  getSpells(character: Character): Spell[] {
+    return this.data[DataTypes.SPELLS].filter(spell => character.spells.includes(spell.id));
   }
 
   getTalents(character: Character): Talent[] {

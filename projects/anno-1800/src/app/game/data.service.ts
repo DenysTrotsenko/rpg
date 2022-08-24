@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { shareReplay, switchMap } from 'rxjs/operators';
+import { AuthService, FirestoreService } from '@shared';
 import {
+  Affliction,
   Age,
   Archetype,
   Attribute,
@@ -13,41 +17,35 @@ import {
   Mark,
   Profession,
   Quirk, Sex,
-  Skill, Stature, Style,
+  Skill, Spell, Stature, Style,
   Talent, Tier,
   Trait
 } from '@flames-of-freedom-1e/models';
 import {
-  QuirkId,
-  SkillId,
-  TalentId,
-  TraitId
-} from '@flames-of-freedom-1e/enums';
-import {
   Allegiance,
   Disposition
 } from '@powered-by-zweihander/models';
+import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
 import { ALLEGIANCES } from '@pbz-1850/allegiances';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
 import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
 import { CULTURES } from '@flames-of-freedom-1e/cultures';
+import { DISPOSITIONS } from '@powered-by-zweihander/dispositions';
 import { FLAWS } from '@flames-of-freedom-1e/flaws';
 import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
 import { TRAITS } from '@flames-of-freedom-1e/traits';
 import { QUIRKS } from '@flames-of-freedom-1e/quirks';
 import { SKILLS } from '@flames-of-freedom-1e/skills';
+import { SPELLS } from '@flames-of-freedom-1e/spells';
 import { TALENTS } from '@flames-of-freedom-1e/talents';
 import { AGES } from '@flames-of-freedom-1e/age';
 import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
 import { TIERS } from '@flames-of-freedom-1e/tiers';
 import { LANGUAGES } from '@flames-of-freedom-1e/languages';
-import {DISPOSITIONS} from '@powered-by-zweihander/dispositions';
-import {Observable} from 'rxjs';
 import {Campaign} from '@ti/app/game/models/campaign';
-import {shareReplay, switchMap} from 'rxjs/operators';
 import {Character} from '@ti/app/game/models/character';
-import {AuthService, FirestoreService} from '@shared';
+
 
 export enum FirestoreCollection {
   CHARACTERS = 'characters',
@@ -57,6 +55,7 @@ export enum FirestoreCollection {
 export enum DataTypes {
   AGES = 'ages',
   ALLEGIANCES = 'allegiances',
+  AFFLICTIONS = 'afflictions',
   ARCHETYPES = 'archetypes',
   ATTRIBUTES = 'attributes',
   BELIEFS = 'beliefs',
@@ -74,6 +73,7 @@ export enum DataTypes {
   QUIRKS = 'quirks',
   SEX = 'sex',
   SKILLS = 'skills',
+  SPELLS = 'spells',
   STATURE = 'stature',
   STYLE = 'style',
   TALENTS = 'talents',
@@ -108,6 +108,10 @@ export class DataService {
   );
 
   readonly [DataTypes.AGES]: Age[] = AGES;
+  readonly [DataTypes.AFFLICTIONS]: Affliction[] = AFFLICTIONS.map(i => {
+    i.labels.tooltip = this.getAfflictionTooltip(i);
+    return i;
+  });
   readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
   readonly [DataTypes.ARCHETYPES]: Archetype[] = ARCHETYPES;
   readonly [DataTypes.ATTRIBUTES]: Attribute[] = ATTRIBUTES;
@@ -124,23 +128,27 @@ export class DataService {
   readonly [DataTypes.MARKS]: Mark[] = MARKS;
   readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
   readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {
-    i.labels.tooltip = this.getQuirkTooltip(i.id);
+    i.labels.tooltip = this.getQuirkTooltip(i);
     return i;
   });
   readonly [DataTypes.SEX]: Sex[] = SEX;
   readonly [DataTypes.SKILLS]: Skill[] = SKILLS.map(i => {
-    i.labels.tooltip = this.getSkillTooltip(i.id);
+    i.labels.tooltip = this.getSkillTooltip(i);
+    return i;
+  });
+  readonly [DataTypes.SPELLS]: Spell[] = SPELLS.map(i => {
+    i.labels.tooltip = this.getSpellTooltip(i);
     return i;
   });
   readonly [DataTypes.STATURE]: Stature[] = STATURE;
   readonly [DataTypes.STYLE]: Style[] = STYLE;
   readonly [DataTypes.TALENTS]: Talent[] = TALENTS.map(i => {
-    i.labels.tooltip = this.getTalentTooltip(i.id);
+    i.labels.tooltip = this.getTalentTooltip(i);
     return i;
   });
   readonly [DataTypes.TIERS]: Tier[] = TIERS;
   readonly [DataTypes.TRAITS]: Trait[] = TRAITS.map(i => {
-    i.labels.tooltip = this.getTraitTooltip(i.id);
+    i.labels.tooltip = this.getTraitTooltip(i);
     return i;
   });
 
@@ -149,8 +157,15 @@ export class DataService {
     private readonly firestore: FirestoreService
   ) {}
 
-  private getSkillTooltip(id: SkillId): string {
-    const skill: Skill = SKILLS.find(i => i.id === id);
+  private getAfflictionTooltip(affliction: Affliction): string {
+    return [
+      `${affliction.name}\n`,
+      `${affliction.labels?.description}\n`,
+      `Effect: ${affliction.labels?.effect}`,
+    ].join('\n');
+  }
+
+  private getSkillTooltip(skill: Skill): string {
     const attribute: Attribute = this[DataTypes.ATTRIBUTES].find(i => i.id === skill.attribute);
     return [
       `${skill.name} ${skill.type === 2 ? '*' : ''} (${attribute.name})\n`,
@@ -159,8 +174,23 @@ export class DataService {
     ].join('\n');
   }
 
-  private getTalentTooltip(id: TalentId): string {
-    const talent: Talent = TALENTS.find(i => i.id === id);
+  private getSpellTooltip(spell: Spell): string {
+    const tier = TIERS.find(i => i.id === spell.tier);
+    return [
+      `${spell.name}\n`,
+      `${spell.labels?.description}\n`,
+      `Requirement: ${tier?.name}\n`,
+      `Casting Time: ${spell.labels?.casting_time}\n`,
+      `Distance: ${spell.labels?.distance}\n`,
+      `Reagents: ${spell.labels?.reagents}\n`,
+      `Effect: ${spell.labels?.effect}\n`,
+      `Critical Success: ${spell.labels?.critical_success}\n`,
+      `Critical Failure: ${spell.labels?.critical_failure}\n`,
+      `Duration: ${spell.labels?.duration}`,
+    ].join('\n');
+  }
+
+  private getTalentTooltip(talent: Talent): string {
     return [
       `${talent.name}\n`,
       `${talent.labels?.description}\n`,
@@ -168,8 +198,7 @@ export class DataService {
     ].join('\n');
   }
 
-  private getTraitTooltip(id: TraitId): string {
-    const trait: Trait = TRAITS.find(i => i.id === id);
+  private getTraitTooltip(trait: Trait): string {
     return [
       `${trait.name}\n`,
       `${trait.labels?.description}\n`,
@@ -177,8 +206,7 @@ export class DataService {
     ].join('\n');
   }
 
-  private getQuirkTooltip(id: QuirkId): string {
-    const quirk: Quirk = QUIRKS.find(i => i.id === id);
+  private getQuirkTooltip(quirk: Quirk): string {
     return [
       `${quirk.name}\n`,
       `${quirk.labels?.description}\n`,

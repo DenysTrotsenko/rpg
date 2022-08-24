@@ -13,7 +13,7 @@ import {
   Build,
   Culture, Eyes,
   Flaw, HairColor, HairLength, HairStyle, Language, Mark,
-  Profession, Sex, Stature,
+  Profession, Sex, Spell, Stature,
   Style,
   Tier,
   Trait
@@ -56,6 +56,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly MARKS: Mark[] = this.data[DataTypes.MARKS];
   readonly PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
   readonly SEX: Sex[] = this.data[DataTypes.SEX];
+  readonly SPELLS: Spell[] = this.data[DataTypes.SPELLS];
   readonly STATURE: Stature[] = this.data[DataTypes.STATURE];
   readonly STYLE: Style[] = this.data[DataTypes.STYLE];
   readonly TIERS: Tier[] = this.data[DataTypes.TIERS];
@@ -102,6 +103,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       intermediate: new FormControl(null),
       advanced: new FormControl(null),
     }),
+    spells: new FormControl([]),
     advancements: new FormGroup({
       basic: new FormGroup({
         traits: new FormControl([]),

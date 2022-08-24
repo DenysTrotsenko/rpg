@@ -84,39 +84,59 @@
         {{i.name}}
       </span>
     </p>
+    <p>
+      <b class="c-gray">Spells:</b>
+      <span *ngFor="let i of spells;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
+      </span>
+    </p>
   </ng-container>
+
   <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>
-  <form [formGroup]="form" class="d-f cg-5">
-    <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="peril">
-      <mat-label class="c-gray">Peril Condition Track</mat-label>
-      <mat-radio-button [value]="0">UNHINDERED</mat-radio-button>
-      <mat-radio-button [value]="1">Imperiled</mat-radio-button>
-      <mat-radio-button [value]="2">Ignore 1 Skill Rank</mat-radio-button>
-      <mat-radio-button [value]="3">Ignore 2 Skill Ranks</mat-radio-button>
-      <mat-radio-button [value]="4">Ignore 3 Skill Ranks</mat-radio-button>
-      <mat-radio-button [value]="5">INCAPACITATED!</mat-radio-button>
-    </mat-radio-group>
-    <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="damage">
-      <mat-label class="c-gray">Damage Condition Track</mat-label>
-      <mat-radio-button [value]="0">UNHARMED</mat-radio-button>
-      <mat-radio-button [value]="1">Hurt</mat-radio-button>
-      <mat-radio-button [value]="2">Moderately Wounded (Injury 1D6)</mat-radio-button>
-      <mat-radio-button [value]="3">Seriously Wounded (Injury 2D6)</mat-radio-button>
-      <mat-radio-button [value]="4">Grievously Wounded (Injury 3D6)</mat-radio-button>
-      <mat-radio-button [value]="5">SLAIN!</mat-radio-button>
-    </mat-radio-group>
-    <div class="d-f fd-c jc-sb no-padding-bottom">
-      <mat-form-field appearance="outline">
-        <mat-label>Conflict</mat-label>
-        <input matInput type="number" min="0" max="9" formControlName="conflict">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Belief Ranks</mat-label>
-        <input matInput type="number" min="0" max="9" formControlName="belief_ranks">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Flaw Ranks</mat-label>
-        <input matInput type="number" min="0" max="9" formControlName="flaw_ranks">
+
+  <form [formGroup]="form" class="d-f fd-c">
+    <div class="d-f cg-5 mb-10">
+      <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="peril">
+        <mat-label class="c-gray">Peril Condition Track</mat-label>
+        <mat-radio-button [value]="0">UNHINDERED</mat-radio-button>
+        <mat-radio-button [value]="1">Imperiled</mat-radio-button>
+        <mat-radio-button [value]="2">Ignore 1 Skill Rank</mat-radio-button>
+        <mat-radio-button [value]="3">Ignore 2 Skill Ranks</mat-radio-button>
+        <mat-radio-button [value]="4">Ignore 3 Skill Ranks</mat-radio-button>
+        <mat-radio-button [value]="5">INCAPACITATED!</mat-radio-button>
+      </mat-radio-group>
+      <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="damage">
+        <mat-label class="c-gray">Damage Condition Track</mat-label>
+        <mat-radio-button [value]="0">UNHARMED</mat-radio-button>
+        <mat-radio-button [value]="1">Hurt</mat-radio-button>
+        <mat-radio-button [value]="2">Moderately Wounded (Injury 1D6)</mat-radio-button>
+        <mat-radio-button [value]="3">Seriously Wounded (Injury 2D6)</mat-radio-button>
+        <mat-radio-button [value]="4">Grievously Wounded (Injury 3D6)</mat-radio-button>
+        <mat-radio-button [value]="5">SLAIN!</mat-radio-button>
+      </mat-radio-group>
+      <div class="d-f fd-c jc-sb no-padding-bottom">
+        <mat-form-field appearance="outline">
+          <mat-label>Conflict</mat-label>
+          <input matInput type="number" min="0" max="9" formControlName="conflict">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Belief Ranks</mat-label>
+          <input matInput type="number" min="0" max="9" formControlName="belief_ranks">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Flaw Ranks</mat-label>
+          <input matInput type="number" min="0" max="9" formControlName="flaw_ranks">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-f fd-c">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Afflictions</mat-label>
+        <mat-select multiple formControlName="afflictions">
+          <mat-option *ngFor="let i of afflictions;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
   </form>

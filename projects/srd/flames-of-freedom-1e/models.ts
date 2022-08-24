@@ -10,7 +10,7 @@ import {
   ProfessionId,
   QuirkId, SexId,
   SkillId,
-  SkillTypeId, SpellId, StatureId, StyleId,
+  SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
   TalentId,
   TierId,
   TraitId, WareId, WareTypeId
@@ -27,6 +27,7 @@ export interface Affliction {
   labels?: {
     description?: string;
     effect?: string;
+    tooltip?: string;
   };
 }
 
@@ -168,8 +169,18 @@ export interface Skill extends HasId<SkillId> {
 export interface Spell {
   id: SpellId;
   name: string;
+  tier: TierId;
+  type: SpellTypeId;
   labels: {
-    description: string;
+    description?: string;
+    casting_time?: string;
+    distance?: string;
+    reagents?: string;
+    effect?: string;
+    critical_success?: string;
+    critical_failure?: string;
+    duration?: string;
+    tooltip?: string;
   };
 }
 
