@@ -10,5 +10,10 @@ import { Attribute } from '@flames-of-freedom-1e/models';
 export class AttributesComponent {
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly attributes: Attribute[] = this.data[DataTypes.ATTRIBUTES];
+
   constructor(private data: DataService) {}
+
+  trackById(_, item): number {
+    return item.id;
+  }
 }

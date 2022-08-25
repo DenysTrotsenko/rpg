@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import {Archetype, Profession, Skill, Talent} from '@flames-of-freedom-1e/models';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 
-const DEFAULT_FILTERS = {skills: [], talents: [], archetype: null};
+const DEFAULT_FILTERS = { skills: [], talents: [], archetype: null };
 
 @Component({
   templateUrl: './professions.component.html',
@@ -19,14 +19,10 @@ export class ProfessionsComponent {
     skills: new FormControl([]),
     talents: new FormControl([]),
   });
-  readonly professions: Profession[] = this.data[DataTypes.PROFESSIONS];
   readonly archetypes: Archetype[] = this.data[DataTypes.ARCHETYPES];
   readonly skills: Skill[] = this.data[DataTypes.SKILLS];
   readonly talents: Talent[] = this.data[DataTypes.TALENTS];
-
-  readonly filters$ = this.filters.valueChanges.pipe(
-    startWith(DEFAULT_FILTERS)
-  );
+  readonly filters$ = this.filters.valueChanges.pipe(startWith(DEFAULT_FILTERS));
   readonly professions$: Observable<Profession[]> = this.filters$.pipe(
     map(filters => {
       return this.data[DataTypes.PROFESSIONS]
@@ -40,5 +36,9 @@ export class ProfessionsComponent {
 
   onFiltersResetClick(): void {
     this.filters.patchValue(DEFAULT_FILTERS);
+  }
+
+  trackById(_, item): number {
+    return item.id;
   }
 }

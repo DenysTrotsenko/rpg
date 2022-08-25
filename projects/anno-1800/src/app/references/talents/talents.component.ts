@@ -10,5 +10,10 @@ import { Talent } from '@flames-of-freedom-1e/models';
 export class TalentsComponent {
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly talents: Talent[] = this.data[DataTypes.TALENTS];
+
   constructor(private data: DataService) {}
+
+  trackById(_, item): number {
+    return item.id;
+  }
 }

@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let i of talents;" hideToggle>
+  <mat-expansion-panel *ngFor="let i of talents; trackBy: trackById;" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
     </mat-expansion-panel-header>

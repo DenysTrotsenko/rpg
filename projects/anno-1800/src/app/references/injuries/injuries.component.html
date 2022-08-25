@@ -1,10 +1,29 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let i of injuries;" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title class="ff-g">{{i.name}} ({{(i.type | getById: TYPES.INJURY_TYPES)?.name}})</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-      <p matLine>{{i.labels.effect}}</p>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened position="end">
+    <form [formGroup]="filters" class="d-f fd-c p-5">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option [value]="DEFAULT_VALUE">
+            All
+          </mat-option>
+          <mat-option *ngFor="let i of types; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let i of injuries$ | async; trackBy: trackById;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">{{i.name}} ({{(i.type | getById: TYPES.INJURY_TYPES)?.name}})</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <p matLine>{{i.labels.effect}}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav-content>
+</mat-sidenav-container>

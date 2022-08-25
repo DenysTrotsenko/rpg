@@ -494,7 +494,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.DAMNATION,
     name: 'Damnation',
     tier: TierId.ADVANCED,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'Misery loves company, but damnation needs it.',
       casting_time: 'One hour',
@@ -510,7 +510,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.ESSENCE_THEFT,
     name: 'Essence Theft',
     tier: TierId.BASIC,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'Your soul is mine!',
       casting_time: 'One minute (1 AP)',
@@ -526,7 +526,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.FORGET,
     name: 'Forget',
     tier: TierId.INTERMEDIATE,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'Nothing lasts forever...',
       casting_time: 'One minute (2 AP)',
@@ -542,7 +542,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.HOMUNCULUS,
     name: 'Homunculus',
     tier: TierId.BASIC,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'I shall trap the spirit inside this familiar, and it shall obey my every command.',
       casting_time: 'One day',
@@ -558,7 +558,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.INFIRMITY,
     name: 'Infirmity',
     tier: TierId.BASIC,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'Once, twice, thrice, quince for pain!',
       casting_time: 'One minute (1 AP)',
@@ -574,7 +574,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.MASK_THE_SENSES,
     name: 'Mask The Senses',
     tier: TierId.INTERMEDIATE,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'I leave thee in anguish, stricken insensible.',
       casting_time: 'One minute (2 AP)',
@@ -590,7 +590,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.PALL_OF_NIGHT,
     name: 'Pall Of Night',
     tier: TierId.INTERMEDIATE,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'I am blanketed by the spirits; they shall see me to safety.',
       casting_time: 'Three days',
@@ -606,7 +606,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.QUAKE,
     name: 'Quake',
     tier: TierId.ADVANCED,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'Feel the earth tremble beneath your feet!',
       casting_time: 'One minute (3 AP)',
@@ -622,7 +622,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.RITUAL_BINDING,
     name: 'Ritual Binding',
     tier: TierId.ADVANCED,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'The spirit contained within this knife is that of Captain John Smith, with all his ire.',
       casting_time: 'Special',
@@ -638,7 +638,7 @@ export const SPELLS: Spell[] = [
     id: SpellId.TRANSFER_MIND,
     name: 'Transfer Mind',
     tier: TierId.INTERMEDIATE,
-    type: SpellTypeId.COMMON,
+    type: SpellTypeId.BLACK_AND_WHITE,
     labels: {
       description: 'You shall be whisked away to the spirit realm; your body is now mine to control.',
       casting_time: 'One minute (2 AP)',

@@ -11,5 +11,10 @@ import {SkillTypeId} from '@flames-of-freedom-1e/enums';
 export class SkillsComponent {
   readonly SKILL_TYPE_SPECIAL = SkillTypeId.SPECIAL;
   readonly skills: Skill[] = this.data[DataTypes.SKILLS];
+
   constructor(private data: DataService) {}
+
+  trackById(_, item): number {
+    return item.id;
+  }
 }

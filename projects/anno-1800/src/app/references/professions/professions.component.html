@@ -1,13 +1,13 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened position="end">
     <form [formGroup]="filters" class="d-f fd-c p-5">
-      <button mat-icon-button class="mb-10" (click)="onFiltersResetClick()" matTooltip="Reset Filters">
+      <button mat-icon-button type="button" class="mb-10" (click)="onFiltersResetClick()" matTooltip="Reset Filters">
         <mat-icon>restart_alt</mat-icon>
       </button>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Archetype</mat-label>
         <mat-select formControlName="archetype">
-          <mat-option *ngFor="let i of archetypes;" [value]="i.professions">
+          <mat-option *ngFor="let i of archetypes; trackBy: trackById;" [value]="i.professions">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -15,7 +15,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Skills</mat-label>
         <mat-select multiple formControlName="skills">
-          <mat-option *ngFor="let i of skills;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
+          <mat-option *ngFor="let i of skills; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -23,7 +23,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Talents</mat-label>
         <mat-select multiple formControlName="talents">
-          <mat-option *ngFor="let i of talents;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
+          <mat-option *ngFor="let i of talents; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -32,7 +32,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let i of professions$ | async;" hideToggle>
+      <mat-expansion-panel *ngFor="let i of professions$ | async; trackBy: trackById;" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
         </mat-expansion-panel-header>

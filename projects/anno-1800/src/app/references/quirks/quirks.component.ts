@@ -10,5 +10,10 @@ import { Quirk } from '@flames-of-freedom-1e/models';
 export class QuirksComponent {
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly quirks: Quirk[] = this.data[DataTypes.QUIRKS];
+
   constructor(private data: DataService) {}
+
+  trackById(_, item): number {
+    return item.id;
+  }
 }
