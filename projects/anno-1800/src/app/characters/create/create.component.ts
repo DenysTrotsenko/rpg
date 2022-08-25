@@ -229,7 +229,14 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         }, { emitEvent: true });
 
         setFormControlsEditable(this.form, [
-          'archetype', 'attributes', 'belief', 'culture', 'flaw', 'miscellaneous', 'name', 'trait'
+          'archetype',
+          // 'attributes',
+          // 'belief',
+          // 'culture',
+          // 'flaw',
+          // 'miscellaneous',
+          // 'name',
+          'trait'
         ], isNew);
       }),
       shareReplay(1)
