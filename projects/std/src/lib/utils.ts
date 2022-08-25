@@ -23,6 +23,10 @@ export function getParsedJson<T>(value: JsonString<T>): T | null {
   }
 }
 
+export function getRandomFromArray<T>(array: T[]): T {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
 export function setFormControlsEditable(
   form: FormGroup, controls: string[] = [], isEditable: boolean = true
 ): void {

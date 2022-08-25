@@ -1,10 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { DataService, DataTypes } from '@ti/app/game/data.service';
-import {Injury, InjuryType, PermanentInjury} from '@flames-of-freedom-1e/models';
 import { FormControl, FormGroup } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import {InjuryTypeId} from '@flames-of-freedom-1e/enums';
+import { map, startWith } from 'rxjs/operators';
+import { getRandomFromArray } from '@shared';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
+import { Injury, InjuryType, PermanentInjury } from '@flames-of-freedom-1e/models';
+import { InjuryTypeId } from '@flames-of-freedom-1e/enums';
 
 const DEFAULT_VALUE = 'ALL';
 const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
@@ -16,6 +18,7 @@ const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InjuriesComponent {
+  readonly InjuryTypeId = InjuryTypeId;
   readonly DEFAULT_VALUE = DEFAULT_VALUE;
   readonly PERMANENT = InjuryTypeId.PERMANENT;
   readonly TYPES: typeof DataTypes = DataTypes;
@@ -35,7 +38,17 @@ export class InjuriesComponent {
     )
   );
 
-  constructor(private data: DataService) {}
+  constructor(
+    private data: DataService,
+    private snackbar: MatSnackBar
+  ) {}
+
+  onRandomClick(type: InjuryTypeId): void {
+    const injuries = this.data[DataTypes.INJURIES].filter(i => i.type === type);
+    const random = getRandomFromArray<Injury>(injuries);
+
+    this.snackbar.open(random.name, 'Ok');
+  }
 
   trackById(_, item): number {
     return item.id;

@@ -1,6 +1,17 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened position="end">
     <form [formGroup]="filters" class="d-f fd-c p-5">
+      <span class="mb-10">
+        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.MODERATE)" matTooltip="Random Moderate Injury">
+          <mat-icon matBadge="M" matBadgeDisabled="true">casino</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.SERIOUS)" matTooltip="Random Serious Injury">
+          <mat-icon matBadge="S" matBadgeDisabled="true">casino</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.GRIEVOUS)" matTooltip="Random Grievous Injury">
+          <mat-icon matBadge="G" matBadgeDisabled="true">casino</mat-icon>
+        </button>
+      </span>
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Type</mat-label>
         <mat-select formControlName="type">
