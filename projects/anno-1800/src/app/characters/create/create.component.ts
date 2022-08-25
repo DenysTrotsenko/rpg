@@ -84,7 +84,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       mark: new FormControl(null),
     }),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
-    allegiances: new FormControl([]),
+    allegiances: new FormControl(''),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),
     languages: new FormControl([]),
     belief: new FormControl(BeliefId.ACHIEVEMENT, [Validators.required]),

@@ -117,10 +117,11 @@ export class ViewComponent implements OnDestroy {
 
   getDescription(character: Character): string {
     const name = character.name;
-    const allegiances = this.data[DataTypes.ALLEGIANCES]
-      .filter(i => character.allegiances.includes(i.id))
-      .map(i => i.name)
-      .join(', ');
+    // const allegiances = this.data[DataTypes.ALLEGIANCES]
+    //   .filter(i => character.allegiances.includes(i.id))
+    //   .map(i => i.name)
+    //   .join(', ');
+    const allegiances = character.allegiances;
     const age = this.data[DataTypes.AGES].find(i => i.id === character.miscellaneous.age);
     const culture = this.data[DataTypes.CULTURES].find(i => i.id === character.culture);
     const sex = this.data[DataTypes.SEX].find(i => i.id === character.miscellaneous.sex);

@@ -28,9 +28,10 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Allegiances</mat-label>
-        <mat-select formControlName="allegiances" multiple>
-          <mat-option *ngFor="let i of ALLEGIANCES" [value]="i.id">{{i.name}}</mat-option>
-        </mat-select>
+        <input matInput formControlName="allegiances">
+<!--        <mat-select formControlName="allegiances" multiple>-->
+<!--          <mat-option *ngFor="let i of ALLEGIANCES" [value]="i.id">{{i.name}}</mat-option>-->
+<!--        </mat-select>-->
       </mat-form-field>
     </mat-card-content>
   </mat-card>
