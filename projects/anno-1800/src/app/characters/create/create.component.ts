@@ -5,6 +5,7 @@ import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 import {FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
+  Affliction,
   Age,
   Allegiance,
   Archetype,
@@ -12,7 +13,7 @@ import {
   Belief,
   Build,
   Culture, Eyes,
-  Flaw, HairColor, HairLength, HairStyle, Language, Mark,
+  Flaw, HairColor, HairLength, HairStyle, Language, Mark, PermanentInjury,
   Profession, Sex, Spell, Stature,
   Style,
   Tier,
@@ -41,6 +42,7 @@ import {Campaign} from '@ti/app/game/models/campaign';
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly AGES: Age[] = this.data[DataTypes.AGES];
+  readonly AFFLICTIONS: Affliction[] = this.data[DataTypes.AFFLICTIONS];
   readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
   readonly ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
   readonly ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
@@ -54,6 +56,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly HAIR_COLOR: HairColor[] = this.data[DataTypes.HAIR_COLOR];
   readonly LANGUAGES: Language[] = this.data[DataTypes.LANGUAGES];
   readonly MARKS: Mark[] = this.data[DataTypes.MARKS];
+  readonly PERMANENT_INJURIES: PermanentInjury[] = this.data[DataTypes.PERMANENT_INJURIES];
   readonly PROFESSIONS: Profession[] = this.data[DataTypes.PROFESSIONS];
   readonly SEX: Sex[] = this.data[DataTypes.SEX];
   readonly SPELLS: Spell[] = this.data[DataTypes.SPELLS];
@@ -104,6 +107,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       advanced: new FormControl(null),
     }),
     spells: new FormControl([]),
+    afflictions: new FormControl([]),
+    permanent_injuries: new FormControl([]),
     advancements: new FormGroup({
       basic: new FormGroup({
         traits: new FormControl([]),
@@ -339,7 +344,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         switchMap(([character, campaign]: [Character, Campaign]) => {
           return this.firestore.update(`characters/${form.id}`, {
             ...form,
-            authors: !!character.authors ? [...character.authors] : [this.route.snapshot.data?.user?.uid, campaign.author],
+            authors: !!character?.authors ? [...character.authors] : [this.route.snapshot.data?.user?.uid, campaign.author],
           });
         }),
         tap(() => this.router.navigate(['characters/list']))

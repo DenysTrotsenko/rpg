@@ -6,7 +6,7 @@ import {
   AttributeId,
   BeliefId, BuildId,
   CultureId, EyesId,
-  FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
+  FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId, MarkId, PermanentInjuryId,
   ProfessionId,
   QuirkId, SexId,
   SkillId,
@@ -110,6 +110,19 @@ export interface HairLength {
   name: string;
 }
 
+export interface Injury {
+  id: InjuryId;
+  name: string;
+  type: InjuryTypeId;
+  labels?: {
+    effect?: string;
+  };
+}
+export interface InjuryType {
+  id: InjuryTypeId;
+  name: string;
+}
+
 export interface Language {
   id: LanguageId;
   name: string;
@@ -136,6 +149,16 @@ export interface Profession extends HasId<ProfessionId> {
   advancements: AdvancementScheme;
   labels?: {
     description: string;
+  };
+}
+
+export interface PermanentInjury extends HasId<PermanentInjuryId> {
+  id: PermanentInjuryId;
+  name: string;
+  labels?: {
+    description: string;
+    effect: string;
+    tooltip?: string;
   };
 }
 

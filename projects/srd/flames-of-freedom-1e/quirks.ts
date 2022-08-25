@@ -1,4 +1,4 @@
-import {QuirkId} from './enums';
+import {InjuryId, InjuryTypeId, QuirkId} from './enums';
 import {Quirk} from './models';
 
 /* tslint:disable:max-line-length */

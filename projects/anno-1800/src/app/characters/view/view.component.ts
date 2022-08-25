@@ -7,7 +7,7 @@ import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {AfflictionId, AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Affliction, Belief, Flaw, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {Affliction, Belief, Flaw, Injury, InjuryType, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
@@ -22,6 +22,7 @@ interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: A
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent implements OnDestroy {
+  readonly DataTypes = DataTypes;
   readonly SKILL_TYPE_SPECIAL = SkillTypeId.SPECIAL;
   readonly form: FormGroup = new FormGroup({
     damage: new FormControl(0),
@@ -29,7 +30,7 @@ export class ViewComponent implements OnDestroy {
     conflict: new FormControl(0),
     belief_ranks: new FormControl(0),
     flaw_ranks: new FormControl(0),
-    afflictions: new FormControl([]),
+    injuries: new FormControl([]),
     // rp_total: new FormControl(0),
     // rp_used: new FormControl(0),
     // permanent_belief_ranks: new FormControl(0),
@@ -68,13 +69,15 @@ export class ViewComponent implements OnDestroy {
   description: string;
   languages: Language[];
   personality: [Belief, Flaw];
-  quirks: Quirk[];
+  quirks: (Quirk | Affliction | PermanentInjury)[];
   skills: SkillView[];
   spells: Spell[];
   talents: Talent[];
   traits: Trait[];
 
   readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
+  readonly injuries: Injury[] = this.data[DataTypes.INJURIES];
+  // readonly injuryTypes: InjuryType[] = this.data[DataTypes.INJURY_TYPES];
 
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
@@ -202,13 +205,17 @@ export class ViewComponent implements OnDestroy {
     return this.data[DataTypes.TRAITS].filter(i => traits.includes(i.id));
   }
 
-  getQuirks(character: Character): Quirk[] {
+  getQuirks(character: Character): (Quirk | Affliction | PermanentInjury)[] {
     const quirks: QuirkId[] = [
       ...character.advancements.basic.quirks,
       ...character.advancements.intermediate.quirks,
       ...character.advancements.advanced.quirks
     ];
-    return this.data[DataTypes.QUIRKS].filter(i => quirks.includes(i.id));
+    return [
+      ...this.data[DataTypes.QUIRKS].filter(i => quirks.includes(i.id)),
+      ...this.data[DataTypes.AFFLICTIONS].filter(i => character.afflictions.includes(i.id)),
+      ...this.data[DataTypes.PERMANENT_INJURIES].filter(i => character.permanent_injuries.includes(i.id))
+    ];
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {

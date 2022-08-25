@@ -367,6 +367,30 @@
   </mat-card>
 
   <mat-card class="mb-15">
+    <mat-card-header>
+      <mat-card-title>Advanced</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="d-f fd-c">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Afflictions</mat-label>
+        <mat-select formControlName="afflictions" multiple>
+          <mat-option *ngFor="let i of AFFLICTIONS" [value]="i.id" [matTooltip]="i.labels.tooltip">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Permanent Injuries</mat-label>
+        <mat-select formControlName="permanent_injuries" multiple>
+          <mat-option *ngFor="let i of PERMANENT_INJURIES" [value]="i.id" [matTooltip]="i.labels.tooltip">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mb-15">
     <mat-card-actions>
       <button type="reset" mat-button class="mr-15">Reset</button>
       <button type="submit" mat-flat-button color="primary" [disabled]="!form.valid">Save</button>

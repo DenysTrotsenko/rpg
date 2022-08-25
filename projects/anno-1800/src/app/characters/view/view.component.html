@@ -79,7 +79,19 @@
       </span>
     </p>
     <p>
-      <b class="c-gray">Quirks:</b>
+      <b class="c-gray">Quirks, Afflictions, Permanent Injuries:</b>
+      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
+      </span>
+    </p>
+    <p>
+      <b class="c-gray">Afflictions:</b>
+      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+        {{i.name}}
+      </span>
+    </p>
+    <p>
+      <b class="c-gray">Permanent Injuries:</b>
       <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>
@@ -131,10 +143,10 @@
     </div>
     <div class="d-f fd-c">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Afflictions</mat-label>
-        <mat-select multiple formControlName="afflictions">
-          <mat-option *ngFor="let i of afflictions;" [value]="i.id">
-            {{i.name}}
+        <mat-label>Injuries</mat-label>
+        <mat-select multiple formControlName="injuries">
+          <mat-option *ngFor="let i of injuries;" [value]="i.id">
+            {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})
           </mat-option>
         </mat-select>
       </mat-form-field>

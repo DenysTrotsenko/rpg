@@ -1,5 +1,19 @@
-import {ArchetypeId, AttributeId, BeliefId, CultureId, FlawId, QuirkId, SkillId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
-import {AllegianceId} from '@pbz-1850/enums';
+import {
+  AfflictionId,
+  ArchetypeId,
+  AttributeId,
+  BeliefId,
+  CultureId,
+  FlawId,
+  PermanentInjuryId,
+  QuirkId,
+  SkillId,
+  TalentId,
+  TraitId
+} from '@flames-of-freedom-1e/enums';
+import {
+  AllegianceId
+} from '@pbz-1850/enums';
 
 export interface Character {
   id: string;
@@ -60,6 +74,8 @@ export interface Character {
     style: number;
   };
   name: string;
+  permanent_injuries: PermanentInjuryId[];
+  afflictions: AfflictionId[];
   professions: {
     basic: number;
     intermediate: number;

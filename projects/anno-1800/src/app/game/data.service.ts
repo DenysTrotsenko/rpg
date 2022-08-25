@@ -12,9 +12,9 @@ import {
   Flaw,
   HairColor,
   HairLength,
-  HairStyle,
+  HairStyle, Injury, InjuryType,
   Language,
-  Mark,
+  Mark, PermanentInjury,
   Profession,
   Quirk, Sex,
   Skill, Spell, Stature, Style,
@@ -45,6 +45,8 @@ import { TIERS } from '@flames-of-freedom-1e/tiers';
 import { LANGUAGES } from '@flames-of-freedom-1e/languages';
 import {Campaign} from '@ti/app/game/models/campaign';
 import {Character} from '@ti/app/game/models/character';
+import {INJURIES, INJURY_TYPES} from '@flames-of-freedom-1e/injuries';
+import {PERMANENT_INJURIES} from '@flames-of-freedom-1e/permanent-injuries';
 
 
 export enum FirestoreCollection {
@@ -67,8 +69,11 @@ export enum DataTypes {
   HAIR_COLOR = 'hair_color',
   HAIR_LENGTH = 'hair_length',
   HAIR_STYLE = 'hair_style',
+  INJURIES = 'injuries',
+  INJURY_TYPES = 'injury_types',
   LANGUAGES = 'languages',
   MARKS = 'marks',
+  PERMANENT_INJURIES = 'permanent_injuries',
   PROFESSIONS = 'professions',
   QUIRKS = 'quirks',
   SEX = 'sex',
@@ -121,11 +126,17 @@ export class DataService {
   readonly [DataTypes.DISPOSITIONS]: Disposition[] = DISPOSITIONS;
   readonly [DataTypes.EYES]: Eyes[] = EYES;
   readonly [DataTypes.FLAWS]: Flaw[] = FLAWS;
+  readonly [DataTypes.INJURIES]: Injury[] = INJURIES;
+  readonly [DataTypes.INJURY_TYPES]: InjuryType[] = INJURY_TYPES;
   readonly [DataTypes.HAIR_COLOR]: HairColor[] = HAIR_COLOR;
   readonly [DataTypes.HAIR_LENGTH]: HairLength[] = HAIR_LENGTH;
   readonly [DataTypes.HAIR_STYLE]: HairStyle[] = HAIR_STYLE;
   readonly [DataTypes.LANGUAGES]: Language[] = LANGUAGES;
   readonly [DataTypes.MARKS]: Mark[] = MARKS;
+  readonly [DataTypes.PERMANENT_INJURIES]: PermanentInjury[] = PERMANENT_INJURIES.map(i => {
+    i.labels.tooltip = this.getPermanentInjuryTooltip(i);
+    return i;
+  });
   readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
   readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {
     i.labels.tooltip = this.getQuirkTooltip(i);
@@ -162,6 +173,14 @@ export class DataService {
       `${affliction.name}\n`,
       `${affliction.labels?.description}\n`,
       `Effect: ${affliction.labels?.effect}`,
+    ].join('\n');
+  }
+
+  private getPermanentInjuryTooltip(injury: PermanentInjury): string {
+    return [
+      `${injury.name}\n`,
+      `${injury.labels?.description}\n`,
+      `Effect: ${injury.labels?.effect}`,
     ].join('\n');
   }
 
