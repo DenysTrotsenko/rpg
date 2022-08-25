@@ -24,6 +24,15 @@
           <p matLine>{{i.labels.effect}}</p>
         </div>
       </mat-expansion-panel>
+      <mat-expansion-panel *ngFor="let i of permanentInjuries$ | async; trackBy: trackById;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">{{i.name}} ({{(PERMANENT | getById: TYPES.INJURY_TYPES)?.name}})</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <p matLine class="c-gray"><i>{{i.labels.description}}</i></p>
+          <p matLine>{{i.labels.effect}}</p>
+        </div>
+      </mat-expansion-panel>
     </mat-accordion>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -43,7 +43,7 @@ import {Campaign} from '@ti/app/game/models/campaign';
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly AGES: Age[] = this.data[DataTypes.AGES];
   readonly AFFLICTIONS: Affliction[] = this.data[DataTypes.AFFLICTIONS];
-  readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
+  // readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
   readonly ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
   readonly ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
   readonly BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];

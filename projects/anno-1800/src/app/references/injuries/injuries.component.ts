@@ -1,9 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Injury, InjuryType } from '@flames-of-freedom-1e/models';
+import {Injury, InjuryType, PermanentInjury} from '@flames-of-freedom-1e/models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import {InjuryTypeId} from '@flames-of-freedom-1e/enums';
 
 const DEFAULT_VALUE = 'ALL';
 const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
@@ -16,6 +17,7 @@ const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
 })
 export class InjuriesComponent {
   readonly DEFAULT_VALUE = DEFAULT_VALUE;
+  readonly PERMANENT = InjuryTypeId.PERMANENT;
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly filters: FormGroup = new FormGroup({
     type: new FormControl(DEFAULT_VALUE)
@@ -25,6 +27,11 @@ export class InjuriesComponent {
   readonly injuries$: Observable<Injury[]> = this.filters$.pipe(
     map(filters => this.data[DataTypes.INJURIES]
       .filter(i => filters.type === DEFAULT_VALUE ? true : filters?.type === i.type)
+    )
+  );
+  readonly permanentInjuries$: Observable<PermanentInjury[]> = this.filters$.pipe(
+    map(filters => this.data[DataTypes.PERMANENT_INJURIES]
+      .filter(() => filters.type === DEFAULT_VALUE ? true : filters?.type === InjuryTypeId.PERMANENT)
     )
   );
 

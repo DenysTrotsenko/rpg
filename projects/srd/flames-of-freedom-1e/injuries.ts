@@ -4,7 +4,8 @@ import {Injury, InjuryType} from '@flames-of-freedom-1e/models';
 export const INJURY_TYPES: InjuryType[] = [
   {id: InjuryTypeId.MODERATE, name: 'Moderate'},
   {id: InjuryTypeId.SERIOUS, name: 'Serious'},
-  {id: InjuryTypeId.GRIEVOUS, name: 'Grievous'}
+  {id: InjuryTypeId.GRIEVOUS, name: 'Grievous'},
+  {id: InjuryTypeId.PERMANENT, name: 'Permanent'},
 ];
 
 export const INJURIES: Injury[] = [

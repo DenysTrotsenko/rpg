@@ -22,11 +22,11 @@ import {
   Trait
 } from '@flames-of-freedom-1e/models';
 import {
-  Allegiance,
+  // Allegiance,
   Disposition
 } from '@powered-by-zweihander/models';
 import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
-import { ALLEGIANCES } from '@pbz-1850/allegiances';
+// import { ALLEGIANCES } from '@pbz-1850/allegiances';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
 import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
@@ -56,7 +56,7 @@ export enum FirestoreCollection {
 
 export enum DataTypes {
   AGES = 'ages',
-  ALLEGIANCES = 'allegiances',
+  // ALLEGIANCES = 'allegiances',
   AFFLICTIONS = 'afflictions',
   ARCHETYPES = 'archetypes',
   ATTRIBUTES = 'attributes',
@@ -118,7 +118,7 @@ export class DataService {
     i.labels.tooltip = this.getAfflictionTooltip(i);
     return i;
   });
-  readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
+  // readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
   readonly [DataTypes.ARCHETYPES]: Archetype[] = ARCHETYPES;
   readonly [DataTypes.ATTRIBUTES]: Attribute[] = ATTRIBUTES;
   readonly [DataTypes.BELIEFS]: Belief[] = BELIEFS;
