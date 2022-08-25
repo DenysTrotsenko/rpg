@@ -22,7 +22,8 @@ export class CreateComponent {
   ) {}
 
   onSubmit(form): void {
-    this.firestore.update(`campaigns/${form.id}`, { ...form, id: getId(), author: this.route.snapshot.data?.user?.uid })
+    const id = getId();
+    this.firestore.update(`campaigns/${id}`, { ...form, id, author: this.route.snapshot.data?.user?.uid })
       .pipe(
         tap(() => this.router.navigate(['campaigns/list']))
       )
