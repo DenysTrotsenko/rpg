@@ -17,8 +17,14 @@ import {
 
 export interface Character {
   id: string;
-  campaign: string;
   authors: string[];
+  campaign: string;
+  name: string;
+  full_name: string;
+  belief: BeliefId;
+  flaw: FlawId;
+  culture: CultureId;
+  allegiances: AllegianceId[];
   advancements: {
     advanced: {
       bonuses: AttributeId[];
@@ -42,7 +48,6 @@ export interface Character {
       traits: TraitId[];
     };
   };
-  allegiances: AllegianceId[];
   archetype: ArchetypeId;
   attributes: {
     1: number;
@@ -53,9 +58,6 @@ export interface Character {
     6: number;
     7: number;
   };
-  belief: BeliefId;
-  culture: CultureId;
-  flaw: FlawId;
   determination: number;
   languages: number[];
   spells: number[];
@@ -73,7 +75,6 @@ export interface Character {
     stature: number;
     style: number;
   };
-  name: string;
   permanent_injuries: PermanentInjuryId[];
   afflictions: AfflictionId[];
   professions: {

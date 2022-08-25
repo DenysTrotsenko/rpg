@@ -35,7 +35,7 @@ export const FLAWS: Flaw[] = [
     id: FlawId.CARELESSNESS,
     name: 'Carelessness',
     labels: {
-      description: 'I have a terrible tendency to forget what I’m doing or working on . . . I just get so focused.'
+      description: 'I have a terrible tendency to forget what I’m doing or working on... I just get so focused.'
     }
   },
   {

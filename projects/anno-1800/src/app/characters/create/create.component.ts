@@ -69,6 +69,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     id: new FormControl(null),
     campaign: new FormControl(null, [Validators.required]),
     name: new FormControl('', [Validators.required]),
+    full_name: new FormControl('', [Validators.required]),
     miscellaneous: new FormGroup({
       portrait: new FormControl(null),
       biography: new FormControl(''),

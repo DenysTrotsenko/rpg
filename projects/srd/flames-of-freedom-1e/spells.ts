@@ -73,7 +73,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.INTERMEDIATE,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'This mausoleum shall never be trespassed against, lest the intruders risk elemental wrath . . .',
+      description: 'This mausoleum shall never be trespassed against, lest the intruders risk elemental wrath...',
       casting_time: 'One hour',
       distance: 'By touch',
       reagents: 'Any monument to the dead (such as a coffin, grave or undercroft), sealed with your own blood',
@@ -89,7 +89,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'Do not toy with me, for I see who you really are . . .',
+      description: 'Do not toy with me, for I see who you really are...',
       casting_time: 'One minute (1 AP)',
       distance: 'By touch',
       reagents: 'A glass or metal receptacle with a closing lid',
@@ -105,7 +105,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'We shall be delivered from pain’s threshold . . .',
+      description: 'We shall be delivered from pain’s threshold...',
       casting_time: 'Three hours',
       distance: 'By touch',
       reagents: 'A fire, which you use to breathe its smoke inward to exhale over the wounded',
@@ -121,7 +121,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.INTERMEDIATE,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'The earth laughs in flowers . . .',
+      description: 'The earth laughs in flowers...',
       casting_time: 'One minute (2 AP)',
       distance: 'By touch',
       reagents: 'Any plant you touch and a pinprick of your own blood',
@@ -137,7 +137,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'The Quaker Phillip Masters taught me this Spell . . .',
+      description: 'The Quaker Phillip Masters taught me this Spell...',
       casting_time: 'One hour',
       distance: 'By touch',
       reagents: 'A feather, plucked from a live eagle (expended)',
@@ -217,7 +217,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'Jolly mortals, fill your glasses, let us drink and be merry . . .',
+      description: 'Jolly mortals, fill your glasses, let us drink and be merry...',
       casting_time: 'Six minutes',
       distance: 'By touch',
       reagents: 'A pitcher of alcohol that you touch before singing a song',
@@ -233,7 +233,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'Hear me, ancient elements, lend me your strength . . .',
+      description: 'Hear me, ancient elements, lend me your strength...',
       casting_time: 'One hour',
       distance: 'By touch',
       reagents: 'An expensive or rare gemstone that you crush (expended)',
@@ -281,7 +281,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.COMMON,
     labels: {
-      description: 'You shall move like the zephyr . . .',
+      description: 'You shall move like the zephyr...',
       casting_time: 'One minute (1 AP)',
       distance: 'By touch',
       reagents: 'Orate and give commentary on a religious lesson',
@@ -697,7 +697,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.ADVANCED,
     type: SpellTypeId.WITCHCRAFT,
     labels: {
-      description: 'Over air, land and sea, mark everything that I can see . . .',
+      description: 'Over air, land and sea, mark everything that I can see...',
       casting_time: 'Nine minutes',
       distance: 'Self',
       reagents: 'A cauldron, the real name of a foe or place and a memento of the foe or place you wish to spy upon',
@@ -809,7 +809,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.WITCHCRAFT,
     labels: {
-      description: 'Oil of snake and sugar water, this will cure what ails you . . .',
+      description: 'Oil of snake and sugar water, this will cure what ails you...',
       casting_time: 'One hour',
       distance: 'By touch',
       reagents: 'Arsenic and a bandage, combined together (expended)',
@@ -841,7 +841,7 @@ export const SPELLS: Spell[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.WITCHCRAFT,
     labels: {
-      description: 'Dance for me, pretty poppet! Now click your heels . . .',
+      description: 'Dance for me, pretty poppet! Now click your heels...',
       casting_time: 'One minute (1 AP)',
       distance: 'Any one foe you can see',
       reagents: 'A cat’s cradle made from muscle sinew',

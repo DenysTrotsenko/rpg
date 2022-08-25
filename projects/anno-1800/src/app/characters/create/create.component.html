@@ -15,6 +15,10 @@
         <input matInput formControlName="name">
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="full_name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Culture</mat-label>
         <mat-select formControlName="culture">
           <mat-option *ngFor="let i of CULTURES" [value]="i.id">{{i.name}}</mat-option>

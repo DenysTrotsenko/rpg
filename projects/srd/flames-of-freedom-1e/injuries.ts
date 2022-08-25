@@ -586,7 +586,7 @@ export const INJURIES: Injury[] = [
   },
   {
     id: InjuryId.SLASHED_NOSE,
-    name: 'SLashed Nose',
+    name: 'Slashed Nose',
     type: InjuryTypeId.GRIEVOUS,
     labels: {
       effect: 'You are Bleeding. A caretaker must Perform Surgery. If the surgery is failed or if 24 hours pass, you gain the Split Face Permanent Injury. If you already have this Permanent Injury, you are Slain! instead. Until fully Recuperated, you suffer -9% Fellowship.'

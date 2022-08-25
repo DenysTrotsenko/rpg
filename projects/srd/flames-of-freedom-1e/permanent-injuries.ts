@@ -62,7 +62,7 @@ export const PERMANENT_INJURIES: PermanentInjury[] = [
     id: PermanentInjuryId.HEADMOULD_SHOT,
     name: 'Headmould Shot',
     labels: {
-      description: 'I used to be a soldier like you until I took a wallop to the head. The migraines never seem to go away, so please be patient with me . . . it takes a minute to compose my thoughts.',
+      description: 'I used to be a soldier like you until I took a wallop to the head. The migraines never seem to go away, so please be patient with me... it takes a minute to compose my thoughts.',
       effect: 'Whenever you suffer Peril, move one additional step down the Peril Condition Track negatively while gaining 1 Conflict.'
     }
   },

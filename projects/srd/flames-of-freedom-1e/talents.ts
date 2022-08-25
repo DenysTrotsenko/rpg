@@ -119,7 +119,7 @@ export const TALENTS: Talent[] = [
     id: TalentId.CHASE_THE_PAIN,
     name: 'Chase The Pain',
     labels: {
-      description: 'With... every... damned... wound... I... only... grow . . . stronger!',
+      description: 'With... every... damned... wound... I... only... grow... stronger!',
       effect: 'Whenever you are Hurt add +1 to Total Damage. If Moderately Wounded, add +2. If Seriously Wounded, add +3, and if Grievously Wounded, add +4 to Total Damage. You must be using a melee weapon to take advantage of this Talent.'
     }
   },
@@ -135,7 +135,7 @@ export const TALENTS: Talent[] = [
     id: TalentId.CLOSE_SHAVE,
     name: 'Close Shave',
     labels: {
-      description: 'I’ve got some fight left in me . . . now, have at you!',
+      description: 'I’ve got some fight left in me... now, have at you!',
       effect: 'Whenever you would suffer a Moderate Injury, spend one Coin, to ignore it. When suffering a Serious Injury, spend two Coins, or when suffering a Grievous Injury, spend three Coins to ignore it.'
     }
   },

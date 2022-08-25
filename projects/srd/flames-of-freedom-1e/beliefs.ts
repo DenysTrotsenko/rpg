@@ -140,7 +140,7 @@ export const BELIEFS: Belief[] = [
     id: BeliefId.JOY,
     name: 'Joy',
     labels: {
-      description: 'A light heart will carry me to the clouds and beyond . . . the great marvels and pleasures of this world give me meaning.'
+      description: 'A light heart will carry me to the clouds and beyond... the great marvels and pleasures of this world give me meaning.'
     }
   },
   {

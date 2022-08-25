@@ -86,7 +86,7 @@ export const AFFLICTIONS: Affliction[] = [
     id: AfflictionId.DISTRACTED_MIND,
     name: 'Distracted Mind',
     labels: {
-      description: 'Ever since I felt the darkness within, my mind cannot stay in one place. The danger lurks and the devil is in the details, so I notice it all. Every movement, every gesture, every possible opening to attack . . . so much so I lose sight of who is right before me.',
+      description: 'Ever since I felt the darkness within, my mind cannot stay in one place. The danger lurks and the devil is in the details, so I notice it all. Every movement, every gesture, every possible opening to attack... so much so I lose sight of who is right before me.',
       effect: 'Whenever you are engaged one-on-one with another (whether it be an ally or a foe), you gain a +20% Base Chance to Skill Tests to interact with them. However, whenever in groups of two or more, you suffer a -20% Base Chance to Skill Tests to interact with them.'
     }
   },
@@ -110,7 +110,7 @@ export const AFFLICTIONS: Affliction[] = [
     id: AfflictionId.FOOLISH_ENDEAVORS,
     name: 'Foolish Endeavors',
     labels: {
-      description: 'Whether blessed by a divine being or my own good fortune, my body has learned to endure whatever comes. I no longer know fear, only the unshaken drive to stop the darkness. At times, I am awarded for this bravery, at others . . . well, the darkness must win at least once in a while.',
+      description: 'Whether blessed by a divine being or my own good fortune, my body has learned to endure whatever comes. I no longer know fear, only the unshaken drive to stop the darkness. At times, I am awarded for this bravery, at others... well, the darkness must win at least once in a while.',
       effect: 'Whenever you rush into a situation without proper planning, you gain +10% Base Chance to succeed at Skill Tests during that situation. However, for every failed Skill Test, you suffer from Stress.'
     }
   },
@@ -142,7 +142,7 @@ export const AFFLICTIONS: Affliction[] = [
     id: AfflictionId.ITCHY_FINGERS,
     name: 'Itchy Fingers',
     labels: {
-      description: 'There are times the only thing I can control is the world around me, and altering that, taking from that, invokes a feeling of safety. If I can prove to myself that I can provide for myself, I will survive . . . even when I find the impulse overbearing.',
+      description: 'There are times the only thing I can control is the world around me, and altering that, taking from that, invokes a feeling of safety. If I can prove to myself that I can provide for myself, I will survive... even when I find the impulse overbearing.',
       effect: 'You may flip the results to succeed at Skill Tests to sneak about and steal. However, whenever you steal, you must succeed at a Resolve Test, or continue stealing until you are caught or fail.'
     }
   },
@@ -230,7 +230,7 @@ export const AFFLICTIONS: Affliction[] = [
     id: AfflictionId.THRILL_SEEKER,
     name: 'Thrill-Seeker',
     labels: {
-      description: 'The darkness is dangerous, and that danger brings a rush unlike any other. I feed that hunger inside me however I can: deadly journeys, desperate moments of intimacy . . . whatever the world offers. No longer can I live the life unchallenged, even when I long for tranquility.',
+      description: 'The darkness is dangerous, and that danger brings a rush unlike any other. I feed that hunger inside me however I can: deadly journeys, desperate moments of intimacy... whatever the world offers. No longer can I live the life unchallenged, even when I long for tranquility.',
       effect: 'Whenever you face challenges that are wholly new to you, you may flip the results to succeed at any one Skill Test during this time. However, when in situations you’ve faced before, the Historian may spend a Coin to force you to flip the results to fail any one Skill Test of their choosing.'
     }
   },

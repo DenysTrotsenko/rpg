@@ -84,18 +84,6 @@
         {{i.name}}
       </span>
     </p>
-    <p>
-      <b class="c-gray">Afflictions:</b>
-      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
-    <p>
-      <b class="c-gray">Permanent Injuries:</b>
-      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
     <p *ngIf="spells.length > 0">
       <b class="c-gray">Spells:</b>
       <span *ngFor="let i of spells;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
