@@ -61,6 +61,7 @@ export interface Character {
   determination: number;
   languages: number[];
   spells: number[];
+  alchemical_arts: number[];
   miscellaneous: {
     portrait: string;
     age: number;

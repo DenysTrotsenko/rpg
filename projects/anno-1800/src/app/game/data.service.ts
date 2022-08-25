@@ -4,7 +4,7 @@ import { shareReplay, switchMap } from 'rxjs/operators';
 import { AuthService, FirestoreService } from '@shared';
 import {
   Affliction,
-  Age,
+  Age, AlchemicalArt,
   Archetype,
   Attribute,
   Belief, Build,
@@ -37,7 +37,7 @@ import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
 import { TRAITS } from '@flames-of-freedom-1e/traits';
 import { QUIRKS } from '@flames-of-freedom-1e/quirks';
 import { SKILLS } from '@flames-of-freedom-1e/skills';
-import {SPELL_TYPES, SPELLS} from '@flames-of-freedom-1e/spells';
+import {ALCHEMICAL_ARTS, SPELL_TYPES, SPELLS} from '@flames-of-freedom-1e/spells';
 import { TALENTS } from '@flames-of-freedom-1e/talents';
 import { AGES } from '@flames-of-freedom-1e/age';
 import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
@@ -57,6 +57,7 @@ export enum FirestoreCollection {
 export enum DataTypes {
   AGES = 'ages',
   // ALLEGIANCES = 'allegiances',
+  ALCHEMICAL_ARTS = 'alchemical_arts',
   AFFLICTIONS = 'afflictions',
   ARCHETYPES = 'archetypes',
   ATTRIBUTES = 'attributes',
@@ -119,6 +120,10 @@ export class DataService {
     return i;
   });
   // readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
+  readonly [DataTypes.ALCHEMICAL_ARTS]: AlchemicalArt[] = ALCHEMICAL_ARTS.map(i => {
+    i.labels.tooltip = this.getAlchemicalArtsTooltip(i);
+    return i;
+  });
   readonly [DataTypes.ARCHETYPES]: Archetype[] = ARCHETYPES;
   readonly [DataTypes.ATTRIBUTES]: Attribute[] = ATTRIBUTES;
   readonly [DataTypes.BELIEFS]: Belief[] = BELIEFS;
@@ -192,6 +197,21 @@ export class DataService {
       `${skill.name} ${skill.type === 2 ? '*' : ''} (${attribute.name})\n`,
       `${skill.labels?.description}\n`,
       `${skill.labels?.difficulties}`,
+    ].join('\n');
+  }
+
+  private getAlchemicalArtsTooltip(art: AlchemicalArt): string {
+    const tier = TIERS.find(i => i.id === art.tier);
+    return [
+      `${art.name}\n`,
+      `${art.labels?.description}\n`,
+      `Requirement: ${tier?.name}\n`,
+      `Preparation Time: ${art.labels?.preparation_time}\n`,
+      `Create: ${art.labels?.create}\n`,
+      `Effect: ${art.labels?.effect}\n`,
+      `Critical Success: ${art.labels?.critical_success}\n`,
+      `Critical Failure: ${art.labels?.critical_failure}\n`,
+      `Other Considerations: ${art.labels?.other_considerations}`,
     ].join('\n');
   }
 

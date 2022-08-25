@@ -1,5 +1,5 @@
-import {Spell, SpellType} from './models';
-import {SpellId, SpellTypeId, TierId} from '@flames-of-freedom-1e/enums';
+import {AlchemicalArt, Spell, SpellType} from './models';
+import {SpellId, SpellTypeId, TierId} from './enums';
 
 export const SPELL_TYPES: SpellType[] = [
   { id: SpellTypeId.COMMON, name: 'Common Spells' },
@@ -906,4 +906,202 @@ export const SPELLS: Spell[] = [
   //     duration: ''
   //   }
   // },
+];
+
+export const ALCHEMICAL_ARTS: AlchemicalArt[] = [
+  {
+    id: SpellId.CREATE_ACID_BOMB,
+    name: 'Create Acid Bomb',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'Through the work of Clavis Maioris Sapientiae, we find the Art of making acid in all its mundane and warlike forms . . .',
+      preparation_time: 'Twelve hours',
+      create: 'The more potent the bomb is, the more the Difficulty Rating eases or worsens:\n• Add +0 Total Damage: (Routine +10%) Alchemy\n• Add +3 Total Damage: (Standard +/-0%) Alchemy\n• Add +6 Total Damage: (Challenging -10%) Alchemy',
+      effect: 'If successful, you create a number of bombs for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One bomb\n• [IB] 7 to 12: Two bombs\n• [IB] 13+: Three bombs',
+      critical_success: 'You create three Acidic Bombs.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory and Alkali. Acid Bombs can be found in Article 5: Wares & Weapons.'
+    }
+  },
+  {
+    id: SpellId.CREATE_ALKALI,
+    name: 'Create Alkali',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'To break the effects of acid, we must have Alkali.',
+      preparation_time: 'Twelve hours',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create three vials of Alkali.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory. Alkali can be found in Article 5: Wares & Weapons.'
+    }
+  },
+  {
+    id: SpellId.CREATE_BLACKPOWDER,
+    name: 'Create Blackpowder',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'Should we follow the correct ratios, we’ll be able to produce enough for the fight... but should our measurements be off, KABOOM!',
+      preparation_time: 'Twelve hours',
+      create: 'The more potent the bomb is, the moer the Difficulty Rating eases or worsens:\n• Add +0 Total Damage: (Routine +10%) Alchemy\n• Add +3 Total Damage: (Standard +/-0%) Alchemy\n• Add +6 Total Damage: (Challenging -10%) Alchemy',
+      effect: 'If successful, you create a number of charges for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: Ten charges\n• [IB] 7 to 12: Twenty charges\n• [IB] 13+: Thirty charges',
+      critical_success: 'You create thirty charges of Blackpowder.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an Alchemist’s laboratory, charcoal, sulfur and saltpeter. Blackpowder can be found in Article 5: Wares & Weapons.'
+    }
+  },
+  {
+    id: SpellId.CREATE_DRUGS,
+    name: 'Create Drugs',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'Some distill gin, others make tea... as for me, I make Yupa.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Decide first which one Drug type you wish to create. Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of doses for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One dose\n• [IB] 7 to 12: Two doses\n• [IB] 13+: Three doses',
+      critical_success: 'You create Three doses of Drugs.',
+      critical_failure: 'You suffer the effects of the Drug instead.',
+      other_considerations: 'You must have access to an alchemical laboratory, arsenic and hemlock.The Historian may require other processes up front to properly prepare drugs and medicine. For instance, you may have to find a Yupa plant to create proper Yupa, or process tea leaves to create Tea. Preparation times do not account for this, assuming that you’ve worked with the Historian to procure the needed ingredients.'
+    }
+  },
+  {
+    id: SpellId.CREATE_ELIXIR,
+    name: 'Create Elixir',
+    tier: TierId.INTERMEDIATE,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'There are but seven elixirs to be created, so choose wisely which you will quaff.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Decide first which Primary Attribute you wish to augment. The longer the Elixir is intended to last, the more the Difficulty Rating eases or worsens:\n• Ten minutes: (Routine +10%) Alchemy\n• Twenty minutes: (Standard +/-0%) Alchemy\n• Thirty minutes: (Challenging -10%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Elixir.',
+      critical_failure: 'Temporarily reduce the intended Primary Attribute by -9% for thirty minutes.',
+      other_considerations: 'You must have access to an alchemical laboratory and quicksilver. Imbibing an Elixir temporarily increases one Primary Attribute by +9%. A character can only be under the effects of one Elixir at a time, or else suffers from 3D10+3 Peril for every additional Elixir they imbibe before the effects of the first Elixir wear off.'
+    }
+  },
+  {
+    id: SpellId.CREATE_ESSENCE,
+    name: 'Create Essence',
+    tier: TierId.ADVANCED,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'To create Essence of the Cat, we let the body of the mountain lion boil in wax, then add . . .',
+      preparation_time: 'Twenty-four hours',
+      create: 'Work with the Historian to first decide which Trait from a threat you wish to distill into the Essence. The lengthier the Essence’s duration, the more the Difficulty Rating eases or worsens:\n• One hour: (Routine +10%) Alchemy\n• Two hour: (Standard +/-0%) Alchemy\n• Three hours: (Challenging -10%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Essence.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory, Alkali and quicksilver. You must also have the corpse of a threat that has a Trait you wish to distill into an Essence. Drinking an Essence of a creature allows a character to take on one of the threat’s Traits for a number of minutes based on the outcome of Create Essence. Upon imbibing it, they gain 6 Conflict.'
+    }
+  },
+  {
+    id: SpellId.CREATE_HALLUCINOGENIC_POWDER,
+    name: 'Create Hallucinogenic Powder',
+    tier: TierId.INTERMEDIATE,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'A simple but effective trick, one resulting in mixing finished talc and drugs together.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Decide first which Drug you wish to impart into the powder. Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Hallucinogenic Powder.',
+      critical_failure: 'You and everyone in a Burst Template suffer the effects of the Drug instead.',
+      other_considerations: 'You must have access to an alchemical laboratory, opium and talc. One vial of Hallucinogenic Powder can be poured into a Burst Template. Any who trespass across the powder must Resist using Toughness or else suffer the effects of any one Drug you’ve imparted into the powder. If it is a beneficial Drug, no Resist is necessary. Finally, Hallucinogenic Powder can be combined with an Acid Bomb or Powder Bomb.'
+    }
+  },
+  {
+    id: SpellId.CREATE_MEDICINE,
+    name: 'Create Medicine',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'While some rely on rudimentary hand-me-down recipes, I have perfected their creation through rote and repetition.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Decide first which medicine you wish to create: Laudanum, Smelling salts or Tincture. Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of doses for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One dose\n• [IB] 7 to 12: Two doses\n• [IB] 13+: Three doses',
+      critical_success: 'You create Three doses of medicine.',
+      critical_failure: 'You suffer 3D10+3 Peril.',
+      other_considerations: 'You must have access to an alchemical laboratory, arsenic and one of the following: opium (for Laudanum or Tincture) or salt (for Smelling salts). You must also have opium to create Laudanum, salt to create Smelling salts or quicksilver to create Tincture.'
+    }
+  },
+  {
+    id: SpellId.CREATE_OSTANES_DUST,
+    name: 'Create Ostane\'s Dust',
+    tier: TierId.BASIC,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'None shall trespass across this magic powder; intruders will be revealed.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Ostane’s Dust.',
+      critical_failure: 'You suffer 3D10+3 Peril.',
+      other_considerations: 'You must have access to an alchemical laboratory, salt and talc. One vial of Ostane’s Dust can be poured into a Burst Template. Any who trespass across the dust are immediately revealed, even if hiding, Insubstantial or invisible.'
+    }
+  },
+  {
+    id: SpellId.CREATE_POWDER_BOMB,
+    name: 'Create Powder Bomb',
+    tier: TierId.INTERMEDIATE,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'This will create a near-colorless bomb that obscures vision and more.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of bombs for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One bomb\n• [IB] 7 to 12: Two bombs\n• [IB] 13+: Three bombs',
+      critical_success: 'You create three Powder Bombs.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory, blackpowder and talc. Powder Bombs can be found in Article 5: Wares & Weapons.'
+    }
+  },
+  {
+    id: SpellId.CREATE_PRESERVATION_FLUID,
+    name: 'Create Preservation Fluid',
+    tier: TierId.INTERMEDIATE,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'This will halt decomposition but for a short while, until we can revivify the subject.',
+      preparation_time: 'Twenty-four hours',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Preservation Fluid.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory and hemlock. Once a vial of Preservation Fluid is poured onto a corpse or plant, it completely halts decay for one week.'
+    }
+  },
+  {
+    id: SpellId.CREATE_REANIMATION_FLUID,
+    name: 'Create Reanimation Fluid',
+    tier: TierId.ADVANCED,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'They shall rise again, and again, and again to fight for us!',
+      preparation_time: 'One week',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Reanimation Fluid.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory, aqua vitae and hemlock, and gain 1 Flaw Rank upon completion, regardless of success or failure. Once a vial of Reanimation Fluid is poured onto a corpse, it takes on the stats of a Skeleton from Article 14: Threats. You can only command a number of Skeletons equal to your [WB] at any one time, but you may replace those which have been Slain!. Skeletons cannot be healed.'
+    }
+  },
+  {
+    id: SpellId.CREATE_VITRIOL,
+    name: 'Create Vitriol',
+    tier: TierId.INTERMEDIATE,
+    type: SpellTypeId.ALCHEMICAL_ARTS,
+    labels: {
+      description: 'Blackpowder was our first advance in science; now, witness the explosive power of vitriol!',
+      preparation_time: 'Twenty-four hours',
+      create: 'Depending on where you’re at on the Damage Condition Track, the Difficulty Rating eases or worsens:\n• Unharmed: (Easy +20%) Alchemy\n• Hurt: (Routine +10%) Alchemy\n• Moderately Wounded: (Standard +/-0%) Alchemy\n• Seriously Wounded: (Challenging -10%) Alchemy\n• Grievously Wounded: (Hard -20%) Alchemy',
+      effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',
+      critical_success: 'You create Three vials of Vitriol.',
+      critical_failure: 'You suffer 2D10+2 Damage from fire.',
+      other_considerations: 'You must have access to an alchemical laboratory and sulfur. Whenever a vial of Vitriol is used as ammunition with weapons that possess the Blackpowder Quality, it imparts the Bomb Quality. Each vial has an Encumbrance Value of 1. Should you suffer Damage from falling while carrying Vitriol, roll a 1D6 Chaos Die. On face ‘1’ to ‘5,’ nothing happens. On face ‘6,’ it blows up in a Burst Template, dealing 2D10+2 Damage from fire.'
+    }
+  }
 ];

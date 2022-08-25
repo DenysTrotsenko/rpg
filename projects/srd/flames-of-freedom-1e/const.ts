@@ -1,2 +1,3 @@
 export const DEFAULT_ATTRIBUTE_PERCENTAGES = 25;
 export const DEFAULT_DETERMINATION = 2;
+const BULLET = '•';

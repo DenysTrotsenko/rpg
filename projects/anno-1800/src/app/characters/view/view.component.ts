@@ -7,7 +7,19 @@ import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {AfflictionId, AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Affliction, Belief, Flaw, Injury, InjuryType, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {
+  Affliction,
+  AlchemicalArt,
+  Belief,
+  Flaw,
+  Injury,
+  InjuryType,
+  PermanentInjury,
+  Quirk,
+  Spell,
+  Talent,
+  Trait
+} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Disposition, Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
@@ -183,8 +195,11 @@ export class ViewComponent implements OnDestroy {
     }));
   }
 
-  getSpells(character: Character): Spell[] {
-    return this.data[DataTypes.SPELLS].filter(spell => character.spells.includes(spell.id));
+  getSpells(character: Character): (AlchemicalArt | Spell)[] {
+    return [
+      ...this.data[DataTypes.SPELLS].filter(spell => character.spells.includes(spell.id)),
+      ...this.data[DataTypes.ALCHEMICAL_ARTS].filter(spell => character.alchemical_arts.includes(spell.id)),
+    ];
   }
 
   getTalents(character: Character): Talent[] {

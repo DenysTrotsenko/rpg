@@ -207,6 +207,23 @@ export interface Spell {
   };
 }
 
+export interface AlchemicalArt {
+  id: SpellId;
+  name: string;
+  tier: TierId;
+  type: SpellTypeId;
+  labels: {
+    description?: string;
+    preparation_time?: string;
+    create?: string;
+    effect?: string;
+    critical_success?: string;
+    critical_failure?: string;
+    other_considerations?: string;
+    tooltip?: string;
+  };
+}
+
 export interface SpellType {
   id: SpellTypeId;
   name: string;

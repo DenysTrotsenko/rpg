@@ -288,7 +288,7 @@
     <mat-card-header>
       <mat-card-title>Magic</mat-card-title>
     </mat-card-header>
-    <mat-card-content class="d-f jc-sb cg-5">
+    <mat-card-content class="d-f fd-c">
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Spells</mat-label>
         <mat-select formControlName="spells" multiple>
@@ -297,7 +297,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Alchemical Arts</mat-label>
+        <mat-select formControlName="alchemical_arts" multiple>
+          <mat-option *ngFor="let i of ALCHEMICAL_ARTS" [value]="i.id" [matTooltip]="i.labels.tooltip">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
   </mat-card>
 

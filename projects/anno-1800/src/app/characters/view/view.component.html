@@ -65,7 +65,6 @@
         </td>
       </tr>
     </table>
-
     <p *ngIf="talents.length > 0">
       <b class="c-gray">Talents:</b>
       <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
@@ -85,7 +84,7 @@
       </span>
     </p>
     <p *ngIf="spells.length > 0">
-      <b class="c-gray">Spells:</b>
+      <b class="c-gray">Spells, Alchemical Arts:</b>
       <span *ngFor="let i of spells;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>

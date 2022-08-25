@@ -1,5 +1,5 @@
-import {PermanentInjury} from '@flames-of-freedom-1e/models';
-import {PermanentInjuryId} from '@flames-of-freedom-1e/enums';
+import {PermanentInjury} from './models';
+import {PermanentInjuryId} from './enums';
 
 export const PERMANENT_INJURIES: PermanentInjury[] = [
   {

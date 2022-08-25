@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import {Injury, Spell, SpellType, Tier} from '@flames-of-freedom-1e/models';
+import {AlchemicalArt, Injury, Spell, SpellType, Tier} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -26,6 +26,12 @@ export class SpellsComponent {
   readonly filters$ = this.filters.valueChanges.pipe(startWith(DEFAULT_FILTERS));
   readonly spells$: Observable<Spell[]> = this.filters$.pipe(
     map(filters => this.data[DataTypes.SPELLS]
+      .filter(i => filters.tier === DEFAULT_VALUE ? true : filters?.tier === i.tier)
+      .filter(i => filters.type === DEFAULT_VALUE ? true : filters?.type === i.type)
+    )
+  );
+  readonly arts$: Observable<AlchemicalArt[]> = this.filters$.pipe(
+    map(filters => this.data[DataTypes.ALCHEMICAL_ARTS]
       .filter(i => filters.tier === DEFAULT_VALUE ? true : filters?.tier === i.tier)
       .filter(i => filters.type === DEFAULT_VALUE ? true : filters?.type === i.type)
     )

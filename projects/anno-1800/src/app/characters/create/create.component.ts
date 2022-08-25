@@ -6,7 +6,7 @@ import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 
 import {FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
   Affliction,
-  Age,
+  Age, AlchemicalArt,
   Allegiance,
   Archetype,
   Attribute,
@@ -44,6 +44,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly AGES: Age[] = this.data[DataTypes.AGES];
   readonly AFFLICTIONS: Affliction[] = this.data[DataTypes.AFFLICTIONS];
   // readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
+  readonly ALCHEMICAL_ARTS: AlchemicalArt[] = this.data[DataTypes.ALCHEMICAL_ARTS];
   readonly ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
   readonly ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
   readonly BELIEFS: Belief[] = this.data[DataTypes.BELIEFS];
@@ -108,6 +109,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       advanced: new FormControl(null),
     }),
     spells: new FormControl([]),
+    alchemical_arts: new FormControl([]),
     afflictions: new FormControl([]),
     permanent_injuries: new FormControl([]),
     advancements: new FormGroup({

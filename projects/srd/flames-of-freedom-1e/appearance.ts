@@ -1,5 +1,5 @@
 import {BuildId, EyesId, HairColorId, HairLengthId, HairStyleId, MarkId, SexId, StatureId, StyleId} from './enums';
-import {Build, Eyes, HairColor, HairLength, HairStyle, Mark, Sex, Stature, Style} from '@flames-of-freedom-1e/models';
+import {Build, Eyes, HairColor, HairLength, HairStyle, Mark, Sex, Stature, Style} from './models';
 
 export const STATURE: Stature[] = [
   { id: StatureId.SLIGHT, name: 'Slight' },

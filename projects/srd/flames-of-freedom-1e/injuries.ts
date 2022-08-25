@@ -1,5 +1,5 @@
-import {InjuryId, InjuryTypeId} from '@flames-of-freedom-1e/enums';
-import {Injury, InjuryType} from '@flames-of-freedom-1e/models';
+import {InjuryId, InjuryTypeId} from './enums';
+import {Injury, InjuryType} from './models';
 
 export const INJURY_TYPES: InjuryType[] = [
   {id: InjuryTypeId.MODERATE, name: 'Moderate'},
