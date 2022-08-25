@@ -1,11 +1,20 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let i of afflictions; trackBy: trackById;" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-      <p matLine class="c-gray"><i>{{i.labels.description}}</i></p>
-      <p matLine><b class="c-gray">Effect:</b> {{i.labels.effect}}</p>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened position="end">
+    <button mat-icon-button type="button" (click)="onRandomClick()" matTooltip="Random Affliction">
+      <mat-icon>casino</mat-icon>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let i of afflictions; trackBy: trackById;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <p matLine class="c-gray"><i>{{i.labels.description}}</i></p>
+          <p matLine><b class="c-gray">Effect:</b> {{i.labels.effect}}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav-content>
+</mat-sidenav-container>

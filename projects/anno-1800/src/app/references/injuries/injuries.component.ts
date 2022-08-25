@@ -38,10 +38,7 @@ export class InjuriesComponent {
     )
   );
 
-  constructor(
-    private data: DataService,
-    private snackbar: MatSnackBar
-  ) {}
+  constructor(private data: DataService, private snackbar: MatSnackBar) {}
 
   onRandomClick(type: InjuryTypeId): void {
     const injuries = this.data[DataTypes.INJURIES].filter(i => i.type === type);
