@@ -11,7 +11,7 @@ import { FirestoreService, getId } from '@shared';
 })
 export class CreateComponent {
   readonly form: FormGroup = new FormGroup({
-    id: new FormControl(null),
+    id: new FormControl(getId()),
     name: new FormControl('', [Validators.required]),
   });
 
@@ -22,8 +22,7 @@ export class CreateComponent {
   ) {}
 
   onSubmit(form): void {
-    const id = getId();
-    this.firestore.update(`campaigns/${id}`, { ...form, id, author: this.route.snapshot.data?.user?.uid })
+    this.firestore.update(`campaigns/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
       .pipe(
         tap(() => this.router.navigate(['campaigns/list']))
       )
