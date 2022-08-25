@@ -207,6 +207,11 @@ export interface Spell {
   };
 }
 
+export interface SpellType {
+  id: SpellTypeId;
+  name: string;
+}
+
 export interface Stature {
   id: StatureId;
   name: string;

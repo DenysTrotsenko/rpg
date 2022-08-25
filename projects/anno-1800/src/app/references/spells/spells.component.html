@@ -1,0 +1,21 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of spells;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">
+        {{i.name}}
+        <span class="ml-10 c-gray"> ({{(i.type | getById: TYPES.SPELL_TYPES).name}})</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine class="c-gray"><i>{{i.labels.description}}</i></p>
+      <p matLine><b class="c-gray">Requirement:</b> {{(i.tier | getById: TYPES.TIERS).name}}</p>
+      <p matLine><b class="c-gray">Casting Time:</b> {{i.labels.casting_time}}</p>
+      <p matLine><b class="c-gray">Distance:</b> {{i.labels.distance}}</p>
+      <p matLine><b class="c-gray">Reagents:</b> {{i.labels.reagents}}</p>
+      <p matLine><b class="c-gray">Effect:</b> {{i.labels.effect}}</p>
+      <p matLine><b class="c-gray">Critical Success:</b> {{i.labels.critical_success}}</p>
+      <p matLine><b class="c-gray">Critical Failure:</b> {{i.labels.critical_failure}}</p>
+      <p matLine><b class="c-gray">Duration:</b> {{i.labels.duration}}</p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

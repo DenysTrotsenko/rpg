@@ -7,6 +7,9 @@ import { QuirksComponent } from '@ti/app/references/quirks/quirks.component';
 import { TalentsComponent } from '@ti/app/references/talents/talents.component';
 import { TraitsComponent } from '@ti/app/references/traits/traits.component';
 import { AttributesComponent } from '@ti/app/references/attributes/attributes.component';
+import { AfflictionsComponent } from '@ti/app/references/afflictions/afflictions.component';
+import { InjuriesComponent } from '@ti/app/references/injuries/injuries.component';
+import {SpellsComponent} from '@ti/app/references/spells/spells.component';
 
 const routes: Routes = [
   {
@@ -14,8 +17,16 @@ const routes: Routes = [
     component: ReferencesComponent,
     children: [
       {
+        path: 'afflictions',
+        component: AfflictionsComponent
+      },
+      {
         path: 'attributes',
         component: AttributesComponent
+      },
+      {
+        path: 'injuries',
+        component: InjuriesComponent
       },
       {
         path: 'professions',
@@ -28,6 +39,10 @@ const routes: Routes = [
       {
         path: 'skills',
         component: SkillsComponent
+      },
+      {
+        path: 'spells',
+        component: SpellsComponent
       },
       {
         path: 'talents',

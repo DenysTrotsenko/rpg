@@ -1,5 +1,12 @@
-import {Spell} from './models';
+import {Spell, SpellType} from './models';
 import {SpellId, SpellTypeId, TierId} from '@flames-of-freedom-1e/enums';
+
+export const SPELL_TYPES: SpellType[] = [
+  { id: SpellTypeId.COMMON, name: 'Common Spells' },
+  { id: SpellTypeId.BLACK_AND_WHITE, name: 'Black & White Spells' },
+  { id: SpellTypeId.WITCHCRAFT, name: 'Witchcraft Spells' },
+  { id: SpellTypeId.ALCHEMICAL_ARTS, name: 'Alchemical Arts' },
+];
 
 /* tslint:disable:max-line-length */
 export const SPELLS: Spell[] = [

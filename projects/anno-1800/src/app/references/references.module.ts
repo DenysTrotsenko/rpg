@@ -9,6 +9,9 @@ import { TalentsComponent } from './talents/talents.component';
 import { TraitsComponent } from './traits/traits.component';
 import { QuirksComponent } from './quirks/quirks.component';
 import { AttributesComponent } from './attributes/attributes.component';
+import { AfflictionsComponent } from './afflictions/afflictions.component';
+import { InjuriesComponent } from './injuries/injuries.component';
+import { SpellsComponent } from './spells/spells.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { AttributesComponent } from './attributes/attributes.component';
     SkillsComponent,
     TalentsComponent,
     TraitsComponent,
-    AttributesComponent
+    AttributesComponent,
+    AfflictionsComponent,
+    InjuriesComponent,
+    SpellsComponent
   ],
   imports: [
     SharedModule,

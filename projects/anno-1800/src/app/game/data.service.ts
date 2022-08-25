@@ -17,7 +17,7 @@ import {
   Mark, PermanentInjury,
   Profession,
   Quirk, Sex,
-  Skill, Spell, Stature, Style,
+  Skill, Spell, SpellType, Stature, Style,
   Talent, Tier,
   Trait
 } from '@flames-of-freedom-1e/models';
@@ -37,7 +37,7 @@ import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
 import { TRAITS } from '@flames-of-freedom-1e/traits';
 import { QUIRKS } from '@flames-of-freedom-1e/quirks';
 import { SKILLS } from '@flames-of-freedom-1e/skills';
-import { SPELLS } from '@flames-of-freedom-1e/spells';
+import {SPELL_TYPES, SPELLS} from '@flames-of-freedom-1e/spells';
 import { TALENTS } from '@flames-of-freedom-1e/talents';
 import { AGES } from '@flames-of-freedom-1e/age';
 import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
@@ -79,6 +79,7 @@ export enum DataTypes {
   SEX = 'sex',
   SKILLS = 'skills',
   SPELLS = 'spells',
+  SPELL_TYPES = 'spell_types',
   STATURE = 'stature',
   STYLE = 'style',
   TALENTS = 'talents',
@@ -151,6 +152,7 @@ export class DataService {
     i.labels.tooltip = this.getSpellTooltip(i);
     return i;
   });
+  readonly [DataTypes.SPELL_TYPES]: SpellType[] = SPELL_TYPES;
   readonly [DataTypes.STATURE]: Stature[] = STATURE;
   readonly [DataTypes.STYLE]: Style[] = STYLE;
   readonly [DataTypes.TALENTS]: Talent[] = TALENTS.map(i => {
