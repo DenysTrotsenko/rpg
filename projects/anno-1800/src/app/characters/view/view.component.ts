@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, OnDestroy, HostListener} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
@@ -7,24 +7,22 @@ import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {AfflictionId, AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {
-  Affliction,
-  AlchemicalArt,
-  Belief,
-  Flaw,
-  Injury,
-  InjuryType,
-  PermanentInjury,
-  Quirk,
-  Spell,
-  Talent,
-  Trait
-} from '@flames-of-freedom-1e/models';
+import {Affliction, AlchemicalArt, Belief, Flaw, Injury, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Disposition, Language} from '@powered-by-zweihander/models';
+import {Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
+import {
+  getAttributeBonus,
+  getDamageThreshold,
+  getDamageThresholds,
+  getEncumbranceLimit,
+  getInitiative,
+  getMovement,
+  getPerilThreshold,
+  getPerilThresholds
+} from '@ti/app/game/character.utils';
 
-interface AfflictionView { id: AfflictionId; name: string; tooltip: string; }
+// interface AfflictionView { id: AfflictionId; name: string; tooltip: string; }
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
 
@@ -47,9 +45,6 @@ export class ViewComponent implements OnDestroy {
     // rp_used: new FormControl(0),
     // permanent_belief_ranks: new FormControl(0),
     // permanent_flaw_ranks: new FormControl(0),
-    // moderate_injuries: new FormControl([]),
-    // serious_injuries: new FormControl([]),
-    // grievous_injuries: new FormControl([])
   });
   readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
@@ -89,7 +84,6 @@ export class ViewComponent implements OnDestroy {
 
   readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
   readonly injuries: Injury[] = this.data[DataTypes.INJURIES];
-  // readonly injuryTypes: InjuryType[] = this.data[DataTypes.INJURY_TYPES];
 
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
@@ -156,18 +150,6 @@ export class ViewComponent implements OnDestroy {
     return `My name is ${name} and I pledge my allegiance to the ${allegiances}. I am a/an ${age?.name} ${culture?.name} ${sex?.name} and have made my life as a/an ${profession?.name}. I am of a/an ${stature?.name} stature, with a ${build?.name} build. I dress ${style?.name} and have ${eyes?.name} eyes, ${hair} hair and ${mark?.name}.`;
   }
 
-  // getDispositions(character: Character): DispositionView[] {
-  //   return Object.keys(character.allegiances).map(i => {
-  //     const allegiance = this.data[DataTypes.ALLEGIANCES].find(j => j.id === +i);
-  //     const disposition = this.data[DataTypes.DISPOSITIONS].find(j => j.id === character.allegiances[+i]);
-  //     return {
-  //       name: allegiance?.name,
-  //       value: disposition?.name,
-  //       tooltip: disposition?.labels?.tooltip
-  //     };
-  //   });
-  // }
-
   getLanguages(character: Character): Language[] {
     return this.data[DataTypes.LANGUAGES].filter(language => character.languages.includes(language.id));
   }
@@ -176,6 +158,19 @@ export class ViewComponent implements OnDestroy {
     return [
       this.data[DataTypes.BELIEFS].find(i => i.id === character.belief),
       this.data[DataTypes.FLAWS].find(i => i.id === character.flaw)
+    ];
+  }
+
+  getQuirks(character: Character): (Quirk | Affliction | PermanentInjury)[] {
+    const quirks: QuirkId[] = [
+      ...character.advancements.basic.quirks,
+      ...character.advancements.intermediate.quirks,
+      ...character.advancements.advanced.quirks
+    ];
+    return [
+      ...this.data[DataTypes.QUIRKS].filter(i => quirks.includes(i.id)),
+      ...this.data[DataTypes.AFFLICTIONS].filter(i => character.afflictions.includes(i.id)),
+      ...this.data[DataTypes.PERMANENT_INJURIES].filter(i => character.permanent_injuries.includes(i.id))
     ];
   }
 
@@ -221,17 +216,46 @@ export class ViewComponent implements OnDestroy {
     return this.data[DataTypes.TRAITS].filter(i => traits.includes(i.id));
   }
 
-  getQuirks(character: Character): (Quirk | Affliction | PermanentInjury)[] {
-    const quirks: QuirkId[] = [
-      ...character.advancements.basic.quirks,
-      ...character.advancements.intermediate.quirks,
-      ...character.advancements.advanced.quirks
-    ];
+  getDamageThresholds(character: Character): string {
+    return getDamageThresholds(getDamageThreshold(character));
+  }
+
+  getEncumbranceLimit(character: Character): string {
+    return `${getEncumbranceLimit(character)}`;
+  }
+
+  getInitiative(character: Character): string {
+    return `${getInitiative(character)}`;
+  }
+
+  getMovement(character: Character): string {
+    return `${getMovement(character)}`;
+  }
+
+  getAllMovementsTooltip(character: Character): string {
+    const agility: number = getAttributeBonus(character, AttributeId.AGILITY);
+    const brawn: number = getAttributeBonus(character, AttributeId.BRAWN);
     return [
-      ...this.data[DataTypes.QUIRKS].filter(i => quirks.includes(i.id)),
-      ...this.data[DataTypes.AFFLICTIONS].filter(i => character.afflictions.includes(i.id)),
-      ...this.data[DataTypes.PERMANENT_INJURIES].filter(i => character.permanent_injuries.includes(i.id))
-    ];
+      `On foot (Athletics, AB+3): ${agility + 3}`,
+      `Sneaking (Stealth, AB-1): ${Math.max(agility - 1, 1)}`,
+      `Crawling (Toughness, BB-6): ${Math.max(brawn - 6, 1)}`,
+      `Climbing up (Athletics, BB-6): ${Math.max(brawn - 6, 1)}`,
+      `Riding a fast animal (Ride, AB+12): ${agility + 12}`,
+      `Riding a slow animal (Ride, AB+6): ${agility + 6}`,
+      `Swimming above water (Athletics, BB+0): ${brawn}`,
+      `Swimming below water (Athletics, BB-6): ${Math.max(brawn - 6, 1)}`,
+      `Climbing down (Athletics, BB+0): ${brawn}`,
+      `Balancing (Coordination, AB+0): ${agility}`,
+      `Rowing downriver (Athletics, BB+9): ${brawn + 9}`,
+      `Rowing upriver (Athletics, BB+3): ${brawn + 3}`,
+      `Driving a fast vehicle (Drive, BB+9): ${brawn + 9}`,
+      `Driving a slow vehicle (Drive, BB+3): ${brawn + 3}`,
+      `Flying (Awareness, AB+12): ${agility}`,
+    ].join('\n');
+  }
+
+  getPerilThresholds(character: Character): string {
+    return getPerilThresholds(getPerilThreshold(character));
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {

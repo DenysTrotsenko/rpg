@@ -34,24 +34,21 @@
         {{i.name}}
       </span>
     </p>
-<!--    <p>-->
-<!--      <b class="c-gray">Attributes:</b>-->
-<!--      <span *ngFor="let i of attributes; trackBy: trackById;" class="comma-separated ws-pw">-->
-<!--        {{i.name}} {{i.value}}% ({{i.bonus}})-->
-<!--      </span>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--      <b class="c-gray">Skills:</b>-->
-<!--      <span *ngFor="let i of skills; trackBy: trackById" class="comma-separated ws-pw" [matTooltip]="i.tooltip">-->
-<!--        {{i.name}}<span class="c-amber">{{i.type === SKILL_TYPE_SPECIAL ? '*' : ''}}</span> +{{i.value}}%-->
-<!--      </span>-->
-<!--    </p>-->
     <p class="mb-0">
       <b class="c-gray">Attributes & Skills:</b>
     </p>
     <table class="mat-table w-100 mb-15">
       <tr class="mat-row va-t h-32">
         <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
+      </tr>
+      <tr class="mat-row va-t h-32">
+        <td class="mat-cell">Encumbrance: {{getEncumbranceLimit(character)}}</td>
+        <td class="mat-cell">DT: {{getDamageThresholds(character)}}</td>
+        <td class="mat-cell" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
+        <td class="mat-cell">Initiative: {{getInitiative(character)}}</td>
+        <td class="mat-cell"></td>
+        <td class="mat-cell">PT: {{getPerilThresholds(character)}}</td>
+        <td class="mat-cell"></td>
       </tr>
       <tr class="mat-row">
         <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
@@ -91,7 +88,7 @@
     </p>
   </ng-container>
 
-  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>
+<!--  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>-->
 
   <form [formGroup]="form" class="d-f fd-c">
     <div class="d-f cg-5 mb-10">

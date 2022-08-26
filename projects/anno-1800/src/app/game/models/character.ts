@@ -50,13 +50,7 @@ export interface Character {
   };
   archetype: ArchetypeId;
   attributes: {
-    1: number;
-    2: number;
-    3: number;
-    4: number;
-    5: number;
-    6: number;
-    7: number;
+    [k in AttributeId]: number;
   };
   determination: number;
   languages: number[];

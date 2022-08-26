@@ -6,15 +6,25 @@ import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 
 import {FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
   Affliction,
-  Age, AlchemicalArt,
-  Allegiance,
+  Age,
+  AlchemicalArt,
   Archetype,
   Attribute,
   Belief,
   Build,
-  Culture, Eyes,
-  Flaw, HairColor, HairLength, HairStyle, Language, Mark, PermanentInjury,
-  Profession, Sex, Spell, Stature,
+  Culture,
+  Eyes,
+  Flaw,
+  HairColor,
+  HairLength,
+  HairStyle,
+  Language,
+  Mark,
+  PermanentInjury,
+  Profession,
+  Sex,
+  Spell,
+  Stature,
   Style,
   Tier,
   Trait
@@ -22,9 +32,12 @@ import {
 import {
   AgeId,
   ArchetypeId,
-  AttributeId, BeliefId,
-  CultureId, FlawId,
-  ProfessionId, SexId,
+  AttributeId,
+  BeliefId,
+  CultureId,
+  FlawId,
+  ProfessionId,
+  SexId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
 import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-freedom-1e/utils';
@@ -41,6 +54,7 @@ import {Campaign} from '@ti/app/game/models/campaign';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
+  readonly TYPES = DataTypes;
   readonly AGES: Age[] = this.data[DataTypes.AGES];
   readonly AFFLICTIONS: Affliction[] = this.data[DataTypes.AFFLICTIONS];
   // readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
@@ -157,44 +171,48 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
-  readonly damageThresholds$: Observable<string> = combineLatest([
-    this.determination$,
-    this.brawn$
-  ]).pipe(
-    map(([determination, brawn]) => {
-      const threshold: number = determination + getBonusFromAttribute(brawn);
-      return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
-    }),
-    shareReplay(1)
-  );
-  readonly perilThresholds$: Observable<string> = this.willpower$.pipe(
-    map(willpower => {
-      const threshold: number = 3 + getBonusFromAttribute(willpower);
-      return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
-    }),
-    shareReplay(1)
-  );
-  readonly encumbranceLimit$: Observable<string> = this.brawn$.pipe(
-    map(brawn => {
-      const limit: number = 3 + getBonusFromAttribute(brawn);
-      return `${limit}`;
-    }),
-    shareReplay(1)
-  );
-  readonly initiative$: Observable<string> = this.perception$.pipe(
-    map(perception => {
-      const initiative: number = 3 + getBonusFromAttribute(perception);
-      return `${initiative}`;
-    }),
-    shareReplay(1)
-  );
-  readonly movement$: Observable<string> = this.agility$.pipe(
-    map(agility => {
-      const movement: number = 3 + getBonusFromAttribute(agility);
-      return `${movement}`;
-    }),
-    shareReplay(1)
-  );
+
+  // readonly character$: Observable<Character> = this.form.valueChanges.pipe(
+  //   shareReplay(1)
+  // );
+  // readonly /damageThresholds$: Observable<string> = combineLatest([
+  //   this.determination$,
+  //   this.brawn$
+  // ]).pipe(
+  //   map(([determination, brawn]) => {
+  //     const threshold: number = determination + getBonusFromAttribute(brawn);
+  //     return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
+  //   }),
+  //   shareReplay(1)
+  // );
+  // readonly perilThresholds$: Observable<string> = this.willpower$.pipe(
+  //   map(willpower => {
+  //     const threshold: number = 3 + getBonusFromAttribute(willpower);
+  //     return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
+  //   }),
+  //   shareReplay(1)
+  // );
+  // readonly encumbranceLimit$: Observable<string> = this.brawn$.pipe(
+  //   map(brawn => {
+  //     const limit: number = 3 + getBonusFromAttribute(brawn);
+  //     return `${limit}`;
+  //   }),
+  //   shareReplay(1)
+  // );
+  // readonly initiative$: Observable<string> = this.perception$.pipe(
+  //   map(perception => {
+  //     const initiative: number = 3 + getBonusFromAttribute(perception);
+  //     return `${initiative}`;
+  //   }),
+  //   shareReplay(1)
+  // );
+  // readonly movement$: Observable<string> = this.agility$.pipe(
+  //   map(agility => {
+  //     const movement: number = 3 + getBonusFromAttribute(agility);
+  //     return `${movement}`;
+  //   }),
+  //   shareReplay(1)
+  // );
   readonly archetype$: Observable<ArchetypeId> = this.form.get('archetype').valueChanges.pipe(
     startWith(ArchetypeId.COMMONER),
     shareReplay(1)

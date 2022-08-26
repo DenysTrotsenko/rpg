@@ -91,37 +91,37 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="mb-15">
-    <mat-card-header>
-      <mat-card-title>Secondary Attributes</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="d-f jc-sb cg-5">
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Determination</mat-label>
-        <input matInput formControlName="determination">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Damage Thresholds</mat-label>
-        <input matInput [disabled]="true" [value]="damageThresholds$ | async">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Peril Thresholds</mat-label>
-        <input matInput [disabled]="true" [value]="perilThresholds$ | async">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Encumbrance Limit</mat-label>
-        <input matInput [disabled]="true" [value]="encumbranceLimit$ | async">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Initiative</mat-label>
-        <input matInput [disabled]="true" [value]="initiative$ | async">
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
-        <mat-label>Movement</mat-label>
-        <input matInput [disabled]="true" [value]="movement$ | async">
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+<!--  <mat-card class="mb-15">-->
+<!--    <mat-card-header>-->
+<!--      <mat-card-title>Secondary Attributes</mat-card-title>-->
+<!--    </mat-card-header>-->
+<!--    <mat-card-content class="d-f jc-sb cg-5">-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Determination</mat-label>-->
+<!--        <input matInput formControlName="determination">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Damage Thresholds</mat-label>-->
+<!--        <input matInput [disabled]="true" [value]="damageThresholds$ | async">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Peril Thresholds</mat-label>-->
+<!--        <input matInput [disabled]="true" [value]="perilThresholds$ | async">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Encumbrance Limit</mat-label>-->
+<!--        <input matInput [disabled]="true" [value]="encumbranceLimit$ | async">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Initiative</mat-label>-->
+<!--        <input matInput [disabled]="true" [value]="initiative$ | async">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Movement</mat-label>-->
+<!--        <input matInput [disabled]="true" [value]="movement$ | async">-->
+<!--      </mat-form-field>-->
+<!--    </mat-card-content>-->
+<!--  </mat-card>-->
 
   <mat-card class="mb-15">
     <mat-card-header>
@@ -154,7 +154,7 @@
       </mat-form-field>
     </mat-card-content>
     <mat-card-content *ngIf="!!form.get('archetype').value">
-      <p><b>Starting wares, weapons & money: </b>{{(form.get('archetype').value | getById: 'archetypes')?.labels?.wares}}</p>
+      <p><b>Starting wares, weapons & money: </b>{{(form.get('archetype').value | getById: TYPES.ARCHETYPES)?.labels?.wares}}</p>
     </mat-card-content>
   </mat-card>
 

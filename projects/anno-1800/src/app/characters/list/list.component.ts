@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
 import { Character } from '@ti/app/game/models/character';
-import {DataService} from '@ti/app/game/data.service';
+import { DataService } from '@ti/app/game/data.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -33,7 +33,8 @@ export class ListComponent {
       .afterClosed()
       .pipe(
         filter(res => !!res),
-        switchMap(() => this.firestore.delete(`characters/${i.id}`))
+        switchMap(() => this.firestore.delete(`characters/${i.id}`)),
+        tap(() => localStorage.removeItem(i.id))
       )
       .subscribe();
   }
