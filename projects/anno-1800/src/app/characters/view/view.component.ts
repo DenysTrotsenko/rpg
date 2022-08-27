@@ -40,10 +40,10 @@ export class ViewComponent implements OnDestroy {
     belief_ranks: new FormControl(0),
     flaw_ranks: new FormControl(0),
     injuries: new FormControl([]),
+    notes: new FormControl(''),
     // rp_total: new FormControl(0),
     // rp_used: new FormControl(0),
     // permanent_belief_ranks: new FormControl(0),
-    // permanent_flaw_ranks: new FormControl(0),
   });
   readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
