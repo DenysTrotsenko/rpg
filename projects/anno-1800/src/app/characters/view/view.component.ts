@@ -5,7 +5,7 @@ import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/opera
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
-import {AfflictionId, AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Affliction, AlchemicalArt, Belief, Flaw, Injury, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -22,7 +22,6 @@ import {
   getPerilThresholds
 } from '@ti/app/game/character.utils';
 
-// interface AfflictionView { id: AfflictionId; name: string; tooltip: string; }
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
 
@@ -63,7 +62,6 @@ export class ViewComponent implements OnDestroy {
         this.spells = this.getSpells(character);
         this.talents = this.getTalents(character);
         this.traits = this.getTraits(character);
-        // this.dispositions = this.getDispositions(character);
         const temporary = localStorage.getItem(character.id);
         if (temporary) {
           this.form.patchValue(JSON.parse(temporary));
@@ -72,7 +70,6 @@ export class ViewComponent implements OnDestroy {
     );
 
   attributes: AttributeView[];
-  // dispositions: DispositionView[];
   description: string;
   languages: Language[];
   personality: [Belief, Flaw];
@@ -250,7 +247,7 @@ export class ViewComponent implements OnDestroy {
       `Rowing upriver (Athletics, BB+3): ${brawn + 3}`,
       `Driving a fast vehicle (Drive, BB+9): ${brawn + 9}`,
       `Driving a slow vehicle (Drive, BB+3): ${brawn + 3}`,
-      `Flying (Awareness, AB+12): ${agility}`,
+      `Flying (Awareness, AB+12): ${agility + 12}`,
     ].join('\n');
   }
 

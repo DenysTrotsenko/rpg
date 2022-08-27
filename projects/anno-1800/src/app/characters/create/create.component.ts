@@ -126,6 +126,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     alchemical_arts: new FormControl([]),
     afflictions: new FormControl([]),
     permanent_injuries: new FormControl([]),
+    permanent_belief_ranks: new FormControl(0),
+    permanent_flaw_ranks: new FormControl(0),
     advancements: new FormGroup({
       basic: new FormGroup({
         traits: new FormControl([]),

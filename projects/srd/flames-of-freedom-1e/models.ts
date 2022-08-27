@@ -7,7 +7,7 @@ import {
   BeliefId, BuildId,
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId, MarkId, PermanentInjuryId,
-  ProfessionId,
+  ProfessionId, QualityId,
   QuirkId, SexId,
   SkillId,
   SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
@@ -118,6 +118,7 @@ export interface Injury {
     effect?: string;
   };
 }
+
 export interface InjuryType {
   id: InjuryTypeId;
   name: string;
@@ -159,6 +160,14 @@ export interface PermanentInjury extends HasId<PermanentInjuryId> {
     description: string;
     effect: string;
     tooltip?: string;
+  };
+}
+
+export interface Quality {
+  id: QualityId;
+  name: string;
+  labels?: {
+    effect: string;
   };
 }
 

@@ -547,6 +547,10 @@ export enum ProfessionId {
   WRITER
 }
 
+export enum QualityId {
+
+}
+
 export enum QuirkId {
   METHOD_ACTOR = PrefixId.FLAMES_OF_FREEDOM,
   BOUND_TO_THE_FORGE,
