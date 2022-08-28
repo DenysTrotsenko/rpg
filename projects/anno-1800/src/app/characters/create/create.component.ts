@@ -173,48 +173,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
     shareReplay(1)
   );
-
-  // readonly character$: Observable<Character> = this.form.valueChanges.pipe(
-  //   shareReplay(1)
-  // );
-  // readonly /damageThresholds$: Observable<string> = combineLatest([
-  //   this.determination$,
-  //   this.brawn$
-  // ]).pipe(
-  //   map(([determination, brawn]) => {
-  //     const threshold: number = determination + getBonusFromAttribute(brawn);
-  //     return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
-  //   }),
-  //   shareReplay(1)
-  // );
-  // readonly perilThresholds$: Observable<string> = this.willpower$.pipe(
-  //   map(willpower => {
-  //     const threshold: number = 3 + getBonusFromAttribute(willpower);
-  //     return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
-  //   }),
-  //   shareReplay(1)
-  // );
-  // readonly encumbranceLimit$: Observable<string> = this.brawn$.pipe(
-  //   map(brawn => {
-  //     const limit: number = 3 + getBonusFromAttribute(brawn);
-  //     return `${limit}`;
-  //   }),
-  //   shareReplay(1)
-  // );
-  // readonly initiative$: Observable<string> = this.perception$.pipe(
-  //   map(perception => {
-  //     const initiative: number = 3 + getBonusFromAttribute(perception);
-  //     return `${initiative}`;
-  //   }),
-  //   shareReplay(1)
-  // );
-  // readonly movement$: Observable<string> = this.agility$.pipe(
-  //   map(agility => {
-  //     const movement: number = 3 + getBonusFromAttribute(agility);
-  //     return `${movement}`;
-  //   }),
-  //   shareReplay(1)
-  // );
   readonly archetype$: Observable<ArchetypeId> = this.form.get('archetype').valueChanges.pipe(
     startWith(ArchetypeId.COMMONER),
     shareReplay(1)

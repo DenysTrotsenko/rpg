@@ -1898,7 +1898,7 @@ export const PROFESSIONS: Profession[] = [
         SkillId.SCRUTINIZE,
         SkillId.SIMPLE_MELEE,
         SkillId.SIMPLE_RANGED,
-        SkillId.SCRUTINIZE
+        SkillId.SURVIVAL
       ],
       talents: [
         TalentId.BRAINS_OVER_BRAWN,

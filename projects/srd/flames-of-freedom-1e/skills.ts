@@ -270,7 +270,7 @@ export const SKILLS: Skill[] = [
     type: SkillTypeId.COMMON,
     labels: {
       description: 'Rumor represents your ability to gather information from social circles, stimulating conversation by being gregarious and talkative. It can be used to interact with strangers and friends alike, appealing to them with your personality or just chewing the fat. It is also used to appeal to larger groups to gather the latest political or social news, dissect the newest gossip and spread rumors.',
-      difficulties: '(Trivial +30%):\nLubricate local gossipmongers with alcohol to learn rumors\n(Easy +20%):\nHobnob with locals while participating in tavern games\n(Routine +10%):\nSpeak in Pig Latin or other odd languages with friends\n(Standard +/-0%):\nSpread gossip of an impending attack with locals\n(Challenging -10%):\nSpeak fluently before a court of your betters\n(Hard-20%):Befriend foreigners who don’t particularly care for your kind\n(Arduous -30%):\nforeign tongues'
+      difficulties: '(Trivial +30%):\nLubricate local gossipmongers with alcohol to learn rumors\n(Easy +20%):\nHobnob with locals while participating in tavern games\n(Routine +10%):\nSpeak in Pig Latin or other odd languages with friends\n(Standard +/-0%):\nSpread gossip of an impending attack with locals\n(Challenging -10%):\nSpeak fluently before a court of your betters\n(Hard-20%):\nBefriend foreigners who don’t particularly care for your kind\n(Arduous -30%):\nStimulate casual conversation in foreign tongues'
     }
   },
   {
