@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { GetByIdPipe } from './pipes/get-by-id.pipe';
+import { CustomizeWeaponDialogComponent } from './components/customize-weapon-dialog/customize-weapon-dialog.component';
 
 @NgModule({
   declarations: [
-    GetByIdPipe
+    GetByIdPipe,
+    CustomizeWeaponDialogComponent
   ],
   exports: [
-    GetByIdPipe
+    GetByIdPipe,
+    CustomizeWeaponDialogComponent
   ]
 })
 export class GameModule { }

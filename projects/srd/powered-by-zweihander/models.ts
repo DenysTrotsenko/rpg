@@ -1,3 +1,5 @@
+import {QualityId} from './enums';
+
 export interface HasBase {
   id: number;
   name: string;
@@ -11,6 +13,7 @@ export interface HasLabels {
 }
 
 export interface Allegiance extends HasBase, HasLabels {}
+
 export interface Disposition extends HasBase, HasLabels {
   labels?: {
     description?: string;
@@ -20,4 +23,13 @@ export interface Disposition extends HasBase, HasLabels {
     social_tactics_different_allegiance?: string;
   };
 }
+
 export interface Language extends HasBase, HasLabels {}
+
+export interface Quality {
+  id: QualityId;
+  name: string;
+  labels?: {
+    effect: string;
+  };
+}

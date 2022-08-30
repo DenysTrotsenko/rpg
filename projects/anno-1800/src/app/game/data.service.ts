@@ -15,11 +15,11 @@ import {
   HairStyle, Injury, InjuryType,
   Language,
   Mark, PermanentInjury,
-  Profession,
+  Profession, Quality,
   Quirk, Sex,
   Skill, Spell, SpellType, Stature, Style,
   Talent, Tier,
-  Trait
+  Trait, Weapon
 } from '@flames-of-freedom-1e/models';
 import {
   // Allegiance,
@@ -47,6 +47,8 @@ import {Campaign} from '@ti/app/game/models/campaign';
 import {Character} from '@ti/app/game/models/character';
 import {INJURIES, INJURY_TYPES} from '@flames-of-freedom-1e/injuries';
 import {PERMANENT_INJURIES} from '@flames-of-freedom-1e/permanent-injuries';
+import {WEAPONS} from '@flames-of-freedom-1e/weapons';
+import {QUALITIES} from '@flames-of-freedom-1e/qualities';
 
 
 export enum FirestoreCollection {
@@ -76,6 +78,7 @@ export enum DataTypes {
   MARKS = 'marks',
   PERMANENT_INJURIES = 'permanent_injuries',
   PROFESSIONS = 'professions',
+  QUALITIES = 'qualities',
   QUIRKS = 'quirks',
   SEX = 'sex',
   SKILLS = 'skills',
@@ -85,7 +88,8 @@ export enum DataTypes {
   STYLE = 'style',
   TALENTS = 'talents',
   TIERS = 'tiers',
-  TRAITS = 'traits'
+  TRAITS = 'traits',
+  WEAPONS = 'weapons'
 }
 
 @Injectable({
@@ -144,6 +148,7 @@ export class DataService {
     return i;
   });
   readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
+  readonly [DataTypes.QUALITIES]: Quality[] = QUALITIES;
   readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {
     i.labels.tooltip = this.getQuirkTooltip(i);
     return i;
@@ -167,6 +172,10 @@ export class DataService {
   readonly [DataTypes.TIERS]: Tier[] = TIERS;
   readonly [DataTypes.TRAITS]: Trait[] = TRAITS.map(i => {
     i.labels.tooltip = this.getTraitTooltip(i);
+    return i;
+  });
+  readonly [DataTypes.WEAPONS]: Weapon[] = WEAPONS.map(i => {
+    // i.labels.tooltip = this.getTraitTooltip(i);
     return i;
   });
 

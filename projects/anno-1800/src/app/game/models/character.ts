@@ -11,9 +11,6 @@ import {
   TalentId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {
-  AllegianceId
-} from '@pbz-1850/enums';
 
 export interface Character {
   id: string;
@@ -24,7 +21,7 @@ export interface Character {
   belief: BeliefId;
   flaw: FlawId;
   culture: CultureId;
-  allegiances: AllegianceId[];
+  allegiances: string;
   advancements: {
     advanced: {
       bonuses: AttributeId[];

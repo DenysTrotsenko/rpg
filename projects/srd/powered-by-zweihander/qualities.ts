@@ -1,5 +1,6 @@
-import {Quality} from '@flames-of-freedom-1e/models';
-import {QualityId} from '@flames-of-freedom-1e/enums';
+import {Quality} from './models';
+import {QualityId} from './enums';
+
 
 export const QUALITIES: Quality[] = [
   {
@@ -248,10 +249,80 @@ export const QUALITIES: Quality[] = [
     }
   },
   {
-    id: QualityId.REPEATING,
-    name: 'Repeating',
+    id: QualityId.REPEATING_2,
+    name: 'Repeating (2)',
     labels: {
-      effect: 'This weapon can be fired a number of times equal to the value in parenthesis (e.g., 3) before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
     }
-  }
+  },
+  {
+    id: QualityId.REPEATING_3,
+    name: 'Repeating (3)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_4,
+    name: 'Repeating (4)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_5,
+    name: 'Repeating (5)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_6,
+    name: 'Repeating (6)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_8,
+    name: 'Repeating (8)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_9,
+    name: 'Repeating (9)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_10,
+    name: 'Repeating (10)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_12,
+    name: 'Repeating (12)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.REPEATING_20,
+    name: 'Repeating (20)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
+    id: QualityId.CYLINDER_5,
+    name: 'Cylinder (5)',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis before needing to be Loaded again. Spend 1 AP to Load one ammunition, or spend 3 AP to load another cylinder.'
+    }
+  },
 ];

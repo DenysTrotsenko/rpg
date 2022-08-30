@@ -1,7 +1,7 @@
 import {PrefixId} from '../prefixes';
 
 export enum AllegianceId {
-  UNION = PrefixId.PBZ_1850,
+  UNION = PrefixId.PBZ_18XX,
   CONFEDERACY,
   FREEMASONS,
   INQUISITION,
@@ -11,7 +11,7 @@ export enum AllegianceId {
 }
 
 export enum LanguageId {
-  ABENAKI = PrefixId.PBZ_1850,
+  ABENAKI = PrefixId.PBZ_18XX,
   ALGONQUIN,
   APALACHEE,
   ATIKAMEKW,
@@ -50,11 +50,11 @@ export enum LanguageId {
 }
 
 export enum WareTypeId {
-  CLOTHING = PrefixId.PBZ_1850,
+  CLOTHING = PrefixId.PBZ_18XX,
 }
 
 export enum WareId {
-  BELT = PrefixId.PBZ_1850,
+  BELT = PrefixId.PBZ_18XX,
   BOOTS,
   BOOTS_CUSTOM_MADE_COWBOY,
   BUFFALO_ROBE,
@@ -73,4 +73,14 @@ export enum WareId {
   SPURS,
   SHOES,
   TROUSERS,
+}
+
+export enum WeaponId {
+  COLT_ARMY = PrefixId.PBZ_18XX,
+  LEMAT_REVOLVER,
+  COLT_FRONTIER,
+  COLT_PEACEKEEPER,
+  COLT_DERRINGER,
+  REMINGTON_ELIOT_DERRINGER,
+  WHITWORTH_RIFLE,
 }

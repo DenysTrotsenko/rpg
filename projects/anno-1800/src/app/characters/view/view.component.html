@@ -119,19 +119,56 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="d-f fd-c">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Injuries</mat-label>
-        <mat-select multiple formControlName="injuries">
-          <mat-option *ngFor="let i of injuries;" [value]="i.id">
-            {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Notes</mat-label>
-        <textarea matInput formControlName="notes"></textarea>
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="outline" class="w-100" [matTooltip]="getInjuriesTooltip()">
+      <mat-label>Injuries</mat-label>
+      <mat-select multiple formControlName="injuries">
+        <mat-option *ngFor="let i of injuries;" [value]="i.id" [matTooltip]="i.labels?.effect">
+          {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes"></textarea>
+    </mat-form-field>
   </form>
+  <!-- WEAPONS -->
+  <table class="mat-table w-100 mb-15">
+    <tr class="mat-row">
+      <th class="mat-header-cell ta-l">Name</th>
+      <th class="mat-header-cell ta-l">Skill</th>
+      <th class="mat-header-cell ta-l">Handling</th>
+      <th class="mat-header-cell ta-l">Load</th>
+      <th class="mat-header-cell ta-l">Ammo</th>
+      <th class="mat-header-cell ta-l">Distance</th>
+      <th class="mat-header-cell ta-l">Damage</th>
+      <th class="mat-header-cell ta-l">Qualities</th>
+      <th class="mat-header-cell ta-l">Encumbrance</th>
+      <th class="mat-header-cell ta-r">
+        <mat-icon color="primary" class="c-pointer" (click)="onAddWeaponClick()">add</mat-icon>
+      </th>
+    </tr>
+    <tr *ngFor="let i of DEFAULT_WEAPONS" class="mat-row va-t h-32">
+      <td class="mat-cell">{{i.name}}</td>
+      <td class="mat-cell">
+        <span *ngFor="let j of i.skills;" class="comma-separated ws-pw">
+          {{(j | getById: DataTypes.SKILLS).name}}
+        </span>
+      </td>
+      <td class="mat-cell">{{i.labels?.handling}}</td>
+      <td class="mat-cell">{{i.labels?.load}}</td>
+      <td class="mat-cell">{{i.labels?.ammo}}</td>
+      <td class="mat-cell">{{i.labels?.distance}}</td>
+      <td class="mat-cell">{{i.labels?.damage}}</td>
+      <td class="mat-cell">
+        <span *ngFor="let j of i.qualities;" class="comma-separated ws-pw" [matTooltip]="(j | getById: DataTypes.QUALITIES)?.labels?.effect">
+          {{(j | getById: DataTypes.QUALITIES).name}}
+        </span>
+      </td>
+      <td class="mat-cell">{{i.encumbrance}}</td>
+    </tr>
+    <tr *ngFor="let i of form.get('weapons').value" class="mat-row va-t h-32">
+      <td class="mat-cell">{{i.name}}</td>
+    </tr>
+  </table>
 </ng-container>

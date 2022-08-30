@@ -1,5 +1,5 @@
 import {WareId, WareTypeId} from './enums';
-import {Ware} from './models';
+import {Ware, Weapon} from './models';
 
 export const WARE_TYPES = [
   { id: WareTypeId.ALCHEMICAL_DRUGS_MEDICINE, name: 'Alchemical, Drugs & Medicine' }

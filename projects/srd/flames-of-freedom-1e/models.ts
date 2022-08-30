@@ -13,7 +13,7 @@ import {
   SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
   TalentId,
   TierId,
-  TraitId, WareId, WareTypeId
+  TraitId, WareId, WareTypeId, WeaponId
 } from './enums';
 
 export interface Age {
@@ -281,5 +281,23 @@ export interface Ware {
   labels?: {
     description?: string;
     tooltip?: string;
+  };
+}
+
+export interface Weapon {
+  id: WeaponId;
+  name: string;
+  skills: SkillId[];
+  qualities: QualityId[];
+  encumbrance: number;
+  price: number;
+  labels?: {
+    description?: string;
+    handling?: string;
+    load?: string;
+    ammo?: string;
+    distance?: string;
+    damage?: string;
+    tooltip?:string;
   };
 }

@@ -1,14 +1,16 @@
-import {ChangeDetectionStrategy, Component, HostListener, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostListener, OnDestroy, ViewChild} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatDialog} from '@angular/material/dialog';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap, withLatestFrom} from 'rxjs/operators';
 import {FirestoreService} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
-import {AttributeId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
+import {AttributeId, InjuryId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId, WeaponId} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Affliction, AlchemicalArt, Belief, Flaw, Injury, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
-import {FormControl, FormGroup} from '@angular/forms';
 import {Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {
@@ -21,6 +23,9 @@ import {
   getPerilThreshold,
   getPerilThresholds
 } from '@ti/app/game/character.utils';
+import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
@@ -33,6 +38,7 @@ interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: A
 export class ViewComponent implements OnDestroy {
   readonly DataTypes = DataTypes;
   readonly SKILL_TYPE_SPECIAL = SkillTypeId.SPECIAL;
+  readonly DEFAULT_WEAPONS = this.data[DataTypes.WEAPONS].filter(i => i.id === WeaponId.BARE_HANDED);
   readonly form: FormGroup = new FormGroup({
     damage: new FormControl(0),
     peril: new FormControl(0),
@@ -41,6 +47,7 @@ export class ViewComponent implements OnDestroy {
     flaw_ranks: new FormControl(0),
     injuries: new FormControl([]),
     notes: new FormControl(''),
+    weapons: new FormControl([]),
   });
   readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
@@ -78,12 +85,15 @@ export class ViewComponent implements OnDestroy {
 
   readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
   readonly injuries: Injury[] = this.data[DataTypes.INJURIES];
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
+  @ViewChild('injuryInput') injuryInput: ElementRef<HTMLInputElement>;
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
   }
 
   constructor(
+    private readonly dialog: MatDialog,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly firestore: FirestoreService,
@@ -248,6 +258,13 @@ export class ViewComponent implements OnDestroy {
     ].join('\n');
   }
 
+  getInjuriesTooltip(): string {
+    const ids: InjuryId[] = this.form.get('injuries').value ?? [];
+    const injuries: Injury[] = this.data[DataTypes.INJURIES].filter(i => ids.includes(i.id));
+    const effects: string[] = injuries.map(i => i.labels?.effect).filter(i => !!i).map(i => `• ${i}`);
+    return effects.join('\n\n');
+  }
+
   getPerilThresholds(character: Character): string {
     return getPerilThresholds(getPerilThreshold(character));
   }
@@ -255,6 +272,16 @@ export class ViewComponent implements OnDestroy {
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {
     return skills.filter(skill => skill.attribute === id);
   }
+
+  onAddWeaponClick(): void {
+    this.dialog
+      .open(CustomizeWeaponDialogComponent)
+      .afterClosed()
+      .pipe()
+      .subscribe();
+  }
+
+  onRemoveWeaponClick(): void {}
 
   trackById(_, item): number {
     return item.id;

@@ -9,7 +9,7 @@ import {
   Injury,
   InjuryType,
   PermanentInjury,
-  Profession,
+  Profession, Quality,
   Quirk,
   Skill,
   Spell,
@@ -27,7 +27,7 @@ import {
   InjuryId,
   InjuryTypeId,
   PermanentInjuryId,
-  ProfessionId,
+  ProfessionId, QualityId,
   QuirkId,
   SkillId,
   SpellId,
@@ -47,6 +47,7 @@ type Id =
   | InjuryTypeId
   | PermanentInjuryId
   | ProfessionId
+  | QualityId
   | QuirkId
   | SkillId
   | SpellId
@@ -65,6 +66,7 @@ type Return =
   | InjuryType
   | PermanentInjury
   | Profession
+  | Quality
   | Quirk
   | Skill
   | Spell
