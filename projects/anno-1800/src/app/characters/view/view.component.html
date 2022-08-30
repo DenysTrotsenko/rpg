@@ -133,6 +133,9 @@
     </mat-form-field>
   </form>
   <!-- WEAPONS -->
+  <p class="mb-0">
+    <b class="c-gray">Weapons:</b>
+  </p>
   <table class="mat-table w-100 mb-15">
     <tr class="mat-row">
       <th class="mat-header-cell ta-l">Name</th>
@@ -145,7 +148,7 @@
       <th class="mat-header-cell ta-l">Qualities</th>
       <th class="mat-header-cell ta-l">Encumbrance</th>
       <th class="mat-header-cell ta-r">
-        <mat-icon color="primary" class="c-pointer" (click)="onAddWeaponClick()">add</mat-icon>
+        <mat-icon color="primary" class="c-pointer" matTooltip="Add Weapon" (click)="onAddWeaponClick()">add</mat-icon>
       </th>
     </tr>
     <tr *ngFor="let i of DEFAULT_WEAPONS" class="mat-row va-t h-32">
