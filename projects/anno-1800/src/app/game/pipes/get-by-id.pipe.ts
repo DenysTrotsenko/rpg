@@ -16,7 +16,7 @@ import {
   SpellType,
   Talent,
   Tier,
-  Trait
+  Trait, Weapon
 } from '@flames-of-freedom-1e/models';
 import {
   AfflictionId,
@@ -34,7 +34,7 @@ import {
   SpellTypeId,
   TalentId,
   TierId,
-  TraitId
+  TraitId, WeaponId
 } from '@flames-of-freedom-1e/enums';
 
 type Id =
@@ -54,7 +54,8 @@ type Id =
   | SpellTypeId
   | TalentId
   | TierId
-  | TraitId;
+  | TraitId
+  | WeaponId;
 
 type Return =
   | Affliction
@@ -73,7 +74,8 @@ type Return =
   | SpellType
   | Talent
   | Tier
-  | Trait;
+  | Trait
+  | Weapon;
 
 @Pipe({
   name: 'getById'

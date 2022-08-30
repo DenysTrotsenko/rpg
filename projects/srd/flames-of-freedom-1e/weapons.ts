@@ -15,7 +15,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'NONE',
       distance: '1+[PB] yards',
-      damage: '[PB]'
+      damage: 'PB'
     }
   },
   {
@@ -31,7 +31,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'Javelins',
       distance: '6+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -47,7 +47,7 @@ export const WEAPONS: Weapon[] = [
       load: '4AP',
       ammo: 'Bullets',
       distance: 'Cone Template',
-      damage: '[PB]'
+      damage: 'PB'
     }
   },
   {
@@ -63,7 +63,7 @@ export const WEAPONS: Weapon[] = [
       load: '3AP',
       ammo: 'Bullets',
       distance: '9+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -79,7 +79,7 @@ export const WEAPONS: Weapon[] = [
       load: '3AP',
       ammo: 'Bullets',
       distance: '9+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -95,7 +95,7 @@ export const WEAPONS: Weapon[] = [
       load: 'SPECIAL',
       ammo: 'Bullets (2)',
       distance: '1+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -111,7 +111,7 @@ export const WEAPONS: Weapon[] = [
       load: '3AP',
       ammo: 'Bullets',
       distance: 'Cone Template',
-      damage: '[PB]'
+      damage: 'PB'
     }
   },
   {
@@ -127,7 +127,7 @@ export const WEAPONS: Weapon[] = [
       load: '2AP',
       ammo: 'Bullets',
       distance: '3+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -143,7 +143,7 @@ export const WEAPONS: Weapon[] = [
       load: '2AP',
       ammo: 'Bullets',
       distance: '9+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -159,7 +159,7 @@ export const WEAPONS: Weapon[] = [
       load: '2AP',
       ammo: 'Bullets',
       distance: '3+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -175,7 +175,7 @@ export const WEAPONS: Weapon[] = [
       load: '3AP',
       ammo: 'Bullets',
       distance: '9+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -191,7 +191,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'NONE',
       distance: '1+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -207,7 +207,7 @@ export const WEAPONS: Weapon[] = [
       load: '4AP',
       ammo: 'NONE',
       distance: '6+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -223,7 +223,7 @@ export const WEAPONS: Weapon[] = [
       load: 'SPECIAL',
       ammo: 'Bullets (20)',
       distance: '6+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -239,7 +239,7 @@ export const WEAPONS: Weapon[] = [
       load: '2AP',
       ammo: 'Bullets',
       distance: '6+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -271,12 +271,12 @@ export const WEAPONS: Weapon[] = [
       load: '2AP',
       ammo: 'Bullets',
       distance: '1+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
     id: WeaponId.PENNSYLVANIA_LONGRIFLE,
-    name: 'Overcoat Pistol',
+    name: 'Pennsylvania Longrifle',
     skills: [SkillId.MARTIAL_RANGED],
     qualities: [QualityId.ACCURATE, QualityId.BLACKPOWDER, QualityId.PUNISHING],
     encumbrance: 4,
@@ -287,7 +287,7 @@ export const WEAPONS: Weapon[] = [
       load: '4AP',
       ammo: 'Bullets',
       distance: '12+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -319,7 +319,7 @@ export const WEAPONS: Weapon[] = [
       load: '6AP',
       ammo: 'Bullets',
       distance: '15+[PB]',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -335,7 +335,7 @@ export const WEAPONS: Weapon[] = [
       load: '3AP',
       ammo: 'Bullets',
       distance: '3+[PB]',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -351,7 +351,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'Arrows',
       distance: '9+[PB]',
-      damage: '[AB]'
+      damage: 'AB'
     }
   },
   {
@@ -367,7 +367,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'Bullets',
       distance: '1+[PB]',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -383,7 +383,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged or 1 yard',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -399,7 +399,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -415,7 +415,7 @@ export const WEAPONS: Weapon[] = [
       load: '1AP',
       ammo: 'NONE',
       distance: 'Engaged or 1 yard',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -431,7 +431,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -447,7 +447,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[AB]'
+      damage: 'AB'
     }
   },
   {
@@ -463,7 +463,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -495,7 +495,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: 'Engaged or 1+[PB]',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -511,7 +511,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -527,7 +527,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: 'Engaged or 1+[PB] yards',
-      damage: '[AB]'
+      damage: 'AB'
     }
   },
   {
@@ -543,7 +543,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -591,7 +591,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: 'Engaged or 1+[PB] yards',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -607,7 +607,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -623,7 +623,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: 'Engaged or 1+[PB] yard',
-      damage: '[AB]'
+      damage: 'AB'
     }
   },
   {
@@ -639,7 +639,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -655,7 +655,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: '3+[PB] yards',
-      damage: '[AB]'
+      damage: 'AB'
     }
   },
   {
@@ -671,7 +671,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged or 1 yard',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -687,7 +687,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -703,7 +703,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
       distance: 'Engaged or 1+[PB] yards',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   {
@@ -719,7 +719,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -735,7 +735,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: '[BB]'
+      damage: 'BB'
     }
   },
   {
@@ -751,7 +751,7 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged or 1 yard',
-      damage: '[CB]'
+      damage: 'CB'
     }
   },
   // {

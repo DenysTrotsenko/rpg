@@ -18,13 +18,13 @@
     </p>
     <p>
       <b class="c-gray">Belief & Flaw:</b>
-      <span *ngFor="let i of personality;" class="comma-separated ws-pw" [matTooltip]="i.labels?.description">
+      <span *ngFor="let i of personality;" class="comma-separated ws-pl" [matTooltip]="i.labels?.description">
         {{i.name}}
       </span>
     </p>
     <p>
       <b class="c-gray">Languages:</b>
-      <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pw">
+      <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pl">
         {{i.name}}
       </span>
     </p>
@@ -58,25 +58,25 @@
     </table>
     <p *ngIf="talents.length > 0">
       <b class="c-gray">Talents:</b>
-      <span *ngFor="let i of talents;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+      <span *ngFor="let i of talents;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>
     </p>
     <p>
       <b class="c-gray">Traits:</b>
-      <span *ngFor="let i of traits;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+      <span *ngFor="let i of traits;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>
     </p>
     <p>
       <b class="c-gray">Quirks, Afflictions, Permanent Injuries:</b>
-      <span *ngFor="let i of quirks;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+      <span *ngFor="let i of quirks;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>
     </p>
     <p *ngIf="spells.length > 0">
       <b class="c-gray">Spells, Alchemical Arts:</b>
-      <span *ngFor="let i of spells;" class="comma-separated ws-pw" [matTooltip]="i.labels?.tooltip">
+      <span *ngFor="let i of spells;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
         {{i.name}}
       </span>
     </p>
@@ -151,7 +151,7 @@
     <tr *ngFor="let i of DEFAULT_WEAPONS" class="mat-row va-t h-32">
       <td class="mat-cell">{{i.name}}</td>
       <td class="mat-cell">
-        <span *ngFor="let j of i.skills;" class="comma-separated ws-pw">
+        <span *ngFor="let j of i.skills;" class="comma-separated ws-pl">
           {{(j | getById: DataTypes.SKILLS).name}}
         </span>
       </td>
@@ -161,14 +161,36 @@
       <td class="mat-cell">{{i.labels?.distance}}</td>
       <td class="mat-cell">{{i.labels?.damage}}</td>
       <td class="mat-cell">
-        <span *ngFor="let j of i.qualities;" class="comma-separated ws-pw" [matTooltip]="(j | getById: DataTypes.QUALITIES)?.labels?.effect">
+        <span *ngFor="let j of i.qualities;" class="comma-separated ws-pl" [matTooltip]="(j | getById: DataTypes.QUALITIES)?.labels?.effect">
           {{(j | getById: DataTypes.QUALITIES).name}}
         </span>
       </td>
       <td class="mat-cell">{{i.encumbrance}}</td>
+      <td class="mat-cell ta-r"></td>
     </tr>
     <tr *ngFor="let i of form.get('weapons').value" class="mat-row va-t h-32">
-      <td class="mat-cell">{{i.name}}</td>
+      <ng-container *ngIf="getWeapon(i.id) as weapon">
+        <td class="mat-cell">{{weapon?.name}}</td>
+        <td class="mat-cell">
+          <span *ngFor="let j of weapon?.skills;" class="comma-separated ws-pl">
+            {{(j | getById: DataTypes.SKILLS).name}}
+          </span>
+        </td>
+        <td class="mat-cell">{{weapon?.labels?.handling}}</td>
+        <td class="mat-cell">{{weapon?.labels?.load}}</td>
+        <td class="mat-cell">{{weapon?.labels?.ammo}}</td>
+        <td class="mat-cell">{{weapon?.labels?.distance}}</td>
+        <td class="mat-cell">{{weapon?.labels?.damage}}</td>
+        <td class="mat-cell">
+          <span *ngFor="let j of getAllQualities(weapon, i.custom)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">
+            {{j?.name}}
+          </span>
+        </td>
+        <td class="mat-cell">{{weapon?.encumbrance}}</td>
+        <td class="mat-cell ta-r">
+          <mat-icon class="c-pointer" (click)="onRemoveWeaponClick(i.uid)">close</mat-icon>
+        </td>
+      </ng-container>
     </tr>
   </table>
 </ng-container>

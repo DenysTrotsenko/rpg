@@ -157,6 +157,13 @@ export const QUALITIES: Quality[] = [
     }
   },
   {
+    id: QualityId.REPEATING,
+    name: 'Repeating',
+    labels: {
+      effect: 'This weapon can be fired a number of times equal to the value in parenthesis (e.g., 3) before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
+    }
+  },
+  {
     id: QualityId.RUINED,
     name: 'Ruined',
     labels: {
@@ -214,44 +221,37 @@ export const QUALITIES: Quality[] = [
   },
   {
     id: QualityId.SUPERIOR,
-    name: 'SUPERIOR',
+    name: 'Superior',
     labels: {
       effect: 'Add +5% Base Chance to hit with this weapon.'
     }
   },
   {
     id: QualityId.SWEEPING,
-    name: 'SWEEPING',
+    name: 'Sweeping',
     labels: {
       effect: 'After hitting a foe with this weapon (but before Damage is dealt), they must Resist using Coordination or be knocked Prone. Whenever they Resist, they must flip the results to fail.'
     }
   },
   {
     id: QualityId.THROWING,
-    name: 'THROWING',
+    name: 'Throwing',
     labels: {
       effect: 'This weapon cannot take advantage of Medium, Long or Extreme Distances.'
     }
   },
   {
     id: QualityId.VICIOUS,
-    name: 'VICIOUS',
+    name: 'Vicious',
     labels: {
       effect: 'When determining if a foe is Injured with this weapon, roll an additional 1D6 Chaos Die.'
     }
   },
   {
     id: QualityId.WEAK,
-    name: 'WEAK',
+    name: 'Weak',
     labels: {
       effect: 'This weapon cannot inflict Grievous Injuries.'
     }
   },
-  {
-    id: QualityId.REPEATING,
-    name: 'Repeating',
-    labels: {
-      effect: 'This weapon can be fired a number of times equal to the value in parenthesis (e.g., 3) before needing to be Loaded again. Spend 2 AP to Load one ammunition.'
-    }
-  }
 ];

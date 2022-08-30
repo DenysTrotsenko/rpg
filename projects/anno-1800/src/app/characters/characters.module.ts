@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CharactersRoutingModule } from './characters-routing.module';
-import { SharedModule } from '@shared';
+import { DialogModule, SharedModule } from '@shared';
 import { GameModule } from '@ti/app/game/game.module';
 import { CharactersComponent } from './characters.component';
 import { CreateComponent } from './create/create.component';
@@ -19,6 +19,7 @@ import { EditComponent } from './edit/edit.component';
   ],
   imports: [
     SharedModule,
+    DialogModule,
     CharactersRoutingModule,
     GameModule
   ]

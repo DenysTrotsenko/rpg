@@ -1,16 +1,38 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostListener, OnDestroy, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatDialog} from '@angular/material/dialog';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap, withLatestFrom} from 'rxjs/operators';
-import {FirestoreService} from '@shared';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
+import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
-import {AttributeId, InjuryId, ProfessionId, QuirkId, SkillId, SkillTypeId, TalentId, TraitId, WeaponId} from '@flames-of-freedom-1e/enums';
+import {
+  AttributeId,
+  InjuryId,
+  ProfessionId,
+  QualityId,
+  QuirkId,
+  SkillId,
+  SkillTypeId,
+  TalentId,
+  TraitId,
+  WeaponId
+} from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Affliction, AlchemicalArt, Belief, Flaw, Injury, PermanentInjury, Quirk, Spell, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {
+  Affliction,
+  AlchemicalArt,
+  Belief,
+  Flaw,
+  Injury,
+  PermanentInjury, Quality,
+  Quirk,
+  Spell,
+  Talent,
+  Trait,
+  Weapon
+} from '@flames-of-freedom-1e/models';
 import {Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {
@@ -24,8 +46,6 @@ import {
   getPerilThresholds
 } from '@ti/app/game/character.utils';
 import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
@@ -68,7 +88,7 @@ export class ViewComponent implements OnDestroy {
         this.traits = this.getTraits(character);
         const temporary = localStorage.getItem(character.id);
         if (temporary) {
-          this.form.patchValue(JSON.parse(temporary));
+          this.form.patchValue(JSON.parse(temporary), { onlySelf: false, emitEvent: true });
         }
       })
     );
@@ -93,11 +113,12 @@ export class ViewComponent implements OnDestroy {
   }
 
   constructor(
-    private readonly dialog: MatDialog,
+    private readonly dialog: DialogService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly firestore: FirestoreService,
-    private readonly data: DataService
+    private readonly data: DataService,
+    private readonly cd: ChangeDetectorRef
   ) {}
 
   ngOnDestroy(): void {
@@ -273,15 +294,58 @@ export class ViewComponent implements OnDestroy {
     return skills.filter(skill => skill.attribute === id);
   }
 
+  getWeapon(id: WeaponId): Weapon {
+    return this.data[DataTypes.WEAPONS].find(i => i.id === id);
+  }
+
+  getAllQualities(weapon: Weapon, custom: QualityId[]): Quality[] {
+    return this.data[DataTypes.QUALITIES].filter(i => {
+      return [
+        ...(weapon?.qualities ?? []),
+        ...custom
+      ].includes(i.id);
+    });
+  }
+
   onAddWeaponClick(): void {
     this.dialog
       .open(CustomizeWeaponDialogComponent)
       .afterClosed()
-      .pipe()
+      .pipe(
+        filter(i => !!i),
+        tap(i => {
+          const weapons: AbstractControl = this.form.get('weapons');
+          weapons.setValue([
+            ...weapons.value,
+            { ...i, uid: getId() }
+          ]);
+          this.cd.detectChanges();
+        }),
+      )
       .subscribe();
   }
 
-  onRemoveWeaponClick(): void {}
+  onRemoveWeaponClick(uid: string): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Weapon',
+          description: `Are sure you want to delete this weapon?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(i => !!i),
+        tap(() => {
+          const weapons: AbstractControl = this.form.get('weapons');
+          weapons.setValue([...weapons.value.filter(i => i.uid !== uid)]);
+          this.cd.detectChanges();
+        })
+      )
+      .subscribe();
+  }
 
   trackById(_, item): number {
     return item.id;
