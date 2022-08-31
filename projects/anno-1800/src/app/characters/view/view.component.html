@@ -147,6 +147,7 @@
       <th class="mat-header-cell ta-l">Damage</th>
       <th class="mat-header-cell ta-l">Qualities</th>
       <th class="mat-header-cell ta-l">Encumbrance</th>
+      <th class="mat-header-cell ta-l">Quantity</th>
       <th class="mat-header-cell ta-r">
         <mat-icon color="primary" class="c-pointer" matTooltip="Add Weapon" (click)="onAddWeaponClick()">add</mat-icon>
       </th>
@@ -169,9 +170,10 @@
         </span>
       </td>
       <td class="mat-cell">{{i.encumbrance}}</td>
+      <td class="mat-cell"></td>
       <td class="mat-cell ta-r"></td>
     </tr>
-    <tr *ngFor="let i of form.get('weapons').value" class="mat-row va-t h-32">
+    <tr *ngFor="let i of form.get('weapons').value; index as index;" class="mat-row va-t h-32">
       <ng-container *ngIf="getWeapon(i.id) as weapon">
         <td class="mat-cell">{{weapon?.name}}</td>
         <td class="mat-cell">
@@ -190,6 +192,9 @@
           </span>
         </td>
         <td class="mat-cell">{{weapon?.encumbrance}}</td>
+        <td class="mat-cell">
+          <input matInput type="number" min="1" [value]="i.quantity" (input)="onQuantityChange($event, i.uid)">
+        </td>
         <td class="mat-cell ta-r">
           <mat-icon class="c-pointer" (click)="onRemoveWeaponClick(i.uid)">close</mat-icon>
         </td>

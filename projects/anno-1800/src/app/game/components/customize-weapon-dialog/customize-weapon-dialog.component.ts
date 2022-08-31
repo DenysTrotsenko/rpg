@@ -1,10 +1,9 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Quality, Weapon} from '@flames-of-freedom-1e/models';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {MatDialogRef} from '@angular/material/dialog';
+import {DataService, DataTypes} from '@ti/app/game/data.service';
+import {Quality, Weapon} from '@flames-of-freedom-1e/models';
 
 @Component({
   templateUrl: './customize-weapon-dialog.component.html',
@@ -15,7 +14,8 @@ export class CustomizeWeaponDialogComponent {
   readonly weapons: Weapon[] = this.data[DataTypes.WEAPONS];
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
-    custom: new FormControl([])
+    custom: new FormControl([]),
+    quantity: new FormControl(1)
   });
   readonly qualities$: Observable<Quality[]> = this.form.get('id').valueChanges.pipe(
     map(id => {

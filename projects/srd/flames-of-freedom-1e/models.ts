@@ -291,6 +291,7 @@ export interface Weapon {
   qualities: QualityId[];
   encumbrance: number;
   price: number;
+  quantifiable?: boolean;
   labels?: {
     description?: string;
     handling?: string;

@@ -347,6 +347,14 @@ export class ViewComponent implements OnDestroy {
       .subscribe();
   }
 
+  onQuantityChange(ev, uid: string): void {
+    const value = +ev.target?.value ?? 1;
+    const control = this.form.get('weapons');
+    const weapons = control.value;
+    const weapon = weapons.find(i => i.uid === uid);
+    weapon.quantity = value;
+  }
+
   trackById(_, item): number {
     return item.id;
   }

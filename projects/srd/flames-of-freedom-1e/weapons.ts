@@ -9,6 +9,7 @@ export const WEAPONS: Weapon[] = [
     qualities: [QualityId.ACID, QualityId.BREAK, QualityId.THROWING],
     encumbrance: 1,
     price: 0,
+    quantifiable: true,
     labels: {
       description: 'This distillation of elements is the foremost tool of alchemists on the battlefield.',
       handling: '1H',
@@ -185,6 +186,7 @@ export const WEAPONS: Weapon[] = [
     qualities: [QualityId.BLACKPOWDER, QualityId.BOMB, QualityId.BREAK, QualityId.THROWING],
     encumbrance: 1,
     price: 0,
+    quantifiable: true,
     labels: {
       description: 'It is a hollow iron ball packed with gunpowder, ignited using a string fuse. When detonated, the ball shatters, sending iron shards in all directions.',
       handling: '1H',
@@ -297,6 +299,7 @@ export const WEAPONS: Weapon[] = [
     qualities: [QualityId.BOMB, QualityId.BREAK, QualityId.SMOKE],
     encumbrance: 1,
     price: 0,
+    quantifiable: true,
     labels: {
       description: 'This bomb is not deadly; instead, it produces a cloud of smoke that obscures vision.',
       handling: '1H',
@@ -553,6 +556,7 @@ export const WEAPONS: Weapon[] = [
     qualities: [QualityId.BREAK, QualityId.HOLY, QualityId.THROWING],
     encumbrance: 1,
     price: 0,
+    quantifiable: true,
     labels: {
       description: '',
       handling: '1H',
@@ -754,13 +758,252 @@ export const WEAPONS: Weapon[] = [
       damage: 'CB'
     }
   },
+  {
+    id: WeaponId.ARROW,
+    name: 'Arrow',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.BULLET,
+    name: 'Bullet',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.BULLET_COLD_IRON,
+    name: 'Bullet (Cold Iron)',
+    skills: [],
+    qualities: [QualityId.COLD_IRON],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.BULLET_SILVER,
+    name: 'Bullet (Silver)',
+    skills: [],
+    qualities: [QualityId.SILVER],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.ROUND,
+    name: 'Round',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.ROUND_COLD_IRON,
+    name: 'Round (Cold Iron)',
+    skills: [],
+    qualities: [QualityId.COLD_IRON],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.ROUND_SILVER,
+    name: 'Round (Silver)',
+    skills: [],
+    qualities: [QualityId.SILVER],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.CARTRIDGE,
+    name: 'Cartridge',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.CARTRIDGE_COLD_IRON,
+    name: 'Cartridge (Cold Iron)',
+    skills: [],
+    qualities: [QualityId.COLD_IRON],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.CARTRIDGE_SILVER,
+    name: 'Cartridge (Silver)',
+    skills: [],
+    qualities: [QualityId.SILVER],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.SHELL,
+    name: 'Shell',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.SHELL_COLD_IRON,
+    name: 'Shell (Cold Iron)',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.SHELL_SILVER,
+    name: 'Shell (Silver)',
+    skills: [],
+    qualities: [QualityId.SILVER],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.CANON_BALL,
+    name: 'Canon Ball',
+    skills: [],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
   // {
   //   id: WeaponId.ACID_BOMB,
   //   name: '',
-  //   skills: [SkillId.SIMPLE_RANGED],
+  //   skills: [],
   //   qualities: [],
-  //   encumbrance: 1,
+  //   encumbrance: 0,
   //   price: 0,
+  //   quantifiable: true,
   //   labels: {
   //     description: '',
   //     handling: '',
