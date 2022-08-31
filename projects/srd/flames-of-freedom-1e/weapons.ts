@@ -1001,7 +1001,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Canon Ball',
     skills: [],
     qualities: [],
-    encumbrance: 2,
+    encumbrance: .5,
     price: 0,
     quantifiable: true,
     labels: {
