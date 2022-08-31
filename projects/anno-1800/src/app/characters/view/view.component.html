@@ -191,7 +191,7 @@
             {{j?.name}}
           </span>
         </td>
-        <td class="mat-cell">{{weapon?.encumbrance * i.quantity}}</td>
+        <td class="mat-cell">{{(weapon?.encumbrance * i.quantity).toFixed(2)}}</td>
         <td class="mat-cell">
           <input *ngIf="weapon?.quantifiable" class="input-in-cell" matInput type="number" min="1" [value]="i.quantity" (input)="onQuantityChange($event, i.uid)">
         </td>
