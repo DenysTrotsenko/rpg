@@ -347,13 +347,14 @@ export class ViewComponent implements OnDestroy {
       .subscribe();
   }
 
-  onQuantityChange(ev, uid: string): void {
+  onQuantityChange(ev, uid: string, ref: HTMLInputElement): void {
     const numerical = +ev.target?.value || 0;
     const value = numerical <= 0 ? 1 : numerical;
     const control = this.form.get('weapons');
     const weapons = control.value;
     const weapon = weapons.find(i => i.uid === uid);
     weapon.quantity = value;
+    ref.value = `${value}`;
     // control.setValue(weapons);
   }
 

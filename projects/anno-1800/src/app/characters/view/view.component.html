@@ -193,7 +193,7 @@
         </td>
         <td class="mat-cell">{{(weapon?.encumbrance * i.quantity).toFixed(2)}}</td>
         <td class="mat-cell">
-          <input *ngIf="weapon?.quantifiable" class="input-in-cell" matInput type="number" min="1" [value]="i.quantity" (input)="onQuantityChange($event, i.uid)">
+          <input *ngIf="weapon?.quantifiable" #inpRef class="input-in-cell" matInput type="number" min="1" [value]="i.quantity" (input)="onQuantityChange($event, i.uid, inpRef)">
         </td>
         <td class="mat-cell ta-r">
           <mat-icon class="c-pointer" (click)="onRemoveWeaponClick(i.uid)">close</mat-icon>
