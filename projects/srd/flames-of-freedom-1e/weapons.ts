@@ -763,7 +763,24 @@ export const WEAPONS: Weapon[] = [
     name: 'Arrow',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
+    price: 0,
+    quantifiable: true,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: '',
+      damage: ''
+    }
+  },
+  {
+    id: WeaponId.JAVELIN,
+    name: 'Javelin',
+    skills: [],
+    qualities: [],
+    encumbrance: .5,
     price: 0,
     quantifiable: true,
     labels: {
@@ -780,7 +797,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Bullet',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -797,7 +814,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Bullet (Cold Iron)',
     skills: [],
     qualities: [QualityId.COLD_IRON],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -814,7 +831,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Bullet (Silver)',
     skills: [],
     qualities: [QualityId.SILVER],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -831,7 +848,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Round',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -848,7 +865,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Round (Cold Iron)',
     skills: [],
     qualities: [QualityId.COLD_IRON],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -865,7 +882,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Round (Silver)',
     skills: [],
     qualities: [QualityId.SILVER],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -882,7 +899,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Cartridge',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -899,7 +916,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Cartridge (Cold Iron)',
     skills: [],
     qualities: [QualityId.COLD_IRON],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -916,7 +933,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Cartridge (Silver)',
     skills: [],
     qualities: [QualityId.SILVER],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -933,7 +950,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Shell',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -950,7 +967,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Shell (Cold Iron)',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -967,7 +984,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Shell (Silver)',
     skills: [],
     qualities: [QualityId.SILVER],
-    encumbrance: 0,
+    encumbrance: .1,
     price: 0,
     quantifiable: true,
     labels: {
@@ -984,7 +1001,7 @@ export const WEAPONS: Weapon[] = [
     name: 'Canon Ball',
     skills: [],
     qualities: [],
-    encumbrance: 0,
+    encumbrance: 2,
     price: 0,
     quantifiable: true,
     labels: {
