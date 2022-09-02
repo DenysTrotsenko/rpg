@@ -1,5 +1,5 @@
 import {Weapon} from './models';
-import {QualityId, SkillId, WeaponId} from '@flames-of-freedom-1e/enums';
+import {QualityId, SkillId, WeaponId} from './enums';
 
 export const WEAPONS: Weapon[] = [
   {

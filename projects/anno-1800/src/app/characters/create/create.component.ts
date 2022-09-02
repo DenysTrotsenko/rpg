@@ -2,9 +2,10 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
-import {FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
+import {distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
+import {DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
+  AdvancementScheme,
   Affliction,
   Age,
   AlchemicalArt,
@@ -45,8 +46,9 @@ import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-f
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
 import {Campaign} from '@ti/app/game/models/campaign';
-// import {Disposition} from '@powered-by-zweihander/models';
-// import {DEFAULT_DISPOSITION_ID} from '@powered-by-zweihander/const';
+import {
+  CustomizeAdvancementSchemeComponent
+} from '@ti/app/game/components/customize-advancement-scheme/customize-advancement-scheme.component';
 
 @Component({
   templateUrl: './create.component.html',
@@ -57,7 +59,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly TYPES = DataTypes;
   readonly AGES: Age[] = this.data[DataTypes.AGES];
   readonly AFFLICTIONS: Affliction[] = this.data[DataTypes.AFFLICTIONS];
-  // readonly ALLEGIANCES: Allegiance[] = this.data[DataTypes.ALLEGIANCES];
   readonly ALCHEMICAL_ARTS: AlchemicalArt[] = this.data[DataTypes.ALCHEMICAL_ARTS];
   readonly ARCHETYPES: Archetype[] = this.data[DataTypes.ARCHETYPES];
   readonly ATTRIBUTES: Attribute[] = this.data[DataTypes.ATTRIBUTES];
@@ -151,28 +152,32 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         talents: new FormControl([]),
       }),
     }),
+    schemas: new FormGroup({
+      basic: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+      intermediate: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+      advanced: new FormGroup({
+        traits: new FormControl([]),
+        quirks: new FormControl([]),
+        bonuses: new FormControl([]),
+        skills: new FormControl([]),
+        talents: new FormControl([]),
+      }),
+    }),
   });
+  readonly tiers: string[] = this.TIERS.map(i => i.name);
 
-  readonly determination$: Observable<number> = this.form.get('determination').valueChanges.pipe(
-    startWith(DEFAULT_DETERMINATION),
-    shareReplay(1)
-  );
-  readonly agility$: Observable<number> = this.form.get(`attributes.${AttributeId.AGILITY}`).valueChanges.pipe(
-    startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
-    shareReplay(1)
-  );
-  readonly brawn$: Observable<number> = this.form.get(`attributes.${AttributeId.BRAWN}`).valueChanges.pipe(
-    startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
-    shareReplay(1)
-  );
-  readonly perception$: Observable<number> = this.form.get(`attributes.${AttributeId.PERCEPTION}`).valueChanges.pipe(
-    startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
-    shareReplay(1)
-  );
-  readonly willpower$: Observable<number> = this.form.get(`attributes.${AttributeId.WILLPOWER}`).valueChanges.pipe(
-    startWith(DEFAULT_ATTRIBUTE_PERCENTAGES),
-    shareReplay(1)
-  );
   readonly archetype$: Observable<ArchetypeId> = this.form.get('archetype').valueChanges.pipe(
     startWith(ArchetypeId.COMMONER),
     shareReplay(1)
@@ -192,9 +197,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     }),
     shareReplay(1)
   );
-  readonly basicProfession$: Observable<ProfessionId> = this.form.get('professions.basic').valueChanges;
-  readonly intermediateProfession$: Observable<ProfessionId> = this.form.get('professions.intermediate').valueChanges;
-  readonly advancedProfession$: Observable<ProfessionId> = this.form.get('professions.advanced').valueChanges;
 
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
@@ -210,12 +212,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
         setFormControlsEditable(this.form, [
           'archetype',
-          // 'attributes',
-          // 'belief',
-          // 'culture',
-          // 'flaw',
-          // 'miscellaneous',
-          // 'name',
           'trait'
         ], isNew);
       }),
@@ -227,59 +223,14 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly data: DataService,
-    private readonly firestore: FirestoreService
+    private readonly firestore: FirestoreService,
+    private readonly dialog: DialogService
   ) {
     super();
   }
 
   ngOnInit(): void {
     this.subscriptions = this.character$.subscribe();
-    this.subscriptions = this.basicProfession$
-      .pipe(
-        tap((id: ProfessionId) => {
-          const profession: Profession = getProfession(id);
-          this.form.get('advancements.basic').setValue({
-            traits: profession.traits.slice(),
-            quirks: profession.quirks.slice(),
-            bonuses: [],
-            skills: profession.advancements.skills.slice(),
-            talents: []
-          });
-        })
-      )
-      .subscribe();
-    this.subscriptions = this.intermediateProfession$
-      .pipe(
-        tap((id: ProfessionId) => {
-          const profession: Profession = getProfession(id);
-          this.form.get('advancements.intermediate').setValue({
-            traits: profession?.traits?.slice() ?? [],
-            quirks: profession?.quirks?.slice() ?? [],
-            bonuses: [],
-            skills: [],
-            talents: []
-          });
-        })
-      )
-      .subscribe();
-    this.subscriptions = this.advancedProfession$
-      .pipe(
-        tap((id: ProfessionId) => {
-          const profession: Profession = getProfession(id);
-          this.form.get('advancements.advanced').setValue({
-            traits: profession?.traits?.slice() ?? [],
-            quirks: profession?.quirks?.slice() ?? [],
-            bonuses: [],
-            skills: [],
-            talents: []
-          });
-        })
-      )
-      .subscribe();
-  }
-
-  getAllegiances(): string[] {
-    return  Object.keys(this.form.get('allegiances').value);
   }
 
   getAttributeBonus(id: AttributeId): number {
@@ -299,11 +250,19 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     return basic + intermediate + advanced;
   }
 
-  isProfessionHidden(id: ProfessionId): boolean {
+  isProfessionHidden(id: ProfessionId, tier: string): boolean {
     const basic: ProfessionId = this.form.get('professions.basic').value;
     const intermediate: ProfessionId = this.form.get('professions.intermediate').value;
     const advanced: ProfessionId = this.form.get('professions.advanced').value;
-    return [basic, intermediate, advanced].includes(id);
+    return [...(tier === 'basic' ? this.getNonArchetypeProfessions() : []), basic, intermediate, advanced].includes(id);
+  }
+
+  getNonArchetypeProfessions(): ProfessionId[] {
+    const archetypeId: ArchetypeId = this.form.get('archetype').value;
+    const archetype: Archetype = getArchetype(archetypeId);
+    return this.data[DataTypes.PROFESSIONS]
+      .filter(i => !archetype?.professions.includes(i.id))
+      .map(i => i.id);
   }
 
   isTraitHidden(id: TraitId): boolean {
@@ -320,6 +279,44 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   isMagicalProfession(id: ProfessionId): boolean {
     const mageIds: ProfessionId[] = getArchetype(ArchetypeId.MAGE).professions;
     return mageIds.includes(id);
+  }
+
+  onProfessionChange(id: ProfessionId, tier: string): void {
+    const profession: Profession = getProfession(id);
+    this.form.get(`schemas.${tier}`).patchValue({
+      traits: [...profession.traits],
+      quirks: [...profession.quirks],
+      bonuses: [...profession.advancements.bonuses],
+      skills: [...profession.advancements.skills],
+      talents: [...profession.advancements.talents]
+    });
+    this.form.get(`advancements.${tier}`).patchValue({
+      traits: [...profession.traits],
+      quirks: [...profession.quirks],
+      bonuses: [],
+      skills: [...(tier === 'basic' ? profession.advancements.skills : [])],
+      talents: []
+    });
+  }
+
+  onEditSchemeClick(tier: string): void {
+    this.dialog
+      .open(CustomizeAdvancementSchemeComponent, {data: this.form.get(`schemas.${tier}`).value})
+      .afterClosed()
+      .pipe(
+        filter(schema => !!schema),
+        tap(schema => {
+          this.form.get(`schemas.${tier}`).patchValue(schema, {emitEvent: true});
+          const advancements = this.form.get(`advancements.${tier}`).value;
+          const skills = advancements.skills.filter(i => schema.skills.includes(i));
+          const talents = advancements.talents.filter(i => schema.talents.includes(i));
+          this.form.get(`advancements.${tier}`).patchValue({
+            skills: [...skills],
+            talents: [...talents]
+          }, {emitEvent: true});
+        })
+      )
+      .subscribe();
   }
 
   onSubmit(form): void {

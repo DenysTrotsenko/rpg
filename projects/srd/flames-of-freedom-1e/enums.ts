@@ -43,6 +43,19 @@ export enum AfflictionId {
   VISIONS_OF_DOOM
 }
 
+export enum AilmentId {
+  AGUE = PrefixId.FLAMES_OF_FREEDOM,
+  DOCK_FEVER,
+  FRENCH_POX,
+  MALAISE,
+  MORSAL,
+  SAINT_VITUS_DANCE,
+  SEPSIS,
+  SMALLPOX,
+  THROAT_DISTEMPER,
+  TYPHOID
+}
+
 export enum AllegianceId {
   THE_REBELS = PrefixId.FLAMES_OF_FREEDOM,
   THE_LOYALISTS
@@ -118,6 +131,19 @@ export enum CultureId {
   INDIGENOUS,
   MULTICULTURAL,
   SPANISH
+}
+
+export enum DrugId {
+  ALCOHOL = PrefixId.FLAMES_OF_FREEDOM,
+  ARSENIC_OR_MERCURY,
+  COCOA,
+  COFFEE_OR_TEA,
+  CYANIDE,
+  ERGOT,
+  HEMLOCK,
+  OPIUM,
+  TOBACCO_OR_SNUFF,
+  YUPA
 }
 
 export enum EyesId {

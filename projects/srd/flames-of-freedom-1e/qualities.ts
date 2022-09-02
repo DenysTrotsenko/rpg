@@ -1,5 +1,5 @@
-import {Quality} from '@flames-of-freedom-1e/models';
-import {QualityId} from '@flames-of-freedom-1e/enums';
+import {Quality} from './models';
+import {QualityId} from './enums';
 
 export const QUALITIES: Quality[] = [
   {

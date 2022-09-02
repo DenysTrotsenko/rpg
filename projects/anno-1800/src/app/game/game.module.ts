@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { GetByIdPipe } from './pipes/get-by-id.pipe';
-import { CustomizeWeaponDialogComponent } from './components/customize-weapon-dialog/customize-weapon-dialog.component';
 import { SharedModule } from '@shared';
+import { CustomizeWeaponDialogComponent } from './components/customize-weapon-dialog/customize-weapon-dialog.component';
+import { CustomizeAdvancementSchemeComponent } from './components/customize-advancement-scheme/customize-advancement-scheme.component';
 
 @NgModule({
   declarations: [
     GetByIdPipe,
-    CustomizeWeaponDialogComponent
+    CustomizeWeaponDialogComponent,
+    CustomizeAdvancementSchemeComponent
   ],
   imports: [
     SharedModule
   ],
   exports: [
     GetByIdPipe,
-    CustomizeWeaponDialogComponent
+    CustomizeWeaponDialogComponent,
+    CustomizeAdvancementSchemeComponent
   ]
 })
 export class GameModule { }
