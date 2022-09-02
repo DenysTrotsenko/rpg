@@ -150,7 +150,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         skills: new FormControl([]),
         talents: new FormControl([]),
       }),
-    })
+    }),
   });
 
   readonly determination$: Observable<number> = this.form.get('determination').valueChanges.pipe(
@@ -203,11 +203,10 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
         const isNew = !res;
-
         this.form.patchValue({
           ...res,
           id: res?.id ?? getId(),
-        }, { emitEvent: true });
+        });
 
         setFormControlsEditable(this.form, [
           'archetype',
