@@ -11,8 +11,16 @@ import {AdvancementScheme, Skill, Talent} from '@flames-of-freedom-1e/models';
 })
 export class CustomizeAdvancementSchemeComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
-    skills: new FormControl([], [Validators.maxLength(10)]),
-    talents: new FormControl([], [Validators.maxLength(3)]),
+    skills: new FormControl([], [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10)
+    ]),
+    talents: new FormControl([], [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3)
+    ]),
   });
   readonly skills: Skill[] = this.data[DataTypes.SKILLS];
   readonly talents: Talent[] = this.data[DataTypes.TALENTS];

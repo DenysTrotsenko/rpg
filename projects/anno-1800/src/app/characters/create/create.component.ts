@@ -301,7 +301,11 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   onEditSchemeClick(tier: string): void {
     this.dialog
-      .open(CustomizeAdvancementSchemeComponent, {data: this.form.get(`schemas.${tier}`).value})
+      .open(CustomizeAdvancementSchemeComponent, {
+        data: this.form.get(`schemas.${tier}`).value,
+        width: '600px',
+        height: '600px'
+      })
       .afterClosed()
       .pipe(
         filter(schema => !!schema),

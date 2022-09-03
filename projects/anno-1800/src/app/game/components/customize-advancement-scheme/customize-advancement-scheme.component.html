@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Customize Advancement Scheme</h1>
+<h1 mat-dialog-title>Customize Advancements</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="d-f fd-c cg-5">
     <mat-form-field appearance="outline" class="w-100">
@@ -6,16 +6,23 @@
       <mat-select multiple formControlName="skills">
         <mat-option *ngFor="let i of skills;" [value]="i.id">{{i.name}}</mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('skills').hasError">
+        You should select exactly 10 skills ({{form.get('skills').value.length}}/10)
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Talents</mat-label>
       <mat-select multiple formControlName="talents">
         <mat-option *ngFor="let i of talents;" [value]="i.id">{{i.name}}</mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('talents').hasError">
+        You should select exactly 3 talents ({{form.get('talents').value.length}}/3)
+      </mat-error>
     </mat-form-field>
   </form>
 </div>
+<span class="f-1"></span>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="null">Cancel</button>
-  <button mat-button [mat-dialog-close]="form.value" cdkFocusInitial [disabled]="!form.valid">Edit</button>
+  <button mat-button [mat-dialog-close]="form.value" cdkFocusInitial [disabled]="!form.valid">Save</button>
 </div>
