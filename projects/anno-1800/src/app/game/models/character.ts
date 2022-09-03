@@ -74,6 +74,29 @@ export interface Character {
     intermediate: number;
     advanced: number;
   };
+  schemas: {
+    advanced: {
+      bonuses: AttributeId[];
+      quirks: QuirkId[];
+      skills: SkillId[];
+      talents: TalentId[];
+      traits: TraitId[];
+    };
+    intermediate: {
+      bonuses: AttributeId[];
+      quirks: QuirkId[];
+      skills: SkillId[];
+      talents: TalentId[];
+      traits: TraitId[];
+    };
+    basic: {
+      bonuses: AttributeId[];
+      quirks: QuirkId[];
+      skills: SkillId[];
+      talents: TalentId[];
+      traits: TraitId[];
+    };
+  };
   tier: number;
   trait: number;
 }
