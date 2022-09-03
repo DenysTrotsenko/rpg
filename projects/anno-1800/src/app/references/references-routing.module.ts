@@ -9,7 +9,9 @@ import { TraitsComponent } from '@ti/app/references/traits/traits.component';
 import { AttributesComponent } from '@ti/app/references/attributes/attributes.component';
 import { AfflictionsComponent } from '@ti/app/references/afflictions/afflictions.component';
 import { InjuriesComponent } from '@ti/app/references/injuries/injuries.component';
-import {SpellsComponent} from '@ti/app/references/spells/spells.component';
+import { SpellsComponent } from '@ti/app/references/spells/spells.component';
+import { AilmentsComponent } from '@ti/app/references/ailments/ailments.component';
+import { DrugsComponent } from '@ti/app/references/drugs/drugs.component';
 
 const routes: Routes = [
   {
@@ -21,8 +23,16 @@ const routes: Routes = [
         component: AfflictionsComponent
       },
       {
+        path: 'ailments',
+        component: AilmentsComponent
+      },
+      {
         path: 'attributes',
         component: AttributesComponent
+      },
+      {
+        path: 'drugs',
+        component: DrugsComponent
       },
       {
         path: 'injuries',
