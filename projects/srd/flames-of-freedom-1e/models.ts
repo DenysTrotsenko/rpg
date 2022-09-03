@@ -1,12 +1,13 @@
 import { HasId } from '@shared';
 import {
   AfflictionId,
-  AgeId,
+  AgeId, AilmentId,
   AllegianceId, ArchetypeId,
   AttributeId,
   BeliefId, BuildId,
-  CultureId, EyesId,
-  FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId, MarkId, PermanentInjuryId,
+  CultureId, DrugId, EyesId,
+  FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId,
+  MarkId, PermanentInjuryId,
   ProfessionId, QualityId,
   QuirkId, SexId,
   SkillId,
@@ -19,6 +20,21 @@ import {
 export interface Age {
   id: AgeId;
   name: string;
+}
+
+export interface Ailment {
+  id: AilmentId;
+  name: string;
+  labels: {
+    description?: string;
+    resist?: string;
+    effect?: string;
+    critical_success?: string;
+    critical_failure?: string;
+    other_considerations?: string;
+    duration?: string;
+    tooltip?: string;
+  };
 }
 
 export interface Affliction {
@@ -79,6 +95,21 @@ export interface Culture {
   name: string;
   labels: {
     description: string;
+  };
+}
+
+export interface Drug {
+  id: DrugId;
+  name: string;
+  labels: {
+    description?: string;
+    resist?: string;
+    effect?: string;
+    critical_success?: string;
+    critical_failure?: string;
+    other_considerations?: string;
+    duration?: string;
+    tooltip?: string;
   };
 }
 
@@ -299,6 +330,6 @@ export interface Weapon {
     ammo?: string;
     distance?: string;
     damage?: string;
-    tooltip?:string;
+    tooltip?: string;
   };
 }

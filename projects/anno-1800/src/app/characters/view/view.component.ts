@@ -8,7 +8,8 @@ import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {
-  AttributeId,
+  AilmentId,
+  AttributeId, DrugId,
   InjuryId,
   ProfessionId,
   QualityId,
@@ -21,9 +22,9 @@ import {
 } from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {
-  Affliction,
+  Affliction, Ailment,
   AlchemicalArt,
-  Belief,
+  Belief, Drug,
   Flaw,
   Injury,
   PermanentInjury, Quality,
@@ -66,6 +67,8 @@ export class ViewComponent implements OnDestroy {
     belief_ranks: new FormControl(0),
     flaw_ranks: new FormControl(0),
     injuries: new FormControl([]),
+    ailments: new FormControl([]),
+    drugs: new FormControl([]),
     notes: new FormControl(''),
     weapons: new FormControl([]),
   });
@@ -104,7 +107,14 @@ export class ViewComponent implements OnDestroy {
   traits: Trait[];
 
   readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
-  readonly injuries: Injury[] = this.data[DataTypes.INJURIES];
+  readonly ailments: Ailment[] = this.data[DataTypes.AILMENTS];
+  readonly drugs: Drug[] = this.data[DataTypes.DRUGS];
+  readonly injuries: Injury[] = this.data[DataTypes.INJURIES].filter(i => {
+    return ![
+      InjuryId.NARROW_ESCAPE_1, InjuryId.NARROW_ESCAPE_2, InjuryId.NARROW_ESCAPE_3,
+      InjuryId.IT_GETS_WORSE_1, InjuryId.IT_GETS_WORSE_2
+    ].includes(i.id);
+  });
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   @ViewChild('injuryInput') injuryInput: ElementRef<HTMLInputElement>;
@@ -285,6 +295,20 @@ export class ViewComponent implements OnDestroy {
     const effects: string[] = injuries.map(i => i.labels?.effect).filter(i => !!i).map(i => `• ${i}`);
     return effects.join('\n\n');
   }
+
+  // getAilmentsTooltip(): string {
+  //   const ids: AilmentId[] = this.form.get('ailments').value ?? [];
+  //   const ailments: Ailment[] = this.data[DataTypes.AILMENTS].filter(i => ids.includes(i.id));
+  //   const effects: string[] = ailments.map(i => i.labels?.tooltip).filter(i => !!i);
+  //   return effects.join('\n\n***\n\n');
+  // }
+  //
+  // getDrugsTooltip(): string {
+  //   const ids: DrugId[] = this.form.get('drugs').value ?? [];
+  //   const drugs: Drug[] = this.data[DataTypes.DRUGS].filter(i => ids.includes(i.id));
+  //   const effects: string[] = drugs.map(i => i.labels?.tooltip).filter(i => !!i);
+  //   return effects.join('\n\n***\n\n');
+  // }
 
   getPerilThresholds(character: Character): string {
     return getPerilThresholds(getPerilThreshold(character));

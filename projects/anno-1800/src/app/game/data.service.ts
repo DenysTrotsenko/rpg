@@ -4,11 +4,11 @@ import { shareReplay, switchMap } from 'rxjs/operators';
 import { AuthService, FirestoreService } from '@shared';
 import {
   Affliction,
-  Age, AlchemicalArt,
+  Age, Ailment, AlchemicalArt,
   Archetype,
   Attribute,
   Belief, Build,
-  Culture, Eyes,
+  Culture, Drug, Eyes,
   Flaw,
   HairColor,
   HairLength,
@@ -21,12 +21,8 @@ import {
   Talent, Tier,
   Trait, Weapon
 } from '@flames-of-freedom-1e/models';
-import {
-  // Allegiance,
-  Disposition
-} from '@powered-by-zweihander/models';
+import {Disposition} from '@powered-by-zweihander/models';
 import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
-// import { ALLEGIANCES } from '@pbz-1850/allegiances';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
 import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
@@ -49,6 +45,8 @@ import {INJURIES, INJURY_TYPES} from '@flames-of-freedom-1e/injuries';
 import {PERMANENT_INJURIES} from '@flames-of-freedom-1e/permanent-injuries';
 import {WEAPONS} from '@flames-of-freedom-1e/weapons';
 import {QUALITIES} from '@flames-of-freedom-1e/qualities';
+import {AILMENTS} from '@flames-of-freedom-1e/ailments';
+import {DRUGS} from '@flames-of-freedom-1e/drugs';
 
 
 export enum FirestoreCollection {
@@ -59,6 +57,7 @@ export enum FirestoreCollection {
 export enum DataTypes {
   AGES = 'ages',
   // ALLEGIANCES = 'allegiances',
+  AILMENTS = 'ailments',
   ALCHEMICAL_ARTS = 'alchemical_arts',
   AFFLICTIONS = 'afflictions',
   ARCHETYPES = 'archetypes',
@@ -67,6 +66,7 @@ export enum DataTypes {
   BUILD = 'build',
   CULTURES = 'cultures',
   DISPOSITIONS = 'dispositions',
+  DRUGS = 'drugs',
   EYES = 'eyes',
   FLAWS = 'flaws',
   HAIR_COLOR = 'hair_color',
@@ -119,6 +119,10 @@ export class DataService {
   );
 
   readonly [DataTypes.AGES]: Age[] = AGES;
+  readonly [DataTypes.AILMENTS]: Ailment[] = AILMENTS.map(i => {
+    i.labels.tooltip = this.getAilmentTooltip(i);
+    return i;
+  });
   readonly [DataTypes.AFFLICTIONS]: Affliction[] = AFFLICTIONS.map(i => {
     i.labels.tooltip = this.getAfflictionTooltip(i);
     return i;
@@ -133,6 +137,10 @@ export class DataService {
   readonly [DataTypes.BELIEFS]: Belief[] = BELIEFS;
   readonly [DataTypes.BUILD]: Build[] = BUILD;
   readonly [DataTypes.CULTURES]: Culture[] = CULTURES;
+  readonly [DataTypes.DRUGS]: Drug[] = DRUGS.map(i => {
+    i.labels.tooltip = this.getDrugTooltip(i);
+    return i;
+  });
   readonly [DataTypes.DISPOSITIONS]: Disposition[] = DISPOSITIONS;
   readonly [DataTypes.EYES]: Eyes[] = EYES;
   readonly [DataTypes.FLAWS]: Flaw[] = FLAWS;
@@ -189,6 +197,32 @@ export class DataService {
       `${affliction.name}\n`,
       `${affliction.labels?.description}\n`,
       `Effect: ${affliction.labels?.effect}`,
+    ].join('\n');
+  }
+
+  private getAilmentTooltip(ailment: Ailment): string {
+    return [
+      `${ailment.name}\n`,
+      `${ailment.labels?.description}\n`,
+      `Resist: ${ailment.labels?.resist}\n`,
+      `Effect: ${ailment.labels?.effect}\n`,
+      `Critical Success: ${ailment.labels?.critical_success}\n`,
+      `Critical Failure: ${ailment.labels?.critical_failure}\n`,
+      `Other Considerations: ${ailment.labels?.other_considerations}\n`,
+      `Duration: ${ailment.labels?.duration}`,
+    ].join('\n');
+  }
+
+  private getDrugTooltip(drug: Drug): string {
+    return [
+      `${drug.name}\n`,
+      `${drug.labels?.description}\n`,
+      `Resist: ${drug.labels?.resist}\n`,
+      `Effect: ${drug.labels?.effect}\n`,
+      `Critical Success: ${drug.labels?.critical_success}\n`,
+      `Critical Failure: ${drug.labels?.critical_failure}\n`,
+      `Other Considerations: ${drug.labels?.other_considerations}\n`,
+      `Duration: ${drug.labels?.duration}`,
     ].join('\n');
   }
 

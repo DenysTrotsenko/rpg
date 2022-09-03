@@ -119,14 +119,32 @@
         </mat-form-field>
       </div>
     </div>
-    <mat-form-field appearance="outline" class="w-100" [matTooltip]="getInjuriesTooltip()">
-      <mat-label>Injuries</mat-label>
-      <mat-select multiple formControlName="injuries">
-        <mat-option *ngFor="let i of injuries;" [value]="i.id" [matTooltip]="i.labels?.effect">
-          {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="d-f jc-sb cg-5">
+      <mat-form-field appearance="outline" class="f-1" [matTooltip]="getInjuriesTooltip()">
+        <mat-label>Injuries</mat-label>
+        <mat-select multiple formControlName="injuries">
+          <mat-option *ngFor="let i of injuries;" [value]="i.id" [matTooltip]="i.labels?.effect">
+            {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Ailments</mat-label>
+        <mat-select multiple formControlName="ailments">
+          <mat-option *ngFor="let i of ailments;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Drugs</mat-label>
+        <mat-select multiple formControlName="drugs">
+          <mat-option *ngFor="let i of drugs;" [value]="i.id" [matTooltip]="i.labels?.tooltip">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Notes</mat-label>
       <textarea matInput formControlName="notes"></textarea>
