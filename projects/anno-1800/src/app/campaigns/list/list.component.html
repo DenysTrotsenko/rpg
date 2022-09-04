@@ -3,7 +3,7 @@
     <a matLine routerLink="../create">Create Campaign</a>
   </mat-list-item>
   <mat-list-item *ngFor="let i of campaigns$ | async">
-    <span matLine (click)="onSelectClick(i)">{{i.name}}</span>
+    <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
     <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
       <mat-icon>delete</mat-icon>
     </button>

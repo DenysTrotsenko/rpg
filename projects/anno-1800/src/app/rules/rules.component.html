@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list dense>
+      <a mat-list-item routerLink="./hazards" routerLinkActive="active">
+        <span>Hazards</span>
+      </a>
+      <a mat-list-item routerLink="./horror" routerLinkActive="active">
+        <span>Horror</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -4,6 +4,7 @@ import { AuthResolver} from '@shared';
 import { CampaignsComponent } from '@ti/app/campaigns/campaigns.component';
 import { ListComponent } from '@ti/app/campaigns/list/list.component';
 import { CreateComponent } from '@ti/app/campaigns/create/create.component';
+import { ViewComponent } from '@ti/app/campaigns/view/view.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: ListComponent, resolve: { user: AuthResolver } },
       { path: 'create', component: CreateComponent, resolve: { user: AuthResolver } },
+      { path: 'view/:id', component: ViewComponent, resolve: { user: AuthResolver } },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]
   }

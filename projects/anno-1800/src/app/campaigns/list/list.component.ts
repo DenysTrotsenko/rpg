@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
 import { Campaign } from '@ti/app/game/models/campaign';
-import { CampaignService } from '@ti/app/game/campaign.service';
 import { DataService } from '@ti/app/game/data.service';
 
 @Component({
@@ -18,13 +17,8 @@ export class ListComponent {
     private readonly auth: AuthService,
     private readonly data: DataService,
     private readonly dialog: DialogService,
-    private readonly firestore: FirestoreService,
-    private readonly campaign: CampaignService
+    private readonly firestore: FirestoreService
   ) {}
-
-  onSelectClick(i: Campaign): void {
-    this.campaign.setSelectedCampaign(i);
-  }
 
   onDeleteClick(i: Campaign): void {
     this.dialog
