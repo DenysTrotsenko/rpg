@@ -1,9 +1,8 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
@@ -50,6 +49,14 @@ import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-
 
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
+
+const EXCLUDED_INJURIES = [
+  InjuryId.NARROW_ESCAPE_1,
+  InjuryId.NARROW_ESCAPE_2,
+  InjuryId.NARROW_ESCAPE_3,
+  InjuryId.IT_GETS_WORSE_1,
+  InjuryId.IT_GETS_WORSE_2
+];
 
 @Component({
   templateUrl: './view.component.html',
@@ -110,14 +117,9 @@ export class ViewComponent implements OnDestroy {
   readonly ailments: Ailment[] = this.data[DataTypes.AILMENTS];
   readonly drugs: Drug[] = this.data[DataTypes.DRUGS];
   readonly injuries: Injury[] = this.data[DataTypes.INJURIES].filter(i => {
-    return ![
-      InjuryId.NARROW_ESCAPE_1, InjuryId.NARROW_ESCAPE_2, InjuryId.NARROW_ESCAPE_3,
-      InjuryId.IT_GETS_WORSE_1, InjuryId.IT_GETS_WORSE_2
-    ].includes(i.id);
+    return !EXCLUDED_INJURIES.includes(i.id);
   });
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  @ViewChild('injuryInput') injuryInput: ElementRef<HTMLInputElement>;
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
   }
