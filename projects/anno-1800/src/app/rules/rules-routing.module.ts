@@ -7,6 +7,7 @@ import { HazardsComponent } from './hazards/hazards.component';
 import { HealingComponent } from './healing/healing.component';
 import { HorrorComponent } from './horror/horror.component';
 import { SocialComponent } from './social/social.component';
+import { TravelComponent } from './travel/travel.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'social',
         component: SocialComponent
+      },
+      {
+        path: 'travel',
+        component: TravelComponent
       },
     ]
   }

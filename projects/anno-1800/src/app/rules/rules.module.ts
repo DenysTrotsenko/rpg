@@ -8,6 +8,7 @@ import { CombatComponent } from './combat/combat.component';
 import { ChaseComponent } from './chase/chase.component';
 import { SocialComponent } from './social/social.component';
 import { HealingComponent } from './healing/healing.component';
+import { TravelComponent } from './travel/travel.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HealingComponent } from './healing/healing.component';
     CombatComponent,
     ChaseComponent,
     SocialComponent,
-    HealingComponent
+    HealingComponent,
+    TravelComponent
   ],
   imports: [
     SharedModule,
