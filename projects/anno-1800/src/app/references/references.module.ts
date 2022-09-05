@@ -14,6 +14,7 @@ import { InjuriesComponent } from './injuries/injuries.component';
 import { SpellsComponent } from './spells/spells.component';
 import { AilmentsComponent } from './ailments/ailments.component';
 import { DrugsComponent } from './drugs/drugs.component';
+import { QualitiesComponent } from './qualities/qualities.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DrugsComponent } from './drugs/drugs.component';
     InjuriesComponent,
     SpellsComponent,
     AilmentsComponent,
-    DrugsComponent
+    DrugsComponent,
+    QualitiesComponent
   ],
   imports: [
     SharedModule,

@@ -83,7 +83,7 @@ type Return =
 export class GetByIdPipe implements PipeTransform {
   constructor(private data: DataService) {}
 
-  transform(value: Id, type: string): Return {
+  transform(value: Id, type: string): any {
     const data = this.data[type] ?? [];
     return !!data ? data.find(i => i.id === value) : value;
   }

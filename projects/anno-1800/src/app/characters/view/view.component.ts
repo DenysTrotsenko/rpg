@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
@@ -79,7 +79,6 @@ export class ViewComponent implements OnDestroy {
     notes: new FormControl(''),
     weapons: new FormControl([]),
   });
-  readonly view$: BehaviorSubject<'concise' | 'full'> = new BehaviorSubject('concise');
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
       map(res => res.get('id')),

@@ -1,14 +1,15 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Talent } from '@flames-of-freedom-1e/models';
+import { Quality } from '@flames-of-freedom-1e/models';
 
 @Component({
-  templateUrl: './talents.component.html',
-  styleUrls: ['./talents.component.scss'],
+  selector: 'app-qualities',
+  templateUrl: './qualities.component.html',
+  styleUrls: ['./qualities.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TalentsComponent {
-  readonly talents: Talent[] = this.data[DataTypes.TALENTS];
+export class QualitiesComponent {
+  readonly qualities: Quality[] = this.data[DataTypes.QUALITIES];
 
   constructor(private data: DataService) {}
 

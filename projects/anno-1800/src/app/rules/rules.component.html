@@ -1,15 +1,27 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened>
     <mat-nav-list dense>
+      <a mat-list-item routerLink="./chase" routerLinkActive="active">
+        <span>Chase</span>
+      </a>
+      <a mat-list-item routerLink="./combat" routerLinkActive="active">
+        <span>Combat</span>
+      </a>
       <a mat-list-item routerLink="./hazards" routerLinkActive="active">
         <span>Hazards</span>
+      </a>
+      <a mat-list-item routerLink="./healing" routerLinkActive="active">
+        <span>Healing</span>
       </a>
       <a mat-list-item routerLink="./horror" routerLinkActive="active">
         <span>Horror</span>
       </a>
+      <a mat-list-item routerLink="./social" routerLinkActive="active">
+        <span>Social</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="bs-bb p-10">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

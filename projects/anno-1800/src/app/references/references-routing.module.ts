@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReferencesComponent } from './references.component';
+import { AfflictionsComponent } from './afflictions/afflictions.component';
+import { AilmentsComponent } from './ailments/ailments.component';
+import { AttributesComponent } from './attributes/attributes.component';
+import { DrugsComponent } from './drugs/drugs.component';
+import { InjuriesComponent } from './injuries/injuries.component';
+import { ProfessionsComponent } from './professions/professions.component';
+import { QualitiesComponent } from './qualities/qualities.component';
+import { QuirksComponent } from './quirks/quirks.component';
 import { SkillsComponent } from './skills/skills.component';
-import { ProfessionsComponent } from '@ti/app/references/professions/professions.component';
-import { QuirksComponent } from '@ti/app/references/quirks/quirks.component';
-import { TalentsComponent } from '@ti/app/references/talents/talents.component';
-import { TraitsComponent } from '@ti/app/references/traits/traits.component';
-import { AttributesComponent } from '@ti/app/references/attributes/attributes.component';
-import { AfflictionsComponent } from '@ti/app/references/afflictions/afflictions.component';
-import { InjuriesComponent } from '@ti/app/references/injuries/injuries.component';
-import { SpellsComponent } from '@ti/app/references/spells/spells.component';
-import { AilmentsComponent } from '@ti/app/references/ailments/ailments.component';
-import { DrugsComponent } from '@ti/app/references/drugs/drugs.component';
+import { SpellsComponent } from './spells/spells.component';
+import { TalentsComponent } from './talents/talents.component';
+import { TraitsComponent } from './traits/traits.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'professions',
         component: ProfessionsComponent
+      },
+      {
+        path: 'qualities',
+        component: QualitiesComponent
       },
       {
         path: 'quirks',

@@ -8,7 +8,6 @@ import { Trait } from '@flames-of-freedom-1e/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TraitsComponent {
-  readonly TYPES: typeof DataTypes = DataTypes;
   readonly traits: Trait[] = this.data[DataTypes.TRAITS];
 
   constructor(private data: DataService) {}

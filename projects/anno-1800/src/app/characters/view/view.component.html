@@ -1,86 +1,77 @@
 <mat-toolbar class="toolbar-main">
   <h1>Character View</h1>
-<!--  <span class="f-1"></span>-->
-<!--  <button *ngIf="view$ | async as view"-->
-<!--    mat-icon-button-->
-<!--    (click)="view$.next(view === 'full' ? 'concise' : 'full')"-->
-<!--    [matTooltip]="view === 'full' ? 'Concise View' : 'Full View'">-->
-<!--    <mat-icon>{{view === 'full' ? 'unfold_less' : 'unfold_more'}}</mat-icon>-->
-<!--  </button>-->
 </mat-toolbar>
 <ng-container *ngIf="character$ | async as character;">
-  <ng-container *ngIf="(view$ | async) === 'concise'">
-    <p class="ff-g fs-16">
-      {{character.name}}
-    </p>
-    <p class="c-gray">
-      <i>{{description}}</i>
-    </p>
-    <p>
-      <b class="c-gray">Belief & Flaw:</b>
-      <span *ngFor="let i of personality;" class="comma-separated ws-pl" [matTooltip]="i.labels?.description">
-        {{i.name}}
-      </span>
-    </p>
-    <p>
-      <b class="c-gray">Languages:</b>
-      <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pl">
-        {{i.name}}
-      </span>
-    </p>
-    <p class="mb-0">
-      <b class="c-gray">Attributes & Skills:</b>
-    </p>
-    <table class="mat-table w-100 mb-15">
-      <tr class="mat-row va-t h-32">
-        <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
-      </tr>
-      <tr class="mat-row va-t h-32">
-        <td class="mat-cell">Encumbrance: {{getEncumbranceLimit(character)}}</td>
-        <td class="mat-cell">DT: {{getDamageThresholds(character)}}</td>
-        <td class="mat-cell" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
-        <td class="mat-cell">Initiative: {{getInitiative(character)}}</td>
-        <td class="mat-cell"></td>
-        <td class="mat-cell">PT: {{getPerilThresholds(character)}}</td>
-        <td class="mat-cell"></td>
-      </tr>
-      <tr class="mat-row">
-        <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
-          <div class="d-f fd-c">
+  <p class="ff-g fs-16">
+    {{character.name}}
+  </p>
+  <p class="c-gray">
+    <i>{{description}}</i>
+  </p>
+  <p>
+    <b class="c-gray">Belief & Flaw:</b>
+    <span *ngFor="let i of personality;" class="comma-separated ws-pl" [matTooltip]="i.labels?.description">
+      {{i.name}}
+    </span>
+  </p>
+  <p>
+    <b class="c-gray">Languages:</b>
+    <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pl">
+      {{i.name}}
+    </span>
+  </p>
+  <p class="mb-0">
+    <b class="c-gray">Attributes & Skills:</b>
+  </p>
+  <table class="mat-table w-100 mb-15">
+    <tr class="mat-row va-t h-32">
+      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
+    </tr>
+    <tr class="mat-row va-t h-32">
+      <td class="mat-cell">Encumbrance: {{getEncumbranceLimit(character)}}</td>
+      <td class="mat-cell">DT: {{getDamageThresholds(character)}}</td>
+      <td class="mat-cell" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
+      <td class="mat-cell">Initiative: {{getInitiative(character)}}</td>
+      <td class="mat-cell"></td>
+      <td class="mat-cell">PT: {{getPerilThresholds(character)}}</td>
+      <td class="mat-cell"></td>
+    </tr>
+    <tr class="mat-row">
+      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
+        <div class="d-f fd-c">
             <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById"
               [class.c-gray]="j.type === SKILL_TYPE_SPECIAL && j.value === 0"
               [matTooltip]="j.tooltip">
               {{j.name}}{{j.type === SKILL_TYPE_SPECIAL ? '*' : ''}} +{{j.value}}%
             </span>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <p *ngIf="talents.length > 0">
-      <b class="c-gray">Talents:</b>
-      <span *ngFor="let i of talents;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
-    <p>
-      <b class="c-gray">Traits:</b>
-      <span *ngFor="let i of traits;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
-    <p>
-      <b class="c-gray">Quirks, Afflictions, Permanent Injuries:</b>
-      <span *ngFor="let i of quirks;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
-    <p *ngIf="spells.length > 0">
-      <b class="c-gray">Spells, Alchemical Arts:</b>
-      <span *ngFor="let i of spells;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
-        {{i.name}}
-      </span>
-    </p>
-  </ng-container>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <p *ngIf="talents.length > 0">
+    <b class="c-gray">Talents:</b>
+    <span *ngFor="let i of talents;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
+      {{i.name}}
+    </span>
+  </p>
+  <p>
+    <b class="c-gray">Traits:</b>
+    <span *ngFor="let i of traits;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
+      {{i.name}}
+    </span>
+  </p>
+  <p>
+    <b class="c-gray">Quirks, Afflictions, Permanent Injuries:</b>
+    <span *ngFor="let i of quirks;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
+      {{i.name}}
+    </span>
+  </p>
+  <p *ngIf="spells.length > 0">
+    <b class="c-gray">Spells, Alchemical Arts:</b>
+    <span *ngFor="let i of spells;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">
+      {{i.name}}
+    </span>`
+  </p>
 
 <!--  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>-->
 
