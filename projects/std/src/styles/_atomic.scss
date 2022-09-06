@@ -82,6 +82,8 @@
 .c-gray { color: $color-gray !important; }
 .c-blue-gray { color: $color-blue-gray !important; }
 
+.bg-gray-700 { background-color: $color-gray-700 !important; }
+
 .comma-separated:not(:last-child)::after { content: ', ' !important; }
 
 .va-t { vertical-align: top !important; }

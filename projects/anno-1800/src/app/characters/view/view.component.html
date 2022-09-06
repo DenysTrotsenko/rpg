@@ -24,20 +24,20 @@
     <b class="c-gray">Attributes & Skills:</b>
   </p>
   <table class="mat-table w-100 mb-15">
-    <tr class="mat-row va-t h-32">
-      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
+    <tr class="mat-row">
+      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell p-5">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
     </tr>
-    <tr class="mat-row va-t h-32">
-      <td class="mat-cell">Encumbrance: {{getEncumbranceLimit(character)}}</td>
-      <td class="mat-cell">DT: {{getDamageThresholds(character)}}</td>
-      <td class="mat-cell" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
-      <td class="mat-cell">Initiative: {{getInitiative(character)}}</td>
-      <td class="mat-cell"></td>
-      <td class="mat-cell">PT: {{getPerilThresholds(character)}}</td>
-      <td class="mat-cell"></td>
+    <tr class="mat-row bg-gray-700">
+      <td class="mat-cell p-5">Encumbrance: {{getEncumbranceLimit(character)}}</td>
+      <td class="mat-cell p-5">DT: {{getDamageThresholds(character)}}</td>
+      <td class="mat-cell p-5" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
+      <td class="mat-cell p-5">Initiative: {{getInitiative(character)}}</td>
+      <td class="mat-cell p-5"></td>
+      <td class="mat-cell p-5">PT: {{getPerilThresholds(character)}}</td>
+      <td class="mat-cell p-5"></td>
     </tr>
     <tr class="mat-row">
-      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t">
+      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t p-5">
         <div class="d-f fd-c">
             <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById"
               [class.c-gray]="j.type === SKILL_TYPE_SPECIAL && j.value === 0"

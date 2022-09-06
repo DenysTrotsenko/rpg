@@ -21,3 +21,5 @@ $color-deep-orange: mat.get-color-from-palette(mat.$deep-orange-palette, 500);
 $color-brown: mat.get-color-from-palette(mat.$brown-palette, 500);
 $color-gray: mat.get-color-from-palette(mat.$gray-palette, 500);
 $color-blue-gray: mat.get-color-from-palette(mat.$blue-gray-palette, 500);
+
+$color-gray-700: mat.get-color-from-palette(mat.$gray-palette, 700);
