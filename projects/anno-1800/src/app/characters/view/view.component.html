@@ -23,11 +23,11 @@
   <p class="mb-0">
     <b class="c-gray">Attributes & Skills:</b>
   </p>
-  <table class="mat-table w-100 mb-15">
+  <table class="mat-table bs-0 w-100 mb-15" cellspacing="0" cellpadding="0">
     <tr class="mat-row">
       <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell p-5">{{i.name}} {{i.value}}% ({{i.bonus}})</td>
     </tr>
-    <tr class="mat-row bg-gray-700">
+    <tr class="mat-row bg-gray-800">
       <td class="mat-cell p-5">Encumbrance: {{getEncumbranceLimit(character)}}</td>
       <td class="mat-cell p-5">DT: {{getDamageThresholds(character)}}</td>
       <td class="mat-cell p-5" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>
