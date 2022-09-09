@@ -14,11 +14,11 @@ import {
   HairLength,
   HairStyle, Injury, InjuryType,
   Language,
-  Mark, PermanentInjury,
+  Mark, Notch, PermanentInjury,
   Profession, Quality,
-  Quirk, Sex,
+  Quirk, RiskFactor, Sex,
   Skill, Spell, SpellType, Stature, Style,
-  Talent, Tier,
+  Talent, Threat, Tier,
   Trait, Weapon
 } from '@flames-of-freedom-1e/models';
 import {Disposition} from '@powered-by-zweihander/models';
@@ -47,6 +47,7 @@ import {WEAPONS} from '@flames-of-freedom-1e/weapons';
 import {QUALITIES} from '@flames-of-freedom-1e/qualities';
 import {AILMENTS} from '@flames-of-freedom-1e/ailments';
 import {DRUGS} from '@flames-of-freedom-1e/drugs';
+import {NOTCHES, RISK_FACTORS, THREATS} from '@flames-of-freedom-1e/threats';
 
 
 export enum FirestoreCollection {
@@ -76,10 +77,12 @@ export enum DataTypes {
   INJURY_TYPES = 'injury_types',
   LANGUAGES = 'languages',
   MARKS = 'marks',
+  NOTCHES = 'notches',
   PERMANENT_INJURIES = 'permanent_injuries',
   PROFESSIONS = 'professions',
   QUALITIES = 'qualities',
   QUIRKS = 'quirks',
+  RISK_FACTORS = 'risk_factors',
   SEX = 'sex',
   SKILLS = 'skills',
   SPELLS = 'spells',
@@ -87,6 +90,7 @@ export enum DataTypes {
   STATURE = 'stature',
   STYLE = 'style',
   TALENTS = 'talents',
+  THREATS = 'threats',
   TIERS = 'tiers',
   TRAITS = 'traits',
   WEAPONS = 'weapons'
@@ -177,6 +181,9 @@ export class DataService {
     i.labels.tooltip = this.getTalentTooltip(i);
     return i;
   });
+  readonly [DataTypes.THREATS]: Threat[] = THREATS;
+  readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
+  readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
   readonly [DataTypes.TIERS]: Tier[] = TIERS;
   readonly [DataTypes.TRAITS]: Trait[] = TRAITS.map(i => {
     i.labels.tooltip = this.getTraitTooltip(i);

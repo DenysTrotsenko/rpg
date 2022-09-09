@@ -1,0 +1,35 @@
+<mat-card *ngIf="data.type === 'player'" class="unit mb-5">
+  <mat-card-content class="d-f ai-c">
+    <mat-form-field appearance="outline" class="initiative mr-5">
+      <mat-label>Initiative</mat-label>
+      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="data.initiative">
+    </mat-form-field>
+    <span>{{data?.name}}</span>
+    <span class="f-1"></span>
+    <div class="d-f fd-c">
+      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(data)">clear</mat-icon>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="data.type === 'threat'" class="unit mb-5">
+  <mat-card-content class="d-f ai-c">
+    <mat-form-field appearance="outline" class="initiative mr-5">
+      <mat-label>Initiative</mat-label>
+      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="data.initiative">
+    </mat-form-field>
+    <div class="d-f fd-c g-5">
+      <span>{{data?.name}}</span>
+      <span class="d-f g-5">
+        <span *ngFor="let i of data.attributes">
+          {{i.name | slice: 0 : 1 }} {{i.value}}%
+        </span>
+      </span>
+    </div>
+    <span class="f-1"></span>
+    <div class="d-f fd-c">
+      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(data)">clear</mat-icon>
+      <mat-icon class="c-pointer" matTooltip="Clone" (click)="onCloneClick(data)">add</mat-icon>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -25,10 +25,10 @@ import {
   BeliefId,
   FlawId,
   InjuryId,
-  InjuryTypeId,
+  InjuryTypeId, NotchId,
   PermanentInjuryId,
   ProfessionId, QualityId,
-  QuirkId,
+  QuirkId, RiskFactorId,
   SkillId,
   SpellId,
   SpellTypeId,
@@ -45,10 +45,12 @@ type Id =
   | FlawId
   | InjuryId
   | InjuryTypeId
+  | NotchId
   | PermanentInjuryId
   | ProfessionId
   | QualityId
   | QuirkId
+  | RiskFactorId
   | SkillId
   | SpellId
   | SpellTypeId

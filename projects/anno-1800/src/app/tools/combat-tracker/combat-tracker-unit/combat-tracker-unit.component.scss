@@ -1,0 +1,28 @@
+mat-card.mat-card.unit {
+  padding: 3px;
+  line-height: 1;
+  mat-card-content.mat-card-content {
+    display: flex;
+    align-items: flex-end;
+
+    .initiative {
+      align-self: center;
+      width: 64px;
+    }
+  }
+
+  /* Material override */
+  ::ng-deep.mat-form-field {
+    margin: 5px 0 0 0;
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  ::ng-deep.mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: 0 !important;
+  }
+  ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 2px 0 4px 0;
+  }
+}

@@ -35,11 +35,11 @@ const routes: Routes = [
         path: 'rules',
         loadChildren: () => import('../rules/rules.module').then(m => m.RulesModule),
       },
-      // {
-      //   path: 'tools',
-      //   loadChildren: () => import('../tools/tools.module').then(m => m.ToolsModule),
-      //   canActivate: [AuthGuard]
-      // },
+      {
+        path: 'tools',
+        loadChildren: () => import('../tools/tools.module').then(m => m.ToolsModule),
+        canActivate: [AuthGuard]
+      },
       // {
       //   path: 'world',
       //   loadChildren: () => import('../world/world.module').then(m => m.WorldModule),

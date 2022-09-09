@@ -7,12 +7,12 @@ import {
   BeliefId, BuildId,
   CultureId, DrugId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId,
-  MarkId, PermanentInjuryId,
+  MarkId, NotchId, PermanentInjuryId,
   ProfessionId, QualityId,
-  QuirkId, SexId,
+  QuirkId, RiskFactorId, SexId, SizeId,
   SkillId,
   SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
-  TalentId,
+  TalentId, ThreatId, ThreatTraitId, ThreatTypeId,
   TierId,
   TraitId, WareId, WareTypeId, WeaponId
 } from './enums';
@@ -294,11 +294,139 @@ export interface Tier {
   name: string;
 }
 
+// export interface Character {
+//   belief: BeliefId;
+//   flaw: FlawId;
+//   culture: CultureId;
+//   archetype: ArchetypeId;
+//   trait: TraitId;
+//   attributes: {
+//     [k in AttributeId]: number;
+//   };
+//   determination: number;
+//   languages: LanguageId[];
+//   spells: SpellId[];
+//   alchemical_arts: SpellId[];
+//   miscellaneous: {
+//     age: AgeId;
+//     build: BuildId;
+//     eyes: EyesId;
+//     sex: SexId;
+//     hair_color: HairColorId;
+//     hair_length: HairLengthId;
+//     hair_style: HairStyleId;
+//     mark: MarkId;
+//     stature: StatureId;
+//     style: StyleId;
+//   };
+//   permanent_injuries: PermanentInjuryId[];
+//   afflictions: AfflictionId[];
+//   tier: TierId;
+//   professions: {
+//     basic: ProfessionId;
+//     intermediate: ProfessionId;
+//     advanced: ProfessionId;
+//   };
+//   advancements: {
+//     basic: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//     intermediate: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//     advanced: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//   };
+//   schemas: {
+//     advanced: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//     intermediate: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//     basic: {
+//       bonuses: AttributeId[];
+//       quirks: QuirkId[];
+//       skills: SkillId[];
+//       talents: TalentId[];
+//       traits: TraitId[];
+//     };
+//   };
+// }
+
+export interface Threat extends HasId<ThreatId> {
+  id: ThreatId;
+  name: string;
+  type: ThreatTypeId;
+  size: SizeId;
+  risk_factor: RiskFactorId;
+  notch: NotchId;
+  attributes: {
+    [k in AttributeId]: number;
+  };
+  advancements: {
+    bonuses: AttributeId[];
+    skills: SkillId[];
+    traits: { id: ThreatTraitId; value?: number | string; }[];
+  };
+  labels?: {
+    description?: string;
+    wares?: string;
+  };
+}
+
+export interface ThreatTrait extends HasId<ThreatTraitId> {
+  id: ThreatTraitId;
+  name: string;
+  quantifiable?: boolean;
+  specifiable?: boolean;
+  labels?: {
+    effect: string;
+    tooltip?: string;
+  };
+}
+
+export interface ThreatType extends HasId<ThreatTypeId> {
+  id: ThreatTypeId;
+  name: string;
+}
+
+export interface Notch extends HasId<NotchId> {
+  id: NotchId;
+  name: string;
+}
+
+export interface RiskFactor extends HasId<RiskFactorId> {
+  id: RiskFactorId;
+  name: string;
+}
+
 export interface Trait extends HasId<TraitId> {
   id: TraitId;
   name: string;
   labels?: {
-    description: string;
+    description?: string;
     effect: string;
     tooltip?: string;
   };
