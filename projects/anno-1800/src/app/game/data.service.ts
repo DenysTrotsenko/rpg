@@ -12,8 +12,7 @@ import {
   Flaw,
   HairColor,
   HairLength,
-  HairStyle, Injury, InjuryType,
-  Language,
+  HairStyle, Injury, InjuryType, Language,
   Mark, Notch, PermanentInjury,
   Profession, Quality,
   Quirk, RiskFactor, Sex,
@@ -21,13 +20,11 @@ import {
   Talent, Threat, Tier,
   Trait, Weapon
 } from '@flames-of-freedom-1e/models';
-import {Disposition} from '@powered-by-zweihander/models';
 import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
 import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
 import { CULTURES } from '@flames-of-freedom-1e/cultures';
-import { DISPOSITIONS } from '@powered-by-zweihander/dispositions';
 import { FLAWS } from '@flames-of-freedom-1e/flaws';
 import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
 import { TRAITS } from '@flames-of-freedom-1e/traits';
@@ -66,7 +63,6 @@ export enum DataTypes {
   BELIEFS = 'beliefs',
   BUILD = 'build',
   CULTURES = 'cultures',
-  DISPOSITIONS = 'dispositions',
   DRUGS = 'drugs',
   EYES = 'eyes',
   FLAWS = 'flaws',
@@ -145,7 +141,6 @@ export class DataService {
     i.labels.tooltip = this.getDrugTooltip(i);
     return i;
   });
-  readonly [DataTypes.DISPOSITIONS]: Disposition[] = DISPOSITIONS;
   readonly [DataTypes.EYES]: Eyes[] = EYES;
   readonly [DataTypes.FLAWS]: Flaw[] = FLAWS;
   readonly [DataTypes.INJURIES]: Injury[] = INJURIES;

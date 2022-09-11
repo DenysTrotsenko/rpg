@@ -1,7 +1,20 @@
 import {
   AgeId, AttributeId, BeliefId, BuildId, EyesId, FlawId, HairColorId, HairLengthId, HairStyleId,
-  MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, StatureId, StyleId, TierId
+  LanguageId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, StatureId, StyleId,
+  TierId
 } from './enums';
+
+export interface HasBase {
+  id: number;
+  name: string;
+}
+
+export interface HasLabels {
+  labels?: {
+    description?: string;
+    tooltip?: string;
+  };
+}
 
 export interface Age {
   id: AgeId;
@@ -31,6 +44,16 @@ export interface Build {
   name: string;
 }
 
+export interface Disposition extends HasBase, HasLabels {
+  labels?: {
+    description?: string;
+    tooltip?: string;
+    interact_check?: string;
+    social_tactics_same_allegiance?: string;
+    social_tactics_different_allegiance?: string;
+  };
+}
+
 export interface Eyes {
   id: EyesId;
   name: string;
@@ -56,6 +79,11 @@ export interface HairColor {
 
 export interface HairLength {
   id: HairLengthId;
+  name: string;
+}
+
+export interface Language {
+  id: LanguageId;
   name: string;
 }
 

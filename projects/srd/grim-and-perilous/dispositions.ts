@@ -1,5 +1,5 @@
 import {Disposition} from './models';
-import {DispositionId} from '@powered-by-zweihander/enums';
+import {DispositionId} from './enums';
 
 export const DISPOSITIONS: Disposition[] = [
   {

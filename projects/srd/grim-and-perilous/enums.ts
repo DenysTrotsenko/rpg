@@ -1,3 +1,5 @@
+import {PrefixId} from '../prefixes';
+
 export enum AgeId {
   YOUNG = 1,
   ADULT,
@@ -242,6 +244,39 @@ export enum InjuryTypeId {
   SERIOUS,
   GRIEVOUS,
   PERMANENT
+}
+
+export enum LanguageId {
+  ABENAKI = 1,
+  ALGONQUIN,
+  APALACHEE,
+  ATIKAMEKW,
+  CATAWBA,
+  CHICKASAW,
+  CREOLE,
+  DUTCH,
+  ENGLISH,
+  FRENCH,
+  GERMAN,
+  GREEK,
+  HAUDENOSAUNEE,
+  HEBREW,
+  INNU,
+  LATIN,
+  LENAPE,
+  LINGUA_FRANCA,
+  MAHICAN,
+  MASSACHUSETT,
+  PIDGIN,
+  PORTUGUESE,
+  POWHATAN,
+  RUSSIAN,
+  SEMINOLE,
+  SHAWNEE,
+  SPANISH,
+  SWEDISH,
+  TSALAGI,
+  WAMPANOAG
 }
 
 export enum MarkId {

@@ -11,7 +11,6 @@ import {
   TalentId, TierId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {Age} from '@flames-of-freedom-1e/models';
 
 export interface Character {
   id: string;

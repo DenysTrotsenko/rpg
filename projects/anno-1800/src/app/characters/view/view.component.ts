@@ -25,7 +25,7 @@ import {
   AlchemicalArt,
   Belief, Drug,
   Flaw,
-  Injury,
+  Injury, Language,
   PermanentInjury, Quality,
   Quirk,
   Spell,
@@ -33,7 +33,6 @@ import {
   Trait,
   Weapon
 } from '@flames-of-freedom-1e/models';
-import {Language} from '@powered-by-zweihander/models';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {
   getAttributeBonus,
