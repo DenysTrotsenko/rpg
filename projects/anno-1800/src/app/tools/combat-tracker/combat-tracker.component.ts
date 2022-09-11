@@ -6,6 +6,7 @@ import { Threat } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import {Character} from '@ti/app/game/models/character';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
+import {getAttributeBonus} from '@ti/app/game/threat.utils';
 
 @Component({
   templateUrl: './combat-tracker.component.html',
@@ -81,11 +82,12 @@ export class CombatTrackerComponent {
     return 0;
   }
 
-  getAttributes(threat: Threat): { name: string; value: number; }[] {
+  getAttributes(threat: Threat): { name: string; value: number; bonus: number; }[] {
     return Object.entries(threat.attributes).map(entry => {
       return {
         name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
         value: +entry[1],
+        bonus: getAttributeBonus(threat, +entry[0])
       };
     });
   }

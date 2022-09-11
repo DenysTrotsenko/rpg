@@ -22,7 +22,7 @@
       <span>{{data?.name}}</span>
       <span class="d-f g-5">
         <span *ngFor="let i of data.attributes">
-          {{i.name | slice: 0 : 1 }} {{i.value}}%
+          {{i.name | slice: 0 : 1 }} {{i.value}}% ({{i.bonus}})
         </span>
       </span>
     </div>

@@ -34,11 +34,14 @@ export const THREATS: Threat[] = [
     },
     advancements: {
       bonuses: [
-        // AttributeId.COMBAT,
-        // AttributeId.COMBAT,
-        // AttributeId.COMBAT,
-        // AttributeId.AGILITY,
-        // AttributeId.PERCEPTION,
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.AGILITY,
+        AttributeId.AGILITY,
+        AttributeId.AGILITY,
+        AttributeId.AGILITY,
+        AttributeId.PERCEPTION,
       ],
       skills: [
         SkillId.ATHLETICS,

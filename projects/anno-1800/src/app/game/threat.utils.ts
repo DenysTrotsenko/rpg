@@ -5,7 +5,7 @@ import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 
 export function getAttributeBonus(threat: Threat, attributeId: AttributeId): number {
   const fromAttribute: number = getBonusFromAttribute(threat.attributes[attributeId]);
-  const fromAdvances: number = threat.advancements.bonuses.filter(i => i === attributeId).length;
+  const fromAdvances: number = Math.min(threat.advancements.bonuses.filter(i => i === attributeId).length, 6);
   const fromTraits: number = threat.advancements.traits.reduce((acc, trait) => {
     let bonus = 0;
     if (BRAWN_BONUS_TRAITS.includes(trait.id) && attributeId === AttributeId.BRAWN) {

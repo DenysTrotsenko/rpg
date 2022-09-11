@@ -1,11 +1,9 @@
-import {AttributeId} from '@flames-of-freedom-1e/enums';
-
 export interface CombatTrackerUnitOptions {
   uid: string;
   name?: string;
   type?: 'player' | 'threat';
   initiative?: number;
-  attributes?: { name: string; value: number; }[];
+  attributes?: { name: string; value: number; bonus: number; }[];
 }
 
 export class CombatTrackerUnit {
@@ -13,7 +11,7 @@ export class CombatTrackerUnit {
   name: string;
   type: 'player' | 'threat';
   initiative: number;
-  attributes: { name: string; value: number; }[];
+  attributes: { name: string; value: number; bonus: number; }[];
   constructor(options: CombatTrackerUnitOptions) {
     this.uid = options?.uid;
     this.name = options?.name ?? 'unknown';
