@@ -9,20 +9,13 @@ export function getAttributeBonus(character: Character, attribute: AttributeId):
     ...character.advancements.intermediate.bonuses ?? [],
     ...character.advancements.advanced.bonuses ?? [],
   ].filter(i => i === attribute).length;
-
   return bonus + advances;
 }
 
 export function getDamageThreshold(character: Character): number {
-  const determination: number = character.determination;
-  const brawn: number = getBonusFromAttribute(character.attributes[AttributeId.BRAWN]);
-  const advances: number = [
-    ...character.advancements.basic.bonuses ?? [],
-    ...character.advancements.intermediate.bonuses ?? [],
-    ...character.advancements.advanced.bonuses ?? [],
-  ].filter(i => i === AttributeId.BRAWN).length;
-
-  return determination + brawn + advances;
+  const fromDetermination: number = character.determination;
+  const fromBrawnBonus: number = getAttributeBonus(character, AttributeId.BRAWN);
+  return fromDetermination + fromBrawnBonus;
 }
 
 export function getDamageThresholds(threshold: number): string {
@@ -51,7 +44,6 @@ export function getPerilThreshold(character: Character): number {
     ...character.advancements.intermediate.bonuses ?? [],
     ...character.advancements.advanced.bonuses ?? [],
   ].filter(i => i === AttributeId.WILLPOWER).length;
-
   return 3 + willpower + advances;
 }
 

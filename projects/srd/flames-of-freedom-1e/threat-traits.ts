@@ -399,7 +399,7 @@ export const THREAT_TRAITS: ThreatTrait[] = [
     id: ThreatTraitId.METTLE,
     name: 'Mettle',
     labels: {
-      effect: 'henever you suffer Peril from mental activities, reduce your Peril Condition Track by one less step negatively.'
+      effect: 'Whenever you suffer Peril from mental activities, reduce your Peril Condition Track by one less step negatively.'
     }
   },
   {

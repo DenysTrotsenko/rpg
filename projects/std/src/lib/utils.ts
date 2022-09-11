@@ -27,6 +27,10 @@ export function getRandomFromArray<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+export function getSumFromOneToN(n: number = 1): number {
+  return typeof n === 'number' ? n * (n + 1) / 2 : null;
+}
+
 export function setFormControlsEditable(
   form: FormGroup, controls: string[] = [], isEditable: boolean = true
 ): void {

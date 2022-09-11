@@ -1,16 +1,17 @@
 import {
-  AfflictionId,
+  AfflictionId, AgeId,
   ArchetypeId,
   AttributeId,
-  BeliefId,
-  CultureId,
-  FlawId,
-  PermanentInjuryId,
+  BeliefId, BuildId,
+  CultureId, EyesId,
+  FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
+  PermanentInjuryId, ProfessionId,
   QuirkId,
-  SkillId,
-  TalentId,
+  SkillId, SpellId, StatureId, StyleId,
+  TalentId, TierId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
+import {Age} from '@flames-of-freedom-1e/models';
 
 export interface Character {
   id: string;
@@ -18,10 +19,14 @@ export interface Character {
   campaign: string;
   name: string;
   full_name: string;
+  allegiances: string;
   belief: BeliefId;
   flaw: FlawId;
   culture: CultureId;
-  allegiances: string;
+  archetype: ArchetypeId;
+  attributes: {
+    [k in AttributeId]: number;
+  };
   advancements: {
     advanced: {
       bonuses: AttributeId[];
@@ -45,34 +50,30 @@ export interface Character {
       traits: TraitId[];
     };
   };
-  archetype: ArchetypeId;
-  attributes: {
-    [k in AttributeId]: number;
-  };
   determination: number;
-  languages: number[];
-  spells: number[];
-  alchemical_arts: number[];
+  languages: LanguageId[];
+  spells: SpellId[];
+  alchemical_arts: SpellId[];
   miscellaneous: {
     portrait: string;
-    age: number;
+    age: AgeId;
     biography: string;
-    build: number;
-    eyes: number;
+    build: BuildId;
+    eyes: EyesId;
     sex: number;
-    hair_color: number;
-    hair_length: number;
-    hair_style: number;
-    mark: number;
-    stature: number;
-    style: number;
+    hair_color: HairColorId;
+    hair_length: HairLengthId;
+    hair_style: HairStyleId;
+    mark: MarkId;
+    stature: StatureId;
+    style: StyleId;
   };
   permanent_injuries: PermanentInjuryId[];
   afflictions: AfflictionId[];
   professions: {
-    basic: number;
-    intermediate: number;
-    advanced: number;
+    basic: ProfessionId;
+    intermediate: ProfessionId;
+    advanced: ProfessionId;
   };
   schemas: {
     advanced: {
@@ -97,6 +98,6 @@ export interface Character {
       traits: TraitId[];
     };
   };
-  tier: number;
-  trait: number;
+  tier: TierId;
+  trait: TraitId;
 }
