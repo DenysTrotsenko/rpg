@@ -6,7 +6,7 @@ import {
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   PermanentInjuryId, ProfessionId,
-  QuirkId,
+  QuirkId, SizeId,
   SkillId, SpellId, StatureId, StyleId,
   TalentId, TierId,
   TraitId
@@ -19,6 +19,7 @@ export interface Character {
   name: string;
   full_name: string;
   allegiances: string;
+  size: SizeId;
   belief: BeliefId;
   flaw: FlawId;
   culture: CultureId;

@@ -17,7 +17,7 @@ import {
   Profession, Quality,
   Quirk, RiskFactor, Sex,
   Skill, Spell, SpellType, Stature, Style,
-  Talent, Threat, Tier,
+  Talent, Threat, ThreatTrait, Tier,
   Trait, Weapon
 } from '@flames-of-freedom-1e/models';
 import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
@@ -45,6 +45,7 @@ import {QUALITIES} from '@flames-of-freedom-1e/qualities';
 import {AILMENTS} from '@flames-of-freedom-1e/ailments';
 import {DRUGS} from '@flames-of-freedom-1e/drugs';
 import {NOTCHES, RISK_FACTORS, THREATS} from '@flames-of-freedom-1e/threats';
+import {THREAT_TRAITS} from '@flames-of-freedom-1e/threat-traits';
 
 
 export enum FirestoreCollection {
@@ -87,6 +88,7 @@ export enum DataTypes {
   STYLE = 'style',
   TALENTS = 'talents',
   THREATS = 'threats',
+  THREAT_TRAITS = 'threat_traits',
   TIERS = 'tiers',
   TRAITS = 'traits',
   WEAPONS = 'weapons'
@@ -177,6 +179,7 @@ export class DataService {
     return i;
   });
   readonly [DataTypes.THREATS]: Threat[] = THREATS;
+  readonly [DataTypes.THREAT_TRAITS]: ThreatTrait[] = THREAT_TRAITS;
   readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
   readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
   readonly [DataTypes.TIERS]: Tier[] = TIERS;

@@ -18,6 +18,11 @@
       <mat-label>Initiative</mat-label>
       <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="data.initiative">
     </mat-form-field>
+    <div class="d-f fd-c">
+      <mat-icon class="c-pointer" matTooltip="Expand" (click)="data.expanded = !data.expanded">
+        {{data.expanded ? 'expand_less' : 'expand_more'}}
+      </mat-icon>
+    </div>
     <div class="d-f fd-c g-5">
       <span>{{data?.name}}</span>
       <span class="d-f g-5">
@@ -31,5 +36,27 @@
       <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(data)">clear</mat-icon>
       <mat-icon class="c-pointer" matTooltip="Clone" (click)="onCloneClick(data)">add</mat-icon>
     </div>
+  </mat-card-content>
+  <mat-card-content *ngIf="data.expanded" class="d-f fd-c ai-fs">
+    <p>
+      <b class="c-gray">Skills:</b>
+      <span *ngFor="let i of data.skills;" class="comma-separated ws-pl">
+        {{(i.id | getById: DataTypes.SKILLS)?.name}} +{{i.value}}
+      </span>
+    </p>
+    <p>
+      <b class="c-gray">Traits:</b>
+      <span *ngFor="let i of data.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
+        {{(i.id | getById: DataTypes.THREAT_TRAITS)?.name}}<span *ngIf="i.value"> ({{i.value}})</span>
+      </span>
+    </p>
+    <p>
+      <b class="c-gray">Weapons:</b>
+      <ng-container *ngFor="let i of data.weapons;">
+        <span *ngIf="i | getById : DataTypes.WEAPONS as weapon" class="comma-separated ws-pl">
+          {{weapon.name}} ({{getWeaponChance(weapon, data.templateId | getById: DataTypes.THREATS)}}%, {{getWeaponDamage(weapon, data.templateId | getById: DataTypes.THREATS)}}, {{weapon.labels.distance}}, <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
+        </span>
+      </ng-container>
+    </p>
   </mat-card-content>
 </mat-card>

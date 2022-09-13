@@ -254,4 +254,11 @@ export const QUALITIES: Quality[] = [
       effect: 'This weapon cannot inflict Grievous Injuries.'
     }
   },
+  {
+    id: QualityId.INEFFECTIVE,
+    name: 'Ineffective',
+    labels: {
+      effect: 'Weapons of this Quality cannot deal Damage or inflict Injuries.'
+    }
+  },
 ];

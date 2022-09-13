@@ -1013,21 +1013,631 @@ export const WEAPONS: Weapon[] = [
       damage: ''
     }
   },
-  // {
-  //   id: WeaponId.ACID_BOMB,
-  //   name: '',
-  //   skills: [],
-  //   qualities: [],
-  //   encumbrance: 0,
-  //   price: 0,
-  //   quantifiable: true,
-  //   labels: {
-  //     description: '',
-  //     handling: '',
-  //     load: '',
-  //     ammo: '',
-  //     distance: '',
-  //     damage: ''
-  //   }
-  // },
+  {
+    id: WeaponId.SNAPJAW,
+    name: 'Snapjaw',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.DEVASTATING, QualityId.STRANGLING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.IRON_HARD_FISTS,
+    name: 'Iron-Hard Fists',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.ASPHYXIATING_HANDS,
+    name: 'Asphyxiating Hands',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.SLOW, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.UNHOLY_LANTERN,
+    name: 'Unholy Lantern',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.FAST],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '1AP',
+      ammo: '',
+      distance: 'Cone Template',
+      damage: 'AB'
+    }
+  },
+  {
+    id: WeaponId.SCRATCH,
+    name: 'Scratch',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.THUNDEROUS_HOOVES,
+    name: 'Thunderous Hooves',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING, QualityId.SLOW, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+      damage: 'BB'
+    }
+  },
+  {
+    id: WeaponId.BEAR_CLAW,
+    name: 'Bear Claw',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.SWEEPING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.BEAR_BITE,
+    name: 'Bear Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.STRANGLING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.DOG_BITE,
+    name: 'Dog Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUNISHING, QualityId.SLOW, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.WOLVERINE_CLAWS,
+    name: 'Wolverine Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.SWEEPING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.VINE_LASH,
+    name: 'Vine Lash',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.INEFFECTIVE, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+      damage: 'None'
+    }
+  },
+  {
+    id: WeaponId.VINE_STRIKE,
+    name: 'Vine Strike',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Burst Template',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.TERRIBLE_TEETH,
+    name: 'Terrible Teeth',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.FAST, QualityId.VICIOUS, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'AB'
+    }
+  },
+];
+
+export const THREAT_WEAPONS: Weapon[] = [
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
+  {
+    id: WeaponId.KNIFE,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+      damage: 'CB'
+    }
+  },
 ];

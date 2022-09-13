@@ -27,6 +27,14 @@ export function getRandomFromArray<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+export function getRandomInRange(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
+}
+
+export function getIntegerInRange(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export function getSumFromOneToN(n: number = 1): number {
   return typeof n === 'number' ? n * (n + 1) / 2 : null;
 }

@@ -38,7 +38,7 @@ import {
   CultureId,
   FlawId,
   ProfessionId,
-  SexId,
+  SexId, SizeId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
 import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-freedom-1e/utils';
@@ -100,6 +100,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       hair_color: new FormControl(null),
       mark: new FormControl(null),
     }),
+    size: new FormControl(SizeId.NORMAL),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
     allegiances: new FormControl(''),
     culture: new FormControl(CultureId.BLACK, [Validators.required]),

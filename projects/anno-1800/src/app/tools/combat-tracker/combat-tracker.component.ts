@@ -6,7 +6,8 @@ import { Threat } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import {Character} from '@ti/app/game/models/character';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
-import {getAttributeBonus} from '@ti/app/game/threat.utils';
+import {getAttributeBonus, getInitiative, getRolledInitiative} from '@ti/app/game/threat.utils';
+import {SkillId} from '@flames-of-freedom-1e/enums';
 
 @Component({
   templateUrl: './combat-tracker.component.html',
@@ -33,11 +34,13 @@ export class CombatTrackerComponent {
   onCloneClick(unit: CombatTrackerUnit): void {
     const units = this.units$.value;
     const index = units.findIndex(i => i.uid === unit.uid);
+    const threat = this.data[DataTypes.THREATS].find(i => i.id === unit.templateId);
     this.units$.next([
       ...units.slice(0, index + 1),
       new CombatTrackerUnit({
         ...unit,
-        uid: getId()
+        uid: getId(),
+        initiative: getInitiative(threat) + getRolledInitiative(threat)
       }),
       ...units.slice(index + 1)
     ]);
@@ -59,7 +62,10 @@ export class CombatTrackerComponent {
         uid: getId(),
         type: 'player',
         name: i.name,
-        attributes: []
+        attributes: [],
+        skills: [],
+        traits: [],
+        weapons: []
       })
     ]);
   }
@@ -70,8 +76,24 @@ export class CombatTrackerComponent {
       new CombatTrackerUnit({
         uid: getId(),
         type: 'threat',
+        templateId: i.id,
         name: i.name,
-        attributes: this.getAttributes(i)
+        attributes: this.getAttributes(i),
+        skills: Object.entries(i.advancements.skills
+          .reduce((acc: object, cur: SkillId) => {
+            if (acc.hasOwnProperty(cur)) {
+              acc[cur] += 10;
+            } else {
+              acc[cur] = 10;
+            }
+            return acc;
+          }, {}))
+          .map(skill => {
+            return { id: +skill[0] as SkillId, value: skill[1] as number };
+          }),
+        traits: i.advancements.traits,
+        initiative: getInitiative(i) + getRolledInitiative(i),
+        weapons: i.weapons
       })
     ]);
   }

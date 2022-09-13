@@ -394,6 +394,7 @@ export interface Threat extends HasId<ThreatId> {
     description?: string;
     wares?: string;
   };
+  weapons?: WeaponId[];
 }
 
 export interface ThreatTrait extends HasId<ThreatTraitId> {
