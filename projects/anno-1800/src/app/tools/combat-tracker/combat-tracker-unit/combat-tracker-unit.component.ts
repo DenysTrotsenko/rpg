@@ -3,7 +3,14 @@ import { CombatTrackerUnit } from '../combat-tracker.models';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quality, Threat, Weapon} from '@flames-of-freedom-1e/models';
 import {AttributeId} from '@flames-of-freedom-1e/enums';
-import {getWeaponDamage} from '@ti/app/game/threat.utils';
+import {
+  getWeaponDamage,
+  getDamageThreshold,
+  getDefences,
+  getInitiative,
+  getPerilThreshold,
+  getThresholds,
+} from '@ti/app/game/threat.utils';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -42,5 +49,28 @@ export class CombatTrackerUnitComponent {
 
   getAllQualities(weapon: Weapon): Quality[] {
     return this.data[DataTypes.QUALITIES].filter(i => weapon.qualities.includes(i.id));
+  }
+
+  getDefences(threat: Threat): string {
+    return getDefences(threat);
+  }
+  // getSize(threat: Threat): string {}
+  // getSize(threat: Threat): string {}
+  // getSize(threat: Threat): string {
+  //   const size = this.data[DataTypes.SIZES].find(i => i.id === threat.size);
+  // }
+  getRiskFactorAndNotch(threat: Threat): string {
+    const risk = this.data[DataTypes.RISK_FACTORS].find(i => i.id === threat.risk_factor);
+    const notch = this.data[DataTypes.NOTCHES].find(i => i.id === threat.notch);
+    return `${risk?.name} (${notch?.name})`;
+  }
+  getInitiative(threat: Threat): number {
+    return getInitiative(threat);
+  }
+  getDamageThresholds(threat: Threat): string {
+    return getThresholds(getDamageThreshold(threat));
+  }
+  getPerilThresholds(threat: Threat): string {
+    return getThresholds(getPerilThreshold(threat));
   }
 }

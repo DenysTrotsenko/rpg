@@ -34,10 +34,6 @@ export function getDamageThreshold(character: Character): number {
   return fromDetermination + fromBrawnBonus;
 }
 
-export function getDamageThresholds(threshold: number): string {
-  return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
-}
-
 export function getEncumbranceLimit(character: Character): number {
   const brawn: number = getBonusFromAttribute(character.attributes[AttributeId.BRAWN]);
   return 3 + brawn;
@@ -67,6 +63,6 @@ export function getPerilThreshold(character: Character): number {
   return 3 + willpower + advances;
 }
 
-export function getPerilThresholds(threshold: number): string {
+export function getThresholds(threshold: number): string {
   return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
 }

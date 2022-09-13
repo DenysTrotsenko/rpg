@@ -1,5 +1,5 @@
 import {BRAWN_BONUS_TRAITS, RISK_FACTOR_DT_BONUS, SIZE_DAMAGE_DICE} from '@flames-of-freedom-1e/const';
-import {AttributeId, QualityId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
+import {AttributeId, QualityId, SkillId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
 import {Threat, Weapon} from '@flames-of-freedom-1e/models';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {getIntegerInRange} from '@shared';
@@ -37,8 +37,31 @@ export function getDamageThreshold(threat: Threat): number {
   return fromBrawnBonus + fromRiskFactor;
 }
 
+export function getDefences(threat: Threat): string {
+  const fromCombat: number = threat.attributes[AttributeId.COMBAT];
+  const fromSimpleMelee: number = threat.advancements.skills.filter(i => i === SkillId.SIMPLE_MELEE).length * 10;
+  const fromAgility: number = threat.attributes[AttributeId.AGILITY];
+  const fromCoordination: number = threat.advancements.skills.filter(i => i === SkillId.COORDINATION).length * 10;
+  const ranged: number = Math.round(fromAgility + fromCoordination);
+  const melee: number = Math.round(fromCombat + fromSimpleMelee);
+  return `${melee}% / ${ranged}%`;
+}
+
+export function getEncumbranceLimit(threat: Threat): number {
+  return getAttributeBonus(threat, AttributeId.BRAWN) + 3;
+}
+
 export function getInitiative(threat: Threat): number {
   return getAttributeBonus(threat, AttributeId.PERCEPTION) + 3;
+}
+
+export function getMovement(threat: Threat): number {
+  const hasImmobile: boolean = threat.advancements.traits.map(i => i.id).includes(ThreatTraitId.IMMOBILE);
+  return hasImmobile ? 0 : getAttributeBonus(threat, AttributeId.AGILITY) + 3;
+}
+
+export function getPerilThreshold(threat: Threat): number {
+  return getAttributeBonus(threat, AttributeId.WILLPOWER) + 3;
 }
 
 export function getRolledInitiative(threat: Threat): number {
@@ -53,7 +76,6 @@ export function getRolledInitiative(threat: Threat): number {
   }
 }
 
-export function getMovement(threat: Threat): number {
-  const hasImmobile: boolean = threat.advancements.traits.map(i => i.id).includes(ThreatTraitId.IMMOBILE);
-  return hasImmobile ? 0 : getAttributeBonus(threat, AttributeId.AGILITY) + 3;
+export function getThresholds(threshold: number): string {
+  return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
 }

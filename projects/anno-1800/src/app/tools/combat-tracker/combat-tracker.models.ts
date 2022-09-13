@@ -1,4 +1,4 @@
-import {QualityId, SkillId, ThreatId, ThreatTraitId, WeaponId} from '@flames-of-freedom-1e/enums';
+import {SkillId, ThreatId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
 
 export interface CombatTrackerUnitOptions {
   uid: string;
@@ -9,7 +9,6 @@ export interface CombatTrackerUnitOptions {
   attributes?: { name: string; value: number; bonus: number; }[];
   skills: { id: SkillId; value: number; }[];
   traits: { id: ThreatTraitId; value?: number | string; }[];
-  weapons: WeaponId[];
 }
 
 export class CombatTrackerUnit {
@@ -22,7 +21,6 @@ export class CombatTrackerUnit {
   attributes: { name: string; value: number; bonus: number; }[];
   skills: { id: SkillId; value: number; }[];
   traits: { id: ThreatTraitId; value?: number | string; }[];
-  weapons: WeaponId[];
 
   constructor(options: CombatTrackerUnitOptions) {
     this.expanded = false;
@@ -34,6 +32,5 @@ export class CombatTrackerUnit {
     this.attributes = [...options.attributes];
     this.skills = [...options.skills];
     this.traits = [...options.traits];
-    this.weapons = [...options.weapons];
   }
 }

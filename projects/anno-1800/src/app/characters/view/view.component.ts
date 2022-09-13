@@ -37,12 +37,11 @@ import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {
   getAttributeBonus,
   getDamageThreshold,
-  getDamageThresholds,
   getEncumbranceLimit,
   getInitiative,
   getMovement,
   getPerilThreshold,
-  getPerilThresholds
+  getThresholds
 } from '@ti/app/game/character.utils';
 import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 
@@ -252,7 +251,7 @@ export class ViewComponent implements OnDestroy {
   }
 
   getDamageThresholds(character: Character): string {
-    return getDamageThresholds(getDamageThreshold(character));
+    return getThresholds(getDamageThreshold(character));
   }
 
   getEncumbranceLimit(character: Character): string {
@@ -311,7 +310,7 @@ export class ViewComponent implements OnDestroy {
   // }
 
   getPerilThresholds(character: Character): string {
-    return getPerilThresholds(getPerilThreshold(character));
+    return getThresholds(getPerilThreshold(character));
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {

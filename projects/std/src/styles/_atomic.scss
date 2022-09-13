@@ -86,6 +86,7 @@
 .c-gray { color: $color-gray !important; }
 .c-blue-gray { color: $color-blue-gray !important; }
 
+.bg-gray-600 { background-color: $color-gray-600 !important; }
 .bg-gray-800 { background-color: $color-gray-800 !important; }
 
 .comma-separated:not(:last-child)::after { content: ', ' !important; }

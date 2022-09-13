@@ -64,8 +64,7 @@ export class CombatTrackerComponent {
         name: i.name,
         attributes: [],
         skills: [],
-        traits: [],
-        weapons: []
+        traits: []
       })
     ]);
   }
@@ -92,8 +91,7 @@ export class CombatTrackerComponent {
             return { id: +skill[0] as SkillId, value: skill[1] as number };
           }),
         traits: i.advancements.traits,
-        initiative: getInitiative(i) + getRolledInitiative(i),
-        weapons: i.weapons
+        initiative: getInitiative(i) + getRolledInitiative(i)
       })
     ]);
   }
