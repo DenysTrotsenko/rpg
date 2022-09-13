@@ -25,7 +25,7 @@
   </mat-sidenav>
   <mat-sidenav-content class="p-10">
     <app-combat-tracker-unit *ngFor="let unit of units$ | async; trackBy: trackByFn;"
-      [data]="unit"
+      [value]="unit"
       (changed)="onUnitChange($event)"
       (clone)="onCloneClick($event)"
       (remove)="onRemoveClick($event)"

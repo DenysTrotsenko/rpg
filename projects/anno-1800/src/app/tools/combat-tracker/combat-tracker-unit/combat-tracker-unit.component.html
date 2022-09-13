@@ -1,60 +1,60 @@
-<mat-card *ngIf="data.type === 'player'" class="unit mb-5">
+<mat-card *ngIf="value.type === 'player'" class="unit mb-5">
   <mat-card-content class="d-f ai-c">
     <mat-form-field appearance="outline" class="initiative mr-5">
       <mat-label>Initiative</mat-label>
-      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="data.initiative">
+      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="value.initiative">
     </mat-form-field>
-    <span>{{data?.name}}</span>
+    <span>{{value?.name}}</span>
     <span class="f-1"></span>
     <div class="d-f fd-c">
-      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(data)">clear</mat-icon>
+      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(value)">clear</mat-icon>
     </div>
   </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="data.type === 'threat'" class="unit mb-5">
+<mat-card *ngIf="value.type === 'threat'" class="unit mb-5">
   <mat-card-content class="d-f ai-c">
     <mat-form-field appearance="outline" class="initiative mr-5">
       <mat-label>Initiative</mat-label>
-      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="data.initiative">
+      <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="value.initiative">
     </mat-form-field>
     <div class="d-f fd-c">
-      <mat-icon class="c-pointer" matTooltip="Expand" (click)="data.expanded = !data.expanded">
-        {{data.expanded ? 'expand_less' : 'expand_more'}}
+      <mat-icon class="c-pointer" matTooltip="Expand" (click)="value.expanded = !value.expanded">
+        {{value.expanded ? 'expand_less' : 'expand_more'}}
       </mat-icon>
     </div>
     <div class="d-f fd-c g-5">
-      <span>{{data?.name}}</span>
+      <span>{{value?.name}}</span>
       <span class="d-f g-5">
-        <span *ngFor="let i of data.attributes">
+        <span *ngFor="let i of value.attributes">
           {{i.name | slice: 0 : 1 }} {{i.value}}% ({{i.bonus}})
         </span>
       </span>
     </div>
     <span class="f-1"></span>
     <div class="d-f fd-c">
-      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(data)">clear</mat-icon>
-      <mat-icon class="c-pointer" matTooltip="Clone" (click)="onCloneClick(data)">add</mat-icon>
+      <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(value)">clear</mat-icon>
+      <mat-icon class="c-pointer" matTooltip="Clone" (click)="onCloneClick(value)">add</mat-icon>
     </div>
   </mat-card-content>
-  <mat-card-content *ngIf="data.expanded" class="d-f fd-c ai-fs">
+  <mat-card-content *ngIf="value.expanded" class="d-f fd-c ai-fs">
     <p>
       <b class="c-gray">Skills:</b>
-      <span *ngFor="let i of data.skills;" class="comma-separated ws-pl">
+      <span *ngFor="let i of value.skills;" class="comma-separated ws-pl">
         {{(i.id | getById: DataTypes.SKILLS)?.name}} +{{i.value}}
       </span>
     </p>
     <p>
       <b class="c-gray">Traits:</b>
-      <span *ngFor="let i of data.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
+      <span *ngFor="let i of value.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
         {{(i.id | getById: DataTypes.THREAT_TRAITS)?.name}}<span *ngIf="i.value"> ({{i.value}})</span>
       </span>
     </p>
-    <p>
-      <b class="c-gray">Weapons:</b>
-      <ng-container *ngFor="let i of data.weapons;">
+    <p *ngIf="value.weapons.length">
+      <b class="c-gray">Attacks:</b>
+      <ng-container *ngFor="let i of value.weapons;">
         <span *ngIf="i | getById : DataTypes.WEAPONS as weapon" class="comma-separated ws-pl">
-          {{weapon.name}} ({{getWeaponChance(weapon, data.templateId | getById: DataTypes.THREATS)}}%, {{getWeaponDamage(weapon, data.templateId | getById: DataTypes.THREATS)}}, {{weapon.labels.distance}}, <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
+          {{weapon.name}} ({{getWeaponChance(weapon, value.templateId | getById: DataTypes.THREATS)}}%, {{getWeaponDamage(weapon, value.templateId | getById: DataTypes.THREATS)}}, {{weapon.labels.distance}}, <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
         </span>
       </ng-container>
     </p>

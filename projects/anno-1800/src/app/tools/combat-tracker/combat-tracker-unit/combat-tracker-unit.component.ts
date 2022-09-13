@@ -2,9 +2,8 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from 
 import { CombatTrackerUnit } from '../combat-tracker.models';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quality, Threat, Weapon} from '@flames-of-freedom-1e/models';
-import {AttributeId, QualityId} from '@flames-of-freedom-1e/enums';
+import {AttributeId} from '@flames-of-freedom-1e/enums';
 import {getWeaponDamage} from '@ti/app/game/threat.utils';
-import {QUALITIES} from '@flames-of-freedom-1e/qualities';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -13,12 +12,14 @@ import {QUALITIES} from '@flames-of-freedom-1e/qualities';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CombatTrackerUnitComponent {
-  @Input() data: CombatTrackerUnit;
+  @Input() value: CombatTrackerUnit;
   @Output() changed: EventEmitter<CombatTrackerUnit> = new EventEmitter();
   @Output() selected: EventEmitter<CombatTrackerUnit> = new EventEmitter();
   @Output() clone: EventEmitter<CombatTrackerUnit> = new EventEmitter();
   @Output() remove: EventEmitter<CombatTrackerUnit> = new EventEmitter();
   readonly DataTypes = DataTypes;
+
+  constructor(private readonly data: DataService) {}
 
   onCloneClick(data): void {
     this.clone.emit(data);
@@ -40,6 +41,6 @@ export class CombatTrackerUnitComponent {
   }
 
   getAllQualities(weapon: Weapon): Quality[] {
-    return QUALITIES.filter(i => weapon.qualities.includes(i.id));
+    return this.data[DataTypes.QUALITIES].filter(i => weapon.qualities.includes(i.id));
   }
 }

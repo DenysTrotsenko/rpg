@@ -31,8 +31,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '1AP',
       ammo: 'Javelins',
-      distance: '6+[PB] yards',
-      damage: 'CB'
+      distance: '6+[PB] yards'
     }
   },
   {
@@ -63,8 +62,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '3AP',
       ammo: 'Bullets',
-      distance: '9+[PB] yards',
-      damage: 'CB'
+      distance: '9+[PB] yards'
     }
   },
   {
@@ -79,8 +77,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '3AP',
       ammo: 'Bullets',
-      distance: '9+[PB] yards',
-      damage: 'CB'
+      distance: '9+[PB] yards'
     }
   },
   {
@@ -95,8 +92,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: 'SPECIAL',
       ammo: 'Bullets (2)',
-      distance: '1+[PB] yards',
-      damage: 'CB'
+      distance: '1+[PB] yards'
     }
   },
   {
@@ -127,8 +123,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '2AP',
       ammo: 'Bullets',
-      distance: '3+[PB] yards',
-      damage: 'CB'
+      distance: '3+[PB] yards'
     }
   },
   {
@@ -143,8 +138,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '2AP',
       ammo: 'Bullets',
-      distance: '9+[PB] yards',
-      damage: 'CB'
+      distance: '9+[PB] yards'
     }
   },
   {
@@ -159,8 +153,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '2AP',
       ammo: 'Bullets',
-      distance: '3+[PB] yards',
-      damage: 'CB'
+      distance: '3+[PB] yards'
     }
   },
   {
@@ -175,8 +168,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '3AP',
       ammo: 'Bullets',
-      distance: '9+[PB] yards',
-      damage: 'CB'
+      distance: '9+[PB] yards'
     }
   },
   {
@@ -192,8 +184,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '1AP',
       ammo: 'NONE',
-      distance: '1+[PB] yards',
-      damage: 'CB'
+      distance: '1+[PB] yards'
     }
   },
   {
@@ -208,8 +199,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '4AP',
       ammo: 'NONE',
-      distance: '6+[PB] yards',
-      damage: 'CB'
+      distance: '6+[PB] yards'
     }
   },
   {
@@ -224,8 +214,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: 'SPECIAL',
       ammo: 'Bullets (20)',
-      distance: '6+[PB] yards',
-      damage: 'CB'
+      distance: '6+[PB] yards'
     }
   },
   {
@@ -240,15 +229,14 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '2AP',
       ammo: 'Bullets',
-      distance: '6+[PB] yards',
-      damage: 'CB'
+      distance: '6+[PB] yards'
     }
   },
   {
     id: WeaponId.NET,
     name: 'Net',
     skills: [SkillId.SIMPLE_RANGED],
-    qualities: [QualityId.SWEEPING],
+    qualities: [QualityId.SWEEPING, QualityId.INEFFECTIVE],
     encumbrance: 2,
     price: 0,
     labels: {
@@ -256,8 +244,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '1AP',
       ammo: 'NONE',
-      distance: '1+[PB] yards',
-      damage: 'NONE'
+      distance: '1+[PB] yards'
     }
   },
   {
@@ -272,8 +259,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '2AP',
       ammo: 'Bullets',
-      distance: '1+[PB] yards',
-      damage: 'CB'
+      distance: '1+[PB] yards'
     }
   },
   {
@@ -288,15 +274,14 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '4AP',
       ammo: 'Bullets',
-      distance: '12+[PB] yards',
-      damage: 'CB'
+      distance: '12+[PB] yards'
     }
   },
   {
     id: WeaponId.POWDER_BOMB,
     name: 'Powder Bomb',
     skills: [SkillId.SIMPLE_RANGED],
-    qualities: [QualityId.BOMB, QualityId.BREAK, QualityId.SMOKE],
+    qualities: [QualityId.BOMB, QualityId.BREAK, QualityId.SMOKE, QualityId.INEFFECTIVE],
     encumbrance: 1,
     price: 0,
     quantifiable: true,
@@ -305,8 +290,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '1AP',
       ammo: 'NONE',
-      distance: '1+[PB]',
-      damage: 'NONE'
+      distance: '1+[PB]'
     }
   },
   {
@@ -321,8 +305,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '6AP',
       ammo: 'Bullets',
-      distance: '15+[PB]',
-      damage: 'CB'
+      distance: '15+[PB]'
     }
   },
   {
@@ -337,8 +320,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '3AP',
       ammo: 'Bullets',
-      distance: '3+[PB]',
-      damage: 'CB'
+      distance: '3+[PB]'
     }
   },
   {
@@ -353,8 +335,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '1AP',
       ammo: 'Arrows',
-      distance: '9+[PB]',
-      damage: 'AB'
+      distance: '9+[PB]'
     }
   },
   {
@@ -369,8 +350,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '1AP',
       ammo: 'Bullets',
-      distance: '1+[PB]',
-      damage: 'CB'
+      distance: '1+[PB]'
     }
   },
   {
@@ -385,8 +365,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -401,8 +380,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'BB'
+      distance: 'Engaged'
     }
   },
   {
@@ -417,8 +395,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '1AP',
       ammo: 'NONE',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -433,8 +410,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'BB'
+      distance: 'Engaged'
     }
   },
   {
@@ -449,8 +425,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'AB'
+      distance: 'Engaged'
     }
   },
   {
@@ -465,15 +440,14 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
     id: WeaponId.GARROTE,
     name: 'Garrote',
     skills: [SkillId.SIMPLE_MELEE, SkillId.ATHLETICS],
-    qualities: [QualityId.SILENT, QualityId.STRANGLING],
+    qualities: [QualityId.SILENT, QualityId.STRANGLING, QualityId.INEFFECTIVE],
     encumbrance: 1,
     price: 0,
     labels: {
@@ -481,8 +455,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'NONE'
+      distance: 'Engaged'
     }
   },
   {
@@ -497,8 +470,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: 'Engaged or 1+[PB]',
-      damage: 'CB'
+      distance: 'Engaged or 1+[PB]'
     }
   },
   {
@@ -513,8 +485,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -529,8 +500,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: 'Engaged or 1+[PB] yards',
-      damage: 'AB'
+      distance: 'Engaged or 1+[PB] yards'
     }
   },
   {
@@ -546,7 +516,6 @@ export const WEAPONS: Weapon[] = [
       load: '0AP',
       ammo: 'NONE',
       distance: 'Engaged',
-      damage: 'CB'
     }
   },
   {
@@ -570,7 +539,7 @@ export const WEAPONS: Weapon[] = [
     id: WeaponId.HORSEWHIP,
     name: 'Horsewhip',
     skills: [SkillId.SIMPLE_MELEE],
-    qualities: [QualityId.STRANGLING, QualityId.SWEEPING],
+    qualities: [QualityId.STRANGLING, QualityId.SWEEPING, QualityId.INEFFECTIVE],
     encumbrance: 1,
     price: 0,
     labels: {
@@ -578,8 +547,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged or 1 yard',
-      damage: 'NONE'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -594,8 +562,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: 'Engaged or 1+[PB] yards',
-      damage: 'BB'
+      distance: 'Engaged or 1+[PB] yards'
     }
   },
   {
@@ -610,8 +577,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -626,8 +592,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: 'Engaged or 1+[PB] yard',
-      damage: 'AB'
+      distance: 'Engaged or 1+[PB] yard'
     }
   },
   {
@@ -642,8 +607,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -658,8 +622,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H or 2H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: '3+[PB] yards',
-      damage: 'AB'
+      distance: '3+[PB] yards'
     }
   },
   {
@@ -674,8 +637,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -690,8 +652,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'BB'
+      distance: 'Engaged'
     }
   },
   {
@@ -706,8 +667,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP (1AP thrown)',
       ammo: 'NONE',
-      distance: 'Engaged or 1+[PB] yards',
-      damage: 'CB'
+      distance: 'Engaged or 1+[PB] yards'
     }
   },
   {
@@ -722,8 +682,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'BB'
+      distance: 'Engaged'
     }
   },
   {
@@ -738,8 +697,7 @@ export const WEAPONS: Weapon[] = [
       handling: '1H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged',
-      damage: 'BB'
+      distance: 'Engaged'
     }
   },
   {
@@ -754,8 +712,7 @@ export const WEAPONS: Weapon[] = [
       handling: '2H',
       load: '0AP',
       ammo: 'NONE',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -1025,8 +982,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -1041,8 +997,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged or 1 yard',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -1057,8 +1012,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1073,8 +1027,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '1AP',
       ammo: '',
-      distance: 'Cone Template',
-      damage: 'AB'
+      distance: 'Cone Template'
     }
   },
   {
@@ -1089,8 +1042,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1105,8 +1057,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged or 1 yard',
-      damage: 'BB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -1121,8 +1072,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1137,8 +1087,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1153,8 +1102,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1169,8 +1117,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
@@ -1185,8 +1132,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged or 1 yard',
-      damage: 'None'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
@@ -1201,8 +1147,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Burst Template',
-      damage: 'CB'
+      distance: 'Burst Template'
     }
   },
   {
@@ -1217,18 +1162,587 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.DEATH_SQUEEZE,
+    name: 'Death Squeeze',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+    }
+  },
+  {
+    id: WeaponId.SNARLING_BITE,
+    name: 'Snarling Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
       distance: 'Engaged',
-      damage: 'AB'
+    }
+  },
+  {
+    id: WeaponId.FILTHY_CLAWS,
+    name: 'Filthy Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+    }
+  },
+  {
+    id: WeaponId.MANDIBLES,
+    name: 'Mandibles',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.STRANGLING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged',
+    }
+  },
+  {
+    id: WeaponId.BEAK_AND_TALONS,
+    name: 'Beak And Talons',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.FAST, QualityId.SWEEPING, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+    }
+  },
+  {
+    id: WeaponId.FANGS,
+    name: 'Fangs',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.SLOW, QualityId.VICIOUS, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard',
+    }
+  },
+  {
+    id: WeaponId.WEBBING,
+    name: 'Webbing',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.INEFFECTIVE, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Cone Template',
+    }
+  },
+  {
+    id: WeaponId.TONGUE_AND_CLAWS,
+    name: 'Tongue And Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.ANTLERS_AND_CLAWS,
+    name: 'Antlers And Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.FAST, QualityId.POWERFUL, QualityId.SKEWERING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.VICIOUS_MAW,
+    name: 'Vicious Maw',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.OINK_OINK,
+    name: 'Oink Oink',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.SICKLE,
+    name: 'Sickle',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.FAST, QualityId.SWEEPING, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.HORSE_KICK,
+    name: 'Horse Kick',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.SWARMING,
+    name: 'Swarming',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.ENGULFING_BITE,
+    name: 'Engulfing Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 2 yards'
+    }
+  },
+  {
+    id: WeaponId.LASHING_TENTACLE,
+    name: 'Lashing Tentacle',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Cone Template'
+    }
+  },
+  {
+    id: WeaponId.KEENING,
+    name: 'Keening',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.FAST, QualityId.POWERFUL, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '1AP',
+      ammo: '',
+      distance: 'Cone Template'
+    }
+  },
+  {
+    id: WeaponId.FORKED_TAIL,
+    name: 'Forked Tail',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SKEWERING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.SQUAWK,
+    name: 'Squawk',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.FAST, QualityId.POWERFUL, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '1AP',
+      ammo: '',
+      distance: 'Cone Template'
+    }
+  },
+  {
+    id: WeaponId.LYCANTHROPIC_CLAWS,
+    name: 'Lycanthropic Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.DEVASTATING, QualityId.FAST, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.SHREDDING_BITE,
+    name: 'Shredding Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.STOMP,
+    name: 'Stomp',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.TUSKS,
+    name: 'Tusks',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING, QualityId.SKEWERING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.TEETH_AND_CLAWS,
+    name: 'Teeth And Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.KITTY_CLAWS,
+    name: 'Kitty Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.INEFFECTIVE],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.SLIME_TIME,
+    name: 'Slime Time',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW, QualityId.SWEEPING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.TALONS,
+    name: 'Talons',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.SQUATCH_THROTTLE,
+    name: 'Squatch Throttle',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.SHADOW_TOUCH,
+    name: 'Shadow Touch',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.JAWS,
+    name: 'Jaws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUNISHING, QualityId.SILENT, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.RIPPING_TEETH,
+    name: 'Ripping Teeth',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SWEEPING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.SWAMP_THROTTLE,
+    name: 'Swamp Throttle',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.POWERFUL, QualityId.PUMMELING, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.HORNS_AND_TALONS,
+    name: 'Horns And Talons',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.FAST, QualityId.SWEEPING, QualityId.WEAK],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.VAMPIRIC_FANGS,
+    name: 'Vampiric Fangs',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SILENT],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.VAMPIRIC_CLAWS,
+    name: 'Vampiric Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.DEVASTATING, QualityId.FAST, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.GHOST_HANDS,
+    name: 'Ghost Hands',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.SLOW, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.CANNIBAL_CLAWS,
+    name: 'Cannibal Claws',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.PUMMELING, QualityId.VICIOUS],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged'
+    }
+  },
+  {
+    id: WeaponId.FATAL_BITE,
+    name: 'Fatal Bite',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [QualityId.DEVASTATING, QualityId.PUMMELING, QualityId.PUNISHING, QualityId.SWEEPING, QualityId.STRANGLING],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 2 yard'
     }
   },
 ];
 
 export const THREAT_WEAPONS: Weapon[] = [
   {
-    id: WeaponId.KNIFE,
-    name: '',
+    id: WeaponId.WILD_BOAR_TUSKS,
+    name: 'Tusks',
     skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
+    qualities: [QualityId.FAST, QualityId.POWERFUL, QualityId.SKEWERING],
     encumbrance: 0,
     price: 0,
     labels: {
@@ -1236,15 +1750,14 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
-    id: WeaponId.KNIFE,
-    name: '',
+    id: WeaponId.WATER_NYMPH_TALONS,
+    name: 'Talons',
     skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
+    qualities: [QualityId.FAST, QualityId.SILENT, QualityId.STRANGLING],
     encumbrance: 0,
     price: 0,
     labels: {
@@ -1252,15 +1765,14 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged'
     }
   },
   {
-    id: WeaponId.KNIFE,
-    name: '',
+    id: WeaponId.WALRUS_TUSKS,
+    name: 'Tusks',
     skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
+    qualities: [QualityId.FAST, QualityId.SKEWERING, QualityId.VICIOUS],
     encumbrance: 0,
     price: 0,
     labels: {
@@ -1268,12 +1780,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1284,12 +1795,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1300,12 +1810,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1316,12 +1825,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1332,12 +1840,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1348,12 +1855,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1364,12 +1870,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1380,12 +1885,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1396,12 +1900,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1412,12 +1915,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1428,12 +1930,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1444,12 +1945,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1460,12 +1960,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1476,12 +1975,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1492,12 +1990,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1508,12 +2005,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1524,12 +2020,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1540,12 +2035,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1556,12 +2050,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1572,12 +2065,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1588,12 +2080,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1604,12 +2095,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1620,12 +2110,11 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
     }
   },
   {
-    id: WeaponId.KNIFE,
+    id: WeaponId.SLIME_TIME,
     name: '',
     skills: [SkillId.SIMPLE_MELEE],
     qualities: [],
@@ -1636,8 +2125,37 @@ export const THREAT_WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged',
-      damage: 'CB'
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.SLIME_TIME,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
+    }
+  },
+  {
+    id: WeaponId.SLIME_TIME,
+    name: '',
+    skills: [SkillId.SIMPLE_MELEE],
+    qualities: [],
+    encumbrance: 0,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '',
+      load: '',
+      ammo: '',
+      distance: 'Engaged or 1 yard'
     }
   },
 ];
