@@ -1,6 +1,6 @@
 import {Threat} from './models';
-import {AttributeId, SkillId, ThreatId, ThreatTraitId, ThreatTypeId, WeaponId} from './enums';
-import {NotchId, RiskFactorId, SizeId} from '@grim-and-perilous/enums';
+import {AttributeId, SkillId, ThreatId, ThreatTraitId, WeaponId} from './enums';
+import {NotchId, RiskFactorId, SizeId, ThreatTypeId} from '@grim-and-perilous/enums';
 
 export const THREATS: Threat[] = [
   {

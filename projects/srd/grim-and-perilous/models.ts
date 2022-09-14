@@ -1,8 +1,9 @@
 import {
   AgeId, AttributeId, BeliefId, BuildId, EyesId, FlawId, HairColorId, HairLengthId, HairStyleId,
-  LanguageId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, SizeId, StatureId, StyleId,
-  TierId
+  InjuryId, InjuryTypeId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, SizeId, StatureId, StyleId,
+  ThreatTypeId, TierId
 } from './enums';
+import {HasId} from '@shared';
 
 export interface HasBase {
   id: number;
@@ -82,10 +83,24 @@ export interface HairLength {
   name: string;
 }
 
-export interface Language {
-  id: LanguageId;
+export interface Injury {
+  id: InjuryId;
+  name: string;
+  type: InjuryTypeId;
+  labels?: {
+    effect?: string;
+  };
+}
+
+export interface InjuryType {
+  id: InjuryTypeId;
   name: string;
 }
+
+// export interface Language {
+//   id: LanguageId;
+//   name: string;
+// }
 
 export interface Mark {
   id: MarkId;
@@ -143,6 +158,11 @@ export interface Stature {
 
 export interface Style {
   id: StyleId;
+  name: string;
+}
+
+export interface ThreatType extends HasId<ThreatTypeId> {
+  id: ThreatTypeId;
   name: string;
 }
 

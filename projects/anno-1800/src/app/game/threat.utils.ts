@@ -1,8 +1,10 @@
-import {BRAWN_BONUS_TRAITS, RISK_FACTOR_DT_BONUS, SIZE_DAMAGE_DICE} from '@flames-of-freedom-1e/const';
+import {BRAWN_BONUS_TRAITS} from '@flames-of-freedom-1e/const';
 import {AttributeId, QualityId, SkillId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
 import {Threat, Weapon} from '@flames-of-freedom-1e/models';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {getIntegerInRange} from '@shared';
+import {SIZES} from '@grim-and-perilous/sizes';
+import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
 
 export function getAttributeBonus(threat: Threat, attributeId: AttributeId): number {
   const fromAttribute: number = getBonusFromAttribute(threat.attributes[attributeId]);
@@ -19,7 +21,7 @@ export function getAttributeBonus(threat: Threat, attributeId: AttributeId): num
 }
 
 export function getWeaponDamage(weapon: Weapon, threat: Threat): string {
-  const dices = SIZE_DAMAGE_DICE.get(threat.size) ?? 1;
+  const dices = SIZES.find(i => i.id === threat.size)?.mechanics?.FURY_DICE ?? 1;
   let bonus;
   if (weapon.qualities.includes(QualityId.PUMMELING)) {
     bonus = getAttributeBonus(threat, AttributeId.BRAWN);
@@ -32,7 +34,7 @@ export function getWeaponDamage(weapon: Weapon, threat: Threat): string {
 }
 
 export function getDamageThreshold(threat: Threat): number {
-  const fromRiskFactor: number = RISK_FACTOR_DT_BONUS.get(threat.risk_factor);
+  const fromRiskFactor: number = RISK_FACTORS.find(i => i.id === threat.risk_factor)?.mechanics?.DAMAGE_THRESHOLD_BONUS ?? 0;
   const fromBrawnBonus: number = getAttributeBonus(threat, AttributeId.BRAWN);
   return fromBrawnBonus + fromRiskFactor;
 }

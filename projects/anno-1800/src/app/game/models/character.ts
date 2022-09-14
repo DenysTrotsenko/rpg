@@ -11,7 +11,6 @@ import {
   TalentId, TierId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
-import {SizeId} from '@grim-and-perilous/enums';
 
 export interface Character {
   id: string;
@@ -20,7 +19,6 @@ export interface Character {
   name: string;
   full_name: string;
   allegiances: string;
-  size: SizeId;
   belief: BeliefId;
   flaw: FlawId;
   culture: CultureId;
