@@ -74,7 +74,7 @@
           {{(i.id | getById: DataTypes.THREAT_TRAITS)?.name}}<span *ngIf="i.value"> ({{i.value}})</span>
         </span>
       </p>
-      <p *ngIf="threat.weapons.length">
+      <p *ngIf="threat.weapons.length" class="mb-5">
         <b class="c-gray">Attacks:</b>
         <ng-container *ngFor="let i of threat.weapons;">
           <span *ngIf="i | getById : DataTypes.WEAPONS as weapon" class="comma-separated ws-pl">
