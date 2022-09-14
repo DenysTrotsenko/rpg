@@ -55,27 +55,34 @@ export class CombatTrackerUnitComponent {
   getDefences(threat: Threat): string {
     return getDefences(threat);
   }
+
   getMovement(threat: Threat): string {
     return threat.labels?.movement ?? `${getMovement(threat)}`;
   }
+
   getType(threat: Threat): string {
     return this.data[DataTypes.THREAT_TYPES].find(i => i.id === threat.type)?.name;
   }
+
   getSize(threat: Threat): string {
     const size = this.data[DataTypes.SIZES].find(i => i.id === threat.size);
     return `${size.name} (${size.mechanics.FURY_DICE}d6)`;
   }
+
   getRiskFactorAndNotch(threat: Threat): string {
     const risk = this.data[DataTypes.RISK_FACTORS].find(i => i.id === threat.risk_factor);
     const notch = this.data[DataTypes.NOTCHES].find(i => i.id === threat.notch);
     return `${risk?.name} (${notch?.name})`;
   }
+
   getInitiative(threat: Threat): number {
     return getInitiative(threat);
   }
+
   getDamageThresholds(threat: Threat): string {
     return getThresholds(getDamageThreshold(threat));
   }
+
   getPerilThresholds(threat: Threat): string {
     return getThresholds(getPerilThreshold(threat));
   }
