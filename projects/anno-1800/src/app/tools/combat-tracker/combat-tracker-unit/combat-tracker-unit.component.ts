@@ -8,6 +8,7 @@ import {
   getDamageThreshold,
   getDefences,
   getInitiative,
+  getMovement,
   getPerilThreshold,
   getThresholds,
 } from '@ti/app/game/threat.utils';
@@ -44,7 +45,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getWeaponDamage(weapon: Weapon, threat: Threat): string {
-    return getWeaponDamage(weapon, threat);
+    return weapon.labels.damage ?? getWeaponDamage(weapon, threat);
   }
 
   getAllQualities(weapon: Weapon): Quality[] {
@@ -54,11 +55,16 @@ export class CombatTrackerUnitComponent {
   getDefences(threat: Threat): string {
     return getDefences(threat);
   }
-  // getSize(threat: Threat): string {}
-  // getSize(threat: Threat): string {}
-  // getSize(threat: Threat): string {
-  //   const size = this.data[DataTypes.SIZES].find(i => i.id === threat.size);
-  // }
+  getMovement(threat: Threat): string {
+    return threat.labels?.movement ?? `${getMovement(threat)}`;
+  }
+  getType(threat: Threat): string {
+    return this.data[DataTypes.THREAT_TYPES].find(i => i.id === threat.type)?.name;
+  }
+  getSize(threat: Threat): string {
+    const size = this.data[DataTypes.SIZES].find(i => i.id === threat.size);
+    return `${size.name} (${size.mechanics.FURY_DICE}d6)`;
+  }
   getRiskFactorAndNotch(threat: Threat): string {
     const risk = this.data[DataTypes.RISK_FACTORS].find(i => i.id === threat.risk_factor);
     const notch = this.data[DataTypes.NOTCHES].find(i => i.id === threat.notch);

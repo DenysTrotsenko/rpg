@@ -7,8 +7,7 @@ import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {
-  AilmentId,
-  AttributeId, DrugId,
+  AttributeId,
   InjuryId,
   ProfessionId,
   QualityId,
@@ -21,12 +20,16 @@ import {
 } from '@flames-of-freedom-1e/enums';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {
-  Affliction, Ailment,
+  Affliction,
+  Ailment,
   AlchemicalArt,
-  Belief, Drug,
+  Belief,
+  Drug,
   Flaw,
-  Injury, Language,
-  PermanentInjury, Quality,
+  Injury,
+  Language,
+  PermanentInjury,
+  Quality,
   Quirk,
   Spell,
   Talent,
@@ -41,7 +44,8 @@ import {
   getInitiative,
   getMovement,
   getPerilThreshold,
-  getThresholds
+  getThresholds,
+  getWeaponDamage
 } from '@ti/app/game/character.utils';
 import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 
@@ -319,6 +323,10 @@ export class ViewComponent implements OnDestroy {
 
   getWeapon(id: WeaponId): Weapon {
     return this.data[DataTypes.WEAPONS].find(i => i.id === id);
+  }
+
+  getWeaponDamage(weapon: Weapon, character: Character): string {
+    return weapon.labels.damage ?? getWeaponDamage(weapon, character);
   }
 
   getAllQualities(weapon: Weapon, custom: QualityId[]): Quality[] {

@@ -172,7 +172,7 @@
       <td class="mat-cell">{{i.labels?.load}}</td>
       <td class="mat-cell">{{i.labels?.ammo}}</td>
       <td class="mat-cell">{{i.labels?.distance}}</td>
-      <td class="mat-cell">{{i.labels?.damage}}</td>
+      <td class="mat-cell">{{getWeaponDamage(i, character)}}</td>
       <td class="mat-cell">
         <span *ngFor="let j of i.qualities;" class="comma-separated ws-pl" [matTooltip]="(j | getById: DataTypes.QUALITIES)?.labels?.effect">
           {{(j | getById: DataTypes.QUALITIES).name}}
@@ -194,7 +194,7 @@
         <td class="mat-cell">{{weapon?.labels?.load}}</td>
         <td class="mat-cell">{{weapon?.labels?.ammo}}</td>
         <td class="mat-cell">{{weapon?.labels?.distance}}</td>
-        <td class="mat-cell">{{weapon?.labels?.damage}}</td>
+        <td class="mat-cell">{{getWeaponDamage(weapon, character)}}</td>
         <td class="mat-cell">
           <span *ngFor="let j of getAllQualities(weapon, i.custom)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">
             {{j?.name}}

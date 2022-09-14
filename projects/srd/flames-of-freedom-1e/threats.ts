@@ -46,7 +46,8 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
-      wares: 'Alligator hide, Meat (9)'
+      wares: 'Alligator hide, Meat (9)',
+      movement: '11/6 (Swim)'
     },
     weapons: [
       WeaponId.SNAPJAW

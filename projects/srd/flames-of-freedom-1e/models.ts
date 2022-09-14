@@ -313,6 +313,7 @@ export interface Threat extends HasId<ThreatId> {
   labels?: {
     description?: string;
     wares?: string;
+    movement?: string;
   };
   weapons?: WeaponId[];
 }

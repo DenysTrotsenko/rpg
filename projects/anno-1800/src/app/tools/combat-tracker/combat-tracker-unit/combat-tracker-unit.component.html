@@ -22,7 +22,7 @@
         <input matInput type="number" autocomplete="off" min="0" [(ngModel)]="value.initiative">
       </mat-form-field>
       <div class="d-f fd-c mr-10 ff-g">
-        <span>{{value?.name}}</span>
+        <span>{{value?.name}} ({{getType(threat)}})</span>
       </div>
       <div class="d-f fd-c">
         <mat-icon class="c-pointer" matTooltip="Expand" (click)="value.expanded = !value.expanded">
@@ -54,11 +54,11 @@
         </tr>
         <tr class="mat-row">
           <td class="mat-cell p-5">{{getInitiative(threat)}}</td>
-          <td class="mat-cell p-5">Mov</td>
+          <td class="mat-cell p-5">{{getMovement(threat)}}</td>
           <td class="mat-cell p-5">{{getDamageThresholds(threat)}}</td>
           <td class="mat-cell p-5">{{getPerilThresholds(threat)}}</td>
           <td class="mat-cell p-5">{{getDefences(threat)}}</td>
-          <td class="mat-cell p-5">Size</td>
+          <td class="mat-cell p-5">{{getSize(threat)}}</td>
           <td class="mat-cell p-5">{{getRiskFactorAndNotch(threat)}}</td>
         </tr>
       </table>

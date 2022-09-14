@@ -1,7 +1,7 @@
 import {ThreatType} from './models';
 import {ThreatTypeId} from './enums';
 
-export const THREAT_TYPE: ThreatType[] = [
+export const THREAT_TYPES: ThreatType[] = [
   {
     id: ThreatTypeId.ABYSSAL,
     name: 'Abyssal'

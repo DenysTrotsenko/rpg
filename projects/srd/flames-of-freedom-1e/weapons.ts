@@ -729,7 +729,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -746,7 +746,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -763,7 +763,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -780,7 +780,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -797,7 +797,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -814,7 +814,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -831,7 +831,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -848,7 +848,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -865,7 +865,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -882,7 +882,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -899,7 +899,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -916,7 +916,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -933,7 +933,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -950,7 +950,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {
@@ -967,7 +967,7 @@ export const WEAPONS: Weapon[] = [
       load: '',
       ammo: '',
       distance: '',
-      damage: ''
+      damage: '-'
     }
   },
   {

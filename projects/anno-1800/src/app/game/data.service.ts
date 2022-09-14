@@ -48,7 +48,9 @@ import {THREATS} from '@flames-of-freedom-1e/threats';
 import {THREAT_TRAITS} from '@flames-of-freedom-1e/threat-traits';
 import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
 import {NOTCHES} from '@grim-and-perilous/notches';
-import {Notch, RiskFactor} from '@grim-and-perilous/models';
+import {Notch, RiskFactor, Size, ThreatType} from '@grim-and-perilous/models';
+import {SIZES} from '@grim-and-perilous/sizes';
+import {THREAT_TYPES} from '@grim-and-perilous/threat-types';
 
 
 export enum FirestoreCollection {
@@ -84,6 +86,7 @@ export enum DataTypes {
   QUIRKS = 'quirks',
   RISK_FACTORS = 'risk_factors',
   SEX = 'sex',
+  SIZES = 'sizes',
   SKILLS = 'skills',
   SPELLS = 'spells',
   SPELL_TYPES = 'spell_types',
@@ -91,6 +94,7 @@ export enum DataTypes {
   STYLE = 'style',
   TALENTS = 'talents',
   THREATS = 'threats',
+  THREAT_TYPES = 'THREAT_TYPES',
   THREAT_TRAITS = 'threat_traits',
   TIERS = 'tiers',
   TRAITS = 'traits',
@@ -166,6 +170,7 @@ export class DataService {
     return i;
   });
   readonly [DataTypes.SEX]: Sex[] = SEX;
+  readonly [DataTypes.SIZES]: Size[] = SIZES;
   readonly [DataTypes.SKILLS]: Skill[] = SKILLS.map(i => {
     i.labels.tooltip = this.getSkillTooltip(i);
     return i;
@@ -183,6 +188,7 @@ export class DataService {
   });
   readonly [DataTypes.THREATS]: Threat[] = THREATS;
   readonly [DataTypes.THREAT_TRAITS]: ThreatTrait[] = THREAT_TRAITS;
+  readonly [DataTypes.THREAT_TYPES]: ThreatType[] = THREAT_TYPES;
   readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
   readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
   readonly [DataTypes.TIERS]: Tier[] = TIERS;
