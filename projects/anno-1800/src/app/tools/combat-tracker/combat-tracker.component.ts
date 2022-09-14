@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DialogService, getId} from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
@@ -15,16 +15,31 @@ import {filter, tap} from 'rxjs/operators';
   styleUrls: ['./combat-tracker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CombatTrackerComponent {
+export class CombatTrackerComponent implements OnInit, OnDestroy {
   readonly DataTypes = DataTypes;
   readonly threats: Threat[] = this.data[DataTypes.THREATS];
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
   readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
 
+  @HostListener('window:beforeunload') onBrowserClose(): void {
+    this.ngOnDestroy();
+  }
+
   constructor(
     private readonly data: DataService,
     private readonly dialog: DialogService
   ) {}
+
+  ngOnInit(): void {
+    const temporary = localStorage.getItem('tools.combat');
+    if (temporary) {
+      this.units$.next(JSON.parse(temporary));
+    }
+  }
+
+  ngOnDestroy(): void {
+    localStorage.setItem('tools.combat', JSON.stringify(this.units$.value));
+  }
 
   onSortClick(): void {
     const units = this.units$.value;
@@ -86,10 +101,6 @@ export class CombatTrackerComponent {
       )
       .subscribe();
   }
-
-  onUnitSelect(unit: CombatTrackerUnit): void {}
-
-  onUnitChange(unit: CombatTrackerUnit): void {}
 
   onAddPlayerClick(i: Character): void {
     this.units$.next([
