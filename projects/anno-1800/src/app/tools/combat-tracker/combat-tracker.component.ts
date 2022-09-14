@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import { getId } from '@shared';
+import {DialogService, getId} from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { Threat } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
@@ -8,6 +8,7 @@ import {Character} from '@ti/app/game/models/character';
 import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {getAttributeBonus, getInitiative, getRolledInitiative} from '@ti/app/game/threat.utils';
 import {SkillId} from '@flames-of-freedom-1e/enums';
+import {filter, tap} from 'rxjs/operators';
 
 @Component({
   templateUrl: './combat-tracker.component.html',
@@ -20,7 +21,10 @@ export class CombatTrackerComponent {
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
   readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
 
-  constructor(private readonly data: DataService) {}
+  constructor(
+    private readonly data: DataService,
+    private readonly dialog: DialogService
+  ) {}
 
   onSortClick(): void {
     const units = this.units$.value;
@@ -28,7 +32,22 @@ export class CombatTrackerComponent {
   }
 
   onCleanClick(): void {
-    this.units$.next([]);
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Clean Tracker',
+          description: 'Are you sure you want to remove all units from tracker?',
+          ok: 'Clean'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(() => {
+          this.units$.next([]);
+        })
+      )
+      .subscribe();
   }
 
   onCloneClick(unit: CombatTrackerUnit): void {
@@ -47,8 +66,23 @@ export class CombatTrackerComponent {
   }
 
   onRemoveClick(unit: CombatTrackerUnit): void {
-    const units = this.units$.value;
-    this.units$.next(units.filter(i => i.uid !== unit.uid));
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Remove Unit',
+          description: 'Are you sure you want to remove this unit?',
+          ok: 'Remove'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(() => {
+          const units = this.units$.value;
+          this.units$.next(units.filter(i => i.uid !== unit.uid));
+        })
+      )
+      .subscribe();
   }
 
   onUnitSelect(unit: CombatTrackerUnit): void {}

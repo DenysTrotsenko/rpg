@@ -1,27 +1,26 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened position="end">
-    <div class="d-f mb-10">
-        <button mat-icon-button matTooltip="Add" class="mr-8" color="primary" [matMenuTriggerFor]="menu">
-          <mat-icon>add</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <ng-template matMenuContent>
-            <button mat-menu-item *ngFor="let i of characters$ | async" (click)="onAddPlayerClick(i)">
-              {{i.name}}
-            </button>
-            <button mat-menu-item *ngFor="let i of threats" (click)="onAddThreatClick(i)">
-              {{i.name}} ({{(i.risk_factor | getById: DataTypes.RISK_FACTORS)?.name }} {{(i.notch  | getById: DataTypes.NOTCHES)?.name}})
-            </button>
-          </ng-template>
-        </mat-menu>
-        <button mat-icon-button matTooltip="Sort" class="mr-8" (click)="onSortClick()">
-          <mat-icon>sort</mat-icon>
-        </button>
-        <span class="f-1"></span>
-        <button mat-icon-button color="warn" matTooltip="Clean" (click)="onCleanClick()">
-          <mat-icon>delete_forever</mat-icon>
-        </button>
-      </div>
+    <div class="d-f fd-c cg-5 mb-10">
+      <button mat-icon-button matTooltip="Add" color="primary" [matMenuTriggerFor]="menu">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-template matMenuContent>
+          <button mat-menu-item *ngFor="let i of characters$ | async" (click)="onAddPlayerClick(i)">
+            {{i.name}}
+          </button>
+          <button mat-menu-item *ngFor="let i of threats" (click)="onAddThreatClick(i)">
+            {{i.name}} ({{(i.risk_factor | getById: DataTypes.RISK_FACTORS)?.name }} {{(i.notch  | getById: DataTypes.NOTCHES)?.name}})
+          </button>
+        </ng-template>
+      </mat-menu>
+      <button mat-icon-button matTooltip="Sort" (click)="onSortClick()">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matTooltip="Clean" (click)="onCleanClick()">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content class="p-5">
     <app-combat-tracker-unit *ngFor="let unit of units$ | async; trackBy: trackByFn;"
