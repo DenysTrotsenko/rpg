@@ -13,9 +13,9 @@ import {
   HairColor,
   HairLength,
   HairStyle, Injury, InjuryType, Language,
-  Mark, Notch, PermanentInjury,
+  Mark, PermanentInjury,
   Profession, Quality,
-  Quirk, RiskFactor, Sex,
+  Quirk, Sex,
   Skill, Spell, SpellType, Stature, Style,
   Talent, Threat, ThreatTrait, Tier,
   Trait, Weapon
@@ -44,8 +44,11 @@ import {WEAPONS} from '@flames-of-freedom-1e/weapons';
 import {QUALITIES} from '@flames-of-freedom-1e/qualities';
 import {AILMENTS} from '@flames-of-freedom-1e/ailments';
 import {DRUGS} from '@flames-of-freedom-1e/drugs';
-import {NOTCHES, RISK_FACTORS, THREATS} from '@flames-of-freedom-1e/threats';
+import {THREATS} from '@flames-of-freedom-1e/threats';
 import {THREAT_TRAITS} from '@flames-of-freedom-1e/threat-traits';
+import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
+import {NOTCHES} from '@grim-and-perilous/notches';
+import {Notch, RiskFactor} from '@grim-and-perilous/models';
 
 
 export enum FirestoreCollection {

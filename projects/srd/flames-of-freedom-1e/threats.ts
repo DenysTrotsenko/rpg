@@ -1,19 +1,6 @@
-import {Notch, RiskFactor, Threat} from './models';
-import {AttributeId, NotchId, RiskFactorId, SizeId, SkillId, ThreatId, ThreatTraitId, ThreatTypeId, WeaponId} from './enums';
-
-export const RISK_FACTORS: RiskFactor[] = [
-  { id: RiskFactorId.BASIC, name: 'Basic' },
-  { id: RiskFactorId.INTERMEDIATE, name: 'Intermediate' },
-  { id: RiskFactorId.ADVANCED, name: 'Advanced' },
-  { id: RiskFactorId.ELITE, name: 'Elite' }
-];
-
-export const NOTCHES: Notch[] = [
-  { id: NotchId.LOW, name: 'Low' },
-  { id: NotchId.MEDIUM, name: 'Medium' },
-  { id: NotchId.HIGH, name: 'High' },
-  { id: NotchId.UNIQUE, name: 'Unique' }
-];
+import {Threat} from './models';
+import {AttributeId, SkillId, ThreatId, ThreatTraitId, ThreatTypeId, WeaponId} from './enums';
+import {NotchId, RiskFactorId, SizeId} from '@grim-and-perilous/enums';
 
 export const THREATS: Threat[] = [
   {

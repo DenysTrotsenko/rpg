@@ -1,4 +1,5 @@
-import {RiskFactorId, SizeId, ThreatTraitId} from './enums';
+import {ThreatTraitId} from './enums';
+import {RiskFactorId, SizeId} from '@grim-and-perilous/enums';
 
 export const DEFAULT_ATTRIBUTE_PERCENTAGES = 25;
 export const DEFAULT_DETERMINATION = 2;

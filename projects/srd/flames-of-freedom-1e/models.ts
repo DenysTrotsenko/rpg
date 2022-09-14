@@ -7,15 +7,16 @@ import {
   BeliefId, BuildId,
   CultureId, DrugId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, InjuryId, InjuryTypeId, LanguageId,
-  MarkId, NotchId, PermanentInjuryId,
+  MarkId, PermanentInjuryId,
   ProfessionId, QualityId,
-  QuirkId, RiskFactorId, SexId, SizeId,
+  QuirkId, SexId,
   SkillId,
   SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
   TalentId, ThreatId, ThreatTraitId, ThreatTypeId,
   TierId,
   TraitId, WareId, WareTypeId, WeaponId
 } from './enums';
+import {NotchId, RiskFactorId, SizeId} from '@grim-and-perilous/enums';
 
 export interface Age {
   id: AgeId;
@@ -197,7 +198,7 @@ export interface PermanentInjury extends HasId<PermanentInjuryId> {
 export interface Quality {
   id: QualityId;
   name: string;
-  labels?: {
+  labels: {
     effect: string;
   };
 }
@@ -216,6 +217,14 @@ export interface Sex {
   id: SexId;
   name: string;
 }
+
+// export interface Size {
+//   id: SizeId;
+//   name: string;
+//   mechanics: {
+//     FURY_DICE: number;
+//   };
+// }
 
 export interface Skill extends HasId<SkillId> {
   id: SkillId;
@@ -294,87 +303,6 @@ export interface Tier {
   name: string;
 }
 
-// export interface Character {
-//   belief: BeliefId;
-//   flaw: FlawId;
-//   culture: CultureId;
-//   archetype: ArchetypeId;
-//   trait: TraitId;
-//   attributes: {
-//     [k in AttributeId]: number;
-//   };
-//   determination: number;
-//   languages: LanguageId[];
-//   spells: SpellId[];
-//   alchemical_arts: SpellId[];
-//   miscellaneous: {
-//     age: AgeId;
-//     build: BuildId;
-//     eyes: EyesId;
-//     sex: SexId;
-//     hair_color: HairColorId;
-//     hair_length: HairLengthId;
-//     hair_style: HairStyleId;
-//     mark: MarkId;
-//     stature: StatureId;
-//     style: StyleId;
-//   };
-//   permanent_injuries: PermanentInjuryId[];
-//   afflictions: AfflictionId[];
-//   tier: TierId;
-//   professions: {
-//     basic: ProfessionId;
-//     intermediate: ProfessionId;
-//     advanced: ProfessionId;
-//   };
-//   advancements: {
-//     basic: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     intermediate: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     advanced: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//   };
-//   schemas: {
-//     advanced: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     intermediate: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     basic: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//   };
-// }
-
 export interface Threat extends HasId<ThreatId> {
   id: ThreatId;
   name: string;
@@ -413,15 +341,18 @@ export interface ThreatType extends HasId<ThreatTypeId> {
   name: string;
 }
 
-export interface Notch extends HasId<NotchId> {
-  id: NotchId;
-  name: string;
-}
+// export interface Notch extends HasId<NotchId> {
+//   id: NotchId;
+//   name: string;
+// }
 
-export interface RiskFactor extends HasId<RiskFactorId> {
-  id: RiskFactorId;
-  name: string;
-}
+// export interface RiskFactor extends HasId<RiskFactorId> {
+//   id: RiskFactorId;
+//   name: string;
+//   mechanics: {
+//     DAMAGE_THRESHOLD_BONUS: number;
+//   };
+// }
 
 export interface Trait extends HasId<TraitId> {
   id: TraitId;

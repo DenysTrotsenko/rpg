@@ -7,10 +7,10 @@ import {
   Belief,
   Flaw,
   Injury,
-  InjuryType, Notch,
+  InjuryType,
   PermanentInjury,
   Profession, Quality,
-  Quirk, RiskFactor,
+  Quirk,
   Skill,
   Spell,
   SpellType,
@@ -25,10 +25,10 @@ import {
   BeliefId,
   FlawId,
   InjuryId,
-  InjuryTypeId, NotchId,
+  InjuryTypeId,
   PermanentInjuryId,
   ProfessionId, QualityId,
-  QuirkId, RiskFactorId,
+  QuirkId,
   SkillId,
   SpellId,
   SpellTypeId,
@@ -36,6 +36,8 @@ import {
   TierId,
   TraitId, WeaponId
 } from '@flames-of-freedom-1e/enums';
+import {NotchId, RiskFactorId} from '@grim-and-perilous/enums';
+import {Notch, RiskFactor} from '@grim-and-perilous/models';
 
 @Pipe({
   name: 'getById'

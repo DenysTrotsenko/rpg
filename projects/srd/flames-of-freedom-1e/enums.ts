@@ -700,31 +700,31 @@ export enum QuirkId {
   PEN_NAME
 }
 
-export enum RiskFactorId {
-  BASIC = PrefixId.FLAMES_OF_FREEDOM,
-  INTERMEDIATE,
-  ADVANCED,
-  ELITE
-}
+// export enum RiskFactorId {
+//   BASIC = PrefixId.FLAMES_OF_FREEDOM,
+//   INTERMEDIATE,
+//   ADVANCED,
+//   ELITE
+// }
 
-export enum NotchId {
-  LOW = PrefixId.FLAMES_OF_FREEDOM,
-  MEDIUM,
-  HIGH,
-  UNIQUE
-}
+// export enum NotchId {
+//   LOW = PrefixId.FLAMES_OF_FREEDOM,
+//   MEDIUM,
+//   HIGH,
+//   UNIQUE
+// }
 
 export enum SexId {
   MALE = PrefixId.FLAMES_OF_FREEDOM,
   FEMALE
 }
 
-export enum SizeId {
-  SMALL = PrefixId.FLAMES_OF_FREEDOM,
-  NORMAL,
-  LARGE,
-  HUGE
-}
+// export enum SizeId {
+//   SMALL = PrefixId.FLAMES_OF_FREEDOM,
+//   NORMAL,
+//   LARGE,
+//   HUGE
+// }
 
 export enum SkillId {
   ALCHEMY = PrefixId.FLAMES_OF_FREEDOM,

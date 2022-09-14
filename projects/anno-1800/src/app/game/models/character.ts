@@ -6,11 +6,12 @@ import {
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   PermanentInjuryId, ProfessionId,
-  QuirkId, SizeId,
+  QuirkId,
   SkillId, SpellId, StatureId, StyleId,
   TalentId, TierId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
+import {SizeId} from '@grim-and-perilous/enums';
 
 export interface Character {
   id: string;

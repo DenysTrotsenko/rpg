@@ -1,6 +1,6 @@
 import {
   AgeId, AttributeId, BeliefId, BuildId, EyesId, FlawId, HairColorId, HairLengthId, HairStyleId,
-  LanguageId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, StatureId, StyleId,
+  LanguageId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, SizeId, StatureId, StyleId,
   TierId
 } from './enums';
 
@@ -118,11 +118,22 @@ export interface Quality {
 export interface RiskFactor {
   id: RiskFactorId;
   name: string;
+  mechanics: {
+    DAMAGE_THRESHOLD_BONUS: number;
+  };
 }
 
 export interface Sex {
   id: SexId;
   name: string;
+}
+
+export interface Size {
+  id: SizeId;
+  name: string;
+  mechanics: {
+    FURY_DICE: number;
+  };
 }
 
 export interface Stature {
