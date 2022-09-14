@@ -25,4 +25,7 @@ mat-card.mat-card.unit {
   ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 2px 0 4px 0;
   }
+  ::ng-deep.mat-radio-button {
+    font-family: monospace !important;
+  }
 }

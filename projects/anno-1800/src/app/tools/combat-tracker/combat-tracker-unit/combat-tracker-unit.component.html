@@ -8,7 +8,7 @@
       <span>{{value?.name}}</span>
       <span class="f-1"></span>
       <div class="d-f fd-c">
-        <mat-icon class="c-pointer" matTooltip="Remove" (click)="onRemoveClick(value)">clear</mat-icon>
+        <mat-icon class="c-pointer" color="warn" matTooltip="Remove" (click)="onRemoveClick(value)">clear</mat-icon>
       </div>
     </mat-card-content>
   </mat-card>
@@ -24,10 +24,30 @@
       <div class="d-f fd-c mr-10 ff-g">
         <span>{{value?.name}} ({{getType(threat)}})</span>
       </div>
-      <div class="d-f fd-c">
+      <div class="d-f fd-c mr-10">
         <mat-icon class="c-pointer" matTooltip="Expand" (click)="value.expanded = !value.expanded">
           {{value.expanded ? 'expand_less' : 'expand_more'}}
         </mat-icon>
+      </div>
+      <div class="d-f fd-c g-5 ff-m">
+        <mat-radio-group class="d-f ai-c cg-5" labelPosition="before" [(ngModel)]="value.damage">
+          <mat-label class="c-gray mr-5">Dmg</mat-label>
+          <mat-radio-button [value]="0">U:</mat-radio-button>
+          <mat-radio-button [value]="1">H:</mat-radio-button>
+          <mat-radio-button [value]="2">M:</mat-radio-button>
+          <mat-radio-button [value]="3">S:</mat-radio-button>
+          <mat-radio-button [value]="4">G:</mat-radio-button>
+          <mat-radio-button [value]="5">S!:</mat-radio-button>
+        </mat-radio-group>
+        <mat-radio-group class="d-f ai-c cg-5" labelPosition="before" [(ngModel)]="value.peril">
+          <mat-label class="c-gray mr-5">Prl</mat-label>
+          <mat-radio-button [value]="0">U:</mat-radio-button>
+          <mat-radio-button [value]="1">I:</mat-radio-button>
+          <mat-radio-button [value]="2">1:</mat-radio-button>
+          <mat-radio-button [value]="3">2:</mat-radio-button>
+          <mat-radio-button [value]="4">3:</mat-radio-button>
+          <mat-radio-button [value]="5">I!:</mat-radio-button>
+        </mat-radio-group>
       </div>
       <span class="f-1"></span>
       <div class="d-f fd-c">

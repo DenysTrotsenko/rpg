@@ -125,7 +125,9 @@ export class CombatTrackerComponent {
             return { id: +skill[0] as SkillId, value: skill[1] as number };
           }),
         traits: i.advancements.traits,
-        initiative: getInitiative(i) + getRolledInitiative(i)
+        initiative: getInitiative(i) + getRolledInitiative(i),
+        damage: 0,
+        peril: 0
       })
     ]);
   }
