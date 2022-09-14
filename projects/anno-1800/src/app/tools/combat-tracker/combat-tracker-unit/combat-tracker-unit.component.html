@@ -58,10 +58,10 @@
     <mat-card-content *ngIf="value.expanded" class="d-f fd-c ai-fs">
       <table class="mat-table bs-0 w-100 mb-10">
         <tr class="mat-row bg-gray-600">
-          <td *ngFor="let i of value.attributes;" class="mat-cell p-5">{{i.name.slice(0, 1)}}</td>
+          <td *ngFor="let i of getAttributes(threat);" class="mat-cell p-5">{{i.name.slice(0, 1)}}</td>
         </tr>
         <tr class="mat-row">
-          <td *ngFor="let i of value.attributes;" class="mat-cell p-5">{{i.value}}% ({{i.bonus}})</td>
+          <td *ngFor="let i of getAttributes(threat);" class="mat-cell p-5">{{i.value}}% ({{i.bonus}})</td>
         </tr>
         <tr class="mat-row bg-gray-600">
           <td class="mat-cell p-5">Int</td>
@@ -84,13 +84,13 @@
       </table>
       <p>
         <b class="c-gray">Skills:</b>
-        <span *ngFor="let i of value.skills;" class="comma-separated ws-pl">
+        <span *ngFor="let i of getSkills(threat);" class="comma-separated ws-pl">
           {{(i.id | getById: DataTypes.SKILLS)?.name}} +{{i.value}}
         </span>
       </p>
       <p>
         <b class="c-gray">Traits:</b>
-        <span *ngFor="let i of value.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
+        <span *ngFor="let i of threat.advancements.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
           {{(i.id | getById: DataTypes.THREAT_TRAITS)?.name}}<span *ngIf="i.value"> ({{i.value}})</span>
         </span>
       </p>

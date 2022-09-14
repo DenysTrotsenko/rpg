@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from 
 import { CombatTrackerUnit } from '../combat-tracker.models';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Quality, Threat, Weapon} from '@flames-of-freedom-1e/models';
-import {AttributeId} from '@flames-of-freedom-1e/enums';
+import {AttributeId, SkillId} from '@flames-of-freedom-1e/enums';
 import {
   getWeaponDamage,
   getDamageThreshold,
@@ -10,8 +10,9 @@ import {
   getInitiative,
   getMovement,
   getPerilThreshold,
-  getThresholds,
+  getThresholds, getAttributeBonus,
 } from '@ti/app/game/threat.utils';
+import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -35,6 +36,31 @@ export class CombatTrackerUnitComponent {
 
   onRemoveClick(data): void {
     this.remove.emit(data);
+  }
+
+  getAttributes(threat: Threat): { name: string; value: number; bonus: number; }[] {
+    return Object.entries(threat.attributes).map(entry => {
+      return {
+        name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
+        value: +entry[1],
+        bonus: getAttributeBonus(threat, +entry[0])
+      };
+    });
+  }
+
+  getSkills(threat: Threat): { id: SkillId; value: number; }[] {
+    return Object.entries(threat.advancements.skills
+      .reduce((acc: object, cur: SkillId) => {
+        if (acc.hasOwnProperty(cur)) {
+          acc[cur] += 10;
+        } else {
+          acc[cur] = 10;
+        }
+        return acc;
+      }, {}))
+      .map(skill => {
+        return { id: +skill[0] as SkillId, value: skill[1] as number };
+      });
   }
 
   getWeaponChance(weapon: Weapon, threat: Threat): number {

@@ -59,7 +59,9 @@ export class CombatTrackerComponent {
       new CombatTrackerUnit({
         ...unit,
         uid: getId(),
-        initiative: getInitiative(threat) + getRolledInitiative(threat)
+        initiative: getInitiative(threat) + getRolledInitiative(threat),
+        damage: 0,
+        peril: 0
       }),
       ...units.slice(index + 1)
     ]);
@@ -95,10 +97,7 @@ export class CombatTrackerComponent {
       new CombatTrackerUnit({
         uid: getId(),
         type: 'player',
-        name: i.name,
-        attributes: [],
-        skills: [],
-        traits: []
+        name: i.name
       })
     ]);
   }
@@ -111,20 +110,6 @@ export class CombatTrackerComponent {
         type: 'threat',
         templateId: i.id,
         name: i.name,
-        attributes: this.getAttributes(i),
-        skills: Object.entries(i.advancements.skills
-          .reduce((acc: object, cur: SkillId) => {
-            if (acc.hasOwnProperty(cur)) {
-              acc[cur] += 10;
-            } else {
-              acc[cur] = 10;
-            }
-            return acc;
-          }, {}))
-          .map(skill => {
-            return { id: +skill[0] as SkillId, value: skill[1] as number };
-          }),
-        traits: i.advancements.traits,
         initiative: getInitiative(i) + getRolledInitiative(i),
         damage: 0,
         peril: 0
@@ -136,16 +121,6 @@ export class CombatTrackerComponent {
     if (a.initiative < b.initiative) { return 1; }
     if (a.initiative > b.initiative) { return -1; }
     return 0;
-  }
-
-  getAttributes(threat: Threat): { name: string; value: number; bonus: number; }[] {
-    return Object.entries(threat.attributes).map(entry => {
-      return {
-        name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
-        value: +entry[1],
-        bonus: getAttributeBonus(threat, +entry[0])
-      };
-    });
   }
 
   trackByFn(_: number, item): string {
