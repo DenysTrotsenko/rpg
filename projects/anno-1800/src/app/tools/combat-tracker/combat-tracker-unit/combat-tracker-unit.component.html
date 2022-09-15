@@ -29,6 +29,7 @@
           {{value.expanded ? 'expand_less' : 'expand_more'}}
         </mat-icon>
       </div>
+      <span class="f-1"></span>
       <div class="d-f fd-c g-5 ff-m">
         <mat-radio-group class="d-f ai-c cg-5" labelPosition="before" [(ngModel)]="value.damage">
           <mat-label class="c-gray mr-5">Dmg</mat-label>
@@ -49,8 +50,7 @@
           <mat-radio-button [value]="5">I!:</mat-radio-button>
         </mat-radio-group>
       </div>
-      <span class="f-1"></span>
-      <div class="d-f fd-c">
+      <div class="d-f fd-c ml-15">
         <mat-icon class="c-pointer" color="warn" matTooltip="Remove" (click)="onRemoveClick(value)">clear</mat-icon>
         <mat-icon class="c-pointer" matTooltip="Clone" (click)="onCloneClick(value)">add</mat-icon>
       </div>
