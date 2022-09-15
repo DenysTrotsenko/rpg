@@ -30,7 +30,7 @@ export class AuthService {
       .subscribe();
   }
 
-  deleteUser(data: AuthWithEmailAndPassword): Observable<User> {
+  deleteUser(data: AuthWithEmailAndPassword): Observable<User | void> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       switchMap(res => res.user.delete()),
       catchError((err: firebase.auth.Error) => {
