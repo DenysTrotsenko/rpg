@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 $general-typography: mat.define-typography-config(
   $font-family: '"Catamaran", sans-serif'
