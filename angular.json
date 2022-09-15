@@ -34,18 +34,6 @@
             "tsConfig": "projects/std/tsconfig.spec.json",
             "karmaConfig": "projects/std/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/std/tsconfig.lib.json",
-              "projects/std/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -153,19 +141,6 @@
               "projects/shadowrun/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/shadowrun/tsconfig.app.json",
-              "projects/shadowrun/tsconfig.spec.json",
-              "projects/shadowrun/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
