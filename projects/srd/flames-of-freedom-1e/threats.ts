@@ -1,6 +1,7 @@
 import {Threat} from './models';
 import {AttributeId, SkillId, ThreatId, ThreatTraitId, WeaponId} from './enums';
 import {NotchId, RiskFactorId, SizeId, ThreatTypeId} from '@grim-and-perilous/enums';
+import {AstTransformer} from '@angular/compiler';
 
 export const THREATS: Threat[] = [
   {
@@ -1343,60 +1344,97 @@ export const THREATS: Threat[] = [
       WeaponId.INFANTRY_SWORD, WeaponId.FLINTLOCK_PISTOL
     ]
   },
-  // {
-  //   id: ThreatId.GARGANTUAN_SPIDER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.GHOUL,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
+  {
+    id: ThreatId.GARGANTUAN_SPIDER,
+    name: 'Gargantuan Spider',
+    type: ThreatTypeId.BEAST,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.LOW,
+    size: SizeId.LARGE,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 50,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [],
+      skills: [
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.LETHARGY },
+        { id: ThreatTraitId.LIGHT_SENSITIVITY, value: 2 },
+        { id: ThreatTraitId.POISONOUS },
+        { id: ThreatTraitId.SWIFT },
+        { id: ThreatTraitId.WEAKNESS, value: 'Fire' }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Meat (6), Poison sack, Spider carapace'
+    },
+    weapons: [
+      WeaponId.FANGS, WeaponId.WEBBING
+    ]
+  },
+  {
+    id: ThreatId.GHOUL,
+    name: 'Ghoul',
+    type: ThreatTypeId.SUPERNATURAL,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 45,
+      [AttributeId.PERCEPTION]: 40,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.AGILITY, AttributeId.AGILITY, AttributeId.AGILITY,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS, SkillId.ATHLETICS,
+        SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.DISGUISE, SkillId.DISGUISE,
+        SkillId.INTIMIDATE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.SHAPESHIFT, value: 'Laborer' },
+        { id: ThreatTraitId.SLOUGH_OFF }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: '1D6+1 human skins'
+    },
+    weapons: [
+      WeaponId.TONGUE_AND_CLAWS
+    ]
+  },
   // {
   //   id: ThreatId.GOLEM,
   //   name: '',
