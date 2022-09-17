@@ -1,4 +1,4 @@
-import {BRAWN_BONUS_TRAITS} from '@flames-of-freedom-1e/const';
+import {BRAWN_BONUS_TRAITS, DAMAGE_THRESHOLD_TRAITS} from '@flames-of-freedom-1e/const';
 import {AttributeId, QualityId, SkillId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
 import {Threat, Weapon} from '@flames-of-freedom-1e/models';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
@@ -36,7 +36,14 @@ export function getWeaponDamage(weapon: Weapon, threat: Threat): string {
 export function getDamageThreshold(threat: Threat): number {
   const fromRiskFactor: number = RISK_FACTORS.find(i => i.id === threat.risk_factor)?.mechanics?.DAMAGE_THRESHOLD_BONUS ?? 0;
   const fromBrawnBonus: number = getAttributeBonus(threat, AttributeId.BRAWN);
-  return fromBrawnBonus + fromRiskFactor;
+  const fromWillpowerBonus: number = getAttributeBonus(threat, AttributeId.WILLPOWER);
+  const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(ThreatTraitId.BRAINS_OVER_BRAWN)
+    ? Math.max(fromBrawnBonus, fromWillpowerBonus)
+    : fromBrawnBonus;
+  const fromTraits: number = threat.advancements.traits.reduce((acc, trait) => {
+    return DAMAGE_THRESHOLD_TRAITS.includes(trait.id) ? acc + +trait.value : acc;
+  }, 0);
+  return fromAttribute + fromTraits + fromRiskFactor;
 }
 
 export function getDefences(threat: Threat): string {
@@ -63,6 +70,8 @@ export function getMovement(threat: Threat): number {
 }
 
 export function getPerilThreshold(threat: Threat): number {
+  const fromBrawnBonus: number = getAttributeBonus(threat, AttributeId.BRAWN);
+  const fromWillpowerBonus: number = getAttributeBonus(threat, AttributeId.WILLPOWER);
   return getAttributeBonus(threat, AttributeId.WILLPOWER) + 3;
 }
 
