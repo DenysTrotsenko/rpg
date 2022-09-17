@@ -994,195 +994,355 @@ export const THREATS: Threat[] = [
       WeaponId.BEAK_AND_TALONS
     ]
   },
-  // {
-  //   id: ThreatId.EXPLORER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FARMER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FREEMASON_AGENT,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FREEMASON_ALCHEMIST,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FREEMASON_ENTERED_APPRENTICE,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FREEMASON_FELLOWCRAFT,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.FREEMASON_MASTER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
+  {
+    id: ThreatId.EXPLORER,
+    name: 'Explorer',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 45,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 50,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.PERCEPTION,
+        AttributeId.PERCEPTION,
+        AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER,
+        AttributeId.WILLPOWER,
+        AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED, SkillId.MARTIAL_RANGED,
+        SkillId.NAVIGATION,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.POLAR_STAR },
+        { id: ThreatTraitId.RURAL_STALKER },
+        { id: ThreatTraitId.TAKE_A_GANDER }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Camping kit, Hatchet, Hunting bag, Musketoon, Laudanum (1), Set of inferior clothes, Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.HATCHET, WeaponId.MUSKETOON
+    ]
+  },
+  {
+    id: ThreatId.FARMER,
+    name: 'Farmer',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 45,
+      [AttributeId.BRAWN]: 50,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.BRAWN
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.DRIVE,
+        SkillId.HANDLE_ANIMAL,
+        SkillId.RESOLVE,
+        SkillId.RIDE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.SURVIVAL,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.DIAMOND_IN_THE_ROUGH }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Camping kit, Hatchet, Hunting bag, Fowler musket, Laudanum (1), Set of inferior clothes, Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.FOWLER_MUSKET, WeaponId.HATCHET
+    ]
+  },
+  {
+    id: ThreatId.FREEMASON_AGENT,
+    name: 'Freemason Agent',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 50,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 35,
+      [AttributeId.FELLOWSHIP]: 45,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.AGILITY
+      ],
+      skills: [
+        SkillId.AWARENESS,
+        SkillId.COORDINATION,
+        SkillId.INTIMIDATE,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.SKULDUGGERY,
+        SkillId.STEALTH,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.LINEAR_TACTICS }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Antidote (1), Blackpowder w/Bullets (18), Flintlock pistol, Knife (2), Laudanum (1), Set of dark clothes, Smelling salts (1), Tincture (1) and Tobacco (3)'
+    },
+    weapons: [
+      WeaponId.KNIFE, WeaponId.FLINTLOCK_PISTOL
+    ]
+  },
+  {
+    id: ThreatId.FREEMASON_ALCHEMIST,
+    name: 'Freemason Alchemist',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 0,
+      [AttributeId.BRAWN]: 0,
+      [AttributeId.AGILITY]: 0,
+      [AttributeId.PERCEPTION]: 0,
+      [AttributeId.INTELLIGENCE]: 0,
+      [AttributeId.WILLPOWER]: 0,
+      [AttributeId.FELLOWSHIP]: 0,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.AGILITY,
+        AttributeId.AGILITY,
+        AttributeId.AGILITY,
+        AttributeId.PERCEPTION
+      ],
+      skills: [
+        SkillId.AWARENESS,
+        SkillId.COORDINATION,
+        SkillId.COORDINATION,
+        SkillId.MARTIAL_RANGED,
+        SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.SIMPLE_RANGED,
+        SkillId.SKULDUGGERY,
+        SkillId.STEALTH,
+        SkillId.TOUGHNESS,
+        SkillId.TOUGHNESS,
+        SkillId.WARFARE,
+      ],
+      traits: [
+        { id: ThreatTraitId.AT_A_DISTANCE },
+        { id: ThreatTraitId.DANGER_SENSE },
+        { id: ThreatTraitId.FORLORN_HOPE },
+        { id: ThreatTraitId.TAKE_A_GANDER }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Antidote (1), Flintlock pistol, Fused grenade (2) Knife (2), Laudanum (1), Powder bomb (1) Set of dark clothes, Smelling salts (1), Tincture (1) and Tobacco (3)'
+    },
+    weapons: [
+      WeaponId.KNIFE, WeaponId.FUSED_GRENADE, WeaponId.POWDER_BOMB
+    ]
+  },
+  {
+    id: ThreatId.FREEMASON_ENTERED_APPRENTICE,
+    name: 'Freemason Entered Apprentice',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 45,
+      [AttributeId.WILLPOWER]: 50,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.BRAWN,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ALCHEMY,
+        SkillId.INCANTATION,
+        SkillId.INTERROGATION,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.SKULDUGGERY,
+        SkillId.STEALTH,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.METTLE },
+        { id: ThreatTraitId.NO_MERE_PHENOMENA },
+        { id: ThreatTraitId.PLANAR_ALIGNMENT }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Knife, Laudanum (1), Overcoat pistol, Set of average clothes, Smelling salts (1), Tincture (1) and Writing kit'
+    },
+    weapons: [
+      WeaponId.KNIFE, WeaponId.OVERCOAT_PISTOL
+    ]
+  },
+  {
+    id: ThreatId.FREEMASON_FELLOWCRAFT,
+    name: 'Freemason Fellowcraft',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 40,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 45,
+      [AttributeId.FELLOWSHIP]: 40,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.BRAWN,
+        AttributeId.PERCEPTION,
+        AttributeId.PERCEPTION,
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.ATHLETICS,
+        SkillId.COORDINATION,
+        SkillId.COORDINATION,
+        SkillId.INTERROGATION,
+        SkillId.INTERROGATION,
+        SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED,
+        SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE,
+        SkillId.RESOLVE,
+        SkillId.TOUGHNESS,
+        SkillId.TOUGHNESS,
+        SkillId.WARFARE
+      ],
+      traits: [
+        { id: ThreatTraitId.IRONCLAD },
+        { id: ThreatTraitId.RICOCHET },
+        { id: ThreatTraitId.TAKE_A_GANDER },
+        { id: ThreatTraitId.WHITES_OF_THEIR_EYES }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Bayonet, Bedroll, Blackpowder w/Bullets (18), Brown Bess musket, Knapsack, Laudanum (1), Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.BAYONET, WeaponId.BROWN_BESS_MUSKET
+    ]
+  },
+  {
+    id: ThreatId.FREEMASON_MASTER,
+    name: 'Freemason Master',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.ADVANCED,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 0,
+      [AttributeId.BRAWN]: 0,
+      [AttributeId.AGILITY]: 0,
+      [AttributeId.PERCEPTION]: 0,
+      [AttributeId.INTELLIGENCE]: 0,
+      [AttributeId.WILLPOWER]: 0,
+      [AttributeId.FELLOWSHIP]: 0,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ALCHEMY, SkillId.ALCHEMY, SkillId.ALCHEMY,
+        SkillId.INCANTATION, SkillId.INCANTATION, SkillId.INCANTATION,
+        SkillId.LEADERSHIP, SkillId.LEADERSHIP, SkillId.LEADERSHIP,
+        SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE,
+        SkillId.RESOLVE, SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS, SkillId.TOUGHNESS,
+        SkillId.WARFARE, SkillId.WARFARE, SkillId.WARFARE
+      ],
+      traits: [
+        { id: ThreatTraitId.EBB_AND_FLOW },
+        { id: ThreatTraitId.IN_TUNE_WITH_THE_AETHER },
+        { id: ThreatTraitId.PLANAR_ALIGNMENT },
+        { id: ThreatTraitId.TENACITY }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Laudanum (1), Flintlock pistol, Infantry sword, Set of superior clothes, Symbol of the Order, Smelling salts (1), Tincture (1) and Writing kit'
+    },
+    weapons: [
+      WeaponId.INFANTRY_SWORD, WeaponId.FLINTLOCK_PISTOL
+    ]
+  },
   // {
   //   id: ThreatId.GARGANTUAN_SPIDER,
   //   name: '',
