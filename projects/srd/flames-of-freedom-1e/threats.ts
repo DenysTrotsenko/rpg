@@ -2402,411 +2402,739 @@ export const THREATS: Threat[] = [
       WeaponId.FLINTLOCK_PISTOL, WeaponId.INFANTRY_SWORD
     ]
   },
-  // {
-  //   id: ThreatId.KNOCKER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.KRAKEN,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.LABORER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.LADY_IN_WHITE,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.LEEDS_DEVIL,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.LYCANTHROPE,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MAMMOTH,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MANDOAG_SEEKER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MANDOAG_SORCERER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MILITARY_CAPTAIN,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MILITARY_CAVALRY,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MILITARY_OFFICER,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MILITARY_PRIVATE,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MINUTEMAN,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
-  // {
-  //   id: ThreatId.MISCHIEF_OF_RATS,
-  //   name: '',
-  //   type: ThreatTypeId.,
-  //   risk_factor: RiskFactorId.,
-  //   notch: NotchId.,
-  //   size: SizeId.,
-  //   attributes: {
-  //     [AttributeId.COMBAT]: 0,
-  //     [AttributeId.BRAWN]: 0,
-  //     [AttributeId.AGILITY]: 0,
-  //     [AttributeId.PERCEPTION]: 0,
-  //     [AttributeId.INTELLIGENCE]: 0,
-  //     [AttributeId.WILLPOWER]: 0,
-  //     [AttributeId.FELLOWSHIP]: 0,
-  //   },
-  //   advancements: {
-  //     bonuses: [],
-  //     skills: [],
-  //     traits: []
-  //   },
-  //   labels: {
-  //     description: '',
-  //     wares: ''
-  //   },
-  //   weapons: []
-  // },
+  {
+    id: ThreatId.KNOCKER,
+    name: 'Knocker',
+    type: ThreatTypeId.SUPERNATURAL,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 35,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 40,
+      [AttributeId.INTELLIGENCE]: 45,
+      [AttributeId.WILLPOWER]: 50,
+      [AttributeId.FELLOWSHIP]: 45,
+    },
+    advancements: {
+      bonuses: [],
+      skills: [
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.EAVESDROP, SkillId.EAVESDROP,
+        SkillId.FOLKLORE, SkillId.FOLKLORE,
+        SkillId.GUILE, SkillId.GUILE,
+        SkillId.INTERROGATION, SkillId.INTERROGATION,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.STEALTH, SkillId.STEALTH
+      ],
+      traits: [
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.HAUNTING },
+        { id: ThreatTraitId.IMMUNITY, value: 'Injuries, Intimidate, Peril, Rough & Tumble' },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.INSUBSTANTIAL },
+        { id: ThreatTraitId.LAY_TO_REST, value: 'Keepsake' },
+        { id: ThreatTraitId.PHENOMENA },
+        { id: ThreatTraitId.SPIRIT_SIGHT }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'A keepsake from the person being haunted'
+    },
+    weapons: []
+  },
+  {
+    id: ThreatId.KRAKEN,
+    name: 'Kraken',
+    type: ThreatTypeId.ABYSSAL,
+    risk_factor: RiskFactorId.ADVANCED,
+    notch: NotchId.HIGH,
+    size: SizeId.HUGE,
+    attributes: {
+      [AttributeId.COMBAT]: 45,
+      [AttributeId.BRAWN]: 50,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS, SkillId.ATHLETICS, SkillId.ATHLETICS,
+        SkillId.AWARENESS, SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.RESOLVE, SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SURVIVAL, SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.BRAWNY, value: 3 },
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.SWALLOW },
+        { id: ThreatTraitId.SWIMMER }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Assorted sailor clothing, Broken harpoon, Heart of the Kraken, Kraken skin, Meat (12)'
+    },
+    weapons: [
+      WeaponId.ENGULFING_BITE, WeaponId.LASHING_TENTACLE
+    ]
+  },
+  {
+    id: ThreatId.LABORER,
+    name: 'Laborer',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 45,
+      [AttributeId.BRAWN]: 50,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 40,
+      [AttributeId.INTELLIGENCE]: 35,
+      [AttributeId.WILLPOWER]: 45,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.BRAWN,
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.BARGAIN,
+        SkillId.COORDINATION,
+        SkillId.LEADERSHIP,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.PUGILISM },
+        { id: ThreatTraitId.ROUGH_WORK },
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Backpack, Blackjack, Blackpowder w/Bullets (18), Candles (9), Flintlock pistol, General repair tools, Laudanum (1), Set of inferior clothes, Smelling salts and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.BLACKJACK, WeaponId.FLINTLOCK_PISTOL
+    ]
+  },
+  {
+    id: ThreatId.LADY_IN_WHITE,
+    name: 'Lady In White',
+    type: ThreatTypeId.SUPERNATURAL,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 35,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 40,
+      [AttributeId.INTELLIGENCE]: 45,
+      [AttributeId.WILLPOWER]: 50,
+      [AttributeId.FELLOWSHIP]: 40,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.AGILITY,
+        AttributeId.PERCEPTION, AttributeId.PERCEPTION, AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.DISGUISE,
+        SkillId.EAVESDROP,
+        SkillId.FOLKLORE, SkillId.FOLKLORE,
+        SkillId.GUILE,
+        SkillId.INTERROGATION, SkillId.INTERROGATION,
+        SkillId.INTIMIDATE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH
+      ],
+      traits: [
+        { id: ThreatTraitId.CAPTIVATION },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.IMMUNITY, value: 'Injuries, Intimidate, Peril, Rough & Tumble' },
+        { id: ThreatTraitId.LAY_TO_REST, value: 'Abandoned Remains' },
+        { id: ThreatTraitId.LIGHT_SENSITIVITY, value: 2 },
+        { id: ThreatTraitId.SPIRIT_SIGHT },
+        { id: ThreatTraitId.SWIFT }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Tattered white clothes\n'
+    },
+    weapons: [
+      WeaponId.KEENING
+    ]
+  },
+  {
+    id: ThreatId.LEEDS_DEVIL,
+    name: 'Leeds Devil',
+    type: ThreatTypeId.ABYSSAL,
+    risk_factor: RiskFactorId.ELITE,
+    notch: NotchId.UNIQUE,
+    size: SizeId.LARGE,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 55,
+      [AttributeId.AGILITY]: 50,
+      [AttributeId.PERCEPTION]: 50,
+      [AttributeId.INTELLIGENCE]: 50,
+      [AttributeId.WILLPOWER]: 50,
+      [AttributeId.FELLOWSHIP]: 50,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS, SkillId.ATHLETICS, SkillId.ATHLETICS,
+        SkillId.AWARENESS, SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.COORDINATION, SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.SURVIVAL, SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.CRUSHING },
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.DUSK_TO_DAWN, value: 'Stone' },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.HYPERSENSITIVITY },
+        { id: ThreatTraitId.IMMUNITY, value: 'Blackpowder weapons, Injuries, Intimidate, Peril' },
+        { id: ThreatTraitId.SWIFT },
+        { id: ThreatTraitId.TAINT },
+        { id: ThreatTraitId.THICK_HIDE, value: 4 },
+        { id: ThreatTraitId.VAMPIRIC_TEETH }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Horse hide, Meat (6)'
+    },
+    weapons: [
+      WeaponId.FORKED_TAIL, WeaponId.SQUAWK
+    ]
+  },
+  {
+    id: ThreatId.LYCANTHROPE,
+    name: 'Lycanthrope',
+    type: ThreatTypeId.SUPERNATURAL,
+    risk_factor: RiskFactorId.ADVANCED,
+    notch: NotchId.LOW,
+    size: SizeId.LARGE,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.AGILITY, AttributeId.AGILITY, AttributeId.AGILITY,
+        AttributeId.PERCEPTION, AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS, SkillId.ATHLETICS,
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.COORDINATION, SkillId.COORDINATION,
+        SkillId.FOLKLORE, SkillId.FOLKLORE,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.CRUSHING },
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.FIERCE },
+        { id: ThreatTraitId.HORRIFIC },
+        { id: ThreatTraitId.HYPERSENSITIVITY },
+        { id: ThreatTraitId.LYCANTHROPIC },
+        { id: ThreatTraitId.SECOND_WIND },
+        { id: ThreatTraitId.SHAPESHIFT, value: 'Spy' },
+        { id: ThreatTraitId.SWIFT },
+        { id: ThreatTraitId.TAINT }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Ripped clothing, Signs of their former human self'
+    },
+    weapons: [
+      WeaponId.LYCANTHROPIC_CLAWS, WeaponId.SHREDDING_BITE
+    ]
+  },
+  {
+    id: ThreatId.MAMMOTH,
+    name: 'Mammoth',
+    type: ThreatTypeId.BEAST,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.LARGE,
+    attributes: {
+      [AttributeId.COMBAT]: 45,
+      [AttributeId.BRAWN]: 50,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.ATHLETICS, SkillId.ATHLETICS,
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.INTIMIDATE,
+        SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SURVIVAL, SkillId.SURVIVAL,
+        SkillId.TOUGHNESS, SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.BRAWNY, value: 2 },
+        { id: ThreatTraitId.FIERCE },
+        { id: ThreatTraitId.HARDY },
+        { id: ThreatTraitId.IMPREGNABLE },
+        { id: ThreatTraitId.LAST_HURRAH },
+        { id: ThreatTraitId.LETHARGY },
+        { id: ThreatTraitId.SECOND_WIND }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Mammoth hide, Meat (9), Tusk (2)'
+    },
+    weapons: [
+      WeaponId.STOMP, WeaponId.TUSKS
+    ]
+  },
+  {
+    id: ThreatId.MANDOAG_SEEKER,
+    name: 'Mandoag Seeker',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.BRAWN,
+        AttributeId.PERCEPTION,
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.AWARENESS,
+        SkillId.COORDINATION,
+        SkillId.INTIMIDATE,
+        SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED, SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.SURVIVAL,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.AMBUSH_TACTICS },
+        { id: ThreatTraitId.ARMED_TO_THE_TEETH },
+        { id: ThreatTraitId.GUT_INSTINCT },
+        { id: ThreatTraitId.WHITES_OF_THEIR_EYES }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Arrows (18), Bedroll, Knapsack, Laudanum (1), Selfbow, Set of inferior clothes, Smelling salts (1), Tincture (1) and Tomahawk'
+    },
+    weapons: [
+      WeaponId.TOMAHAWK, WeaponId.SELFBOW
+    ]
+  },
+  {
+    id: ThreatId.MANDOAG_SORCERER,
+    name: 'Mandoag Sorcerer',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.ADVANCED,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 40,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 45,
+      [AttributeId.WILLPOWER]: 56,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.PERCEPTION, AttributeId.PERCEPTION, AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER,
+        AttributeId.FELLOWSHIP, AttributeId.FELLOWSHIP
+      ],
+      skills: [
+        SkillId.ALCHEMY,
+        SkillId.INCANTATION, SkillId.INCANTATION, SkillId.INCANTATION,
+        SkillId.INTERROGATION, SkillId.INTERROGATION,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.LEADERSHIP, SkillId.LEADERSHIP,
+        SkillId.RESOLVE, SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SCRUTINIZE, SkillId.SCRUTINIZE,
+        SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE, SkillId.SIMPLE_MELEE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.STEALTH, SkillId.STEALTH,
+        SkillId.SURVIVAL, SkillId.SURVIVAL
+      ],
+      traits: [
+        { id: ThreatTraitId.CALL_TO_ARMS },
+        { id: ThreatTraitId.CLOSE_SHAVE },
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.EBB_AND_FLOW },
+        { id: ThreatTraitId.MANNA_OF_GOD },
+        { id: ThreatTraitId.NO_ILLUSIONS },
+        { id: ThreatTraitId.PLANAR_ALIGNMENT },
+        { id: ThreatTraitId.TENACITY },
+        { id: ThreatTraitId.TWIST_OF_FATE }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Knife, Laudanum (1), Overcoat pistol, Set of average clothes, Smelling salts (1), Tincture (1) and Writing kit'
+    },
+    weapons: [
+      WeaponId.KNIFE, WeaponId.OVERCOAT_PISTOL
+    ]
+  },
+  {
+    id: ThreatId.MILITARY_CAPTAIN,
+    name: 'Military Captain',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.ADVANCED,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 45
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.PERCEPTION, AttributeId.PERCEPTION, AttributeId.PERCEPTION, AttributeId.PERCEPTION,
+        AttributeId.WILLPOWER, AttributeId.WILLPOWER, AttributeId.WILLPOWER
+      ],
+      skills: [
+        SkillId.AWARENESS, SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.EDUCATION,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.LEADERSHIP, SkillId.LEADERSHIP, SkillId.LEADERSHIP,
+        SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED, SkillId.MARTIAL_RANGED, SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE, SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.RIDE, SkillId.RIDE,
+        SkillId.WARFARE, SkillId.WARFARE, SkillId.WARFARE
+      ],
+      traits: [
+        { id: ThreatTraitId.BATTLE_BUDDY },
+        { id: ThreatTraitId.CALL_TO_ARMS },
+        { id: ThreatTraitId.FRIENDLY_FIRE },
+        { id: ThreatTraitId.METTLE },
+        { id: ThreatTraitId.STEADFAST }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Dutch longpistol, Infantry sword, Knapsack, Laudanum (1), Medal of Distinction, Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.DUTCH_LONGPISTOL, WeaponId.INFANTRY_SWORD
+    ]
+  },
+  {
+    id: ThreatId.MILITARY_CAVALRY,
+    name: 'Military Cavalry',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 35,
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.AGILITY
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.COORDINATION,
+        SkillId.HANDLE_ANIMAL,
+        SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED,
+        SkillId.RIDE,
+        SkillId.TOUGHNESS
+      ],
+      traits: [
+        { id: ThreatTraitId.DEVIL_IN_THE_SADDLE },
+        { id: ThreatTraitId.OFF_THE_BRIDLE }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Calvary sabre, Knapsack, Laudanum (1), Musketoon, Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.CAVALRY_SABRE, WeaponId.MUSKETOON
+    ]
+  },
+  {
+    id: ThreatId.MILITARY_OFFICER,
+    name: 'Military Officer',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.INTERMEDIATE,
+    notch: NotchId.MEDIUM,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 40,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 45
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT, AttributeId.COMBAT,
+        AttributeId.BRAWN, AttributeId.BRAWN,
+        AttributeId.PERCEPTION, AttributeId.PERCEPTION
+      ],
+      skills: [
+        SkillId.AWARENESS, SkillId.AWARENESS,
+        SkillId.INTIMIDATE, SkillId.INTIMIDATE,
+        SkillId.LEADERSHIP, SkillId.LEADERSHIP,
+        SkillId.MARTIAL_MELEE, SkillId.MARTIAL_MELEE,
+        SkillId.RESOLVE, SkillId.RESOLVE,
+        SkillId.SIMPLE_RANGED, SkillId.SIMPLE_RANGED,
+        SkillId.WARFARE, SkillId.WARFARE
+      ],
+      traits: [
+        { id: ThreatTraitId.BATTLE_BUDDY },
+        { id: ThreatTraitId.CALL_TO_ARMS },
+        { id: ThreatTraitId.DANGER_SENSE },
+        { id: ThreatTraitId.GUT_INSTINCT },
+        { id: ThreatTraitId.METTLE }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Bedroll, Blackpowder w/Bullets (18), Flintlock pistol, Infantry sword, Knapsack, Laudanum (1), Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.FLINTLOCK_PISTOL, WeaponId.INFANTRY_SWORD
+    ]
+  },
+  {
+    id: ThreatId.MILITARY_PRIVATE,
+    name: 'Military Private',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.LOW,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 45,
+      [AttributeId.AGILITY]: 40,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 35,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.PERCEPTION
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.COORDINATION,
+        SkillId.MARTIAL_MELEE,
+        SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE,
+        SkillId.TOUGHNESS,
+        SkillId.WARFARE,
+      ],
+      traits: [
+        { id: ThreatTraitId.WHITES_OF_THEIR_EYES }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Bayonet, Bedroll, Blackpowder w/Bullets (18), Brown Bess musket, Knapsack, Laudanum (1), Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.BAYONET, WeaponId.BROWN_BESS_MUSKET
+    ]
+  },
+  {
+    id: ThreatId.MINUTEMAN,
+    name: 'Minuteman',
+    type: ThreatTypeId.HUMANOID,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.HIGH,
+    size: SizeId.NORMAL,
+    attributes: {
+      [AttributeId.COMBAT]: 50,
+      [AttributeId.BRAWN]: 51,
+      [AttributeId.AGILITY]: 35,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.COMBAT,
+        AttributeId.COMBAT,
+        AttributeId.BRAWN,
+        AttributeId.PERCEPTION
+      ],
+      skills: [
+        SkillId.ATHLETICS,
+        SkillId.AWARENESS,
+        SkillId.COORDINATION,
+        SkillId.MARTIAL_RANGED,
+        SkillId.RESOLVE,
+        SkillId.SIMPLE_MELEE,
+        SkillId.SURVIVAL,
+        SkillId.TOUGHNESS,
+        SkillId.WARFARE
+      ],
+      traits: [
+        { id: ThreatTraitId.RICOCHET },
+        { id: ThreatTraitId.SCARS_OF_WAR },
+        { id: ThreatTraitId.STALWART }
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Blackpowder w/Bullets (18), Hatchet, Knapsack, Laudanum (1), Pennsylvania longrifle, Smelling salts (1) and Tincture (1)'
+    },
+    weapons: [
+      WeaponId.HATCHET, WeaponId.PENNSYLVANIA_LONGRIFLE
+    ]
+  },
+  {
+    id: ThreatId.MISCHIEF_OF_RATS,
+    name: 'Mischief Of Rats',
+    type: ThreatTypeId.ANIMAL,
+    risk_factor: RiskFactorId.BASIC,
+    notch: NotchId.LOW,
+    size: SizeId.SMALL,
+    attributes: {
+      [AttributeId.COMBAT]: 45,
+      [AttributeId.BRAWN]: 35,
+      [AttributeId.AGILITY]: 50,
+      [AttributeId.PERCEPTION]: 45,
+      [AttributeId.INTELLIGENCE]: 40,
+      [AttributeId.WILLPOWER]: 40,
+      [AttributeId.FELLOWSHIP]: 40
+    },
+    advancements: {
+      bonuses: [
+        AttributeId.AGILITY,
+        AttributeId.PERCEPTION
+      ],
+      skills: [
+        SkillId.AWARENESS,
+        SkillId.COORDINATION,
+        SkillId.RESOLVE,
+        SkillId.STEALTH
+      ],
+      traits: [
+        { id: ThreatTraitId.AILMENT, value: 'Smallpox' },
+        { id: ThreatTraitId.DARK_SENSE },
+        { id: ThreatTraitId.IMMUNITY, value: 'Injuries, Intimidate, Rough & Tumble' },
+        { id: ThreatTraitId.LETHARGY },
+        { id: ThreatTraitId.SWARM },
+        { id: ThreatTraitId.SWIFT },
+        { id: ThreatTraitId.WEAKNESS, value: 'Pummeling weapons' },
+      ]
+    },
+    labels: {
+      description: '',
+      wares: 'Rat pelt, Meat (3)'
+    },
+    weapons: [
+      WeaponId.SWARMING
+    ]
+  },
   // {
   //   id: ThreatId.MOUNTAIN_LION,
   //   name: '',
@@ -2826,7 +3154,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2853,7 +3183,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2880,7 +3212,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2907,7 +3241,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2934,7 +3270,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2961,7 +3299,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -2988,7 +3328,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3015,7 +3357,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3042,7 +3386,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3069,7 +3415,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3096,7 +3444,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3123,7 +3473,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3150,7 +3502,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3177,7 +3531,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3204,7 +3560,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3231,7 +3589,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3258,7 +3618,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3285,7 +3647,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3312,7 +3676,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3339,7 +3705,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3366,7 +3734,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3393,7 +3763,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3420,7 +3792,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3447,7 +3821,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3474,7 +3850,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3501,7 +3879,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3528,7 +3908,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3555,7 +3937,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3582,7 +3966,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3609,7 +3995,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3636,7 +4024,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3663,7 +4053,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3690,7 +4082,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3717,7 +4111,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3744,7 +4140,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3771,7 +4169,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3798,7 +4198,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
@@ -3825,7 +4227,9 @@ export const THREATS: Threat[] = [
   //   advancements: {
   //     bonuses: [],
   //     skills: [],
-  //     traits: []
+  //     traits: [
+  //       { id: ThreatTraitId.IRONCLAD },
+  //     ]
   //   },
   //   labels: {
   //     description: '',
