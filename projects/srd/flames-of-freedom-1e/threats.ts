@@ -495,6 +495,7 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
+      movement: '10/13 (Fly)',
       wares: 'Black Shuck pelt, Meat (6)'
     },
     weapons: [
@@ -846,6 +847,7 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
+      movement: '7/8 (Crawler)',
       wares: 'Dirt-caked clothing and Memento of a former life'
     },
     weapons: [
@@ -943,6 +945,7 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
+      movement: '9/5 (Climb)',
       wares: 'Ant mandible (2), Meat (6)'
     },
     weapons: [
@@ -989,6 +992,7 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
+      movement: '12/15 (Fly)',
       wares: 'Eagle feathers (6), Meat (6)'
     },
     weapons: [
@@ -1382,6 +1386,7 @@ export const THREATS: Threat[] = [
     },
     labels: {
       description: '',
+      movement: '10/7 (Climb)',
       wares: 'Meat (6), Poison sack, Spider carapace'
     },
     weapons: [
