@@ -41,3 +41,10 @@ mat-sidenav-container {
 .active {
   color: $color-primary;
 }
+
+::ng-deep {
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

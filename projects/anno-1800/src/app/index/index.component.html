@@ -37,11 +37,17 @@
     </mat-nav-list>
     <mat-nav-list dense>
       <a mat-list-item routerLink="references" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'References' }}">
-        <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">References</span>
+        <mat-icon>format_list_bulleted</mat-icon><span class="ml-10 not-expanded-hide">References</span>
       </a>
       <a mat-list-item routerLink="rules" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'References' }}">
-        <mat-icon>gavel</mat-icon><span class="ml-10 not-expanded-hide">Rules</span>
+        <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">Rules</span>
       </a>
+    </mat-nav-list>
+    <span class="f-1"></span>
+    <mat-nav-list *ngIf="logged$ | async" dense>
+      <button mat-list-item matTooltip="{{ expanded ? '' : 'Logout' }}" (click)="onLogoutClick()">
+        <mat-icon>logout</mat-icon><span class="ml-10 not-expanded-hide">Logout</span>
+      </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
