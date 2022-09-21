@@ -1372,7 +1372,7 @@ export const WEAPONS: Weapon[] = [
       handling: '',
       load: '',
       ammo: '',
-      distance: 'Engaged'
+      distance: 'Burst Template'
     }
   },
   {
