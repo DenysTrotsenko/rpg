@@ -354,6 +354,51 @@ export const WEAPONS: Weapon[] = [
     }
   },
   {
+    id: WeaponId.MANHATTAN_PEPPERBOX,
+    name: 'Manhattan Pepperbox',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.BLACKPOWDER, QualityId.PISTOL, QualityId.REPEATING, QualityId.WEAK],
+    encumbrance: 1,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '1H',
+      load: '2AP',
+      ammo: 'Bullets (3)',
+      distance: '3+[PB] yards'
+    }
+  },
+  {
+    id: WeaponId.ALLEN_THURBER_PEPPERBOX,
+    name: 'Allen & Thurber Pepperbox',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.BLACKPOWDER, QualityId.PISTOL, QualityId.REPEATING, QualityId.WEAK],
+    encumbrance: 1,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '1H',
+      load: '2AP',
+      ammo: 'Bullets (4)',
+      distance: '3+[PB] yards'
+    }
+  },
+  {
+    id: WeaponId.COLT_NAVY_PEPPERBOX,
+    name: 'Colt Navy Pepperbox',
+    skills: [SkillId.SIMPLE_RANGED],
+    qualities: [QualityId.BLACKPOWDER, QualityId.PISTOL, QualityId.REPEATING, QualityId.WEAK],
+    encumbrance: 1,
+    price: 0,
+    labels: {
+      description: '',
+      handling: '1H',
+      load: '2AP',
+      ammo: 'Bullets (6)',
+      distance: '3+[PB] yards'
+    }
+  },
+  {
     id: WeaponId.AGRICULTURAL_TOOL,
     name: 'Agricultural Tool',
     skills: [SkillId.SIMPLE_MELEE],
@@ -1735,9 +1780,6 @@ export const WEAPONS: Weapon[] = [
       distance: 'Engaged or 2 yard'
     }
   },
-];
-
-export const THREAT_WEAPONS: Weapon[] = [
   {
     id: WeaponId.WILD_BOAR_TUSKS,
     name: 'Tusks',
@@ -1783,379 +1825,397 @@ export const THREAT_WEAPONS: Weapon[] = [
       distance: 'Engaged or 1 yard'
     }
   },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
-  {
-    id: WeaponId.SLIME_TIME,
-    name: '',
-    skills: [SkillId.SIMPLE_MELEE],
-    qualities: [],
-    encumbrance: 0,
-    price: 0,
-    labels: {
-      description: '',
-      handling: '',
-      load: '',
-      ammo: '',
-      distance: 'Engaged or 1 yard'
-    }
-  },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+  // {
+  //   id: WeaponId.SLIME_TIME,
+  //   name: '',
+  //   skills: [SkillId.SIMPLE_MELEE],
+  //   qualities: [],
+  //   encumbrance: 0,
+  //   price: 0,
+  //   labels: {
+  //     description: '',
+  //     handling: '',
+  //     load: '',
+  //     ammo: '',
+  //     distance: 'Engaged or 1 yard'
+  //   }
+  // },
+];
+
+export const WEAPONS_1800: Weapon[] = [
+  // {
+  //   id: WeaponId.OVERCOAT_PISTOL,
+  //   name: 'Overcoat Pistol',
+  //   skills: [SkillId.SIMPLE_RANGED],
+  //   qualities: [QualityId.BLACKPOWDER, QualityId.PISTOL, QualityId.WEAK],
+  //   encumbrance: 1,
+  //   price: 0,
+  //   labels: {
+  //     description: 'This is a small pistol designed to hide in a jacket pocket or muff, and many wealthy merchants and travelers carry it.',
+  //     handling: '1H',
+  //     load: '2AP',
+  //     ammo: 'Bullets',
+  //     distance: '1+[PB] yards'
+  //   }
+  // },
 ];

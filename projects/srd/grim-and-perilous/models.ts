@@ -1,7 +1,28 @@
 import {
-  AgeId, AttributeId, BeliefId, BuildId, EyesId, FlawId, HairColorId, HairLengthId, HairStyleId,
-  InjuryId, InjuryTypeId, MarkId, NotchId, PermanentInjuryId, QualityId, RiskFactorId, SexId, SizeId, StatureId, StyleId,
-  ThreatTypeId, TierId
+  AgeId,
+  AttributeId,
+  BeliefId,
+  BuildId,
+  EyesId,
+  FlawId,
+  HairColorId,
+  HairLengthId,
+  HairStyleId,
+  InjuryId,
+  InjuryTypeId,
+  LightingId,
+  MarkId,
+  NotchId,
+  ObscurementId,
+  PermanentInjuryId,
+  QualityId,
+  RiskFactorId,
+  SexId,
+  SizeId,
+  StatureId,
+  StyleId,
+  ThreatTypeId,
+  TierId
 } from './enums';
 import {HasId} from '@shared';
 
@@ -102,6 +123,15 @@ export interface InjuryType {
 //   name: string;
 // }
 
+export interface Lighting {
+  id: LightingId;
+  name: string;
+  labels: {
+    effect: string;
+    examples: string;
+  };
+}
+
 export interface Mark {
   id: MarkId;
   name: string;
@@ -110,6 +140,15 @@ export interface Mark {
 export interface Notch {
   id: NotchId;
   name: string;
+}
+
+export interface Obscurement {
+  id: ObscurementId;
+  name: string;
+  labels: {
+    effect: string;
+    examples: string;
+  };
 }
 
 export interface PermanentInjury {

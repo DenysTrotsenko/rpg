@@ -244,6 +244,12 @@ export enum InjuryTypeId {
   PERMANENT = 'permanent'
 }
 
+export enum LightingId {
+  PERFECT_LIGHT = 'perfect_light',
+  FLEETING_SHADOWS = 'fleeting_shadows',
+  TOTAL_DARKNESS = 'total_darkness',
+}
+
 // export enum LanguageId {
 //   ABENAKI = '',
 //   ALGONQUIN = '',
@@ -386,6 +392,13 @@ export enum NotchId {
   MEDIUM = 'medium',
   HIGH = 'high',
   UNIQUE = 'unique'
+}
+
+export enum ObscurementId {
+  NO = 'no',
+  LIGHT = 'light',
+  MEDIUM = 'medium',
+  HEAVY = 'heavy'
 }
 
 export enum PermanentInjuryId {

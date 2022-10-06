@@ -1,5 +1,18 @@
-import {AgeId, BuildId, EyesId, HairColorId, HairLengthId, HairStyleId, MarkId, SexId, StatureId, StyleId} from './enums';
-import {Age, Build, Eyes, HairColor, HairLength, HairStyle, Mark, Sex, Stature, Style} from './models';
+import {
+  AgeId,
+  BuildId,
+  EyesId,
+  HairColorId,
+  HairLengthId,
+  HairStyleId,
+  LightingId,
+  MarkId,
+  ObscurementId,
+  SexId,
+  StatureId,
+  StyleId
+} from './enums';
+import {Age, Build, Eyes, HairColor, HairLength, HairStyle, Lighting, Mark, Obscurement, Sex, Stature, Style} from './models';
 
 export const AGES: Age[] = [
   { id: AgeId.YOUNG, name: 'Young' },
@@ -80,6 +93,68 @@ export const HAIR_COLOR: HairColor[] = [
   { id: HairColorId.BROWN, name: 'Brown' },
   { id: HairColorId.GREY, name: 'Grey' },
   { id: HairColorId.RED, name: 'Red' },
+];
+
+export const LIGHTING: Lighting[] = [
+  {
+    id: LightingId.PERFECT_LIGHT,
+    name: 'Perfect Light',
+    labels: {
+      effect: 'No ambient penalties.',
+      examples: 'Daytime, in a direct source of light.'
+    }
+  },
+  {
+    id: LightingId.FLEETING_SHADOWS,
+    name: 'Fleeting Shadows',
+    labels: {
+      effect: 'Must flip the results to fail vision-related Skill Tests; cannot give or gain the benefits of Assist Dice.',
+      examples: 'Dawn, dusk or clear night skies.'
+    }
+  },
+  {
+    id: LightingId.TOTAL_DARKNESS,
+    name: 'Total Darkness',
+    labels: {
+      effect: 'Cannot be targeted unless Engaged; line of sight is broken.',
+      examples: 'Blinding light, moonless night, pitch-black.'
+    }
+  }
+];
+
+export const OBSCUREMENT: Obscurement[] = [
+  {
+    id: ObscurementId.NO,
+    name: 'No Obscurement',
+    labels: {
+      effect: 'No ambient penalties.',
+      examples: 'Clear weather.'
+    }
+  },
+  {
+    id: ObscurementId.LIGHT,
+    name: 'Light Obscurement',
+    labels: {
+      effect: 'Cannot use Extreme Distances.',
+      examples: 'Mist, light rain or light snow.'
+    }
+  },
+  {
+    id: ObscurementId.MEDIUM,
+    name: 'Medium Obscurement',
+    labels: {
+      effect: 'Cannot use Extreme or Long Distances.',
+      examples: 'Fog, heavy rain or heavy snow.'
+    }
+  },
+  {
+    id: ObscurementId.HEAVY,
+    name: 'Heavy Obscurement',
+    labels: {
+      effect: 'Cannot use Extreme, Long or Medium Distances.',
+      examples: 'Sleet, smoke or blizzard.'
+    }
+  }
 ];
 
 export const MARKS: Mark[] = [

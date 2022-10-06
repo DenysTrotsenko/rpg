@@ -36,8 +36,8 @@ import {
   TierId,
   TraitId, WeaponId
 } from '@flames-of-freedom-1e/enums';
-import {NotchId, RiskFactorId} from '@grim-and-perilous/enums';
-import {Notch, RiskFactor} from '@grim-and-perilous/models';
+import {LightingId, NotchId, ObscurementId, RiskFactorId} from '@grim-and-perilous/enums';
+import {Lighting, Notch, Obscurement, RiskFactor} from '@grim-and-perilous/models';
 
 @Pipe({
   name: 'getById'
@@ -52,7 +52,9 @@ export class GetByIdPipe implements PipeTransform {
   transform(value: FlawId, type: string): Flaw;
   transform(value: InjuryId, type: string): Injury;
   transform(value: InjuryTypeId, type: string): InjuryType;
+  transform(value: LightingId, type: string): Lighting;
   transform(value: NotchId, type: string): Notch;
+  transform(value: ObscurementId, type: string): Obscurement;
   transform(value: PermanentInjuryId, type: string): PermanentInjury;
   transform(value: ProfessionId, type: string): Profession;
   transform(value: QualityId, type: string): Quality;

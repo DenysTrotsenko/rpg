@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 :host {
   display: block;
   height: 100%;
@@ -13,4 +15,8 @@ mat-sidenav-container {
   mat-sidenav {
     width: 40px;
   }
+}
+
+.environment-card {
+  border-left: 5px solid $color-primary;
 }

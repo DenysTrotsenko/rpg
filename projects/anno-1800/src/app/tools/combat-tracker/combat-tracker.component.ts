@@ -5,10 +5,21 @@ import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { Threat } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import {Character} from '@ti/app/game/models/character';
-import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
 import {getAttributeBonus, getInitiative, getRolledInitiative} from '@ti/app/game/threat.utils';
 import {SkillId} from '@flames-of-freedom-1e/enums';
-import {filter, tap} from 'rxjs/operators';
+import {filter, map, tap} from 'rxjs/operators';
+import {LightingId, NotchId, ObscurementId, RiskFactorId} from '@grim-and-perilous/enums';
+import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
+import {NOTCHES} from '@grim-and-perilous/notches';
+import {Lighting, Obscurement, RiskFactor} from '@grim-and-perilous/models';
+import {FormControl, FormGroup} from '@angular/forms';
+
+interface Deployed {
+  risk_factor: RiskFactorId;
+  notch: NotchId;
+  value: number;
+}
+
 
 @Component({
   templateUrl: './combat-tracker.component.html',
@@ -17,9 +28,39 @@ import {filter, tap} from 'rxjs/operators';
 })
 export class CombatTrackerComponent implements OnInit, OnDestroy {
   readonly DataTypes = DataTypes;
+  readonly lighting: Lighting[] = this.data[DataTypes.LIGHTING];
+  readonly obscurement: Obscurement[] = this.data[DataTypes.OBSCUREMENT];
   readonly threats: Threat[] = this.data[DataTypes.THREATS];
+  readonly form: FormGroup = new FormGroup({
+    lighting: new FormControl(LightingId.PERFECT_LIGHT),
+    obscurement: new FormControl(ObscurementId.NO)
+  });
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
   readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
+  readonly deployed$: Observable<Deployed[]> = this.units$.asObservable().pipe(
+    map(units => {
+      return units
+        .filter(i => i.type === 'threat')
+        .reduce((acc, unit) => {
+          const threat: Threat = this.data[DataTypes.THREATS].find(i => i.id === unit.templateId);
+          const exist = acc.find(i => i.risk_factor === threat.risk_factor && i.notch === threat.notch);
+          if (!!exist) {
+            exist.value++;
+            return acc;
+          } else {
+            return [...acc, { risk_factor: threat.risk_factor, notch: threat.notch, value: 1 }];
+          }
+        }, [] as Deployed[]);
+    }),
+    map((deployed: Deployed[]) => deployed.sort((a, b) => {
+      const riskFactorA: number = RISK_FACTORS.map(i => i.id).indexOf(a.risk_factor);
+      const riskFactorB: number = RISK_FACTORS.map(i => i.id).indexOf(b.risk_factor);
+      if (riskFactorA === riskFactorB) {
+        return NOTCHES.map(i => i.id).indexOf(a.notch) - NOTCHES.map(i => i.id).indexOf(b.notch);
+      }
+      return riskFactorA - riskFactorB;
+    }))
+  );
 
   @HostListener('window:beforeunload') onBrowserClose(): void {
     this.ngOnDestroy();
@@ -35,10 +76,23 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
     if (temporary) {
       this.units$.next(JSON.parse(temporary));
     }
+    const environment = localStorage.getItem('tools.combat-environment');
+    if (environment) {
+      this.form.patchValue(JSON.parse(environment));
+    }
   }
 
   ngOnDestroy(): void {
     localStorage.setItem('tools.combat', JSON.stringify(this.units$.value));
+    localStorage.setItem('tools.combat-environment', JSON.stringify(this.form.getRawValue()));
+  }
+
+  getLighting(id: LightingId): Lighting {
+    return this.data[DataTypes.LIGHTING].find(i => i.id === id);
+  }
+
+  getObscurement(id: ObscurementId): Obscurement {
+    return this.data[DataTypes.OBSCUREMENT].find(i => i.id === id);
   }
 
   onSortClick(): void {

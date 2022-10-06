@@ -11,5 +11,5 @@ export const WARES: Ware[] = [
     name: 'Antidote (by dose)',
     type: WareTypeId.ALCHEMICAL_DRUGS_MEDICINE,
     cost: 0
-  }
+  },
 ];

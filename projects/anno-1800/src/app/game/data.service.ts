@@ -48,9 +48,10 @@ import {THREATS} from '@flames-of-freedom-1e/threats';
 import {THREAT_TRAITS} from '@flames-of-freedom-1e/threat-traits';
 import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
 import {NOTCHES} from '@grim-and-perilous/notches';
-import {Notch, RiskFactor, Size, ThreatType} from '@grim-and-perilous/models';
+import {Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType} from '@grim-and-perilous/models';
 import {SIZES} from '@grim-and-perilous/sizes';
 import {THREAT_TYPES} from '@grim-and-perilous/threat-types';
+import {LIGHTING, OBSCUREMENT} from '@grim-and-perilous/miscellanious';
 
 
 export enum FirestoreCollection {
@@ -78,8 +79,10 @@ export enum DataTypes {
   INJURIES = 'injuries',
   INJURY_TYPES = 'injury_types',
   LANGUAGES = 'languages',
+  LIGHTING = 'lighting',
   MARKS = 'marks',
   NOTCHES = 'notches',
+  OBSCUREMENT = 'obscurement',
   PERMANENT_INJURIES = 'permanent_injuries',
   PROFESSIONS = 'professions',
   QUALITIES = 'qualities',
@@ -158,12 +161,16 @@ export class DataService {
   readonly [DataTypes.HAIR_LENGTH]: HairLength[] = HAIR_LENGTH;
   readonly [DataTypes.HAIR_STYLE]: HairStyle[] = HAIR_STYLE;
   readonly [DataTypes.LANGUAGES]: Language[] = LANGUAGES;
+  readonly [DataTypes.LIGHTING]: Lighting[] = LIGHTING;
   readonly [DataTypes.MARKS]: Mark[] = MARKS;
+  readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
+  readonly [DataTypes.OBSCUREMENT]: Obscurement[] = OBSCUREMENT;
   readonly [DataTypes.PERMANENT_INJURIES]: PermanentInjury[] = PERMANENT_INJURIES.map(i => {
     i.labels.tooltip = this.getPermanentInjuryTooltip(i);
     return i;
   });
   readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
+  readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
   readonly [DataTypes.QUALITIES]: Quality[] = QUALITIES;
   readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {
     i.labels.tooltip = this.getQuirkTooltip(i);

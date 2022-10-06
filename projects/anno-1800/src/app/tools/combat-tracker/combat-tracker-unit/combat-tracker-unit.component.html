@@ -84,7 +84,7 @@
       </table>
       <p>
         <b class="c-gray">Skills:</b>
-        <span *ngFor="let i of getSkills(threat);" class="comma-separated ws-pl">
+        <span *ngFor="let i of getSkills(threat);" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.SKILLS)?.labels?.tooltip">
           {{(i.id | getById: DataTypes.SKILLS)?.name}} +{{i.value}}
         </span>
       </p>
