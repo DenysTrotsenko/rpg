@@ -84,19 +84,19 @@
       </table>
       <p>
         <b class="c-gray">Skills:</b>
-        <span *ngFor="let i of getSkills(threat);" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.SKILLS)?.labels?.tooltip">
-          {{(i.id | getById: DataTypes.SKILLS)?.name}} +{{i.value}}
+        <span *ngFor="let i of getSkills(threat); trackBy: trackById;" class="comma-separated ws-pl" [matTooltip]="i.tooltip">
+          {{i.name}} +{{i.value}}
         </span>
       </p>
       <p>
         <b class="c-gray">Traits:</b>
-        <span *ngFor="let i of threat.advancements.traits;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
+        <span *ngFor="let i of threat.advancements.traits; trackBy: trackById;" class="comma-separated ws-pl" [matTooltip]="(i.id | getById: DataTypes.THREAT_TRAITS)?.labels?.effect">
           {{(i.id | getById: DataTypes.THREAT_TRAITS)?.name}}<span *ngIf="i.value"> ({{i.value}})</span>
         </span>
       </p>
       <p *ngIf="threat.weapons.length" class="mb-5">
         <b class="c-gray">Attacks:</b>
-        <ng-container *ngFor="let i of threat.weapons;">
+        <ng-container *ngFor="let i of threat.weapons; trackBy: trackById;">
           <span *ngIf="i | getById : DataTypes.WEAPONS as weapon" class="comma-separated ws-pl">
             {{weapon.name}} ({{getWeaponChance(weapon, threat)}}%, {{getWeaponDamage(weapon, threat)}}; {{weapon.labels.distance}}; <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
           </span>

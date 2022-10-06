@@ -48,7 +48,7 @@ export class CombatTrackerUnitComponent {
     });
   }
 
-  getSkills(threat: Threat): { id: SkillId; value: number; }[] {
+  getSkills(threat: Threat): { id: SkillId; name: string; tooltip: string; value: number; }[] {
     return Object.entries(threat.advancements.skills
       .reduce((acc: object, cur: SkillId) => {
         if (acc.hasOwnProperty(cur)) {
@@ -58,8 +58,14 @@ export class CombatTrackerUnitComponent {
         }
         return acc;
       }, {}))
-      .map(skill => {
-        return { id: +skill[0] as SkillId, value: skill[1] as number };
+      .map(entry => {
+        const skill = this.data[DataTypes.SKILLS].find(i => i.id === +entry[0]);
+        return {
+          id: skill?.id,
+          name: skill?.name,
+          tooltip: skill?.labels?.tooltip,
+          value: entry[1] as number
+        };
       });
   }
 
@@ -111,5 +117,9 @@ export class CombatTrackerUnitComponent {
 
   getPerilThresholds(threat: Threat): string {
     return getThresholds(getPerilThreshold(threat));
+  }
+
+  trackById(index, item): unknown {
+    return item.id;
   }
 }
