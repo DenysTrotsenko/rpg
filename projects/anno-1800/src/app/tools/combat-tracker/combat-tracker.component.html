@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened position="end">
     <div class="d-f fd-c cg-5 mb-10">
-      <button mat-icon-button matTooltip="Add" color="primary" [matMenuTriggerFor]="menu">
+      <button mat-icon-button matTooltip="Add Unit" color="primary" [matMenuTriggerFor]="menu">
         <mat-icon>add</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -14,10 +14,10 @@
           </button>
         </ng-template>
       </mat-menu>
-      <button mat-icon-button matTooltip="Sort" (click)="onSortClick()">
+      <button mat-icon-button matTooltip="Sort by Initiative" (click)="onSortClick()">
         <mat-icon>sort</mat-icon>
       </button>
-      <button mat-icon-button color="warn" matTooltip="Clean" (click)="onCleanClick()">
+      <button mat-icon-button color="warn" matTooltip="Clean Board" (click)="onCleanClick()">
         <mat-icon>delete_forever</mat-icon>
       </button>
     </div>
