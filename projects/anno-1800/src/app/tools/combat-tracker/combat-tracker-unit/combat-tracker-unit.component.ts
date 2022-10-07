@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { CombatTrackerUnit } from '../combat-tracker.models';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Quality, Threat, Weapon} from '@flames-of-freedom-1e/models';
-import {AttributeId, SkillId} from '@flames-of-freedom-1e/enums';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
+import { Quality, Threat, Weapon } from '@flames-of-freedom-1e/models';
+import { AttributeId, SkillId } from '@flames-of-freedom-1e/enums';
 import {
   getWeaponDamage,
   getDamageThreshold,
@@ -12,7 +12,7 @@ import {
   getPerilThreshold,
   getThresholds, getAttributeBonus,
 } from '@ti/app/game/threat.utils';
-import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
+import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -119,7 +119,7 @@ export class CombatTrackerUnitComponent {
     return getThresholds(getPerilThreshold(threat));
   }
 
-  trackById(index, item): unknown {
+  trackById(_: number, item): unknown {
     return item.id;
   }
 }

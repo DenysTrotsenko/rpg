@@ -341,4 +341,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       )
       .subscribe();
   }
+
+  trackById(_: number, item): unknown {
+    return item.id;
+  }
 }

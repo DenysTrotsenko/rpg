@@ -1,25 +1,23 @@
-import {Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {DialogService, getId} from '@shared';
+import { Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DialogService, getId } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { Threat } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
-import {Character} from '@ti/app/game/models/character';
-import {getAttributeBonus, getInitiative, getRolledInitiative} from '@ti/app/game/threat.utils';
-import {SkillId} from '@flames-of-freedom-1e/enums';
-import {filter, map, tap} from 'rxjs/operators';
-import {LightingId, NotchId, ObscurementId, RiskFactorId} from '@grim-and-perilous/enums';
-import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
-import {NOTCHES} from '@grim-and-perilous/notches';
-import {Lighting, Obscurement, RiskFactor} from '@grim-and-perilous/models';
-import {FormControl, FormGroup} from '@angular/forms';
+import { Character } from '@ti/app/game/models/character';
+import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
+import { filter, map, tap } from 'rxjs/operators';
+import { LightingId, NotchId, ObscurementId, RiskFactorId } from '@grim-and-perilous/enums';
+import { RISK_FACTORS } from '@grim-and-perilous/risk-factors';
+import { NOTCHES } from '@grim-and-perilous/notches';
+import { Lighting, Obscurement } from '@grim-and-perilous/models';
+import { FormControl, FormGroup } from '@angular/forms';
 
-interface Deployed {
+interface ThreatsOnBoard {
   risk_factor: RiskFactorId;
   notch: NotchId;
   value: number;
 }
-
 
 @Component({
   templateUrl: './combat-tracker.component.html',
@@ -37,7 +35,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
   });
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
   readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
-  readonly deployed$: Observable<Deployed[]> = this.units$.asObservable().pipe(
+  readonly deployed$: Observable<ThreatsOnBoard[]> = this.units$.asObservable().pipe(
     map(units => {
       return units
         .filter(i => i.type === 'threat')
@@ -50,9 +48,9 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
           } else {
             return [...acc, { risk_factor: threat.risk_factor, notch: threat.notch, value: 1 }];
           }
-        }, [] as Deployed[]);
+        }, [] as ThreatsOnBoard[]);
     }),
-    map((deployed: Deployed[]) => deployed.sort((a, b) => {
+    map((deployed: ThreatsOnBoard[]) => deployed.sort((a, b) => {
       const riskFactorA: number = RISK_FACTORS.map(i => i.id).indexOf(a.risk_factor);
       const riskFactorB: number = RISK_FACTORS.map(i => i.id).indexOf(b.risk_factor);
       if (riskFactorA === riskFactorB) {
@@ -188,7 +186,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
     return 0;
   }
 
-  trackByFn(_: number, item): string {
+  trackByUid(_: number, item): string {
     return item.uid;
   }
 }

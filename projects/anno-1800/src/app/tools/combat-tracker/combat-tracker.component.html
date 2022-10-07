@@ -57,7 +57,7 @@
         </p>
       </mat-card-content>
     </mat-card>
-    <app-combat-tracker-unit *ngFor="let unit of units$ | async; trackBy: trackByFn;"
+    <app-combat-tracker-unit *ngFor="let unit of units$ | async; trackBy: trackByUid;"
       [value]="unit"
       (clone)="onCloneClick($event)"
       (remove)="onRemoveClick($event)">

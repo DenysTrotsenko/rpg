@@ -7,7 +7,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Campaign</mat-label>
         <mat-select formControlName="campaign">
-          <mat-option *ngFor="let i of campaigns$ | async" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of campaigns$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -21,13 +21,13 @@
       <mat-form-field appearance="outline">
         <mat-label>Culture</mat-label>
         <mat-select formControlName="culture">
-          <mat-option *ngFor="let i of CULTURES" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of CULTURES; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Languages</mat-label>
         <mat-select formControlName="languages" multiple>
-          <mat-option *ngFor="let i of LANGUAGES" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of LANGUAGES; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -46,7 +46,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Belief</mat-label>
         <mat-select formControlName="belief">
-          <mat-option *ngFor="let i of BELIEFS" [value]="i.id" [matTooltip]="i.labels?.description">
+          <mat-option *ngFor="let i of BELIEFS; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels?.description">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -54,7 +54,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Flaw</mat-label>
         <mat-select formControlName="flaw">
-          <mat-option *ngFor="let i of FLAWS" [value]="i.id" [matTooltip]="i.labels?.description">
+          <mat-option *ngFor="let i of FLAWS; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels?.description">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -67,7 +67,7 @@
       <mat-card-title>Attributes</mat-card-title>
     </mat-card-header>
     <mat-card-content formGroupName="attributes" class="d-f jc-sb cg-5">
-      <mat-form-field *ngFor="let i of ATTRIBUTES;" appearance="outline" class="f-1">
+      <mat-form-field *ngFor="let i of ATTRIBUTES; trackBy: trackById;" appearance="outline" class="f-1">
         <mat-label>{{i.name}}</mat-label>
         <input matInput type="number" min="25" max="55" [formControlName]="i.id">
         <mat-hint>
@@ -85,7 +85,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Archetype</mat-label>
         <mat-select formControlName="archetype">
-          <mat-option *ngFor="let i of ARCHETYPES;" [value]="i.id">
+          <mat-option *ngFor="let i of ARCHETYPES; trackBy: trackById;" [value]="i.id">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -93,7 +93,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Trait</mat-label>
         <mat-select formControlName="trait">
-          <mat-option *ngFor="let i of TRAITS;" [value]="i.id"  [class.hide]="isTraitHidden(i.id)">
+          <mat-option *ngFor="let i of TRAITS; trackBy: trackById;" [value]="i.id"  [class.hide]="isTraitHidden(i.id)">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -101,7 +101,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Tier</mat-label>
         <mat-select formControlName="tier">
-          <mat-option *ngFor="let i of TIERS;" [value]="i.id">
+          <mat-option *ngFor="let i of TIERS; trackBy: trackById;" [value]="i.id">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -116,12 +116,12 @@
     <mat-card-header>
       <mat-card-title>Professions & Advancements</mat-card-title>
     </mat-card-header>
-    <mat-card-content *ngFor="let tier of tiers; index as index;" class="d-f jc-sb cg-5">
+    <mat-card-content *ngFor="let tier of tiers; index as index; trackBy: trackById;" class="d-f jc-sb cg-5">
       <ng-container formGroupName="professions" *ngIf="form.get('tier').value >= TIERS[index].id">
         <mat-form-field appearance="outline" class="f-1">
           <mat-label>{{tier}} Profession</mat-label>
           <mat-select [formControlName]="tier.toLocaleLowerCase()" (valueChange)="onProfessionChange($event, tier.toLocaleLowerCase())">
-            <mat-option *ngFor="let i of PROFESSIONS;" [value]="i.id" [class.hide]="isProfessionHidden(i.id, tier.toLocaleLowerCase())">
+            <mat-option *ngFor="let i of PROFESSIONS; trackBy: trackById;" [value]="i.id" [class.hide]="isProfessionHidden(i.id, tier.toLocaleLowerCase())">
               {{i.name}} {{isMagicalProfession(i.id) ? '*' : ''}}
             </mat-option>
           </mat-select>
@@ -135,7 +135,7 @@
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Attribute Bonus</mat-label>
             <mat-select multiple formControlName="bonuses">
-              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.bonuses').value;" [value]="i">
+              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.bonuses').value; trackBy: trackById;" [value]="i">
                 {{(i | getById: 'attributes').name.slice(0,1).toLocaleUpperCase()}}B
               </mat-option>
             </mat-select>
@@ -143,7 +143,7 @@
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Skills</mat-label>
             <mat-select multiple formControlName="skills">
-              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.skills').value;" [value]="i">
+              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.skills').value; trackBy: trackById;" [value]="i">
                 {{(i | getById: 'skills').name}}
               </mat-option>
             </mat-select>
@@ -151,7 +151,7 @@
           <mat-form-field appearance="outline" class="f-1">
             <mat-label>Talents</mat-label>
             <mat-select multiple formControlName="talents">
-              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.talents').value;" [value]="i">
+              <mat-option *ngFor="let i of form.get('schemas.' + tier.toLocaleLowerCase() + '.talents').value; trackBy: trackById;" [value]="i">
                 {{(i | getById: 'talents').name}}
               </mat-option>
             </mat-select>
@@ -169,7 +169,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Spells</mat-label>
         <mat-select formControlName="spells" multiple>
-          <mat-option *ngFor="let i of SPELLS" [value]="i.id" [matTooltip]="i.labels.tooltip">
+          <mat-option *ngFor="let i of SPELLS; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -177,7 +177,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Alchemical Arts</mat-label>
         <mat-select formControlName="alchemical_arts" multiple>
-          <mat-option *ngFor="let i of ALCHEMICAL_ARTS" [value]="i.id" [matTooltip]="i.labels.tooltip">
+          <mat-option *ngFor="let i of ALCHEMICAL_ARTS; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -193,31 +193,31 @@
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Sex</mat-label>
         <mat-select formControlName="sex">
-          <mat-option *ngFor="let i of SEX" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of SEX; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Age</mat-label>
         <mat-select formControlName="age">
-          <mat-option *ngFor="let i of AGES" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of AGES; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Stature</mat-label>
         <mat-select formControlName="stature">
-          <mat-option *ngFor="let i of STATURE" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of STATURE; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Build</mat-label>
         <mat-select formControlName="build">
-          <mat-option *ngFor="let i of BUILD" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of BUILD; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Style</mat-label>
         <mat-select formControlName="style">
-          <mat-option *ngFor="let i of STYLE" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of STYLE; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-card-content>
@@ -225,31 +225,31 @@
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Eyes</mat-label>
         <mat-select formControlName="eyes">
-          <mat-option *ngFor="let i of EYES" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of EYES; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Hair Length</mat-label>
         <mat-select formControlName="hair_length">
-          <mat-option *ngFor="let i of HAIR_LENGTH" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of HAIR_LENGTH; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Hair Style</mat-label>
         <mat-select formControlName="hair_style">
-          <mat-option *ngFor="let i of HAIR_STYLE" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of HAIR_STYLE; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Hair Color</mat-label>
         <mat-select formControlName="hair_color">
-          <mat-option *ngFor="let i of HAIR_COLOR" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of HAIR_COLOR; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="f-1" formGroupName="miscellaneous">
         <mat-label>Mark</mat-label>
         <mat-select formControlName="mark">
-          <mat-option *ngFor="let i of MARKS" [value]="i.id">{{i.name}}</mat-option>
+          <mat-option *ngFor="let i of MARKS; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-card-content>
@@ -263,7 +263,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Afflictions</mat-label>
         <mat-select formControlName="afflictions" multiple>
-          <mat-option *ngFor="let i of AFFLICTIONS" [value]="i.id" [matTooltip]="i.labels.tooltip">
+          <mat-option *ngFor="let i of AFFLICTIONS; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
@@ -271,7 +271,7 @@
       <mat-form-field appearance="outline" class="f-1">
         <mat-label>Permanent Injuries</mat-label>
         <mat-select formControlName="permanent_injuries" multiple>
-          <mat-option *ngFor="let i of PERMANENT_INJURIES" [value]="i.id" [matTooltip]="i.labels.tooltip">
+          <mat-option *ngFor="let i of PERMANENT_INJURIES; trackBy: trackById;" [value]="i.id" [matTooltip]="i.labels.tooltip">
             {{i.name}}
           </mat-option>
         </mat-select>
