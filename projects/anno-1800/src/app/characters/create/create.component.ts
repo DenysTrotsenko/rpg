@@ -312,14 +312,14 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       .pipe(
         filter(schema => !!schema),
         tap(schema => {
-          this.form.get(`schemas.${tier}`).patchValue(schema, {emitEvent: true});
           const advancements = this.form.get(`advancements.${tier}`).value;
           const skills = advancements.skills.filter(i => schema.skills.includes(i));
           const talents = advancements.talents.filter(i => schema.talents.includes(i));
+          this.form.get(`schemas.${tier}`).patchValue(schema);
           this.form.get(`advancements.${tier}`).patchValue({
             skills: [...skills],
             talents: [...talents]
-          }, {emitEvent: true});
+          });
         })
       )
       .subscribe();
