@@ -48,23 +48,27 @@ export class CombatTrackerUnitComponent {
     });
   }
 
-  getSkills(threat: Threat): { id: SkillId; name: string; tooltip: string; value: number; }[] {
+  getSkills(threat: Threat, unit: CombatTrackerUnit): { id: SkillId; name: string; tooltip: string; value: number; }[] {
+    const skillRanksPenalty = Math.max(unit.peril - 1, 0);
+
     return Object.entries(threat.advancements.skills
       .reduce((acc: object, cur: SkillId) => {
         if (acc.hasOwnProperty(cur)) {
-          acc[cur] += 10;
+          acc[cur] += 1;
         } else {
-          acc[cur] = 10;
+          acc[cur] = 1;
         }
+
         return acc;
       }, {}))
       .map(entry => {
         const skill = this.data[DataTypes.SKILLS].find(i => i.id === +entry[0]);
+
         return {
           id: skill?.id,
           name: skill?.name,
           tooltip: skill?.labels?.tooltip,
-          value: entry[1] as number
+          value: Math.max(+entry[1] - skillRanksPenalty, 0) * 10
         };
       });
   }

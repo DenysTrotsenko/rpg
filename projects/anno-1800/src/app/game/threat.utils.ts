@@ -76,7 +76,10 @@ export function getMovement(threat: Threat): number {
 export function getPerilThreshold(threat: Threat): number {
   const fromBrawnBonus: number = getAttributeBonus(threat, AttributeId.BRAWN);
   const fromWillpowerBonus: number = getAttributeBonus(threat, AttributeId.WILLPOWER);
-  return getAttributeBonus(threat, AttributeId.WILLPOWER) + 3;
+  const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(ThreatTraitId.GUT_INSTINCT)
+    ? Math.max(fromBrawnBonus, fromWillpowerBonus)
+    : fromWillpowerBonus;
+  return 3 + fromAttribute;
 }
 
 export function getRolledInitiative(threat: Threat): number {
