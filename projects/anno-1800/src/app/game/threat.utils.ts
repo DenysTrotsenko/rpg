@@ -5,6 +5,7 @@ import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {getIntegerInRange} from '@shared';
 import {SIZES} from '@grim-and-perilous/sizes';
 import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
+import {CombatTrackerUnit} from '@ti/app/tools/combat-tracker/combat-tracker.models';
 
 export function getAttributeBonus(threat: Threat, attributeId: AttributeId): number {
   const fromAttribute: number = getBonusFromAttribute(threat.attributes[attributeId]);
@@ -46,11 +47,14 @@ export function getDamageThreshold(threat: Threat): number {
   return fromAttribute + fromTraits + fromRiskFactor;
 }
 
-export function getDefences(threat: Threat): string {
+export function getDefences(threat: Threat, peril: number): string {
   const fromCombat: number = threat.attributes[AttributeId.COMBAT];
-  const fromSimpleMelee: number = threat.advancements.skills.filter(i => i === SkillId.SIMPLE_MELEE).length * 10;
   const fromAgility: number = threat.attributes[AttributeId.AGILITY];
-  const fromCoordination: number = threat.advancements.skills.filter(i => i === SkillId.COORDINATION).length * 10;
+  const skillRanksPenalty = Math.max(peril - 1, 0);
+  const simpleMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.SIMPLE_MELEE).length;
+  const coordinationMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.COORDINATION).length;
+  const fromSimpleMelee: number = Math.max(0, simpleMeleeRanks - skillRanksPenalty) * 10;
+  const fromCoordination: number = Math.max(0, coordinationMeleeRanks - skillRanksPenalty) * 10;
   const ranged: number = Math.round(fromAgility + fromCoordination);
   const melee: number = Math.round(fromCombat + fromSimpleMelee);
   return `${melee}% / ${ranged}%`;

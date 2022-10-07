@@ -77,7 +77,7 @@
           <td class="mat-cell p-5">{{getMovement(threat)}}</td>
           <td class="mat-cell p-5">{{getDamageThresholds(threat)}}</td>
           <td class="mat-cell p-5">{{getPerilThresholds(threat)}}</td>
-          <td class="mat-cell p-5">{{getDefences(threat)}}</td>
+          <td class="mat-cell p-5">{{getDefences(threat, value)}}</td>
           <td class="mat-cell p-5">{{getSize(threat)}}</td>
           <td class="mat-cell p-5">{{getRiskFactorAndNotch(threat)}}</td>
         </tr>
@@ -98,7 +98,7 @@
         <b class="c-gray">Attacks:</b>
         <ng-container *ngFor="let i of threat.weapons; trackBy: trackById;">
           <span *ngIf="i | getById : DataTypes.WEAPONS as weapon" class="comma-separated ws-pl">
-            {{weapon.name}} ({{getWeaponChance(weapon, threat)}}%, {{getWeaponDamage(weapon, threat)}}; {{weapon.labels.distance}}; <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
+            {{weapon.name}} ({{getWeaponChance(weapon, threat, value)}}%, {{getWeaponDamage(weapon, threat)}}; {{weapon.labels.distance}}; <span *ngFor="let j of getAllQualities(weapon)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">{{j?.name}}</span>)
           </span>
         </ng-container>
       </p>

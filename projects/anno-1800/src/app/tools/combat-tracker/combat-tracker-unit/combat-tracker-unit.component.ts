@@ -69,10 +69,13 @@ export class CombatTrackerUnitComponent {
       });
   }
 
-  getWeaponChance(weapon: Weapon, threat: Threat): number {
-    const skills = weapon.skills;
+  getWeaponChance(weapon: Weapon, threat: Threat, unit: CombatTrackerUnit): number {
+    const skillRanksPenalty = Math.max(unit.peril - 1, 0);
+    const skillRanks = weapon.skills
+      .map(id => threat.advancements.skills.filter(s => s === id).length)
+      .map(rank => Math.max(rank - skillRanksPenalty, 0));
     const fromAttribute = threat.attributes[AttributeId.COMBAT];
-    const fromSkill = Math.max(...skills.map(i => threat.advancements.skills.filter(s => s === i).length)) * 10;
+    const fromSkill = Math.max(...skillRanks) * 10;
     return fromAttribute + fromSkill;
   }
 
@@ -84,8 +87,17 @@ export class CombatTrackerUnitComponent {
     return this.data[DataTypes.QUALITIES].filter(i => weapon.qualities.includes(i.id));
   }
 
-  getDefences(threat: Threat): string {
-    return getDefences(threat);
+  getDefences(threat: Threat, unit: CombatTrackerUnit): string {
+    const fromCombat: number = threat.attributes[AttributeId.COMBAT];
+    const fromAgility: number = threat.attributes[AttributeId.AGILITY];
+    const skillRanksPenalty = Math.max(unit.peril - 1, 0);
+    const simpleMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.SIMPLE_MELEE).length;
+    const coordinationMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.COORDINATION).length;
+    const fromSimpleMelee: number = Math.max(0, simpleMeleeRanks - skillRanksPenalty) * 10;
+    const fromCoordination: number = Math.max(0, coordinationMeleeRanks - skillRanksPenalty) * 10;
+    const ranged: number = Math.round(fromAgility + fromCoordination);
+    const melee: number = Math.round(fromCombat + fromSimpleMelee);
+    return `${melee}% / ${ranged}%`;
   }
 
   getMovement(threat: Threat): string {
