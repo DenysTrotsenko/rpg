@@ -92,16 +92,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getDefences(threat: Threat, unit: CombatTrackerUnit): string {
-    const fromCombat: number = threat.attributes[AttributeId.COMBAT];
-    const fromAgility: number = threat.attributes[AttributeId.AGILITY];
-    const skillRanksPenalty = Math.max(unit.peril - 1, 0);
-    const simpleMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.SIMPLE_MELEE).length;
-    const coordinationMeleeRanks = threat.advancements.skills.filter(i => i === SkillId.COORDINATION).length;
-    const fromSimpleMelee: number = Math.max(0, simpleMeleeRanks - skillRanksPenalty) * 10;
-    const fromCoordination: number = Math.max(0, coordinationMeleeRanks - skillRanksPenalty) * 10;
-    const ranged: number = Math.round(fromAgility + fromCoordination);
-    const melee: number = Math.round(fromCombat + fromSimpleMelee);
-    return `${melee}% / ${ranged}%`;
+    return getDefences(threat, unit.peril);
   }
 
   getMovement(threat: Threat): string {
