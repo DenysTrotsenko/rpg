@@ -3,7 +3,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonDialogData } from '../dialog.models';
 
 @Component({
-  selector: 'lib-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })

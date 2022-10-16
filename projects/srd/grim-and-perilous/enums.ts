@@ -250,40 +250,6 @@ export enum LightingId {
   TOTAL_DARKNESS = 'total_darkness',
 }
 
-// export enum LanguageId {
-//   ABENAKI = '',
-//   ALGONQUIN = '',
-//   APALACHEE = '',
-//   ATIKAMEKW = '',
-//   CATAWBA = '',
-//   CHICKASAW = '',
-//   CREOLE = 'creole',
-//   DUTCH = 'dutch',
-//   ENGLISH = 'english',
-//   FRENCH = 'french',
-//   GERMAN = 'german',
-//   GREEK = 'greek',
-//   HAUDENOSAUNEE = '',
-//   HEBREW = 'hebrew',
-//   INNU = '',
-//   LATIN = 'latin',
-//   LENAPE = '',
-//   LINGUA_FRANCA = '',
-//   MAHICAN = '',
-//   MASSACHUSETT = '',
-//   PIDGIN = 'pidgin',
-//   PORTUGUESE = 'portuguese',
-//   POWHATAN = '',
-//   RUSSIAN = 'russian',
-//   SEMINOLE = '',
-//   SHAWNEE = '',
-//   SPANISH = 'spanish',
-//   SWEDISH = 'swedish',
-//   TSALAGI = '',
-//   WAMPANOAG = '',
-//   YIDDISH = 'yiddish'
-// }
-
 export enum MarkId {
   A_BALD_PATCH = 'a_bald_patch',
   A_BIG_FOREHEAD = 'a_big_forehead',
