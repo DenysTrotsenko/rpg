@@ -915,7 +915,7 @@ export const ALCHEMICAL_ARTS: AlchemicalArt[] = [
     tier: TierId.BASIC,
     type: SpellTypeId.ALCHEMICAL_ARTS,
     labels: {
-      description: 'Through the work of Clavis Maioris Sapientiae, we find the Art of making acid in all its mundane and warlike forms . . .',
+      description: 'Through the work of Clavis Maioris Sapientiae, we find the Art of making acid in all its mundane and warlike forms...',
       preparation_time: 'Twelve hours',
       create: 'The more potent the bomb is, the more the Difficulty Rating eases or worsens:\n• Add +0 Total Damage: (Routine +10%) Alchemy\n• Add +3 Total Damage: (Standard +/-0%) Alchemy\n• Add +6 Total Damage: (Challenging -10%) Alchemy',
       effect: 'If successful, you create a number of bombs for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One bomb\n• [IB] 7 to 12: Two bombs\n• [IB] 13+: Three bombs',
@@ -990,7 +990,7 @@ export const ALCHEMICAL_ARTS: AlchemicalArt[] = [
     tier: TierId.ADVANCED,
     type: SpellTypeId.ALCHEMICAL_ARTS,
     labels: {
-      description: 'To create Essence of the Cat, we let the body of the mountain lion boil in wax, then add . . .',
+      description: 'To create Essence of the Cat, we let the body of the mountain lion boil in wax, then add...',
       preparation_time: 'Twenty-four hours',
       create: 'Work with the Historian to first decide which Trait from a threat you wish to distill into the Essence. The lengthier the Essence’s duration, the more the Difficulty Rating eases or worsens:\n• One hour: (Routine +10%) Alchemy\n• Two hour: (Standard +/-0%) Alchemy\n• Three hours: (Challenging -10%) Alchemy',
       effect: 'If successful, you create a number of vials for every 6 points of your [IB]. If failed, nothing happens.\n• [IB] 1 to 6: One vial\n• [IB] 7 to 12: Two vials\n• [IB] 13+: Three vials',

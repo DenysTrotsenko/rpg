@@ -3,6 +3,7 @@ import {
   AttributeId,
   BeliefId,
   BuildId,
+  DispositionId,
   EyesId,
   FlawId,
   HairColorId,
@@ -24,19 +25,6 @@ import {
   ThreatTypeId,
   TierId
 } from './enums';
-import {HasId} from '@shared';
-
-export interface HasBase {
-  id: number;
-  name: string;
-}
-
-export interface HasLabels {
-  labels?: {
-    description?: string;
-    tooltip?: string;
-  };
-}
 
 export interface Age {
   id: AgeId;
@@ -66,7 +54,9 @@ export interface Build {
   name: string;
 }
 
-export interface Disposition extends HasBase, HasLabels {
+export interface Disposition {
+  id: DispositionId;
+  name: string;
   labels?: {
     description?: string;
     tooltip?: string;
@@ -200,7 +190,7 @@ export interface Style {
   name: string;
 }
 
-export interface ThreatType extends HasId<ThreatTypeId> {
+export interface ThreatType {
   id: ThreatTypeId;
   name: string;
 }

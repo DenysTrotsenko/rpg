@@ -19,9 +19,9 @@ export const DRUGS: Drug[] = [
     id: DrugId.ARSENIC_OR_MERCURY,
     name: 'Arsenic or Mercury',
     labels: {
-      description: 'This poison will cause heart palpitations if ingested . . . perfect for doing away with a lover whose money you wish to abscond with, or a political enemy you need out of the way.',
+      description: 'This poison will cause heart palpitations if ingested... perfect for doing away with a lover whose money you wish to abscond with, or a political enemy you need out of the way.',
       resist: '(Hard -20%) Toughness',
-      effect: 'You temporarily suffer a -6 to all Primary Attribute Bonuses (to a minimum of 1) and 2D10+2 Peril.You must also attempt to Resist again every twenty-four hours, or else suffer the effects again. If you are Incapacitated! due to Arsenic or Mercury, you’re Slain!. Your Primary Attribute Bonuses recover +1 a day until fully restored.',
+      effect: 'You temporarily suffer a -6 to all Primary Attribute Bonuses (to a minimum of 1) and 2D10+2 Peril. You must also attempt to Resist again every twenty-four hours, or else suffer the effects again. If you are Incapacitated! due to Arsenic or Mercury, you’re Slain!. Your Primary Attribute Bonuses recover +1 a day until fully restored.',
       critical_success: 'You are now permanently immune to Arsenic or Mercury.',
       critical_failure: 'You are Slain!.',
       other_considerations: 'Arsenic and Mercury cannot be discovered when placed in food or drink. Use of an Antidote allows you to immediately recover all Primary Attribute Bonuses.',
