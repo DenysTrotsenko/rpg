@@ -14,9 +14,10 @@ import {
   SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
   TalentId, ThreatId, ThreatTraitId,
   TierId,
-  TraitId, WareId, WareTypeId, WeaponId
+  TraitId, WareId, WareTypeId, WeaponId,
+  NotchId, RiskFactorId, SizeId, ThreatTypeId
 } from './enums';
-import {NotchId, RiskFactorId, SizeId, ThreatTypeId} from '@grim-and-perilous/enums';
+import {LightingId, ObscurementId} from '@grim-and-perilous/enums';
 
 export interface Age {
   id: AgeId;
@@ -161,8 +162,22 @@ export interface Language {
   name: string;
 }
 
+export interface Lighting {
+  id: LightingId;
+  name: string;
+  labels: {
+    effect: string;
+    examples: string;
+  };
+}
+
 export interface Mark {
   id: MarkId;
+  name: string;
+}
+
+export interface Notch {
+  id: NotchId;
   name: string;
 }
 
@@ -172,6 +187,15 @@ export interface AdvancementScheme {
   bonuses?: AttributeId[];
   skills?: SkillId[];
   talents?: TalentId[];
+}
+
+export interface Obscurement {
+  id: ObscurementId;
+  name: string;
+  labels: {
+    effect: string;
+    examples: string;
+  };
 }
 
 export interface Profession extends HasId<ProfessionId> {
@@ -213,9 +237,25 @@ export interface Quirk extends HasId<QuirkId> {
   };
 }
 
+export interface RiskFactor {
+  id: RiskFactorId;
+  name: string;
+  mechanics: {
+    DAMAGE_THRESHOLD_BONUS: number;
+  };
+}
+
 export interface Sex {
   id: SexId;
   name: string;
+}
+
+export interface Size {
+  id: SizeId;
+  name: string;
+  mechanics: {
+    FURY_DICE: number;
+  };
 }
 
 export interface Skill extends HasId<SkillId> {
@@ -288,6 +328,11 @@ export interface Talent extends HasId<TalentId> {
     effect: string;
     tooltip?: string;
   };
+}
+
+export interface ThreatType {
+  id: ThreatTypeId;
+  name: string;
 }
 
 export interface Tier {

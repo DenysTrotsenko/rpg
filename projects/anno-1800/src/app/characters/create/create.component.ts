@@ -39,6 +39,7 @@ import {
   FlawId,
   ProfessionId,
   SexId,
+  SizeId,
   TraitId
 } from '@flames-of-freedom-1e/enums';
 import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-freedom-1e/utils';
@@ -49,7 +50,6 @@ import {Campaign} from '@ti/app/game/models/campaign';
 import {
   CustomizeAdvancementSchemeComponent
 } from '@ti/app/game/components/customize-advancement-scheme/customize-advancement-scheme.component';
-import {SizeId} from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './create.component.html',

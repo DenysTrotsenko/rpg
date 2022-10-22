@@ -1,17 +1,14 @@
 import { Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 import { DialogService, getId } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Threat } from '@flames-of-freedom-1e/models';
+import { Threat, Lighting, Obscurement } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import { Character } from '@ti/app/game/models/character';
 import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
-import { filter, map, tap } from 'rxjs/operators';
-import { LightingId, NotchId, ObscurementId, RiskFactorId } from '@grim-and-perilous/enums';
-import { RISK_FACTORS } from '@grim-and-perilous/risk-factors';
-import { NOTCHES } from '@grim-and-perilous/notches';
-import { Lighting, Obscurement } from '@grim-and-perilous/models';
-import { FormControl, FormGroup } from '@angular/forms';
+import { LightingId, NotchId, ObscurementId, RiskFactorId } from '@flames-of-freedom-1e/enums';
 
 interface ThreatsOnBoard {
   risk_factor: RiskFactorId;
@@ -51,10 +48,10 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
         }, [] as ThreatsOnBoard[]);
     }),
     map((deployed: ThreatsOnBoard[]) => deployed.sort((a, b) => {
-      const riskFactorA: number = RISK_FACTORS.map(i => i.id).indexOf(a.risk_factor);
-      const riskFactorB: number = RISK_FACTORS.map(i => i.id).indexOf(b.risk_factor);
+      const riskFactorA: number = this.data[DataTypes.RISK_FACTORS].map(i => i.id).indexOf(a.risk_factor);
+      const riskFactorB: number = this.data[DataTypes.RISK_FACTORS].map(i => i.id).indexOf(b.risk_factor);
       if (riskFactorA === riskFactorB) {
-        return NOTCHES.map(i => i.id).indexOf(a.notch) - NOTCHES.map(i => i.id).indexOf(b.notch);
+        return this.data[DataTypes.NOTCHES].map(i => i.id).indexOf(a.notch) - this.data[DataTypes.NOTCHES].map(i => i.id).indexOf(b.notch);
       }
       return riskFactorA - riskFactorB;
     }))

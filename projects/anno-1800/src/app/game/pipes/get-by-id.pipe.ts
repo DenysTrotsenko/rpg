@@ -16,7 +16,8 @@ import {
   SpellType,
   Talent, Threat, ThreatTrait,
   Tier,
-  Trait, Weapon
+  Trait, Weapon,
+  Lighting, Notch, Obscurement, RiskFactor
 } from '@flames-of-freedom-1e/models';
 import {
   AfflictionId,
@@ -34,10 +35,9 @@ import {
   SpellTypeId,
   TalentId, ThreatId, ThreatTraitId,
   TierId,
-  TraitId, WeaponId
+  TraitId, WeaponId,
+  LightingId, NotchId, ObscurementId, RiskFactorId
 } from '@flames-of-freedom-1e/enums';
-import {LightingId, NotchId, ObscurementId, RiskFactorId} from '@grim-and-perilous/enums';
-import {Lighting, Notch, Obscurement, RiskFactor} from '@grim-and-perilous/models';
 
 @Pipe({
   name: 'getById'

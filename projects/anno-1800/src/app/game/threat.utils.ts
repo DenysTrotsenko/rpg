@@ -3,9 +3,8 @@ import {AttributeId, QualityId, SkillId, ThreatTraitId} from '@flames-of-freedom
 import {Threat, Weapon} from '@flames-of-freedom-1e/models';
 import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
 import {getIntegerInRange} from '@shared';
-import {SIZES} from '@grim-and-perilous/sizes';
-import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
-import {CombatTrackerUnit} from '@ti/app/tools/combat-tracker/combat-tracker.models';
+import {SIZES} from '@flames-of-freedom-1e/sizes';
+import {RISK_FACTORS} from '@flames-of-freedom-1e/risk-factors';
 
 export function getAttributeBonus(threat: Threat, attributeId: AttributeId): number {
   const fromAttribute: number = getBonusFromAttribute(threat.attributes[attributeId]);

@@ -357,6 +357,12 @@ export enum LanguageId {
   WAMPANOAG
 }
 
+export enum LightingId {
+  PERFECT_LIGHT = 'perfect_light',
+  FLEETING_SHADOWS = 'fleeting_shadows',
+  TOTAL_DARKNESS = 'total_darkness',
+}
+
 export enum MarkId {
   A_BALD_PATCH = PrefixId.FLAMES_OF_FREEDOM,
   A_BIG_FOREHEAD,
@@ -458,6 +464,20 @@ export enum MarkId {
   UNKEMPT_HAIR,
   WIND_CHAPPED_CHEEKS,
   WOODEN_DENTURES
+}
+
+export enum NotchId {
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high',
+  UNIQUE = 'unique'
+}
+
+export enum ObscurementId {
+  NO = 'no',
+  LIGHT = 'light',
+  MEDIUM = 'medium',
+  HEAVY = 'heavy'
 }
 
 export enum PermanentInjuryId {
@@ -700,9 +720,23 @@ export enum QuirkId {
   PEN_NAME
 }
 
+export enum RiskFactorId {
+  BASIC = 'basic',
+  INTERMEDIATE = 'intermediate',
+  ADVANCED = 'advanced',
+  ELITE = 'elite'
+}
+
 export enum SexId {
   MALE = PrefixId.FLAMES_OF_FREEDOM,
   FEMALE
+}
+
+export enum SizeId {
+  SMALL = 'small',
+  NORMAL = 'normal',
+  LARGE = 'large',
+  HUGE = 'huge'
 }
 
 export enum SkillId {
@@ -1152,6 +1186,14 @@ export enum ThreatTraitId {
   VAMPYRE,
   SIREN_SONG,
   WE_ARE_THE_LIGHT,
+}
+
+export enum ThreatTypeId {
+  ABYSSAL = 'abyssal',
+  ANIMAL = 'animal',
+  BEAST = 'beast',
+  HUMANOID = 'humanoid',
+  SUPERNATURAL = 'supernatural'
 }
 
 export enum TierId {

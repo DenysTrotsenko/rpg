@@ -18,7 +18,8 @@ import {
   Quirk, Sex,
   Skill, Spell, SpellType, Stature, Style,
   Talent, Threat, ThreatTrait, Tier,
-  Trait, Weapon
+  Trait, Weapon,
+  Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType
 } from '@flames-of-freedom-1e/models';
 import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
 import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
@@ -30,28 +31,28 @@ import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
 import { TRAITS } from '@flames-of-freedom-1e/traits';
 import { QUIRKS } from '@flames-of-freedom-1e/quirks';
 import { SKILLS } from '@flames-of-freedom-1e/skills';
-import {ALCHEMICAL_ARTS, SPELL_TYPES, SPELLS} from '@flames-of-freedom-1e/spells';
+import { ALCHEMICAL_ARTS, SPELL_TYPES, SPELLS } from '@flames-of-freedom-1e/spells';
 import { TALENTS } from '@flames-of-freedom-1e/talents';
 import { AGES } from '@flames-of-freedom-1e/age';
 import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
 import { TIERS } from '@flames-of-freedom-1e/tiers';
 import { LANGUAGES } from '@flames-of-freedom-1e/languages';
-import {Campaign} from '@ti/app/game/models/campaign';
-import {Character} from '@ti/app/game/models/character';
-import {INJURIES, INJURY_TYPES} from '@flames-of-freedom-1e/injuries';
-import {PERMANENT_INJURIES} from '@flames-of-freedom-1e/permanent-injuries';
-import {WEAPONS} from '@flames-of-freedom-1e/weapons';
-import {QUALITIES} from '@flames-of-freedom-1e/qualities';
-import {AILMENTS} from '@flames-of-freedom-1e/ailments';
-import {DRUGS} from '@flames-of-freedom-1e/drugs';
-import {THREATS} from '@flames-of-freedom-1e/threats';
-import {THREAT_TRAITS} from '@flames-of-freedom-1e/threat-traits';
-import {RISK_FACTORS} from '@grim-and-perilous/risk-factors';
-import {NOTCHES} from '@grim-and-perilous/notches';
-import {Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType} from '@grim-and-perilous/models';
-import {SIZES} from '@grim-and-perilous/sizes';
-import {THREAT_TYPES} from '@grim-and-perilous/threat-types';
-import {LIGHTING, OBSCUREMENT} from '@grim-and-perilous/miscellanious';
+import { Campaign } from '@ti/app/game/models/campaign';
+import { Character } from '@ti/app/game/models/character';
+import { INJURIES, INJURY_TYPES } from '@flames-of-freedom-1e/injuries';
+import { PERMANENT_INJURIES } from '@flames-of-freedom-1e/permanent-injuries';
+import { WEAPONS } from '@flames-of-freedom-1e/weapons';
+import { QUALITIES } from '@flames-of-freedom-1e/qualities';
+import { AILMENTS } from '@flames-of-freedom-1e/ailments';
+import { DRUGS } from '@flames-of-freedom-1e/drugs';
+import { THREATS } from '@flames-of-freedom-1e/threats';
+import { THREAT_TRAITS } from '@flames-of-freedom-1e/threat-traits';
+import { RISK_FACTORS } from '@flames-of-freedom-1e/risk-factors';
+import { NOTCHES } from '@flames-of-freedom-1e/notches';
+import { SIZES } from '@flames-of-freedom-1e/sizes';
+import { THREAT_TYPES } from '@flames-of-freedom-1e/threat-types';
+import { OBSCUREMENTS } from '@flames-of-freedom-1e/obscurements';
+import { LIGHTINGS } from '@flames-of-freedom-1e/lightnings';
 
 
 export enum FirestoreCollection {
@@ -161,10 +162,10 @@ export class DataService {
   readonly [DataTypes.HAIR_LENGTH]: HairLength[] = HAIR_LENGTH;
   readonly [DataTypes.HAIR_STYLE]: HairStyle[] = HAIR_STYLE;
   readonly [DataTypes.LANGUAGES]: Language[] = LANGUAGES;
-  readonly [DataTypes.LIGHTING]: Lighting[] = LIGHTING;
+  readonly [DataTypes.LIGHTING]: Lighting[] = LIGHTINGS;
   readonly [DataTypes.MARKS]: Mark[] = MARKS;
   readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
-  readonly [DataTypes.OBSCUREMENT]: Obscurement[] = OBSCUREMENT;
+  readonly [DataTypes.OBSCUREMENT]: Obscurement[] = OBSCUREMENTS;
   readonly [DataTypes.PERMANENT_INJURIES]: PermanentInjury[] = PERMANENT_INJURIES.map(i => {
     i.labels.tooltip = this.getPermanentInjuryTooltip(i);
     return i;

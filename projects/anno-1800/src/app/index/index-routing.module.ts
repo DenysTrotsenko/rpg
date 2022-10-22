@@ -9,14 +9,14 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
       {
+        path: 'admin',
+        loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule),
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'auth',
         loadChildren: () => import('../../../../std/src/lib/auth/auth.module').then(m => m.AuthModule)
       },
-      // {
-      //   path: 'admin',
-      //   loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule),
-      //   canActivate: [AuthGuard]
-      // },
       {
         path: 'campaigns',
         loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule),

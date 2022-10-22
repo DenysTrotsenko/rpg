@@ -21,6 +21,9 @@
       <a mat-list-item routerLink="tools" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Tools' }}">
         <mat-icon>construction</mat-icon><span class="ml-10 not-expanded-hide">Tools</span>
       </a>
+      <a mat-list-item routerLink="admin" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Admin' }}">
+        <mat-icon>admin_panel_settings</mat-icon><span class="ml-10 not-expanded-hide">Admin</span>
+      </a>
 <!--      <a mat-list-item routerLink="rules" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Rules' }}">-->
 <!--        <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">Rules</span>-->
 <!--      </a>-->
@@ -30,9 +33,6 @@
 <!--      <mat-divider></mat-divider>-->
 <!--      <a mat-list-item routerLink="profile" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Profile' }}">-->
 <!--        <mat-icon>account_circle</mat-icon><span class="ml-10 not-expanded-hide">Profile</span>-->
-<!--      </a>-->
-<!--      <a *ngIf="admin$ | async" mat-list-item routerLink="admin" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Admin' }}">-->
-<!--        <mat-icon>admin_panel_settings</mat-icon><span class="ml-10 not-expanded-hide">Admin</span>-->
 <!--      </a>-->
     </mat-nav-list>
     <mat-nav-list dense>
