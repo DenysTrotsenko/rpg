@@ -1,1 +1,17 @@
-<p>qualities works!</p>
+<mat-toolbar>
+  <button mat-flat-button color="primary" (click)="onAddClick()">Add</button>
+  <span class="f-1"></span>
+  <button mat-flat-button color="accent" (click)="onSaveClick()">Save</button>
+</mat-toolbar>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of qualities$ | async;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">
+        {{i.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine>{{i.labels?.effect}}</p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

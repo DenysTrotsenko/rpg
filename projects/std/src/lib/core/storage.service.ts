@@ -13,7 +13,7 @@ export class StorageService {
       .ref(path)
       .getDownloadURL()
       .pipe(
-        switchMap(url => this.http.get<T>('/storage/' + url.split('/').slice(-1)[0], { responseType: 'json' })),
+        switchMap(url => this.http.get<T>(url, { responseType: 'json' })),
       );
   }
 

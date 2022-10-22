@@ -19,16 +19,6 @@ export class IndexComponent {
     private router: Router
   ) {}
 
-  // ngOnInit(): void {
-  //   const normalized: any[] = QUALITIES.map(i => {
-  //     i.id = getId() as any;
-  //     return i;
-  //   });
-  //   const data = JSON.stringify(normalized, null, 2);
-  //   const blob = new Blob([data], { type: 'application/json' });
-  //   this.storage.upload('data/qualities.json', blob).subscribe(res => console.log(res));
-  // }
-
   onToggleSidenavClick(): void {
     this.expanded = !this.expanded;
   }
