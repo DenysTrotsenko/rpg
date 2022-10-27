@@ -1,8 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import {Affliction, Injury} from '@flames-of-freedom-1e/models';
-import {getRandomFromArray} from '@shared';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Affliction } from '@flames-of-freedom-1e/models';
+import { getRandomFromArray, SnackbarService } from '@shared';
 
 @Component({
   selector: 'app-afflictions',
@@ -14,12 +13,12 @@ export class AfflictionsComponent {
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
 
-  constructor(private data: DataService, private snackbar: MatSnackBar) {}
+  constructor(private data: DataService, private snackbar: SnackbarService) {}
 
   onRandomClick(): void {
     const random = getRandomFromArray<Affliction>(this.data[DataTypes.AFFLICTIONS]);
 
-    this.snackbar.open(random.name, 'Ok');
+    this.snackbar.info(random.name);
   }
 
   trackById(_, item): number {

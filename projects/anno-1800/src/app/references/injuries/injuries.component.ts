@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { getRandomFromArray } from '@shared';
+import { getRandomFromArray, SnackbarService } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { Injury, InjuryType, PermanentInjury } from '@flames-of-freedom-1e/models';
 import { InjuryTypeId } from '@flames-of-freedom-1e/enums';
@@ -12,7 +11,6 @@ const DEFAULT_VALUE = 'ALL';
 const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
 
 @Component({
-  selector: 'app-injuries',
   templateUrl: './injuries.component.html',
   styleUrls: ['./injuries.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,13 +36,13 @@ export class InjuriesComponent {
     )
   );
 
-  constructor(private data: DataService, private snackbar: MatSnackBar) {}
+  constructor(private data: DataService, private snackbar: SnackbarService) {}
 
   onRandomClick(type: InjuryTypeId): void {
     const injuries = this.data[DataTypes.INJURIES].filter(i => i.type === type);
     const random = getRandomFromArray<Injury>(injuries);
 
-    this.snackbar.open(random.name, 'Ok');
+    this.snackbar.info(random.name);
   }
 
   trackById(_, item): number {
