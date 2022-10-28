@@ -1,9 +1,9 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {Quirk} from '@flames-of-freedom-1e/models';
-import {AdminService} from '@ti/app/admin/admin.service';
-import {DialogService, SnackbarService, StorageService} from '@shared';
-import {QuirkId} from '@flames-of-freedom-1e/enums';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Quirk } from '@flames-of-freedom-1e/models';
+import { AdminService } from '@ti/app/admin/admin.service';
+import { DialogService, SnackbarService, StorageService } from '@shared';
+import { QuirkId } from '@flames-of-freedom-1e/enums';
 
 @Component({
   selector: 'app-quirks',
