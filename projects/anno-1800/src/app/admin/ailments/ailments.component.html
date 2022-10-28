@@ -1,1 +1,30 @@
-<p>ailments works!</p>
+<mat-toolbar>
+  <button mat-flat-button color="primary" (click)="onAddClick()">Add</button>
+  <span class="f-1"></span>
+  <button mat-flat-button color="accent" (click)="onSaveClick()">Save</button>
+</mat-toolbar>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">
+        {{i.name}}
+        <span class="f-1"></span>
+        <button mat-icon-button (click)="onEditClick(i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDeleteClick(i.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine>{{i.labels?.description}}</p>
+      <p matLine>{{i.labels?.resist}}</p>
+      <p matLine>{{i.labels?.effect}}</p>
+      <p matLine>{{i.labels?.critical_success}}</p>
+      <p matLine>{{i.labels?.critical_failure}}</p>
+      <p matLine>{{i.labels?.other_considerations}}</p>
+      <p matLine>{{i.labels?.duration}}</p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
