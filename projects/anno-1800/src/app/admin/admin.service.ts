@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, of} from 'rxjs';
 import {catchError, filter, tap} from 'rxjs/operators';
 import {DialogService, getId, SnackbarService, sortByName, StorageService} from '@shared';
-import {Ailment, Drug, Quality} from '@flames-of-freedom-1e/models';
-import {AilmentId, DrugId, QualityId} from '@flames-of-freedom-1e/enums';
 import {QualitiesEditComponent} from '@ti/app/admin/qualities/qualities-edit.component';
+import {Ailment, Drug, Quality, Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
+import {AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
 
 export interface AdminServiceConfig {
   dialog: DialogService;
@@ -13,8 +13,8 @@ export interface AdminServiceConfig {
   path: string;
 }
 
-type Id = AilmentId | DrugId | QualityId;
-type Item = Ailment | Drug | Quality;
+type Id = AilmentId | DrugId | QualityId | QuirkId | TalentId | TraitId;
+type Item = Ailment | Drug | Quality | Quirk | Talent | Trait;
 
 @Injectable()
 export class AdminService {

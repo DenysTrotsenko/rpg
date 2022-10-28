@@ -9,7 +9,7 @@ import {Drug} from '@flames-of-freedom-1e/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DrugsEditComponent implements OnInit {
-  form: FormGroup = new FormGroup({
+  readonly form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     labels: new FormGroup({
       description: new FormControl('', [Validators.required, Validators.minLength(3)]),

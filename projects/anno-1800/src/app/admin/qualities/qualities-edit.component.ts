@@ -9,7 +9,7 @@ import { Quality } from '@grim-and-perilous/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QualitiesEditComponent implements OnInit {
-  form: FormGroup = new FormGroup({
+  readonly form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     labels: new FormGroup({
       effect: new FormControl('', [Validators.required, Validators.minLength(3)])

@@ -8,6 +8,12 @@ import { AilmentsComponent } from './ailments/ailments.component';
 import { AilmentsEditComponent } from './ailments/ailments-edit.component';
 import { DrugsComponent } from './drugs/drugs.component';
 import { DrugsEditComponent } from './drugs/drugs-edit.component';
+import { QuirksComponent } from './quirks/quirks.component';
+import { TalentsComponent } from './talents/talents.component';
+import { TraitsComponent } from './traits/traits.component';
+import { QuirksEditComponent } from './quirks/quirks-edit.component';
+import { TalentsEditComponent } from './talents/talents-edit.component';
+import { TraitsEditComponent } from './traits/traits-edit.component';
 
 
 @NgModule({
@@ -18,7 +24,13 @@ import { DrugsEditComponent } from './drugs/drugs-edit.component';
     AilmentsComponent,
     AilmentsEditComponent,
     DrugsComponent,
-    DrugsEditComponent
+    DrugsEditComponent,
+    QuirksComponent,
+    TalentsComponent,
+    TraitsComponent,
+    QuirksEditComponent,
+    TalentsEditComponent,
+    TraitsEditComponent
   ],
   imports: [
     SharedModule,
