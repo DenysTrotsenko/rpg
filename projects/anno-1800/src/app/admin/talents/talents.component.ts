@@ -6,7 +6,6 @@ import {DialogService, SnackbarService, StorageService} from '@shared';
 import {TalentId} from '@flames-of-freedom-1e/enums';
 
 @Component({
-  selector: 'app-talents',
   templateUrl: './talents.component.html',
   styleUrls: ['./talents.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

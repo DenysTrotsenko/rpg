@@ -8,7 +8,8 @@ import {AdminService} from '@ti/app/admin/admin.service';
 @Component({
   templateUrl: './drugs.component.html',
   styleUrls: ['./drugs.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminService]
 })
 export class DrugsComponent implements OnInit {
   readonly items$: BehaviorSubject<Drug[]> = this.admin.items$;

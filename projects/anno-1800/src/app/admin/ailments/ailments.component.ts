@@ -1,14 +1,15 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {Ailment} from '@flames-of-freedom-1e/models';
-import {DialogService, SnackbarService, StorageService} from '@shared';
-import {AilmentId} from '@flames-of-freedom-1e/enums';
-import {AdminService} from '@ti/app/admin/admin.service';
+import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { BehaviorSubject} from 'rxjs';
+import { Ailment} from '@flames-of-freedom-1e/models';
+import { DialogService, SnackbarService, StorageService} from '@shared';
+import { AilmentId} from '@flames-of-freedom-1e/enums';
+import { AdminService} from '@ti/app/admin/admin.service';
 
 @Component({
   templateUrl: './ailments.component.html',
   styleUrls: ['./ailments.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminService]
 })
 export class AilmentsComponent implements OnInit {
   readonly items$: BehaviorSubject<Ailment[]> = this.admin.items$;

@@ -2,11 +2,13 @@ import {Component, OnInit, ChangeDetectionStrategy, Inject} from '@angular/core'
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Talent} from '@flames-of-freedom-1e/models';
+import {AdminService} from '@ti/app/admin/admin.service';
 
 @Component({
   templateUrl: './talents-edit.component.html',
   styleUrls: ['./talents-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminService]
 })
 export class TalentsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({

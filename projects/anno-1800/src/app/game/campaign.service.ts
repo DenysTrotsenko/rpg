@@ -16,8 +16,8 @@ export class CampaignService {
 
   get campaign$(): Observable<Campaign | null> { return this.campaignObservable; }
 
-  setSelectedCampaign(campaign: Campaign): void {
-    localStorage.setItem('campaign', campaign ? JSON.stringify(campaign) : null);
+  setCampaign(campaign: Campaign): void {
+    localStorage.setItem('campaign', !!campaign ? JSON.stringify(campaign) : null);
     this.campaignSource.next(campaign);
   }
 }

@@ -1,18 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Trait } from '@flames-of-freedom-1e/models';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { TraitId } from '@flames-of-freedom-1e/enums';
+import { Setting } from '@grim-and-perilous/models/setting';
+import { SettingId } from '@grim-and-perilous/models/common';
 
 @Component({
-  templateUrl: './traits.component.html',
-  styleUrls: ['./traits.component.scss'],
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminService]
 })
-export class TraitsComponent implements OnInit {
-  readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
+export class SettingsComponent implements OnInit {
+  readonly items$: BehaviorSubject<Setting[]> = this.admin.items$;
 
   constructor(
     private admin: AdminService,
@@ -24,7 +24,7 @@ export class TraitsComponent implements OnInit {
   ngOnInit(): void {
     this.admin.init({
       dialog: this.dialog,
-      path: '/data/quirks.json',
+      path: '/data/settings.json',
       snackbar: this.snackbar,
       storage: this.storage
     });
@@ -34,12 +34,12 @@ export class TraitsComponent implements OnInit {
     this.admin.add();
   }
 
-  onDeleteClick(id: TraitId): void {
-    this.admin.delete(id);
+  onDeleteClick(id: SettingId): void {
+    this.admin.delete(id as SettingId);
   }
 
-  onEditClick(quality: Trait): void {
-    this.admin.edit(quality);
+  onEditClick(item: Setting): void {
+    this.admin.edit(item as Setting);
   }
 
   onSaveClick(): void {

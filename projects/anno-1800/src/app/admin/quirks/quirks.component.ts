@@ -6,10 +6,10 @@ import { DialogService, SnackbarService, StorageService } from '@shared';
 import { QuirkId } from '@flames-of-freedom-1e/enums';
 
 @Component({
-  selector: 'app-quirks',
   templateUrl: './quirks.component.html',
   styleUrls: ['./quirks.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminService]
 })
 export class QuirksComponent implements OnInit {
   readonly items$: BehaviorSubject<Quirk[]> = this.admin.items$;

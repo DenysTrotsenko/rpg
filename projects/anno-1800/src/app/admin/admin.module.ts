@@ -14,6 +14,8 @@ import { TraitsComponent } from './traits/traits.component';
 import { QuirksEditComponent } from './quirks/quirks-edit.component';
 import { TalentsEditComponent } from './talents/talents-edit.component';
 import { TraitsEditComponent } from './traits/traits-edit.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingsEditComponent } from './settings/settings-edit.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { TraitsEditComponent } from './traits/traits-edit.component';
     TraitsComponent,
     QuirksEditComponent,
     TalentsEditComponent,
-    TraitsEditComponent
+    TraitsEditComponent,
+    SettingsComponent,
+    SettingsEditComponent
   ],
   imports: [
     SharedModule,
