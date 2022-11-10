@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { Trait } from '@flames-of-freedom-1e/models';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
 import { TraitId } from '@flames-of-freedom-1e/enums';
+import {TraitsEditComponent} from '@ti/app/admin/traits/traits-edit.component';
 
 @Component({
   templateUrl: './traits.component.html',
@@ -26,8 +27,13 @@ export class TraitsComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/quirks.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Trait> {
+    return this.dialog.open(TraitsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

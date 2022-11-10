@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { Quirk } from '@flames-of-freedom-1e/models';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
 import { QuirkId } from '@flames-of-freedom-1e/enums';
+import {QuirksEditComponent} from '@ti/app/admin/quirks/quirks-edit.component';
 
 @Component({
   templateUrl: './quirks.component.html',
@@ -26,8 +27,13 @@ export class QuirksComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/quirks.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Quirk> {
+    return this.dialog.open(QuirksEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

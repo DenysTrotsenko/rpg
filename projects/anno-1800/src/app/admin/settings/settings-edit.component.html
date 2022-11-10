@@ -1,1 +1,53 @@
-<p>settings-edit works!</p>
+<h1 mat-dialog-title>Add Setting</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Qualities</mat-label>
+      <mat-select formControlName="qualities" multiple>
+        <mat-option *ngFor="let i of qualities$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quirks</mat-label>
+      <mat-select formControlName="quirks" multiple>
+        <mat-option *ngFor="let i of quirks$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Skills</mat-label>
+      <mat-select formControlName="skills" multiple>
+        <mat-option *ngFor="let i of skills$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Talents</mat-label>
+      <mat-select formControlName="talents" multiple>
+        <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Traits</mat-label>
+      <mat-select formControlName="traits" multiple>
+        <mat-option *ngFor="let i of traits$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Professions</mat-label>
+      <mat-select formControlName="professions" multiple>
+        <mat-option *ngFor="let i of professions$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-button [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+</div>

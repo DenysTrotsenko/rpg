@@ -1,18 +1,18 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
-import {catchError, filter, tap} from 'rxjs/operators';
-import {DialogService, getId, SnackbarService, sortByName, StorageService} from '@shared';
-import {QualitiesEditComponent} from '@ti/app/admin/qualities/qualities-edit.component';
-import {Ailment, Drug, Quality, Quirk, Talent, Trait} from '@flames-of-freedom-1e/models';
-import {AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId} from '@flames-of-freedom-1e/enums';
-import {Setting} from '@grim-and-perilous/models/setting';
-import {SettingId} from '@grim-and-perilous/models/common';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, filter, tap } from 'rxjs/operators';
+import { DialogService, getId, SnackbarService, sortByName, StorageService } from '@shared';
+import { Ailment, Drug, Quality, Quirk, Talent, Trait } from '@flames-of-freedom-1e/models';
+import { AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId } from '@flames-of-freedom-1e/enums';
+import { Setting } from '@grim-and-perilous/models/setting';
+import { SettingId } from '@grim-and-perilous/models/common';
 
 export interface AdminServiceConfig {
   dialog: DialogService;
   snackbar: SnackbarService;
   storage: StorageService;
   path: string;
+  responseFn: (data) => Observable<any>;
 }
 
 type Id = AilmentId | DrugId | QualityId | QuirkId | SettingId | TalentId | TraitId;
@@ -20,6 +20,7 @@ type Item = Ailment | Drug | Quality | Quirk | Setting | Talent | Trait;
 
 @Injectable()
 export class AdminService {
+  private responseFn: (data) => Observable<any>;
   private dialog: DialogService;
   private snackbar: SnackbarService;
   private storage: StorageService;
@@ -27,6 +28,7 @@ export class AdminService {
   readonly items$ = new BehaviorSubject([]);
 
   init(config: AdminServiceConfig): void {
+    this.responseFn = config.responseFn;
     this.dialog = config.dialog;
     this.snackbar = config.snackbar;
     this.storage = config.storage;
@@ -34,15 +36,13 @@ export class AdminService {
 
     this.storage.download(this.path)
       .pipe(
-        tap((res: Quality[]) => this.items$.next(res))
+        tap((res: Item[]) => this.items$.next(res))
       )
       .subscribe();
   }
 
   add(): void {
-    this.dialog
-      .open(QualitiesEditComponent)
-      .afterClosed()
+    this.responseFn(null)
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
@@ -71,17 +71,13 @@ export class AdminService {
       .subscribe();
   }
 
-  edit(quality: Item): void {
-    this.dialog
-      .open(QualitiesEditComponent, {
-        data: quality
-      })
-      .afterClosed()
+  edit(item: Item): void {
+    this.responseFn(item)
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
           res,
-          ...this.items$.value.filter(i => i.id !== quality.id)
+          ...this.items$.value.filter(i => i.id !== item.id)
         ]))
       )
       .subscribe();

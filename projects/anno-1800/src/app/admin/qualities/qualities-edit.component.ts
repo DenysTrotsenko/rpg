@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Quality } from '@grim-and-perilous/models';
+import {AdminService} from '@ti/app/admin/admin.service';
 
 @Component({
   templateUrl: './qualities-edit.component.html',

@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import { BehaviorSubject} from 'rxjs';
-import { Ailment} from '@flames-of-freedom-1e/models';
-import { DialogService, SnackbarService, StorageService} from '@shared';
-import { AilmentId} from '@flames-of-freedom-1e/enums';
-import { AdminService} from '@ti/app/admin/admin.service';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Ailment } from '@flames-of-freedom-1e/models';
+import { DialogService, SnackbarService, StorageService } from '@shared';
+import { AilmentId } from '@flames-of-freedom-1e/enums';
+import { AdminService } from '@ti/app/admin/admin.service';
+import { AilmentsEditComponent } from '@ti/app/admin/ailments/ailments-edit.component';
 
 @Component({
   templateUrl: './ailments.component.html',
@@ -26,8 +27,13 @@ export class AilmentsComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/ailments.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Ailment> {
+    return this.dialog.open(AilmentsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

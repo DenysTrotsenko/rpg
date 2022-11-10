@@ -1,9 +1,10 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {DialogService, SnackbarService, StorageService} from '@shared';
-import {AdminService} from '@ti/app/admin/admin.service';
-import {Quality} from '@flames-of-freedom-1e/models';
-import {QualityId} from '@flames-of-freedom-1e/enums';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { DialogService, SnackbarService, StorageService } from '@shared';
+import { AdminService } from '@ti/app/admin/admin.service';
+import { Quality } from '@flames-of-freedom-1e/models';
+import { QualityId } from '@flames-of-freedom-1e/enums';
+import { QualitiesEditComponent } from '@ti/app/admin/qualities/qualities-edit.component';
 
 @Component({
   templateUrl: './qualities.component.html',
@@ -26,8 +27,13 @@ export class QualitiesComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/qualities.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Quality> {
+    return this.dialog.open(QualitiesEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

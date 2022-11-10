@@ -1,9 +1,10 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Drug} from '@flames-of-freedom-1e/models';
 import {DialogService, SnackbarService, StorageService} from '@shared';
 import {DrugId} from '@flames-of-freedom-1e/enums';
 import {AdminService} from '@ti/app/admin/admin.service';
+import {DrugsEditComponent} from '@ti/app/admin/drugs/drugs-edit.component';
 
 @Component({
   templateUrl: './drugs.component.html',
@@ -26,8 +27,13 @@ export class DrugsComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/drugs.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Drug> {
+    return this.dialog.open(DrugsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

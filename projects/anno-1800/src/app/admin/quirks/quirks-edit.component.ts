@@ -2,6 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, Inject} from '@angular/core'
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Quirk} from '@flames-of-freedom-1e/models';
+import {AdminService} from '@ti/app/admin/admin.service';
 
 @Component({
   templateUrl: './quirks-edit.component.html',

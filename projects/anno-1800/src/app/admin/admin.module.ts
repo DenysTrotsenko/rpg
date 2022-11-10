@@ -28,10 +28,10 @@ import { SettingsEditComponent } from './settings/settings-edit.component';
     DrugsComponent,
     DrugsEditComponent,
     QuirksComponent,
-    TalentsComponent,
-    TraitsComponent,
     QuirksEditComponent,
+    TalentsComponent,
     TalentsEditComponent,
+    TraitsComponent,
     TraitsEditComponent,
     SettingsComponent,
     SettingsEditComponent
@@ -41,4 +41,4 @@ import { SettingsEditComponent } from './settings/settings-edit.component';
     AdminRoutingModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {}

@@ -7,6 +7,7 @@ import { DrugsComponent } from '@ti/app/admin/drugs/drugs.component';
 import { QuirksComponent } from '@ti/app/admin/quirks/quirks.component';
 import { TalentsComponent } from '@ti/app/admin/talents/talents.component';
 import { TraitsComponent } from '@ti/app/admin/traits/traits.component';
+import { SettingsComponent } from '@ti/app/admin/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'qualities', component: QualitiesComponent },
       { path: 'quirks', component: QuirksComponent },
       { path: 'talents', component: TalentsComponent },
-      { path: 'traits', component: TraitsComponent }
+      { path: 'traits', component: TraitsComponent },
+      { path: 'settings', component: SettingsComponent },
     ]
   }
 ];
@@ -27,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

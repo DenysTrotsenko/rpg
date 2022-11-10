@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
+import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -26,8 +27,16 @@ export class SettingsComponent implements OnInit {
       dialog: this.dialog,
       path: '/data/settings.json',
       snackbar: this.snackbar,
-      storage: this.storage
+      storage: this.storage,
+      responseFn: this.getResponse
     });
+  }
+
+  getResponse(data): Observable<Setting> {
+    return this.dialog.open(SettingsEditComponent, {
+      width: '100%',
+      data
+    }).afterClosed();
   }
 
   onAddClick(): void {
