@@ -10,6 +10,7 @@
       <a mat-list-item routerLink="auth/sign-in" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Authorization' }}">
         <mat-icon>fingerprint</mat-icon><span class="ml-10 not-expanded-hide">Authorization</span>
       </a>
+      <mat-divider></mat-divider>
     </mat-nav-list>
     <mat-nav-list *ngIf="logged$ | async" dense>
       <a mat-list-item routerLink="campaigns" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Campaigns' }}">
@@ -24,9 +25,7 @@
       <a mat-list-item routerLink="admin" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Admin' }}">
         <mat-icon>admin_panel_settings</mat-icon><span class="ml-10 not-expanded-hide">Admin</span>
       </a>
-<!--      <a mat-list-item routerLink="rules" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Rules' }}">-->
-<!--        <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">Rules</span>-->
-<!--      </a>-->
+      <mat-divider></mat-divider>
 <!--      <a mat-list-item routerLink="world" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'World' }}">-->
 <!--        <mat-icon>public</mat-icon><span class="ml-10 not-expanded-hide">World</span>-->
 <!--      </a>-->
@@ -39,13 +38,19 @@
       <a mat-list-item routerLink="references" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'References' }}">
         <mat-icon>format_list_bulleted</mat-icon><span class="ml-10 not-expanded-hide">References</span>
       </a>
-      <a mat-list-item routerLink="rules" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'References' }}">
+      <a mat-list-item routerLink="rules" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Rules' }}">
         <mat-icon>rule</mat-icon><span class="ml-10 not-expanded-hide">Rules</span>
       </a>
+      <mat-divider></mat-divider>
     </mat-nav-list>
     <mat-nav-list *ngIf="logged$ | async" dense class="mt-15">
       <button mat-list-item matTooltip="{{ expanded ? '' : 'Logout' }}" (click)="onLogoutClick()">
         <mat-icon>logout</mat-icon><span class="ml-10 not-expanded-hide">Logout</span>
+      </button>
+    </mat-nav-list>
+    <mat-nav-list dense class="mt-15">
+      <button mat-list-item (click)="onSaveDataClick()">
+        <mat-icon>save</mat-icon><span class="ml-10 not-expanded-hide">Save Data</span>
       </button>
     </mat-nav-list>
   </mat-sidenav>

@@ -13,7 +13,6 @@ import {
   QualityId,
   QuirkId,
   SkillId,
-  SkillTypeId,
   TalentId,
   TraitId,
   WeaponId
@@ -50,7 +49,7 @@ import {
 import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
-interface SkillView { id: SkillId; name: string; type: SkillTypeId; attribute: AttributeId; value: number; tooltip: string; }
+interface SkillView { id: SkillId; name: string; special: boolean; attribute: AttributeId; value: number; tooltip: string; }
 
 const EXCLUDED_INJURIES = [
   InjuryId.NARROW_ESCAPE_1,
@@ -67,7 +66,6 @@ const EXCLUDED_INJURIES = [
 })
 export class ViewComponent implements OnDestroy {
   readonly DataTypes = DataTypes;
-  readonly SKILL_TYPE_SPECIAL = SkillTypeId.SPECIAL;
   readonly DEFAULT_WEAPONS = this.data[DataTypes.WEAPONS].filter(i => i.id === WeaponId.BARE_HANDED);
   readonly form: FormGroup = new FormGroup({
     damage: new FormControl(0),
@@ -221,7 +219,7 @@ export class ViewComponent implements OnDestroy {
     return this.data[DataTypes.SKILLS].map(skill => ({
       id: skill.id,
       name: skill.name,
-      type: skill.type,
+      special: skill.special,
       attribute: skill.attribute,
       value: advancements.filter(i => i === skill.id).length * 10,
       tooltip: skill.labels?.tooltip

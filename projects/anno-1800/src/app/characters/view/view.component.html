@@ -40,9 +40,9 @@
       <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t p-5">
         <div class="d-f fd-c">
             <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById"
-              [class.c-gray]="j.type === SKILL_TYPE_SPECIAL && j.value === 0"
+              [class.c-gray]="j.special && j.value === 0"
               [matTooltip]="j.tooltip">
-              {{j.name}}{{j.type === SKILL_TYPE_SPECIAL ? '*' : ''}} +{{j.value}}%
+              {{j.name}}{{j.special ? '*' : ''}} +{{j.value}}%
             </span>
         </div>
       </td>

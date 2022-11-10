@@ -11,7 +11,7 @@ import {
   ProfessionId, QualityId,
   QuirkId, SexId,
   SkillId,
-  SkillTypeId, SpellId, SpellTypeId, StatureId, StyleId,
+  SpellId, SpellTypeId, StatureId, StyleId,
   TalentId, ThreatId, ThreatTraitId,
   TierId,
   TraitId, WareId, WareTypeId, WeaponId,
@@ -262,7 +262,7 @@ export interface Skill extends HasId<SkillId> {
   id: SkillId;
   name: string;
   attribute: AttributeId;
-  type: SkillTypeId;
+  special: boolean;
   labels?: {
     description: string;
     difficulties: string;

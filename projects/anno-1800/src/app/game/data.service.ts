@@ -259,7 +259,7 @@ export class DataService {
   private getSkillTooltip(skill: Skill): string {
     const attribute: Attribute = this[DataTypes.ATTRIBUTES].find(i => i.id === skill.attribute);
     return [
-      `${skill.name} ${skill.type === 2 ? '*' : ''} (${attribute.name})\n`,
+      `${skill.name} ${skill.special ? '*' : ''} (${attribute.name})\n`,
       `${skill.labels?.description}\n`,
       `${skill.labels?.difficulties}`,
     ].join('\n');

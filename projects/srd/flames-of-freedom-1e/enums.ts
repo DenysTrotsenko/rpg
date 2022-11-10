@@ -778,11 +778,6 @@ export enum SkillId {
   WARFARE
 }
 
-export enum SkillTypeId {
-  COMMON = PrefixId.FLAMES_OF_FREEDOM,
-  SPECIAL
-}
-
 export enum SpellId {
   BABBLEBOOK = PrefixId.FLAMES_OF_FREEDOM,
   BLUDGEON_WITH_ELEMENTS,
@@ -853,6 +848,7 @@ export enum SpellId {
   CREATE_REANIMATION_FLUID,
   CREATE_VITRIOL
 }
+
 
 export enum SpellTypeId {
   COMMON = PrefixId.FLAMES_OF_FREEDOM,
