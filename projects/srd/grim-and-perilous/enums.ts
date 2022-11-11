@@ -38,6 +38,7 @@ export enum StoragePath {
   TALENTS = '/data/talents.json',
   THREAT_TRAITS = '/data/threat-traits.json',
   THREAT_TYPES = '/data/threat-types.json',
+  THREATS = '/data/threats.json',
   TIERS = '/data/tiers.json',
   TRAITS = '/data/traits.json',
   WEAPONS = '/data/weapons.json'

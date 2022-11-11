@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
-import { AuthService, FirestoreService } from '@shared';
+import { Observable, combineLatest, lastValueFrom } from 'rxjs';
+import { shareReplay, switchMap, tap } from 'rxjs/operators';
+import { AuthService, FirestoreService, StorageService } from '@shared';
 import {
   Affliction,
   Age, Ailment, AlchemicalArt,
@@ -21,38 +21,9 @@ import {
   Trait, Weapon,
   Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType
 } from '@flames-of-freedom-1e/models';
-import { AFFLICTIONS } from '@flames-of-freedom-1e/afflictions';
-import { ARCHETYPES } from '@flames-of-freedom-1e/archetypes';
-import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
-import { BELIEFS } from '@flames-of-freedom-1e/beliefs';
-import { CULTURES } from '@flames-of-freedom-1e/cultures';
-import { FLAWS } from '@flames-of-freedom-1e/flaws';
-import { PROFESSIONS } from '@flames-of-freedom-1e/professions';
-import { TRAITS } from '@flames-of-freedom-1e/traits';
-import { QUIRKS } from '@flames-of-freedom-1e/quirks';
-import { SKILLS } from '@flames-of-freedom-1e/skills';
-import { ALCHEMICAL_ARTS, SPELL_TYPES, SPELLS } from '@flames-of-freedom-1e/spells';
-import { TALENTS } from '@flames-of-freedom-1e/talents';
-import { AGES } from '@flames-of-freedom-1e/age';
-import { BUILD, EYES, HAIR_COLOR, HAIR_LENGTH, HAIR_STYLE, MARKS, SEX, STATURE, STYLE } from '@flames-of-freedom-1e/appearance';
-import { TIERS } from '@flames-of-freedom-1e/tiers';
-import { LANGUAGES } from '@flames-of-freedom-1e/languages';
 import { Campaign } from '@ti/app/game/models/campaign';
 import { Character } from '@ti/app/game/models/character';
-import { INJURIES, INJURY_TYPES } from '@flames-of-freedom-1e/injuries';
-import { PERMANENT_INJURIES } from '@flames-of-freedom-1e/permanent-injuries';
-import { WEAPONS } from '@flames-of-freedom-1e/weapons';
-import { QUALITIES } from '@flames-of-freedom-1e/qualities';
-import { AILMENTS } from '@flames-of-freedom-1e/ailments';
-import { DRUGS } from '@flames-of-freedom-1e/drugs';
-import { THREATS } from '@flames-of-freedom-1e/threats';
-import { THREAT_TRAITS } from '@flames-of-freedom-1e/threat-traits';
-import { RISK_FACTORS } from '@flames-of-freedom-1e/risk-factors';
-import { NOTCHES } from '@flames-of-freedom-1e/notches';
-import { SIZES } from '@flames-of-freedom-1e/sizes';
-import { THREAT_TYPES } from '@flames-of-freedom-1e/threat-types';
-import { OBSCUREMENTS } from '@flames-of-freedom-1e/obscurements';
-import { LIGHTINGS } from '@flames-of-freedom-1e/lightnings';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 
 export enum FirestoreCollection {
@@ -108,6 +79,48 @@ export enum DataTypes {
   providedIn: 'root'
 })
 export class DataService {
+  [DataTypes.AGES]: Age[];
+  [DataTypes.AILMENTS]: Ailment[];
+  [DataTypes.AFFLICTIONS]: Affliction[];
+  [DataTypes.ALCHEMICAL_ARTS]: AlchemicalArt[];
+  [DataTypes.ARCHETYPES]: Archetype[];
+  [DataTypes.ATTRIBUTES]: Attribute[];
+  [DataTypes.BELIEFS]: Belief[];
+  [DataTypes.BUILD]: Build[];
+  [DataTypes.CULTURES]: Culture[];
+  [DataTypes.DRUGS]: Drug[];
+  [DataTypes.EYES]: Eyes[];
+  [DataTypes.FLAWS]: Flaw[];
+  [DataTypes.INJURIES]: Injury[];
+  [DataTypes.INJURY_TYPES]: InjuryType[];
+  [DataTypes.HAIR_COLOR]: HairColor[];
+  [DataTypes.HAIR_LENGTH]: HairLength[];
+  [DataTypes.HAIR_STYLE]: HairStyle[];
+  [DataTypes.LANGUAGES]: Language[];
+  [DataTypes.LIGHTING]: Lighting[];
+  [DataTypes.MARKS]: Mark[];
+  [DataTypes.NOTCHES]: Notch[];
+  [DataTypes.OBSCUREMENT]: Obscurement[];
+  [DataTypes.PERMANENT_INJURIES]: PermanentInjury[];
+  [DataTypes.PROFESSIONS]: Profession[];
+  [DataTypes.RISK_FACTORS]: RiskFactor[];
+  [DataTypes.QUALITIES]: Quality[];
+  [DataTypes.QUIRKS]: Quirk[];
+  [DataTypes.SEX]: Sex[];
+  [DataTypes.SIZES]: Size[];
+  [DataTypes.SKILLS]: Skill[];
+  [DataTypes.SPELLS]: Spell[];
+  [DataTypes.SPELL_TYPES]: SpellType[];
+  [DataTypes.STATURE]: Stature[];
+  [DataTypes.STYLE]: Style[];
+  [DataTypes.TALENTS]: Talent[];
+  [DataTypes.THREATS]: Threat[];
+  [DataTypes.THREAT_TRAITS]: ThreatTrait[];
+  [DataTypes.THREAT_TYPES]: ThreatType[];
+  [DataTypes.TIERS]: Tier[];
+  [DataTypes.TRAITS]: Trait[];
+  [DataTypes.WEAPONS]: Weapon[];
+
   readonly campaignsAll$: Observable<Campaign[]> = this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS).pipe(
     shareReplay(1)
   );
@@ -130,87 +143,145 @@ export class DataService {
     shareReplay(1)
   );
 
-  readonly [DataTypes.AGES]: Age[] = AGES;
-  readonly [DataTypes.AILMENTS]: Ailment[] = AILMENTS.map(i => {
-    i.labels.tooltip = this.getAilmentTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.AFFLICTIONS]: Affliction[] = AFFLICTIONS.map(i => {
-    i.labels.tooltip = this.getAfflictionTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.ALCHEMICAL_ARTS]: AlchemicalArt[] = ALCHEMICAL_ARTS.map(i => {
-    i.labels.tooltip = this.getAlchemicalArtsTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.ARCHETYPES]: Archetype[] = ARCHETYPES;
-  readonly [DataTypes.ATTRIBUTES]: Attribute[] = ATTRIBUTES;
-  readonly [DataTypes.BELIEFS]: Belief[] = BELIEFS;
-  readonly [DataTypes.BUILD]: Build[] = BUILD;
-  readonly [DataTypes.CULTURES]: Culture[] = CULTURES;
-  readonly [DataTypes.DRUGS]: Drug[] = DRUGS.map(i => {
-    i.labels.tooltip = this.getDrugTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.EYES]: Eyes[] = EYES;
-  readonly [DataTypes.FLAWS]: Flaw[] = FLAWS;
-  readonly [DataTypes.INJURIES]: Injury[] = INJURIES;
-  readonly [DataTypes.INJURY_TYPES]: InjuryType[] = INJURY_TYPES;
-  readonly [DataTypes.HAIR_COLOR]: HairColor[] = HAIR_COLOR;
-  readonly [DataTypes.HAIR_LENGTH]: HairLength[] = HAIR_LENGTH;
-  readonly [DataTypes.HAIR_STYLE]: HairStyle[] = HAIR_STYLE;
-  readonly [DataTypes.LANGUAGES]: Language[] = LANGUAGES;
-  readonly [DataTypes.LIGHTING]: Lighting[] = LIGHTINGS;
-  readonly [DataTypes.MARKS]: Mark[] = MARKS;
-  readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
-  readonly [DataTypes.OBSCUREMENT]: Obscurement[] = OBSCUREMENTS;
-  readonly [DataTypes.PERMANENT_INJURIES]: PermanentInjury[] = PERMANENT_INJURIES.map(i => {
-    i.labels.tooltip = this.getPermanentInjuryTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.PROFESSIONS]: Profession[] = PROFESSIONS;
-  readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
-  readonly [DataTypes.QUALITIES]: Quality[] = QUALITIES;
-  readonly [DataTypes.QUIRKS]: Quirk[] = QUIRKS.map(i => {
-    i.labels.tooltip = this.getQuirkTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.SEX]: Sex[] = SEX;
-  readonly [DataTypes.SIZES]: Size[] = SIZES;
-  readonly [DataTypes.SKILLS]: Skill[] = SKILLS.map(i => {
-    i.labels.tooltip = this.getSkillTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.SPELLS]: Spell[] = SPELLS.map(i => {
-    i.labels.tooltip = this.getSpellTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.SPELL_TYPES]: SpellType[] = SPELL_TYPES;
-  readonly [DataTypes.STATURE]: Stature[] = STATURE;
-  readonly [DataTypes.STYLE]: Style[] = STYLE;
-  readonly [DataTypes.TALENTS]: Talent[] = TALENTS.map(i => {
-    i.labels.tooltip = this.getTalentTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.THREATS]: Threat[] = THREATS;
-  readonly [DataTypes.THREAT_TRAITS]: ThreatTrait[] = THREAT_TRAITS;
-  readonly [DataTypes.THREAT_TYPES]: ThreatType[] = THREAT_TYPES;
-  readonly [DataTypes.RISK_FACTORS]: RiskFactor[] = RISK_FACTORS;
-  readonly [DataTypes.NOTCHES]: Notch[] = NOTCHES;
-  readonly [DataTypes.TIERS]: Tier[] = TIERS;
-  readonly [DataTypes.TRAITS]: Trait[] = TRAITS.map(i => {
-    i.labels.tooltip = this.getTraitTooltip(i);
-    return i;
-  });
-  readonly [DataTypes.WEAPONS]: Weapon[] = WEAPONS.map(i => {
-    // i.labels.tooltip = this.getTraitTooltip(i);
-    return i;
-  });
-
   constructor(
     private readonly auth: AuthService,
+    private readonly storage: StorageService,
     private readonly firestore: FirestoreService
   ) {}
+
+  onInit(): Promise<any> {
+    const dataSrc = combineLatest([
+      this.storage.download<Affliction[]>(StoragePath.AFFLICTIONS),
+      this.storage.download<Age[]>(StoragePath.AGES),
+      this.storage.download<Ailment[]>(StoragePath.AILMENTS),
+      this.storage.download<AlchemicalArt[]>(StoragePath.ALCHEMICAL_ARTS),
+      this.storage.download<Archetype[]>(StoragePath.ARCHETYPES),
+      this.storage.download<Attribute[]>(StoragePath.ATTRIBUTES),
+      this.storage.download<Belief[]>(StoragePath.BELIEFS),
+      this.storage.download<Build[]>(StoragePath.BUILDS),
+      this.storage.download<Culture[]>(StoragePath.CULTURES),
+      this.storage.download<Drug[]>(StoragePath.DRUGS),
+      this.storage.download<Eyes[]>(StoragePath.EYES),
+      this.storage.download<Flaw[]>(StoragePath.FLAWS),
+      this.storage.download<HairColor[]>(StoragePath.HAIR_COLORS),
+      this.storage.download<HairLength[]>(StoragePath.HAIR_LENGTHS),
+      this.storage.download<HairStyle[]>(StoragePath.HAIR_STYLES),
+      this.storage.download<Injury[]>(StoragePath.INJURIES),
+      this.storage.download<InjuryType[]>(StoragePath.INJURY_TYPES),
+      this.storage.download<Language[]>(StoragePath.LANGUAGES),
+      this.storage.download<Lighting[]>(StoragePath.LIGHTINGS),
+      this.storage.download<Mark[]>(StoragePath.MARKS),
+      this.storage.download<Notch[]>(StoragePath.NOTCHES),
+      this.storage.download<Obscurement[]>(StoragePath.OBSCUREMENTS),
+      this.storage.download<PermanentInjury[]>(StoragePath.PERMANENT_INJURIES),
+      this.storage.download<Profession[]>(StoragePath.PROFESSIONS),
+      this.storage.download<Quality[]>(StoragePath.QUALITIES),
+      this.storage.download<Quirk[]>(StoragePath.QUIRKS),
+      this.storage.download<RiskFactor[]>(StoragePath.RISK_FACTORS),
+      this.storage.download<Sex[]>(StoragePath.SEXES),
+      this.storage.download<Size[]>(StoragePath.SIZES),
+      this.storage.download<Skill[]>(StoragePath.SKILLS),
+      this.storage.download<SpellType[]>(StoragePath.SPELL_TYPES),
+      this.storage.download<Spell[]>(StoragePath.SPELLS),
+      this.storage.download<Stature[]>(StoragePath.STATURES),
+      this.storage.download<Style[]>(StoragePath.STYLES),
+      this.storage.download<Talent[]>(StoragePath.TALENTS),
+      this.storage.download<ThreatTrait[]>(StoragePath.THREAT_TRAITS),
+      this.storage.download<ThreatType[]>(StoragePath.THREAT_TYPES),
+      this.storage.download<Threat[]>(StoragePath.THREATS),
+      this.storage.download<Tier[]>(StoragePath.TIERS),
+      this.storage.download<Trait[]>(StoragePath.TRAITS),
+      this.storage.download<Weapon[]>(StoragePath.WEAPONS)
+    ]).pipe(
+      tap(([
+        /* tslint:disable */
+        afflictions, ages, ailments, alchemical_arts, archetypes, attributes, beliefs, builds, cultures, drugs,
+        eyes, flaws, hair_colors, hair_lengths, hair_styles, injuries, injury_types, languages, lightings, marks,
+        notches, obscurements, permanent_injuries, professions, qualities, quirks, risk_factors, sexes, sizes,
+        skills, spell_types, spells, statures, styles, talents, threat_traits, threat_types, threats, tiers,
+        traits, weapons
+        /* tslint:enable */
+      ]) => {
+        this[DataTypes.AFFLICTIONS] = afflictions.map(i => {
+          i.labels.tooltip = this.getAfflictionTooltip(i);
+          return i;
+        });
+        this[DataTypes.AGES] = ages;
+        this[DataTypes.AILMENTS] = ailments.map(i => {
+          i.labels.tooltip = this.getAilmentTooltip(i);
+          return i;
+        });
+        this[DataTypes.ALCHEMICAL_ARTS] = alchemical_arts.map(i => {
+          i.labels.tooltip = this.getAlchemicalArtsTooltip(i, tiers);
+          return i;
+        });
+        this[DataTypes.AGES] = ages;
+        this[DataTypes.ARCHETYPES] = archetypes;
+        this[DataTypes.ATTRIBUTES] = attributes;
+        this[DataTypes.BELIEFS] = beliefs;
+        this[DataTypes.BUILD] = builds;
+        this[DataTypes.CULTURES] = cultures;
+        this[DataTypes.DRUGS] = drugs.map(i => {
+          i.labels.tooltip = this.getDrugTooltip(i);
+          return i;
+        });
+        this[DataTypes.EYES] = eyes;
+        this[DataTypes.FLAWS] = flaws;
+        this[DataTypes.HAIR_COLOR] = hair_colors;
+        this[DataTypes.HAIR_LENGTH] = hair_lengths;
+        this[DataTypes.HAIR_STYLE] = hair_styles;
+        this[DataTypes.INJURIES] = injuries;
+        this[DataTypes.INJURY_TYPES] = injury_types;
+        this[DataTypes.LANGUAGES] = languages;
+        this[DataTypes.LIGHTING] = lightings;
+        this[DataTypes.MARKS] = marks;
+        this[DataTypes.NOTCHES] = notches;
+        this[DataTypes.OBSCUREMENT] = obscurements;
+        this[DataTypes.PERMANENT_INJURIES] = permanent_injuries.map(i => {
+          i.labels.tooltip = this.getPermanentInjuryTooltip(i);
+          return i;
+        });
+        this[DataTypes.PROFESSIONS] = professions;
+        this[DataTypes.RISK_FACTORS] = risk_factors;
+        this[DataTypes.QUALITIES] = qualities;
+        this[DataTypes.QUIRKS] = quirks.map(i => {
+          i.labels.tooltip = this.getQuirkTooltip(i);
+          return i;
+        });
+        this[DataTypes.SEX] = sexes;
+        this[DataTypes.SIZES] = sizes;
+        this[DataTypes.SKILLS] = skills.map(i => {
+          i.labels.tooltip = this.getSkillTooltip(i, attributes);
+          return i;
+        });
+        this[DataTypes.SPELL_TYPES] = spell_types;
+        this[DataTypes.SPELLS] = spells.map(i => {
+          i.labels.tooltip = this.getSpellTooltip(i, tiers);
+          return i;
+        });
+        this[DataTypes.STATURE] = statures;
+        this[DataTypes.STYLE] = styles;
+        this[DataTypes.TALENTS] = talents.map(i => {
+          i.labels.tooltip = this.getTalentTooltip(i);
+          return i;
+        });
+        this[DataTypes.THREATS] = threats;
+        this[DataTypes.THREAT_TYPES] = threat_types;
+        this[DataTypes.THREAT_TRAITS] = threat_traits;
+        this[DataTypes.TIERS] = tiers;
+        this[DataTypes.TRAITS] = traits.map(i => {
+          i.labels.tooltip = this.getTraitTooltip(i);
+          return i;
+        });
+        this[DataTypes.WEAPONS] = weapons.map(i => {
+          // i.labels.tooltip = this.getTraitTooltip(i);
+          return i;
+        });
+      })
+    );
+
+    return lastValueFrom(dataSrc);
+  }
 
   private getAfflictionTooltip(affliction: Affliction): string {
     return [
@@ -254,8 +325,8 @@ export class DataService {
     ].join('\n');
   }
 
-  private getSkillTooltip(skill: Skill): string {
-    const attribute: Attribute = this[DataTypes.ATTRIBUTES].find(i => i.id === skill.attribute);
+  private getSkillTooltip(skill: Skill, attributes: Attribute[]): string {
+    const attribute: Attribute = attributes.find(i => i.id === skill.attribute);
     return [
       `${skill.name} ${skill.special ? '*' : ''} (${attribute.name})\n`,
       `${skill.labels?.description}\n`,
@@ -263,8 +334,8 @@ export class DataService {
     ].join('\n');
   }
 
-  private getAlchemicalArtsTooltip(art: AlchemicalArt): string {
-    const tier = TIERS.find(i => i.id === art.tier);
+  private getAlchemicalArtsTooltip(art: AlchemicalArt, tiers: Tier[]): string {
+    const tier = tiers.find(i => i.id === art.tier);
     return [
       `${art.name}\n`,
       `${art.labels?.description}\n`,
@@ -278,8 +349,8 @@ export class DataService {
     ].join('\n');
   }
 
-  private getSpellTooltip(spell: Spell): string {
-    const tier = TIERS.find(i => i.id === spell.tier);
+  private getSpellTooltip(spell: Spell, tiers: Tier[]): string {
+    const tier = tiers.find(i => i.id === spell.tier);
     return [
       `${spell.name}\n`,
       `${spell.labels?.description}\n`,
