@@ -1,524 +1,524 @@
-export enum AgeId {
-  YOUNG = 'young',
-  ADULT = 'adult',
-  MATURE = 'mature',
-  AGING = 'aging',
-  ELDERLY = 'elderly'
-}
-
-export enum AttributeId {
-  COMBAT = 'combat',
-  BRAWN = 'brawn',
-  AGILITY = 'agility',
-  PERCEPTION = 'perception',
-  INTELLIGENCE = 'intelligence',
-  WILLPOWER = 'willpower',
-  FELLOWSHIP = 'fellowship'
-}
-
-export enum BeliefId {
-  ACHIEVEMENT = 'achievement',
-  AUTHORITY = 'authority',
-  AUTONOMY = 'autonomy',
-  BEAUTY = 'beauty',
-  COMMUNITY = 'community',
-  COMPASSION = 'compassion',
-  COURAGE = 'courage',
-  CREATIVITY = 'creativity',
-  CURIOSITY = 'curiosity',
-  DESTINY = 'destiny',
-  EVOLUTION = 'evolution',
-  FAITH = 'faith',
-  FAMILY = 'family',
-  FRIENDSHIP = 'friendship',
-  GLORY = 'glory',
-  GROWTH = 'growth',
-  HONESTY = 'honesty',
-  HONOR = 'honor',
-  HUMILITY = 'humility',
-  JOY = 'joy',
-  JUSTICE = 'justice',
-  KNOWLEDGE = 'knowledge',
-  LOGIC = 'logic',
-  LOVE = 'love',
-  RECOGNITION = 'recognition',
-  RESPONSIBILITY = 'responsibility',
-  RETRIBUTION = 'retribution',
-  SACRIFICE = 'sacrifice',
-  SECURITY = 'security',
-  SPIRITUALITY = 'spirituality',
-  TOLERANCE = 'tolerance',
-  TRUTH = 'truth',
-  WISDOM = 'wisdom'
-}
-
-export enum BuildId {
-  LEAN = 'lean',
-  NORMAL = 'normal',
-  STOCKY = 'stocky'
-}
-
-export enum DispositionId {
-  HELPFUL = 'helpful',
-  FRIENDLY = 'friendly',
-  POLITE = 'polite',
-  INDIFFERENT = 'indifferent',
-  IMPOLITE = 'impolite',
-  UNFRIENDLY = 'unfriendly',
-  ANTAGONISTIC = 'antagonistic'
-}
-
-export enum EyesId {
-  BIG_BLUE = 'big_blue',
-  BRIGHT_HAZEL = 'bright_hazel',
-  DARK_DEEP_SET = 'dark_deep_set',
-  DARK_SOULFUL = 'dark_soulful',
-  DREAMY_HAZEL = 'dreamy_hazel',
-  EMERALD_GREEN = 'emerald_green',
-  FIERY_DARK = 'fiery_dark',
-  GRASS_GREEN = 'grass_green',
-  GREEN_WISTFUL = 'green_wistful',
-  ICEY_BLUE = 'icey_blue',
-  INNOCENT_BLUE = 'innocent_blue',
-  INTELLIGENT_GREY = 'intelligent_grey',
-  INTENSE_HAZEL = 'intense_hazel',
-  KEEN_GREY = 'keen_grey',
-  KINDLY_BLUE = 'kindly_blue',
-  LARGE_GREEN = 'large_green',
-  LARGE_HAZEL = 'large_hazel',
-  MOURNFUL_BROWN = 'mournful_brown',
-  SHREWD_HAZEL = 'shrewd_hazel',
-  SMALL_BROWN = 'small_brown',
-  SOFT_GREEN = 'soft_green',
-  STARTLING_GREY = 'startling_grey',
-  STORMY_GREY = 'stormy_grey',
-  THOUGHTFUL_GREY = 'thoughtful_grey',
-  UNBLINKING_BLUE = 'unblinking_blue'
-}
-
-export enum FlawId {
-  APPREHENSION = 'apprehension',
-  ARROGANCE = 'arrogance',
-  AVARICE = 'avarice',
-  CALLOUSNESS = 'callousness',
-  CARELESSNESS = 'carelessness',
-  COWARDICE = 'cowardice',
-  DEVIANCE = 'deviance',
-  DISLOYALTY = 'disloyalty',
-  DISOBEDIENCE = 'disobedience',
-  DUPLICITY = 'duplicity',
-  ENVY = 'envy',
-  FORMALITY = 'formality',
-  HATRED = 'hatred',
-  HYPOCRISY = 'hypocrisy',
-  IMPATIENCE = 'impatience',
-  IMPIOUSNESS = 'impiousness',
-  INDECISIVENESS = 'indecisiveness',
-  IRRITABILITY = 'irritability',
-  JINXED = 'jinxed',
-  LAZINESS = 'laziness',
-  MACHIAVELLIAN = 'machiavellian',
-  MISANTHROPY = 'misanthropy',
-  NAIVETE = 'naivete',
-  PETULANCE = 'petulance',
-  PRIDE = 'pride',
-  RECKLESSNESS = 'recklessness',
-  SARCASM = 'sarcasm',
-  SELFISHNESS = 'selfishness',
-  SUPERSTITIOUS = 'superstitious',
-  VENGEFUL = 'vengeful',
-  VEXATION = 'vexation',
-  YEARNING = 'yearning',
-  ZEALOTRY = 'zealotry'
-}
-
-export enum HairLengthId {
-  CROPPED = 'cropped',
-  LONG = 'long',
-  MEDIUM = 'medium',
-  NEAR_SHAVED = 'near_shaved',
-  SHORT = 'short',
-  VERY_LONG = 'very_long'
-}
-
-export enum HairStyleId {
-  BRAIDED = 'braided',
-  CURLY = 'curly',
-  NATURAL = 'natural',
-  STRAIGHT = 'straight',
-  TEXTURED = 'textured',
-  WAVY = 'wavy'
-}
-
-export enum HairColorId {
-  AUBURN = 'auburn',
-  BLACK = 'black',
-  BLONDE = 'blonde',
-  BROWN = 'brown',
-  GREY = 'grey',
-  RED = 'red'
-}
-
-export enum InjuryId {
-  NARROW_ESCAPE_1 = 'NARROW_ESCAPE_1',
-  ANKLE_GRAZE = 'ANKLE_GRAZE',
-  BLURRED_VISION = 'blurred_vision',
-  BOXED_EAR = 'boxed_ear',
-  BROKEN_FINGERS = 'broken_fingers',
-  BRUISED_EYE_SOCKET = 'bruised_eye_socket',
-  CHEST_WOUND_1 = 'chest_wound_1',
-  CRACKED_WRIST = 'cracked_wrist',
-  DISLOCATED_SHOULDER = 'dislocated_shoulder',
-  GRAZED_SHOULDER = 'grazed_shoulder',
-  GUT_BUSTER = 'gut_buster',
-  HYPEREXTENDED_ELBOW = 'hyperextended_elbow',
-  JAMMED_FINGER = 'jammed_finger',
-  JAMMED_TOES = 'jammed_toes',
-  NECK_SPASM = 'neck_spasm',
-  PIERCED_THROAT = 'pierced_throat',
-  PULLED_MUSCLE = 'pulled_muscle',
-  RATTLED_BRAIN_1 = 'rattled_brain_1',
-  SCRAPPED_BUTTOCK = 'scrapped_buttock',
-  SPRAINED_WRIST = 'sprained_wrist',
-  STRAINED_GROIN = 'strained_groin',
-  SWOLLEN_EYELID = 'swollen_eyelid',
-  TWISTED_ANKLE = 'twisted_ankle',
-  VICIOUS_HAIRCUT = 'vicious_haircut',
-  IT_GETS_WORSE_1 = 'it_gets_worse_1',
-  NARROW_ESCAPE_2 = 'narrow_escape_2',
-  BASHED_SKULL = 'bashed_skull',
-  BLEEDING_GROIN = 'bleeding_groin',
-  BLOODY_HAMSTRING = 'bloody_hamstring',
-  BUSTED_KNEECAP = 'busted_kneecap',
-  CHEST_WOUND_2 = 'chest_wound_2',
-  CLEFT_SKULL = 'cleft_skull',
-  CRACKED_COLLARBONE = 'cracked_collarbone',
-  DEVASTATED_FOOT = 'devastated_foot',
-  ELBOW_CRUSHED = 'elbow_crushed',
-  GRAZED_BROW = 'grazed_brow',
-  HACKED_CALF_2 = 'hacked_calf_2',
-  LACERATED_SHOULDER = 'lacerated_shoulder',
-  MINOR_CONCUSSION = 'minor_concussion',
-  PUNCTURED_ARMPIT = 'punctured_armpit',
-  RIB_WOUND = 'rib_wound',
-  RUPTURED_TENDON = 'ruptured_tendon',
-  SHELL_SHOCKED = 'shell_shocked',
-  SHIN_CRUSHED = 'shin_crushed',
-  SHREDDED_MUSCLE = 'shredded_muscle',
-  SKULL_FRACTURE = 'skull_fracture',
-  SLASHED_LARYNX = 'slashed_larynx',
-  SMASHED_MOUTH = 'smashed_mouth',
-  STAB_WOUND = 'stab_wound',
-  IT_GETS_WORSE_2 = 'it_gets_worse_2',
-  NARROW_ESCAPE_3 = 'narrow_escape_3',
-  BASHED_HEAD = 'bashed_head',
-  BATTERED_FACE = 'battered_face',
-  BRAIN_ABSCESS = 'brain_abscess',
-  BUTCHERED_SHANK = 'butchered_shank',
-  CEREBRAL_CONTUSION = 'cerebral_contusion',
-  CRACKED_SKULL = 'cracked_skull',
-  CRUSHED_TOES = 'crushed_toes',
-  CUT_ARTERY = 'cut_artery',
-  DESTROYED_DIGITS = 'destroyed_digits',
-  HACKED_CALF_3 = 'hacked_calf_3',
-  MANGLED_ORGAN = 'mangled_organ',
-  MAULED_LUGHOLE = 'mauled_lughole',
-  MUTILATED_PALM = 'mutilated_palm',
-  PENETRATED_GUT = 'penetrated_gut',
-  PIERCED_STERNUM = 'pierced_sternum',
-  PUNCTURED_CHEST = 'punctured_chest',
-  RATTLED_BRAIN_3 = 'rattled_brain_3',
-  RIPPED_ELBOW = 'ripped_elbow',
-  RUPTURED_DISK = 'ruptured_disk',
-  SEVERED_TENDON = 'severed_tendon',
-  SHATTERED_ORBIT = 'shattered_orbit',
-  SLASHED_NOSE = 'slashed_nose',
-  SMASHED_JAW = 'smashed_jaw',
-  HEADSHOT = 'headshot'
-}
-
-export enum InjuryTypeId {
-  MODERATE = 'moderate',
-  SERIOUS = 'serious',
-  GRIEVOUS = 'grievous',
-  PERMANENT = 'permanent'
-}
-
-export enum LightingId {
-  PERFECT_LIGHT = 'perfect_light',
-  FLEETING_SHADOWS = 'fleeting_shadows',
-  TOTAL_DARKNESS = 'total_darkness',
-}
-
-export enum MarkId {
-  A_BALD_PATCH = 'a_bald_patch',
-  A_BIG_FOREHEAD = 'a_big_forehead',
-  A_BULBOUS_NOSE = 'a_bulbous_nose',
-  A_CHERUBIC_FACE = 'a_cherubic_face',
-  A_CHESHIRE_GRIN = 'a_cheshire_grin',
-  A_CLEFT_LIP = 'a_cleft_lip',
-  A_CLUBFOOT = 'a_clubfoot',
-  A_CROOKED_NOSE = 'a_crooked_nose',
-  A_DOUBLE_CHIN = 'a_double_chin',
-  A_FRECKLED_FACE = 'a_freckled_face',
-  A_GAUNT_FACE = 'a_gaunt_face',
-  A_GLASGOW_SMILE = 'a_glasgow_smile',
-  A_GRAVELLY_VOICE = 'a_gravelly_voice',
-  A_LAZY_EYE = 'a_lazy_eye',
-  A_LEERING_SNEER = 'a_leering_sneer',
-  A_LIGHTNING_STRIKE_SCAR = 'a_lightning_strike_scar',
-  A_LONG_GAIT = 'a_long_gait',
-  A_LONG_NECK = 'a_long_neck',
-  A_MARK_OF_SHAME = 'a_mark_of_shame',
-  A_MISSING_EYEBROW = 'a_missing_eyebrow',
-  A_MISSING_FINGER = 'a_missing_finger',
-  A_NARROW_FACE = 'a_narrow_face',
-  A_PERSISTENT_COUGH = 'a_persistent_cough',
-  A_PIERCED_EAR = 'a_pierced_ear',
-  A_POT_BELLY = 'a_pot_belly',
-  A_RED_BIRTHMARK = 'a_red_birthmark',
-  A_SCARRED_FACE = 'a_scarred_face',
-  A_SERIOUS_UNDERBITE = 'a_serious_underbite',
-  A_SMALL_NOSE = 'a_small_nose',
-  A_SQUARE_JAW = 'a_square_jaw',
-  A_THIN_NOSE = 'a_thin_nose',
-  A_TORN_EAR = 'a_torn_ear',
-  A_TURNED_UP_NOSE = 'a_turned_up_nose',
-  A_VISIBLE_TATTOO = 'a_visible_tattoo',
-  A_WIDE_GRIN = 'a_wide_grin',
-  A_WIDOWS_PEAK = 'a_widows_peak',
-  A_WINNING_SMILE = 'a_winning_smile',
-  ACNE_SCARS = 'acne_scars',
-  AN_AQUILINE_NOSE = 'an_aquiline_nose',
-  AN_OMINOUS_BIRTHMARK = 'an_ominous_birthmark',
-  AN_UNFRIENDLY_SMILE = 'an_unfriendly_smile',
-  BAD_ACNE = 'bad_acne',
-  BALDING_PATE = 'balding_pate',
-  BEAUTY_MARK = 'beauty_mark',
-  BLOODSTAINED_CLOTHES = 'bloodstained_clothes',
-  BROAD_SHOULDERS = 'broad_shoulders',
-  BROKEN_TEETH = 'broken_teeth',
-  BRUISED_SKIN = 'bruised_skin',
-  BUSHY_EYEBROWS = 'bushy_eyebrows',
-  CHAPPED_LIPS = 'chapped_lips',
-  CHICKENPOX_SCARS = 'chickenpox_scars',
-  CONSTANT_CONGESTION = 'constant_congestion',
-  CROOKED_TEETH = 'crooked_teeth',
-  DIMPLES = 'dimples',
-  DROOPY_EYELIDS = 'droopy_eyelids',
-  EXCESSIVE_BODY_HAIR = 'excessive_body_hair',
-  FACIAL_PARALYSIS = 'facial_paralysis',
-  FLATULENT = 'flatulent',
-  GANGLY_ARMS = 'gangly_arms',
-  GRIMY_FINGERNAILS = 'grimy_fingernails',
-  HOOKWORM_RASHES = 'hookworm_rashes',
-  JAUNDICE = 'jaundice',
-  KELOID_SCARS = 'keloid_scars',
-  LARGE_HANDS = 'large_hands',
-  LONG_FINGERS = 'long_fingers',
-  LUXURIOUS_HAIR = 'luxurious_hair',
-  MISMATCHED_EYES = 'mismatched_eyes',
-  MISSING_TEETH = 'missing_teeth',
-  PATCHY_SKIN = 'patchy_skin',
-  PATCHY_WHITE_HAIR = 'patchy_white_hair',
-  PERFECT_POSTURE = 'perfect_posture',
-  PERFECT_SKIN = 'perfect_skin',
-  PERFECT_TEETH = 'perfect_teeth',
-  PERMANENT_MAKEUP = 'permanent_makeup',
-  PLUMP_LIPS = 'plump_lips',
-  POCKMARKED_SKIN = 'pockmarked_skin',
-  PROMINENT_WRINKLES = 'prominent_wrinkles',
-  PURPLE_BIRTHMARKS = 'purple_birthmarks',
-  RANCID_BREATH = 'rancid_breath',
-  RED_CHEEKS = 'red_cheeks',
-  ROTTING_TEETH = 'rotting_teeth',
-  RUDDY_CHEEKS = 'ruddy_cheeks',
-  SCARIFIED_SKIN = 'scarified_skin',
-  SEVERAL_MOLES = 'several_moles',
-  SHORT_LEGS = 'short_legs',
-  SKIN_TAGS = 'skin_tags',
-  SLEEPY_EYES = 'sleepy_eyes',
-  SLOPING_SHOULDERS = 'sloping_shoulders',
-  SLOUCHY_POSTURE = 'slouchy_posture',
-  SMALL_HANDS = 'small_hands',
-  SMALLPOX_SCARS = 'smallpox_scars',
-  SQUINTING_EYES = 'squinting_eyes',
-  STUMPY_LEGS = 'stumpy_legs',
-  STILTED_SPEECH = 'stilted_speech',
-  SUNBURNED_SKIN = 'sunburned_skin',
-  SWEAT_PROFUSELY = 'sweat_profusely',
-  THICK_LUSCIOUS_EYELASHES = 'thick_luscious_eyelashes',
-  UNKEMPT_HAIR = 'unkempt_hair',
-  WIND_CHAPPED_CHEEKS = 'wind_chapped_cheeks',
-  WOODEN_DENTURES = 'wooden_dentures'
-}
-
-export enum NotchId {
-  LOW = 'low',
-  MEDIUM = 'medium',
-  HIGH = 'high',
-  UNIQUE = 'unique'
-}
-
-export enum ObscurementId {
-  NO = 'no',
-  LIGHT = 'light',
-  MEDIUM = 'medium',
-  HEAVY = 'heavy'
-}
-
-export enum PermanentInjuryId {
-  BLEEDER = 'bleeder',
-  BUTTERFINGERS = 'butterfingers',
-  CHOLERIC_TEMPERAMENT = 'choleric_temperament',
-  DISFLUENCY = 'disfluency',
-  END_OF_LINE = 'end_of_line',
-  FAILING_HEART = 'failing_heart',
-  FALLING_SICKNESS = 'falling_sickness',
-  HEADMOULD_SHOT = 'headmould_shot',
-  HEMIPLEGY = 'hemiplegy',
-  MELANCHOLIC_TEMPERAMENT = 'melancholic_temperament',
-  MISSING_EYE = 'missing_eye',
-  PHLEGMATIC_TEMPERAMENT = 'phlegmatic_temperament',
-  PLANET_STRUCK = 'planet_struck',
-  PROSTHETIC_FOOT = 'prosthetic_foot',
-  PROSTHETIC_HAND = 'prosthetic_hand',
-  PROSTHETIC_JOINT = 'prosthetic_joint',
-  PROSTHETIC_LEG = 'prosthetic_leg',
-  RUPTURED_EARDRUM = 'ruptured_eardrum',
-  SANGUINE_TEMPERAMENT = 'sanguine_temperament',
-  SOUR_STOMACH = 'sour_stomach',
-  SPLIT_FACE = 'split_face',
-  TENDONITIS = 'tendonitis',
-  WEAK_LUNGS = 'weak_lungs'
-}
-
-export enum QualityId {
-  ACCURATE = 'accurate',
-  ACID = 'acid',
-  BACKSLASH = 'backslash',
-  BLACKPOWDER = 'blackpowder',
-  BOMB = 'bomb',
-  BREAK = 'break',
-  CARBINE = 'carbine',
-  COLD_IRON = 'cold_iron',
-  CUMBERSOME = 'cumbersome',
-  CYLINDER = 'cylinder',
-  DEFENSIVE = 'defensive',
-  DEVASTATING = 'devastating',
-  FAST = 'fast',
-  HOLY = 'holy',
-  IMMOLATE = 'immolate',
-  INACCURATE = 'inaccurate',
-  INEFFECTIVE = 'ineffective',
-  INFERIOR = 'inferior',
-  PISTOL = 'pistol',
-  PNEUMATIC = 'pneumatic',
-  POWERFUL = 'powerful',
-  PUMMELING = 'pummeling',
-  PUNISHING = 'punishing',
-  REACH = 'reach',
-  REPEATING = 'repeating',
-  RUINED = 'ruined',
-  SKEWERING = 'skewering',
-  SILENT = 'silent',
-  SILVER = 'silver',
-  SLOW = 'slow',
-  SMOKE = 'smoke',
-  SOCKETED = 'socketed',
-  STRANGLING = 'strangling',
-  SUPERIOR = 'superior',
-  SWEEPING = 'sweeping',
-  THROWING = 'throwing',
-  VICIOUS = 'vicious',
-  WEAK = 'weak',
-}
-
-export enum RiskFactorId {
-  BASIC = 'basic',
-  INTERMEDIATE = 'intermediate',
-  ADVANCED = 'advanced',
-  ELITE = 'elite'
-}
-
-export enum SexId {
-  MALE = 'male',
-  FEMALE = 'female'
-}
-
-export enum SizeId {
-  SMALL = 'small',
-  NORMAL = 'normal',
-  LARGE = 'large',
-  HUGE = 'huge'
-}
-
-export enum SkillId {
-  ALCHEMY = 'alchemy',
-  ATHLETICS = 'athletics',
-  AWARENESS = 'awareness',
-  BARGAIN = 'bargain',
-  CHARM = 'charm',
-  COORDINATION = 'coordination',
-  COUNTERFEIT = 'counterfeit',
-  DISGUISE = 'disguise',
-  DRIVE = 'drive',
-  EAVESDROP = 'eavesdrop',
-  EDUCATION = 'education',
-  FOLKLORE = 'folklore',
-  GAMBLE = 'gamble',
-  GUILE = 'guile',
-  HANDLE_ANIMAL = 'handle_animal',
-  HEAL = 'heal',
-  INCANTATION = 'incantation',
-  INTERROGATION = 'interrogation',
-  INTIMIDATE = 'intimidate',
-  LEADERSHIP = 'leadership',
-  MARTIAL_MELEE = 'martial_melee',
-  MARTIAL_RANGED = 'martial_ranged',
-  NAVIGATION = 'navigation',
-  PILOT = 'pilot',
-  RESOLVE = 'resolve',
-  RIDE = 'ride',
-  RUMOR = 'rumor',
-  SCRUTINIZE = 'scrutinize',
-  SIMPLE_MELEE = 'simple_melee',
-  SIMPLE_RANGED = 'simple_ranged',
-  SKULDUGGERY = 'skulduggery',
-  STEALTH = 'stealth',
-  SURVIVAL = 'survival',
-  TOUGHNESS = 'toughness',
-  TRADECRAFT = 'tradecraft',
-  WARFARE = 'warfare'
-}
-
-export enum SkillTypeId {
-  COMMON = 'common',
-  SPECIAL = 'special'
-}
-
-export enum StatureId {
-  SLIGHT = 'slight',
-  AVERAGE = 'average',
-  TALL = 'tall'
-}
-
-export enum StyleId {
-  SHABBILY = 'shabbily',
-  MODESTLY = 'modestly',
-  FASHIONABLY = 'fashionably'
-}
-
-export enum ThreatTypeId {
-  ABYSSAL = 'abyssal',
-  ANIMAL = 'animal',
-  BEAST = 'beast',
-  HUMANOID = 'humanoid',
-  SUPERNATURAL = 'supernatural'
-}
-
-export enum TierId {
-  BASIC = 'basic',
-  INTERMEDIATE = 'intermediate',
-  ADVANCED = 'advanced'
-}
+// export enum AgeId {
+//   YOUNG = 'young',
+//   ADULT = 'adult',
+//   MATURE = 'mature',
+//   AGING = 'aging',
+//   ELDERLY = 'elderly'
+// }
+//
+// export enum AttributeId {
+//   COMBAT = 'combat',
+//   BRAWN = 'brawn',
+//   AGILITY = 'agility',
+//   PERCEPTION = 'perception',
+//   INTELLIGENCE = 'intelligence',
+//   WILLPOWER = 'willpower',
+//   FELLOWSHIP = 'fellowship'
+// }
+//
+// export enum BeliefId {
+//   ACHIEVEMENT = 'achievement',
+//   AUTHORITY = 'authority',
+//   AUTONOMY = 'autonomy',
+//   BEAUTY = 'beauty',
+//   COMMUNITY = 'community',
+//   COMPASSION = 'compassion',
+//   COURAGE = 'courage',
+//   CREATIVITY = 'creativity',
+//   CURIOSITY = 'curiosity',
+//   DESTINY = 'destiny',
+//   EVOLUTION = 'evolution',
+//   FAITH = 'faith',
+//   FAMILY = 'family',
+//   FRIENDSHIP = 'friendship',
+//   GLORY = 'glory',
+//   GROWTH = 'growth',
+//   HONESTY = 'honesty',
+//   HONOR = 'honor',
+//   HUMILITY = 'humility',
+//   JOY = 'joy',
+//   JUSTICE = 'justice',
+//   KNOWLEDGE = 'knowledge',
+//   LOGIC = 'logic',
+//   LOVE = 'love',
+//   RECOGNITION = 'recognition',
+//   RESPONSIBILITY = 'responsibility',
+//   RETRIBUTION = 'retribution',
+//   SACRIFICE = 'sacrifice',
+//   SECURITY = 'security',
+//   SPIRITUALITY = 'spirituality',
+//   TOLERANCE = 'tolerance',
+//   TRUTH = 'truth',
+//   WISDOM = 'wisdom'
+// }
+//
+// export enum BuildId {
+//   LEAN = 'lean',
+//   NORMAL = 'normal',
+//   STOCKY = 'stocky'
+// }
+//
+// export enum DispositionId {
+//   HELPFUL = 'helpful',
+//   FRIENDLY = 'friendly',
+//   POLITE = 'polite',
+//   INDIFFERENT = 'indifferent',
+//   IMPOLITE = 'impolite',
+//   UNFRIENDLY = 'unfriendly',
+//   ANTAGONISTIC = 'antagonistic'
+// }
+//
+// export enum EyesId {
+//   BIG_BLUE = 'big_blue',
+//   BRIGHT_HAZEL = 'bright_hazel',
+//   DARK_DEEP_SET = 'dark_deep_set',
+//   DARK_SOULFUL = 'dark_soulful',
+//   DREAMY_HAZEL = 'dreamy_hazel',
+//   EMERALD_GREEN = 'emerald_green',
+//   FIERY_DARK = 'fiery_dark',
+//   GRASS_GREEN = 'grass_green',
+//   GREEN_WISTFUL = 'green_wistful',
+//   ICEY_BLUE = 'icey_blue',
+//   INNOCENT_BLUE = 'innocent_blue',
+//   INTELLIGENT_GREY = 'intelligent_grey',
+//   INTENSE_HAZEL = 'intense_hazel',
+//   KEEN_GREY = 'keen_grey',
+//   KINDLY_BLUE = 'kindly_blue',
+//   LARGE_GREEN = 'large_green',
+//   LARGE_HAZEL = 'large_hazel',
+//   MOURNFUL_BROWN = 'mournful_brown',
+//   SHREWD_HAZEL = 'shrewd_hazel',
+//   SMALL_BROWN = 'small_brown',
+//   SOFT_GREEN = 'soft_green',
+//   STARTLING_GREY = 'startling_grey',
+//   STORMY_GREY = 'stormy_grey',
+//   THOUGHTFUL_GREY = 'thoughtful_grey',
+//   UNBLINKING_BLUE = 'unblinking_blue'
+// }
+//
+// export enum FlawId {
+//   APPREHENSION = 'apprehension',
+//   ARROGANCE = 'arrogance',
+//   AVARICE = 'avarice',
+//   CALLOUSNESS = 'callousness',
+//   CARELESSNESS = 'carelessness',
+//   COWARDICE = 'cowardice',
+//   DEVIANCE = 'deviance',
+//   DISLOYALTY = 'disloyalty',
+//   DISOBEDIENCE = 'disobedience',
+//   DUPLICITY = 'duplicity',
+//   ENVY = 'envy',
+//   FORMALITY = 'formality',
+//   HATRED = 'hatred',
+//   HYPOCRISY = 'hypocrisy',
+//   IMPATIENCE = 'impatience',
+//   IMPIOUSNESS = 'impiousness',
+//   INDECISIVENESS = 'indecisiveness',
+//   IRRITABILITY = 'irritability',
+//   JINXED = 'jinxed',
+//   LAZINESS = 'laziness',
+//   MACHIAVELLIAN = 'machiavellian',
+//   MISANTHROPY = 'misanthropy',
+//   NAIVETE = 'naivete',
+//   PETULANCE = 'petulance',
+//   PRIDE = 'pride',
+//   RECKLESSNESS = 'recklessness',
+//   SARCASM = 'sarcasm',
+//   SELFISHNESS = 'selfishness',
+//   SUPERSTITIOUS = 'superstitious',
+//   VENGEFUL = 'vengeful',
+//   VEXATION = 'vexation',
+//   YEARNING = 'yearning',
+//   ZEALOTRY = 'zealotry'
+// }
+//
+// export enum HairLengthId {
+//   CROPPED = 'cropped',
+//   LONG = 'long',
+//   MEDIUM = 'medium',
+//   NEAR_SHAVED = 'near_shaved',
+//   SHORT = 'short',
+//   VERY_LONG = 'very_long'
+// }
+//
+// export enum HairStyleId {
+//   BRAIDED = 'braided',
+//   CURLY = 'curly',
+//   NATURAL = 'natural',
+//   STRAIGHT = 'straight',
+//   TEXTURED = 'textured',
+//   WAVY = 'wavy'
+// }
+//
+// export enum HairColorId {
+//   AUBURN = 'auburn',
+//   BLACK = 'black',
+//   BLONDE = 'blonde',
+//   BROWN = 'brown',
+//   GREY = 'grey',
+//   RED = 'red'
+// }
+//
+// export enum InjuryId {
+//   NARROW_ESCAPE_1 = 'NARROW_ESCAPE_1',
+//   ANKLE_GRAZE = 'ANKLE_GRAZE',
+//   BLURRED_VISION = 'blurred_vision',
+//   BOXED_EAR = 'boxed_ear',
+//   BROKEN_FINGERS = 'broken_fingers',
+//   BRUISED_EYE_SOCKET = 'bruised_eye_socket',
+//   CHEST_WOUND_1 = 'chest_wound_1',
+//   CRACKED_WRIST = 'cracked_wrist',
+//   DISLOCATED_SHOULDER = 'dislocated_shoulder',
+//   GRAZED_SHOULDER = 'grazed_shoulder',
+//   GUT_BUSTER = 'gut_buster',
+//   HYPEREXTENDED_ELBOW = 'hyperextended_elbow',
+//   JAMMED_FINGER = 'jammed_finger',
+//   JAMMED_TOES = 'jammed_toes',
+//   NECK_SPASM = 'neck_spasm',
+//   PIERCED_THROAT = 'pierced_throat',
+//   PULLED_MUSCLE = 'pulled_muscle',
+//   RATTLED_BRAIN_1 = 'rattled_brain_1',
+//   SCRAPPED_BUTTOCK = 'scrapped_buttock',
+//   SPRAINED_WRIST = 'sprained_wrist',
+//   STRAINED_GROIN = 'strained_groin',
+//   SWOLLEN_EYELID = 'swollen_eyelid',
+//   TWISTED_ANKLE = 'twisted_ankle',
+//   VICIOUS_HAIRCUT = 'vicious_haircut',
+//   IT_GETS_WORSE_1 = 'it_gets_worse_1',
+//   NARROW_ESCAPE_2 = 'narrow_escape_2',
+//   BASHED_SKULL = 'bashed_skull',
+//   BLEEDING_GROIN = 'bleeding_groin',
+//   BLOODY_HAMSTRING = 'bloody_hamstring',
+//   BUSTED_KNEECAP = 'busted_kneecap',
+//   CHEST_WOUND_2 = 'chest_wound_2',
+//   CLEFT_SKULL = 'cleft_skull',
+//   CRACKED_COLLARBONE = 'cracked_collarbone',
+//   DEVASTATED_FOOT = 'devastated_foot',
+//   ELBOW_CRUSHED = 'elbow_crushed',
+//   GRAZED_BROW = 'grazed_brow',
+//   HACKED_CALF_2 = 'hacked_calf_2',
+//   LACERATED_SHOULDER = 'lacerated_shoulder',
+//   MINOR_CONCUSSION = 'minor_concussion',
+//   PUNCTURED_ARMPIT = 'punctured_armpit',
+//   RIB_WOUND = 'rib_wound',
+//   RUPTURED_TENDON = 'ruptured_tendon',
+//   SHELL_SHOCKED = 'shell_shocked',
+//   SHIN_CRUSHED = 'shin_crushed',
+//   SHREDDED_MUSCLE = 'shredded_muscle',
+//   SKULL_FRACTURE = 'skull_fracture',
+//   SLASHED_LARYNX = 'slashed_larynx',
+//   SMASHED_MOUTH = 'smashed_mouth',
+//   STAB_WOUND = 'stab_wound',
+//   IT_GETS_WORSE_2 = 'it_gets_worse_2',
+//   NARROW_ESCAPE_3 = 'narrow_escape_3',
+//   BASHED_HEAD = 'bashed_head',
+//   BATTERED_FACE = 'battered_face',
+//   BRAIN_ABSCESS = 'brain_abscess',
+//   BUTCHERED_SHANK = 'butchered_shank',
+//   CEREBRAL_CONTUSION = 'cerebral_contusion',
+//   CRACKED_SKULL = 'cracked_skull',
+//   CRUSHED_TOES = 'crushed_toes',
+//   CUT_ARTERY = 'cut_artery',
+//   DESTROYED_DIGITS = 'destroyed_digits',
+//   HACKED_CALF_3 = 'hacked_calf_3',
+//   MANGLED_ORGAN = 'mangled_organ',
+//   MAULED_LUGHOLE = 'mauled_lughole',
+//   MUTILATED_PALM = 'mutilated_palm',
+//   PENETRATED_GUT = 'penetrated_gut',
+//   PIERCED_STERNUM = 'pierced_sternum',
+//   PUNCTURED_CHEST = 'punctured_chest',
+//   RATTLED_BRAIN_3 = 'rattled_brain_3',
+//   RIPPED_ELBOW = 'ripped_elbow',
+//   RUPTURED_DISK = 'ruptured_disk',
+//   SEVERED_TENDON = 'severed_tendon',
+//   SHATTERED_ORBIT = 'shattered_orbit',
+//   SLASHED_NOSE = 'slashed_nose',
+//   SMASHED_JAW = 'smashed_jaw',
+//   HEADSHOT = 'headshot'
+// }
+//
+// export enum InjuryTypeId {
+//   MODERATE = 'moderate',
+//   SERIOUS = 'serious',
+//   GRIEVOUS = 'grievous',
+//   PERMANENT = 'permanent'
+// }
+//
+// export enum LightingId {
+//   PERFECT_LIGHT = 'perfect_light',
+//   FLEETING_SHADOWS = 'fleeting_shadows',
+//   TOTAL_DARKNESS = 'total_darkness',
+// }
+//
+// export enum MarkId {
+//   A_BALD_PATCH = 'a_bald_patch',
+//   A_BIG_FOREHEAD = 'a_big_forehead',
+//   A_BULBOUS_NOSE = 'a_bulbous_nose',
+//   A_CHERUBIC_FACE = 'a_cherubic_face',
+//   A_CHESHIRE_GRIN = 'a_cheshire_grin',
+//   A_CLEFT_LIP = 'a_cleft_lip',
+//   A_CLUBFOOT = 'a_clubfoot',
+//   A_CROOKED_NOSE = 'a_crooked_nose',
+//   A_DOUBLE_CHIN = 'a_double_chin',
+//   A_FRECKLED_FACE = 'a_freckled_face',
+//   A_GAUNT_FACE = 'a_gaunt_face',
+//   A_GLASGOW_SMILE = 'a_glasgow_smile',
+//   A_GRAVELLY_VOICE = 'a_gravelly_voice',
+//   A_LAZY_EYE = 'a_lazy_eye',
+//   A_LEERING_SNEER = 'a_leering_sneer',
+//   A_LIGHTNING_STRIKE_SCAR = 'a_lightning_strike_scar',
+//   A_LONG_GAIT = 'a_long_gait',
+//   A_LONG_NECK = 'a_long_neck',
+//   A_MARK_OF_SHAME = 'a_mark_of_shame',
+//   A_MISSING_EYEBROW = 'a_missing_eyebrow',
+//   A_MISSING_FINGER = 'a_missing_finger',
+//   A_NARROW_FACE = 'a_narrow_face',
+//   A_PERSISTENT_COUGH = 'a_persistent_cough',
+//   A_PIERCED_EAR = 'a_pierced_ear',
+//   A_POT_BELLY = 'a_pot_belly',
+//   A_RED_BIRTHMARK = 'a_red_birthmark',
+//   A_SCARRED_FACE = 'a_scarred_face',
+//   A_SERIOUS_UNDERBITE = 'a_serious_underbite',
+//   A_SMALL_NOSE = 'a_small_nose',
+//   A_SQUARE_JAW = 'a_square_jaw',
+//   A_THIN_NOSE = 'a_thin_nose',
+//   A_TORN_EAR = 'a_torn_ear',
+//   A_TURNED_UP_NOSE = 'a_turned_up_nose',
+//   A_VISIBLE_TATTOO = 'a_visible_tattoo',
+//   A_WIDE_GRIN = 'a_wide_grin',
+//   A_WIDOWS_PEAK = 'a_widows_peak',
+//   A_WINNING_SMILE = 'a_winning_smile',
+//   ACNE_SCARS = 'acne_scars',
+//   AN_AQUILINE_NOSE = 'an_aquiline_nose',
+//   AN_OMINOUS_BIRTHMARK = 'an_ominous_birthmark',
+//   AN_UNFRIENDLY_SMILE = 'an_unfriendly_smile',
+//   BAD_ACNE = 'bad_acne',
+//   BALDING_PATE = 'balding_pate',
+//   BEAUTY_MARK = 'beauty_mark',
+//   BLOODSTAINED_CLOTHES = 'bloodstained_clothes',
+//   BROAD_SHOULDERS = 'broad_shoulders',
+//   BROKEN_TEETH = 'broken_teeth',
+//   BRUISED_SKIN = 'bruised_skin',
+//   BUSHY_EYEBROWS = 'bushy_eyebrows',
+//   CHAPPED_LIPS = 'chapped_lips',
+//   CHICKENPOX_SCARS = 'chickenpox_scars',
+//   CONSTANT_CONGESTION = 'constant_congestion',
+//   CROOKED_TEETH = 'crooked_teeth',
+//   DIMPLES = 'dimples',
+//   DROOPY_EYELIDS = 'droopy_eyelids',
+//   EXCESSIVE_BODY_HAIR = 'excessive_body_hair',
+//   FACIAL_PARALYSIS = 'facial_paralysis',
+//   FLATULENT = 'flatulent',
+//   GANGLY_ARMS = 'gangly_arms',
+//   GRIMY_FINGERNAILS = 'grimy_fingernails',
+//   HOOKWORM_RASHES = 'hookworm_rashes',
+//   JAUNDICE = 'jaundice',
+//   KELOID_SCARS = 'keloid_scars',
+//   LARGE_HANDS = 'large_hands',
+//   LONG_FINGERS = 'long_fingers',
+//   LUXURIOUS_HAIR = 'luxurious_hair',
+//   MISMATCHED_EYES = 'mismatched_eyes',
+//   MISSING_TEETH = 'missing_teeth',
+//   PATCHY_SKIN = 'patchy_skin',
+//   PATCHY_WHITE_HAIR = 'patchy_white_hair',
+//   PERFECT_POSTURE = 'perfect_posture',
+//   PERFECT_SKIN = 'perfect_skin',
+//   PERFECT_TEETH = 'perfect_teeth',
+//   PERMANENT_MAKEUP = 'permanent_makeup',
+//   PLUMP_LIPS = 'plump_lips',
+//   POCKMARKED_SKIN = 'pockmarked_skin',
+//   PROMINENT_WRINKLES = 'prominent_wrinkles',
+//   PURPLE_BIRTHMARKS = 'purple_birthmarks',
+//   RANCID_BREATH = 'rancid_breath',
+//   RED_CHEEKS = 'red_cheeks',
+//   ROTTING_TEETH = 'rotting_teeth',
+//   RUDDY_CHEEKS = 'ruddy_cheeks',
+//   SCARIFIED_SKIN = 'scarified_skin',
+//   SEVERAL_MOLES = 'several_moles',
+//   SHORT_LEGS = 'short_legs',
+//   SKIN_TAGS = 'skin_tags',
+//   SLEEPY_EYES = 'sleepy_eyes',
+//   SLOPING_SHOULDERS = 'sloping_shoulders',
+//   SLOUCHY_POSTURE = 'slouchy_posture',
+//   SMALL_HANDS = 'small_hands',
+//   SMALLPOX_SCARS = 'smallpox_scars',
+//   SQUINTING_EYES = 'squinting_eyes',
+//   STUMPY_LEGS = 'stumpy_legs',
+//   STILTED_SPEECH = 'stilted_speech',
+//   SUNBURNED_SKIN = 'sunburned_skin',
+//   SWEAT_PROFUSELY = 'sweat_profusely',
+//   THICK_LUSCIOUS_EYELASHES = 'thick_luscious_eyelashes',
+//   UNKEMPT_HAIR = 'unkempt_hair',
+//   WIND_CHAPPED_CHEEKS = 'wind_chapped_cheeks',
+//   WOODEN_DENTURES = 'wooden_dentures'
+// }
+//
+// export enum NotchId {
+//   LOW = 'low',
+//   MEDIUM = 'medium',
+//   HIGH = 'high',
+//   UNIQUE = 'unique'
+// }
+//
+// export enum ObscurementId {
+//   NO = 'no',
+//   LIGHT = 'light',
+//   MEDIUM = 'medium',
+//   HEAVY = 'heavy'
+// }
+//
+// export enum PermanentInjuryId {
+//   BLEEDER = 'bleeder',
+//   BUTTERFINGERS = 'butterfingers',
+//   CHOLERIC_TEMPERAMENT = 'choleric_temperament',
+//   DISFLUENCY = 'disfluency',
+//   END_OF_LINE = 'end_of_line',
+//   FAILING_HEART = 'failing_heart',
+//   FALLING_SICKNESS = 'falling_sickness',
+//   HEADMOULD_SHOT = 'headmould_shot',
+//   HEMIPLEGY = 'hemiplegy',
+//   MELANCHOLIC_TEMPERAMENT = 'melancholic_temperament',
+//   MISSING_EYE = 'missing_eye',
+//   PHLEGMATIC_TEMPERAMENT = 'phlegmatic_temperament',
+//   PLANET_STRUCK = 'planet_struck',
+//   PROSTHETIC_FOOT = 'prosthetic_foot',
+//   PROSTHETIC_HAND = 'prosthetic_hand',
+//   PROSTHETIC_JOINT = 'prosthetic_joint',
+//   PROSTHETIC_LEG = 'prosthetic_leg',
+//   RUPTURED_EARDRUM = 'ruptured_eardrum',
+//   SANGUINE_TEMPERAMENT = 'sanguine_temperament',
+//   SOUR_STOMACH = 'sour_stomach',
+//   SPLIT_FACE = 'split_face',
+//   TENDONITIS = 'tendonitis',
+//   WEAK_LUNGS = 'weak_lungs'
+// }
+//
+// export enum QualityId {
+//   ACCURATE = 'accurate',
+//   ACID = 'acid',
+//   BACKSLASH = 'backslash',
+//   BLACKPOWDER = 'blackpowder',
+//   BOMB = 'bomb',
+//   BREAK = 'break',
+//   CARBINE = 'carbine',
+//   COLD_IRON = 'cold_iron',
+//   CUMBERSOME = 'cumbersome',
+//   CYLINDER = 'cylinder',
+//   DEFENSIVE = 'defensive',
+//   DEVASTATING = 'devastating',
+//   FAST = 'fast',
+//   HOLY = 'holy',
+//   IMMOLATE = 'immolate',
+//   INACCURATE = 'inaccurate',
+//   INEFFECTIVE = 'ineffective',
+//   INFERIOR = 'inferior',
+//   PISTOL = 'pistol',
+//   PNEUMATIC = 'pneumatic',
+//   POWERFUL = 'powerful',
+//   PUMMELING = 'pummeling',
+//   PUNISHING = 'punishing',
+//   REACH = 'reach',
+//   REPEATING = 'repeating',
+//   RUINED = 'ruined',
+//   SKEWERING = 'skewering',
+//   SILENT = 'silent',
+//   SILVER = 'silver',
+//   SLOW = 'slow',
+//   SMOKE = 'smoke',
+//   SOCKETED = 'socketed',
+//   STRANGLING = 'strangling',
+//   SUPERIOR = 'superior',
+//   SWEEPING = 'sweeping',
+//   THROWING = 'throwing',
+//   VICIOUS = 'vicious',
+//   WEAK = 'weak',
+// }
+//
+// export enum RiskFactorId {
+//   BASIC = 'basic',
+//   INTERMEDIATE = 'intermediate',
+//   ADVANCED = 'advanced',
+//   ELITE = 'elite'
+// }
+//
+// export enum SexId {
+//   MALE = 'male',
+//   FEMALE = 'female'
+// }
+//
+// export enum SizeId {
+//   SMALL = 'small',
+//   NORMAL = 'normal',
+//   LARGE = 'large',
+//   HUGE = 'huge'
+// }
+//
+// export enum SkillId {
+//   ALCHEMY = 'alchemy',
+//   ATHLETICS = 'athletics',
+//   AWARENESS = 'awareness',
+//   BARGAIN = 'bargain',
+//   CHARM = 'charm',
+//   COORDINATION = 'coordination',
+//   COUNTERFEIT = 'counterfeit',
+//   DISGUISE = 'disguise',
+//   DRIVE = 'drive',
+//   EAVESDROP = 'eavesdrop',
+//   EDUCATION = 'education',
+//   FOLKLORE = 'folklore',
+//   GAMBLE = 'gamble',
+//   GUILE = 'guile',
+//   HANDLE_ANIMAL = 'handle_animal',
+//   HEAL = 'heal',
+//   INCANTATION = 'incantation',
+//   INTERROGATION = 'interrogation',
+//   INTIMIDATE = 'intimidate',
+//   LEADERSHIP = 'leadership',
+//   MARTIAL_MELEE = 'martial_melee',
+//   MARTIAL_RANGED = 'martial_ranged',
+//   NAVIGATION = 'navigation',
+//   PILOT = 'pilot',
+//   RESOLVE = 'resolve',
+//   RIDE = 'ride',
+//   RUMOR = 'rumor',
+//   SCRUTINIZE = 'scrutinize',
+//   SIMPLE_MELEE = 'simple_melee',
+//   SIMPLE_RANGED = 'simple_ranged',
+//   SKULDUGGERY = 'skulduggery',
+//   STEALTH = 'stealth',
+//   SURVIVAL = 'survival',
+//   TOUGHNESS = 'toughness',
+//   TRADECRAFT = 'tradecraft',
+//   WARFARE = 'warfare'
+// }
+//
+// export enum SkillTypeId {
+//   COMMON = 'common',
+//   SPECIAL = 'special'
+// }
+//
+// export enum StatureId {
+//   SLIGHT = 'slight',
+//   AVERAGE = 'average',
+//   TALL = 'tall'
+// }
+//
+// export enum StyleId {
+//   SHABBILY = 'shabbily',
+//   MODESTLY = 'modestly',
+//   FASHIONABLY = 'fashionably'
+// }
+//
+// export enum ThreatTypeId {
+//   ABYSSAL = 'abyssal',
+//   ANIMAL = 'animal',
+//   BEAST = 'beast',
+//   HUMANOID = 'humanoid',
+//   SUPERNATURAL = 'supernatural'
+// }
+//
+// export enum TierId {
+//   BASIC = 'basic',
+//   INTERMEDIATE = 'intermediate',
+//   ADVANCED = 'advanced'
+// }

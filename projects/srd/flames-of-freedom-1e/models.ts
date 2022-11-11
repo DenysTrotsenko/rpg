@@ -14,10 +14,10 @@ import {
   SpellId, SpellTypeId, StatureId, StyleId,
   TalentId, ThreatId, ThreatTraitId,
   TierId,
-  TraitId, WareId, WareTypeId, WeaponId,
+  TraitId, WeaponId,
   NotchId, RiskFactorId, SizeId, ThreatTypeId
 } from './enums';
-import {LightingId, ObscurementId} from '@grim-and-perilous/enums';
+import {LightingId, ObscurementId} from '@flames-of-freedom-1e/enums';
 
 export interface Age {
   id: AgeId;
@@ -384,16 +384,16 @@ export interface Trait extends HasId<TraitId> {
   };
 }
 
-export interface Ware {
-  id: WareId;
-  name: string;
-  type: WareTypeId;
-  cost: number;
-  labels?: {
-    description?: string;
-    tooltip?: string;
-  };
-}
+// export interface Ware {
+//   id: WareId;
+//   name: string;
+//   type: WareTypeId;
+//   cost: number;
+//   labels?: {
+//     description?: string;
+//     tooltip?: string;
+//   };
+// }
 
 export interface Weapon {
   id: WeaponId;

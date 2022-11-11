@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Setting } from '@grim-and-perilous/models/setting';
 import { getId, StorageService } from '@shared';
-import { Quality } from '@grim-and-perilous/models';
-import { Quirk, Skill, Talent, Trait } from '@flames-of-freedom-1e/models';
+import { Setting } from '@grim-and-perilous/models/setting';
+import { Quality, Quirk, Skill, Talent, Trait } from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './settings-edit.component.html',

@@ -62,7 +62,6 @@ export enum FirestoreCollection {
 
 export enum DataTypes {
   AGES = 'ages',
-  // ALLEGIANCES = 'allegiances',
   AILMENTS = 'ailments',
   ALCHEMICAL_ARTS = 'alchemical_arts',
   AFFLICTIONS = 'afflictions',
@@ -140,7 +139,6 @@ export class DataService {
     i.labels.tooltip = this.getAfflictionTooltip(i);
     return i;
   });
-  // readonly [DataTypes.ALLEGIANCES]: Allegiance[] = ALLEGIANCES;
   readonly [DataTypes.ALCHEMICAL_ARTS]: AlchemicalArt[] = ALCHEMICAL_ARTS.map(i => {
     i.labels.tooltip = this.getAlchemicalArtsTooltip(i);
     return i;
