@@ -2201,21 +2201,3 @@ export const WEAPONS: Weapon[] = [
   //   }
   // },
 ];
-
-export const WEAPONS_1800: Weapon[] = [
-  // {
-  //   id: WeaponId.OVERCOAT_PISTOL,
-  //   name: 'Overcoat Pistol',
-  //   skills: [SkillId.SIMPLE_RANGED],
-  //   qualities: [QualityId.BLACKPOWDER, QualityId.PISTOL, QualityId.WEAK],
-  //   encumbrance: 1,
-  //   price: 0,
-  //   labels: {
-  //     description: 'This is a small pistol designed to hide in a jacket pocket or muff, and many wealthy merchants and travelers carry it.',
-  //     handling: '1H',
-  //     load: '2AP',
-  //     ammo: 'Bullets',
-  //     distance: '1+[PB] yards'
-  //   }
-  // },
-];
