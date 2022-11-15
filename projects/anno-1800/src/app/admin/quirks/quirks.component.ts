@@ -1,10 +1,9 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import { Quirk } from '@flames-of-freedom-1e/models';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Quirk, QuirkId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { QuirkId } from '@flames-of-freedom-1e/enums';
-import {QuirksEditComponent} from '@ti/app/admin/quirks/quirks-edit.component';
+import { QuirksEditComponent } from '@ti/app/admin/quirks/quirks-edit.component';
 
 @Component({
   templateUrl: './quirks.component.html',

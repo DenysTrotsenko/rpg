@@ -2,8 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DialogService, SnackbarService, StorageService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
-import { Quality } from '@flames-of-freedom-1e/models';
-import { QualityId } from '@flames-of-freedom-1e/enums';
+import { Quality, QualityId } from '@grim-and-perilous/models/common';
 import { QualitiesEditComponent } from '@ti/app/admin/qualities/qualities-edit.component';
 
 @Component({

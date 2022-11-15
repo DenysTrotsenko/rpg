@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Drug } from '@flames-of-freedom-1e/models';
+import { Drug } from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './drugs.component.html',

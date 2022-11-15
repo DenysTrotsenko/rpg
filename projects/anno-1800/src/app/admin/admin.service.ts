@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 import { DialogService, getId, SnackbarService, sortByName, StorageService } from '@shared';
-import { Ailment, Drug, Quality, Quirk, Talent, Trait } from '@flames-of-freedom-1e/models';
-import { AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId } from '@flames-of-freedom-1e/enums';
+import {
+  Ailment, Drug, Quality, Quirk, Talent, Trait,
+  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId
+} from '@grim-and-perilous/models/common';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 

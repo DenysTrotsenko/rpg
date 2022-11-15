@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Quality } from '@flames-of-freedom-1e/models';
+import { Quality } from '@grim-and-perilous/models/common';
 
 @Component({
   selector: 'app-qualities',

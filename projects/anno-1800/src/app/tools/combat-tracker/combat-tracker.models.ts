@@ -1,4 +1,4 @@
-import {SkillId, ThreatId, ThreatTraitId} from '@flames-of-freedom-1e/enums';
+import { ThreatId } from '@grim-and-perilous/models/common';
 
 export interface CombatTrackerUnitOptions {
   uid: string;

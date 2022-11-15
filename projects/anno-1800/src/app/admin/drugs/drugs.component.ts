@@ -1,10 +1,9 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {Drug} from '@flames-of-freedom-1e/models';
-import {DialogService, SnackbarService, StorageService} from '@shared';
-import {DrugId} from '@flames-of-freedom-1e/enums';
-import {AdminService} from '@ti/app/admin/admin.service';
-import {DrugsEditComponent} from '@ti/app/admin/drugs/drugs-edit.component';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Drug, DrugId } from '@grim-and-perilous/models/common';
+import { DialogService, SnackbarService, StorageService } from '@shared';
+import { AdminService } from '@ti/app/admin/admin.service';
+import { DrugsEditComponent } from '@ti/app/admin/drugs/drugs-edit.component';
 
 @Component({
   templateUrl: './drugs.component.html',

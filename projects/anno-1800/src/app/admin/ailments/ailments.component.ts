@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Ailment } from '@flames-of-freedom-1e/models';
+import { Ailment, AilmentId } from '@grim-and-perilous/models/common';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { AilmentId } from '@flames-of-freedom-1e/enums';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { AilmentsEditComponent } from '@ti/app/admin/ailments/ailments-edit.component';
 

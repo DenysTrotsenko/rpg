@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Talent} from '@flames-of-freedom-1e/models';
+import {Talent} from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './talents-edit.component.html',

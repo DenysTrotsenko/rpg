@@ -1,8 +1,7 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { CombatTrackerUnit } from '../combat-tracker.models';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Quality, Threat, Weapon } from '@flames-of-freedom-1e/models';
-import { AttributeId, SkillId } from '@flames-of-freedom-1e/enums';
+import { SkillId, Quality, Threat, Weapon, AttributeId } from '@grim-and-perilous/models/common';
 import {
   getWeaponDamage,
   getDamageThreshold,
@@ -12,7 +11,7 @@ import {
   getPerilThreshold,
   getThresholds, getAttributeBonus,
 } from '@ti/app/game/threat.utils';
-import { ATTRIBUTES } from '@flames-of-freedom-1e/attributes';
+import { ATTRIBUTE_ID_COMBAT } from '@grim-and-perilous/const';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -41,9 +40,9 @@ export class CombatTrackerUnitComponent {
   getAttributes(threat: Threat): { name: string; value: number; bonus: number; }[] {
     return Object.entries(threat.attributes).map(entry => {
       return {
-        name: ATTRIBUTES.find(i => i.id === +entry[0]).name,
+        name: this.data[DataTypes.ATTRIBUTES].find(i => i.id === entry[0]).name,
         value: +entry[1],
-        bonus: getAttributeBonus(threat, +entry[0])
+        bonus: getAttributeBonus(threat, entry[0] as AttributeId)
       };
     });
   }
@@ -62,7 +61,7 @@ export class CombatTrackerUnitComponent {
         return acc;
       }, {}))
       .map(entry => {
-        const skill = this.data[DataTypes.SKILLS].find(i => i.id === +entry[0]);
+        const skill = this.data[DataTypes.SKILLS].find(i => i.id === entry[0]);
 
         return {
           id: skill?.id,
@@ -78,13 +77,13 @@ export class CombatTrackerUnitComponent {
     const skillRanks = weapon.skills
       .map(id => threat.advancements.skills.filter(s => s === id).length)
       .map(rank => Math.max(rank - skillRanksPenalty, 0));
-    const fromAttribute = threat.attributes[AttributeId.COMBAT];
+    const fromAttribute = threat.attributes[ATTRIBUTE_ID_COMBAT];
     const fromSkill = Math.max(...skillRanks) * 10;
     return fromAttribute + fromSkill;
   }
 
   getWeaponDamage(weapon: Weapon, threat: Threat): string {
-    return weapon.labels.damage ?? getWeaponDamage(weapon, threat);
+    return weapon.labels.damage ?? getWeaponDamage(this.data, weapon, threat);
   }
 
   getAllQualities(weapon: Weapon): Quality[] {
@@ -119,7 +118,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getDamageThresholds(threat: Threat): string {
-    return getThresholds(getDamageThreshold(threat));
+    return getThresholds(getDamageThreshold(this.data, threat));
   }
 
   getPerilThresholds(threat: Threat): string {

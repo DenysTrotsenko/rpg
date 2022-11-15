@@ -1,10 +1,9 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import { Trait } from '@flames-of-freedom-1e/models';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { TraitId } from '@flames-of-freedom-1e/enums';
-import {TraitsEditComponent} from '@ti/app/admin/traits/traits-edit.component';
+import { TraitId, Trait } from '@grim-and-perilous/models/common';
+import { TraitsEditComponent } from '@ti/app/admin/traits/traits-edit.component';
 
 @Component({
   templateUrl: './traits.component.html',

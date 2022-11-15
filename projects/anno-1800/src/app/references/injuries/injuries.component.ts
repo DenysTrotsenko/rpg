@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { getRandomFromArray, SnackbarService } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Injury, InjuryType, PermanentInjury } from '@flames-of-freedom-1e/models';
-import { InjuryTypeId } from '@flames-of-freedom-1e/enums';
+import { Injury, InjuryType, PermanentInjury } from '@grim-and-perilous/models/common';
+import { InjuryTypeId } from '@grim-and-perilous/models/common';
+import { INJURY_TYPE_ID_GRIEVOUS, INJURY_TYPE_ID_MODERATE, INJURY_TYPE_ID_PERMANENT, INJURY_TYPE_ID_SERIOUS } from '@grim-and-perilous/const';
 
 const DEFAULT_VALUE = 'ALL';
 const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
@@ -16,9 +17,11 @@ const DEFAULT_FILTERS = { type: DEFAULT_VALUE };
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InjuriesComponent {
-  readonly InjuryTypeId = InjuryTypeId;
+  readonly moderateId = INJURY_TYPE_ID_MODERATE;
+  readonly seriousId = INJURY_TYPE_ID_SERIOUS;
+  readonly grievousId = INJURY_TYPE_ID_GRIEVOUS;
+  readonly permanentId = INJURY_TYPE_ID_PERMANENT;
   readonly DEFAULT_VALUE = DEFAULT_VALUE;
-  readonly PERMANENT = InjuryTypeId.PERMANENT;
   readonly TYPES: typeof DataTypes = DataTypes;
   readonly filters: FormGroup = new FormGroup({
     type: new FormControl(DEFAULT_VALUE)
@@ -32,7 +35,7 @@ export class InjuriesComponent {
   );
   readonly permanentInjuries$: Observable<PermanentInjury[]> = this.filters$.pipe(
     map(filters => this.data[DataTypes.PERMANENT_INJURIES]
-      .filter(() => filters.type === DEFAULT_VALUE ? true : filters?.type === InjuryTypeId.PERMANENT)
+      .filter(() => filters.type === DEFAULT_VALUE ? true : filters?.type === this.permanentId)
     )
   );
 

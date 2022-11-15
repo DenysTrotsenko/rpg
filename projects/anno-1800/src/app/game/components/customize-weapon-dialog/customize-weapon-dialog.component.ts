@@ -1,9 +1,9 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Quality, Weapon} from '@flames-of-freedom-1e/models';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
+import { Quality, Weapon } from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './customize-weapon-dialog.component.html',

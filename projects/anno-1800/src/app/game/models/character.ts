@@ -6,11 +6,11 @@ import {
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   PermanentInjuryId, ProfessionId,
-  QuirkId,
+  QuirkId, SexId,
   SkillId, SpellId, StatureId, StyleId,
   TalentId, TierId,
   TraitId
-} from '@flames-of-freedom-1e/enums';
+} from '@grim-and-perilous/models/common';
 
 export interface Character {
   id: string;
@@ -55,11 +55,11 @@ export interface Character {
   alchemical_arts: SpellId[];
   miscellaneous: {
     portrait: string;
-    age: AgeId;
     biography: string;
+    age: AgeId;
     build: BuildId;
     eyes: EyesId;
-    sex: number;
+    sex: SexId;
     hair_color: HairColorId;
     hair_length: HairLengthId;
     hair_style: HairStyleId;

@@ -43,3 +43,10 @@ export enum StoragePath {
   TRAITS = '/data/traits.json',
   WEAPONS = '/data/weapons.json'
 }
+
+// export enum Id {
+//   INJURY_TYPE_MODERATE = 'l9b5oucxboi',
+//   INJURY_TYPE_SERIOUS = 'l9b5oucxkc6',
+//   INJURY_TYPE_GRIEVOUS = 'l9b5oucx7c',
+//   INJURY_TYPE_PERMANENT = 'l9b5oucxd1k'
+// }

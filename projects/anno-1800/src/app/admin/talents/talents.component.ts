@@ -1,9 +1,8 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Talent} from '@flames-of-freedom-1e/models';
+import {Talent, TalentId} from '@grim-and-perilous/models/common';
 import {AdminService} from '@ti/app/admin/admin.service';
 import {DialogService, SnackbarService, StorageService} from '@shared';
-import {TalentId} from '@flames-of-freedom-1e/enums';
 import {TalentsEditComponent} from '@ti/app/admin/talents/talents-edit.component';
 
 @Component({

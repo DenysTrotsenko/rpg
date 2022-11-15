@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import {AlchemicalArt, Injury, Spell, SpellType, Tier} from '@flames-of-freedom-1e/models';
-import {FormControl, FormGroup} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { AlchemicalArt, Spell, SpellType, Tier } from '@grim-and-perilous/models/common';
+import { FormControl, FormGroup } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const DEFAULT_VALUE = 'ALL';
 const DEFAULT_FILTERS = { tier: DEFAULT_VALUE, type: DEFAULT_VALUE };

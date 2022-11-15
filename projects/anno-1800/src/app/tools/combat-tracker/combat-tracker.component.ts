@@ -4,11 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { DialogService, getId } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Threat, Lighting, Obscurement } from '@flames-of-freedom-1e/models';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import { Character } from '@ti/app/game/models/character';
 import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
-import { LightingId, NotchId, ObscurementId, RiskFactorId } from '@flames-of-freedom-1e/enums';
+import {
+  Threat, Lighting, Obscurement, LightingId, NotchId, ObscurementId, RiskFactorId
+} from '@grim-and-perilous/models/common';
+import { LIGHTING_ID_PERFECT_LIGHT, OBSCUREMENT_ID_NO_OBSCUREMENT } from '@grim-and-perilous/const';
 
 interface ThreatsOnBoard {
   risk_factor: RiskFactorId;
@@ -27,8 +29,8 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
   readonly obscurement: Obscurement[] = this.data[DataTypes.OBSCUREMENT];
   readonly threats: Threat[] = this.data[DataTypes.THREATS];
   readonly form: FormGroup = new FormGroup({
-    lighting: new FormControl(LightingId.PERFECT_LIGHT),
-    obscurement: new FormControl(ObscurementId.NO)
+    lighting: new FormControl(LIGHTING_ID_PERFECT_LIGHT),
+    obscurement: new FormControl(OBSCUREMENT_ID_NO_OBSCUREMENT)
   });
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
   readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;

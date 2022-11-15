@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import {Archetype, Profession, Skill, Talent} from '@flames-of-freedom-1e/models';
+import { Archetype, Profession, Skill, Talent } from '@grim-and-perilous/models/common';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 
 const DEFAULT_FILTERS = { skills: [], talents: [], archetype: null };

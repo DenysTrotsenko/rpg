@@ -5,7 +5,6 @@ import {combineLatest, Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 import {DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
 import {
-  AdvancementScheme,
   Affliction,
   Age,
   AlchemicalArt,
@@ -28,9 +27,7 @@ import {
   Stature,
   Style,
   Tier,
-  Trait
-} from '@flames-of-freedom-1e/models';
-import {
+  Trait,
   AgeId,
   ArchetypeId,
   AttributeId,
@@ -41,15 +38,29 @@ import {
   SexId,
   SizeId,
   TraitId
-} from '@flames-of-freedom-1e/enums';
-import {getArchetype, getBonusFromAttribute, getProfession} from '@flames-of-freedom-1e/utils';
-import {DEFAULT_ATTRIBUTE_PERCENTAGES, DEFAULT_DETERMINATION} from '@flames-of-freedom-1e/const';
+} from '@grim-and-perilous/models/common';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {Character} from '@ti/app/game/models/character';
 import {Campaign} from '@ti/app/game/models/campaign';
 import {
   CustomizeAdvancementSchemeComponent
 } from '@ti/app/game/components/customize-advancement-scheme/customize-advancement-scheme.component';
+import {
+  AGE_ID_YOUNG, ARCHETYPE_ID_COMMONER, ARCHETYPE_ID_MAGE,
+  ATTRIBUTE_ID_AGILITY,
+  ATTRIBUTE_ID_BRAWN,
+  ATTRIBUTE_ID_COMBAT,
+  ATTRIBUTE_ID_FELLOWSHIP,
+  ATTRIBUTE_ID_INTELLIGENCE,
+  ATTRIBUTE_ID_PERCEPTION,
+  ATTRIBUTE_ID_WILLPOWER,
+  BELIEF_ID_ACHIEVEMENT,
+  DEFAULT_ATTRIBUTE_PERCENTAGES,
+  DEFAULT_DETERMINATION, FLAW_ID_APPREHENSION,
+  SEX_ID_MALE,
+  SIZE_ID_NORMAL
+} from '@grim-and-perilous/const';
+import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 
 @Component({
   templateUrl: './create.component.html',
@@ -90,8 +101,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     miscellaneous: new FormGroup({
       portrait: new FormControl(null),
       biography: new FormControl(''),
-      sex: new FormControl(SexId.MALE),
-      age: new FormControl(AgeId.YOUNG),
+      sex: new FormControl(SEX_ID_MALE),
+      age: new FormControl(AGE_ID_YOUNG),
       stature: new FormControl(null),
       build: new FormControl(null),
       style: new FormControl(null),
@@ -101,23 +112,23 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       hair_color: new FormControl(null),
       mark: new FormControl(null),
     }),
-    size: new FormControl(SizeId.NORMAL),
+    size: new FormControl(SIZE_ID_NORMAL),
     determination: new FormControl(DEFAULT_DETERMINATION, [Validators.required]),
     allegiances: new FormControl(''),
-    culture: new FormControl(CultureId.BLACK, [Validators.required]),
+    culture: new FormControl(null, [Validators.required]),
     languages: new FormControl([]),
-    belief: new FormControl(BeliefId.ACHIEVEMENT, [Validators.required]),
-    flaw: new FormControl(FlawId.APPREHENSION, [Validators.required]),
+    belief: new FormControl(BELIEF_ID_ACHIEVEMENT, [Validators.required]),
+    flaw: new FormControl(FLAW_ID_APPREHENSION, [Validators.required]),
     attributes: new FormGroup({
-      [AttributeId.COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.AGILITY]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.PERCEPTION]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.INTELLIGENCE]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.WILLPOWER]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-      [AttributeId.FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
+      [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_AGILITY]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_PERCEPTION]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_INTELLIGENCE]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_WILLPOWER]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+      [ATTRIBUTE_ID_FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
     }),
-    archetype: new FormControl(ArchetypeId.COMMONER, [Validators.required]),
+    archetype: new FormControl(ARCHETYPE_ID_COMMONER, [Validators.required]),
     trait: new FormControl(null, [Validators.required]),
     tier: new FormControl(this.TIERS[0].id, [Validators.required]),
     professions: new FormGroup({
@@ -181,7 +192,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   readonly tiers: string[] = this.TIERS.map(i => i.name);
 
   readonly archetype$: Observable<ArchetypeId> = this.form.get('archetype').valueChanges.pipe(
-    startWith(ArchetypeId.COMMONER),
+    startWith(ARCHETYPE_ID_COMMONER),
     shareReplay(1)
   );
   readonly traits$: Observable<Trait[]> = this.archetype$.pipe(
@@ -261,7 +272,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   getNonArchetypeProfessions(): ProfessionId[] {
     const archetypeId: ArchetypeId = this.form.get('archetype').value;
-    const archetype: Archetype = getArchetype(archetypeId);
+    const archetype: Archetype = this.data.getArchetype(archetypeId);
     return this.data[DataTypes.PROFESSIONS]
       .filter(i => !archetype?.professions.includes(i.id))
       .map(i => i.id);
@@ -269,22 +280,22 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
 
   isTraitHidden(id: TraitId): boolean {
     const archetypeId: ArchetypeId = this.form.get('archetype').value;
-    const archetype = getArchetype(archetypeId);
+    const archetype = this.data.getArchetype(archetypeId);
     return !archetype.traits.includes(id);
   }
 
   isAdvancesAvailable(control: string): Profession | null {
     const id: ProfessionId = this.form.get(control).value;
-    return getProfession(id);
+    return this.data.getProfession(id);
   }
 
   isMagicalProfession(id: ProfessionId): boolean {
-    const mageIds: ProfessionId[] = getArchetype(ArchetypeId.MAGE).professions;
+    const mageIds: ProfessionId[] = this.data.getArchetype(ARCHETYPE_ID_MAGE).professions;
     return mageIds.includes(id);
   }
 
   onProfessionChange(id: ProfessionId, tier: string): void {
-    const profession: Profession = getProfession(id);
+    const profession: Profession = this.data.getProfession(id);
     this.form.get(`schemas.${tier}`).patchValue({
       traits: [...profession.traits],
       quirks: [...profession.quirks],

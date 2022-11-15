@@ -2,13 +2,13 @@
   <mat-sidenav mode="side" opened position="end">
     <form [formGroup]="filters" class="d-f fd-c p-5">
       <span class="mb-10">
-        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.MODERATE)" matTooltip="Random Moderate Injury">
+        <button mat-icon-button type="button" (click)="onRandomClick(moderateId)" matTooltip="Random Moderate Injury">
           <mat-icon matBadge="M" matBadgeDisabled="true">casino</mat-icon>
         </button>
-        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.SERIOUS)" matTooltip="Random Serious Injury">
+        <button mat-icon-button type="button" (click)="onRandomClick(seriousId)" matTooltip="Random Serious Injury">
           <mat-icon matBadge="S" matBadgeDisabled="true">casino</mat-icon>
         </button>
-        <button mat-icon-button type="button" (click)="onRandomClick(InjuryTypeId.GRIEVOUS)" matTooltip="Random Grievous Injury">
+        <button mat-icon-button type="button" (click)="onRandomClick(grievousId)" matTooltip="Random Grievous Injury">
           <mat-icon matBadge="G" matBadgeDisabled="true">casino</mat-icon>
         </button>
       </span>
@@ -37,7 +37,7 @@
       </mat-expansion-panel>
       <mat-expansion-panel *ngFor="let i of permanentInjuries$ | async; trackBy: trackById;" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">{{i.name}} ({{(PERMANENT | getById: TYPES.INJURY_TYPES)?.name}})</mat-panel-title>
+          <mat-panel-title class="ff-g">{{i.name}} ({{(permanentId | getById: TYPES.INJURY_TYPES)?.name}})</mat-panel-title>
         </mat-expansion-panel-header>
         <div>
           <p matLine class="c-gray"><i>{{i.labels.description}}</i></p>

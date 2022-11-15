@@ -19,8 +19,8 @@ import {
   Skill, Spell, SpellType, Stature, Style,
   Talent, Threat, ThreatTrait, Tier,
   Trait, Weapon,
-  Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType
-} from '@flames-of-freedom-1e/models';
+  Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType, ArchetypeId, ProfessionId
+} from '@grim-and-perilous/models/common';
 import { Campaign } from '@ti/app/game/models/campaign';
 import { Character } from '@ti/app/game/models/character';
 import { StoragePath } from '@grim-and-perilous/enums';
@@ -281,6 +281,18 @@ export class DataService {
     );
 
     return lastValueFrom(dataSrc);
+  }
+
+  getArchetype(id: ArchetypeId): Archetype {
+    return this[DataTypes.ARCHETYPES].find(i => i.id === id);
+  }
+
+  getBonusFromAttribute(value: number): number {
+    return Math.floor(value / 10);
+  }
+
+  getProfession(id: ProfessionId): Profession {
+    return this[DataTypes.PROFESSIONS].find(i => i.id === id);
   }
 
   private getAfflictionTooltip(affliction: Affliction): string {

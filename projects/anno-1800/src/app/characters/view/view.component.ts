@@ -5,18 +5,7 @@ import {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, shareReplay, switchMap, tap} from 'rxjs/operators';
 import {DialogService, FirestoreService, getId} from '@shared';
 import {Character} from '@ti/app/game/models/character';
-import {getBonusFromAttribute} from '@flames-of-freedom-1e/utils';
-import {
-  AttributeId,
-  InjuryId,
-  ProfessionId,
-  QualityId,
-  QuirkId,
-  SkillId,
-  TalentId,
-  TraitId,
-  WeaponId
-} from '@flames-of-freedom-1e/enums';
+import {getBonusFromAttribute} from '@grim-and-perilous/utils';
 import {DataService, DataTypes} from '@ti/app/game/data.service';
 import {
   Affliction,
@@ -33,9 +22,17 @@ import {
   Spell,
   Talent,
   Trait,
-  Weapon
-} from '@flames-of-freedom-1e/models';
-import {ATTRIBUTES} from '@flames-of-freedom-1e/attributes';
+  Weapon,
+  AttributeId,
+  InjuryId,
+  ProfessionId,
+  QualityId,
+  QuirkId,
+  SkillId,
+  TalentId,
+  TraitId,
+  WeaponId
+} from '@grim-and-perilous/models/common';
 import {
   getAttributeBonus,
   getDamageThreshold,
@@ -47,16 +44,17 @@ import {
   getWeaponDamage
 } from '@ti/app/game/character.utils';
 import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
+import { ATTRIBUTE_ID_AGILITY, ATTRIBUTE_ID_BRAWN, WEAPON_ID_BARE_HANDED } from '@grim-and-perilous/const';
 
 interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
 interface SkillView { id: SkillId; name: string; special: boolean; attribute: AttributeId; value: number; tooltip: string; }
 
 const EXCLUDED_INJURIES = [
-  InjuryId.NARROW_ESCAPE_1,
-  InjuryId.NARROW_ESCAPE_2,
-  InjuryId.NARROW_ESCAPE_3,
-  InjuryId.IT_GETS_WORSE_1,
-  InjuryId.IT_GETS_WORSE_2
+  // InjuryId.NARROW_ESCAPE_1,
+  // InjuryId.NARROW_ESCAPE_2,
+  // InjuryId.NARROW_ESCAPE_3,
+  // InjuryId.IT_GETS_WORSE_1,
+  // InjuryId.IT_GETS_WORSE_2
 ];
 
 @Component({
@@ -66,7 +64,7 @@ const EXCLUDED_INJURIES = [
 })
 export class ViewComponent implements OnDestroy {
   readonly DataTypes = DataTypes;
-  readonly DEFAULT_WEAPONS = this.data[DataTypes.WEAPONS].filter(i => i.id === WeaponId.BARE_HANDED);
+  readonly DEFAULT_WEAPONS = this.data[DataTypes.WEAPONS].filter(i => i.id === WEAPON_ID_BARE_HANDED);
   readonly form: FormGroup = new FormGroup({
     damage: new FormControl(0),
     peril: new FormControl(0),
@@ -145,12 +143,12 @@ export class ViewComponent implements OnDestroy {
       ...character.advancements.advanced.bonuses
     ];
 
-    return Object.entries(character.attributes).map(entry => {
-      const id = +entry[0];
-      const value = +entry[1];
+    return this.data[DataTypes.ATTRIBUTES].map(attribute => {
+      const id = attribute.id;
+      const value = character.attributes[id];
       return {
         id,
-        name: ATTRIBUTES.find(i => i.id === id).name,
+        name: attribute.name,
         value,
         bonus: getBonusFromAttribute(value) + advancements.filter(i => i === id).length
       };
@@ -269,8 +267,8 @@ export class ViewComponent implements OnDestroy {
   }
 
   getAllMovementsTooltip(character: Character): string {
-    const agility: number = getAttributeBonus(character, AttributeId.AGILITY);
-    const brawn: number = getAttributeBonus(character, AttributeId.BRAWN);
+    const agility: number = getAttributeBonus(character, ATTRIBUTE_ID_AGILITY);
+    const brawn: number = getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
     return [
       `On foot (Athletics, AB+3): ${agility + 3}`,
       `Sneaking (Stealth, AB-1): ${Math.max(agility - 1, 1)}`,
@@ -387,7 +385,7 @@ export class ViewComponent implements OnDestroy {
     // control.setValue(weapons);
   }
 
-  trackById(_, item): number {
+  trackById(_, item): string {
     return item.id;
   }
 }

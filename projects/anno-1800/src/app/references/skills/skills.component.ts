@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { Skill } from '@flames-of-freedom-1e/models';
+import { Skill } from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './skills.component.html',

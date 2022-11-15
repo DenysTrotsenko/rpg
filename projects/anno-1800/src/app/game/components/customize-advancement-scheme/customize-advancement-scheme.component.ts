@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {AdvancementScheme, Skill, Talent} from '@flames-of-freedom-1e/models';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
+import { AdvancementScheme, Skill, Talent } from '@grim-and-perilous/models/common';
 
 @Component({
   templateUrl: './customize-advancement-scheme.component.html',
