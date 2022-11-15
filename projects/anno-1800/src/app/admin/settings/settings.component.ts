@@ -34,6 +34,7 @@ export class SettingsComponent implements OnInit {
 
   getResponse(data): Observable<Setting> {
     return this.dialog.open(SettingsEditComponent, {
+      disableClose: true,
       width: '100%',
       data
     }).afterClosed();

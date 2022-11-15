@@ -9,42 +9,151 @@
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Qualities</mat-label>
-      <mat-select formControlName="qualities" multiple>
-        <mat-option *ngFor="let i of qualities$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Quirks</mat-label>
-      <mat-select formControlName="quirks" multiple>
-        <mat-option *ngFor="let i of quirks$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Skills</mat-label>
-      <mat-select formControlName="skills" multiple>
-        <mat-option *ngFor="let i of skills$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Talents</mat-label>
-      <mat-select formControlName="talents" multiple>
-        <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Traits</mat-label>
-      <mat-select formControlName="traits" multiple>
-        <mat-option *ngFor="let i of traits$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Professions</mat-label>
-      <mat-select formControlName="professions" multiple>
-        <mat-option *ngFor="let i of professions$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-accordion>
+      <!-- ALCHEMICAL ARTS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Alchemical Arts
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="alchemical_arts">
+          <mat-list-option *ngFor="let i of alchemicalArts$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- ARCHETYPES -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Archetypes
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="archetypes">
+          <mat-list-option *ngFor="let i of archetypes$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- QUALITIES -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Qualities
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="qualities">
+          <mat-list-option *ngFor="let i of qualities$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- QUIRKS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Quirks
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="quirks">
+          <mat-list-option *ngFor="let i of quirks$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- SKILLS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Skills
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="skills">
+          <mat-list-option *ngFor="let i of skills$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- SPELLS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Spells
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="spells">
+          <mat-list-option *ngFor="let i of spells$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- TALENTS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Talents
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="talents">
+          <mat-list-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- THREATS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Threats
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="threats">
+          <mat-list-option *ngFor="let i of threats$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- TRAITS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Traits
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="traits">
+          <mat-list-option *ngFor="let i of traits$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- PROFESSIONS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Professions
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="professions">
+          <mat-list-option *ngFor="let i of professions$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      <!-- WEAPONS -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="ff-g">
+            Weapons
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list formControlName="weapons">
+          <mat-list-option *ngFor="let i of weapons$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </form>
 </div>
 <div mat-dialog-actions>
