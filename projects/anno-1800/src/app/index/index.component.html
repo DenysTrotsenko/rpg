@@ -45,7 +45,7 @@
     </mat-nav-list>
     <mat-nav-list *ngIf="logged$ | async" dense class="mt-15">
       <button mat-list-item matTooltip="{{ expanded ? '' : 'Logout' }}" (click)="onLogoutClick()">
-        <mat-icon>logout</mat-icon><span class="ml-10 not-expanded-hide">Logout</span>
+        <mat-icon color="warn">logout</mat-icon><span class="ml-10 not-expanded-hide warn">Logout</span>
       </button>
     </mat-nav-list>
 <!--    <mat-nav-list dense class="mt-15">-->
