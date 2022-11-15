@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { getId, StorageService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { Quality, Quirk, Skill, Talent, Trait } from '@grim-and-perilous/models/common';
-import { tap } from 'rxjs/operators';
+import { shareReplay, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './settings-edit.component.html',
@@ -30,37 +30,48 @@ export class SettingsEditComponent implements OnInit {
   });
 
   readonly alchemicalArts$ = this.storage.download<Quality[]>('/data/alchemical-arts.json').pipe(
-    tap(res => this.form.get('alchemical_arts').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('alchemical_arts').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly archetypes$ = this.storage.download<Quality[]>('/data/archetypes.json').pipe(
-    tap(res => this.form.get('archetypes').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('archetypes').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly professions$ = this.storage.download<Trait[]>('/data/professions.json').pipe(
-    tap(res => this.form.get('professions').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('professions').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly qualities$ = this.storage.download<Quality[]>('/data/qualities.json').pipe(
-    tap(res => this.form.get('qualities').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('qualities').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly quirks$ = this.storage.download<Quirk[]>('/data/quirks.json').pipe(
-    tap(res => this.form.get('quirks').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('quirks').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly skills$ = this.storage.download<Skill[]>('/data/skills.json').pipe(
-    tap(res => this.form.get('skills').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('skills').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly spells$ = this.storage.download<Skill[]>('/data/spells.json').pipe(
-    tap(res => this.form.get('spells').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('spells').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly talents$ = this.storage.download<Talent[]>('/data/talents.json').pipe(
-    tap(res => this.form.get('talents').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('talents').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly threats$ = this.storage.download<Talent[]>('/data/threats.json').pipe(
-    tap(res => this.form.get('threats').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('threats').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly traits$ = this.storage.download<Trait[]>('/data/traits.json').pipe(
-    tap(res => this.form.get('traits').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('traits').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
   readonly weapons$ = this.storage.download<Trait[]>('/data/weapons.json').pipe(
-    tap(res => this.form.get('weapons').patchValue(res.map(i => i.id)))
+    tap(res => this.form.get('weapons').patchValue(res.map(i => i.id))),
+    shareReplay(1)
   );
 
   constructor(
@@ -74,12 +85,18 @@ export class SettingsEditComponent implements OnInit {
         id: this.data.id ?? getId(),
         name: this.data.name ?? '',
         description: this.data.description ?? '',
+        alchemical_arts: this.data.alchemical_arts ?? [],
+        archetypes: this.data.archetypes ?? [],
         qualities: this.data.qualities ?? [],
         quirks: this.data.quirks ?? [],
+        professions: this.data.professions ?? [],
         skills: this.data.skills ?? [],
+        spells: this.data.spells ?? [],
         talents: this.data.talents ?? [],
-        traits: this.data.traits ?? []
-      });
+        threats: this.data.threats ?? [],
+        traits: this.data.traits ?? [],
+        weapons: this.data.weapons ?? []
+      } as Setting);
     }
   }
 

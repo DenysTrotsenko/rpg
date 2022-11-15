@@ -13,9 +13,12 @@
       <!-- ALCHEMICAL ARTS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Alchemical Arts
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('alchemical_arts').value?.length}} / {{(alchemicalArts$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="alchemical_arts">
           <mat-list-option *ngFor="let i of alchemicalArts$ | async; trackBy: trackById;" [value]="i.id">
@@ -26,9 +29,12 @@
       <!-- ARCHETYPES -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Archetypes
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('archetypes').value?.length}} / {{(archetypes$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="archetypes">
           <mat-list-option *ngFor="let i of archetypes$ | async; trackBy: trackById;" [value]="i.id">
@@ -39,9 +45,12 @@
       <!-- QUALITIES -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Qualities
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('qualities').value?.length}} / {{(qualities$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="qualities">
           <mat-list-option *ngFor="let i of qualities$ | async; trackBy: trackById;" [value]="i.id">
@@ -52,9 +61,12 @@
       <!-- QUIRKS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Quirks
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('quirks').value?.length}} / {{(quirks$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="quirks">
           <mat-list-option *ngFor="let i of quirks$ | async; trackBy: trackById;" [value]="i.id">
@@ -65,9 +77,12 @@
       <!-- SKILLS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Skills
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('skills').value?.length}} / {{(skills$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="skills">
           <mat-list-option *ngFor="let i of skills$ | async; trackBy: trackById;" [value]="i.id">
@@ -78,9 +93,12 @@
       <!-- SPELLS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Spells
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('spells').value?.length}} / {{(spells$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="spells">
           <mat-list-option *ngFor="let i of spells$ | async; trackBy: trackById;" [value]="i.id">
@@ -91,9 +109,12 @@
       <!-- TALENTS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Talents
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('talents').value?.length}} / {{(talents$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="talents">
           <mat-list-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
@@ -104,9 +125,12 @@
       <!-- THREATS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Threats
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('threats').value?.length}} / {{(threats$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="threats">
           <mat-list-option *ngFor="let i of threats$ | async; trackBy: trackById;" [value]="i.id">
@@ -117,9 +141,12 @@
       <!-- TRAITS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Traits
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('traits').value?.length}} / {{(traits$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="traits">
           <mat-list-option *ngFor="let i of traits$ | async; trackBy: trackById;" [value]="i.id">
@@ -130,9 +157,12 @@
       <!-- PROFESSIONS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Professions
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('professions').value?.length}} / {{(professions$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="professions">
           <mat-list-option *ngFor="let i of professions$ | async; trackBy: trackById;" [value]="i.id">
@@ -143,9 +173,12 @@
       <!-- WEAPONS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title class="ff-g">
+          <mat-panel-title class="ff-g f-0">
             Weapons
           </mat-panel-title>
+          <mat-panel-description>
+            ({{form.get('weapons').value?.length}} / {{(weapons$ | async)?.length}} selected)
+          </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list formControlName="weapons">
           <mat-list-option *ngFor="let i of weapons$ | async; trackBy: trackById;" [value]="i.id">
@@ -158,5 +191,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="null">Cancel</button>
-  <button mat-button [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+  <button mat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
 </div>
