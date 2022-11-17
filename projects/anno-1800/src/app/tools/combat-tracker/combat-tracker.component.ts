@@ -5,7 +5,7 @@ import { filter, map, tap } from 'rxjs/operators';
 import { DialogService, getId } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { CombatTrackerUnit } from './combat-tracker.models';
-import { Character } from '@ti/app/game/models/character';
+import { Character } from '@grim-and-perilous/models/character';
 import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
 import {
   Threat, Lighting, Obscurement, LightingId, NotchId, ObscurementId, RiskFactorId

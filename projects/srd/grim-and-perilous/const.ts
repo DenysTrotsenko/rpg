@@ -1,6 +1,6 @@
 import {
   AgeId, ArchetypeId,
-  AttributeId, BeliefId, FlawId,
+  AttributeId, BeliefId, FlawId, InjuryId,
   InjuryTypeId,
   LightingId,
   ObscurementId, QualityId,
@@ -23,6 +23,11 @@ export const ATTRIBUTE_ID_WILLPOWER = 'l9b3nci815g' as AttributeId;
 export const ATTRIBUTE_ID_FELLOWSHIP = 'l9b3nci8guk' as AttributeId;
 export const BELIEF_ID_ACHIEVEMENT = 'l9b3s1isy8' as BeliefId;
 export const FLAW_ID_APPREHENSION = 'l9b3sliju2f' as FlawId;
+export const INJURY_ID_NARROW_ESCAPE_1 = 'labo4pl5km' as InjuryId;
+export const INJURY_ID_NARROW_ESCAPE_2 = 'labo4pl5md9' as InjuryId;
+export const INJURY_ID_NARROW_ESCAPE_3 = 'labo4pl5fhi' as InjuryId;
+export const INJURY_ID_IT_GETS_WORSE_1 = 'labo4pl5rs' as InjuryId;
+export const INJURY_ID_IT_GETS_WORSE_2 = 'labo4pl5fz' as InjuryId;
 export const INJURY_TYPE_ID_MODERATE = 'l9b5oucxboi' as InjuryTypeId;
 export const INJURY_TYPE_ID_SERIOUS = 'l9b5oucxkc6' as InjuryTypeId;
 export const INJURY_TYPE_ID_GRIEVOUS = 'l9b5oucx7c' as InjuryTypeId;

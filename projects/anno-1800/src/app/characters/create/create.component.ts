@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
-import {DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective} from '@shared';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
+import { DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective } from '@shared';
 import {
   Affliction,
   Age,
@@ -28,20 +28,12 @@ import {
   Style,
   Tier,
   Trait,
-  AgeId,
   ArchetypeId,
   AttributeId,
-  BeliefId,
-  CultureId,
-  FlawId,
   ProfessionId,
-  SexId,
-  SizeId,
   TraitId
 } from '@grim-and-perilous/models/common';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
-import {Character} from '@ti/app/game/models/character';
-import {Campaign} from '@ti/app/game/models/campaign';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
 import {
   CustomizeAdvancementSchemeComponent
 } from '@ti/app/game/components/customize-advancement-scheme/customize-advancement-scheme.component';
@@ -61,6 +53,8 @@ import {
   SIZE_ID_NORMAL
 } from '@grim-and-perilous/const';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
+import { Campaign } from '@grim-and-perilous/models/campaign';
+import { Character } from '@grim-and-perilous/models/character';
 
 @Component({
   templateUrl: './create.component.html',
@@ -337,7 +331,9 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
   }
 
   onSubmit(form): void {
-    if (!this.form.valid) { return; }
+    if (!this.form.valid) {
+      return;
+    }
 
     combineLatest([this.character$, this.campaigns$])
       .pipe(

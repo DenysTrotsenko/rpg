@@ -6,7 +6,6 @@ import { CharactersComponent } from './characters.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
-import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -14,8 +13,7 @@ import { EditComponent } from './edit/edit.component';
     CharactersComponent,
     CreateComponent,
     ListComponent,
-    ViewComponent,
-    EditComponent
+    ViewComponent
   ],
   imports: [
     SharedModule,

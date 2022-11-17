@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
-import { Campaign } from '@ti/app/game/models/campaign';
 import { DataService } from '@ti/app/game/data.service';
+import { Campaign } from '@grim-and-perilous/models/campaign';
 
 @Component({
   templateUrl: './list.component.html',

@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, shareReplay, switchMap, tap} from 'rxjs/operators';
-import {DialogService, FirestoreService, getId} from '@shared';
-import {Character} from '@ti/app/game/models/character';
-import {getBonusFromAttribute} from '@grim-and-perilous/utils';
-import {DataService, DataTypes} from '@ti/app/game/data.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { DialogService, FirestoreService, getId } from '@shared';
+import { Character } from '@grim-and-perilous/models/character';
+import { getBonusFromAttribute } from '@grim-and-perilous/utils';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
 import {
   Affliction,
   Ailment,
@@ -43,18 +43,37 @@ import {
   getThresholds,
   getWeaponDamage
 } from '@ti/app/game/character.utils';
-import {CustomizeWeaponDialogComponent} from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
-import { ATTRIBUTE_ID_AGILITY, ATTRIBUTE_ID_BRAWN, WEAPON_ID_BARE_HANDED } from '@grim-and-perilous/const';
+import { CustomizeWeaponDialogComponent } from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
+import {
+  ATTRIBUTE_ID_AGILITY,
+  ATTRIBUTE_ID_BRAWN, INJURY_ID_IT_GETS_WORSE_1, INJURY_ID_IT_GETS_WORSE_2,
+  INJURY_ID_NARROW_ESCAPE_1,
+  INJURY_ID_NARROW_ESCAPE_2, INJURY_ID_NARROW_ESCAPE_3,
+  WEAPON_ID_BARE_HANDED
+} from '@grim-and-perilous/const';
 
-interface AttributeView { id: AttributeId; name: string; value: number; bonus: number; }
-interface SkillView { id: SkillId; name: string; special: boolean; attribute: AttributeId; value: number; tooltip: string; }
+interface AttributeView {
+  id: AttributeId;
+  name: string;
+  value: number;
+  bonus: number;
+}
+
+interface SkillView {
+  id: SkillId;
+  name: string;
+  special: boolean;
+  attribute: AttributeId;
+  value: number;
+  tooltip: string;
+}
 
 const EXCLUDED_INJURIES = [
-  // InjuryId.NARROW_ESCAPE_1,
-  // InjuryId.NARROW_ESCAPE_2,
-  // InjuryId.NARROW_ESCAPE_3,
-  // InjuryId.IT_GETS_WORSE_1,
-  // InjuryId.IT_GETS_WORSE_2
+  INJURY_ID_NARROW_ESCAPE_1,
+  INJURY_ID_NARROW_ESCAPE_2,
+  INJURY_ID_NARROW_ESCAPE_3,
+  INJURY_ID_IT_GETS_WORSE_1,
+  INJURY_ID_IT_GETS_WORSE_2
 ];
 
 @Component({
@@ -128,7 +147,8 @@ export class ViewComponent implements OnDestroy {
     private readonly firestore: FirestoreService,
     private readonly data: DataService,
     private readonly cd: ChangeDetectorRef
-  ) {}
+  ) {
+  }
 
   ngOnDestroy(): void {
     const id: string = this.route.snapshot.params.id;

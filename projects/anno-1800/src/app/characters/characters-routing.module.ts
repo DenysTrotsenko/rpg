@@ -5,7 +5,6 @@ import { CharactersComponent } from './characters.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { ViewComponent } from './view/view.component';
-import {AuthorGuard} from '@ti/app/game/author.guard';
 
 const routes: Routes = [
   {

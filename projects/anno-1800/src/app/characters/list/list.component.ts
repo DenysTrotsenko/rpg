@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
-import { Character } from '@ti/app/game/models/character';
+import { Character } from '@grim-and-perilous/models/character';
 import { DataService } from '@ti/app/game/data.service';
 
 @Component({

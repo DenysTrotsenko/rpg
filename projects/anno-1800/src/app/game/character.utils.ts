@@ -1,6 +1,6 @@
-import {Character} from '@ti/app/game/models/character';
+import {Character} from '@grim-and-perilous/models/character';
 import {getBonusFromAttribute} from '@grim-and-perilous/utils';
-import {AttributeId, QualityId, TalentId, Weapon} from '@grim-and-perilous/models/common';
+import {AttributeId, TalentId, Weapon} from '@grim-and-perilous/models/common';
 import {getIntegerInRange} from '@shared';
 import {
   ATTRIBUTE_ID_AGILITY,

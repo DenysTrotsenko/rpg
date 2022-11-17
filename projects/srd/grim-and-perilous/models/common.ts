@@ -7,6 +7,7 @@ export type ArchetypeId = Opaque<string, 'ArchetypeId'>;
 export type AttributeId = Opaque<string, 'AttributeId'>;
 export type BeliefId = Opaque<string, 'BeliefId'>;
 export type BuildId = Opaque<string, 'BuildId'>;
+export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CultureId = Opaque<string, 'CultureId'>;
 export type DispositionId = Opaque<string, 'DispositionId'>;
 export type DrugId = Opaque<string, 'DrugId'>;

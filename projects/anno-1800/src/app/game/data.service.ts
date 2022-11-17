@@ -21,9 +21,9 @@ import {
   Trait, Weapon,
   Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType, ArchetypeId, ProfessionId
 } from '@grim-and-perilous/models/common';
-import { Campaign } from '@ti/app/game/models/campaign';
-import { Character } from '@ti/app/game/models/character';
+import { Character } from '@grim-and-perilous/models/character';
 import { StoragePath } from '@grim-and-perilous/enums';
+import { Campaign } from '@grim-and-perilous/models/campaign';
 
 
 export enum FirestoreCollection {
@@ -285,10 +285,6 @@ export class DataService {
 
   getArchetype(id: ArchetypeId): Archetype {
     return this[DataTypes.ARCHETYPES].find(i => i.id === id);
-  }
-
-  getBonusFromAttribute(value: number): number {
-    return Math.floor(value / 10);
   }
 
   getProfession(id: ProfessionId): Profession {

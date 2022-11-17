@@ -1,11 +1,10 @@
-import {Component, ChangeDetectionStrategy, HostListener, OnDestroy} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {Character} from '@ti/app/game/models/character';
-import {distinctUntilChanged, map, shareReplay, switchMap, tap} from 'rxjs/operators';
-import {Campaign} from '@ti/app/game/models/campaign';
-import {FirestoreService} from '@shared';
+import { Component, ChangeDetectionStrategy, HostListener, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { FirestoreService } from '@shared';
+import { Campaign } from '@grim-and-perilous/models/campaign';
 
 @Component({
   templateUrl: './view.component.html',
@@ -37,7 +36,7 @@ export class ViewComponent implements OnDestroy {
   constructor(
     private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
-  ) { }
+  ) {}
 
   ngOnDestroy(): void {
     const id: string = this.route.snapshot.params.id;
