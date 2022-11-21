@@ -11,7 +11,7 @@ import { DataService } from '@ti/app/game/data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
+  readonly characters$: Observable<Character[]> = this.data.charactersOwnOrMaster$;
 
   constructor(
     private readonly auth: AuthService,

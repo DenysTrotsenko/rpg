@@ -22,11 +22,13 @@ export class CreateComponent {
   ) {}
 
   onSubmit(form): void {
-    this.firestore.update(`campaigns/${form.id}`, { ...form, author: this.route.snapshot.data?.user?.uid })
-      .pipe(
-        tap(() => this.router.navigate(['campaigns/list']))
-      )
-      .subscribe();
+    this.firestore.update(`campaigns/${form.id}`, {
+      ...form,
+      author: this.route.snapshot.data?.user?.uid
+    }).pipe(
+      tap(() => this.router.navigate(['campaigns/list']))
+    )
+    .subscribe();
   }
 
 }

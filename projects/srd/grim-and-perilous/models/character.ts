@@ -2,7 +2,7 @@ import {
   AfflictionId, AgeId,
   ArchetypeId,
   AttributeId,
-  BeliefId, BuildId,
+  BeliefId, BuildId, CampaignId,
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   PermanentInjuryId, ProfessionId,
@@ -24,7 +24,7 @@ import { getIntegerInRange } from '@shared';
 export class Character {
   id: string;
   authors: string[];
-  campaign: string;
+  campaign: CampaignId;
   name: string;
   // tslint:disable-next-line:variable-name
   full_name: string;

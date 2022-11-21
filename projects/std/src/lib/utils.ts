@@ -2,13 +2,10 @@ import { JsonString } from './models';
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 export function getFilteredObject<T>(obj: object, allowed: string[]): T {
-  const keys = Object.keys(obj).filter(i => allowed.includes(i));
-  const filtered = keys.reduce((acc, key) => {
+  return Object.keys(obj).filter(i => allowed.includes(i)).reduce((acc, key) => {
     acc[key] = obj[key];
     return acc;
   }, {} as T);
-
-  return filtered;
 }
 
 export function getId(): string {

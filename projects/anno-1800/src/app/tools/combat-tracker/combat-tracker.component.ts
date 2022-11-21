@@ -34,7 +34,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
     obscurement: new FormControl(OBSCUREMENT_ID_NO_OBSCUREMENT)
   });
   readonly units$: BehaviorSubject<CombatTrackerUnit[]> = new BehaviorSubject<CombatTrackerUnit[]>([]);
-  readonly characters$: Observable<Character[]> = this.data.charactersOwnAndMaster$;
+  readonly characters$: Observable<Character[]> = this.data.charactersOwnOrMaster$;
   readonly deployed$: Observable<ThreatsOnBoard[]> = this.units$.asObservable().pipe(
     map(units => {
       return units

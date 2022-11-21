@@ -26,7 +26,6 @@ import { StoragePath } from '@grim-and-perilous/enums';
 import { Campaign } from '@grim-and-perilous/models/campaign';
 import { Threat } from '@grim-and-perilous/models/threat';
 
-
 export enum FirestoreCollection {
   CHARACTERS = 'characters',
   CAMPAIGNS = 'campaigns'
@@ -129,6 +128,9 @@ export class DataService {
   readonly campaignsOwn$: Observable<Campaign[]> = this.auth.auth$.pipe(
     switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
   );
+  // readonly campaignsOwnOrIncluded$: Observable<Campaign[]> = this.auth.auth$.pipe(
+  //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
+  // );
   readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
     shareReplay(1)
   );
@@ -138,7 +140,7 @@ export class DataService {
     )),
     shareReplay(1)
   );
-  readonly charactersOwnAndMaster$: Observable<Character[]> = this.auth.auth$.pipe(
+  readonly charactersOwnOrMaster$: Observable<Character[]> = this.auth.auth$.pipe(
     switchMap(user => this.firestore.collection<Character>(
       FirestoreCollection.CHARACTERS, ref => ref.where('authors', 'array-contains', user.uid)
     )),
