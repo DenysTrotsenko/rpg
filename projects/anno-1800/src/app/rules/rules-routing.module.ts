@@ -14,34 +14,14 @@ const routes: Routes = [
     path: '',
     component: RulesComponent,
     children: [
-      {
-        path: 'chase',
-        component: ChaseComponent
-      },
-      {
-        path: 'combat',
-        component: CombatComponent
-      },
-      {
-        path: 'hazards',
-        component: HazardsComponent
-      },
-      {
-        path: 'healing',
-        component: HealingComponent
-      },
-      {
-        path: 'horror',
-        component: HorrorComponent
-      },
-      {
-        path: 'social',
-        component: SocialComponent
-      },
-      {
-        path: 'travel',
-        component: TravelComponent
-      },
+      { path: 'chase', component: ChaseComponent },
+      { path: 'combat', component: CombatComponent },
+      { path: 'hazards', component: HazardsComponent },
+      { path: 'healing', component: HealingComponent },
+      { path: 'horror', component: HorrorComponent },
+      { path: 'social', component: SocialComponent },
+      { path: 'travel', component: TravelComponent },
+      { path: '**', redirectTo: 'chase', pathMatch: 'full' }
     ]
   }
 ];

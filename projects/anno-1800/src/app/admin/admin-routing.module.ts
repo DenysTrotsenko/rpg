@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from '@ti/app/admin/admin.component';
-import { QualitiesComponent } from '@ti/app/admin/qualities/qualities.component';
-import { AilmentsComponent } from '@ti/app/admin/ailments/ailments.component';
-import { DrugsComponent } from '@ti/app/admin/drugs/drugs.component';
-import { QuirksComponent } from '@ti/app/admin/quirks/quirks.component';
-import { TalentsComponent } from '@ti/app/admin/talents/talents.component';
-import { TraitsComponent } from '@ti/app/admin/traits/traits.component';
-import { SettingsComponent } from '@ti/app/admin/settings/settings.component';
+import { AdminComponent } from './admin.component';
+import { QualitiesComponent } from './qualities/qualities.component';
+import { AilmentsComponent } from './ailments/ailments.component';
+import { DrugsComponent } from './drugs/drugs.component';
+import { QuirksComponent } from './quirks/quirks.component';
+import { TalentsComponent } from './talents/talents.component';
+import { TraitsComponent } from './traits/traits.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AfflictionsComponent } from './afflictions/afflictions.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
+      { path: 'afflictions', component: AfflictionsComponent },
       { path: 'ailments', component: AilmentsComponent },
       { path: 'drugs', component: DrugsComponent },
       { path: 'qualities', component: QualitiesComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
       { path: 'talents', component: TalentsComponent },
       { path: 'traits', component: TraitsComponent },
       { path: 'settings', component: SettingsComponent },
+      { path: '**', redirectTo: 'afflictions', pathMatch: 'full' }
     ]
   }
 ];

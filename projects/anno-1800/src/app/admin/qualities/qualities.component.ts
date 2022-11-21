@@ -43,8 +43,8 @@ export class QualitiesComponent implements OnInit {
     this.admin.delete(id);
   }
 
-  onEditClick(quality: Quality): void {
-    this.admin.edit(quality);
+  onEditClick(item: Quality): void {
+    this.admin.edit(item);
   }
 
   onSaveClick(): void {

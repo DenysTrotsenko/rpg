@@ -19,54 +19,19 @@ const routes: Routes = [
     path: '',
     component: ReferencesComponent,
     children: [
-      {
-        path: 'afflictions',
-        component: AfflictionsComponent
-      },
-      {
-        path: 'ailments',
-        component: AilmentsComponent
-      },
-      {
-        path: 'attributes',
-        component: AttributesComponent
-      },
-      {
-        path: 'drugs',
-        component: DrugsComponent
-      },
-      {
-        path: 'injuries',
-        component: InjuriesComponent
-      },
-      {
-        path: 'professions',
-        component: ProfessionsComponent
-      },
-      {
-        path: 'qualities',
-        component: QualitiesComponent
-      },
-      {
-        path: 'quirks',
-        component: QuirksComponent
-      },
-      {
-        path: 'skills',
-        component: SkillsComponent
-      },
-      {
-        path: 'spells',
-        component: SpellsComponent
-      },
-      {
-        path: 'talents',
-        component: TalentsComponent
-      },
-      {
-        path: 'traits',
-        component: TraitsComponent
-      },
+      { path: 'afflictions', component: AfflictionsComponent },
+      { path: 'ailments', component: AilmentsComponent },
+      { path: 'attributes', component: AttributesComponent },
+      { path: 'drugs', component: DrugsComponent },
+      { path: 'injuries', component: InjuriesComponent },
+      { path: 'professions', component: ProfessionsComponent },
+      { path: 'qualities', component: QualitiesComponent },
+      { path: 'quirks', component: QuirksComponent },
+      { path: 'skills', component: SkillsComponent },
+      { path: 'spells', component: SpellsComponent },
+      { path: 'talents', component: TalentsComponent },
+      { path: 'traits', component: TraitsComponent },
+      { path: '**', redirectTo: 'afflictions', pathMatch: 'full' }
     ]
   }
 ];

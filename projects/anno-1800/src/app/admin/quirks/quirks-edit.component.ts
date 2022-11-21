@@ -24,7 +24,7 @@ export class QuirksEditComponent implements OnInit {
       this.form.patchValue({
         name: this.data.name ?? '',
         labels: {
-          description: this.data.labels?.effect ?? '',
+          description: this.data.labels?.description ?? '',
           effect: this.data.labels?.effect ?? ''
         }
       });

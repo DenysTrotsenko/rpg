@@ -1,14 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Trait } from '@grim-and-perilous/models/common';
+import { Affliction } from '@grim-and-perilous/models/common';
 
 @Component({
-  templateUrl: './traits-edit.component.html',
-  styleUrls: ['./traits-edit.component.scss'],
+  templateUrl: './afflictions-edit.component.html',
+  styleUrls: ['./afflictions-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TraitsEditComponent implements OnInit {
+export class AfflictionsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     labels: new FormGroup({
@@ -17,7 +17,7 @@ export class TraitsEditComponent implements OnInit {
     })
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Trait) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Affliction) {}
 
   ngOnInit(): void {
     if (!!this.data) {

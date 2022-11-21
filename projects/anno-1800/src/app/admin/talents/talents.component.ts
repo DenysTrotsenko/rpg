@@ -42,8 +42,8 @@ export class TalentsComponent implements OnInit {
     this.admin.delete(id);
   }
 
-  onEditClick(quality: Talent): void {
-    this.admin.edit(quality);
+  onEditClick(item: Talent): void {
+    this.admin.edit(item);
   }
 
   onSaveClick(): void {

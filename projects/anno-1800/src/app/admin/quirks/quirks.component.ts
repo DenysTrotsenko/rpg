@@ -43,8 +43,8 @@ export class QuirksComponent implements OnInit {
     this.admin.delete(id);
   }
 
-  onEditClick(quality: Quirk): void {
-    this.admin.edit(quality);
+  onEditClick(item: Quirk): void {
+    this.admin.edit(item);
   }
 
   onSaveClick(): void {

@@ -29,13 +29,13 @@ export class AilmentsEditComponent implements OnInit {
       this.form.patchValue({
         name: this.data.name ?? '',
         labels: {
-          description: this.data.labels?.effect ?? '',
-          resist: this.data.labels?.effect ?? '',
+          description: this.data.labels?.description ?? '',
+          resist: this.data.labels?.resist ?? '',
           effect: this.data.labels?.effect ?? '',
-          critical_success: this.data.labels?.effect ?? '',
-          critical_failure: this.data.labels?.effect ?? '',
-          other_considerations: this.data.labels?.effect ?? '',
-          duration: this.data.labels?.effect ?? ''
+          critical_success: this.data.labels?.critical_success ?? '',
+          critical_failure: this.data.labels?.critical_failure ?? '',
+          other_considerations: this.data.labels?.other_considerations ?? '',
+          duration: this.data.labels?.duration ?? ''
         }
       });
     }

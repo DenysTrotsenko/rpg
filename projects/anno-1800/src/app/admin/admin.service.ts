@@ -4,7 +4,7 @@ import { catchError, filter, tap } from 'rxjs/operators';
 import { DialogService, getId, SnackbarService, sortByName, StorageService } from '@shared';
 import {
   Ailment, Drug, Quality, Quirk, Talent, Trait,
-  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId
+  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId, AfflictionId, Affliction
 } from '@grim-and-perilous/models/common';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
@@ -17,8 +17,8 @@ export interface AdminServiceConfig {
   responseFn: (data) => Observable<any>;
 }
 
-type Id = AilmentId | DrugId | QualityId | QuirkId | SettingId | TalentId | TraitId;
-type Item = Ailment | Drug | Quality | Quirk | Setting | Talent | Trait;
+type Id = AfflictionId | AilmentId | DrugId | QualityId | QuirkId | SettingId | TalentId | TraitId;
+type Item = Affliction | Ailment | Drug | Quality | Quirk | Setting | Talent | Trait;
 
 @Injectable()
 export class AdminService {

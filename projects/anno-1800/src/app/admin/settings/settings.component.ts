@@ -45,11 +45,11 @@ export class SettingsComponent implements OnInit {
   }
 
   onDeleteClick(id: SettingId): void {
-    this.admin.delete(id as SettingId);
+    this.admin.delete(id);
   }
 
   onEditClick(item: Setting): void {
-    this.admin.edit(item as Setting);
+    this.admin.edit(item);
   }
 
   onSaveClick(): void {

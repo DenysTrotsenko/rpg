@@ -1,18 +1,19 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Affliction, AfflictionId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { TraitId, Trait } from '@grim-and-perilous/models/common';
-import { TraitsEditComponent } from '@ti/app/admin/traits/traits-edit.component';
+import { AfflictionsEditComponent } from '@ti/app/admin/afflictions/afflictions-edit.component';
 
 @Component({
-  templateUrl: './traits.component.html',
-  styleUrls: ['./traits.component.scss'],
+  selector: 'app-afflictions',
+  templateUrl: './afflictions.component.html',
+  styleUrls: ['./afflictions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminService]
 })
-export class TraitsComponent implements OnInit {
-  readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
+export class AfflictionsComponent implements OnInit {
+  readonly items$: BehaviorSubject<Affliction[]> = this.admin.items$;
 
   constructor(
     private admin: AdminService,
@@ -24,26 +25,26 @@ export class TraitsComponent implements OnInit {
   ngOnInit(): void {
     this.admin.init({
       dialog: this.dialog,
-      path: '/data/quirks.json',
+      path: '/data/afflictions.json',
       snackbar: this.snackbar,
       storage: this.storage,
       responseFn: this.getResponse
     });
   }
 
-  getResponse(data): Observable<Trait> {
-    return this.dialog.open(TraitsEditComponent, { data }).afterClosed();
+  getResponse(data): Observable<Affliction> {
+    return this.dialog.open(AfflictionsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {
     this.admin.add();
   }
 
-  onDeleteClick(id: TraitId): void {
+  onDeleteClick(id: AfflictionId): void {
     this.admin.delete(id);
   }
 
-  onEditClick(item: Trait): void {
+  onEditClick(item: Affliction): void {
     this.admin.edit(item);
   }
 
