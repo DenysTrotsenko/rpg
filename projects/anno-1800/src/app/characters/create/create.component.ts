@@ -341,7 +341,12 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         switchMap(([character, campaign]: [Character, Campaign]) => {
           return this.firestore.update(`characters/${form.id}`, {
             ...form,
-            authors: !!character?.authors ? [...character.authors] : [this.route.snapshot.data?.user?.uid, campaign.author],
+            author: !!character?.author
+              ? character.author
+              : this.route.snapshot.data?.user?.uid,
+            members: !!character?.members
+              ? [...character.members]
+              : [...new Set([this.route.snapshot.data?.user?.uid, campaign.author])],
           });
         }),
         tap(() => this.router.navigate(['characters/list']))

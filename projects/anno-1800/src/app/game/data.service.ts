@@ -129,7 +129,7 @@ export class DataService {
     switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
   );
   // readonly campaignsOwnOrIncluded$: Observable<Campaign[]> = this.auth.auth$.pipe(
-  //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
+  //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('members', '==', user.uid)))
   // );
   readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
     shareReplay(1)
@@ -142,7 +142,7 @@ export class DataService {
   );
   readonly charactersOwnOrMaster$: Observable<Character[]> = this.auth.auth$.pipe(
     switchMap(user => this.firestore.collection<Character>(
-      FirestoreCollection.CHARACTERS, ref => ref.where('authors', 'array-contains', user.uid)
+      FirestoreCollection.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
     )),
     shareReplay(1)
   );

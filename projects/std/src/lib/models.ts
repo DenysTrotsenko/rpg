@@ -1,6 +1,8 @@
 export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
 
+export type UserId = Opaque<string, 'UserId'>;
+
 export interface AuthWithEmailAndPassword {
   email: string;
   password: string;

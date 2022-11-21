@@ -19,11 +19,12 @@ import {
   TALENT_ID_GUT_INSTINCT
 } from '@grim-and-perilous/const';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
-import { getIntegerInRange } from '@shared';
+import { getIntegerInRange, UserId } from '@shared';
 
 export class Character {
   id: string;
-  authors: string[];
+  author: UserId;
+  members: UserId[];
   campaign: CampaignId;
   name: string;
   // tslint:disable-next-line:variable-name
