@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { NavListItem } from '@ti/app/app.models';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -6,7 +7,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent {
-  readonly options = [
+  readonly options: NavListItem[] = [
+    { link: './afflictions', label: 'Afflictions' },
     { link: './ailments', label: 'Ailments' },
     { link: './drugs', label: 'Drugs' },
     { link: './qualities', label: 'Qualities' },
