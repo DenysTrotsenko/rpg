@@ -14,7 +14,7 @@ import {
   Skill,
   Spell,
   SpellType,
-  Talent, Threat, ThreatTrait,
+  Talent, ThreatTrait,
   Tier,
   Trait, Weapon,
   Lighting, Notch, Obscurement, RiskFactor,
@@ -36,6 +36,7 @@ import {
   TraitId, WeaponId,
   LightingId, NotchId, ObscurementId, RiskFactorId
 } from '@grim-and-perilous/models/common';
+import { Threat } from '@grim-and-perilous/models/threat';
 
 @Pipe({
   name: 'getById'

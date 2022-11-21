@@ -390,28 +390,28 @@ export interface Tier {
   name: string;
 }
 
-export interface Threat {
-  id: ThreatId;
-  name: string;
-  type: ThreatTypeId;
-  size: SizeId;
-  risk_factor: RiskFactorId;
-  notch: NotchId;
-  attributes: {
-    [k in AttributeId]: number;
-  };
-  advancements: {
-    bonuses: AttributeId[];
-    skills: SkillId[];
-    traits: { id: ThreatTraitId; value?: number | string; }[];
-  };
-  labels?: {
-    description?: string;
-    wares?: string;
-    movement?: string;
-  };
-  weapons?: WeaponId[];
-}
+// export interface Threat {
+//   id: ThreatId;
+//   name: string;
+//   type: ThreatTypeId;
+//   size: SizeId;
+//   risk_factor: RiskFactorId;
+//   notch: NotchId;
+//   attributes: {
+//     [k in AttributeId]: number;
+//   };
+//   advancements: {
+//     bonuses: AttributeId[];
+//     skills: SkillId[];
+//     traits: { id: ThreatTraitId; value?: number | string; }[];
+//   };
+//   labels?: {
+//     description?: string;
+//     wares?: string;
+//     movement?: string;
+//   };
+//   weapons?: WeaponId[];
+// }
 
 export interface Weapon {
   id: WeaponId;

@@ -1,17 +1,9 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { CombatTrackerUnit } from '../combat-tracker.models';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { SkillId, Quality, Threat, Weapon, AttributeId } from '@grim-and-perilous/models/common';
-import {
-  getWeaponDamage,
-  getDamageThreshold,
-  getDefences,
-  getInitiative,
-  getMovement,
-  getPerilThreshold,
-  getThresholds, getAttributeBonus,
-} from '@ti/app/game/threat.utils';
+import { SkillId, Quality, Weapon, AttributeId } from '@grim-and-perilous/models/common';
 import { ATTRIBUTE_ID_COMBAT } from '@grim-and-perilous/const';
+import { Threat } from '@grim-and-perilous/models/threat';
 
 @Component({
   selector: 'app-combat-tracker-unit',
@@ -42,7 +34,7 @@ export class CombatTrackerUnitComponent {
       return {
         name: this.data[DataTypes.ATTRIBUTES].find(i => i.id === entry[0]).name,
         value: +entry[1],
-        bonus: getAttributeBonus(threat, entry[0] as AttributeId)
+        bonus: Threat.getAttributeBonus(threat, entry[0] as AttributeId)
       };
     });
   }
@@ -72,6 +64,10 @@ export class CombatTrackerUnitComponent {
       });
   }
 
+  getThresholds(threshold: number): string {
+    return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
+  }
+
   getWeaponChance(weapon: Weapon, threat: Threat, unit: CombatTrackerUnit): number {
     const skillRanksPenalty = Math.max(unit.peril - 1, 0);
     const skillRanks = weapon.skills
@@ -83,7 +79,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getWeaponDamage(weapon: Weapon, threat: Threat): string {
-    return weapon.labels.damage ?? getWeaponDamage(this.data, weapon, threat);
+    return weapon.labels.damage ?? Threat.getWeaponDamage(this.data, weapon, threat);
   }
 
   getAllQualities(weapon: Weapon): Quality[] {
@@ -91,11 +87,11 @@ export class CombatTrackerUnitComponent {
   }
 
   getDefences(threat: Threat, unit: CombatTrackerUnit): string {
-    return getDefences(threat, unit.peril);
+    return Threat.getDefences(threat, unit.peril);
   }
 
   getMovement(threat: Threat): string {
-    return threat.labels?.movement ?? `${getMovement(threat)}`;
+    return threat.labels?.movement ?? `${Threat.getMovement(threat)}`;
   }
 
   getType(threat: Threat): string {
@@ -114,15 +110,15 @@ export class CombatTrackerUnitComponent {
   }
 
   getInitiative(threat: Threat): number {
-    return getInitiative(threat);
+    return Threat.getInitiative(threat);
   }
 
   getDamageThresholds(threat: Threat): string {
-    return getThresholds(getDamageThreshold(this.data, threat));
+    return this.getThresholds(Threat.getDamageThreshold(this.data, threat));
   }
 
   getPerilThresholds(threat: Threat): string {
-    return getThresholds(getPerilThreshold(threat));
+    return this.getThresholds(Threat.getPerilThreshold(threat));
   }
 
   trackById(_: number, item): unknown {

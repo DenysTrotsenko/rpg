@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
-import { Campaign } from '@ti/app/game/models/campaign';
+import { Campaign } from '@grim-and-perilous/models/campaign';
 
 @Injectable({
   providedIn: 'root'

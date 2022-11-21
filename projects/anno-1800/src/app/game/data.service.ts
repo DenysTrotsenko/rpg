@@ -17,13 +17,14 @@ import {
   Profession, Quality,
   Quirk, Sex,
   Skill, Spell, SpellType, Stature, Style,
-  Talent, Threat, ThreatTrait, Tier,
+  Talent, ThreatTrait, Tier,
   Trait, Weapon,
   Lighting, Notch, Obscurement, RiskFactor, Size, ThreatType, ArchetypeId, ProfessionId
 } from '@grim-and-perilous/models/common';
 import { Character } from '@grim-and-perilous/models/character';
 import { StoragePath } from '@grim-and-perilous/enums';
 import { Campaign } from '@grim-and-perilous/models/campaign';
+import { Threat } from '@grim-and-perilous/models/threat';
 
 
 export enum FirestoreCollection {

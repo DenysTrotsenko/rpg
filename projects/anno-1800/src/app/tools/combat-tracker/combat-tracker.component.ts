@@ -6,11 +6,12 @@ import { DialogService, getId } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import { Character } from '@grim-and-perilous/models/character';
-import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
+// import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
 import {
-  Threat, Lighting, Obscurement, LightingId, NotchId, ObscurementId, RiskFactorId
+  Lighting, Obscurement, LightingId, NotchId, ObscurementId, RiskFactorId
 } from '@grim-and-perilous/models/common';
 import { LIGHTING_ID_PERFECT_LIGHT, OBSCUREMENT_ID_NO_OBSCUREMENT } from '@grim-and-perilous/const';
+import { Threat } from '@grim-and-perilous/models/threat';
 
 interface ThreatsOnBoard {
   risk_factor: RiskFactorId;
@@ -125,7 +126,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
       new CombatTrackerUnit({
         ...unit,
         uid: getId(),
-        initiative: getInitiative(threat) + getRolledInitiative(threat),
+        initiative: Threat.getInitiative(threat) + Threat.getRolledInitiative(threat),
         damage: 0,
         peril: 0
       }),
@@ -172,7 +173,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
         type: 'threat',
         templateId: i.id,
         name: i.name,
-        initiative: getInitiative(i) + getRolledInitiative(i),
+        initiative: Threat.getInitiative(i) + Threat.getRolledInitiative(i),
         damage: 0,
         peril: 0
       })

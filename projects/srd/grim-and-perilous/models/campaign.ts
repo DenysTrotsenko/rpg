@@ -1,6 +1,6 @@
 import { SettingId } from './common';
 
-export interface Campaign {
+export class Campaign {
   id: string;
   name: string;
   author: string;

@@ -33,16 +33,6 @@ import {
   TraitId,
   WeaponId
 } from '@grim-and-perilous/models/common';
-import {
-  getAttributeBonus,
-  getDamageThreshold,
-  getEncumbranceLimit,
-  getInitiative,
-  getMovement,
-  getPerilThreshold,
-  getThresholds,
-  getWeaponDamage
-} from '@ti/app/game/character.utils';
 import { CustomizeWeaponDialogComponent } from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 import {
   ATTRIBUTE_ID_AGILITY,
@@ -177,10 +167,6 @@ export class ViewComponent implements OnDestroy {
 
   getDescription(character: Character): string {
     const name = character.name;
-    // const allegiances = this.data[DataTypes.ALLEGIANCES]
-    //   .filter(i => character.allegiances.includes(i.id))
-    //   .map(i => i.name)
-    //   .join(', ');
     const allegiances = character.allegiances;
     const age = this.data[DataTypes.AGES].find(i => i.id === character.miscellaneous.age);
     const culture = this.data[DataTypes.CULTURES].find(i => i.id === character.culture);
@@ -260,6 +246,10 @@ export class ViewComponent implements OnDestroy {
     return this.data[DataTypes.TALENTS].filter(i => talents.includes(i.id));
   }
 
+  getThresholds(threshold: number): string {
+    return `${threshold} (${threshold + 6}/${threshold + 12}/${threshold + 18})`;
+  }
+
   getTraits(character: Character): Trait[] {
     const traits: TraitId[] = [
       character.trait,
@@ -271,24 +261,24 @@ export class ViewComponent implements OnDestroy {
   }
 
   getDamageThresholds(character: Character): string {
-    return getThresholds(getDamageThreshold(character));
+    return this.getThresholds(Character.getDamageThreshold(character));
   }
 
   getEncumbranceLimit(character: Character): string {
-    return `${getEncumbranceLimit(character)}`;
+    return `${Character.getEncumbranceLimit(character)}`;
   }
 
   getInitiative(character: Character): string {
-    return `${getInitiative(character)}`;
+    return `${Character.getInitiative(character)}`;
   }
 
   getMovement(character: Character): string {
-    return `${getMovement(character)}`;
+    return `${Character.getMovement(character)}`;
   }
 
   getAllMovementsTooltip(character: Character): string {
-    const agility: number = getAttributeBonus(character, ATTRIBUTE_ID_AGILITY);
-    const brawn: number = getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
+    const agility: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_AGILITY);
+    const brawn: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
     return [
       `On foot (Athletics, AB+3): ${agility + 3}`,
       `Sneaking (Stealth, AB-1): ${Math.max(agility - 1, 1)}`,
@@ -330,7 +320,7 @@ export class ViewComponent implements OnDestroy {
   // }
 
   getPerilThresholds(character: Character): string {
-    return getThresholds(getPerilThreshold(character));
+    return this.getThresholds(Character.getPerilThreshold(character));
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {
@@ -342,7 +332,7 @@ export class ViewComponent implements OnDestroy {
   }
 
   getWeaponDamage(weapon: Weapon, character: Character): string {
-    return weapon.labels.damage ?? getWeaponDamage(weapon, character);
+    return weapon.labels.damage ?? Character.getWeaponDamage(weapon, character);
   }
 
   getAllQualities(weapon: Weapon, custom: QualityId[]): Quality[] {
