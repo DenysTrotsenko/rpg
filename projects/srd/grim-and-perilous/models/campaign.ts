@@ -1,7 +1,7 @@
-import { SettingId } from './common';
+import { CampaignId, SettingId } from './common';
 
 export class Campaign {
-  id: string;
+  id: CampaignId;
   name: string;
   author: string;
   setting: SettingId;

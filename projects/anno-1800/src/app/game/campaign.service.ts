@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, shareReplay } from 'rxjs/operators';
-import { Campaign } from '@grim-and-perilous/models/campaign';
+import { CampaignId } from '@grim-and-perilous/models/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
-  private readonly campaignSource: BehaviorSubject<Campaign | null> = new BehaviorSubject(JSON.parse(localStorage.getItem('campaign')));
-  private readonly campaignObservable: Observable<Campaign | null> = this.campaignSource.asObservable()
+  private readonly campaignSource: BehaviorSubject<CampaignId | null> = new BehaviorSubject(JSON.parse(localStorage.getItem('campaign')));
+  private readonly campaignObservable: Observable<CampaignId | null> = this.campaignSource.asObservable()
     .pipe(
       distinctUntilChanged(),
       shareReplay(1)
     );
 
-  get campaign$(): Observable<Campaign | null> { return this.campaignObservable; }
+  get campaign$(): Observable<CampaignId | null> { return this.campaignObservable; }
 
-  setCampaign(campaign: Campaign): void {
-    localStorage.setItem('campaign', !!campaign ? JSON.stringify(campaign) : null);
-    this.campaignSource.next(campaign);
+  setCampaign(id: CampaignId): void {
+    localStorage.setItem('campaign', !!id ? JSON.stringify(id) : null);
+    this.campaignSource.next(id);
   }
 }

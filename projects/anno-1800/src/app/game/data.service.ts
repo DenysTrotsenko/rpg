@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, combineLatest, lastValueFrom } from 'rxjs';
-import { shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Observable, combineLatest, lastValueFrom, of } from 'rxjs';
+import { catchError, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { AuthService, FirestoreService, StorageService } from '@shared';
 import {
   Affliction,
@@ -123,6 +123,7 @@ export class DataService {
   [DataTypes.WEAPONS]: Weapon[];
 
   readonly campaignsAll$: Observable<Campaign[]> = this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS).pipe(
+    catchError(() => of([])),
     shareReplay(1)
   );
   readonly campaignsOwn$: Observable<Campaign[]> = this.auth.auth$.pipe(
