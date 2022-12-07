@@ -94,6 +94,7 @@ export class SettingsEditComponent implements OnInit {
     this.professions$,
     this.qualities$,
     this.quirks$,
+    this.skills$,
     this.talents$,
     this.traits$,
     this.weapons$
@@ -136,6 +137,7 @@ export class SettingsEditComponent implements OnInit {
     professions: Profession[],
     qualities: Quality[],
     quirks: Quirk[],
+    skills: Skill[],
     talents: Talent[],
     traits: Trait[],
     weapons: Weapon[]
@@ -154,13 +156,13 @@ export class SettingsEditComponent implements OnInit {
     const allSelectedProfessionsTraitIds: TraitId[] = [...new Set(
       selectedProfessions
         .reduce((acc, profession) => {
-          return [...acc, ...profession.traits, ...profession.advancements.traits];
+          return [...acc, ...profession.traits];
         }, [])
     )];
     const allSelectedProfessionsQuirkIds: QuirkId[] = [...new Set(
       selectedProfessions
         .reduce((acc, profession) => {
-          return [...acc, ...profession.quirks, ...profession.advancements.quirks];
+          return [...acc, ...profession.quirks];
         }, [])
     )];
     const allSelectedProfessionsSkillIds: SkillId[] = [...new Set(
