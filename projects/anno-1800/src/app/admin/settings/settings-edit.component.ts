@@ -150,34 +150,31 @@ export class SettingsEditComponent implements OnInit {
       traits: form.traits as TraitId[],
       weapons: form.weapons as WeaponId[]
     };
+    const selectedProfessions = professions.filter(profession => selected.professions.includes(profession.id));
     const allSelectedProfessionsTraitIds: TraitId[] = [...new Set(
-      professions
-        .filter(profession => selected.professions.includes(profession.id))
+      selectedProfessions
         .reduce((acc, profession) => {
-          return [...acc, ...profession.traits];
+          return [...acc, ...profession.traits, ...profession.advancements.traits];
         }, [])
     )];
     const allSelectedProfessionsQuirkIds: QuirkId[] = [...new Set(
-      professions
-        .filter(profession => selected.professions.includes(profession.id))
+      selectedProfessions
         .reduce((acc, profession) => {
-          return [...acc, ...profession.quirks];
+          return [...acc, ...profession.quirks, ...profession.advancements.quirks];
         }, [])
     )];
-    // const allSelectedProfessionsSkillIds: QuirkId[] = [...new Set(
-    //   professions
-    //     .filter(profession => selected.professions.includes(profession.id))
-    //     .reduce((acc, profession) => {
-    //       return [...acc, ...profession.quirks];
-    //     }, [])
-    // )];
-    // const allSelectedProfessionsTalentIds: QuirkId[] = [...new Set(
-    //   professions
-    //     .filter(profession => selected.professions.includes(profession.id))
-    //     .reduce((acc, profession) => {
-    //       return [...acc, ...profession.quirks];
-    //     }, [])
-    // )];
+    const allSelectedProfessionsSkillIds: SkillId[] = [...new Set(
+      selectedProfessions
+        .reduce((acc, profession) => {
+          return [...acc, ...profession.advancements.skills];
+        }, [])
+    )];
+    const allSelectedProfessionsTalentIds: TalentId[] = [...new Set(
+      selectedProfessions
+        .reduce((acc, profession) => {
+          return [...acc, ...profession.advancements.talents];
+        }, [])
+    )];
     const allSelectedWeaponsQualityIds: QualityId[] = [...new Set(
       weapons
         .filter(weapon => selected.weapons.includes(weapon.id))
@@ -193,12 +190,16 @@ export class SettingsEditComponent implements OnInit {
         }, [])
     )];
 
+    const isProfessionsSkillsValid = allSelectedProfessionsSkillIds.every(i => selected.skills.includes(i));
+    const isProfessionsTalentsValid = allSelectedProfessionsTalentIds.every(i => selected.talents.includes(i));
     const isProfessionsTraitsValid = allSelectedProfessionsTraitIds.every(i => selected.traits.includes(i));
     const isProfessionsQuirksValid = allSelectedProfessionsQuirkIds.every(i => selected.quirks.includes(i));
     const isWeaponsQualitiesValid = allSelectedWeaponsQualityIds.every(i => selected.qualities.includes(i));
     const isWeaponsSkillsValid = allSelectedWeaponsSkillIds.every(i => selected.skills.includes(i));
 
     return [
+      isProfessionsSkillsValid ? null : 'Professions have skills that are not selected.',
+      isProfessionsTalentsValid ? null : 'Professions have talents that are not selected.',
       isProfessionsTraitsValid ? null : 'Professions have traits that are not selected.',
       isProfessionsQuirksValid ? null : 'Professions have quirks that are not selected.',
       isWeaponsQualitiesValid ? null : 'Weapons have qualities that are not selected.',
