@@ -187,6 +187,9 @@
         </mat-selection-list>
       </mat-expansion-panel>
     </mat-accordion>
+    <div class="p-5 mt-10">
+      <mat-error *ngFor="let i of warnings$ | async;">{{i}}</mat-error>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions>

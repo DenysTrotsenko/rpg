@@ -25,16 +25,10 @@ export class CreateComponent {
       switchMap(id => this.firestore.doc(`campaigns/${id}`) as Observable<Campaign>),
       distinctUntilChanged((p: Campaign, q: Campaign) => JSON.stringify(p) === JSON.stringify(q)),
       tap(res => {
-        // const isNew = !res;
         this.form.patchValue({
           ...res,
           id: res?.id ?? getId(),
         });
-
-        // setFormControlsEditable(this.form, [
-        //   'archetype',
-        //   'trait'
-        // ], isNew);
       }),
       shareReplay(1)
     );
