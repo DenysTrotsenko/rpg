@@ -14,20 +14,15 @@ export class TraitsEditComponent implements OnInit {
     labels: new FormGroup({
       description: new FormControl('', [Validators.required, Validators.minLength(3)]),
       effect: new FormControl('', [Validators.required, Validators.minLength(3)])
-    })
+    }),
+    system: new FormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Trait) {}
 
   ngOnInit(): void {
     if (!!this.data) {
-      this.form.patchValue({
-        name: this.data.name ?? '',
-        labels: {
-          description: this.data.labels?.description ?? '',
-          effect: this.data.labels?.effect ?? ''
-        }
-      });
+      this.form.patchValue(this.data);
     }
   }
 }

@@ -22,15 +22,7 @@ export class TalentsEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!!this.data) {
-      const value = {
-        name: this.data.name ?? '',
-        labels: {
-          description: this.data.labels?.description ?? '',
-          effect: this.data.labels?.effect ?? ''
-        },
-        system: this.data.system
-      };
-      this.form.patchValue(value);
+      this.form.patchValue(this.data);
     }
   }
 }

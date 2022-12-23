@@ -26,18 +26,7 @@ export class AilmentsEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!!this.data) {
-      this.form.patchValue({
-        name: this.data.name ?? '',
-        labels: {
-          description: this.data.labels?.description ?? '',
-          resist: this.data.labels?.resist ?? '',
-          effect: this.data.labels?.effect ?? '',
-          critical_success: this.data.labels?.critical_success ?? '',
-          critical_failure: this.data.labels?.critical_failure ?? '',
-          other_considerations: this.data.labels?.other_considerations ?? '',
-          duration: this.data.labels?.duration ?? ''
-        }
-      });
+      this.form.patchValue(this.data);
     }
   }
 }

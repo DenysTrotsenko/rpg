@@ -264,6 +264,7 @@ export interface Quirk {
     effect: string;
     tooltip?: string;
   };
+  system?: Record<string, any>;
 }
 
 export interface RiskFactor {
@@ -357,7 +358,7 @@ export interface Talent {
     effect: string;
     tooltip?: string;
   };
-  system?: {};
+  system?: Record<string, any>;
 }
 
 export interface Trait {
@@ -368,6 +369,7 @@ export interface Trait {
     effect: string;
     tooltip?: string;
   };
+  system?: Record<string, any>;
 }
 
 export interface ThreatType {

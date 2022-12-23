@@ -21,13 +21,7 @@ export class AfflictionsEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!!this.data) {
-      this.form.patchValue({
-        name: this.data.name ?? '',
-        labels: {
-          description: this.data.labels?.description ?? '',
-          effect: this.data.labels?.effect ?? ''
-        }
-      });
+      this.form.patchValue(this.data);
     }
   }
 }

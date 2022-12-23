@@ -20,12 +20,7 @@ export class QualitiesEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!!this.data) {
-      this.form.patchValue({
-        name: this.data.name ?? '',
-        labels: {
-          effect: this.data.labels?.effect ?? ''
-        }
-      });
+      this.form.patchValue(this.data);
     }
   }
 }
