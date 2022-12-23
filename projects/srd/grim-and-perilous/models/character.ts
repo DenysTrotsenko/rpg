@@ -178,6 +178,7 @@ export class Character {
       ...character.advancements.intermediate.talents ?? [],
       ...character.advancements.advanced.talents ?? [],
     ];
+    // PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER
     const fromAttribute: number = talents.includes(TALENT_ID_GUT_INSTINCT)
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromWillpowerBonus;

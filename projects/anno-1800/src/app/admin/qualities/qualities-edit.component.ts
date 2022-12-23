@@ -13,7 +13,8 @@ export class QualitiesEditComponent implements OnInit {
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     labels: new FormGroup({
       effect: new FormControl('', [Validators.required, Validators.minLength(3)])
-    })
+    }),
+    system: new FormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Quality) {}
