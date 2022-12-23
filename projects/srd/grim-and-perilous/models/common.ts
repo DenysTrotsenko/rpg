@@ -357,6 +357,7 @@ export interface Talent {
     effect: string;
     tooltip?: string;
   };
+  system?: {};
 }
 
 export interface Trait {

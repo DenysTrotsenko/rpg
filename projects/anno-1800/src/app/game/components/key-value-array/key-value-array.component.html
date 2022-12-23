@@ -1,0 +1,20 @@
+<button type="button" class="w-100 mb-10" mat-button [disabled]="!form.valid" (click)="onAddClick()">
+  Add System Variable
+</button>
+<ng-container [formGroup]="form">
+  <div *ngFor="let control of entries.controls; index as i;" class="d-f ai-b" [formGroup]="getFormGroup(i)">
+    <mat-form-field appearance="outline" class="mr-5">
+      <mat-label>Key</mat-label>
+      <input matInput formControlName="key">
+      <mat-error>Required. Uppercase letters, numbers and underscores only.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Value</mat-label>
+      <input matInput formControlName="value">
+      <mat-error>Required.</mat-error>
+    </mat-form-field>
+    <button type="button" mat-icon-button (click)="onRemoveClick(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-container>

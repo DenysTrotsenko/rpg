@@ -1,14 +1,15 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {Talent, TalentId} from '@grim-and-perilous/models/common';
-import {AdminService} from '@ti/app/admin/admin.service';
-import {DialogService, SnackbarService, StorageService} from '@shared';
-import {TalentsEditComponent} from '@ti/app/admin/talents/talents-edit.component';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Talent, TalentId } from '@grim-and-perilous/models/common';
+import { AdminService } from '@ti/app/admin/admin.service';
+import { DialogService, SnackbarService, StorageService } from '@shared';
+import { TalentsEditComponent } from '@ti/app/admin/talents/talents-edit.component';
 
 @Component({
   templateUrl: './talents.component.html',
   styleUrls: ['./talents.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminService]
 })
 export class TalentsComponent implements OnInit {
   readonly items$: BehaviorSubject<Talent[]> = this.admin.items$;

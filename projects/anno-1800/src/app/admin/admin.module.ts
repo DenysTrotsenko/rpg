@@ -18,6 +18,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingsEditComponent } from './settings/settings-edit.component';
 import { AfflictionsComponent } from './afflictions/afflictions.component';
 import { AfflictionsEditComponent } from './afflictions/afflictions-edit.component';
+import { GameModule } from '@ti/app/game/game.module';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AfflictionsEditComponent } from './afflictions/afflictions-edit.compone
   ],
   imports: [
     SharedModule,
+    GameModule,
     AdminRoutingModule
   ]
 })
