@@ -23,6 +23,8 @@ function validateKey(): ValidatorFn {
   };
 }
 
+type ValueType = 'string' | 'number' | 'boolean';
+
 @Component({
   selector: 'app-key-value-array',
   templateUrl: './key-value-array.component.html',
@@ -64,13 +66,13 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
         takeUntil(this.unsubscribe$),
         tap(form => {
           if (!this.onChange) { return; }
-          const ads = form.entries.reduce((acc, cur) => {
+          const entries = form.entries.reduce((acc, cur) => {
             return {
               ...acc,
               [cur.key]: cur.value
             };
           }, {});
-          this.onChange(ads);
+          this.onChange(entries);
         })
       )
       .subscribe();
@@ -87,7 +89,7 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
   }
 
   onAddClick(): void {
-    this.add('', '');
+    this.add('', 'string', '');
   }
 
   onRemoveClick(index: number): void {
@@ -104,12 +106,30 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
 
   writeValue(obj: Record<string, any>): void {
     if (!obj) { return; }
-    Object.entries(obj).forEach(entry => this.add(entry[0], entry[1]));
+    Object.entries(obj).forEach(entry => this.add(entry[0], typeof entry[1] as ValueType, entry[1]));
   }
 
-  private add(key: string, value: any): void {
+  onTypeChange(type: ValueType, group): void {
+    const control = group.get('value');
+    const value = control.value;
+    switch (type) {
+      case 'boolean':
+        control.setValue(Boolean(value));
+        break;
+      case 'number':
+        control.setValue(Number(value));
+        break;
+      case 'string':
+      default:
+        control.setValue(String(value));
+        break;
+    }
+  }
+
+  private add(key: string, type: ValueType, value: any): void {
     this.entries.push(new FormGroup({
       key: new FormControl(key, [Validators.required, validateKey()]),
+      type: new FormControl(type, [Validators.required]),
       value: new FormControl(value, [Validators.required])
     }));
   }
