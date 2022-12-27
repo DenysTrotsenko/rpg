@@ -5,7 +5,7 @@ import {
   BeliefId, BuildId, CampaignId,
   CultureId, EyesId,
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
-  PermanentInjuryId, ProfessionId,
+  PermanentInjuryId, ProfessionId, Quality,
   QuirkId, SexId,
   SkillId, SpellId, StatureId, StyleId,
   TalentId, TierId,
@@ -14,12 +14,13 @@ import {
 import {
   ATTRIBUTE_ID_AGILITY,
   ATTRIBUTE_ID_BRAWN, ATTRIBUTE_ID_COMBAT, ATTRIBUTE_ID_PERCEPTION,
-  ATTRIBUTE_ID_WILLPOWER, QUALITY_ID_FAST, QUALITY_ID_INEFFECTIVE, QUALITY_ID_PUMMELING,
+  ATTRIBUTE_ID_WILLPOWER,
   TALENT_ID_BRAINS_OVER_BRAWN,
   TALENT_ID_GUT_INSTINCT
 } from '@grim-and-perilous/const';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 import { getIntegerInRange, UserId } from '@shared';
+import { System } from '@grim-and-perilous/models/system';
 
 export class Character {
   id: string;
@@ -127,17 +128,22 @@ export class Character {
     return bonus + advances;
   }
 
-  static getWeaponDamage(weapon: Weapon, character: Character): string {
+  static getWeaponDamage(weapon: Weapon, character: Character, qualities: Quality[]): string {
     const dices = 1;
+    const system = System.getSystemProperties([
+      ...qualities.filter(i => weapon.qualities.includes(i.id)).map(i => i.system)
+    ]);
     let bonus;
-    if (weapon.qualities.includes(QUALITY_ID_PUMMELING)) {
+    if (system.hasOwnProperty('BRAWN_WEAPON_BONUS')) {
       bonus = Character.getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
-    } else if (weapon.qualities.includes(QUALITY_ID_FAST)) {
+    } else if (system.hasOwnProperty('AGILITY_WEAPON_BONUS')) {
       bonus = Character.getAttributeBonus(character, ATTRIBUTE_ID_AGILITY);
     } else {
       bonus = Character.getAttributeBonus(character, ATTRIBUTE_ID_COMBAT);
     }
-    return weapon.qualities.includes(QUALITY_ID_INEFFECTIVE) ? 'None' : `${dices}d6+${bonus}`;
+    return system.hasOwnProperty('INEFFECTIVE_WEAPON')
+      ? 'None'
+      : `${dices}d6+${bonus}`;
   }
 
   static getDamageThreshold(character: Character): number {

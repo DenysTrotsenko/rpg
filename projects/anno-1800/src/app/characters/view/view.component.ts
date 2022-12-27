@@ -11,34 +11,37 @@ import {
   Affliction,
   Ailment,
   AlchemicalArt,
+  AttributeId,
   Belief,
   Drug,
   Flaw,
   Injury,
+  InjuryId,
   Language,
   PermanentInjury,
-  Quality,
-  Quirk,
-  Spell,
-  Talent,
-  Trait,
-  Weapon,
-  AttributeId,
-  InjuryId,
   ProfessionId,
+  Quality,
   QualityId,
+  Quirk,
   QuirkId,
   SkillId,
+  Spell,
+  Talent,
   TalentId,
+  Trait,
   TraitId,
+  Weapon,
   WeaponId
 } from '@grim-and-perilous/models/common';
 import { CustomizeWeaponDialogComponent } from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 import {
   ATTRIBUTE_ID_AGILITY,
-  ATTRIBUTE_ID_BRAWN, INJURY_ID_IT_GETS_WORSE_1, INJURY_ID_IT_GETS_WORSE_2,
+  ATTRIBUTE_ID_BRAWN,
+  INJURY_ID_IT_GETS_WORSE_1,
+  INJURY_ID_IT_GETS_WORSE_2,
   INJURY_ID_NARROW_ESCAPE_1,
-  INJURY_ID_NARROW_ESCAPE_2, INJURY_ID_NARROW_ESCAPE_3,
+  INJURY_ID_NARROW_ESCAPE_2,
+  INJURY_ID_NARROW_ESCAPE_3,
   WEAPON_ID_BARE_HANDED
 } from '@grim-and-perilous/const';
 
@@ -332,7 +335,7 @@ export class ViewComponent implements OnDestroy {
   }
 
   getWeaponDamage(weapon: Weapon, character: Character): string {
-    return weapon.labels.damage ?? Character.getWeaponDamage(weapon, character);
+    return weapon.labels.damage ?? Character.getWeaponDamage(weapon, character, this.data[DataTypes.QUALITIES]);
   }
 
   getAllQualities(weapon: Weapon, custom: QualityId[]): Quality[] {

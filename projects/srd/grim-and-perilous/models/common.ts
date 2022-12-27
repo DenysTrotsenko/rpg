@@ -254,6 +254,7 @@ export interface Quality {
   labels?: {
     effect: string;
   };
+  system?: Record<string, any>;
 }
 
 export interface Quirk {

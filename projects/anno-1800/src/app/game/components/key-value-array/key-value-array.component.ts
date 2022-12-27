@@ -10,7 +10,8 @@ import {
   Validators
 } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { filter, takeUntil, tap } from 'rxjs/operators';
+import { DialogService } from '@shared';
 
 function validateKey(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -60,6 +61,8 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
     return !this.form.valid && !!this.form.touched;
   }
 
+  constructor(private dialog: DialogService) {}
+
   ngOnInit(): void {
     this.form.valueChanges
       .pipe(
@@ -93,7 +96,21 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
   }
 
   onRemoveClick(index: number): void {
-    this.entries.removeAt(index);
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(() => this.entries.removeAt(index))
+      )
+      .subscribe();
   }
 
   registerOnChange(fn: () => void): void { this.onChange = fn; }
