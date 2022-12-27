@@ -99,9 +99,9 @@ export class Threat {
     const fromAgility: number = threat.attributes[ATTRIBUTE_ID_AGILITY];
     const skillRanksPenalty = Math.max(peril - 1, 0);
     const simpleMeleeRanks = threat.advancements.skills.filter(i => i === SKILL_ID_SIMPLE_MELEE).length;
-    const coordinationMeleeRanks = threat.advancements.skills.filter(i => i === SKILL_ID_COORDINATION).length;
+    const coordinationRanks = threat.advancements.skills.filter(i => i === SKILL_ID_COORDINATION).length;
     const fromSimpleMelee: number = Math.max(0, simpleMeleeRanks - skillRanksPenalty) * 10;
-    const fromCoordination: number = Math.max(0, coordinationMeleeRanks - skillRanksPenalty) * 10;
+    const fromCoordination: number = Math.max(0, coordinationRanks - skillRanksPenalty) * 10;
     const ranged: number = Math.round(fromAgility + fromCoordination);
     const melee: number = Math.round(fromCombat + fromSimpleMelee);
     return `${melee}% / ${ranged}%`;

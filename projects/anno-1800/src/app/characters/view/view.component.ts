@@ -264,7 +264,7 @@ export class ViewComponent implements OnDestroy {
   }
 
   getDamageThresholds(character: Character): string {
-    return this.getThresholds(Character.getDamageThreshold(character));
+    return this.getThresholds(Character.getDamageThreshold(character, this.data.talents));
   }
 
   getEncumbranceLimit(character: Character): string {
@@ -323,7 +323,7 @@ export class ViewComponent implements OnDestroy {
   // }
 
   getPerilThresholds(character: Character): string {
-    return this.getThresholds(Character.getPerilThreshold(character));
+    return this.getThresholds(Character.getPerilThreshold(character, this.data[DataTypes.TALENTS]));
   }
 
   filterSkillsByAttribute(skills: SkillView[], id: AttributeId): SkillView[] {

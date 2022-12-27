@@ -7,16 +7,14 @@ import {
   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
   PermanentInjuryId, ProfessionId, Quality,
   QuirkId, SexId,
-  SkillId, SpellId, StatureId, StyleId,
+  SkillId, SpellId, StatureId, StyleId, Talent,
   TalentId, TierId,
   TraitId, Weapon
 } from './common';
 import {
   ATTRIBUTE_ID_AGILITY,
   ATTRIBUTE_ID_BRAWN, ATTRIBUTE_ID_COMBAT, ATTRIBUTE_ID_PERCEPTION,
-  ATTRIBUTE_ID_WILLPOWER,
-  TALENT_ID_BRAINS_OVER_BRAWN,
-  TALENT_ID_GUT_INSTINCT
+  ATTRIBUTE_ID_WILLPOWER
 } from '@grim-and-perilous/const';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 import { getIntegerInRange, UserId } from '@shared';
@@ -131,7 +129,7 @@ export class Character {
   static getWeaponDamage(weapon: Weapon, character: Character, qualities: Quality[]): string {
     const dices = 1;
     const system = System.getSystemProperties([
-      ...qualities.filter(i => weapon.qualities.includes(i.id)).map(i => i.system)
+      ...qualities.filter(i => weapon.qualities.includes(i.id)).map(i => i.system ?? {})
     ]);
     let bonus;
     if (system.hasOwnProperty('BRAWN_WEAPON_BONUS')) {
@@ -146,16 +144,19 @@ export class Character {
       : `${dices}d6+${bonus}`;
   }
 
-  static getDamageThreshold(character: Character): number {
+  static getDamageThreshold(character: Character, talents: Talent[]): number {
     const fromDetermination: number = character.determination;
     const fromBrawnBonus: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
     const fromWillpowerBonus: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_WILLPOWER);
-    const talents: TalentId[] = [
+    const talentIds: TalentId[] = [
       ...character.advancements.basic.talents ?? [],
       ...character.advancements.intermediate.talents ?? [],
       ...character.advancements.advanced.talents ?? [],
     ];
-    const fromAttribute: number = talents.includes(TALENT_ID_BRAINS_OVER_BRAWN)
+    const system = System.getSystemProperties([
+      ...talents.filter(i => talentIds.includes(i.id)).map(i => i.system ?? {})
+    ]);
+    const fromAttribute: number = system.hasOwnProperty('DAMAGE_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS')
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromBrawnBonus;
     return fromDetermination + fromAttribute;
@@ -176,16 +177,18 @@ export class Character {
     return 3 + agility;
   }
 
-  static getPerilThreshold(character: Character): number {
+  static getPerilThreshold(character: Character, talents: Talent[]): number {
     const fromBrawnBonus: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_BRAWN);
     const fromWillpowerBonus: number = Character.getAttributeBonus(character, ATTRIBUTE_ID_WILLPOWER);
-    const talents: TalentId[] = [
+    const talentIds: TalentId[] = [
       ...character.advancements.basic.talents ?? [],
       ...character.advancements.intermediate.talents ?? [],
       ...character.advancements.advanced.talents ?? [],
     ];
-    // PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER
-    const fromAttribute: number = talents.includes(TALENT_ID_GUT_INSTINCT)
+    const system = System.getSystemProperties([
+      ...talents.filter(i => talentIds.includes(i.id)).map(i => i.system ?? {})
+    ]);
+    const fromAttribute: number = system.hasOwnProperty('PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS')
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromWillpowerBonus;
     return 3 + fromAttribute;
