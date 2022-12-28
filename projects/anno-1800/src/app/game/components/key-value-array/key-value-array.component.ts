@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, forwardRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, forwardRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -61,7 +61,7 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
     return !this.form.valid && !!this.form.touched;
   }
 
-  constructor(private dialog: DialogService) {}
+  constructor(private dialog: DialogService, private change: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.form.valueChanges
@@ -97,25 +97,24 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
   }
 
   onRemoveClick(index: number): void {
-    this.entries.removeAt(index);
-    // this.dialog
-    //   .confirm({
-    //     data: {
-    //       title: 'Delete Entry',
-    //       description: `Are sure you want to delete this entry?`,
-    //       ok: 'Delete',
-    //       cancel: 'Cancel'
-    //     }
-    //   })
-    //   .afterClosed()
-    //   .pipe(
-    //     filter(res => !!res),
-    //     tap(() => {
-    //       this.entries.removeAt(index);
-    //       this.entries.updateValueAndValidity();
-    //     })
-    //   )
-    //   .subscribe();
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(() => {
+          this.entries.removeAt(index);
+          this.change.detectChanges();
+        })
+      )
+      .subscribe();
   }
 
   registerOnChange(fn: () => void): void { this.onChange = fn; }
