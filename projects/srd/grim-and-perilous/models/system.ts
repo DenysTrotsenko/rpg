@@ -1,9 +1,11 @@
 export class System {
   AGILITY_WEAPON_BONUS?: boolean;
   BRAWN_WEAPON_BONUS?: boolean;
-  INEFFECTIVE_WEAPON?: boolean;
   DAMAGE_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS?: boolean;
   PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS?: boolean;
+  INEFFECTIVE_WEAPON?: boolean;
+  SLOW_INITIATIVE?: boolean;
+  FAST_INITIATIVE?: boolean;
 
   static getSystemProperties(systems: System[]): System {
     return systems.reduce((acc, cur) => {

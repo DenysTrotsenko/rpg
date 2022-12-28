@@ -1,4 +1,5 @@
 import { Opaque } from '@shared';
+import { System } from '@grim-and-perilous/models/system';
 
 export type AfflictionId = Opaque<string, 'AfflictionId'>;
 export type AilmentId = Opaque<string, 'AilmentId'>;
@@ -254,7 +255,7 @@ export interface Quality {
   labels?: {
     effect: string;
   };
-  system?: Record<string, any>;
+  system?: System;
 }
 
 export interface Quirk {
@@ -265,7 +266,7 @@ export interface Quirk {
     effect: string;
     tooltip?: string;
   };
-  system?: Record<string, any>;
+  system?: System;
 }
 
 export interface RiskFactor {
@@ -359,7 +360,7 @@ export interface Talent {
     effect: string;
     tooltip?: string;
   };
-  system?: Record<string, any>;
+  system?: System;
 }
 
 export interface Trait {
@@ -370,7 +371,7 @@ export interface Trait {
     effect: string;
     tooltip?: string;
   };
-  system?: Record<string, any>;
+  system?: System;
 }
 
 export interface ThreatType {
@@ -387,6 +388,7 @@ export interface ThreatTrait {
     effect: string;
     tooltip?: string;
   };
+  system?: System;
 }
 
 export interface Tier {

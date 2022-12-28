@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
@@ -7,9 +7,7 @@ import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import { Character } from '@grim-and-perilous/models/character';
 // import { getInitiative, getRolledInitiative } from '@ti/app/game/threat.utils';
-import {
-  Lighting, Obscurement, LightingId, NotchId, ObscurementId, RiskFactorId
-} from '@grim-and-perilous/models/common';
+import { Lighting, LightingId, NotchId, Obscurement, ObscurementId, RiskFactorId } from '@grim-and-perilous/models/common';
 import { LIGHTING_ID_PERFECT_LIGHT, OBSCUREMENT_ID_NO_OBSCUREMENT } from '@grim-and-perilous/const';
 import { Threat } from '@grim-and-perilous/models/threat';
 
@@ -126,7 +124,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
       new CombatTrackerUnit({
         ...unit,
         uid: getId(),
-        initiative: Threat.getInitiative(threat) + Threat.getRolledInitiative(threat),
+        initiative: Threat.getInitiative(threat) + Threat.getRolledInitiative(threat, this.data[DataTypes.THREAT_TRAITS]),
         damage: 0,
         peril: 0
       }),
@@ -173,7 +171,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
         type: 'threat',
         templateId: i.id,
         name: i.name,
-        initiative: Threat.getInitiative(i) + Threat.getRolledInitiative(i),
+        initiative: Threat.getInitiative(i) + Threat.getRolledInitiative(i, this.data[DataTypes.THREAT_TRAITS]),
         damage: 0,
         peril: 0
       })

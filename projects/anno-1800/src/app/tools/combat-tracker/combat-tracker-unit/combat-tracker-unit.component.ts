@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CombatTrackerUnit } from '../combat-tracker.models';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
-import { SkillId, Quality, Weapon, AttributeId } from '@grim-and-perilous/models/common';
+import { AttributeId, Quality, SkillId, Weapon } from '@grim-and-perilous/models/common';
 import { ATTRIBUTE_ID_COMBAT } from '@grim-and-perilous/const';
 import { Threat } from '@grim-and-perilous/models/threat';
 
@@ -118,7 +118,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getPerilThresholds(threat: Threat): string {
-    return this.getThresholds(Threat.getPerilThreshold(threat));
+    return this.getThresholds(Threat.getPerilThreshold(threat, this.data[DataTypes.THREAT_TRAITS]));
   }
 
   trackById(_: number, item): unknown {

@@ -4,7 +4,7 @@ import {
   RiskFactorId,
   SizeId,
   SkillId,
-  ThreatId,
+  ThreatId, ThreatTrait,
   ThreatTraitId,
   ThreatTypeId,
   Weapon, WeaponId
@@ -24,11 +24,12 @@ import {
   SKILL_ID_COORDINATION,
   SKILL_ID_SIMPLE_MELEE,
   THREAT_TRAIT_ID_BRAINS_OVER_BRAWN,
-  THREAT_TRAIT_ID_GUT_INSTINCT, THREAT_TRAIT_ID_HYPERSENSITIVITY,
-  THREAT_TRAIT_ID_IMMOBILE, THREAT_TRAIT_ID_LETHARGY
+  THREAT_TRAIT_ID_GUT_INSTINCT,
+  THREAT_TRAIT_ID_IMMOBILE,
 } from '@grim-and-perilous/const';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { getIntegerInRange } from '@shared';
+import { System } from '@grim-and-perilous/models/system';
 
 export class Threat {
   id: ThreatId;
@@ -120,7 +121,7 @@ export class Threat {
     return hasImmobile ? 0 : Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY) + 3;
   }
 
-  static getPerilThreshold(threat: Threat): number {
+  static getPerilThreshold(threat: Threat, traits: ThreatTrait[]): number {
     const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN);
     const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER);
     const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_GUT_INSTINCT)
@@ -129,12 +130,13 @@ export class Threat {
     return 3 + fromAttribute;
   }
 
-  static getRolledInitiative(threat: Threat): number {
-    const hasLethargy: boolean = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_LETHARGY);
-    const hasHypersensitivity: boolean = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_HYPERSENSITIVITY);
-    if (hasLethargy) {
+  static getRolledInitiative(threat: Threat, traits: ThreatTrait[]): number {
+    const system = System.getSystemProperties([
+      ...traits.filter(i => threat.advancements.traits.map(j => j.id).includes(i.id)).map(i => i.system ?? {})
+    ]);
+    if (system.hasOwnProperty('SLOW_INITIATIVE')) {
       return getIntegerInRange(1, 6);
-    } else if (hasHypersensitivity) {
+    } else if (system.hasOwnProperty('FAST_INITIATIVE')) {
       return getIntegerInRange(1, 10) + getIntegerInRange(1, 10);
     } else {
       return getIntegerInRange(1, 10);
