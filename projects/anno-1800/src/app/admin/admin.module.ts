@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
+import { GameModule } from '@ti/app/game/game.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { QualitiesComponent } from './qualities/qualities.component';
@@ -18,7 +19,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingsEditComponent } from './settings/settings-edit.component';
 import { AfflictionsComponent } from './afflictions/afflictions.component';
 import { AfflictionsEditComponent } from './afflictions/afflictions-edit.component';
-import { GameModule } from '@ti/app/game/game.module';
+import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
+import { ThreatTraitsEditComponent } from './threat-traits/threat-traits-edit.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { GameModule } from '@ti/app/game/game.module';
     SettingsComponent,
     SettingsEditComponent,
     AfflictionsComponent,
-    AfflictionsEditComponent
+    AfflictionsEditComponent,
+    ThreatTraitsComponent,
+    ThreatTraitsEditComponent
   ],
   imports: [
     SharedModule,

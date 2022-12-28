@@ -5,7 +5,7 @@ import {
   LightingId,
   ObscurementId, QualityId,
   SexId,
-  SizeId, SkillId, TalentId,
+  SizeId, SkillId,
   ThreatTraitId, WeaponId
 } from '@grim-and-perilous/models/common';
 

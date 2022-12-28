@@ -1,17 +1,17 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService, SnackbarService, StorageService } from '@shared';
-import { TraitId, Trait } from '@grim-and-perilous/models/common';
+import { Trait, TraitId } from '@grim-and-perilous/models/common';
+import { AdminService } from '@ti/app/admin/admin.service';
 import { TraitsEditComponent } from '@ti/app/admin/traits/traits-edit.component';
 
 @Component({
-  templateUrl: './traits.component.html',
-  styleUrls: ['./traits.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [AdminService]
+  selector: 'app-threat-traits',
+  templateUrl: './threat-traits.component.html',
+  styleUrls: ['./threat-traits.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TraitsComponent implements OnInit {
+export class ThreatTraitsComponent implements OnInit {
   readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
 
   constructor(
@@ -24,7 +24,7 @@ export class TraitsComponent implements OnInit {
   ngOnInit(): void {
     this.admin.init({
       dialog: this.dialog,
-      path: '/data/traits.json',
+      path: '/data/quirks.json',
       snackbar: this.snackbar,
       storage: this.storage,
       responseFn: this.getResponse
