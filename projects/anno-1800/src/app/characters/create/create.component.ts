@@ -38,7 +38,7 @@ import {
   CustomizeAdvancementSchemeComponent
 } from '@ti/app/game/components/customize-advancement-scheme/customize-advancement-scheme.component';
 import {
-  AGE_ID_YOUNG, ARCHETYPE_ID_COMMONER, ARCHETYPE_ID_MAGE,
+  ARCHETYPE_ID_MAGE,
   ATTRIBUTE_ID_AGILITY,
   ATTRIBUTE_ID_BRAWN,
   ATTRIBUTE_ID_COMBAT,
@@ -46,10 +46,8 @@ import {
   ATTRIBUTE_ID_INTELLIGENCE,
   ATTRIBUTE_ID_PERCEPTION,
   ATTRIBUTE_ID_WILLPOWER,
-  BELIEF_ID_ACHIEVEMENT,
   DEFAULT_ATTRIBUTE_PERCENTAGES,
-  DEFAULT_DETERMINATION, FLAW_ID_APPREHENSION,
-  SEX_ID_MALE,
+  DEFAULT_DETERMINATION,
   SIZE_ID_NORMAL
 } from '@grim-and-perilous/const';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
@@ -95,8 +93,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     miscellaneous: new FormGroup({
       portrait: new FormControl(null),
       biography: new FormControl(''),
-      sex: new FormControl(SEX_ID_MALE),
-      age: new FormControl(AGE_ID_YOUNG),
+      sex: new FormControl(this.data[DataTypes.SEX][0].id),
+      age: new FormControl(this.data[DataTypes.AGES][0].id),
       stature: new FormControl(null),
       build: new FormControl(null),
       style: new FormControl(null),
@@ -111,8 +109,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     allegiances: new FormControl(''),
     culture: new FormControl(null, [Validators.required]),
     languages: new FormControl([]),
-    belief: new FormControl(BELIEF_ID_ACHIEVEMENT, [Validators.required]),
-    flaw: new FormControl(FLAW_ID_APPREHENSION, [Validators.required]),
+    belief: new FormControl(this.data[DataTypes.BELIEFS][0].id, [Validators.required]),
+    flaw: new FormControl(this.data[DataTypes.FLAWS][0].id, [Validators.required]),
     attributes: new FormGroup({
       [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [ATTRIBUTE_ID_BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
@@ -122,9 +120,9 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
       [ATTRIBUTE_ID_WILLPOWER]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
       [ATTRIBUTE_ID_FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
     }),
-    archetype: new FormControl(ARCHETYPE_ID_COMMONER, [Validators.required]),
+    archetype: new FormControl(this.data[DataTypes.ARCHETYPES][0].id, [Validators.required]),
     trait: new FormControl(null, [Validators.required]),
-    tier: new FormControl(this.TIERS[0].id, [Validators.required]),
+    tier: new FormControl(this.data[DataTypes.TIERS][0].id, [Validators.required]),
     professions: new FormGroup({
       basic: new FormControl(null, [Validators.required]),
       intermediate: new FormControl(null),
@@ -184,9 +182,8 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     }),
   });
   readonly tiers: string[] = this.TIERS.map(i => i.name);
-
   readonly archetype$: Observable<ArchetypeId> = this.form.get('archetype').valueChanges.pipe(
-    startWith(ARCHETYPE_ID_COMMONER),
+    startWith(this.data[DataTypes.ARCHETYPES][0].id),
     shareReplay(1)
   );
   readonly traits$: Observable<Trait[]> = this.archetype$.pipe(

@@ -19,13 +19,8 @@ import {
   ATTRIBUTE_ID_COMBAT,
   ATTRIBUTE_ID_PERCEPTION,
   ATTRIBUTE_ID_WILLPOWER,
-  QUALITY_ID_FAST,
-  QUALITY_ID_INEFFECTIVE,
-  QUALITY_ID_PUMMELING,
   SKILL_ID_COORDINATION,
   SKILL_ID_SIMPLE_MELEE,
-  THREAT_TRAIT_ID_BRAINS_OVER_BRAWN,
-  THREAT_TRAIT_ID_IMMOBILE,
 } from '@grim-and-perilous/const';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { getIntegerInRange } from '@shared';
@@ -70,23 +65,29 @@ export class Threat {
   }
 
   static getWeaponDamage(data: DataService, weapon: Weapon, threat: Threat): string {
+    const system = System.getSystemProperties([
+      ...data[DataTypes.QUALITIES].filter(i => weapon.qualities.includes(i.id)).map(i => i.system ?? {})
+    ]);
     const dices = data[DataTypes.SIZES].find(i => i.id === threat.size)?.mechanics?.FURY_DICE ?? 1;
     let bonus;
-    if (weapon.qualities.includes(QUALITY_ID_PUMMELING)) {
+    if (system.hasOwnProperty('BRAWN_WEAPON_BONUS')) {
       bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, data[DataTypes.THREAT_TRAITS]);
-    } else if (weapon.qualities.includes(QUALITY_ID_FAST)) {
+    } else if (system.hasOwnProperty('AGILITY_WEAPON_BONUS')) {
       bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY, data[DataTypes.THREAT_TRAITS]);
     } else {
       bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_COMBAT, data[DataTypes.THREAT_TRAITS]);
     }
-    return weapon.qualities.includes(QUALITY_ID_INEFFECTIVE) ? 'None' : `${dices}d6+${bonus}`;
+    return system.hasOwnProperty('INEFFECTIVE_WEAPON') ? 'None' : `${dices}d6+${bonus}`;
   }
 
   static getDamageThreshold(threat: Threat, traits: ThreatTrait[], riskFactors: RiskFactor[]): number {
+    const system = System.getSystemProperties([
+      ...traits.filter(i => threat.advancements.traits.map(j => j.id).includes(i.id)).map(i => i.system ?? {})
+    ]);
     const fromRiskFactor: number = riskFactors.find(i => i.id === threat.risk_factor)?.mechanics?.DAMAGE_THRESHOLD_BONUS ?? 0;
     const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, traits);
     const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER, traits);
-    const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_BRAINS_OVER_BRAWN)
+    const fromAttribute: number = system.hasOwnProperty('DAMAGE_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS')
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromBrawnBonus;
     const traitsWithDamageThresholdBonus = traits.filter(i => i.system?.DAMAGE_THRESHOLD_BONUS).map(i => i.id);
@@ -114,8 +115,12 @@ export class Threat {
   }
 
   static getMovement(threat: Threat, traits: ThreatTrait[]): number {
-    const hasImmobile: boolean = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_IMMOBILE);
-    return hasImmobile ? 0 : Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY, traits) + 3;
+    const system = System.getSystemProperties([
+      ...traits.filter(i => threat.advancements.traits.map(j => j.id).includes(i.id)).map(i => i.system ?? {})
+    ]);
+    return system.hasOwnProperty('IMMOBILE')
+      ? 0
+      : Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY, traits) + 3;
   }
 
   static getPerilThreshold(threat: Threat, traits: ThreatTrait[]): number {

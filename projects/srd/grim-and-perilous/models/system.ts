@@ -5,6 +5,7 @@ export class System {
   DAMAGE_THRESHOLD_BONUS?: boolean;
   DAMAGE_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS?: boolean;
   PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS?: boolean;
+  IMMOBILE?: boolean;
   INEFFECTIVE_WEAPON?: boolean;
   SLOW_INITIATIVE?: boolean;
   FAST_INITIATIVE?: boolean;
