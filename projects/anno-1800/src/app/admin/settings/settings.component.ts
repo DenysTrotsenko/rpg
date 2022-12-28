@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
-import { DialogService, SnackbarService, StorageService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
@@ -17,17 +17,12 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private admin: AdminService,
-    private dialog: DialogService,
-    private snackbar: SnackbarService,
-    private storage: StorageService
+    private dialog: DialogService
   ) {}
 
   ngOnInit(): void {
     this.admin.init({
-      dialog: this.dialog,
       path: '/data/settings.json',
-      snackbar: this.snackbar,
-      storage: this.storage,
       responseFn: this.getResponse
     });
   }

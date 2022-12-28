@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Quirk, QuirkId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
-import { DialogService, SnackbarService, StorageService } from '@shared';
+import { DialogService } from '@shared';
 import { QuirksEditComponent } from '@ti/app/admin/quirks/quirks-edit.component';
 
 @Component({
@@ -16,17 +16,12 @@ export class QuirksComponent implements OnInit {
 
   constructor(
     private admin: AdminService,
-    private dialog: DialogService,
-    private snackbar: SnackbarService,
-    private storage: StorageService
+    private dialog: DialogService
   ) {}
 
   ngOnInit(): void {
     this.admin.init({
-      dialog: this.dialog,
       path: '/data/quirks.json',
-      snackbar: this.snackbar,
-      storage: this.storage,
       responseFn: this.getResponse
     });
   }

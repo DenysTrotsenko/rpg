@@ -11,6 +11,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
 import { TraitsComponent } from './traits/traits.component';
 import { ThreatsComponent } from './threats/threats.component';
+import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'qualities', component: QualitiesComponent },
       { path: 'quirks', component: QuirksComponent },
       { path: 'settings', component: SettingsComponent },
+      { path: 'settings/:id', component: SettingsEditComponent },
       { path: 'talents', component: TalentsComponent },
       { path: 'traits', component: TraitsComponent },
       { path: 'threats', component: ThreatsComponent },

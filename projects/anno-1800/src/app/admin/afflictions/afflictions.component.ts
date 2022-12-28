@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Affliction, AfflictionId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
-import { DialogService, SnackbarService, StorageService } from '@shared';
+import { DialogService } from '@shared';
 import { AfflictionsEditComponent } from '@ti/app/admin/afflictions/afflictions-edit.component';
 
 @Component({
@@ -17,17 +17,12 @@ export class AfflictionsComponent implements OnInit {
 
   constructor(
     private admin: AdminService,
-    private dialog: DialogService,
-    private snackbar: SnackbarService,
-    private storage: StorageService
+    private dialog: DialogService
   ) {}
 
   ngOnInit(): void {
     this.admin.init({
-      dialog: this.dialog,
       path: '/data/afflictions.json',
-      snackbar: this.snackbar,
-      storage: this.storage,
       responseFn: this.getResponse
     });
   }

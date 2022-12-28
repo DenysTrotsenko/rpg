@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DialogService, SnackbarService, StorageService } from '@shared';
+import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { Quality, QualityId } from '@grim-and-perilous/models/common';
 import { QualitiesEditComponent } from '@ti/app/admin/qualities/qualities-edit.component';
@@ -16,17 +16,12 @@ export class QualitiesComponent implements OnInit {
 
   constructor(
     private admin: AdminService,
-    private dialog: DialogService,
-    private snackbar: SnackbarService,
-    private storage: StorageService
+    private dialog: DialogService
   ) {}
 
   ngOnInit(): void {
     this.admin.init({
-      dialog: this.dialog,
       path: '/data/qualities.json',
-      snackbar: this.snackbar,
-      storage: this.storage,
       responseFn: this.getResponse
     });
   }

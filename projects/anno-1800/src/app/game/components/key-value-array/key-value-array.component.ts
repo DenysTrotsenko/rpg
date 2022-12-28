@@ -75,6 +75,7 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
               [cur.key]: cur.value
             };
           }, {});
+          console.log(entries);
           this.onChange(entries);
         })
       )
@@ -96,21 +97,25 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
   }
 
   onRemoveClick(index: number): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Delete Entry',
-          description: `Are sure you want to delete this entry?`,
-          ok: 'Delete',
-          cancel: 'Cancel'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        tap(() => this.entries.removeAt(index))
-      )
-      .subscribe();
+    this.entries.removeAt(index);
+    // this.dialog
+    //   .confirm({
+    //     data: {
+    //       title: 'Delete Entry',
+    //       description: `Are sure you want to delete this entry?`,
+    //       ok: 'Delete',
+    //       cancel: 'Cancel'
+    //     }
+    //   })
+    //   .afterClosed()
+    //   .pipe(
+    //     filter(res => !!res),
+    //     tap(() => {
+    //       this.entries.removeAt(index);
+    //       this.entries.updateValueAndValidity();
+    //     })
+    //   )
+    //   .subscribe();
   }
 
   registerOnChange(fn: () => void): void { this.onChange = fn; }

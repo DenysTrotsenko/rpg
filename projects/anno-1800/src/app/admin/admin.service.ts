@@ -10,9 +10,6 @@ import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 
 export interface AdminServiceConfig {
-  dialog: DialogService;
-  snackbar: SnackbarService;
-  storage: StorageService;
   path: string;
   responseFn: (data) => Observable<any>;
 }
@@ -23,17 +20,17 @@ type Item = Affliction | Ailment | Drug | Quality | Quirk | Setting | Talent | T
 @Injectable()
 export class AdminService {
   private responseFn: (data) => Observable<any>;
-  private dialog: DialogService;
-  private snackbar: SnackbarService;
-  private storage: StorageService;
   private path: string = null;
   readonly items$ = new BehaviorSubject([]);
 
+  constructor(
+    private dialog: DialogService,
+    private snackbar: SnackbarService,
+    private storage: StorageService
+  ) {}
+
   init(config: AdminServiceConfig): void {
     this.responseFn = config.responseFn;
-    this.dialog = config.dialog;
-    this.snackbar = config.snackbar;
-    this.storage = config.storage;
     this.path = config.path;
 
     this.storage.download(this.path)
