@@ -42,16 +42,8 @@ export const SIZE_ID_NORMAL = 'l9b3yyhppmn' as SizeId;
 export const SKILL_ID_COORDINATION = 'labo3tmeh7' as SkillId;
 export const SKILL_ID_SIMPLE_MELEE = 'labo3tmewe' as SkillId;
 export const THREAT_TRAIT_ID_BRAINS_OVER_BRAWN = 'labqamy2rf' as ThreatTraitId;
-export const THREAT_TRAIT_ID_GUT_INSTINCT = 'labqamy35br' as ThreatTraitId;
 export const THREAT_TRAIT_ID_IMMOBILE = 'labqamy2zum' as ThreatTraitId;
 export const WEAPON_ID_BARE_HANDED = 'lacdzmjqgp' as WeaponId;
 
 export const DEFAULT_ATTRIBUTE_PERCENTAGES = 25;
 export const DEFAULT_DETERMINATION = 2;
-
-export const BRAWN_BONUS_TRAITS: ThreatTraitId[] = [
-  'labqamy2lo9' as ThreatTraitId
-];
-export const DAMAGE_THRESHOLD_TRAITS: ThreatTraitId[] = [
-  'labqamy2eu' as ThreatTraitId
-];

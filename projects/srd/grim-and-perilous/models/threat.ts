@@ -1,13 +1,16 @@
 import {
   AttributeId,
   NotchId,
+  RiskFactor,
   RiskFactorId,
   SizeId,
   SkillId,
-  ThreatId, ThreatTrait,
+  ThreatId,
+  ThreatTrait,
   ThreatTraitId,
   ThreatTypeId,
-  Weapon, WeaponId
+  Weapon,
+  WeaponId
 } from '@grim-and-perilous/models/common';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 import {
@@ -16,15 +19,12 @@ import {
   ATTRIBUTE_ID_COMBAT,
   ATTRIBUTE_ID_PERCEPTION,
   ATTRIBUTE_ID_WILLPOWER,
-  BRAWN_BONUS_TRAITS,
-  DAMAGE_THRESHOLD_TRAITS,
   QUALITY_ID_FAST,
   QUALITY_ID_INEFFECTIVE,
   QUALITY_ID_PUMMELING,
   SKILL_ID_COORDINATION,
   SKILL_ID_SIMPLE_MELEE,
   THREAT_TRAIT_ID_BRAINS_OVER_BRAWN,
-  THREAT_TRAIT_ID_GUT_INSTINCT,
   THREAT_TRAIT_ID_IMMOBILE,
 } from '@grim-and-perilous/const';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
@@ -54,12 +54,13 @@ export class Threat {
   };
   weapons?: WeaponId[];
 
-  static getAttributeBonus(threat: Threat, attributeId: AttributeId): number {
+  static getAttributeBonus(threat: Threat, attributeId: AttributeId, traits: ThreatTrait[]): number {
     const fromAttribute: number = getBonusFromAttribute(threat.attributes[attributeId]);
     const fromAdvances: number = Math.min(threat.advancements.bonuses.filter(i => i === attributeId).length, 6);
+    const traitsWithBrawnBonus = traits.filter(i => i.system?.BRAWN_BONUS).map(i => i.id);
     const fromTraits: number = threat.advancements.traits.reduce((acc, trait) => {
       let bonus = 0;
-      if (BRAWN_BONUS_TRAITS.includes(trait.id) && attributeId === ATTRIBUTE_ID_BRAWN) {
+      if (traitsWithBrawnBonus.includes(trait.id) && attributeId === ATTRIBUTE_ID_BRAWN) {
         bonus += +trait.value;
       }
       return acc + bonus;
@@ -72,25 +73,25 @@ export class Threat {
     const dices = data[DataTypes.SIZES].find(i => i.id === threat.size)?.mechanics?.FURY_DICE ?? 1;
     let bonus;
     if (weapon.qualities.includes(QUALITY_ID_PUMMELING)) {
-      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN);
+      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, data[DataTypes.THREAT_TRAITS]);
     } else if (weapon.qualities.includes(QUALITY_ID_FAST)) {
-      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY);
+      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY, data[DataTypes.THREAT_TRAITS]);
     } else {
-      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_COMBAT);
+      bonus = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_COMBAT, data[DataTypes.THREAT_TRAITS]);
     }
     return weapon.qualities.includes(QUALITY_ID_INEFFECTIVE) ? 'None' : `${dices}d6+${bonus}`;
   }
 
-  static getDamageThreshold(data: DataService, threat: Threat): number {
-    const fromRiskFactor: number = data[DataTypes.RISK_FACTORS]
-      .find(i => i.id === threat.risk_factor)?.mechanics?.DAMAGE_THRESHOLD_BONUS ?? 0;
-    const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN);
-    const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER);
+  static getDamageThreshold(threat: Threat, traits: ThreatTrait[], riskFactors: RiskFactor[]): number {
+    const fromRiskFactor: number = riskFactors.find(i => i.id === threat.risk_factor)?.mechanics?.DAMAGE_THRESHOLD_BONUS ?? 0;
+    const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, traits);
+    const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER, traits);
     const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_BRAINS_OVER_BRAWN)
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromBrawnBonus;
+    const traitsWithDamageThresholdBonus = traits.filter(i => i.system?.DAMAGE_THRESHOLD_BONUS).map(i => i.id);
     const fromTraits: number = threat.advancements.traits.reduce((acc, trait) => {
-      return DAMAGE_THRESHOLD_TRAITS.includes(trait.id) ? acc + +trait.value : acc;
+      return traitsWithDamageThresholdBonus.includes(trait.id) ? acc + +trait.value : acc;
     }, 0);
     return fromAttribute + fromTraits + fromRiskFactor;
   }
@@ -108,26 +109,29 @@ export class Threat {
     return `${melee}% / ${ranged}%`;
   }
 
-  static getEncumbranceLimit(threat: Threat): number {
-    return Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN) + 3;
+  static getEncumbranceLimit(threat: Threat, traits: ThreatTrait[]): number {
+    return Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, traits) + 3;
   }
 
-  static getInitiative(threat: Threat): number {
-    return Threat.getAttributeBonus(threat, ATTRIBUTE_ID_PERCEPTION) + 3;
-  }
-
-  static getMovement(threat: Threat): number {
+  static getMovement(threat: Threat, traits: ThreatTrait[]): number {
     const hasImmobile: boolean = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_IMMOBILE);
-    return hasImmobile ? 0 : Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY) + 3;
+    return hasImmobile ? 0 : Threat.getAttributeBonus(threat, ATTRIBUTE_ID_AGILITY, traits) + 3;
   }
 
   static getPerilThreshold(threat: Threat, traits: ThreatTrait[]): number {
-    const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN);
-    const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER);
-    const fromAttribute: number = threat.advancements.traits.map(i => i.id).includes(THREAT_TRAIT_ID_GUT_INSTINCT)
+    const system = System.getSystemProperties([
+      ...traits.filter(i => threat.advancements.traits.map(j => j.id).includes(i.id)).map(i => i.system ?? {})
+    ]);
+    const fromBrawnBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_BRAWN, traits);
+    const fromWillpowerBonus: number = Threat.getAttributeBonus(threat, ATTRIBUTE_ID_WILLPOWER, traits);
+    const fromAttribute: number = system.hasOwnProperty('PERIL_THRESHOLD_MAX_OF_BRAWN_WILLPOWER_BONUS')
       ? Math.max(fromBrawnBonus, fromWillpowerBonus)
       : fromWillpowerBonus;
     return 3 + fromAttribute;
+  }
+
+  static getBaseInitiative(threat: Threat, traits: ThreatTrait[]): number {
+    return Threat.getAttributeBonus(threat, ATTRIBUTE_ID_PERCEPTION, traits) + 3;
   }
 
   static getRolledInitiative(threat: Threat, traits: ThreatTrait[]): number {
@@ -141,5 +145,9 @@ export class Threat {
     } else {
       return getIntegerInRange(1, 10);
     }
+  }
+
+  static getTotalInitiative(threat: Threat, traits: ThreatTrait[]): number {
+    return Threat.getBaseInitiative(threat, traits) + Threat.getRolledInitiative(threat, traits);
   }
 }

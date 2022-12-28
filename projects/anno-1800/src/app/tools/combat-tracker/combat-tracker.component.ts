@@ -124,7 +124,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
       new CombatTrackerUnit({
         ...unit,
         uid: getId(),
-        initiative: Threat.getInitiative(threat) + Threat.getRolledInitiative(threat, this.data[DataTypes.THREAT_TRAITS]),
+        initiative: Threat.getTotalInitiative(threat, this.data[DataTypes.THREAT_TRAITS]),
         damage: 0,
         peril: 0
       }),
@@ -171,7 +171,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
         type: 'threat',
         templateId: i.id,
         name: i.name,
-        initiative: Threat.getInitiative(i) + Threat.getRolledInitiative(i, this.data[DataTypes.THREAT_TRAITS]),
+        initiative: Threat.getTotalInitiative(i, this.data[DataTypes.THREAT_TRAITS]),
         damage: 0,
         peril: 0
       })

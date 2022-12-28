@@ -34,7 +34,7 @@ export class CombatTrackerUnitComponent {
       return {
         name: this.data[DataTypes.ATTRIBUTES].find(i => i.id === entry[0]).name,
         value: +entry[1],
-        bonus: Threat.getAttributeBonus(threat, entry[0] as AttributeId)
+        bonus: Threat.getAttributeBonus(threat, entry[0] as AttributeId, this.data[DataTypes.THREAT_TRAITS])
       };
     });
   }
@@ -91,7 +91,7 @@ export class CombatTrackerUnitComponent {
   }
 
   getMovement(threat: Threat): string {
-    return threat.labels?.movement ?? `${Threat.getMovement(threat)}`;
+    return threat.labels?.movement ?? `${Threat.getMovement(threat, this.data[DataTypes.THREAT_TRAITS])}`;
   }
 
   getType(threat: Threat): string {
@@ -110,11 +110,11 @@ export class CombatTrackerUnitComponent {
   }
 
   getInitiative(threat: Threat): number {
-    return Threat.getInitiative(threat);
+    return Threat.getBaseInitiative(threat, this.data[DataTypes.THREAT_TRAITS]);
   }
 
   getDamageThresholds(threat: Threat): string {
-    return this.getThresholds(Threat.getDamageThreshold(this.data, threat));
+    return this.getThresholds(Threat.getDamageThreshold(threat, this.data[DataTypes.THREAT_TRAITS], this.data[DataTypes.RISK_FACTORS]));
   }
 
   getPerilThresholds(threat: Threat): string {
