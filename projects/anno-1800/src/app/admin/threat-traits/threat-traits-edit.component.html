@@ -1,1 +1,26 @@
-<p>threat-traits-edit works!</p>
+<h1 mat-dialog-title>Add Threat Trait</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-checkbox class="mb-5" formControlName="quantifiable" matTooltip="Trait have numeric value. Ex: Thick Hide (3)">
+      Quantifiable
+    </mat-checkbox>
+    <mat-checkbox class="mb-10" formControlName="specifiable" matTooltip="Trait have specific conditions. Ex: Immunity (Iron)">
+      Specifiable
+    </mat-checkbox>
+    <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline">
+        <mat-label>Effect</mat-label>
+        <input matInput formControlName="effect">
+      </mat-form-field>
+    </ng-container>
+    <app-key-value-array formControlName="system"></app-key-value-array>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-button [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+</div>

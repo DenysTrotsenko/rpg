@@ -13,8 +13,9 @@ export class AdminComponent {
     { link: './drugs', label: 'Drugs' },
     { link: './qualities', label: 'Qualities' },
     { link: './quirks', label: 'Quirks' },
+    { link: './settings', label: 'Settings' },
     { link: './talents', label: 'Talents' },
-    { link: './traits', label: 'Traits' },
-    { link: './settings', label: 'Settings' }
+    { link: './threat-traits', label: 'Threat Traits' },
+    { link: './traits', label: 'Traits' }
   ];
 }
