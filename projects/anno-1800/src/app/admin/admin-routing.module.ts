@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TalentsComponent } from './talents/talents.component';
 import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
 import { TraitsComponent } from './traits/traits.component';
+import { ThreatsComponent } from './threats/threats.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'talents', component: TalentsComponent },
       { path: 'traits', component: TraitsComponent },
+      { path: 'threats', component: ThreatsComponent },
       { path: 'threat-traits', component: ThreatTraitsComponent },
       { path: '**', redirectTo: 'afflictions', pathMatch: 'full' }
     ]

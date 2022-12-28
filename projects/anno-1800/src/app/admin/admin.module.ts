@@ -21,6 +21,8 @@ import { AfflictionsComponent } from './afflictions/afflictions.component';
 import { AfflictionsEditComponent } from './afflictions/afflictions-edit.component';
 import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
 import { ThreatTraitsEditComponent } from './threat-traits/threat-traits-edit.component';
+import { ThreatsComponent } from './threats/threats.component';
+import { ThreatsEditComponent } from './threats/threats-edit.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { ThreatTraitsEditComponent } from './threat-traits/threat-traits-edit.co
     AfflictionsComponent,
     AfflictionsEditComponent,
     ThreatTraitsComponent,
-    ThreatTraitsEditComponent
+    ThreatTraitsEditComponent,
+    ThreatsComponent,
+    ThreatsEditComponent
   ],
   imports: [
     SharedModule,

@@ -15,6 +15,7 @@ export class AdminComponent {
     { link: './quirks', label: 'Quirks' },
     { link: './settings', label: 'Settings' },
     { link: './talents', label: 'Talents' },
+    { link: './threats', label: 'Threats' },
     { link: './threat-traits', label: 'Threat Traits' },
     { link: './traits', label: 'Traits' }
   ];
