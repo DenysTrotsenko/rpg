@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DialogService } from '@shared';
-import { ThreatTrait, Trait, TraitId } from '@grim-and-perilous/models/common';
+import { ThreatTrait, ThreatTraitId, Trait, TraitId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { ThreatTraitsEditComponent } from '@ti/app/admin/threat-traits/threat-traits-edit.component';
 
@@ -34,11 +34,11 @@ export class ThreatTraitsComponent implements OnInit {
     this.admin.add();
   }
 
-  onDeleteClick(id: TraitId): void {
+  onDeleteClick(id: ThreatTraitId): void {
     this.admin.delete(id);
   }
 
-  onEditClick(item: Trait): void {
+  onEditClick(item: ThreatTrait): void {
     this.admin.edit(item);
   }
 

@@ -4,22 +4,43 @@ import { catchError, filter, tap } from 'rxjs/operators';
 import { DialogService, getId, SnackbarService, sortByName, StorageService } from '@shared';
 import {
   Ailment, Drug, Quality, Quirk, Talent, Trait,
-  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId, AfflictionId, Affliction
+  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId, AfflictionId, Affliction, ThreatId, ThreatTraitId, ThreatTrait
 } from '@grim-and-perilous/models/common';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
+import { Threat } from '@grim-and-perilous/models/threat';
 
 export interface AdminServiceConfig {
   path: string;
-  responseFn: (data) => Observable<any>;
+  responseFn: (data: Item) => Observable<unknown>;
 }
 
-type Id = AfflictionId | AilmentId | DrugId | QualityId | QuirkId | SettingId | TalentId | TraitId;
-type Item = Affliction | Ailment | Drug | Quality | Quirk | Setting | Talent | Trait;
+type Id =
+  | AfflictionId
+  | AilmentId
+  | DrugId
+  | QualityId
+  | QuirkId
+  | SettingId
+  | TalentId
+  | TraitId
+  | ThreatId
+  | ThreatTraitId;
+type Item =
+  | Affliction
+  | Ailment
+  | Drug
+  | Quality
+  | Quirk
+  | Setting
+  | Talent
+  | Trait
+  | Threat
+  | ThreatTrait;
 
 @Injectable()
 export class AdminService {
-  private responseFn: (data) => Observable<any>;
+  private responseFn: (data: Item) => Observable<Partial<Item>>;
   private path: string = null;
   readonly items$ = new BehaviorSubject([]);
 
