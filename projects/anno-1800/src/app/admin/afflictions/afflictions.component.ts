@@ -6,7 +6,6 @@ import { DialogService } from '@shared';
 import { AfflictionsEditComponent } from '@ti/app/admin/afflictions/afflictions-edit.component';
 
 @Component({
-  selector: 'app-afflictions',
   templateUrl: './afflictions.component.html',
   styleUrls: ['./afflictions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,12 +22,10 @@ export class AfflictionsComponent implements OnInit {
   ngOnInit(): void {
     this.admin.init({
       path: '/data/afflictions.json',
-      responseFn: this.getResponse
+      responseFn: (data): Observable<Affliction> => this.dialog
+        .open(AfflictionsEditComponent, { data })
+        .afterClosed()
     });
-  }
-
-  getResponse(data): Observable<Affliction> {
-    return this.dialog.open(AfflictionsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {

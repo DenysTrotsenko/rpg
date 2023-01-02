@@ -22,12 +22,10 @@ export class AilmentsComponent implements OnInit {
   ngOnInit(): void {
     this.admin.init({
       path: '/data/ailments.json',
-      responseFn: this.getResponse
+      responseFn: (data): Observable<Ailment> => this.dialog
+        .open(AilmentsEditComponent, { data })
+        .afterClosed()
     });
-  }
-
-  getResponse(data): Observable<Ailment> {
-    return this.dialog.open(AilmentsEditComponent, { data }).afterClosed();
   }
 
   onAddClick(): void {
