@@ -5,26 +5,30 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
-    <mat-selection-list formControlName="size">
-      <mat-list-option *ngFor="let i of sizes; trackBy: trackById;" [value]="i.id">
-        {{i.name}}
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-selection-list formControlName="type">
-      <mat-list-option *ngFor="let i of types; trackBy: trackById;" [value]="i.id">
-        {{i.name}}
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-selection-list formControlName="risk_factor">
-      <mat-list-option *ngFor="let i of risks; trackBy: trackById;" [value]="i.id">
-        {{i.name}}
-      </mat-list-option>
-    </mat-selection-list>
-    <mat-selection-list formControlName="notch">
-      <mat-list-option *ngFor="let i of notches; trackBy: trackById;" [value]="i.id">
-        {{i.name}}
-      </mat-list-option>
-    </mat-selection-list>
+    <mat-form-field appearance="outline">
+      <mat-label>Size</mat-label>
+      <mat-select formControlName="size">
+        <mat-option *ngFor="let i of sizes; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Types</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let i of types; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Risk Factor</mat-label>
+      <mat-select formControlName="risk_factor">
+        <mat-option *ngFor="let i of risks; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Notch</mat-label>
+      <mat-select formControlName="notch">
+        <mat-option *ngFor="let i of notches; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <ng-container formGroupName="attributes">
       <mat-form-field *ngFor="let i of attributes; trackBy: trackById;" appearance="outline" class="f-1">
         <mat-label>{{i.name}}</mat-label>
@@ -40,7 +44,6 @@
         <input matInput formControlName="description">
       </mat-form-field>
     </ng-container>
-    <app-key-value-array formControlName="system"></app-key-value-array>
   </form>
 </div>
 <div mat-dialog-actions>
