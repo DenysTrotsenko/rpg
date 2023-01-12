@@ -29,20 +29,19 @@ import { MatSelectionList } from '@angular/material/list';
 })
 export class SettingsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
-    id: new FormControl(null),
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    alchemical_arts: new FormControl([], [Validators.required]),
-    archetypes: new FormControl([], [Validators.required]),
-    professions: new FormControl([], [Validators.required]),
-    qualities: new FormControl([], [Validators.required]),
-    quirks: new FormControl([], [Validators.required]),
-    skills: new FormControl([], [Validators.required]),
-    spells: new FormControl([], [Validators.required]),
-    talents: new FormControl([], [Validators.required]),
-    threats: new FormControl([], [Validators.required]),
-    traits: new FormControl([], [Validators.required]),
-    weapons: new FormControl([], [Validators.required]),
+    alchemical_arts: new FormControl([]),
+    archetypes: new FormControl([]),
+    professions: new FormControl([]),
+    qualities: new FormControl([]),
+    quirks: new FormControl([]),
+    skills: new FormControl([]),
+    spells: new FormControl([]),
+    talents: new FormControl([]),
+    threats: new FormControl([]),
+    traits: new FormControl([]),
+    weapons: new FormControl([]),
   });
 
   readonly alchemicalArts$ = this.storage.download<AlchemicalArt[]>('/data/alchemical-arts.json').pipe(

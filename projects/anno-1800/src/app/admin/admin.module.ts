@@ -23,6 +23,8 @@ import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
 import { ThreatTraitsEditComponent } from './threat-traits/threat-traits-edit.component';
 import { ThreatsComponent } from './threats/threats.component';
 import { ThreatsEditComponent } from './threats/threats-edit.component';
+import { WeaponsComponent } from './weapons/weapons.component';
+import { WeaponsEditComponent } from './weapons/weapons-edit.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ThreatsEditComponent } from './threats/threats-edit.component';
     ThreatTraitsComponent,
     ThreatTraitsEditComponent,
     ThreatsComponent,
-    ThreatsEditComponent
+    ThreatsEditComponent,
+    WeaponsComponent,
+    WeaponsEditComponent
   ],
   imports: [
     SharedModule,
