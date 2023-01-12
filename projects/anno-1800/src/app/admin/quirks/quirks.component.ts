@@ -4,6 +4,7 @@ import { Quirk, QuirkId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService } from '@shared';
 import { QuirksEditComponent } from '@ti/app/admin/quirks/quirks-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './quirks.component.html',
@@ -21,7 +22,7 @@ export class QuirksComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/quirks.json',
+      path: StoragePath.QUIRKS,
       responseFn: this.getResponse
     });
   }

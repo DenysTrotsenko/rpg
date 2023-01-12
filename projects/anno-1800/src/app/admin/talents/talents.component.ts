@@ -4,6 +4,7 @@ import { Talent, TalentId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService } from '@shared';
 import { TalentsEditComponent } from '@ti/app/admin/talents/talents-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './talents.component.html',
@@ -21,7 +22,7 @@ export class TalentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/talents.json',
+      path: StoragePath.TALENTS,
       responseFn: this.getResponse
     });
   }

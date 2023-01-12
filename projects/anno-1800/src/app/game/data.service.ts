@@ -25,6 +25,7 @@ import { Character } from '@grim-and-perilous/models/character';
 import { StoragePath } from '@grim-and-perilous/enums';
 import { Campaign } from '@grim-and-perilous/models/campaign';
 import { Threat } from '@grim-and-perilous/models/threat';
+import { Setting } from '@grim-and-perilous/models/setting';
 
 export enum FirestoreCollection {
   CHARACTERS = 'characters',
@@ -60,6 +61,7 @@ export enum DataTypes {
   QUIRKS = 'quirks',
   RISK_FACTORS = 'risk_factors',
   SEX = 'sex',
+  SETTINGS = 'settings',
   SIZES = 'sizes',
   SKILLS = 'skills',
   SPELLS = 'spells',
@@ -107,6 +109,7 @@ export class DataService {
   [DataTypes.QUALITIES]: Quality[];
   [DataTypes.QUIRKS]: Quirk[];
   [DataTypes.SEX]: Sex[];
+  [DataTypes.SETTINGS]: Setting[];
   [DataTypes.SIZES]: Size[];
   [DataTypes.SKILLS]: Skill[];
   [DataTypes.SPELLS]: Spell[];
@@ -183,6 +186,7 @@ export class DataService {
       this.storage.download<Quirk[]>(StoragePath.QUIRKS),
       this.storage.download<RiskFactor[]>(StoragePath.RISK_FACTORS),
       this.storage.download<Sex[]>(StoragePath.SEXES),
+      this.storage.download<Setting[]>(StoragePath.SETTINGS),
       this.storage.download<Size[]>(StoragePath.SIZES),
       this.storage.download<Skill[]>(StoragePath.SKILLS),
       this.storage.download<SpellType[]>(StoragePath.SPELL_TYPES),
@@ -201,7 +205,7 @@ export class DataService {
         /* tslint:disable */
         afflictions, ages, ailments, alchemical_arts, archetypes, attributes, beliefs, builds, cultures, drugs,
         eyes, flaws, hair_colors, hair_lengths, hair_styles, injuries, injury_types, languages, lightings, marks,
-        notches, obscurements, permanent_injuries, professions, qualities, quirks, risk_factors, sexes, sizes,
+        notches, obscurements, permanent_injuries, professions, qualities, quirks, risk_factors, sexes, settings, sizes,
         skills, spell_types, spells, statures, styles, talents, threat_traits, threat_types, threats, tiers,
         traits, weapons
         /* tslint:enable */
@@ -253,6 +257,7 @@ export class DataService {
           return i;
         });
         this[DataTypes.SEX] = sexes;
+        this[DataTypes.SETTINGS] = settings;
         this[DataTypes.SIZES] = sizes;
         this[DataTypes.SKILLS] = skills.map(i => {
           i.labels.tooltip = this.getSkillTooltip(i, attributes);

@@ -9,9 +9,10 @@ import {
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 import { Threat } from '@grim-and-perilous/models/threat';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 export interface AdminServiceConfig {
-  path: string;
+  path: StoragePath;
   responseFn: (data: Item) => Observable<unknown>;
 }
 

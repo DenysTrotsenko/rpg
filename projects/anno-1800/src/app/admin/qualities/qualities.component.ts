@@ -4,6 +4,7 @@ import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { Quality, QualityId } from '@grim-and-perilous/models/common';
 import { QualitiesEditComponent } from '@ti/app/admin/qualities/qualities-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './qualities.component.html',
@@ -21,7 +22,7 @@ export class QualitiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/qualities.json',
+      path: StoragePath.QUALITIES,
       responseFn: this.getResponse
     });
   }

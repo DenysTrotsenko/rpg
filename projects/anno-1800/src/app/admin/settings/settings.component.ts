@@ -5,6 +5,7 @@ import { AdminService } from '@ti/app/admin/admin.service';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -22,7 +23,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/settings.json',
+      path: StoragePath.SETTINGS,
       responseFn: this.getResponse
     });
   }

@@ -4,6 +4,7 @@ import { Ailment, AilmentId } from '@grim-and-perilous/models/common';
 import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { AilmentsEditComponent } from '@ti/app/admin/ailments/ailments-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './ailments.component.html',
@@ -21,7 +22,7 @@ export class AilmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/ailments.json',
+      path: StoragePath.AILMENTS,
       responseFn: (data): Observable<Ailment> => this.dialog
         .open(AilmentsEditComponent, { data })
         .afterClosed()

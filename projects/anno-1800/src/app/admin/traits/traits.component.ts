@@ -4,6 +4,7 @@ import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService } from '@shared';
 import { TraitId, Trait } from '@grim-and-perilous/models/common';
 import { TraitsEditComponent } from '@ti/app/admin/traits/traits-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './traits.component.html',
@@ -21,7 +22,7 @@ export class TraitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/traits.json',
+      path: StoragePath.TRAITS,
       responseFn: this.getResponse
     });
   }

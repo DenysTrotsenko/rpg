@@ -4,6 +4,7 @@ import { Drug, DrugId } from '@grim-and-perilous/models/common';
 import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DrugsEditComponent } from '@ti/app/admin/drugs/drugs-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './drugs.component.html',
@@ -21,7 +22,7 @@ export class DrugsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/drugs.json',
+      path: StoragePath.DRUGS,
       responseFn: this.getResponse
     });
   }

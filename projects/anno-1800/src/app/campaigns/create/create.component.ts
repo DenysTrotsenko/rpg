@@ -5,7 +5,8 @@ import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/ope
 import { FirestoreService, getId } from '@shared';
 import { combineLatest, Observable } from 'rxjs';
 import { Campaign } from '@grim-and-perilous/models/campaign';
-import { DataService } from '@ti/app/game/data.service';
+import { DataService, DataTypes } from '@ti/app/game/data.service';
+import { Setting } from '@grim-and-perilous/models/setting';
 
 @Component({
   templateUrl: './create.component.html',
@@ -16,9 +17,11 @@ export class CreateComponent {
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(getId()),
     name: new FormControl('', [Validators.required]),
+    setting: new FormControl(null, [Validators.required]),
   });
 
   readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
+  readonly settings: Setting[] = this.data[DataTypes.SETTINGS];
   readonly campaign$: Observable<Campaign> = this.route.paramMap
     .pipe(
       map(params => params.get('id')),
@@ -63,4 +66,7 @@ export class CreateComponent {
       .subscribe();
   }
 
+  trackById(_, item): number {
+    return item.id;
+  }
 }

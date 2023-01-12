@@ -29,6 +29,7 @@ export enum StoragePath {
   QUIRKS = '/data/quirks.json',
   RISK_FACTORS = '/data/risk-factors.json',
   SEXES = '/data/sexes.json',
+  SETTINGS = '/data/settings.json',
   SIZES = '/data/sizes.json',
   SKILLS = '/data/skills.json',
   SPELL_TYPES = '/data/spell-types.json',

@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DialogService } from '@shared';
-import { ThreatTrait, ThreatTraitId, Trait, TraitId } from '@grim-and-perilous/models/common';
+import { ThreatTrait, ThreatTraitId, Trait } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { ThreatTraitsEditComponent } from '@ti/app/admin/threat-traits/threat-traits-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './threat-traits.component.html',
@@ -21,7 +22,7 @@ export class ThreatTraitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/threat-traits.json',
+      path: StoragePath.THREAT_TRAITS,
       responseFn: this.getResponse
     });
   }

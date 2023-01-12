@@ -8,6 +8,14 @@
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Setting</mat-label>
+        <mat-select formControlName="setting">
+          <mat-option *ngFor="let i of settings; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
   </mat-card>
 

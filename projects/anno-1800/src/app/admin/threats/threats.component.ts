@@ -5,6 +5,7 @@ import { ThreatId } from '@grim-and-perilous/models/common';
 import { Threat } from '@grim-and-perilous/models/threat';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { ThreatsEditComponent } from '@ti/app/admin/threats/threats-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './threats.component.html',
@@ -22,7 +23,7 @@ export class ThreatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/threats.json',
+      path: StoragePath.THREATS,
       responseFn: (data: Threat): Observable<Threat> => this.dialog
         .open(ThreatsEditComponent, { data })
         .afterClosed()

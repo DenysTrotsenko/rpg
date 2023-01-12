@@ -75,7 +75,6 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
               [cur.key]: cur.value
             };
           }, {});
-          console.log(entries);
           this.onChange(entries);
         })
       )

@@ -4,6 +4,7 @@ import { Affliction, AfflictionId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
 import { DialogService } from '@shared';
 import { AfflictionsEditComponent } from '@ti/app/admin/afflictions/afflictions-edit.component';
+import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
   templateUrl: './afflictions.component.html',
@@ -21,7 +22,7 @@ export class AfflictionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin.init({
-      path: '/data/afflictions.json',
+      path: StoragePath.AFFLICTIONS,
       responseFn: (data): Observable<Affliction> => this.dialog
         .open(AfflictionsEditComponent, { data })
         .afterClosed()
