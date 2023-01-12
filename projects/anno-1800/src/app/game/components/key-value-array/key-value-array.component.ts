@@ -79,7 +79,6 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
         })
       )
       .subscribe();
-
   }
 
   ngOnDestroy(): void {

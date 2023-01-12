@@ -66,6 +66,8 @@ export class AdminService {
     this.responseFn(null)
       .pipe(
         filter(res => !!res),
+        tap(() => console.log('ADD')),
+        tap(res => console.log(res)),
         tap(res => this.items$.next([
           { id: getId(), ...res },
           ...this.items$.value
@@ -96,8 +98,10 @@ export class AdminService {
     this.responseFn(item)
       .pipe(
         filter(res => !!res),
+        tap(() => console.log('EDIT')),
+        tap(res => console.log(res)),
         tap(res => this.items$.next([
-          res,
+          { ...item, ...res },
           ...this.items$.value.filter(i => i.id !== item.id)
         ]))
       )

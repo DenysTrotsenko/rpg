@@ -10,6 +10,7 @@ import { Talent } from '@grim-and-perilous/models/common';
 })
 export class TalentsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
+    id: new FormControl('', [Validators.required, Validators.minLength(3)]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     labels: new FormGroup({
       description: new FormControl('', []),

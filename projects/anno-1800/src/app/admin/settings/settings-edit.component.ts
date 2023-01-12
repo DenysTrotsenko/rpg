@@ -20,6 +20,7 @@ import {
 import { map, shareReplay } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { Threat } from '@grim-and-perilous/models/threat';
+import { MatSelectionList } from '@angular/material/list';
 
 @Component({
   templateUrl: './settings-edit.component.html',
@@ -188,7 +189,7 @@ export class SettingsEditComponent implements OnInit {
       weapons
         .filter(weapon => selected.weapons.includes(weapon.id))
         .reduce((acc, weapon) => {
-          return [...acc, ...weapon.qualities];
+          return [...acc, ...weapon.skills];
         }, [])
     )];
 
