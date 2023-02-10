@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { combineLatest, Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { getId, StorageService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import {
@@ -17,10 +19,7 @@ import {
   Weapon,
   WeaponId
 } from '@grim-and-perilous/models/common';
-import { map, shareReplay } from 'rxjs/operators';
-import { combineLatest, Observable } from 'rxjs';
 import { Threat } from '@grim-and-perilous/models/threat';
-import { MatSelectionList } from '@angular/material/list';
 
 @Component({
   templateUrl: './settings-edit.component.html',
@@ -152,7 +151,7 @@ export class SettingsEditComponent implements OnInit {
       traits: form.traits as TraitId[],
       weapons: form.weapons as WeaponId[]
     };
-    const selectedProfessions = professions.filter(profession => selected.professions.includes(profession.id));
+    const selectedProfessions: Profession[] = professions.filter(profession => selected.professions.includes(profession.id));
     const allSelectedProfessionsTraitIds: TraitId[] = [...new Set(
       selectedProfessions
         .reduce((acc, profession) => {

@@ -49,7 +49,7 @@ export function setFormControlsEditable(
   });
 }
 
-export function sortByName(a, b): -1 | 0| 1 {
+export function sortByName(a, b): -1 | 0 | 1 {
   if (a.name > b.name) {
     return 1;
   } else if (a.name < b.name) {
