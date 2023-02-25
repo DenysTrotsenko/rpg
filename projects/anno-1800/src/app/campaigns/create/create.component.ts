@@ -51,14 +51,13 @@ export class CreateComponent {
     combineLatest([this.campaign$])
       .pipe(
         switchMap(([campaign]: [Campaign]) => {
+          const author = !!campaign?.author ? campaign.author : this.route.snapshot.data?.user?.uid;
           return this.firestore.update(`campaigns/${form.id}`, {
             ...form,
-            author: !!campaign?.author
-              ? campaign.author
-              : this.route.snapshot.data?.user?.uid,
+            author,
             members: !!campaign?.members
               ? [...campaign.members]
-              : [...new Set([this.route.snapshot.data?.user?.uid, campaign.author])],
+              : [...new Set([this.route.snapshot.data?.user?.uid, author])],
           });
         }),
         tap(() => this.router.navigate(['campaigns/list']))
