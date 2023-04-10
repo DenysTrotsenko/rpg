@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DialogService } from '@shared';
 import { ThreatTrait, ThreatTraitId, Trait } from '@grim-and-perilous/models/common';
@@ -16,7 +16,7 @@ export class ThreatTraitsComponent implements OnInit {
   readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
 
   constructor(
-    private admin: AdminService,
+    @Self() private admin: AdminService,
     private dialog: DialogService
   ) {}
 

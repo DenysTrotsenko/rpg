@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Quirk, QuirkId } from '@grim-and-perilous/models/common';
 import { AdminService } from '@ti/app/admin/admin.service';
@@ -16,7 +16,7 @@ export class QuirksComponent implements OnInit {
   readonly items$: BehaviorSubject<Quirk[]> = this.admin.items$;
 
   constructor(
-    private admin: AdminService,
+    @Self() private admin: AdminService,
     private dialog: DialogService
   ) {}
 

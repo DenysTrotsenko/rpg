@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DialogService } from '@shared';
 import { AdminService } from '@ti/app/admin/admin.service';
@@ -16,7 +16,7 @@ export class QualitiesComponent implements OnInit {
   readonly items$: BehaviorSubject<Quality[]> = this.admin.items$;
 
   constructor(
-    private admin: AdminService,
+    @Self() private admin: AdminService,
     private dialog: DialogService
   ) {}
 
