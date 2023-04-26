@@ -1,0 +1,54 @@
+@import "../../../src/styles/variables";
+
+mat-sidenav-container {
+  height: 100%;
+
+  .mat-toolbar-single-row {
+    padding: 0 8px;
+  }
+
+  mat-sidenav {
+    width: 200px;
+    transition: width .25s ease-out;
+  }
+
+  mat-sidenav-content {
+    transition: margin-left .25s ease-out;
+  }
+
+  &:not(.expanded) {
+    mat-sidenav {
+      width: 56px;
+    }
+
+    mat-sidenav-content {
+      margin-left: 56px !important;
+    }
+
+    .not-expanded-hide {
+      display: none !important;
+    }
+  }
+}
+
+.logo {
+  width: 100%;
+  padding: 8px;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+.active {
+  color: $color-primary;
+}
+
+.warn {
+  color: $color-warn;
+}
+
+::ng-deep {
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

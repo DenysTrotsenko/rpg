@@ -1,4 +1,4 @@
-import { JsonString } from './models';
+import { HasWeight, JsonString } from './models';
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 export function getFilteredObject<T>(obj: object, allowed: string[]): T {
@@ -38,6 +38,15 @@ export function getIntegerInRange(min: number, max: number): number {
 
 export function getSumFromOneToN(n: number = 1): number {
   return typeof n === 'number' ? n * (n + 1) / 2 : null;
+}
+
+export function getWeightedRandomItem<T extends HasWeight>(arr: T[]): T {
+  const probabilities: number[] = arr.map(i => i.weight);
+  const distribution: number[] = probabilities.map((sum => value => sum += value)(0));
+  const random: number = getIntegerInRange(1, distribution[distribution.length - 1]);
+  const index: number = distribution.findIndex(i => random < i);
+
+  return arr[index] ?? null;
 }
 
 export function setFormControlsEditable(

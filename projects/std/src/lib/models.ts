@@ -19,3 +19,7 @@ export interface HasCommonFields {
     tooltip?: string;
   };
 }
+
+export interface HasWeight {
+  weight: number;
+}
