@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Ailment, AilmentId } from '@grim-and-perilous/models/common';
-import { DialogService } from '@shared';
-import { AdminService } from '@ti/app/admin/admin.service';
+import { AdminService, DialogService } from '@shared';
 import { AilmentsEditComponent } from '@ti/app/admin/ailments/ailments-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
@@ -16,7 +15,7 @@ export class AilmentsComponent implements OnInit {
   readonly items$: BehaviorSubject<Ailment[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<Ailment, AilmentId>,
     private dialog: DialogService
   ) {}
 

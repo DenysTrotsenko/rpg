@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DialogService } from '@shared';
-import { AdminService } from '@ti/app/admin/admin.service';
+import { AdminService, DialogService } from '@shared';
 import { Quality, QualityId } from '@grim-and-perilous/models/common';
 import { QualitiesEditComponent } from '@ti/app/admin/qualities/qualities-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
@@ -16,7 +15,7 @@ export class QualitiesComponent implements OnInit {
   readonly items$: BehaviorSubject<Quality[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<Quality, QualityId>,
     private dialog: DialogService
   ) {}
 

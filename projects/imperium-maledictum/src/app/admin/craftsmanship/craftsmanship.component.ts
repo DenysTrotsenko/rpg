@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AdminService } from '../admin.service';
-import { DialogService } from '@shared';
+import { AdminService, DialogService } from '@shared';
 import { Craftsmanship, CraftsmanshipId } from '@imperium-maledictum-1e/models/common';
 import { CraftsmanshipEditComponent } from './craftsmanship-edit.component';
 
@@ -29,7 +28,10 @@ export class CraftsmanshipComponent implements OnInit {
   }
 
   getResponse(data): Observable<Craftsmanship> {
-    return this.dialog.open(CraftsmanshipEditComponent, { data }).afterClosed();
+    return this.dialog.open(CraftsmanshipEditComponent, {
+      data,
+      width: '600px'
+    }).afterClosed();
   }
 
   onAddClick(): void {

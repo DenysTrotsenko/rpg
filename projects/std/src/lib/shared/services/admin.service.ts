@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { catchError, filter, tap } from 'rxjs/operators';
+import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, getId16, HasId, SnackbarService, sortByName, StorageService } from '@shared';
 
 export interface AdminServiceConfig<T> {
@@ -24,10 +24,12 @@ export class AdminService<T extends HasId<K>, K> {
   init(config: AdminServiceConfig<T>): void {
     this.responseFn = config.responseFn;
     this.path = config.path;
+    this.loading$.next(true);
 
     this.storage.download(this.path)
       .pipe(
-        tap((res: T[]) => this.items$.next(res))
+        tap((res: T[]) => this.items$.next(res)),
+        finalize(() => this.loading$.next(false))
       )
       .subscribe();
   }
@@ -36,18 +38,10 @@ export class AdminService<T extends HasId<K>, K> {
     this.responseFn(null)
       .pipe(
         filter(res => !!res),
-        tap(res => {
-          console.log('Add');
-          console.log(res);
-        }),
         tap(res => this.items$.next([
           { ...res, id: getId16() },
           ...this.items$.value
-        ])),
-        tap(() => {
-          console.log('List');
-          console.log(this.items$.getValue());
-        }),
+        ]))
       )
       .subscribe();
   }
@@ -74,23 +68,16 @@ export class AdminService<T extends HasId<K>, K> {
     this.responseFn(item)
       .pipe(
         filter(res => !!res),
-        tap(res => {
-          console.log('Edit');
-          console.log(res);
-        }),
         tap(res => this.items$.next([
           { ...item, ...res },
           ...this.items$.value.filter(i => i.id !== item.id)
         ])),
-        tap(res => {
-          console.log('List');
-          console.log(res);
-        }),
       )
       .subscribe();
   }
 
   save(): void {
+    this.loading$.next(true);
     const sorted = this.items$.value.sort(sortByName);
     const data = JSON.stringify(sorted, null, 2);
     const blob = new Blob([data], { type: 'application/json' });
@@ -100,7 +87,8 @@ export class AdminService<T extends HasId<K>, K> {
         catchError(() => {
           this.snackbar.error('Some error occurred, try again later!');
           return of(null);
-        })
+        }),
+        finalize(() => this.loading$.next(false))
       )
       .subscribe();
   }

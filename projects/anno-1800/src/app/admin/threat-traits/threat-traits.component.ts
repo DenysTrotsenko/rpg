@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DialogService } from '@shared';
+import { AdminService, DialogService } from '@shared';
 import { ThreatTrait, ThreatTraitId, Trait } from '@grim-and-perilous/models/common';
-import { AdminService } from '@ti/app/admin/admin.service';
 import { ThreatTraitsEditComponent } from '@ti/app/admin/threat-traits/threat-traits-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
@@ -16,7 +15,7 @@ export class ThreatTraitsComponent implements OnInit {
   readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<ThreatTrait, ThreatTraitId>,
     private dialog: DialogService
   ) {}
 

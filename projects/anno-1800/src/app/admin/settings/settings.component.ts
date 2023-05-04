@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DialogService } from '@shared';
-import { AdminService } from '@ti/app/admin/admin.service';
+import { AdminService, DialogService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import { SettingId } from '@grim-and-perilous/models/common';
 import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
@@ -17,7 +16,7 @@ export class SettingsComponent implements OnInit {
   readonly items$: BehaviorSubject<Setting[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<Setting, string>,
     private dialog: DialogService
   ) {}
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AdminService } from '@ti/app/admin/admin.service';
-import { DialogService } from '@shared';
+import { AdminService, DialogService } from '@shared';
 import { TraitId, Trait } from '@grim-and-perilous/models/common';
 import { TraitsEditComponent } from '@ti/app/admin/traits/traits-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
@@ -16,7 +15,7 @@ export class TraitsComponent implements OnInit {
   readonly items$: BehaviorSubject<Trait[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<Trait, TraitId>,
     private dialog: DialogService
   ) {}
 

@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Quirk, QuirkId } from '@grim-and-perilous/models/common';
-import { AdminService } from '@ti/app/admin/admin.service';
-import { DialogService } from '@shared';
+import { AdminService, DialogService } from '@shared';
 import { QuirksEditComponent } from '@ti/app/admin/quirks/quirks-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
@@ -16,7 +15,7 @@ export class QuirksComponent implements OnInit {
   readonly items$: BehaviorSubject<Quirk[]> = this.admin.items$;
 
   constructor(
-    @Self() private admin: AdminService,
+    @Self() private admin: AdminService<Quirk, QuirkId>,
     private dialog: DialogService
   ) {}
 
