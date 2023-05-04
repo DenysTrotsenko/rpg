@@ -1,7 +1,5 @@
-import {PrefixId} from '../prefixes';
-
 export enum AlignmentId {
-  ADAPTATION = PrefixId.ZWEIHANDER,
+  ADAPTATION = 3000,
   MAYHEM,
   AMBITION,
   TYRANNY,
@@ -54,7 +52,7 @@ export enum AlignmentId {
 }
 
 export enum AncestryId {
-  HUMAN = PrefixId.ZWEIHANDER,
+  HUMAN = 3000,
   DWARF,
   ELF,
   GNOME,
@@ -63,7 +61,7 @@ export enum AncestryId {
 }
 
 export enum ArchetypeId {
-  ACADEMIC = PrefixId.ZWEIHANDER,
+  ACADEMIC = 3000,
   COMMONER,
   KNAVE,
   RANGER,
@@ -72,7 +70,7 @@ export enum ArchetypeId {
 }
 
 export enum AttributeId {
-  COMBAT = PrefixId.ZWEIHANDER,
+  COMBAT = 3000,
   BRAWN,
   AGILITY,
   PERCEPTION,
@@ -82,7 +80,7 @@ export enum AttributeId {
 }
 
 export enum DrawbackId {
-  BAD_TICKER = PrefixId.ZWEIHANDER,
+  BAD_TICKER = 3000,
   BLACK_CATARACT,
   BLEEDER,
   BRANDED,
@@ -168,7 +166,7 @@ export enum DrawbackId {
 }
 
 export enum ProfessionId {
-  ADHERENT = PrefixId.ZWEIHANDER,
+  ADHERENT = 3000,
   ANARCHIST,
   ANCHORITE,
   ANIMAL_TAMER,
@@ -212,7 +210,7 @@ export enum ProfessionId {
 }
 
 export enum SkillId {
-  ALCHEMY = PrefixId.ZWEIHANDER,
+  ALCHEMY = 3000,
   ATHLETICS,
   AWARENESS,
   BARGAIN,
@@ -251,7 +249,7 @@ export enum SkillId {
 }
 
 export enum TalentId {
-  AETHEREAL_ALIGNMENT = PrefixId.ZWEIHANDER,
+  AETHEREAL_ALIGNMENT = 3000,
   AMBIDEXTERITY,
   APPALLING_MIEN,
   ARBALESTS_SPEED,
@@ -326,7 +324,7 @@ export enum TalentId {
 }
 
 export enum TraitId {
-  BLESSING_IN_DISGUISE = PrefixId.ZWEIHANDER,
+  BLESSING_IN_DISGUISE = 3000,
   DANGER_SENSE,
   DAUNTLESS,
   ESOTERIC_MEMORY,
@@ -544,7 +542,7 @@ export enum TraitId {
 }
 
 export enum UpbringingId {
-  CULTURED = PrefixId.ZWEIHANDER,
+  CULTURED = 3000,
   FORGOTTEN,
   INDUSTRIOUS,
   MILITANT,

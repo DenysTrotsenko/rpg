@@ -11,7 +11,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { ThreatTraitsComponent } from './threat-traits/threat-traits.component';
 import { TraitsComponent } from './traits/traits.component';
 import { ThreatsComponent } from './threats/threats.component';
-import { SettingsEditComponent } from '@ti/app/admin/settings/settings-edit.component';
+import { SettingsEditComponent } from './settings/settings-edit.component';
 
 const routes: Routes = [
   {

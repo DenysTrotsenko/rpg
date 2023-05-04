@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
-import { DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective } from '@shared';
+import { DialogService, FirestoreService, getId32, setFormControlsEditable, UnsubscribeDirective } from '@shared';
 import {
   Affliction,
   Age,
@@ -211,7 +211,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
         const isNew = !res;
         this.form.patchValue({
           ...res,
-          id: res?.id ?? getId(),
+          id: res?.id ?? getId32(),
         });
 
         setFormControlsEditable(this.form, [

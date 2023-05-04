@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { FirestoreService, getId } from '@shared';
+import { FirestoreService, getId16 } from '@shared';
 import { combineLatest, Observable } from 'rxjs';
 import { Campaign } from '@grim-and-perilous/models/campaign';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
@@ -15,7 +15,7 @@ import { Setting } from '@grim-and-perilous/models/setting';
 })
 export class CreateComponent {
   readonly form: FormGroup = new FormGroup({
-    id: new FormControl(getId()),
+    id: new FormControl(getId16()),
     name: new FormControl('', [Validators.required]),
     setting: new FormControl(null, [Validators.required]),
   });
@@ -30,7 +30,7 @@ export class CreateComponent {
       tap(res => {
         this.form.patchValue({
           ...res,
-          id: res?.id ?? getId(),
+          id: res?.id ?? getId16(),
         });
       }),
       shareReplay(1)

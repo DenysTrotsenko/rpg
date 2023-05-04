@@ -1,49 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
-import { DialogService, getId32, SnackbarService, sortByName, StorageService } from '@shared';
-import {
-  Ailment, Drug, Quality, Quirk, Talent, Trait,
-  AilmentId, DrugId, QualityId, QuirkId, TalentId, TraitId, AfflictionId, Affliction, ThreatId, ThreatTraitId, ThreatTrait
-} from '@grim-and-perilous/models/common';
-import { Setting } from '@grim-and-perilous/models/setting';
-import { SettingId } from '@grim-and-perilous/models/common';
-import { Threat } from '@grim-and-perilous/models/threat';
-import { StoragePath } from '@grim-and-perilous/enums';
+import { DialogService, getId16, HasId, SnackbarService, sortByName, StorageService } from '@shared';
 
-export interface AdminServiceConfig {
-  path: StoragePath;
-  responseFn: (data: Item) => Observable<unknown>;
+export interface AdminServiceConfig<T> {
+  path: string;
+  responseFn: (data: T) => Observable<Partial<T>>;
 }
 
-type Id =
-  | AfflictionId
-  | AilmentId
-  | DrugId
-  | QualityId
-  | QuirkId
-  | SettingId
-  | TalentId
-  | TraitId
-  | ThreatId
-  | ThreatTraitId;
-type Item =
-  | Affliction
-  | Ailment
-  | Drug
-  | Quality
-  | Quirk
-  | Setting
-  | Talent
-  | Trait
-  | Threat
-  | ThreatTrait;
-
 @Injectable()
-export class AdminService {
-  private responseFn: (data: Item) => Observable<Partial<Item>>;
+export class AdminService<T extends HasId<K>, K> {
+  private responseFn: (data: T) => Observable<Partial<T>>;
   private path: string = null;
   readonly items$ = new BehaviorSubject([]);
+  readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   constructor(
     private dialog: DialogService,
@@ -51,13 +21,13 @@ export class AdminService {
     private storage: StorageService
   ) {}
 
-  init(config: AdminServiceConfig): void {
+  init(config: AdminServiceConfig<T>): void {
     this.responseFn = config.responseFn;
     this.path = config.path;
 
     this.storage.download(this.path)
       .pipe(
-        tap((res: Item[]) => this.items$.next(res))
+        tap((res: T[]) => this.items$.next(res))
       )
       .subscribe();
   }
@@ -66,17 +36,23 @@ export class AdminService {
     this.responseFn(null)
       .pipe(
         filter(res => !!res),
-        tap(() => console.log('ADD')),
-        tap(res => console.log(res)),
+        tap(res => {
+          console.log('Add');
+          console.log(res);
+        }),
         tap(res => this.items$.next([
-          { id: getId32(), ...res },
+          { ...res, id: getId16() },
           ...this.items$.value
-        ]))
+        ])),
+        tap(() => {
+          console.log('List');
+          console.log(this.items$.getValue());
+        }),
       )
       .subscribe();
   }
 
-  delete(id: Id): void {
+  delete(id: K): void {
     this.dialog
       .confirm({
         data: {
@@ -94,16 +70,22 @@ export class AdminService {
       .subscribe();
   }
 
-  edit(item: Item): void {
+  edit(item: T): void {
     this.responseFn(item)
       .pipe(
         filter(res => !!res),
-        tap(() => console.log('EDIT')),
-        tap(res => console.log(res)),
+        tap(res => {
+          console.log('Edit');
+          console.log(res);
+        }),
         tap(res => this.items$.next([
           { ...item, ...res },
           ...this.items$.value.filter(i => i.id !== item.id)
-        ]))
+        ])),
+        tap(res => {
+          console.log('List');
+          console.log(res);
+        }),
       )
       .subscribe();
   }

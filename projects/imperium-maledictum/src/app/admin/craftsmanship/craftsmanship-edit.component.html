@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Add Craftsmanship</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+    </ng-container>
+<!--    <app-key-value-array formControlName="system"></app-key-value-array>-->
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+</div>

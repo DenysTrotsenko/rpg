@@ -23,3 +23,9 @@ export interface HasCommonFields {
 export interface HasWeight {
   weight: number;
 }
+
+export interface NavListItemData {
+  link: string;
+  label: string;
+  class?: string;
+}

@@ -1,5 +1,11 @@
 import { HasWeight, JsonString } from './models';
 import { AbstractControl, FormGroup } from '@angular/forms';
+import firebase from 'firebase/compat';
+import { FIREBASE_ERROR_MESSAGES } from './const';
+
+export function getErrorMessage(err: firebase.auth.Error): string {
+  return FIREBASE_ERROR_MESSAGES.get(err.code) ?? err.message;
+}
 
 export function getFilteredObject<T>(obj: object, allowed: string[]): T {
   return Object.keys(obj).filter(i => allowed.includes(i)).reduce((acc, key) => {
@@ -8,7 +14,15 @@ export function getFilteredObject<T>(obj: object, allowed: string[]): T {
   }, {} as T);
 }
 
-export function getId(): string {
+export function getId16(): string {
+  /* @ts-ignore */
+  return ([1e3] + -2e3 + -4e3 + -8e3).replace(/[018]/g, c =>
+    /* tslint:disable-next-line:no-bitwise */
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  ).replace(/-/g, '');
+}
+
+export function getId32(): string {
   /* @ts-ignore */
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
     /* tslint:disable-next-line:no-bitwise */

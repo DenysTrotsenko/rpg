@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } f
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { DialogService, getId } from '@shared';
+import { DialogService, getId32 } from '@shared';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
 import { CombatTrackerUnit } from './combat-tracker.models';
 import { Character } from '@grim-and-perilous/models/character';
@@ -123,7 +123,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
       ...units.slice(0, index + 1),
       new CombatTrackerUnit({
         ...unit,
-        uid: getId(),
+        uid: getId32(),
         initiative: Threat.getTotalInitiative(threat, this.data[DataTypes.THREAT_TRAITS]),
         damage: 0,
         peril: 0
@@ -156,7 +156,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
     this.units$.next([
       ...this.units$.value,
       new CombatTrackerUnit({
-        uid: getId(),
+        uid: getId32(),
         type: 'player',
         name: i.name
       })
@@ -167,7 +167,7 @@ export class CombatTrackerComponent implements OnInit, OnDestroy {
     this.units$.next([
       ...this.units$.value,
       new CombatTrackerUnit({
-        uid: getId(),
+        uid: getId32(),
         type: 'threat',
         templateId: i.id,
         name: i.name,

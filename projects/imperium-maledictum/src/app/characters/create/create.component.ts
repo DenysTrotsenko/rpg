@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
-import { DialogService, FirestoreService, getId, setFormControlsEditable, UnsubscribeDirective } from '@shared';
+import { DialogService, FirestoreService, getId16, setFormControlsEditable, UnsubscribeDirective } from '@shared';
 
 @Component({
   templateUrl: './create.component.html',

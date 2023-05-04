@@ -6,6 +6,7 @@ import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
 import User = firebase.User;
 import { AuthWithEmailAndPassword } from '../models';
+import { getErrorMessage } from '../utils';
 
 @Injectable()
 export class AuthService {
@@ -34,7 +35,7 @@ export class AuthService {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       switchMap(res => res.user.delete()),
       catchError((err: firebase.auth.Error) => {
-        this.snackbar.error(err.message);
+        this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
     );
@@ -43,7 +44,7 @@ export class AuthService {
   signIn(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       catchError((err: firebase.auth.Error) => {
-        this.snackbar.error(err.message);
+        this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
     );
@@ -52,7 +53,7 @@ export class AuthService {
   signOut(): Observable<void> {
     return from(this.afa.signOut()).pipe(
       catchError((err: firebase.auth.Error) => {
-        this.snackbar.error(err.message);
+        this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
     );
@@ -61,7 +62,7 @@ export class AuthService {
   signUp(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe(
       catchError((err: firebase.auth.Error) => {
-        this.snackbar.error(err.message);
+        this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
     );

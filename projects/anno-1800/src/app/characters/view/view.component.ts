@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { DialogService, FirestoreService, getId } from '@shared';
+import { DialogService, FirestoreService, getId32 } from '@shared';
 import { Character } from '@grim-and-perilous/models/character';
 import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 import { DataService, DataTypes } from '@ti/app/game/data.service';
@@ -357,7 +357,7 @@ export class ViewComponent implements OnDestroy {
           const weapons: AbstractControl = this.form.get('weapons');
           weapons.setValue([
             ...weapons.value,
-            { ...i, uid: getId() }
+            { ...i, uid: getId32() }
           ]);
           this.cd.detectChanges();
         }),

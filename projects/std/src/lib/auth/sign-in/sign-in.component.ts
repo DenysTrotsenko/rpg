@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService, AuthWithEmailAndPassword} from '@shared';
-import {Router} from '@angular/router';
-import {finalize, tap} from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService, AuthWithEmailAndPassword } from '@shared';
+import { Router } from '@angular/router';
+import { finalize, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './sign-in.component.html',
@@ -23,7 +23,7 @@ export class SignInComponent {
     this.progress$.next(true);
     this.auth.signIn(model)
       .pipe(
-        tap(() => this.router.navigate(['/'])),
+        tap((res) => res ? this.router.navigate(['/']) : null),
         finalize(() => this.progress$.next(false))
       )
       .subscribe();

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { getId, StorageService } from '@shared';
+import { getId32, StorageService } from '@shared';
 import { Setting } from '@grim-and-perilous/models/setting';
 import {
   AlchemicalArt,
@@ -109,7 +109,7 @@ export class SettingsEditComponent implements OnInit {
   ngOnInit(): void {
     if (!!this.data) {
       this.form.patchValue({
-        id: this.data.id ?? getId(),
+        id: this.data.id ?? getId32(),
         name: this.data.name ?? '',
         description: this.data.description ?? '',
         alchemical_arts: this.data.alchemical_arts ?? [],

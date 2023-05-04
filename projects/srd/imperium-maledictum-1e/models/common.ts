@@ -2,6 +2,7 @@ import { Opaque } from '@shared';
 
 export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
+export type CraftsmanshipId = Opaque<string, 'CraftsmanshipId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
 export type PatronBoonId = Opaque<string, 'PatronBoonId'>;
@@ -17,6 +18,14 @@ export interface Characteristic {
   name: string;
   labels: {
     abbreviation: string;
+    description: string;
+  };
+}
+
+export interface Craftsmanship {
+  id: CraftsmanshipId;
+  name: string;
+  labels: {
     description: string;
   };
 }
@@ -65,8 +74,8 @@ export interface PatronDuty {
   id: PatronDutyId | string;
   name: string;
   boon: PatronBoonId;
-  boons: PatronBoon[] | string[];
-  liabilities: PatronLiability[] | string[];
+  boons: PatronBoonId[] | string[];
+  liabilities: PatronLiabilityId[] | string[];
   labels: {
     description: string;
   };
@@ -76,7 +85,7 @@ export interface PatronFaction {
   id: PatronFactionId | string;
   name: string;
   influence?: Record<FactionId | string, number>;
-  duties: PatronDuty[] | string[];
+  duties: PatronDutyId[] | string[];
   labels: {
     description: string;
   };
