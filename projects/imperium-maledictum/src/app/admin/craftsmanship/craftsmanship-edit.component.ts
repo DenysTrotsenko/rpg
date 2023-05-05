@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Craftsmanship } from '@imperium-maledictum-1e/models/common';
+import { CraftsmanshipType } from '@imperium-maledictum-1e/models/enums';
 
 @Component({
   selector: 'app-craftsmanship-edit',
@@ -13,10 +14,12 @@ export class CraftsmanshipEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('', [Validators.required]),
+    type: new FormControl(CraftsmanshipType.QUALITY, [Validators.required]),
     labels: new FormGroup({
       description: new FormControl('', [Validators.required]),
     })
   });
+  readonly type: string[] = Object.values(CraftsmanshipType);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Craftsmanship) {}
 

@@ -9,6 +9,7 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
 import { FindPipe } from './pipes/find.pipe';
 import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
 import { SelectionListComponent } from './components/selection-list/selection-list.component';
+import { AdminBaseModule } from './admin-base/admin-base.module';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -24,7 +25,8 @@ const IMPORTS = [
   CdkModule,
   FormsModule,
   MaterialModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  AdminBaseModule
 ];
 
 @NgModule({

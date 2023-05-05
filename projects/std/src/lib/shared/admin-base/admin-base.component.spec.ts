@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CraftsmanshipComponent } from './craftsmanship.component';
+import { AdminBaseComponent } from './admin-base.component';
 
-describe('CraftsmanshipComponent', () => {
-  let component: CraftsmanshipComponent;
-  let fixture: ComponentFixture<CraftsmanshipComponent>;
+describe('AdminBaseComponent', () => {
+  let component: AdminBaseComponent<any, unknown>;
+  let fixture: ComponentFixture<AdminBaseComponent<any, unknown>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CraftsmanshipComponent ]
+      declarations: [ AdminBaseComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CraftsmanshipComponent);
+    fixture = TestBed.createComponent(AdminBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

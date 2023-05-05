@@ -1,48 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Drug, DrugId } from '@grim-and-perilous/models/common';
-import { AdminService, DialogService } from '@shared';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Drug } from '@grim-and-perilous/models/common';
+import { AdminServiceConfig } from '@shared';
 import { DrugsEditComponent } from '@ti/app/admin/drugs/drugs-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
-  templateUrl: './drugs.component.html',
-  styleUrls: ['./drugs.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [AdminService]
+  template: '<std-admin-base [config]="config"></std-admin-base>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DrugsComponent implements OnInit {
-  readonly items$: BehaviorSubject<Drug[]> = this.admin.items$;
-
-  constructor(
-    @Self() private admin: AdminService<Drug, DrugId>,
-    private dialog: DialogService
-  ) {}
-
-  ngOnInit(): void {
-    this.admin.init({
-      path: StoragePath.DRUGS,
-      responseFn: this.getResponse
-    });
-  }
-
-  getResponse(data): Observable<Drug> {
-    return this.dialog.open(DrugsEditComponent, { data }).afterClosed();
-  }
-
-  onAddClick(): void {
-    this.admin.add();
-  }
-
-  onDeleteClick(id: DrugId): void {
-    this.admin.delete(id);
-  }
-
-  onEditClick(item: Drug): void {
-    this.admin.edit(item);
-  }
-
-  onSaveClick(): void {
-    this.admin.save();
-  }
+export class DrugsComponent {
+  config: AdminServiceConfig<Drug> = {
+    path: StoragePath.DRUGS,
+    component: DrugsEditComponent
+  };
 }

@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { AdminServiceConfig } from '@shared';
+import { Weapon } from '@grim-and-perilous/models/common';
+import { StoragePath } from '@grim-and-perilous/enums';
+import { WeaponsEditComponent } from '@ti/app/admin/weapons/weapons-edit.component';
 
 @Component({
-  selector: 'app-weapons',
-  templateUrl: './weapons.component.html',
-  styleUrls: ['./weapons.component.scss'],
+  template: '<std-admin-base [config]="config"></std-admin-base>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeaponsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class WeaponsComponent {
+  config: AdminServiceConfig<Weapon> = {
+    path: StoragePath.AILMENTS,
+    component: WeaponsEditComponent
+  };
 }

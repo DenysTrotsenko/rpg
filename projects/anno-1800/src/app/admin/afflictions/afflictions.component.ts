@@ -1,46 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Affliction, AfflictionId } from '@grim-and-perilous/models/common';
-import { AdminService, DialogService } from '@shared';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Affliction } from '@grim-and-perilous/models/common';
+import { AdminServiceConfig } from '@shared';
 import { AfflictionsEditComponent } from '@ti/app/admin/afflictions/afflictions-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
-  templateUrl: './afflictions.component.html',
-  styleUrls: ['./afflictions.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [AdminService]
+  template: '<std-admin-base [config]="config"></std-admin-base>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AfflictionsComponent implements OnInit {
-  readonly items$: BehaviorSubject<Affliction[]> = this.admin.items$;
-
-  constructor(
-    @Self() private admin: AdminService<Affliction, AfflictionId>,
-    private dialog: DialogService
-  ) {}
-
-  ngOnInit(): void {
-    this.admin.init({
-      path: StoragePath.AFFLICTIONS,
-      responseFn: (data): Observable<Affliction> => this.dialog
-        .open(AfflictionsEditComponent, { data })
-        .afterClosed()
-    });
-  }
-
-  onAddClick(): void {
-    this.admin.add();
-  }
-
-  onDeleteClick(id: AfflictionId): void {
-    this.admin.delete(id);
-  }
-
-  onEditClick(item: Affliction): void {
-    this.admin.edit(item);
-  }
-
-  onSaveClick(): void {
-    this.admin.save();
-  }
+export class AfflictionsComponent {
+  config: AdminServiceConfig<Affliction> = {
+    path: StoragePath.AFFLICTIONS,
+    component: AfflictionsEditComponent
+  };
 }

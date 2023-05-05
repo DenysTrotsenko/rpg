@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CraftsmanshipEditComponent } from './craftsmanship-edit.component';
 
 describe('CraftsmanshipEditComponent', () => {

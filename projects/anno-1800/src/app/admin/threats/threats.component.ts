@@ -1,47 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, Self } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { AdminService, DialogService } from '@shared';
-import { ThreatId } from '@grim-and-perilous/models/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { AdminServiceConfig } from '@shared';
 import { Threat } from '@grim-and-perilous/models/threat';
 import { ThreatsEditComponent } from '@ti/app/admin/threats/threats-edit.component';
 import { StoragePath } from '@grim-and-perilous/enums';
 
 @Component({
-  templateUrl: './threats.component.html',
-  styleUrls: ['./threats.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [AdminService]
+  template: '<std-admin-base [config]="config"></std-admin-base>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ThreatsComponent implements OnInit {
-  readonly items$: BehaviorSubject<Threat[]> = this.admin.items$;
-
-  constructor(
-    @Self() private admin: AdminService<Threat, ThreatId>,
-    private dialog: DialogService
-  ) {}
-
-  ngOnInit(): void {
-    this.admin.init({
-      path: StoragePath.THREATS,
-      responseFn: (data: Threat): Observable<Threat> => this.dialog
-        .open(ThreatsEditComponent, { data })
-        .afterClosed()
-    });
-  }
-
-  onAddClick(): void {
-    this.admin.add();
-  }
-
-  onDeleteClick(id: ThreatId): void {
-    this.admin.delete(id);
-  }
-
-  onEditClick(item: Threat): void {
-    this.admin.edit(item);
-  }
-
-  onSaveClick(): void {
-    this.admin.save();
-  }
+export class ThreatsComponent {
+  config: AdminServiceConfig<Threat> = {
+    path: StoragePath.THREATS,
+    component: ThreatsEditComponent
+  };
 }

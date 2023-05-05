@@ -5,7 +5,7 @@
   <mat-toolbar>
     <button mat-flat-button color="primary" (click)="onAddClick()">Add</button>
     <span class="f-1"></span>
-    <button mat-flat-button color="accent" (click)="onSaveClick()">Save</button>
+    <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">Save</button>
   </mat-toolbar>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
@@ -22,7 +22,8 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <p matLine>{{i.labels?.description}}</p>
+        <p *ngIf="!i.labels?.description" matLine class="c-red">NO DESCRIPTION AVAILABLE</p>
+        <p *ngIf="i.labels?.description" matLine>{{i.labels?.description}}</p>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

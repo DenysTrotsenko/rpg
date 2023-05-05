@@ -5,6 +5,9 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
+    <mat-radio-group formControlName="type" class="mb-20">
+      <mat-radio-button *ngFor="let i of type;" class="mr-10" [value]="i">{{i}}</mat-radio-button>
+    </mat-radio-group>
     <ng-container formGroupName="labels">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>

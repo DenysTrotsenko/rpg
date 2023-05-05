@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, getId16, HasId, SnackbarService, sortByName, StorageService } from '@shared';
-
-export interface AdminServiceConfig<T> {
-  path: string;
-  responseFn: (data: T) => Observable<Partial<T>>;
-}
+import { AdminServiceConfig } from './admin-base.models';
 
 @Injectable()
-export class AdminService<T extends HasId<K>, K> {
-  private responseFn: (data: T) => Observable<Partial<T>>;
+export class AdminBaseService<T extends HasId<K>, K> {
   private path: string = null;
+  private component: any = null;
   readonly items$ = new BehaviorSubject([]);
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  readonly changed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private dialog: DialogService,
@@ -22,8 +19,8 @@ export class AdminService<T extends HasId<K>, K> {
   ) {}
 
   init(config: AdminServiceConfig<T>): void {
-    this.responseFn = config.responseFn;
     this.path = config.path;
+    this.component = config.component;
     this.loading$.next(true);
 
     this.storage.download(this.path)
@@ -35,13 +32,14 @@ export class AdminService<T extends HasId<K>, K> {
   }
 
   add(): void {
-    this.responseFn(null)
+    this.dialog.open(this.component, { data: null, width: '800px' }).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
           { ...res, id: getId16() },
           ...this.items$.value
-        ]))
+        ])),
+        tap(() => this.changed$.next(true))
       )
       .subscribe();
   }
@@ -59,19 +57,21 @@ export class AdminService<T extends HasId<K>, K> {
         filter(res => !!res),
         tap(() => this.items$.next([
           ...this.items$.value.filter(i => i.id !== id)
-        ]))
+        ])),
+        tap(() => this.changed$.next(true))
       )
       .subscribe();
   }
 
   edit(item: T): void {
-    this.responseFn(item)
+    this.dialog.open(this.component, { data: item, width: '800px' }).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
           { ...item, ...res },
           ...this.items$.value.filter(i => i.id !== item.id)
         ])),
+        tap(() => this.changed$.next(true))
       )
       .subscribe();
   }
@@ -83,7 +83,10 @@ export class AdminService<T extends HasId<K>, K> {
     const blob = new Blob([data], { type: 'application/json' });
     this.storage.upload(this.path, blob)
       .pipe(
-        tap(() => this.snackbar.success('Data successfully saved!')),
+        tap(() => {
+          this.changed$.next(false);
+          this.snackbar.success('Data successfully saved!');
+        }),
         catchError(() => {
           this.snackbar.error('Some error occurred, try again later!');
           return of(null);
