@@ -1,11 +1,20 @@
-import { Component, ChangeDetectionStrategy, forwardRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  forwardRef,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormArray,
   FormControl,
   FormGroup, NG_VALIDATORS,
-  NG_VALUE_ACCESSOR, ValidationErrors, Validator,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
   ValidatorFn,
   Validators
 } from '@angular/forms';
@@ -27,7 +36,7 @@ function validateKey(): ValidatorFn {
 type ValueType = 'string' | 'number' | 'boolean';
 
 @Component({
-  selector: 'app-key-value-array',
+  selector: 'std-key-value-array',
   templateUrl: './key-value-array.component.html',
   styleUrls: ['./key-value-array.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

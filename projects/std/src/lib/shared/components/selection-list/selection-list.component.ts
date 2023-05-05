@@ -5,7 +5,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-selection-list',
+  selector: 'std-selection-list',
   templateUrl: './selection-list.component.html',
   styleUrls: ['./selection-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

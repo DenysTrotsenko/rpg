@@ -12,6 +12,10 @@ export interface HasId<T> {
   id: T;
 }
 
+export interface HasName {
+  name: string;
+}
+
 export interface HasCommonFields {
   name: string;
   labels?: {

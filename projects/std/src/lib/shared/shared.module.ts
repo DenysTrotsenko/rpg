@@ -7,12 +7,16 @@ import { JoinPipe } from './pipes/join.pipe';
 import { MapPipe } from './pipes/map.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { FindPipe } from './pipes/find.pipe';
+import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
+import { SelectionListComponent } from './components/selection-list/selection-list.component';
 
 const DECLARATIONS = [
   JoinPipe,
   MapPipe,
   FilterByPipe,
-  FindPipe
+  FindPipe,
+  KeyValueArrayComponent,
+  SelectionListComponent
 ];
 
 const IMPORTS = [

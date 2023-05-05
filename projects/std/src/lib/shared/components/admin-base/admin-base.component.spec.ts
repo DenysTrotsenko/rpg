@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KeyValueArrayComponent } from './key-value-array.component';
+import { AdminBaseComponent } from './admin-base.component';
 
-describe('KeyValueArrayComponent', () => {
-  let component: KeyValueArrayComponent;
-  let fixture: ComponentFixture<KeyValueArrayComponent>;
+describe('AdminBaseComponent', () => {
+  let component: AdminBaseComponent;
+  let fixture: ComponentFixture<AdminBaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KeyValueArrayComponent ]
+      declarations: [ AdminBaseComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KeyValueArrayComponent);
+    fixture = TestBed.createComponent(AdminBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
