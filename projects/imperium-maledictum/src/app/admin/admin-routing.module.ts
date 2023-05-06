@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { CraftsmanshipComponent } from './craftsmanship/craftsmanship.component';
+import { ItemQualitiesComponent } from './item-qualities/item-qualities.component';
+import { ItemFlawsComponent } from './item-flaws/item-flaws.component';
+import { ItemTraitsComponent } from './item-traits/item-traits.component';
+
+export enum AdminPaths {}
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
-      { path: 'craftsmanship', component: CraftsmanshipComponent },
-      { path: '**', redirectTo: 'craftsmanship', pathMatch: 'full' }
+      { path: 'item-qualities', component: ItemQualitiesComponent },
+      { path: 'item-flaws', component: ItemFlawsComponent },
+      { path: 'item-traits', component: ItemTraitsComponent },
+      { path: '**', redirectTo: 'item-qualities', pathMatch: 'full' }
     ]
   }
 ];

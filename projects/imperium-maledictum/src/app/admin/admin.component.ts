@@ -8,6 +8,8 @@ import { NavListItemData } from '@shared';
 })
 export class AdminComponent {
   readonly options: NavListItemData[] = [
-    { link: './craftsmanship', label: 'Craftsmanship' }
+    { link: './item-qualities', label: 'Qualities' },
+    { link: './item-flaws', label: 'Flaws' },
+    { link: './item-traits', label: 'Traits' }
   ];
 }

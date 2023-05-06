@@ -1,11 +1,10 @@
 import { HasCommonFields, HasId, Opaque } from '@shared';
 import { System } from './system';
-import { CraftsmanshipType } from './enums';
 
 export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
-export type CraftsmanshipId = Opaque<string, 'CraftsmanshipId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
+export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
 export type PatronBoonId = Opaque<string, 'PatronBoonId'>;
 export type PatronDemeanorId = Opaque<string, 'PatronDemeanorId'>;
@@ -24,10 +23,9 @@ export interface Characteristic {
   };
 }
 
-export interface Craftsmanship extends HasId<CraftsmanshipId>, HasCommonFields {
-  id: CraftsmanshipId;
+export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
+  id: ItemTraitId;
   name: string;
-  type: CraftsmanshipType;
   labels: {
     description: string;
   };

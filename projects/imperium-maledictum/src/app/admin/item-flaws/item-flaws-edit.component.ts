@@ -1,27 +1,22 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Craftsmanship } from '@imperium-maledictum-1e/models/common';
-import { CraftsmanshipType } from '@imperium-maledictum-1e/models/enums';
+import { ItemTrait } from '@imperium-maledictum-1e/models/common';
 
 @Component({
-  selector: 'app-craftsmanship-edit',
-  templateUrl: './craftsmanship-edit.component.html',
-  styleUrls: ['./craftsmanship-edit.component.scss'],
+  templateUrl: './item-flaws-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CraftsmanshipEditComponent implements OnInit {
+export class ItemFlawsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('', [Validators.required]),
-    type: new FormControl(CraftsmanshipType.QUALITY, [Validators.required]),
     labels: new FormGroup({
       description: new FormControl('', [Validators.required]),
     })
   });
-  readonly type: string[] = Object.values(CraftsmanshipType);
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Craftsmanship) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}
 
   ngOnInit(): void {
     if (!!this.data) {

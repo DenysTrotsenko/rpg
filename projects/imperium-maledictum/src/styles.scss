@@ -5,9 +5,12 @@
 @import './styles/variables';
 @import './styles/typography';
 
-
 @include mat.core($general-typography);
 @include mat.all-component-themes($app-theme);
+
+html, body {
+  overscroll-behavior-x: none;
+}
 
 // *****
 table.mat-table {
