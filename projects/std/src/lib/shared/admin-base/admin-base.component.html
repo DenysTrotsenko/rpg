@@ -23,7 +23,7 @@
       </mat-expansion-panel-header>
       <div>
         <p *ngIf="!i.labels?.description" matLine class="c-red">NO DESCRIPTION AVAILABLE</p>
-        <p *ngIf="i.labels?.description" matLine>{{i.labels?.description}}</p>
+        <p *ngIf="i.labels?.description" matLine class="ws-pw">{{i.labels?.description}}</p>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

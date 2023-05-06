@@ -8,9 +8,10 @@
     <ng-container formGroupName="labels">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <input matInput formControlName="description">
+        <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
     </ng-container>
+    <std-key-value-array formControlName="system"></std-key-value-array>
   </div>
   <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="null">Cancel</button>

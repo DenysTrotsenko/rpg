@@ -13,7 +13,8 @@ export class ItemFlawsEditComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     labels: new FormGroup({
       description: new FormControl('', [Validators.required]),
-    })
+    }),
+    system: new FormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}
