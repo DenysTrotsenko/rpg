@@ -3,7 +3,6 @@ import { AdminBaseComponent } from './admin-base.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material/material.module';
 import { AdminBaseEditorDialogComponent } from './admin-base-editor-dialog.component';
-import { CodeEditorModule } from '@ngstack/code-editor';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    CodeEditorModule.forChild()
+    MaterialModule
   ]
 })
 export class AdminBaseModule {}

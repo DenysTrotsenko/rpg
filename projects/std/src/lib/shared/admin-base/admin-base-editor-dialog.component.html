@@ -1,12 +1,6 @@
 <h1 mat-dialog-title>JSON Editor</h1>
 <div mat-dialog-content class="d-f fd-c">
-  <ngs-code-editor
-    [theme]="theme"
-    [codeModel]="model"
-    [options]="options"
-    (loaded)="onLoaded()"
-    (valueChanged)="onCodeChanged($event)">
-  </ngs-code-editor>
+
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="null">Cancel</button>
