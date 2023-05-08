@@ -9,9 +9,9 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormArray,
-  FormControl,
-  FormGroup, NG_VALIDATORS,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup, NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
   Validator,
@@ -54,16 +54,16 @@ type ValueType = 'string' | 'number' | 'boolean';
   ]
 })
 export class KeyValueArrayComponent implements ControlValueAccessor, Validator, OnInit, OnDestroy {
-  readonly form: FormGroup = new FormGroup({
-    entries: new FormArray([])
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    entries: new UntypedFormArray([])
   });
   readonly unsubscribe$: Subject<void> = new Subject();
   private onChange: (value: string) => void;
   private onTouched: () => void;
   private onValidatorChange: () => void;
 
-  get entries(): FormArray {
-    return this.form.get('entries') as FormArray;
+  get entries(): UntypedFormArray {
+    return this.form.get('entries') as UntypedFormArray;
   }
 
   get errorState(): boolean {
@@ -95,8 +95,8 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
     this.unsubscribe$.complete();
   }
 
-  getFormGroup(i: number): FormGroup {
-    return this.entries.controls[i] as FormGroup;
+  getFormGroup(i: number): UntypedFormGroup {
+    return this.entries.controls[i] as UntypedFormGroup;
   }
 
   onAddClick(): void {
@@ -155,10 +155,10 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
   }
 
   private add(key: string, type: ValueType, value: any): void {
-    this.entries.push(new FormGroup({
-      key: new FormControl(key, [Validators.required, validateKey()]),
-      type: new FormControl(type, [Validators.required]),
-      value: new FormControl(value, [Validators.required])
+    this.entries.push(new UntypedFormGroup({
+      key: new UntypedFormControl(key, [Validators.required, validateKey()]),
+      type: new UntypedFormControl(type, [Validators.required]),
+      value: new UntypedFormControl(value, [Validators.required])
     }));
   }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
@@ -11,18 +11,18 @@ import { DialogService, FirestoreService, getId16, setFormControlsEditable, Unsu
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
-  readonly form: FormGroup = new FormGroup({
-    id: new FormControl(null),
-    campaign: new FormControl(null, [Validators.required]),
-    name: new FormControl('', [Validators.required]),
-    full_name: new FormControl('', [Validators.required]),
-    miscellaneous: new FormGroup({
-      portrait: new FormControl(null),
-      biography: new FormControl(''),
-      hair_length: new FormControl(null),
-      hair_style: new FormControl(null),
-      hair_color: new FormControl(null),
-      mark: new FormControl(null),
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    campaign: new UntypedFormControl(null, [Validators.required]),
+    name: new UntypedFormControl('', [Validators.required]),
+    full_name: new UntypedFormControl('', [Validators.required]),
+    miscellaneous: new UntypedFormGroup({
+      portrait: new UntypedFormControl(null),
+      biography: new UntypedFormControl(''),
+      hair_length: new UntypedFormControl(null),
+      hair_style: new UntypedFormControl(null),
+      hair_color: new UntypedFormControl(null),
+      mark: new UntypedFormControl(null),
     }),
     // attributes: new FormGroup({
     //   [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),

@@ -1,5 +1,5 @@
 import { HasWeight, JsonString } from './models';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import firebase from 'firebase/compat';
 import { FIREBASE_ERROR_MESSAGES } from './const';
 
@@ -64,7 +64,7 @@ export function getWeightedRandomItem<T extends HasWeight>(arr: T[]): T {
 }
 
 export function setFormControlsEditable(
-  form: FormGroup, controls: string[] = [], isEditable: boolean = true
+  form: UntypedFormGroup, controls: string[] = [], isEditable: boolean = true
 ): void {
   controls.forEach(i => {
     const control: AbstractControl = form.get(i);

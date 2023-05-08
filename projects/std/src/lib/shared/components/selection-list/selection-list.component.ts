@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, forwardRef, OnInit, OnDestroy } from '@angular/core';
 import { MatSelectionList } from '@angular/material/list';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -24,7 +24,7 @@ import { Subject } from 'rxjs';
 })
 export class SelectionListComponent implements ControlValueAccessor, OnInit, OnDestroy {
   @Input() value: unknown[];
-  readonly control: FormControl = new FormControl([]);
+  readonly control: UntypedFormControl = new UntypedFormControl([]);
   readonly unsubscribe$: Subject<void> = new Subject();
   private onChange: (value: string) => void;
   private onTouched: () => void;

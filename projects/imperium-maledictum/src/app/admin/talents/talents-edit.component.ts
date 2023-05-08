@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Talent } from '@imperium-maledictum-1e/models/common';
 
@@ -8,13 +8,13 @@ import { Talent } from '@imperium-maledictum-1e/models/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TalentsEditComponent implements OnInit {
-  readonly form: FormGroup = new FormGroup({
-    id: new FormControl(null),
-    name: new FormControl('', [Validators.required]),
-    labels: new FormGroup({
-      description: new FormControl('', [Validators.required]),
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    name: new UntypedFormControl('', [Validators.required]),
+    labels: new UntypedFormGroup({
+      description: new UntypedFormControl('', [Validators.required]),
     }),
-    system: new FormControl({})
+    system: new UntypedFormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Talent) {}

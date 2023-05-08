@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { FirestoreService, getId16 } from '@shared';
@@ -14,10 +14,10 @@ import { combineLatest, Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent {
-  readonly form: FormGroup = new FormGroup({
-    id: new FormControl(getId16()),
-    name: new FormControl('', [Validators.required]),
-    setting: new FormControl(null, [Validators.required]),
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(getId16()),
+    name: new UntypedFormControl('', [Validators.required]),
+    setting: new UntypedFormControl(null, [Validators.required]),
   });
 
   // readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
