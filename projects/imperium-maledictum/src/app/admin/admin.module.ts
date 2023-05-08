@@ -8,6 +8,10 @@ import { ItemQualitiesComponent } from './item-qualities/item-qualities.componen
 import { ItemQualitiesEditComponent } from './item-qualities/item-qualities-edit.component';
 import { ItemFlawsComponent } from './item-flaws/item-flaws.component';
 import { ItemFlawsEditComponent } from './item-flaws/item-flaws-edit.component';
+import { ConditionsComponent } from './conditions/conditions.component';
+import { ConditionsEditComponent } from './conditions/conditions-edit.component';
+import { TalentsComponent } from './talents/talents.component';
+import { TalentsEditComponent } from './talents/talents-edit.component';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import { ItemFlawsEditComponent } from './item-flaws/item-flaws-edit.component';
     ItemQualitiesComponent,
     ItemFlawsComponent,
     ItemQualitiesEditComponent,
-    ItemFlawsEditComponent
+    ItemFlawsEditComponent,
+    ConditionsComponent,
+    ConditionsEditComponent,
+    TalentsComponent,
+    TalentsEditComponent
   ],
   imports: [
     SharedModule,

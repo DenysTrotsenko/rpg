@@ -3,6 +3,7 @@ import { System } from './system';
 
 export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
+export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
@@ -13,14 +14,24 @@ export type PatronFactionId = Opaque<string, 'PatronFactionId'>;
 export type PatronLiabilityId = Opaque<string, 'PatronLiabilityId'>;
 export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
 export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
+export type TalentId = Opaque<string, 'TalentId'>;
 
 export interface Characteristic {
-  id: CharacteristicId | string;
+  id: CharacteristicId;
   name: string;
   labels: {
     abbreviation: string;
     description: string;
   };
+}
+
+export interface Condition {
+  id: ConditionId;
+  name: string;
+  labels: {
+    description: string;
+  };
+  system?: Partial<System>;
 }
 
 export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
@@ -115,6 +126,15 @@ export interface PatronPaymentGrade {
   id: PatronPaymentGradeId | string;
   name: string;
   value: number;
+}
+
+export interface Talent {
+  id: TalentId;
+  name: string;
+  labels: {
+    description: string;
+  };
+  system?: Partial<System>;
 }
 
 export interface Modification {
