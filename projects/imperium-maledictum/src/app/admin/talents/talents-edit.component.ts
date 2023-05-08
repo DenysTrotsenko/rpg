@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Talent } from '@imperium-maledictum-1e/models/common';
 
 @Component({

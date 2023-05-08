@@ -1,6 +1,6 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { ComponentType } from '@angular/cdk/overlay';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { AlertComponent } from './alert/alert.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 
