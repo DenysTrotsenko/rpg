@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
-import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 const SNACKBAR_DEFAULT_DURATION = 5000;
 const SNACKBAR_ERROR_CLASS = 'snackbar-error';
