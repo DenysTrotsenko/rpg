@@ -17,8 +17,12 @@ import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+import { CodeEditorModule } from '@ngstack/code-editor';
 
 @NgModule({
+  imports: [
+    CodeEditorModule.forRoot()
+  ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,

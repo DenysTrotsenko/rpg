@@ -16,7 +16,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
   imports: [
     CommonModule,
     MaterialModule,
-    CodeEditorModule.forRoot()
+    CodeEditorModule.forChild()
   ]
 })
 export class AdminBaseModule {}
