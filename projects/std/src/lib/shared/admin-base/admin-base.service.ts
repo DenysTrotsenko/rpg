@@ -3,6 +3,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, getId16, HasId, SnackbarService, sortByName, StorageService } from '@shared';
 import { AdminServiceConfig } from './admin-base.models';
+import { AdminBaseEditorDialogComponent } from './admin-base-editor-dialog.component';
 
 @Injectable()
 export class AdminBaseService<T extends HasId<K>, K> {
@@ -64,7 +65,10 @@ export class AdminBaseService<T extends HasId<K>, K> {
   }
 
   edit(item: T): void {
-    this.dialog.open(this.component, { data: item, width: '800px' }).afterClosed()
+    this.dialog.open(this.component, {
+      data: item,
+      width: '800px'
+    }).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
@@ -76,7 +80,14 @@ export class AdminBaseService<T extends HasId<K>, K> {
       .subscribe();
   }
 
-  editor(): void {}
+  editor(): void {
+    this.dialog.open(AdminBaseEditorDialogComponent, {
+      data: this.items$.getValue(),
+      width: '800px'
+    }).afterClosed()
+      .pipe()
+      .subscribe();
+  }
 
   save(): void {
     this.loading$.next(true);
