@@ -34,6 +34,10 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
     this.admin.edit(item);
   }
 
+  onEditorClick(): void {
+    this.admin.editor();
+  }
+
   onSaveClick(): void {
     this.admin.save();
   }

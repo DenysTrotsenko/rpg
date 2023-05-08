@@ -76,6 +76,8 @@ export class AdminBaseService<T extends HasId<K>, K> {
       .subscribe();
   }
 
+  editor(): void {}
+
   save(): void {
     this.loading$.next(true);
     const sorted = this.items$.value.sort(sortByName);

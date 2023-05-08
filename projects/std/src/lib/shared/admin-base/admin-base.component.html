@@ -5,6 +5,7 @@
   <mat-toolbar>
     <button mat-flat-button color="primary" (click)="onAddClick()">Add</button>
     <span class="f-1"></span>
+    <button mat-flat-button color="primary" class="mr-10" (click)="onEditorClick()">JSON Editor</button>
     <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">Save</button>
   </mat-toolbar>
   <mat-accordion>
