@@ -1,11 +1,11 @@
-<mat-nav-list>
-  <mat-list-item>
-    <a matLine routerLink="../create">Create Campaign</a>
-  </mat-list-item>
-  <mat-list-item *ngFor="let i of campaigns$ | async">
-    <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
-    <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </mat-list-item>
-</mat-nav-list>
+<!--<mat-nav-list>-->
+<!--  <mat-list-item>-->
+<!--    <a matLine routerLink="../create">Create Campaign</a>-->
+<!--  </mat-list-item>-->
+<!--  <mat-list-item *ngFor="let i of campaigns$ | async">-->
+<!--    <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>-->
+<!--    <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">-->
+<!--      <mat-icon>delete</mat-icon>-->
+<!--    </button>-->
+<!--  </mat-list-item>-->
+<!--</mat-nav-list>-->

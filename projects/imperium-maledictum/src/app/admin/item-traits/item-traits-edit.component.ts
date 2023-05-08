@@ -11,6 +11,7 @@ export class ItemTraitsEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('', [Validators.required]),
+    value: new FormControl(null),
     labels: new FormGroup({
       description: new FormControl('', [Validators.required]),
     }),

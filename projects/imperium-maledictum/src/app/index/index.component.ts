@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { AuthService, DialogService } from '@shared';
-import { Campaign } from '@grim-and-perilous/models/campaign';
-import { DataService } from '@ti/app/game/data.service';
-import { CampaignService } from '@ti/app/game/campaign.service';
-import { CampaignId } from '@grim-and-perilous/models/common';
+import { CampaignId } from '@imperium-maledictum-1e/models/common';
+import { CampaignService } from '../game/campaign.service';
+import { DataService } from '../game/data.service';
 
 @Component({
   templateUrl: './index.component.html',
@@ -15,8 +14,8 @@ import { CampaignId } from '@grim-and-perilous/models/common';
 })
 export class IndexComponent {
   expanded = true;
-  readonly campaign$: Observable<CampaignId> = this.campaign.campaign$;
-  readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
+  // readonly campaign$: Observable<CampaignId> = this.campaign.campaign$;
+  // readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
   readonly logged$: Observable<boolean> = this.auth.logged$;
 
   constructor(
@@ -27,9 +26,9 @@ export class IndexComponent {
     private router: Router
   ) {}
 
-  onCampaignChange(id: CampaignId): void {
-    this.campaign.setCampaign(id);
-  }
+  // onCampaignChange(id: CampaignId): void {
+  //   this.campaign.setCampaign(id);
+  // }
 
   onToggleSidenavClick(): void {
     this.expanded = !this.expanded;

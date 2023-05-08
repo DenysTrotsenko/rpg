@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HasCommonFields, HasId } from '@shared';
+import { HasCommonFields, HasId, HasSystem } from '@shared';
 import { AdminBaseService } from './admin-base.service';
 import { AdminServiceConfig } from './admin-base.models';
 
@@ -10,7 +10,7 @@ import { AdminServiceConfig } from './admin-base.models';
   providers: [AdminBaseService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminBaseComponent<T extends HasId<K> & HasCommonFields, K> {
+export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem, K> {
   @Input() set config(options: AdminServiceConfig<T>) {
     if (!options) { return; }
     this.admin.init(options);

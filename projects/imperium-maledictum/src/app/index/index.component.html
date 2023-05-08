@@ -6,15 +6,15 @@
         <mat-icon>{{ expanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-form-field appearance="outline" class="ml-5 mr-5 mt-5">
-      <mat-label>Campaign</mat-label>
-      <mat-select [value]="campaign$ | async" (selectionChange)="onCampaignChange($event.value)">
-        <mat-option [value]="null">-</mat-option>
-        <mat-option *ngFor="let i of campaigns$ | async; trackBy: trackById;" [value]="i.id">
-          {{i.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field appearance="outline" class="ml-5 mr-5 mt-5">-->
+<!--      <mat-label>Campaign</mat-label>-->
+<!--      <mat-select [value]="campaign$ | async" (selectionChange)="onCampaignChange($event.value)">-->
+<!--        <mat-option [value]="null">-</mat-option>-->
+<!--        <mat-option *ngFor="let i of campaigns$ | async; trackBy: trackById;" [value]="i.id">-->
+<!--          {{i.name}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
     <mat-nav-list *ngIf="!(logged$ | async)" dense>
       <a mat-list-item routerLink="auth/sign-in" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Authorization' }}">
         <mat-icon>fingerprint</mat-icon><span class="ml-10 not-expanded-hide">Authorization</span>

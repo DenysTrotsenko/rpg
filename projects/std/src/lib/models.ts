@@ -24,6 +24,10 @@ export interface HasCommonFields {
   };
 }
 
+export interface HasSystem {
+  system?: Record<string, number | string | boolean>;
+}
+
 export interface HasWeight {
   weight: number;
 }

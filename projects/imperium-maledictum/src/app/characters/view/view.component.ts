@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { DialogService, FirestoreService, getId16 } from '@shared';
-import { Character } from '@grim-and-perilous/models/character';
-import { getBonusFromAttribute } from '@grim-and-perilous/utils';
-import { DataService, DataTypes } from '@ti/app/game/data.service';
+// import { Character } from '@grim-and-perilous/models/character';
+// import { getBonusFromAttribute } from '@grim-and-perilous/utils';
+// import { DataService, DataTypes } from '@ti/app/game/data.service';
 // import { CustomizeWeaponDialogComponent } from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
 
 // interface AttributeView {

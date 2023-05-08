@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ItemTrait } from '@imperium-maledictum-1e/models/common';
+import { Talent } from '@imperium-maledictum-1e/models/common';
 
 @Component({
   templateUrl: './talents-edit.component.html',
@@ -17,7 +17,7 @@ export class TalentsEditComponent implements OnInit {
     system: new FormControl({})
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Talent) {}
 
   ngOnInit(): void {
     if (!!this.data) {

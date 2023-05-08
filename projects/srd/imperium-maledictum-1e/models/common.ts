@@ -133,6 +133,7 @@ export interface Talent {
   name: string;
   labels: {
     description: string;
+    requirements: string;
   };
   system?: Partial<System>;
 }
