@@ -21,9 +21,6 @@
         "dist/std/std",
         "dist/std"
       ],
-      "@grim-and-perilous/*": ["projects/srd/grim-and-perilous/*"],
-      "@flames-of-freedom-1e/*": ["projects/srd/flames-of-freedom-1e/*"],
-      "@ti/*": ["projects/anno-1800/src/*"],
       "@imperium-maledictum-1e/*": ["projects/srd/imperium-maledictum-1e/*"]
     }
   }
