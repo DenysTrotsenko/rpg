@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2018",
@@ -21,7 +21,10 @@
         "dist/std/std",
         "dist/std"
       ],
-      "@imperium-maledictum-1e/*": ["projects/srd/imperium-maledictum-1e/*"]
-    }
+      "@imperium-maledictum-1e/*": [
+        "projects/srd/imperium-maledictum-1e/*"
+      ]
+    },
+    "useDefineForClassFields": false
   }
 }
