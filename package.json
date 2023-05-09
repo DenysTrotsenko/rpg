@@ -15,14 +15,7 @@
     "watch:im": "ng build --project=imperium-maledictum --watch",
     "deploy:im": "cd projects/imperium-maledictum && firebase deploy",
     "deploy-functions:im": "cd projects/imperium-maledictum && firebase deploy --only functions",
-    "emulator:im": "cd projects/imperium-maledictum && firebase emulators:start --only functions",
-    "f:build": "tsc",
-    "f:build:watch": "tsc --watch",
-    "f:serve": "npm run build && firebase emulators:start --only functions",
-    "f:shell": "npm run build && firebase functions:shell",
-    "f:start": "npm run shell",
-    "f:deploy": "firebase deploy --only functions",
-    "f:logs": "firebase functions:log"
+    "emulator:im": "cd projects/imperium-maledictum && firebase emulators:start --only functions"
   },
   "private": true,
   "dependencies": {
