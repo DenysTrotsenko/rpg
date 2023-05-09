@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 import { AuthGuard } from './auth.guard';
 import { AuthResolver } from './auth.resolver';
 import { AppService } from './app.service';
@@ -16,9 +18,6 @@ import { StorageService } from './storage.service';
 import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
-import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   exports: [
@@ -28,6 +27,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     HttpClientModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireFunctionsModule,
     DialogModule,
     SnackbarModule

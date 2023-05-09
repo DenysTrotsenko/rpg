@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 // import { DataService } from './game/data.service';
 import { environment } from '../environments/environment';
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+// import { getStorage, provideStorage } from '@angular/fire/storage';
+// import { getAuth, provideAuth } from '@angular/fire/auth';
+// import { getFunctions, provideFunctions } from '@angular/fire/functions';
 
 // export function appInit(data: DataService): () => Promise<any> {
 //   return () => data.onInit();
@@ -18,7 +23,11 @@ import { environment } from '../environments/environment';
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    // provideAuth(() => getAuth()),
+    // provideFirestore(() => getFirestore()),
+    // provideFunctions(() => getFunctions()),
+    // provideStorage(() => getStorage())
   ],
   providers: [
   ],
