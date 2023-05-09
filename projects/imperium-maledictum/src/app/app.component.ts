@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { MaterialIconFont } from '@shared';
+import { FunctionsService, MaterialIconFont } from '@shared';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,9 @@ import { MaterialIconFont } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  constructor(icons: MatIconRegistry) {
+  constructor(icons: MatIconRegistry, public func: FunctionsService) {
     icons.setDefaultFontSetClass(MaterialIconFont.OUTLINED);
+
+    func.call$('helloWorld', {}).subscribe(res => res.subscribe(console.log));
   }
 }
