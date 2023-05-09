@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  useEmulators: true,
   firebase: {
     apiKey: 'AIzaSyA0v5XWwFwdh0v93sVJq2_W_zvXdKpcJNU',
     authDomain: 'imperium-maledictum.firebaseapp.com',

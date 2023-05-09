@@ -17,6 +17,8 @@ import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   exports: [
