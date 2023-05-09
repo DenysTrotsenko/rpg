@@ -55,7 +55,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/imperium-maledictum",
+            "outputPath": "projects/imperium-maledictum/dist",
             "index": "projects/imperium-maledictum/src/index.html",
             "main": "projects/imperium-maledictum/src/main.ts",
             "polyfills": "projects/imperium-maledictum/src/polyfills.ts",

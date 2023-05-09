@@ -1,9 +1,42 @@
 import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
+import * as cors from 'cors';
+// import { FS_COLLECTION } from './models';
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
+admin.initializeApp(functions.config().firebase);
+
+const corsHandler = cors({ origin: true });
+
+/** Test function */
 export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info('Hello logs!', {structuredData: true});
-  response.send('Hello from Firebase!');
+  corsHandler(request, response, () => {
+    functions.logger.info('Hello logs!', { structuredData: true });
+    response.send('Hello from Firebase!');
+  });
+});
+
+export const onUserCreate = functions.auth.user().onCreate((user) => {
+  return Promise
+    .all([
+      admin.firestore().collection('users').doc(user.uid).set({
+        avatar: '',
+        permissions: [],
+        username: ''
+      }),
+      admin.firestore().collection('characters').doc(user.uid).set({}),
+    ])
+    .then(() => {
+      functions.logger.info(`User ${user.uid} created!`, { structuredData: true });
+    });
+});
+
+export const onUserDelete = functions.auth.user().onDelete((user) => {
+  return Promise
+    .all([
+      admin.firestore().collection('users').doc(user.uid).delete(),
+      admin.firestore().collection('characters').doc(user.uid).delete(),
+    ])
+    .then(() => {
+      functions.logger.info(`User ${user.uid} deleted!`, { structuredData: true });
+    });
 });
