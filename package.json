@@ -15,7 +15,14 @@
     "watch:im": "ng build --project=imperium-maledictum --watch",
     "deploy:im": "cd projects/imperium-maledictum && firebase deploy",
     "deploy-functions:im": "cd projects/imperium-maledictum && firebase deploy --only functions",
-    "emulator:im": "cd projects/imperium-maledictum && firebase emulators:start --only functions"
+    "emulator:im": "cd projects/imperium-maledictum && firebase emulators:start --only functions",
+    "f:build": "tsc",
+    "f:build:watch": "tsc --watch",
+    "f:serve": "npm run build && firebase emulators:start --only functions",
+    "f:shell": "npm run build && firebase functions:shell",
+    "f:start": "npm run shell",
+    "f:deploy": "firebase deploy --only functions",
+    "f:logs": "firebase functions:log"
   },
   "private": true,
   "dependencies": {
@@ -33,8 +40,8 @@
     "@firebase/logger": "^0.3.4",
     "cors": "^2.8.5",
     "firebase": "^9.1.0",
-    "firebase-admin": "^11.0.1",
-    "firebase-functions": "^3.23.0",
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0",
     "rxjs": "~7.5.6",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
@@ -52,6 +59,7 @@
     "codelyzer": "^6.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^3.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.4",
