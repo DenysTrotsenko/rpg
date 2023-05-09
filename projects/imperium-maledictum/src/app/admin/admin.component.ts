@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavListItemData } from '@shared';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -14,4 +15,8 @@ export class AdminComponent {
     { link: './item-flaws', label: 'Flaws' },
     { link: './item-traits', label: 'Traits' }
   ];
+
+  constructor(private readonly aff: AngularFireFunctions) {
+    aff.httpsCallable('helloWorld')({}).subscribe(res => console.log(res));
+  }
 }

@@ -20,6 +20,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
+  providers: [
+  ],
   // providers: [
   //   {
   //     provide: APP_INITIALIZER,

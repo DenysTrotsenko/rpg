@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { FunctionsService, MaterialIconFont } from '@shared';
-import { AngularFireFunctions } from '@angular/fire/compat/functions';
+import { MaterialIconFont } from '@shared';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +9,7 @@ import { AngularFireFunctions } from '@angular/fire/compat/functions';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  constructor(icons: MatIconRegistry, private readonly aff: AngularFireFunctions) {
+  constructor(icons: MatIconRegistry) {
     icons.setDefaultFontSetClass(MaterialIconFont.OUTLINED);
-
-    aff.httpsCallable('helloWorld')(null).subscribe(res => console.log(res));
   }
 }
