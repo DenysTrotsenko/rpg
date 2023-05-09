@@ -1,19 +1,10 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CoreModule, SharedModule } from '@shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
-// import { DataService } from './game/data.service';
+import { USE_EMULATOR } from '@angular/fire/compat/functions';
 import { environment } from '../environments/environment';
-// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-// import { getStorage, provideStorage } from '@angular/fire/storage';
-// import { getAuth, provideAuth } from '@angular/fire/auth';
-// import { getFunctions, provideFunctions } from '@angular/fire/functions';
-
-// export function appInit(data: DataService): () => Promise<any> {
-//   return () => data.onInit();
-// }
 
 @NgModule({
   declarations: [
@@ -23,22 +14,11 @@ import { environment } from '../environments/environment';
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
-    // provideFunctions(() => getFunctions()),
-    // provideStorage(() => getStorage())
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
+    { provide: USE_EMULATOR, useValue: environment.production ? undefined : ['localhost', 5001] }
   ],
-  // providers: [
-  //   {
-  //     provide: APP_INITIALIZER,
-  //     useFactory: appInit,
-  //     multi: true,
-  //     deps: [DataService]
-  //   }
-  // ],
   bootstrap: [
     AppComponent
   ]
