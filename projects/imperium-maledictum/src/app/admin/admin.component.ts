@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { HttpService, NavListItemData } from '@shared';
+import { NavListItemData } from '@shared';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -18,7 +18,7 @@ export class AdminComponent {
     { link: './item-traits', label: 'Traits' }
   ];
 
-  constructor(private readonly aff: AngularFireFunctions, private http: HttpService) {
+  constructor(private readonly aff: AngularFireFunctions) {
     aff.httpsCallable('helloWorld')(null)
       .pipe(
         catchError(err => {
@@ -27,8 +27,5 @@ export class AdminComponent {
         })
       )
       .subscribe(res => console.log(res));
-    // http
-    //   .get('http://127.0.0.1:5001/imperium-maledictum/us-central1/helloWorld')
-    //   .subscribe(res => console.log(res));
   }
 }
