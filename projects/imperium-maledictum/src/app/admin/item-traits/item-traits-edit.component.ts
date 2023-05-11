@@ -11,7 +11,6 @@ export class ItemTraitsEditComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
-    value: new UntypedFormControl(null),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
     }),
