@@ -82,10 +82,18 @@ export class AdminBaseService<T extends HasId<K>, K> {
 
   editor(): void {
     this.dialog.open(AdminBaseEditorDialogComponent, {
-      data: this.items$.getValue(),
+      data: this.items$.value,
       width: '800px'
     }).afterClosed()
-      .pipe()
+      .pipe(
+        tap(result => {
+          this.items$.next(result.map(i => {
+            i.id = i.id ? i.id : getId16();
+            return i;
+          }));
+          this.changed$.next(true);
+        })
+      )
       .subscribe();
   }
 
