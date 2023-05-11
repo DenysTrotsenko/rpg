@@ -19,13 +19,13 @@ export class AdminComponent {
   ];
 
   constructor(private readonly aff: AngularFireFunctions) {
-    aff.httpsCallable('helloWorld')(null)
-      .pipe(
-        catchError(err => {
-          console.log(err);
-          return of(null);
-        })
-      )
-      .subscribe(res => console.log(res));
+    // aff.httpsCallable('helloWorld')(null)
+    //   .pipe(
+    //     catchError(err => {
+    //       console.log(err);
+    //       return of(null);
+    //     })
+    //   )
+    //   .subscribe(res => console.log(res));
   }
 }
