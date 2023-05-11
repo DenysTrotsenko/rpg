@@ -1,15 +1,27 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AdminServiceConfig } from '@shared';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ItemTrait } from '@imperium-maledictum-1e/models/common';
-import { ItemTraitsEditComponent } from './item-traits-edit.component';
 
 @Component({
-  template: '<std-admin-base [config]="config"></std-admin-base>',
+  templateUrl: './item-traits.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemTraitsComponent {
-  config: AdminServiceConfig<ItemTrait> = {
-    path: '/data/item-traits.json',
-    component: ItemTraitsEditComponent
-  };
+export class ItemTraitsComponent implements OnInit {
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    name: new UntypedFormControl('', [Validators.required]),
+    labels: new UntypedFormGroup({
+      description: new UntypedFormControl('', [Validators.required]),
+    }),
+    system: new UntypedFormControl({})
+  });
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}
+
+  ngOnInit(): void {
+    if (!!this.data) {
+      this.form.patchValue(this.data);
+    }
+  }
 }

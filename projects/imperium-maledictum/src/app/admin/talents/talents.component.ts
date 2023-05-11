@@ -1,15 +1,27 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AdminServiceConfig } from '@shared';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Talent } from '@imperium-maledictum-1e/models/common';
-import { TalentsEditComponent } from './talents-edit.component';
 
 @Component({
-  template: '<std-admin-base [config]="config"></std-admin-base>',
+  templateUrl: './talents.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TalentsComponent {
-  config: AdminServiceConfig<Talent> = {
-    path: '/data/talents.json',
-    component: TalentsEditComponent
-  };
+export class TalentsComponent implements OnInit {
+  readonly form: UntypedFormGroup = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    name: new UntypedFormControl('', [Validators.required]),
+    labels: new UntypedFormGroup({
+      description: new UntypedFormControl('', [Validators.required]),
+    }),
+    system: new UntypedFormControl({})
+  });
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Talent) {}
+
+  ngOnInit(): void {
+    if (!!this.data) {
+      this.form.patchValue(this.data);
+    }
+  }
 }

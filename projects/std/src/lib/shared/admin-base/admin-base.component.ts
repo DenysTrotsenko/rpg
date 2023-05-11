@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HasCommonFields, HasId, HasSystem } from '@shared';
 import { AdminBaseService } from './admin-base.service';
-import { AdminServiceConfig } from './admin-base.models';
+import { ActivatedRoute } from '@angular/router';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'std-admin-base',
@@ -12,16 +13,24 @@ import { AdminServiceConfig } from './admin-base.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem, K> {
-  @Input() set config(options: AdminServiceConfig<T>) {
-    if (!options) { return; }
-    this.admin.init(options);
-  }
-
   readonly items$: BehaviorSubject<T[]> = this.admin.items$;
   readonly loading$: BehaviorSubject<boolean> = this.admin.loading$;
   readonly changed$: BehaviorSubject<boolean> = this.admin.changed$;
 
-  constructor(public admin: AdminBaseService<T, K>) {}
+  constructor(
+    private admin: AdminBaseService<T, K>,
+    private route: ActivatedRoute
+  ) {
+    this.route.data
+      .pipe(
+        take(1),
+        tap(data => this.admin.init({
+          path: data.path,
+          component: data.component
+        }))
+      )
+      .subscribe();
+  }
 
   onAddClick(): void {
     this.admin.add();
