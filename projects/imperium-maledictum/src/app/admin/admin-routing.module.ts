@@ -7,6 +7,11 @@ import { ItemQualitiesComponent } from './item-qualities/item-qualities.componen
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
 import { TalentsComponent } from './talents/talents.component';
 import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
+import { SpecialisationsComponent } from './specialisations/specialisations.component';
+import { SkillsComponent } from './skills/skills.component';
+import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenomenas.component';
+import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
+import { MutationsComponent } from './mutations/mutations.component';
 
 const routes: Routes = [
   {
@@ -32,6 +37,36 @@ const routes: Routes = [
         path: 'item-traits',
         component: AdminBaseComponent,
         data: { path: '/data/item-traits.json', component: ItemTraitsComponent }
+      },
+      {
+        path: 'malignancies',
+        component: AdminBaseComponent,
+        data: { path: '/data/malignancies.json', component: SkillsComponent }
+      },
+      {
+        path: 'mutations',
+        component: AdminBaseComponent,
+        data: { path: '/data/mutations.json', component: MutationsComponent }
+      },
+      {
+        path: 'perils-of-the-warp',
+        component: AdminBaseComponent,
+        data: { path: '/data/perils-of-the-warp.json', component: PerilsOfTheWarpComponent }
+      },
+      {
+        path: 'psychic-phenomenas',
+        component: AdminBaseComponent,
+        data: { path: '/data/psychic-phenomenas.json', component: PsychicPhenomenasComponent }
+      },
+      {
+        path: 'skills',
+        component: AdminBaseComponent,
+        data: { path: '/data/skills.json', component: SkillsComponent }
+      },
+      {
+        path: 'specialisations',
+        component: AdminBaseComponent,
+        data: { path: '/data/specialisations.json', component: SpecialisationsComponent }
       },
       {
         path: 'talents',
