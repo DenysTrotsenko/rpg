@@ -7,6 +7,7 @@ import { AdminServiceConfig } from './admin-base.models';
 @Component({
   selector: 'std-admin-base',
   templateUrl: './admin-base.component.html',
+  styleUrls: ['./admin-base.component.scss'],
   providers: [AdminBaseService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

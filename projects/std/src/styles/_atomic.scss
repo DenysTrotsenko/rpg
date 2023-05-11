@@ -20,6 +20,7 @@
 .as-fs { align-self: flex-start !important; }
 .f-0 { flex: 0 0 auto !important; }
 .f-1 { flex: 1 !important; }
+.f-0-0-a { flex: 0 0 auto !important; }
 
 .g-5 { gap: 5px !important; }
 .g-10 { gap: 10px !important; }
@@ -97,6 +98,9 @@
 .comma-separated:not(:last-child)::after { content: ', ' !important; }
 
 .va-t { vertical-align: top !important; }
+
+.o-h { overflow: hidden !important; }
+.o-a { overflow: auto !important; }
 
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {
