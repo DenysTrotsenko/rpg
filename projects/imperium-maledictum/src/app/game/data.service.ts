@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Observable, combineLatest, lastValueFrom, of } from 'rxjs';
-import { catchError, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { AuthService, FirestoreService, StorageService } from '@shared';
-import { Character } from '@imperium-maledictum-1e/models/character';
+// import { Injectable } from '@angular/core';
+// import { Observable, combineLatest, lastValueFrom, of } from 'rxjs';
+// import { catchError, shareReplay, switchMap, tap } from 'rxjs/operators';
+// import { AuthService, FirestoreService, StorageService } from '@shared';
+// import { Character } from '@imperium-maledictum-1e/models/character';
+//
+// export enum FirestoreCollection {
+//   CHARACTERS = 'characters',
+//   CAMPAIGNS = 'campaigns'
+// }
 
-export enum FirestoreCollection {
-  CHARACTERS = 'characters',
-  CAMPAIGNS = 'campaigns'
-}
 
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class DataService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class DataService {
   // readonly campaignsAll$: Observable<Campaign[]> = this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS).pipe(
   //   catchError(() => of([])),
   //   shareReplay(1)
@@ -25,29 +25,29 @@ export class DataService {
   // readonly campaignsOwnOrIncluded$: Observable<Campaign[]> = this.auth.auth$.pipe(
   //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('members', '==', user.uid)))
   // );
-  readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
-    shareReplay(1)
-  );
-
-  readonly charactersOwn$: Observable<Character[]> = this.auth.auth$.pipe(
-    switchMap(user => this.firestore.collection<Character>(
-      FirestoreCollection.CHARACTERS, ref => ref.where('author', '==', user.uid)
-    )),
-    shareReplay(1)
-  );
-
-  readonly charactersOwnOrMaster$: Observable<Character[]> = this.auth.auth$.pipe(
-    switchMap(user => this.firestore.collection<Character>(
-      FirestoreCollection.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
-    )),
-    shareReplay(1)
-  );
-
-  constructor(
-    private readonly auth: AuthService,
-    private readonly storage: StorageService,
-    private readonly firestore: FirestoreService
-  ) {}
+  // readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
+  //   shareReplay(1)
+  // );
+  //
+  // readonly charactersOwn$: Observable<Character[]> = this.auth.auth$.pipe(
+  //   switchMap(user => this.firestore.collection<Character>(
+  //     FirestoreCollection.CHARACTERS, ref => ref.where('author', '==', user.uid)
+  //   )),
+  //   shareReplay(1)
+  // );
+  //
+  // readonly charactersOwnOrMaster$: Observable<Character[]> = this.auth.auth$.pipe(
+  //   switchMap(user => this.firestore.collection<Character>(
+  //     FirestoreCollection.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
+  //   )),
+  //   shareReplay(1)
+  // );
+  //
+  // constructor(
+  //   private readonly auth: AuthService,
+  //   private readonly storage: StorageService,
+  //   private readonly firestore: FirestoreService
+  // ) {}
 
   // onInit(): Promise<any> {
     // const dataSrc = combineLatest([
@@ -298,4 +298,4 @@ export class DataService {
   //     `Effect: ${quirk.labels?.effect}`,
   //   ].join('\n');
   // }
-}
+// }

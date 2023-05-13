@@ -20,3 +20,9 @@ mat-sidenav-container {
 .active {
   color: $color-primary;
 }
+
+:host ::ng-deep {
+  .form-field-no-bottom-padding .mat-form-field-wrapper {
+    margin-bottom: -1.25em !important;
+  }
+}

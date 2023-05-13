@@ -37,3 +37,10 @@ export interface NavListItemData {
   label: string;
   class?: string;
 }
+
+export interface Setting {
+  default?: boolean;
+  id: string;
+  name: string;
+  storage: string;
+}

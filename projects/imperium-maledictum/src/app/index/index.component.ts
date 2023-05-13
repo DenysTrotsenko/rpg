@@ -5,7 +5,7 @@ import { filter, tap } from 'rxjs/operators';
 import { AuthService, DialogService } from '@shared';
 import { CampaignId } from '@imperium-maledictum-1e/models/common';
 import { CampaignService } from '../game/campaign.service';
-import { DataService } from '../game/data.service';
+// import { DataService } from '../game/data.service';
 
 @Component({
   templateUrl: './index.component.html',
@@ -21,7 +21,7 @@ export class IndexComponent {
   constructor(
     private auth: AuthService,
     private campaign: CampaignService,
-    private data: DataService,
+    // private data: DataService,
     private dialog: DialogService,
     private router: Router
   ) {}

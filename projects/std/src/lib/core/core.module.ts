@@ -18,6 +18,7 @@ import { StorageService } from './storage.service';
 import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
+import { SettingService } from './setting.service';
 
 @NgModule({
   exports: [
@@ -41,7 +42,8 @@ import { FunctionsService } from './functions.service';
     HttpService,
     FirestoreService,
     FunctionsService,
-    StorageService
+    StorageService,
+    SettingService
   ]
 })
 export class CoreModule {}

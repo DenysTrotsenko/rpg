@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService, DialogService, FirestoreService } from '@shared';
 import { Character } from '@imperium-maledictum-1e/models/character';
-import { DataService } from '../../game/data.service';
+// import { DataService } from '../../game/data.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -11,11 +11,11 @@ import { DataService } from '../../game/data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly characters$: Observable<Character[]> = this.data.charactersOwnOrMaster$;
+  // readonly characters$: Observable<Character[]> = this.data.charactersOwnOrMaster$;
 
   constructor(
     private readonly auth: AuthService,
-    private readonly data: DataService,
+    // private readonly data: DataService,
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService
   ) {}
