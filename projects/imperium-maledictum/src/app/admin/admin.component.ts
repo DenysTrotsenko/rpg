@@ -57,7 +57,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.control.valueChanges
       .pipe(
         takeUntil(this.destroy$),
-        tap(id => this.setting.setSetting(id))
+        tap(id => this.setting.set(id))
       )
       .subscribe();
   }

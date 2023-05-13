@@ -24,7 +24,7 @@ export class SettingService {
     private snackbar: SnackbarService
   ) {}
 
-  setSetting(id: string): void {
+  set(id: string): void {
     this.all$
       .pipe(
         take(1),
@@ -37,40 +37,6 @@ export class SettingService {
       .subscribe();
   }
 
-  // deleteUser(data: AuthWithEmailAndPassword): Observable<User | void> {
-  //   return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
-  //     switchMap(res => res.user.delete()),
-  //     catchError((err: firebase.auth.Error) => {
-  //       this.snackbar.error(getErrorMessage(err));
-  //       return of(null);
-  //     })
-  //   );
-  // }
-
-  // signIn(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
-  //   return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
-  //     catchError((err: firebase.auth.Error) => {
-  //       this.snackbar.error(getErrorMessage(err));
-  //       return of(null);
-  //     })
-  //   );
-  // }
-
-  // signOut(): Observable<void> {
-  //   return from(this.afa.signOut()).pipe(
-  //     catchError((err: firebase.auth.Error) => {
-  //       this.snackbar.error(getErrorMessage(err));
-  //       return of(null);
-  //     })
-  //   );
-  // }
-
-  // signUp(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
-  //   return from(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe(
-  //     catchError((err: firebase.auth.Error) => {
-  //       this.snackbar.error(getErrorMessage(err));
-  //       return of(null);
-  //     })
-  //   );
-  // }
+  create(): void {}
+  delete(): void {}
 }
