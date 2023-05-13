@@ -15,6 +15,7 @@ export type PatronLiabilityId = Opaque<string, 'PatronLiabilityId'>;
 export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
 export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
+export type SettingId = Opaque<string, 'SettingId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
 
 export interface Characteristic {
@@ -127,6 +128,15 @@ export interface PatronPaymentGrade {
   id: PatronPaymentGradeId | string;
   name: string;
   value: number;
+}
+
+export interface Setting {
+  id: SettingId;
+  name: string;
+  storage: string;
+  labels: {
+    description: string;
+  };
 }
 
 export interface Specialisation {
