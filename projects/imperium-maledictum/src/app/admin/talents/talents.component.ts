@@ -12,8 +12,9 @@ export class TalentsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
+    multiple: new UntypedFormControl(null),
     labels: new UntypedFormGroup({
-      requirements: new UntypedFormControl('', [Validators.required]),
+      requirements: new UntypedFormControl(null),
       description: new UntypedFormControl('', [Validators.required]),
     }),
     system: new UntypedFormControl({})
