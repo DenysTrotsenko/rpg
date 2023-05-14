@@ -87,6 +87,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
       width: '800px'
     }).afterClosed()
       .pipe(
+        filter(res => !!res),
         tap(result => {
           this.items$.next(result.map(i => {
             i.id = i.id ? i.id : getId16();

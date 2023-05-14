@@ -53,3 +53,9 @@ table.mat-table {
     padding-bottom: 0 !important;
   }
 }
+
+.form-field-no-bottom-padding {
+  .mat-form-field-wrapper {
+    margin-bottom: -1.25em !important;
+  }
+}

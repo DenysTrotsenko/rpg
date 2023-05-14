@@ -5,7 +5,12 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
+    <mat-checkbox class="mb-20" formControlName="multiple">Can be taken multiple times</mat-checkbox>
     <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline">
+        <mat-label>Requirements</mat-label>
+        <input matInput formControlName="requirements">
+      </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>

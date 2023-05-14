@@ -13,6 +13,7 @@ export class TalentsComponent implements OnInit {
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
     labels: new UntypedFormGroup({
+      requirements: new UntypedFormControl('', [Validators.required]),
       description: new UntypedFormControl('', [Validators.required]),
     }),
     system: new UntypedFormControl({})
