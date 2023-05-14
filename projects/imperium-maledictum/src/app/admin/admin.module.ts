@@ -13,6 +13,7 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SpecialisationsComponent } from './specialisations/specialisations.comp
     PsychicPhenomenasComponent,
     PerilsOfTheWarpComponent,
     SkillsComponent,
-    SpecialisationsComponent
+    SpecialisationsComponent,
+    CharacteristicsComponent
   ],
   imports: [
     SharedModule,

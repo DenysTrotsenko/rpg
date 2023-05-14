@@ -12,12 +12,18 @@ import { SkillsComponent } from './skills/skills.component';
 import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenomenas.component';
 import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
 import { MutationsComponent } from './mutations/mutations.component';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
+      {
+        path: 'characteristics',
+        component: AdminBaseComponent,
+        data: { path: 'characteristics.json', component: CharacteristicsComponent }
+      },
       {
         path: 'conditions',
         component: AdminBaseComponent,

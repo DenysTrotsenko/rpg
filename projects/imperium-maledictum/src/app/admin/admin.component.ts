@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AdminComponent implements OnInit, OnDestroy {
   readonly options: NavListItemData[] = [
+    { link: './characteristics', label: 'Characteristics' },
     { link: './skills', label: 'Skills' },
     { link: './specialisations', label: 'Specialisations' },
     { link: './talents', label: 'Talents' },
