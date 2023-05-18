@@ -1,4 +1,4 @@
-import { HasCommonFields, HasId, Opaque } from '@shared';
+import { HasCommonFields, HasId, HasName, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
 export type CampaignId = Opaque<string, 'CampaignId'>;
@@ -14,6 +14,7 @@ export type PatronFactionId = Opaque<string, 'PatronFactionId'>;
 export type PatronLiabilityId = Opaque<string, 'PatronLiabilityId'>;
 export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
 export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
+export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
@@ -128,6 +129,13 @@ export interface PatronPaymentGrade {
   id: PatronPaymentGradeId | string;
   name: string;
   value: number;
+}
+
+export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, HasWeight {
+  labels: {
+    description: string;
+    lingering: string;
+  };
 }
 
 export interface Skill {
