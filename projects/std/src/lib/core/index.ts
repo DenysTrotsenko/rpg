@@ -8,3 +8,5 @@ export { HttpService } from './http.service';
 export { FirestoreService } from './firestore.service';
 export { FunctionsService } from './functions.service';
 export { StorageService } from './storage.service';
+export { CampaignService } from './campaign.service';
+export { SettingService } from './setting.service';

@@ -1,28 +1,35 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { catchError, distinctUntilChanged, map, shareReplay, switchMap, take, tap } from 'rxjs/operators';
-import { FirestoreService, getErrorMessage, Setting, SnackbarService } from '@shared';
+import { BehaviorSubject, Observable, of, ReplaySubject, share } from 'rxjs';
+import { catchError, distinctUntilChanged, map, take, tap } from 'rxjs/operators';
+import { FirestoreService, Setting } from '@shared';
 
 @Injectable()
 export class SettingService {
   private readonly allObservable: Observable<Setting[]> = this.firestore.collection<Setting>('settings').pipe(
     catchError(() => of([])),
     distinctUntilChanged(),
-    shareReplay(1)
+    share({
+      connector: () => new ReplaySubject(),
+      resetOnComplete: true,
+      resetOnError: true,
+      resetOnRefCountZero: true
+    })
   );
   private readonly settingSource: BehaviorSubject<Setting | null> = new BehaviorSubject(JSON.parse(localStorage.getItem('setting')));
   private readonly settingObservable: Observable<Setting | null> = this.settingSource.asObservable().pipe(
     distinctUntilChanged(),
-    shareReplay(1)
+    share({
+      connector: () => new ReplaySubject(),
+      resetOnComplete: true,
+      resetOnError: true,
+      resetOnRefCountZero: true
+    })
   );
 
   get selected$(): Observable<Setting | null> { return this.settingObservable; }
   get all$(): Observable<Setting[]> { return this.allObservable; }
 
-  constructor(
-    private readonly firestore: FirestoreService,
-    private snackbar: SnackbarService
-  ) {}
+  constructor(private readonly firestore: FirestoreService) {}
 
   set(id: string): void {
     this.all$

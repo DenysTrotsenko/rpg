@@ -2,10 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { AuthService, DialogService } from '@shared';
-import { CampaignId } from '@imperium-maledictum-1e/models/common';
-import { CampaignService } from '../game/campaign.service';
-// import { DataService } from '../game/data.service';
+import { AuthService, CampaignService, DialogService } from '@shared';
 
 @Component({
   templateUrl: './index.component.html',

@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
-import { getId16, NavListItemData, Setting } from '@shared';
+import { getId16, NavListItemData, Setting, SettingService } from '@shared';
 // import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { Observable, of, Subject, takeUntil } from 'rxjs';
+import { catchError, Observable, of, Subject, takeUntil } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { SettingService } from '../../../../std/src/lib/core/setting.service';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -37,7 +36,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     private readonly setting: SettingService,
     // private readonly aff: AngularFireFunctions
   ) {
-    // aff.httpsCallable('helloWorld')(null)
+    // aff.httpsCallable('getSettings')(null)
     //   .pipe(
     //     catchError(err => {
     //       console.log(err);

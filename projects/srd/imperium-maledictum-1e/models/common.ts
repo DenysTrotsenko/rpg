@@ -1,7 +1,6 @@
 import { HasCommonFields, HasId, HasName, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
-export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;

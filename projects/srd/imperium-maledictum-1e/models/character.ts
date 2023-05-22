@@ -17,8 +17,8 @@
 //   ATTRIBUTE_ID_WILLPOWER
 // } from '@grim-and-perilous/const';
 // import { getBonusFromAttribute } from '@grim-and-perilous/utils';
-import { UserId } from '@shared';
-import { CampaignId, PatronId } from './common';
+import { CampaignId, UserId } from '@shared';
+import { PatronId } from './common';
 // import { System } from '@grim-and-perilous/models/system';
 //
 export class Character {

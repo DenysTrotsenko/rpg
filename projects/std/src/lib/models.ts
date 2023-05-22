@@ -1,6 +1,8 @@
 export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
 
+export type CampaignId = Opaque<string, 'CampaignId'>;
+export type SettingId = Opaque<string, 'SettingId'>;
 export type UserId = Opaque<string, 'UserId'>;
 
 export interface AuthWithEmailAndPassword {
@@ -40,7 +42,15 @@ export interface NavListItemData {
 
 export interface Setting {
   default?: boolean;
-  id: string;
+  id: SettingId;
   name: string;
   storage: string;
+}
+
+export interface Campaign {
+  id: CampaignId;
+  name: string;
+  authors: UserId[];
+  members: UserId[];
+  setting: string;
 }

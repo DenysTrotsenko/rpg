@@ -1,13 +1,15 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-import { FS_COLLECTION } from './models';
+import { FS_COLLECTION } from '../../../std/src/lib/enums';
 
 admin.initializeApp(functions.config().firebase);
 
-/** Test function */
-export const helloWorld = functions.https.onCall((data, context) => {
-  functions.logger.info('Hello logs!', { structuredData: true });
-  return admin.auth.name;
+export const getSettings = functions.https.onCall((data, context) => {
+  return new Promise((resolve) => {
+    admin.firestore().collection(FS_COLLECTION.SETTINGS).get().then(snapshot => {
+      resolve(snapshot.docs.map(doc => doc.data()));
+    });
+  });
 });
 
 export const onUserCreate = functions.auth.user().onCreate((user) => {

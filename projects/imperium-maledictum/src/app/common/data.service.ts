@@ -1,7 +1,7 @@
-// import { Injectable } from '@angular/core';
-// import { Observable, combineLatest, lastValueFrom, of } from 'rxjs';
-// import { catchError, shareReplay, switchMap, tap } from 'rxjs/operators';
-// import { AuthService, FirestoreService, StorageService } from '@shared';
+import { Injectable } from '@angular/core';
+import { Observable, combineLatest, lastValueFrom, of } from 'rxjs';
+import { catchError, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { AuthService, FirestoreService, StorageService } from '@shared';
 // import { Character } from '@imperium-maledictum-1e/models/character';
 //
 // export enum FirestoreCollection {
