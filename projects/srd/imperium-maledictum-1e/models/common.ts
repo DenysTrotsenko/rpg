@@ -6,6 +6,8 @@ export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
+export type MalignancyId = Opaque<string, 'MalignancyId'>;
+export type MutationId = Opaque<string, 'MutationId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
 export type PatronBoonId = Opaque<string, 'PatronBoonId'>;
 export type PatronDemeanorId = Opaque<string, 'PatronDemeanorId'>;
@@ -50,6 +52,18 @@ export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
 export interface Faction {
   id: FactionId | string;
   name: string;
+  labels: {
+    description: string;
+  };
+}
+
+export interface Malignancy extends HasId<MalignancyId>, HasName, HasWeight {
+  labels: {
+    description: string;
+  };
+}
+
+export interface Mutation extends HasId<MutationId>, HasName, HasWeight {
   labels: {
     description: string;
   };

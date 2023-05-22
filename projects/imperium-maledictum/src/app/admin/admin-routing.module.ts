@@ -13,6 +13,7 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
 import { MutationsComponent } from './mutations/mutations.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { MalignanciesComponent } from './malignancies/malignancies.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,7 @@ const routes: Routes = [
       {
         path: 'malignancies',
         component: AdminBaseComponent,
-        data: { path: 'malignancies.json', component: SkillsComponent }
+        data: { path: 'malignancies.json', component: MalignanciesComponent }
       },
       {
         path: 'mutations',
