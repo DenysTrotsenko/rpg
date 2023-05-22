@@ -12,9 +12,10 @@ export class PsychicPhenomenasComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
+    order: new UntypedFormControl(1, [Validators.required]),
     weight: new UntypedFormControl(1, [Validators.required]),
     labels: new UntypedFormGroup({
-      lingering: new UntypedFormControl('', [Validators.required]),
+      lingering: new UntypedFormControl(''),
       description: new UntypedFormControl('', [Validators.required]),
     }),
   });

@@ -14,6 +14,7 @@ export type PatronFactionId = Opaque<string, 'PatronFactionId'>;
 export type PatronLiabilityId = Opaque<string, 'PatronLiabilityId'>;
 export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
 export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
+export type PerilOfTheWarpId = Opaque<string, 'PerilOfTheWarpId'>;
 export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
@@ -129,6 +130,13 @@ export interface PatronPaymentGrade {
   id: PatronPaymentGradeId | string;
   name: string;
   value: number;
+}
+
+export interface PerilOfTheWarp extends HasId<PerilOfTheWarpId>, HasName, HasWeight {
+  corruption: number;
+  labels: {
+    description: string;
+  };
 }
 
 export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, HasWeight {

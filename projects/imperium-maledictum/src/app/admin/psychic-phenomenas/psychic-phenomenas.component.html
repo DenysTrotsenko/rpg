@@ -5,10 +5,16 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Weight</mat-label>
-      <input matInput type="number" formControlName="weight">
-    </mat-form-field>
+    <div class="d-f g-10">
+      <mat-form-field appearance="outline">
+        <mat-label>Order in Table</mat-label>
+        <input matInput type="number" formControlName="order">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Weight of Random</mat-label>
+        <input matInput type="number" formControlName="weight">
+      </mat-form-field>
+    </div>
     <ng-container formGroupName="labels">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
