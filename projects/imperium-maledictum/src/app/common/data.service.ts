@@ -15,16 +15,6 @@ import { AuthService, FirestoreService, StorageService } from '@shared';
 //   providedIn: 'root'
 // })
 // export class DataService {
-  // readonly campaignsAll$: Observable<Campaign[]> = this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS).pipe(
-  //   catchError(() => of([])),
-  //   shareReplay(1)
-  // );
-  // readonly campaignsOwn$: Observable<Campaign[]> = this.auth.auth$.pipe(
-  //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('author', '==', user.uid)))
-  // );
-  // readonly campaignsOwnOrIncluded$: Observable<Campaign[]> = this.auth.auth$.pipe(
-  //   switchMap(user => this.firestore.collection<Campaign>(FirestoreCollection.CAMPAIGNS, ref => ref.where('members', '==', user.uid)))
-  // );
   // readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
   //   shareReplay(1)
   // );
