@@ -53,4 +53,22 @@ export interface Campaign {
   authors: UserId[];
   members: UserId[];
   setting: string;
+  events: CampaignEvent[];
+  personas: CampaignPersona[];
+  locations: CampaignLocation[];
+}
+
+export interface CampaignEvent extends HasId<string>, HasName {
+  icon: string | null;
+  description: string;
+}
+
+export interface CampaignPersona extends HasId<string> {
+  icon: string | null;
+  description: string;
+}
+
+export interface CampaignLocation extends HasId<string> {
+  icon: string | null;
+  description: string;
 }

@@ -2,13 +2,44 @@
   <h1>Campaign View</h1>
 </mat-toolbar>
 <ng-container *ngIf="campaign$ | async as campaign;">
-  <p class="ff-g fs-16">
-    {{campaign.name}}
-  </p>
+  <p class="ff-g fs-16">{{campaign.name}}</p>
 <!--  <form [formGroup]="form" class="d-f fd-c">-->
 <!--    <mat-form-field appearance="outline" class="w-100">-->
 <!--      <mat-label>Notes</mat-label>-->
 <!--      <textarea matInput formControlName="notes"></textarea>-->
 <!--    </mat-form-field>-->
 <!--  </form>-->
+  <mat-tab-group>
+    <mat-tab label="Events">
+      <button mat-flat-button (click)="onEventAddClick()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-accordion class="o-a">
+        <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEventEditClick(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onEventDeleteClick(i.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <p *ngIf="!i.description" matLine class="c-red">NO DESCRIPTION AVAILABLE</p>
+            <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Personas">
+      Content 2
+    </mat-tab>
+    <mat-tab label="Locations">
+      Content 3
+    </mat-tab>
+  </mat-tab-group>
 </ng-container>
