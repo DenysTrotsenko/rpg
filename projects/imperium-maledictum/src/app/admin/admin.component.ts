@@ -32,20 +32,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   private readonly destroy$: Subject<void> = new Subject<void>();
 
-  constructor(
-    private readonly setting: SettingService,
-    // private readonly aff: AngularFireFunctions
-  ) {
-    // aff.httpsCallable('getSettings')(null)
-    //   .pipe(
-    //     catchError(err => {
-    //       console.log(err);
-    //       return of(null);
-    //     })
-    //   )
-    //   .subscribe(res => console.log(res));
-    // console.log(getId16());
-  }
+  constructor(private readonly setting: SettingService) {}
 
   ngOnInit(): void {
     this.setting.selected$

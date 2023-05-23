@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+// import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 import { AuthGuard } from './auth.guard';
 import { AuthResolver } from './auth.resolver';
 import { AppService } from './app.service';
@@ -26,10 +26,10 @@ import { SettingService } from './setting.service';
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireFunctionsModule,
+    // AngularFireAuthModule,
+    // AngularFirestoreModule,
+    // AngularFireStorageModule,
+    // AngularFireFunctionsModule,
     DialogModule,
     SnackbarModule
   ],
