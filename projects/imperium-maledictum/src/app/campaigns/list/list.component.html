@@ -2,9 +2,9 @@
   <mat-list-item>
     <a matLine routerLink="../create">Create Campaign</a>
   </mat-list-item>
-  <mat-list-item *ngFor="let i of campaigns$ | async">
+  <mat-list-item *ngFor="let i of campaigns$ | async; trackBy: trackById;">
     <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
-    <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+    <button *ngIf="canDelete(i.authors) | async" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-list-item>

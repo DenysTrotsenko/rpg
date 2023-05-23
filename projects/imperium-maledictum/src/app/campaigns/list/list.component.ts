@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService, Campaign, CampaignService, DialogService, FirestoreService } from '@shared';
 
 
@@ -10,7 +10,8 @@ import { AuthService, Campaign, CampaignService, DialogService, FirestoreService
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly campaigns$: Observable<Campaign[]> = this.campaign.all$;
+  readonly campaigns$: Observable<Campaign[]> = this.campaign.member$;
+  readonly uid$: Observable<string> = this.auth.uid$;
 
   constructor(
     private readonly auth: AuthService,
@@ -18,6 +19,10 @@ export class ListComponent {
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService
   ) {}
+
+  canDelete(authors: string[]): Observable<boolean> {
+    return this.uid$.pipe(map(uid => authors?.includes(uid)));
+  }
 
   onDeleteClick(i: Campaign): void {
     this.dialog
@@ -37,4 +42,6 @@ export class ListComponent {
       )
       .subscribe();
   }
+
+  trackById(_, i): string { return i.id; }
 }

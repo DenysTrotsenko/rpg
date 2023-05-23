@@ -19,6 +19,7 @@ export class AuthService {
 
   get auth$(): Observable<firebase.User | null> { return this.authObservable; }
   get logged$(): Observable<boolean> { return this.auth$.pipe(map(res => !!res)); }
+  get uid$(): Observable<string | null> { return this.auth$.pipe(map(res => res?.uid)); }
 
   constructor(private afa: AngularFireAuth, private snackbar: SnackbarService) {
     this.afa.authState
