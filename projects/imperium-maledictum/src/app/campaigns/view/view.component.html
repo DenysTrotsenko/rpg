@@ -3,12 +3,6 @@
 </mat-toolbar>
 <ng-container *ngIf="campaign$ | async as campaign;">
   <p class="ff-g fs-16">{{campaign.name}}</p>
-<!--  <form [formGroup]="form" class="d-f fd-c">-->
-<!--    <mat-form-field appearance="outline" class="w-100">-->
-<!--      <mat-label>Notes</mat-label>-->
-<!--      <textarea matInput formControlName="notes"></textarea>-->
-<!--    </mat-form-field>-->
-<!--  </form>-->
   <mat-tab-group>
     <mat-tab label="Events">
       <button mat-flat-button (click)="onEventAddClick()">
