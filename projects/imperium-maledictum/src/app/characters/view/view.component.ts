@@ -4,34 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { DialogService, FirestoreService, getId16 } from '@shared';
-// import { Character } from '@grim-and-perilous/models/character';
-// import { getBonusFromAttribute } from '@grim-and-perilous/utils';
-// import { DataService, DataTypes } from '@ti/app/game/data.service';
-// import { CustomizeWeaponDialogComponent } from '@ti/app/game/components/customize-weapon-dialog/customize-weapon-dialog.component';
-
-// interface AttributeView {
-//   id: AttributeId;
-//   name: string;
-//   value: number;
-//   bonus: number;
-// }
-//
-// interface SkillView {
-//   id: SkillId;
-//   name: string;
-//   special: boolean;
-//   attribute: AttributeId;
-//   value: number;
-//   tooltip: string;
-// }
-
-// const EXCLUDED_INJURIES = [
-//   INJURY_ID_NARROW_ESCAPE_1,
-//   INJURY_ID_NARROW_ESCAPE_2,
-//   INJURY_ID_NARROW_ESCAPE_3,
-//   INJURY_ID_IT_GETS_WORSE_1,
-//   INJURY_ID_IT_GETS_WORSE_2
-// ];
+import { CharacterService } from '../../common/character.service';
+import { Character } from '@imperium-maledictum-1e/models/character';
 
 @Component({
   templateUrl: './view.component.html',
@@ -39,42 +13,35 @@ import { DialogService, FirestoreService, getId16 } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent implements OnDestroy {
-  // readonly DataTypes = DataTypes;
-  // readonly DEFAULT_WEAPONS = this.data[DataTypes.WEAPONS].filter(i => i.id === WEAPON_ID_BARE_HANDED);
   // readonly form: FormGroup = new FormGroup({
-  //   damage: new FormControl(0),
-  //   peril: new FormControl(0),
-  //   conflict: new FormControl(0),
-  //   belief_ranks: new FormControl(0),
-  //   flaw_ranks: new FormControl(0),
-  //   injuries: new FormControl([]),
-  //   ailments: new FormControl([]),
-  //   drugs: new FormControl([]),
   //   notes: new FormControl(''),
+  //   damage: new FormControl(0),
+  //   wounds: new FormControl([]),
   //   weapons: new FormControl([]),
   // });
-  // readonly character$: Observable<Character> = this.route.paramMap
-  //   .pipe(
-  //     map(res => res.get('id')),
-  //     switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
-  //     distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
-  //     shareReplay(1),
-  //     tap(character => {
-  //       this.attributes = this.getAttributes(character);
-  //       this.description = this.getDescription(character);
-  //       this.languages = this.getLanguages(character);
-  //       this.personality = this.getPersonality(character);
-  //       this.quirks = this.getQuirks(character);
-  //       this.skills = this.getSkills(character);
-  //       this.spells = this.getSpells(character);
-  //       this.talents = this.getTalents(character);
-  //       this.traits = this.getTraits(character);
-  //       const temporary = localStorage.getItem(character.id);
-  //       if (temporary) {
-  //         this.form.patchValue(JSON.parse(temporary), { onlySelf: false, emitEvent: true });
-  //       }
-  //     })
-  //   );
+
+  readonly character$: Observable<Character> = this.route.paramMap
+    .pipe(
+      map(res => res.get('id')),
+      switchMap(id => this.firestore.doc(`characters/${id}`) as Observable<Character>),
+      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
+      shareReplay(1),
+      tap(character => {
+        // this.attributes = this.getAttributes(character);
+        // this.description = this.getDescription(character);
+        // this.languages = this.getLanguages(character);
+        // this.personality = this.getPersonality(character);
+        // this.quirks = this.getQuirks(character);
+        // this.skills = this.getSkills(character);
+        // this.spells = this.getSpells(character);
+        // this.talents = this.getTalents(character);
+        // this.traits = this.getTraits(character);
+        // const temporary = localStorage.getItem(character.id);
+        // if (temporary) {
+        //   this.form.patchValue(JSON.parse(temporary), { onlySelf: false, emitEvent: true });
+        // }
+      })
+    );
 
   // attributes: AttributeView[];
   // description: string;
@@ -99,9 +66,10 @@ export class ViewComponent implements OnDestroy {
 
   constructor(
     // private readonly dialog: DialogService,
-    // private readonly route: ActivatedRoute,
-    // private readonly router: Router,
-    // private readonly firestore: FirestoreService,
+    private readonly character: CharacterService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly firestore: FirestoreService,
     // private readonly data: DataService,
     // private readonly cd: ChangeDetectorRef
   ) {

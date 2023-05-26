@@ -2,6 +2,7 @@ export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
 
 export type CampaignId = Opaque<string, 'CampaignId'>;
+export type CharacterId = Opaque<string, 'CharacterId'>;
 export type SettingId = Opaque<string, 'SettingId'>;
 export type UserId = Opaque<string, 'UserId'>;
 

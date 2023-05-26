@@ -31,7 +31,10 @@ export class ViewComponent {
     private readonly route: ActivatedRoute,
   ) {}
 
-  onEventAddClick(): void {}
+  onEventAddClick(): void {
+  }
+
   onEventEditClick(event: CampaignEvent): void {}
+
   onEventDeleteClick(id: string): void {}
 }

@@ -15,29 +15,11 @@ import { AuthService, FirestoreService, StorageService } from '@shared';
 //   providedIn: 'root'
 // })
 // export class DataService {
-  // readonly charactersAll$: Observable<Character[]> = this.firestore.collection<Character>(FirestoreCollection.CHARACTERS).pipe(
-  //   shareReplay(1)
-  // );
-  //
-  // readonly charactersOwn$: Observable<Character[]> = this.auth.auth$.pipe(
-  //   switchMap(user => this.firestore.collection<Character>(
-  //     FirestoreCollection.CHARACTERS, ref => ref.where('author', '==', user.uid)
-  //   )),
-  //   shareReplay(1)
-  // );
-  //
-  // readonly charactersOwnOrMaster$: Observable<Character[]> = this.auth.auth$.pipe(
-  //   switchMap(user => this.firestore.collection<Character>(
-  //     FirestoreCollection.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
-  //   )),
-  //   shareReplay(1)
-  // );
-  //
-  // constructor(
-  //   private readonly auth: AuthService,
-  //   private readonly storage: StorageService,
-  //   private readonly firestore: FirestoreService
-  // ) {}
+//   constructor(
+//     private readonly auth: AuthService,
+//     private readonly storage: StorageService,
+//     private readonly firestore: FirestoreService
+//   ) {}
 
   // onInit(): Promise<any> {
     // const dataSrc = combineLatest([

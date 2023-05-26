@@ -11,23 +11,20 @@
 //   TalentId, TierId,
 //   TraitId, Weapon
 // } from './common';
-// import {
-//   ATTRIBUTE_ID_AGILITY,
-//   ATTRIBUTE_ID_BRAWN, ATTRIBUTE_ID_COMBAT, ATTRIBUTE_ID_PERCEPTION,
-//   ATTRIBUTE_ID_WILLPOWER
-// } from '@grim-and-perilous/const';
 // import { getBonusFromAttribute } from '@grim-and-perilous/utils';
-import { CampaignId, UserId } from '@shared';
+import { CampaignId, CharacterId, UserId } from '@shared';
 import { PatronId } from './common';
 // import { System } from '@grim-and-perilous/models/system';
 //
+
+
 export class Character {
-  id: string;
-  author: UserId;
+  id: CharacterId;
+  authors: UserId[];
   members: UserId[];
-  campaign: CampaignId | string;
-  patron: PatronId | string;
+  campaign: CampaignId;
   name: string;
+  patron: PatronId;
 //   // tslint:disable-next-line:variable-name
 //   full_name: string;
 //   allegiances: string;

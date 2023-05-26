@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PortraitComponent } from './components/portrait/portrait.component';
 import { SharedModule } from '@shared';
+import { FileInputComponent } from './components/file-input/file-input.component';
 
 const DECLARATION = [
   PortraitComponent
@@ -8,7 +9,8 @@ const DECLARATION = [
 
 @NgModule({
   declarations: [
-    ...DECLARATION
+    ...DECLARATION,
+    FileInputComponent
   ],
   imports: [
     SharedModule

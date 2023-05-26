@@ -49,7 +49,7 @@ export class CreateComponent {
           const members = !!campaign?.members?.length
               ? campaign.members
               : [...new Set([this.route.snapshot.data?.user?.uid, ...authors])];
-          const id = campaign?.id || getId16();
+          const id = campaign.id || getId16();
 
           return this.firestore.update(`campaigns/${id}`, {
             ...form, authors, members, id
