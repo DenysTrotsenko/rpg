@@ -5,6 +5,7 @@ import { CampaignsComponent } from './campaigns.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 import { CreateComponent } from './create/create.component';
+import { CommonModule } from '../common/common.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { CreateComponent } from './create/create.component';
   ],
   imports: [
     SharedModule,
+    CommonModule,
     CampaignsRoutingModule
   ]
 })
