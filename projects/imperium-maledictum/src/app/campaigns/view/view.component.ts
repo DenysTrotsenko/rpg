@@ -16,6 +16,16 @@ export class ViewComponent {
       switchMap(id => this.campaign.get(id))
     );
 
+  // readonly itemGroups = [
+  //   { icon: 'swords', label: 'Melee Weapons' },
+  //   { icon: 'explosion', label: 'Grenades & Explosives' },
+  //   { icon: 'shield', label: 'Armour' },
+  //   { icon: 'handyman', label: 'Tools' },
+  //   { icon: 'night_shelter', label: 'Accommodations & Lodgings' },
+  //   { icon: 'lunch_dining', label: 'Provisions & Meals' },
+  //   { icon: 'syringe', label: 'Drugs' },
+  // ];
+
   constructor(
     private readonly campaign: CampaignService,
     private readonly route: ActivatedRoute,

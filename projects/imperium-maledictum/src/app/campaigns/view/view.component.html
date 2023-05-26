@@ -5,9 +5,10 @@
   <p class="ff-g fs-16">{{campaign.name}}</p>
   <mat-tab-group>
     <mat-tab label="Events">
-      <button mat-flat-button (click)="onEventAddClick()">
-        <mat-icon>add</mat-icon>
-      </button>
+<!--      <button mat-flat-button (click)="onEventAddClick()">-->
+<!--        <mat-icon>add</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-icon class="material-icons-outlined" *ngFor="let i of itemGroups;" [matTooltip]="i.label">{{i.icon}}</mat-icon>-->
       <mat-accordion class="o-a">
         <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
           <mat-expansion-panel-header>

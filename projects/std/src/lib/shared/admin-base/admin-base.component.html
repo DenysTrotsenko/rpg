@@ -3,10 +3,16 @@
 </ng-container>
 <ng-container *ngIf="!(loading$ | async)">
   <mat-toolbar class="f-0-0-a">
-    <button mat-flat-button color="primary" (click)="onAddClick()">Add</button>
+    <button mat-flat-button color="primary" (click)="onAddClick()">
+      Add
+    </button>
     <span class="f-1"></span>
-    <button mat-flat-button color="primary" class="mr-10" (click)="onEditorClick()">JSON Editor</button>
-    <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">Save</button>
+    <button mat-flat-button color="primary" class="mr-10" (click)="onEditorClick()">
+      <mat-icon>data_object</mat-icon> JSON Editor
+    </button>
+    <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">
+      Save
+    </button>
   </mat-toolbar>
   <mat-accordion class="o-a">
     <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
