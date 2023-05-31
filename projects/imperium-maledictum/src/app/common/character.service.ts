@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, share } from 'rxjs';
-import { catchError, distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { Character } from '@imperium-maledictum-1e/models/character';
-import { AuthService, Campaign, CampaignId, CharacterId, FirestoreService, FS_COLLECTION } from '@shared';
+import { AuthService, CharacterId, FirestoreService, FS_COLLECTION } from '@shared';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +62,17 @@ export class CharacterService {
     );
   }
 
-  create(): void {}
-  update(): void {}
-  delete(): void {}
+  create(character: Character): Observable<void> {
+    return this.firestore.update(`characters/${character.id}`, character);
+  }
+
+  update(id, data): Observable<void> {
+    return this.firestore.update(`characters/${id}`, data);
+  }
+
+  delete(id: CharacterId): Observable<void> {
+    return this.firestore.delete(`characters/${id}`).pipe(
+      tap(() => localStorage.removeItem(id))
+    );
+  }
 }

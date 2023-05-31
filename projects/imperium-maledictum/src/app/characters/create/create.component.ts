@@ -21,37 +21,27 @@ import { Character } from '@imperium-maledictum-1e/models/character';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent extends UnsubscribeDirective implements OnInit {
+  readonly form1: UntypedFormGroup = new UntypedFormGroup({
+    campaign: new UntypedFormControl(null, [Validators.required]),
+    name: new UntypedFormControl('', [Validators.required]),
+  });
+  readonly form2: UntypedFormGroup = new UntypedFormGroup({
+    // attributes: new FormGroup({
+    //   [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+    // }),
+  });
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     campaign: new UntypedFormControl(null, [Validators.required]),
     name: new UntypedFormControl('', [Validators.required]),
     // miscellaneous: new UntypedFormGroup({
     //   portrait: new UntypedFormControl(null),
-    //   biography: new UntypedFormControl(''),
-    //   hair_length: new UntypedFormControl(null),
-    //   hair_style: new UntypedFormControl(null),
-    //   hair_color: new UntypedFormControl(null),
-    //   mark: new UntypedFormControl(null),
     // }),
     // attributes: new FormGroup({
     //   [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_BRAWN]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_AGILITY]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_PERCEPTION]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_INTELLIGENCE]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_WILLPOWER]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    //   [ATTRIBUTE_ID_FELLOWSHIP]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required])
     // }),
     // spells: new FormControl([]),
   });
-  // readonly traits$: Observable<Trait[]> = this.archetype$.pipe(
-  //   tap(() => this.form.get('trait').setValue(null)),
-  //   map((id: ArchetypeId) => {
-  //     const archetype: Archetype = this.ARCHETYPES.find(i => i.id === id);
-  //     return this.data[DataTypes.TRAITS].filter(i => archetype.traits.includes(i.id));
-  //   }),
-  //   shareReplay(1)
-  // );
 
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
@@ -80,7 +70,6 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     // private readonly data: DataService,
-    private readonly firestore: FirestoreService,
     private readonly dialog: DialogService
   ) {
     super();
@@ -108,9 +97,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
             : [...new Set([this.route.snapshot.data?.user?.uid, ...authors])];
           const id = character.id || getId16();
 
-          return this.firestore.update(`characters/${form.id}`, {
-            ...form, authors, members, id
-          });
+          return this.character.update(form.id, { ...form, authors, members, id });
         }),
         tap(() => this.router.navigate(['characters/list']))
       )

@@ -1,10 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
-import { AuthService, DialogService, FirestoreService } from '@shared';
+import { filter, switchMap } from 'rxjs/operators';
+import { AuthService, DialogService } from '@shared';
 import { Character } from '@imperium-maledictum-1e/models/character';
 import { CharacterService } from '../../common/character.service';
-// import { DataService } from '../../game/data.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -17,9 +16,7 @@ export class ListComponent {
   constructor(
     private readonly auth: AuthService,
     private readonly character: CharacterService,
-    // private readonly data: DataService,
-    private readonly dialog: DialogService,
-    private readonly firestore: FirestoreService
+    private readonly dialog: DialogService
   ) {}
 
   onDeleteClick(i: Character): void {
@@ -35,8 +32,7 @@ export class ListComponent {
       .afterClosed()
       .pipe(
         filter(res => !!res),
-        switchMap(() => this.firestore.delete(`characters/${i.id}`)),
-        tap(() => localStorage.removeItem(i.id))
+        switchMap(() => this.character.delete(i.id)),
       )
       .subscribe();
   }

@@ -147,12 +147,14 @@ export interface PatronPaymentGrade {
 
 export interface PerilOfTheWarp extends HasId<PerilOfTheWarpId>, HasName, HasWeight {
   corruption: number;
+  order: number;
   labels: {
     description: string;
   };
 }
 
 export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, HasWeight {
+  order: number;
   labels: {
     description: string;
     lingering: string;
