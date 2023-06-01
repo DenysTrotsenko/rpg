@@ -1,8 +1,28 @@
 import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { NavListItemData, Setting, SettingService } from '@shared';
+import { map, tap } from 'rxjs/operators';
+import { NavListItemData, PermissionId, Setting, SettingService, UserService } from '@shared';
+
+const SETTING_OPTIONS: NavListItemData[] = [
+  { link: './characteristics', label: 'Characteristics', permission: PermissionId.ADMIN_SETTING },
+  { link: './skills', label: 'Skills', permission: PermissionId.ADMIN_SETTING },
+  { link: './specialisations', label: 'Specialisations', permission: PermissionId.ADMIN_SETTING },
+  { link: './talents', label: 'Talents', permission: PermissionId.ADMIN_SETTING },
+  { link: './item-qualities', label: 'Item Qualities', permission: PermissionId.ADMIN_SETTING },
+  { link: './item-flaws', label: 'Item Flaws', permission: PermissionId.ADMIN_SETTING },
+  { link: './item-traits', label: 'Item Traits', permission: PermissionId.ADMIN_SETTING },
+  { link: './malignancies', label: 'Malignancies', permission: PermissionId.ADMIN_SETTING },
+  { link: './mutations', label: 'Mutations', permission: PermissionId.ADMIN_SETTING },
+  { link: './perils-of-the-warp', label: 'Perils of the Warp', permission: PermissionId.ADMIN_SETTING },
+  { link: './psychic-phenomenas', label: 'Psychic Phenomenas', permission: PermissionId.ADMIN_SETTING },
+  { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
+  { link: './factions', label: 'Factions', permission: PermissionId.ADMIN_SETTING },
+];
+
+const OTHER_OPTIONS: NavListItemData[] = [
+  { link: './users', label: 'Users', permission: PermissionId.ADMIN_USERS }
+];
 
 @Component({
   templateUrl: './admin.component.html',
@@ -10,21 +30,14 @@ import { NavListItemData, Setting, SettingService } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent implements OnInit, OnDestroy {
-  readonly options: NavListItemData[] = [
-    { link: './characteristics', label: 'Characteristics' },
-    { link: './skills', label: 'Skills' },
-    { link: './specialisations', label: 'Specialisations' },
-    { link: './talents', label: 'Talents' },
-    { link: './item-qualities', label: 'Item Qualities' },
-    { link: './item-flaws', label: 'Item Flaws' },
-    { link: './item-traits', label: 'Item Traits' },
-    { link: './malignancies', label: 'Malignancies' },
-    { link: './mutations', label: 'Mutations' },
-    { link: './perils-of-the-warp', label: 'Perils of the Warp' },
-    { link: './psychic-phenomenas', label: 'Psychic Phenomenas' },
-    { link: './conditions', label: 'Conditions' },
-    { link: './factions', label: 'Factions' },
-  ];
+  readonly settingOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
+    map(user => user?.permissions ?? []),
+    map(permissions => SETTING_OPTIONS.filter(i => permissions.includes(i.permission)))
+  );
+  readonly otherOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
+    map(user => user?.permissions ?? []),
+    map(permissions => OTHER_OPTIONS.filter(i => permissions.includes(i.permission)))
+  );
 
   readonly control: FormControl = new FormControl(null);
 
@@ -32,7 +45,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   private readonly destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly setting: SettingService) {}
+  constructor(
+    private readonly setting: SettingService,
+    private readonly user: UserService
+  ) {}
 
   ngOnInit(): void {
     this.setting.selected$

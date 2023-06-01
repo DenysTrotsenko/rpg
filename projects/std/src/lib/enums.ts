@@ -8,3 +8,9 @@ export enum FS_COLLECTION {
   USERS = 'users',
   SETTINGS = 'settings'
 }
+
+export enum PermissionId {
+  ADMIN = 'admin',
+  ADMIN_SETTING = 'admin::setting',
+  ADMIN_USERS = 'admin::users',
+}

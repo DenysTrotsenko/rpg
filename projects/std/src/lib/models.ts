@@ -1,3 +1,5 @@
+import { PermissionId } from './enums';
+
 export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
 
@@ -5,7 +7,6 @@ export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacterId = Opaque<string, 'CharacterId'>;
 export type SettingId = Opaque<string, 'SettingId'>;
 export type UserId = Opaque<string, 'UserId'>;
-export type PermissionId = Opaque<string, 'PermissionId'>;
 
 export interface AuthWithEmailAndPassword {
   email: string;
@@ -40,6 +41,7 @@ export interface NavListItemData {
   link: string;
   label: string;
   class?: string;
+  permission?: PermissionId;
 }
 
 export interface Setting {

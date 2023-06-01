@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, ReplaySubject, share } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, ReplaySubject, share } from 'rxjs';
 import { catchError, distinctUntilChanged, map, take, tap } from 'rxjs/operators';
 import { AuthService, FirestoreService, FS_COLLECTION, User, UserId } from '@shared';
 
@@ -9,6 +9,20 @@ import { AuthService, FirestoreService, FS_COLLECTION, User, UserId } from '@sha
 export class UserService {
   private readonly allObservable: Observable<User[]> = this.firestore.collection<User>(FS_COLLECTION.USERS).pipe(
     catchError(() => of([])),
+    distinctUntilChanged(),
+    share({
+      connector: () => new ReplaySubject(),
+      resetOnComplete: true,
+      resetOnError: true,
+      resetOnRefCountZero: true
+    })
+  );
+
+  private readonly meObservable: Observable<User> = combineLatest([
+    this.allObservable, this.auth.auth$
+  ]).pipe(
+    map(([all, user]) => all.find(i => i.id === user.uid)),
+    catchError(() => of(null)),
     distinctUntilChanged(),
     share({
       connector: () => new ReplaySubject(),
@@ -31,6 +45,7 @@ export class UserService {
 
   get selected$(): Observable<User | null> { return this.userObservable; }
   get all$(): Observable<User[]> { return this.allObservable; }
+  get me$(): Observable<User> { return this.meObservable; }
 
   constructor(
     private readonly auth: AuthService,
