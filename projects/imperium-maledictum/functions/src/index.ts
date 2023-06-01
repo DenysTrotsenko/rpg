@@ -1,8 +1,14 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-import { FS_COLLECTION } from '../../../std/src/lib/enums';
 
 admin.initializeApp(functions.config().firebase);
+
+enum FS_COLLECTION {
+  CAMPAIGNS = 'campaigns',
+  CHARACTERS = 'characters',
+  USERS = 'users',
+  SETTINGS = 'settings'
+}
 
 export const getSettings = functions.https.onCall((data, context) => {
   return new Promise((resolve) => {
