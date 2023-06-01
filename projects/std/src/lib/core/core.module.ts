@@ -1,12 +1,8 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-// import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 import { AuthGuard } from './auth.guard';
 import { AuthResolver } from './auth.resolver';
 import { AppService } from './app.service';
@@ -20,16 +16,14 @@ import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
 import { SettingService } from './setting.service';
 
+export const NAVIGATOR = new InjectionToken<Navigator>('Navigator');
+
 @NgModule({
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    // AngularFireAuthModule,
-    // AngularFirestoreModule,
-    // AngularFireStorageModule,
-    // AngularFireFunctionsModule,
     DialogModule,
     SnackbarModule
   ],
@@ -43,7 +37,8 @@ import { SettingService } from './setting.service';
     FirestoreService,
     FunctionsService,
     StorageService,
-    SettingService
+    SettingService,
+    { provide: NAVIGATOR, useValue: navigator }
   ]
 })
 export class CoreModule {}

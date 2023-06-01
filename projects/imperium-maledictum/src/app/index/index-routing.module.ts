@@ -26,7 +26,11 @@ const routes: Routes = [
         path: 'characters',
         loadChildren: () => import('../characters/characters.module').then(m => m.CharactersModule),
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../../../../std/src/lib/profile/profile.module').then(m => m.ProfileModule)
+      },
     ]
   }
 ];
