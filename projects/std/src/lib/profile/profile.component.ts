@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { AuthService, SnackbarService } from '@shared';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { filter, take, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { NAVIGATOR } from '../core/core.module';
 
 @Component({
@@ -26,12 +26,11 @@ export class ProfileComponent implements OnInit {
     this.auth.auth$
       .pipe(
         take(1),
-        filter(user => !!user),
         tap(user => this.form.patchValue({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName
-        })),
+          uid: user?.uid,
+          email: user?.email,
+          displayName: user?.displayName
+        }))
       )
       .subscribe();
   }
