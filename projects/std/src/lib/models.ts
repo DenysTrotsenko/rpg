@@ -5,6 +5,7 @@ export type CampaignId = Opaque<string, 'CampaignId'>;
 export type CharacterId = Opaque<string, 'CharacterId'>;
 export type SettingId = Opaque<string, 'SettingId'>;
 export type UserId = Opaque<string, 'UserId'>;
+export type PermissionId = Opaque<string, 'PermissionId'>;
 
 export interface AuthWithEmailAndPassword {
   email: string;
@@ -72,4 +73,8 @@ export interface CampaignPersona extends HasId<string> {
 export interface CampaignLocation extends HasId<string> {
   icon: string | null;
   description: string;
+}
+
+export interface User extends HasId<UserId> {
+  permissions: PermissionId[];
 }

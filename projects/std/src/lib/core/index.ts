@@ -10,3 +10,4 @@ export { FunctionsService } from './functions.service';
 export { StorageService } from './storage.service';
 export { CampaignService } from './campaign.service';
 export { SettingService } from './setting.service';
+export { UserService } from './user.service';

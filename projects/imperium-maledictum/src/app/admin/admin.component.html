@@ -13,6 +13,10 @@
       <a *ngFor="let i of options;" mat-list-item [routerLink]="i.link" routerLinkActive="active">
         <span>{{i.label}}</span>
       </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="'./users'" routerLinkActive="active">
+        <span>Users</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,0 +1,16 @@
+<mat-toolbar class="f-0-0-a"></mat-toolbar>
+<mat-accordion class="o-a">
+  <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">
+        {{i.id}}
+        <!-- <span class="ml-10 c-gray">({{i.id}})</span> -->
+        <span class="f-1"></span>
+        <button mat-icon-button (click)="onEditClick(i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div></div>
+  </mat-expansion-panel>
+</mat-accordion>

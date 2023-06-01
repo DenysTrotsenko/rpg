@@ -15,6 +15,7 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { TalentsComponent } from './talents/talents.component';
+import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,10 @@ const routes: Routes = [
         path: 'talents',
         component: AdminBaseComponent,
         data: { path: 'talents.json', component: TalentsComponent }
+      },
+      {
+        path: 'users',
+        component: AdminUsersComponent
       },
       {
         path: '**',

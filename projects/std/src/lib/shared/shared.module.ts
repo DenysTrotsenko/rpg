@@ -10,6 +10,7 @@ import { FindPipe } from './pipes/find.pipe';
 import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
 import { SelectionListComponent } from './components/selection-list/selection-list.component';
 import { AdminBaseModule } from './admin-base/admin-base.module';
+import { AdminUsersModule } from './admin-users/admin-users.module';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -26,7 +27,8 @@ const IMPORTS = [
   FormsModule,
   MaterialModule,
   ReactiveFormsModule,
-  AdminBaseModule
+  AdminBaseModule,
+  AdminUsersModule
 ];
 
 @NgModule({
