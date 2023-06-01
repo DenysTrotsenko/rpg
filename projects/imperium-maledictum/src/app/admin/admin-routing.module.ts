@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ConditionsComponent } from './conditions/conditions.component';
+import { FactionsComponent } from './factions/factions.component';
 import { ItemFlawsComponent } from './item-flaws/item-flaws.component';
 import { ItemQualitiesComponent } from './item-qualities/item-qualities.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
-import { TalentsComponent } from './talents/talents.component';
-import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
-import { SpecialisationsComponent } from './specialisations/specialisations.component';
-import { SkillsComponent } from './skills/skills.component';
-import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenomenas.component';
-import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
-import { MutationsComponent } from './mutations/mutations.component';
-import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { MalignanciesComponent } from './malignancies/malignancies.component';
+import { MutationsComponent } from './mutations/mutations.component';
+import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-warp.component';
+import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenomenas.component';
+import { SkillsComponent } from './skills/skills.component';
+import { SpecialisationsComponent } from './specialisations/specialisations.component';
+import { TalentsComponent } from './talents/talents.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
         path: 'conditions',
         component: AdminBaseComponent,
         data: { path: 'conditions.json', component: ConditionsComponent }
+      },
+      {
+        path: 'factions',
+        component: AdminBaseComponent,
+        data: { path: 'factions.json', component: FactionsComponent }
       },
       {
         path: 'item-qualities',

@@ -28,6 +28,7 @@ export interface Characteristic {
     abbreviation: string;
     description: string;
   };
+  system?: System;
 }
 
 export interface Condition {

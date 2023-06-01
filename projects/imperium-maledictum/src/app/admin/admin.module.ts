@@ -14,6 +14,7 @@ import { PerilsOfTheWarpComponent } from './perils-of-the-warp/perils-of-the-war
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { FactionsComponent } from './factions/factions.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
     PerilsOfTheWarpComponent,
     SkillsComponent,
     SpecialisationsComponent,
-    CharacteristicsComponent
+    CharacteristicsComponent,
+    FactionsComponent
   ],
   imports: [
     SharedModule,

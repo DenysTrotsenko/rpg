@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
-import { getId16, NavListItemData, Setting, SettingService } from '@shared';
-// import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { catchError, Observable, of, Subject, takeUntil } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { NavListItemData, Setting, SettingService } from '@shared';
 
 @Component({
   templateUrl: './admin.component.html',
@@ -24,6 +23,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     { link: './perils-of-the-warp', label: 'Perils of the Warp' },
     { link: './psychic-phenomenas', label: 'Psychic Phenomenas' },
     { link: './conditions', label: 'Conditions' },
+    { link: './factions', label: 'Factions' },
   ];
 
   readonly control: FormControl = new FormControl(null);

@@ -1,4 +1,5 @@
 export class System {
+  MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES: number;
   VALUE_REQUIRED: boolean;
   VALUE_TYPE: 'string' | 'number' | 'boolean';
   VALUE_PLACEHOLDER: string;

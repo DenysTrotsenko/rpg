@@ -1,22 +1,5 @@
-// import {
-//   AfflictionId, AgeId,
-//   ArchetypeId,
-//   AttributeId,
-//   BeliefId, BuildId, CampaignId,
-//   CultureId, EyesId,
-//   FlawId, HairColorId, HairLengthId, HairStyleId, LanguageId, MarkId,
-//   PermanentInjuryId, ProfessionId, Quality,
-//   QuirkId, SexId,
-//   SkillId, SpellId, StatureId, StyleId, Talent,
-//   TalentId, TierId,
-//   TraitId, Weapon
-// } from './common';
-// import { getBonusFromAttribute } from '@grim-and-perilous/utils';
 import { CampaignId, CharacterId, UserId } from '@shared';
-import { PatronId } from './common';
-// import { System } from '@grim-and-perilous/models/system';
-//
-
+import { Characteristic, CharacteristicId, PatronId } from './common';
 
 export class Character {
   id: CharacterId;
@@ -25,92 +8,18 @@ export class Character {
   campaign: CampaignId;
   name: string;
   patron: PatronId;
-//   // tslint:disable-next-line:variable-name
-//   full_name: string;
-//   allegiances: string;
-//   belief: BeliefId;
-//   flaw: FlawId;
-//   culture: CultureId;
-//   archetype: ArchetypeId;
-//   attributes: {
-//     [k in AttributeId]: number;
-//   };
-//   advancements: {
-//     advanced: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     intermediate: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     basic: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//   };
-//   determination: number;
-//   languages: LanguageId[];
-//   spells: SpellId[];
-//   // tslint:disable-next-line:variable-name
-//   alchemical_arts: SpellId[];
-//   miscellaneous: {
-//     portrait: string;
-//     biography: string;
-//     age: AgeId;
-//     build: BuildId;
-//     eyes: EyesId;
-//     sex: SexId;
-//     hair_color: HairColorId;
-//     hair_length: HairLengthId;
-//     hair_style: HairStyleId;
-//     mark: MarkId;
-//     stature: StatureId;
-//     style: StyleId;
-//   };
-//   // tslint:disable-next-line:variable-name
-//   permanent_injuries: PermanentInjuryId[];
-//   afflictions: AfflictionId[];
-//   professions: {
-//     basic: ProfessionId;
-//     intermediate: ProfessionId;
-//     advanced: ProfessionId;
-//   };
-//   schemas: {
-//     advanced: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     intermediate: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//     basic: {
-//       bonuses: AttributeId[];
-//       quirks: QuirkId[];
-//       skills: SkillId[];
-//       talents: TalentId[];
-//       traits: TraitId[];
-//     };
-//   };
-//   tier: TierId;
-//   trait: TraitId;
-//
+  characteristics: { id: CharacteristicId; value: number; }[];
+
+  static getMaxWounds(character: Character, characteristics: Characteristic[]): number {
+    return characteristics
+      .filter(i => i.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES)
+      .reduce((acc, cur) => {
+        const value = character.characteristics.find(i => i.id === cur.id)?.value ?? 0;
+        const bonus = Math.floor(value / 10);
+        const wounds = Math.round(bonus * cur.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES);
+        return acc + wounds;
+      }, 0);
+  }
 //   static getRolledInitiative(): number {
 //     return getIntegerInRange(1, 10);
 //   }
