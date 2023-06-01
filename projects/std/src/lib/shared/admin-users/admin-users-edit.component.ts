@@ -19,7 +19,7 @@ export class AdminUsersEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.form.patchValue({
-      permissions: this.data.permissions
+      permissions: this.data?.permissions ?? []
     });
   }
 }

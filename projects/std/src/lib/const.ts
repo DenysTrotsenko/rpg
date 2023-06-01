@@ -5,6 +5,6 @@ export const FIREBASE_ERROR_MESSAGES = new Map()
 
 export const PERMISSIONS: PermissionId[] = [
   'admin' as PermissionId,
-  'admin:setting' as PermissionId,
-  'admin:users' as PermissionId,
+  'admin::setting' as PermissionId,
+  'admin::users' as PermissionId,
 ];
