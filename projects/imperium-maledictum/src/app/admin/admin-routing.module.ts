@@ -15,13 +15,27 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { TalentsComponent } from './talents/talents.component';
+import { BeastiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
+import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
 import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
+import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
+import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
+      {
+        path: 'bestiary-roles',
+        component: AdminBaseComponent,
+        data: { path: 'bestiary-roles.json', component: BeastiaryRolesComponent }
+      },
+      {
+        path: 'bestiary-traits',
+        component: AdminBaseComponent,
+        data: { path: 'bestiary-traits.json', component: BeastiaryTraitsComponent }
+      },
       {
         path: 'characteristics',
         component: AdminBaseComponent,
@@ -71,6 +85,16 @@ const routes: Routes = [
         path: 'psychic-phenomenas',
         component: AdminBaseComponent,
         data: { path: 'psychic-phenomenas.json', component: PsychicPhenomenasComponent }
+      },
+      {
+        path: 'psychic-disciplines',
+        component: AdminBaseComponent,
+        data: { path: 'psychic-disciplines.json', component: PsychicDisciplinesComponent }
+      },
+      {
+        path: 'psychic-powers',
+        component: AdminBaseComponent,
+        data: { path: 'psychic-powers.json', component: PsychicPowersComponent }
       },
       {
         path: 'skills',

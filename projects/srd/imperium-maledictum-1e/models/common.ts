@@ -1,6 +1,8 @@
 import { HasCommonFields, HasId, HasName, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
+export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
+export type BestiaryTraitId = Opaque<string, 'BestiaryTraitId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
@@ -17,9 +19,31 @@ export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
 export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
 export type PerilOfTheWarpId = Opaque<string, 'PerilOfTheWarpId'>;
 export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
+export type PsychicPowerId = Opaque<string, 'PsychicPowerId'>;
+export type PsychicDisciplineId = Opaque<string, 'PsychicDisciplineId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
+
+export interface BestiaryRole {
+  id: BestiaryRoleId;
+  name: string;
+  labels: {
+    description: string;
+  };
+  characteristic_maximum: number;
+  characteristics_total: number;
+  skill_spec_advances: number;
+  critical_wounds_max: number;
+}
+
+export interface BestiaryTrait {
+  id: BestiaryRoleId;
+  name: string;
+  labels: {
+    description: string;
+  };
+}
 
 export interface Characteristic {
   id: CharacteristicId;
@@ -162,9 +186,19 @@ export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, Ha
   };
 }
 
-export interface Skill {
-  id: SkillId;
-  name: string;
+export interface PsychicDiscipline extends HasId<PsychicDisciplineId>, HasName {
+  labels: {
+    description: string;
+  };
+}
+
+export interface PsychicPower extends HasId<PsychicPowerId>, HasName {
+  labels: {
+    description: string;
+  };
+}
+
+export interface Skill extends HasId<SkillId>, HasName {
   characteristic: CharacteristicId;
   specialisations: SpecialisationId[];
   labels: {

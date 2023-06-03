@@ -15,6 +15,10 @@ import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { FactionsComponent } from './factions/factions.component';
+import { BeastiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
+import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
+import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
+import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 
 
 @NgModule({
@@ -32,7 +36,11 @@ import { FactionsComponent } from './factions/factions.component';
     SkillsComponent,
     SpecialisationsComponent,
     CharacteristicsComponent,
-    FactionsComponent
+    FactionsComponent,
+    BeastiaryRolesComponent,
+    BeastiaryTraitsComponent,
+    PsychicPowersComponent,
+    PsychicDisciplinesComponent
   ],
   imports: [
     SharedModule,
