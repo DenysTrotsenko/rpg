@@ -66,10 +66,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
   }
 
   edit(item: T): void {
-    this.dialog.open(this.component, {
-      data: item,
-      width: '800px'
-    }).afterClosed()
+    this.dialog.open(this.component, { data: item, width: '800px' }).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => this.items$.next([
@@ -84,7 +81,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
   editor(): void {
     this.dialog.open(AdminBaseEditorDialogComponent, {
       data: this.items$.value,
-      width: '800px'
+      width: '1200px'
     }).afterClosed()
       .pipe(
         filter(res => !!res),

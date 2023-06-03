@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>JSON Editor</h1>
-<div mat-dialog-content class="d-f fd-c">
+<div mat-dialog-content class="d-f fd-c max-height-override">
   <std-code-editor
     [json]="data"
     (errorChange)="error$.next($event)"
