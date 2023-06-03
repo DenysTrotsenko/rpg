@@ -23,7 +23,7 @@ import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disci
 import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
 import { RangesComponent } from './ranges/ranges.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AdminComponent,

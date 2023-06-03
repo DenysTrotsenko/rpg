@@ -63,6 +63,10 @@ export function getWeightedRandomItem<T extends HasWeight>(arr: T[]): T {
   return arr[index] ?? null;
 }
 
+export function hasDuplicates(array): boolean {
+  return (new Set(array)).size !== array.length;
+}
+
 export function setFormControlsEditable(
   form: UntypedFormGroup, controls: string[] = [], isEditable: boolean = true
 ): void {

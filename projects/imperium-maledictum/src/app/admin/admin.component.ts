@@ -2,7 +2,8 @@ import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/
 import { FormControl } from '@angular/forms';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { NavListItemData, PermissionId, Setting, SettingService, UserService } from '@shared';
+import { hasDuplicates, NavListItemData, PermissionId, Setting, SettingService, UserService } from '@shared';
+import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
   { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },
@@ -36,6 +37,7 @@ const OTHER_OPTIONS: NavListItemData[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent implements OnInit, OnDestroy {
+  readonly valid: boolean = !hasDuplicates(routes[0].children.map(i => i.data?.path).filter(i => !!i));
   readonly settingOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
     map(permissions => SETTING_OPTIONS.filter(i => permissions.includes(i.permission)))
