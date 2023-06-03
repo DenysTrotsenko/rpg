@@ -22,6 +22,8 @@ import { PsychicPowersComponent } from './psychic-powers/psychic-powers.componen
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
 import { RangesComponent } from './ranges/ranges.component';
+import { SpeedComponent } from './speed/speed.component';
+import { SizesComponent } from './sizes/sizes.component';
 
 export const routes: Routes = [
   {
@@ -109,9 +111,19 @@ export const routes: Routes = [
         data: { path: 'ranges.json', component: RangesComponent }
       },
       {
+        path: 'sizes',
+        component: AdminBaseComponent,
+        data: { path: 'sizes.json', component: SizesComponent }
+      },
+      {
         path: 'skills',
         component: AdminBaseComponent,
         data: { path: 'skills.json', component: SkillsComponent }
+      },
+      {
+        path: 'speed',
+        component: AdminBaseComponent,
+        data: { path: 'speed.json', component: SpeedComponent }
       },
       {
         path: 'specialisations',

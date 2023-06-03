@@ -21,6 +21,8 @@ import { PsychicPowersComponent } from './psychic-powers/psychic-powers.componen
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 import { RangesComponent } from './ranges/ranges.component';
 import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
+import { SizesComponent } from './sizes/sizes.component';
+import { SpeedComponent } from './speed/speed.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabi
     PsychicPowersComponent,
     PsychicDisciplinesComponent,
     RangesComponent,
-    ItemAvailabilitiesComponent
+    ItemAvailabilitiesComponent,
+    SizesComponent,
+    SpeedComponent
   ],
   imports: [
     SharedModule,

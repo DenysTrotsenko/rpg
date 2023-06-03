@@ -24,7 +24,9 @@ export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type PsychicPowerId = Opaque<string, 'PsychicPowerId'>;
 export type RangeId = Opaque<string, 'RangeId'>;
 export type PsychicDisciplineId = Opaque<string, 'PsychicDisciplineId'>;
+export type SizeId = Opaque<string, 'SizeId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
+export type SpeedId = Opaque<string, 'SpeedId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
 
@@ -226,6 +228,18 @@ export interface PsychicPower extends HasId<PsychicPowerId>, HasName {
 }
 
 export interface Range extends HasId<RangeId>, HasName {
+  labels: {
+    description: string;
+  };
+}
+
+export interface Size extends HasId<SizeId>, HasName {
+  labels: {
+    description: string;
+  };
+}
+
+export interface Speed extends HasId<SpeedId>, HasName {
   labels: {
     description: string;
   };

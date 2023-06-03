@@ -22,7 +22,9 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './psychic-phenomenas', label: 'Psychic Phenomenas', permission: PermissionId.ADMIN_SETTING },
   { link: './psychic-powers', label: 'Psychic Powers', permission: PermissionId.ADMIN_SETTING },
   { link: './ranges', label: 'Ranges', permission: PermissionId.ADMIN_SETTING },
+  { link: './sizes', label: 'Sizes', permission: PermissionId.ADMIN_SETTING },
   { link: './skills', label: 'Skills', permission: PermissionId.ADMIN_SETTING },
+  { link: './speed', label: 'Speed', permission: PermissionId.ADMIN_SETTING },
   { link: './specialisations', label: 'Specialisations', permission: PermissionId.ADMIN_SETTING },
   { link: './talents', label: 'Talents', permission: PermissionId.ADMIN_SETTING },
 ];
