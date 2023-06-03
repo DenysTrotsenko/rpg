@@ -20,12 +20,19 @@ import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.co
 import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
+import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
+import { RangesComponent } from './ranges/ranges.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
+      {
+        path: 'availability',
+        component: AdminBaseComponent,
+        data: { path: 'availabilities.json', component: ItemAvailabilitiesComponent }
+      },
       {
         path: 'bestiary-roles',
         component: AdminBaseComponent,
@@ -95,6 +102,11 @@ const routes: Routes = [
         path: 'psychic-powers',
         component: AdminBaseComponent,
         data: { path: 'psychic-powers.json', component: PsychicPowersComponent }
+      },
+      {
+        path: 'ranges',
+        component: AdminBaseComponent,
+        data: { path: 'ranges.json', component: RangesComponent }
       },
       {
         path: 'skills',

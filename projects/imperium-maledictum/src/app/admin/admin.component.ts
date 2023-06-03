@@ -5,23 +5,25 @@ import { map, tap } from 'rxjs/operators';
 import { NavListItemData, PermissionId, Setting, SettingService, UserService } from '@shared';
 
 const SETTING_OPTIONS: NavListItemData[] = [
+  { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-roles', label: 'Bestiary Roles', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-traits', label: 'Bestiary Traits', permission: PermissionId.ADMIN_SETTING },
   { link: './characteristics', label: 'Characteristics', permission: PermissionId.ADMIN_SETTING },
-  { link: './skills', label: 'Skills', permission: PermissionId.ADMIN_SETTING },
-  { link: './specialisations', label: 'Specialisations', permission: PermissionId.ADMIN_SETTING },
-  { link: './talents', label: 'Talents', permission: PermissionId.ADMIN_SETTING },
-  { link: './item-qualities', label: 'Item Qualities', permission: PermissionId.ADMIN_SETTING },
+  { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
+  { link: './factions', label: 'Factions', permission: PermissionId.ADMIN_SETTING },
   { link: './item-flaws', label: 'Item Flaws', permission: PermissionId.ADMIN_SETTING },
+  { link: './item-qualities', label: 'Item Qualities', permission: PermissionId.ADMIN_SETTING },
   { link: './item-traits', label: 'Item Traits', permission: PermissionId.ADMIN_SETTING },
   { link: './malignancies', label: 'Malignancies', permission: PermissionId.ADMIN_SETTING },
   { link: './mutations', label: 'Mutations', permission: PermissionId.ADMIN_SETTING },
   { link: './perils-of-the-warp', label: 'Perils of the Warp', permission: PermissionId.ADMIN_SETTING },
-  { link: './psychic-phenomenas', label: 'Psychic Phenomenas', permission: PermissionId.ADMIN_SETTING },
   { link: './psychic-disciplines', label: 'Psychic Disciplines', permission: PermissionId.ADMIN_SETTING },
+  { link: './psychic-phenomenas', label: 'Psychic Phenomenas', permission: PermissionId.ADMIN_SETTING },
   { link: './psychic-powers', label: 'Psychic Powers', permission: PermissionId.ADMIN_SETTING },
-  { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
-  { link: './factions', label: 'Factions', permission: PermissionId.ADMIN_SETTING },
+  { link: './ranges', label: 'Ranges', permission: PermissionId.ADMIN_SETTING },
+  { link: './skills', label: 'Skills', permission: PermissionId.ADMIN_SETTING },
+  { link: './specialisations', label: 'Specialisations', permission: PermissionId.ADMIN_SETTING },
+  { link: './talents', label: 'Talents', permission: PermissionId.ADMIN_SETTING },
 ];
 
 const OTHER_OPTIONS: NavListItemData[] = [

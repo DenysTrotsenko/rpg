@@ -19,6 +19,8 @@ import { BeastiaryRolesComponent } from './beastiary-roles/beastiary-roles.compo
 import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
+import { RangesComponent } from './ranges/ranges.component';
+import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disci
     BeastiaryRolesComponent,
     BeastiaryTraitsComponent,
     PsychicPowersComponent,
-    PsychicDisciplinesComponent
+    PsychicDisciplinesComponent,
+    RangesComponent,
+    ItemAvailabilitiesComponent
   ],
   imports: [
     SharedModule,

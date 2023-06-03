@@ -1,11 +1,13 @@
 import { HasCommonFields, HasId, HasName, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
+export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
 export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
 export type BestiaryTraitId = Opaque<string, 'BestiaryTraitId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
+export type ItemId = Opaque<string, 'ItemId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
 export type MalignancyId = Opaque<string, 'MalignancyId'>;
 export type MutationId = Opaque<string, 'MutationId'>;
@@ -20,10 +22,17 @@ export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
 export type PerilOfTheWarpId = Opaque<string, 'PerilOfTheWarpId'>;
 export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type PsychicPowerId = Opaque<string, 'PsychicPowerId'>;
+export type RangeId = Opaque<string, 'RangeId'>;
 export type PsychicDisciplineId = Opaque<string, 'PsychicDisciplineId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
+
+export interface Availability extends HasId<AvailabilityId>, HasName {
+  labels: {
+    description: string;
+  };
+}
 
 export interface BestiaryRole {
   id: BestiaryRoleId;
@@ -64,6 +73,32 @@ export interface Condition {
   system?: Partial<System>;
 }
 
+export interface Faction {
+  id: FactionId | string;
+  name: string;
+  labels: {
+    description: string;
+  };
+}
+
+export interface Item extends HasId<ItemId>, HasName {
+  name: string;
+  data: {
+    craftsmanship: ItemTraitId[];
+    specialisations: SpecialisationId[];
+    damage?: number;
+    range?: string;
+    magazine?: number;
+    availability: string;
+    encumbrance: number;
+    traits: { id: ItemTraitId; value?: number | string | boolean; }[];
+  };
+  labels: {
+    description: string;
+  };
+  system?: Partial<System>;
+}
+
 export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
   id: ItemTraitId;
   name: string;
@@ -71,14 +106,6 @@ export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
     description: string;
   };
   system?: Partial<System>;
-}
-
-export interface Faction {
-  id: FactionId | string;
-  name: string;
-  labels: {
-    description: string;
-  };
 }
 
 export interface Malignancy extends HasId<MalignancyId>, HasName, HasWeight {
@@ -193,6 +220,12 @@ export interface PsychicDiscipline extends HasId<PsychicDisciplineId>, HasName {
 }
 
 export interface PsychicPower extends HasId<PsychicPowerId>, HasName {
+  labels: {
+    description: string;
+  };
+}
+
+export interface Range extends HasId<RangeId>, HasName {
   labels: {
     description: string;
   };
