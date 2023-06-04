@@ -101,7 +101,7 @@ export interface Item extends HasId<ItemId>, HasName {
     traits?: { id: ItemTraitId; value?: number | string | boolean; }[];
   };
   labels: {
-    description: string;
+    description?: string;
   };
   system?: Partial<System>;
 }
