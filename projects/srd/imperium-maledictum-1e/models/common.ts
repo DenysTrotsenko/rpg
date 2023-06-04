@@ -9,6 +9,7 @@ export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemId = Opaque<string, 'ItemId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
+export type ItemTypeId = Opaque<string, 'ItemTypeId'>;
 export type MalignancyId = Opaque<string, 'MalignancyId'>;
 export type MutationId = Opaque<string, 'MutationId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
@@ -85,15 +86,19 @@ export interface Faction {
 
 export interface Item extends HasId<ItemId>, HasName {
   name: string;
+  type: ItemTypeId;
+  availability: string;
+  encumbrance: number;
+  cost: number;
   data: {
-    craftsmanship: ItemTraitId[];
-    specialisations: SpecialisationId[];
+    specialisations?: SpecialisationId[];
     damage?: number;
-    range?: string;
+    range?: RangeId;
     magazine?: number;
-    availability: string;
-    encumbrance: number;
-    traits: { id: ItemTraitId; value?: number | string | boolean; }[];
+    magazineCost?: number;
+    locations: string[];
+    armour?: number;
+    traits?: { id: ItemTraitId; value?: number | string | boolean; }[];
   };
   labels: {
     description: string;
@@ -102,12 +107,17 @@ export interface Item extends HasId<ItemId>, HasName {
 }
 
 export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
-  id: ItemTraitId;
   name: string;
   labels: {
     description: string;
   };
   system?: Partial<System>;
+}
+
+export interface ItemType extends HasId<ItemTypeId>, HasName {
+  labels: {
+    description: string;
+  };
 }
 
 export interface Malignancy extends HasId<MalignancyId>, HasName, HasWeight {

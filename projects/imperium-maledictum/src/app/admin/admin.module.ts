@@ -23,6 +23,8 @@ import { RangesComponent } from './ranges/ranges.component';
 import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
 import { SizesComponent } from './sizes/sizes.component';
 import { SpeedComponent } from './speed/speed.component';
+import { ItemsComponent } from './items/items.component';
+import { ItemTypesComponent } from './item-types/item-types.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { SpeedComponent } from './speed/speed.component';
     RangesComponent,
     ItemAvailabilitiesComponent,
     SizesComponent,
-    SpeedComponent
+    SpeedComponent,
+    ItemsComponent,
+    ItemTypesComponent
   ],
   imports: [
     SharedModule,

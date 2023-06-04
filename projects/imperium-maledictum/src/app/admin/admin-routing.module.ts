@@ -24,6 +24,8 @@ import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabi
 import { RangesComponent } from './ranges/ranges.component';
 import { SpeedComponent } from './speed/speed.component';
 import { SizesComponent } from './sizes/sizes.component';
+import { ItemsComponent } from './items/items.component';
+import { ItemTypesComponent } from './item-types/item-types.component';
 
 export const routes: Routes = [
   {
@@ -61,6 +63,11 @@ export const routes: Routes = [
         data: { path: 'factions.json', component: FactionsComponent }
       },
       {
+        path: 'items',
+        component: AdminBaseComponent,
+        data: { path: 'items.json', component: ItemsComponent }
+      },
+      {
         path: 'item-qualities',
         component: AdminBaseComponent,
         data: { path: 'item-qualities.json', component: ItemQualitiesComponent }
@@ -74,6 +81,11 @@ export const routes: Routes = [
         path: 'item-traits',
         component: AdminBaseComponent,
         data: { path: 'item-traits.json', component: ItemTraitsComponent }
+      },
+      {
+        path: 'item-types',
+        component: AdminBaseComponent,
+        data: { path: 'item-types.json', component: ItemTypesComponent }
       },
       {
         path: 'malignancies',
