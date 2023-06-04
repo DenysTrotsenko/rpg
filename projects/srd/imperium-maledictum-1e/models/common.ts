@@ -96,7 +96,7 @@ export interface Item extends HasId<ItemId>, HasName {
     range?: RangeId;
     magazine?: number;
     magazineCost?: number;
-    locations: string[];
+    locations?: string[];
     armour?: number;
     traits?: { id: ItemTraitId; value?: number | string | boolean; }[];
   };
