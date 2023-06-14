@@ -5,6 +5,7 @@ import { Characteristic, Skill, Specialisation, SpecialisationId } from '@imperi
 import { getId16, Setting, SettingService, StorageService } from '@shared';
 import { Observable, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 @Component({
   templateUrl: './skills.component.html',
@@ -15,7 +16,6 @@ export class SkillsComponent implements OnInit {
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
     characteristic: new UntypedFormControl(null, [Validators.required]),
-    specialisations: new UntypedFormControl([], [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
     }),
@@ -25,13 +25,8 @@ export class SkillsComponent implements OnInit {
   readonly setting$: Observable<Setting | null> = this.setting.selected$;
 
   readonly characteristics$: Observable<Characteristic[]> = this.setting$.pipe(
-    map(setting => `/${setting?.storage}/characteristics.json`),
+    map(setting => `/${setting?.storage}/${FileName.CHARACTERISTICS}`),
     switchMap(path => this.storage.download<Characteristic[]>(path))
-  );
-
-  readonly specialisations$: Observable<Specialisation[]> = this.setting$.pipe(
-    map(setting => `/${setting?.storage}/specialisations.json`),
-    switchMap(path => this.storage.download<Specialisation[]>(path))
   );
 
   constructor(

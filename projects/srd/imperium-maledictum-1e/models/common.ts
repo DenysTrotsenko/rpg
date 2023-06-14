@@ -269,6 +269,7 @@ export interface Specialisation {
   name: string;
   restricted?: boolean;
   multiple?: boolean;
+  skill: SkillId;
   labels: {
     description: string;
   };

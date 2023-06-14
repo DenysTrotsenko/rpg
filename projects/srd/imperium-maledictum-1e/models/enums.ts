@@ -1,1 +1,25 @@
-
+export enum FileName {
+  AVAILABILITIES = 'availabilities.json',
+  BESTIARY_ROLES = 'bestiary-roles.json',
+  BESTIARY_TRAITS = 'bestiary-traits.json',
+  CHARACTERISTICS = 'characteristics.json',
+  CONDITIONS = 'conditions.json',
+  FACTIONS = 'factions.json',
+  ITEMS = 'items.json',
+  ITEM_QUALITIES = 'item-qualities.json',
+  ITEM_FLAWS = 'item-flaws.json',
+  ITEM_TRAITS = 'item-traits.json',
+  ITEM_TYPES = 'item-types.json',
+  MALIGNANCIES = 'malignancies.json',
+  MUTATIONS = 'mutations.json',
+  PERILS_OF_THE_WARP = 'perils-of-the-warp.json',
+  PSYCHIC_PHENOMENAS = 'psychic-phenomenas.json',
+  PSYCHIC_DISCIPLINES = 'psychic-disciplines.json',
+  PSYCHIC_POWERS = 'psychic-powers.json',
+  RANGES = 'ranges.json',
+  SIZES = 'sizes.json',
+  SKILLS = 'skills.json',
+  SPECIALISATIONS = 'specialisations.json',
+  SPEED = 'speed.json',
+  TALENTS = 'talents.json'
+}

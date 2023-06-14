@@ -26,6 +26,7 @@ import { SpeedComponent } from './speed/speed.component';
 import { SizesComponent } from './sizes/sizes.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
+import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 export const routes: Routes = [
   {
@@ -35,117 +36,117 @@ export const routes: Routes = [
       {
         path: 'availability',
         component: AdminBaseComponent,
-        data: { path: 'availabilities.json', component: ItemAvailabilitiesComponent }
+        data: { path: FileName.AVAILABILITIES, component: ItemAvailabilitiesComponent }
       },
       {
         path: 'bestiary-roles',
         component: AdminBaseComponent,
-        data: { path: 'bestiary-roles.json', component: BeastiaryRolesComponent }
+        data: { path: FileName.BESTIARY_ROLES, component: BeastiaryRolesComponent }
       },
       {
         path: 'bestiary-traits',
         component: AdminBaseComponent,
-        data: { path: 'bestiary-traits.json', component: BeastiaryTraitsComponent }
+        data: { path: FileName.BESTIARY_TRAITS, component: BeastiaryTraitsComponent }
       },
       {
         path: 'characteristics',
         component: AdminBaseComponent,
-        data: { path: 'characteristics.json', component: CharacteristicsComponent }
+        data: { path: FileName.CHARACTERISTICS, component: CharacteristicsComponent }
       },
       {
         path: 'conditions',
         component: AdminBaseComponent,
-        data: { path: 'conditions.json', component: ConditionsComponent }
+        data: { path: FileName.CONDITIONS, component: ConditionsComponent }
       },
       {
         path: 'factions',
         component: AdminBaseComponent,
-        data: { path: 'factions.json', component: FactionsComponent }
+        data: { path: FileName.FACTIONS, component: FactionsComponent }
       },
       {
         path: 'items',
         component: AdminBaseComponent,
-        data: { path: 'items.json', component: ItemsComponent }
+        data: { path: FileName.ITEMS, component: ItemsComponent }
       },
       {
         path: 'item-qualities',
         component: AdminBaseComponent,
-        data: { path: 'item-qualities.json', component: ItemQualitiesComponent }
+        data: { path: FileName.ITEM_QUALITIES, component: ItemQualitiesComponent }
       },
       {
         path: 'item-flaws',
         component: AdminBaseComponent,
-        data: { path: 'item-flaws.json', component: ItemFlawsComponent }
+        data: { path: FileName.ITEM_FLAWS, component: ItemFlawsComponent }
       },
       {
         path: 'item-traits',
         component: AdminBaseComponent,
-        data: { path: 'item-traits.json', component: ItemTraitsComponent }
+        data: { path: FileName.ITEM_TRAITS, component: ItemTraitsComponent }
       },
       {
         path: 'item-types',
         component: AdminBaseComponent,
-        data: { path: 'item-types.json', component: ItemTypesComponent }
+        data: { path: FileName.ITEM_TYPES, component: ItemTypesComponent }
       },
       {
         path: 'malignancies',
         component: AdminBaseComponent,
-        data: { path: 'malignancies.json', component: MalignanciesComponent }
+        data: { path: FileName.MALIGNANCIES, component: MalignanciesComponent }
       },
       {
         path: 'mutations',
         component: AdminBaseComponent,
-        data: { path: 'mutations.json', component: MutationsComponent }
+        data: { path: FileName.MUTATIONS, component: MutationsComponent }
       },
       {
         path: 'perils-of-the-warp',
         component: AdminBaseComponent,
-        data: { path: 'perils-of-the-warp.json', component: PerilsOfTheWarpComponent }
+        data: { path: FileName.PERILS_OF_THE_WARP, component: PerilsOfTheWarpComponent }
       },
       {
         path: 'psychic-phenomenas',
         component: AdminBaseComponent,
-        data: { path: 'psychic-phenomenas.json', component: PsychicPhenomenasComponent }
+        data: { path: FileName.PSYCHIC_PHENOMENAS, component: PsychicPhenomenasComponent }
       },
       {
         path: 'psychic-disciplines',
         component: AdminBaseComponent,
-        data: { path: 'psychic-disciplines.json', component: PsychicDisciplinesComponent }
+        data: { path: FileName.PSYCHIC_DISCIPLINES, component: PsychicDisciplinesComponent }
       },
       {
         path: 'psychic-powers',
         component: AdminBaseComponent,
-        data: { path: 'psychic-powers.json', component: PsychicPowersComponent }
+        data: { path: FileName.PSYCHIC_POWERS, component: PsychicPowersComponent }
       },
       {
         path: 'ranges',
         component: AdminBaseComponent,
-        data: { path: 'ranges.json', component: RangesComponent }
+        data: { path: FileName.RANGES, component: RangesComponent }
       },
       {
         path: 'sizes',
         component: AdminBaseComponent,
-        data: { path: 'sizes.json', component: SizesComponent }
+        data: { path: FileName.SIZES, component: SizesComponent }
       },
       {
         path: 'skills',
         component: AdminBaseComponent,
-        data: { path: 'skills.json', component: SkillsComponent }
+        data: { path: FileName.SKILLS, component: SkillsComponent }
       },
       {
         path: 'speed',
         component: AdminBaseComponent,
-        data: { path: 'speed.json', component: SpeedComponent }
+        data: { path: FileName.SPEED, component: SpeedComponent }
       },
       {
         path: 'specialisations',
         component: AdminBaseComponent,
-        data: { path: 'specialisations.json', component: SpecialisationsComponent }
+        data: { path: FileName.SPECIALISATIONS, component: SpecialisationsComponent }
       },
       {
         path: 'talents',
         component: AdminBaseComponent,
-        data: { path: 'talents.json', component: TalentsComponent }
+        data: { path: FileName.TALENTS, component: TalentsComponent }
       },
       {
         path: 'users',
