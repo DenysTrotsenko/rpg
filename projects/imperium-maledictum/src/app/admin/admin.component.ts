@@ -9,6 +9,7 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-roles', label: 'Bestiary Roles', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-traits', label: 'Bestiary Traits', permission: PermissionId.ADMIN_SETTING },
+  { link: './bestiary', label: 'Bestiary', permission: PermissionId.ADMIN_SETTING },
   { link: './characteristics', label: 'Characteristics', permission: PermissionId.ADMIN_SETTING },
   { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
   { link: './factions', label: 'Factions', permission: PermissionId.ADMIN_SETTING },

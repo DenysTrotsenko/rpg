@@ -1,7 +1,7 @@
-<ng-container *ngIf="loading$ | async">
+<ng-container *ngIf="loading$ | async; else loaded;">
   <mat-spinner color="accent" style="margin: 10px auto;"></mat-spinner>
 </ng-container>
-<ng-container *ngIf="!(loading$ | async)">
+<ng-template #loaded>
   <mat-toolbar class="f-0-0-a">
     <button mat-flat-button color="primary" (click)="onAddClick()">
       Add
@@ -36,4 +36,4 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
-</ng-container>
+</ng-template>

@@ -15,8 +15,8 @@ import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { FactionsComponent } from './factions/factions.component';
-import { BeastiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
-import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
+import { BestiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
+import { BestiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 import { RangesComponent } from './ranges/ranges.component';
@@ -25,6 +25,8 @@ import { SizesComponent } from './sizes/sizes.component';
 import { SpeedComponent } from './speed/speed.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
+import { BestiaryComponent } from './bestiary/bestiary.component';
+import { CommonModule } from '../common/common.module';
 
 
 @NgModule({
@@ -43,8 +45,8 @@ import { ItemTypesComponent } from './item-types/item-types.component';
     SpecialisationsComponent,
     CharacteristicsComponent,
     FactionsComponent,
-    BeastiaryRolesComponent,
-    BeastiaryTraitsComponent,
+    BestiaryRolesComponent,
+    BestiaryTraitsComponent,
     PsychicPowersComponent,
     PsychicDisciplinesComponent,
     RangesComponent,
@@ -52,10 +54,12 @@ import { ItemTypesComponent } from './item-types/item-types.component';
     SizesComponent,
     SpeedComponent,
     ItemsComponent,
-    ItemTypesComponent
+    ItemTypesComponent,
+    BestiaryComponent
   ],
   imports: [
     SharedModule,
+    CommonModule,
     AdminRoutingModule
   ]
 })

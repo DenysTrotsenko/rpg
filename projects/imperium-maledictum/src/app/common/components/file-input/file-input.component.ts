@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Ou
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-file-input',
+  selector: 'file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

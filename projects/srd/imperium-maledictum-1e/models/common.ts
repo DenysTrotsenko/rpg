@@ -4,6 +4,7 @@ import { System } from './system';
 export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
 export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
 export type BestiaryTraitId = Opaque<string, 'BestiaryTraitId'>;
+export type NpcId = Opaque<string, 'NpcId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
@@ -37,6 +38,14 @@ export interface Availability extends HasId<AvailabilityId>, HasName {
   };
 }
 
+export interface Npc {
+  id: NpcId;
+  name: string;
+  labels: {
+    description: string;
+  };
+}
+
 export interface BestiaryRole {
   id: BestiaryRoleId;
   name: string;
@@ -60,6 +69,7 @@ export interface BestiaryTrait {
 export interface Characteristic {
   id: CharacteristicId;
   name: string;
+  order: number;
   labels: {
     abbreviation: string;
     description: string;

@@ -8,7 +8,7 @@ import { getId16 } from '@shared';
   templateUrl: './beastiary-traits.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BeastiaryTraitsComponent implements OnInit {
+export class BestiaryTraitsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),

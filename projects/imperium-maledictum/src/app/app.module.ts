@@ -18,7 +18,6 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    // AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(
       () => initializeApp(environment.firebase),
       provideAuth(() => getAuth()),
@@ -28,8 +27,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     ),
   ],
   providers: [
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    // { provide: USE_EMULATOR, useValue: environment.production ? undefined : ['localhost', 5001] }
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [
     AppComponent

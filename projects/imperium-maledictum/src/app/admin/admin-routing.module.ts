@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FileName } from '@imperium-maledictum-1e/models/enums';
 import { AdminComponent } from './admin.component';
 import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
@@ -15,8 +16,9 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { TalentsComponent } from './talents/talents.component';
-import { BeastiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
-import { BeastiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
+import { BestiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
+import { BestiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
+import { BestiaryComponent } from './bestiary/bestiary.component';
 import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
@@ -26,7 +28,6 @@ import { SpeedComponent } from './speed/speed.component';
 import { SizesComponent } from './sizes/sizes.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
-import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 export const routes: Routes = [
   {
@@ -41,12 +42,17 @@ export const routes: Routes = [
       {
         path: 'bestiary-roles',
         component: AdminBaseComponent,
-        data: { path: FileName.BESTIARY_ROLES, component: BeastiaryRolesComponent }
+        data: { path: FileName.BESTIARY_ROLES, component: BestiaryRolesComponent }
       },
       {
         path: 'bestiary-traits',
         component: AdminBaseComponent,
-        data: { path: FileName.BESTIARY_TRAITS, component: BeastiaryTraitsComponent }
+        data: { path: FileName.BESTIARY_TRAITS, component: BestiaryTraitsComponent }
+      },
+      {
+        path: 'bestiary',
+        component: AdminBaseComponent,
+        data: { path: FileName.BESTIARY, component: BestiaryComponent }
       },
       {
         path: 'characteristics',
