@@ -35,6 +35,7 @@ export type TalentId = Opaque<string, 'TalentId'>;
 export interface Availability extends HasId<AvailabilityId>, HasName {
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
@@ -51,6 +52,7 @@ export interface BestiaryRole {
   name: string;
   labels: {
     description: string;
+    tooltip?: string;
   };
   characteristic_maximum: number;
   characteristics_total: number;
@@ -63,6 +65,7 @@ export interface BestiaryTrait {
   name: string;
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
@@ -73,6 +76,7 @@ export interface Characteristic {
   labels: {
     abbreviation: string;
     description: string;
+    tooltip?: string;
   };
   system?: System;
 }
@@ -82,6 +86,7 @@ export interface Condition {
   name: string;
   labels: {
     description: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }
@@ -112,6 +117,7 @@ export interface Item extends HasId<ItemId>, HasName {
   };
   labels: {
     description?: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }
@@ -120,6 +126,7 @@ export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
   name: string;
   labels: {
     description: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }
@@ -133,12 +140,14 @@ export interface ItemType extends HasId<ItemTypeId>, HasName {
 export interface Malignancy extends HasId<MalignancyId>, HasName, HasWeight {
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
 export interface Mutation extends HasId<MutationId>, HasName, HasWeight {
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
@@ -224,6 +233,7 @@ export interface PerilOfTheWarp extends HasId<PerilOfTheWarpId>, HasName, HasWei
   order: number;
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
@@ -232,6 +242,7 @@ export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, Ha
   labels: {
     description: string;
     lingering: string;
+    tooltip?: string;
   };
 }
 
@@ -244,6 +255,7 @@ export interface PsychicDiscipline extends HasId<PsychicDisciplineId>, HasName {
 export interface PsychicPower extends HasId<PsychicPowerId>, HasName {
   labels: {
     description: string;
+    tooltip?: string;
   };
 }
 
@@ -270,6 +282,7 @@ export interface Skill extends HasId<SkillId>, HasName {
   specialisations: SpecialisationId[];
   labels: {
     description: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }
@@ -282,6 +295,7 @@ export interface Specialisation {
   skill: SkillId;
   labels: {
     description: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }
@@ -292,6 +306,7 @@ export interface Talent {
   labels: {
     description: string;
     requirements: string;
+    tooltip?: string;
   };
   system?: Partial<System>;
 }

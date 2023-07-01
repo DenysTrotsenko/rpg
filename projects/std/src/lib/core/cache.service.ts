@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
 export class CacheService {
   private readonly cache: Map<any, any> = new Map<any, any>();
 
+  clear(): void {
+    this.cache.clear();
+  }
+
   delete(key: any): boolean {
     return this.cache.delete(key);
   }
