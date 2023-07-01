@@ -88,15 +88,16 @@ export class DataService {
   }
 
   static getSkillTooltip(item: Skill, data: Data): string {
+    const characteristic: Characteristic = data[FileName.CHARACTERISTICS]?.find(i => i.id === item.characteristic);
     return [
-      `${item.name}\n`,
+      `${item.name} (${characteristic?.labels?.abbreviation})\n`,
       `${item.labels?.description}`,
     ].join('\n');
   }
 
   static getSpecialisationTooltip(item: Specialisation, data: Data): string {
     return [
-      `${item.name}\n`,
+      `${item.name}${item.restricted ? ' (Restricted)' : ''}\n`,
       `${item.labels?.description}`,
     ].join('\n');
   }
@@ -104,8 +105,9 @@ export class DataService {
   static getTalentTooltip(item: Talent, data: Data): string {
     return [
       `${item.name}\n`,
+      item.labels?.requirements ? `Requirements: ${item.labels?.requirements}\n` : null,
       `${item.labels?.description}`,
-    ].join('\n');
+    ].filter(i => !!i).join('\n');
   }
 
   download<T>(storage: string, file: FileName): Observable<T[]> {

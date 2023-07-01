@@ -279,7 +279,6 @@ export interface Speed extends HasId<SpeedId>, HasName {
 
 export interface Skill extends HasId<SkillId>, HasName {
   characteristic: CharacteristicId;
-  specialisations: SpecialisationId[];
   labels: {
     description: string;
     tooltip?: string;
