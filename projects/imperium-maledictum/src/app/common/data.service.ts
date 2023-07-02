@@ -2,11 +2,22 @@ import { Injectable } from '@angular/core';
 import { forkJoin, Observable, OperatorFunction } from 'rxjs';
 import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { AuthService, CacheService, HasCommonFields, HasId, Setting, SettingService, StorageService } from '@shared';
-import { BestiaryRole, BestiaryTrait, Characteristic, Size, Skill, Specialisation, Talent } from '@imperium-maledictum-1e/models/common';
+import {
+  BestiaryFaction,
+  BestiaryRole,
+  BestiaryTrait, BestiaryType,
+  Characteristic,
+  Size,
+  Skill,
+  Specialisation,
+  Talent
+} from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 interface Data {
+  [FileName.BESTIARY_FACTIONS]: BestiaryFaction[];
   [FileName.BESTIARY_ROLES]: BestiaryRole[];
+  [FileName.BESTIARY_TYPES]: BestiaryType[];
   [FileName.BESTIARY_TRAITS]: BestiaryTrait[];
   [FileName.CHARACTERISTICS]: Characteristic[];
   [FileName.SIZES]: Size[];
@@ -34,8 +45,10 @@ export class DataService {
   );
   private readonly data$: Observable<Data> = this.storage$.pipe(
     switchMap(storage => forkJoin({
+      [FileName.BESTIARY_FACTIONS]: this.download<BestiaryFaction>(storage, FileName.BESTIARY_FACTIONS),
       [FileName.BESTIARY_ROLES]: this.download<BestiaryRole>(storage, FileName.BESTIARY_ROLES),
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
+      [FileName.BESTIARY_TYPES]: this.download<BestiaryType>(storage, FileName.BESTIARY_TYPES),
       [FileName.CHARACTERISTICS]: this.download<Characteristic>(storage, FileName.CHARACTERISTICS),
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
@@ -44,11 +57,17 @@ export class DataService {
     })),
     shareReplay(1)
   );
+  readonly bestiaryFactions$: Observable<BestiaryFaction[]> = this.data$.pipe(
+    this.handleData<BestiaryFaction>(FileName.BESTIARY_FACTIONS)
+  );
   readonly bestiaryRoles$: Observable<BestiaryRole[]> = this.data$.pipe(
     this.handleData<BestiaryRole>(FileName.BESTIARY_ROLES)
   );
   readonly bestiaryTraits$: Observable<BestiaryTrait[]> = this.data$.pipe(
     this.handleData<BestiaryTrait>(FileName.BESTIARY_TRAITS)
+  );
+  readonly bestiaryTypes$: Observable<BestiaryType[]> = this.data$.pipe(
+    this.handleData<BestiaryType>(FileName.BESTIARY_TYPES)
   );
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     this.handleData<Characteristic>(FileName.CHARACTERISTICS)
@@ -123,7 +142,10 @@ export class DataService {
       map(data => {
         const items: T[] = data[file];
         items.forEach(i => {
-          i.labels.tooltip = DataService.tooltips.has(file) ? DataService.tooltips.get(file)(i, data) : '';
+          if (DataService.tooltips.has(file)) {
+            if (!i.labels) { i.labels = {}; }
+            i.labels.tooltip = DataService.tooltips.get(file)(i, data);
+          }
           this.cache.set(i.id, i);
         });
         return items;

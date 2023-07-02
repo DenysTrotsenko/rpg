@@ -27,6 +27,15 @@ import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { CommonModule } from '../common/common.module';
+import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
+import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
+import {
+  BestiaryFactionResolver,
+  BestiaryRoleResolver,
+  BestiaryTraitResolver,
+  BestiaryTypeResolver,
+  SizeResolver
+} from '../common/data.resolvers';
 
 
 @NgModule({
@@ -55,12 +64,21 @@ import { CommonModule } from '../common/common.module';
     SpeedComponent,
     ItemsComponent,
     ItemTypesComponent,
-    BestiaryComponent
+    BestiaryComponent,
+    BestiaryFactionsComponent,
+    BestiaryTypesComponent
   ],
   imports: [
     SharedModule,
     CommonModule,
     AdminRoutingModule
+  ],
+  providers: [
+    BestiaryFactionResolver,
+    BestiaryRoleResolver,
+    SizeResolver,
+    BestiaryTraitResolver,
+    BestiaryTypeResolver
   ]
 })
 export class AdminModule {}

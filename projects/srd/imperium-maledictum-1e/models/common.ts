@@ -3,7 +3,9 @@ import { System } from './system';
 
 export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
 export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
+export type BestiaryFactionId = Opaque<string, 'BestiaryFactionId'>;
 export type BestiaryTraitId = Opaque<string, 'BestiaryTraitId'>;
+export type BestiaryTypeId = Opaque<string, 'BestiaryTypeId'>;
 export type NpcId = Opaque<string, 'NpcId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
@@ -47,6 +49,15 @@ export interface Npc {
   };
 }
 
+export interface BestiaryFaction {
+  id: BestiaryFactionId;
+  name: string;
+  labels?: {
+    description?: string;
+    tooltip?: string;
+  };
+}
+
 export interface BestiaryRole {
   id: BestiaryRoleId;
   name: string;
@@ -61,10 +72,19 @@ export interface BestiaryRole {
 }
 
 export interface BestiaryTrait {
-  id: BestiaryRoleId;
+  id: BestiaryTraitId;
   name: string;
   labels: {
     description: string;
+    tooltip?: string;
+  };
+}
+
+export interface BestiaryType {
+  id: BestiaryTypeId;
+  name: string;
+  labels?: {
+    description?: string;
     tooltip?: string;
   };
 }

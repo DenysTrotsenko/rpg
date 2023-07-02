@@ -1,9 +1,19 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Injectable, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay, startWith, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { BestiaryRole, BestiaryTrait, Characteristic, Npc, Size } from '@imperium-maledictum-1e/models/common';
+import {
+  BestiaryFaction,
+  BestiaryRole,
+  BestiaryTrait,
+  BestiaryType,
+  Characteristic,
+  Npc,
+  Size
+} from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@shared';
 import { DataService } from '../../common/data.service';
 
@@ -17,8 +27,11 @@ export class BestiaryComponent implements OnInit {
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
     size: new UntypedFormControl(null, [Validators.required]),
+    type: new UntypedFormControl(null, [Validators.required]),
+    faction: new UntypedFormControl(null, [Validators.required]),
     role: new UntypedFormControl(null, [Validators.required]),
     characteristics: new UntypedFormGroup({}),
+    traits: new UntypedFormControl(null, [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
     }),
@@ -35,11 +48,15 @@ export class BestiaryComponent implements OnInit {
     shareReplay(1)
   );
 
+  readonly factions$: Observable<BestiaryFaction[]> = this.data.bestiaryFactions$;
+
   readonly roles$: Observable<BestiaryRole[]> = this.data.bestiaryRoles$;
 
   readonly sizes$: Observable<Size[]> = this.data.sizes$;
 
   readonly traits$: Observable<BestiaryTrait[]> = this.data.bestiaryTraits$;
+
+  readonly types$: Observable<BestiaryType[]> = this.data.bestiaryTypes$;
 
   readonly characteristicMax$: Observable<number> = combineLatest([
     this.roles$,
@@ -50,11 +67,13 @@ export class BestiaryComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public npc: Npc,
+    private route: ActivatedRoute,
     private readonly data: DataService
   ) {}
 
   ngOnInit(): void {
     this.form.patchValue(!!this.npc ? this.npc : { id: getId16() });
+    console.log(this.route.snapshot);
   }
 
   onTest(): void {

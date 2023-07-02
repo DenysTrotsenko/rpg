@@ -28,6 +28,15 @@ import { SpeedComponent } from './speed/speed.component';
 import { SizesComponent } from './sizes/sizes.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
+import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
+import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
+import {
+  BestiaryFactionResolver,
+  BestiaryRoleResolver,
+  BestiaryTraitResolver,
+  BestiaryTypeResolver,
+  SizeResolver
+} from '../common/data.resolvers';
 
 export const routes: Routes = [
   {
@@ -45,6 +54,16 @@ export const routes: Routes = [
         data: { path: FileName.BESTIARY_ROLES, component: BestiaryRolesComponent }
       },
       {
+        path: 'bestiary-factions',
+        component: AdminBaseComponent,
+        data: { path: FileName.BESTIARY_FACTIONS, component: BestiaryFactionsComponent }
+      },
+      {
+        path: 'bestiary-types',
+        component: AdminBaseComponent,
+        data: { path: FileName.BESTIARY_TYPES, component: BestiaryTypesComponent }
+      },
+      {
         path: 'bestiary-traits',
         component: AdminBaseComponent,
         data: { path: FileName.BESTIARY_TRAITS, component: BestiaryTraitsComponent }
@@ -52,7 +71,14 @@ export const routes: Routes = [
       {
         path: 'bestiary',
         component: AdminBaseComponent,
-        data: { path: FileName.BESTIARY, component: BestiaryComponent }
+        data: { path: FileName.BESTIARY, component: BestiaryComponent },
+        resolve: {
+          factions: BestiaryFactionResolver,
+          roles: BestiaryRoleResolver,
+          sizes: SizeResolver,
+          traits: BestiaryTraitResolver,
+          types: BestiaryTypeResolver
+        }
       },
       {
         path: 'characteristics',

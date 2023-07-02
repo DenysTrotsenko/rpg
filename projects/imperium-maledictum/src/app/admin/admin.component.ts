@@ -7,8 +7,10 @@ import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
   { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },
+  { link: './bestiary-factions', label: 'Bestiary Factions', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-roles', label: 'Bestiary Roles', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-traits', label: 'Bestiary Traits', permission: PermissionId.ADMIN_SETTING },
+  { link: './bestiary-types', label: 'Bestiary Types', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary', label: 'Bestiary', permission: PermissionId.ADMIN_SETTING },
   { link: './characteristics', label: 'Characteristics', permission: PermissionId.ADMIN_SETTING },
   { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
