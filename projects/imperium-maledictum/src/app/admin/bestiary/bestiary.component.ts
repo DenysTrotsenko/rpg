@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, Injectable, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Resolve } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay, startWith, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
@@ -67,13 +65,11 @@ export class BestiaryComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public npc: Npc,
-    private route: ActivatedRoute,
     private readonly data: DataService
   ) {}
 
   ngOnInit(): void {
     this.form.patchValue(!!this.npc ? this.npc : { id: getId16() });
-    console.log(this.route.snapshot);
   }
 
   onTest(): void {

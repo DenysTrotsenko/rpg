@@ -71,14 +71,7 @@ export const routes: Routes = [
       {
         path: 'bestiary',
         component: AdminBaseComponent,
-        data: { path: FileName.BESTIARY, component: BestiaryComponent },
-        resolve: {
-          factions: BestiaryFactionResolver,
-          roles: BestiaryRoleResolver,
-          sizes: SizeResolver,
-          traits: BestiaryTraitResolver,
-          types: BestiaryTypeResolver
-        }
+        data: { path: FileName.BESTIARY, component: BestiaryComponent }
       },
       {
         path: 'characteristics',
