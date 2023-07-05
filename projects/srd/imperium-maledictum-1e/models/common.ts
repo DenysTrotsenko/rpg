@@ -1,4 +1,4 @@
-import { HasCommonFields, HasId, HasName, HasWeight, Opaque } from '@shared';
+import { HasBaseProperties, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
 export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
@@ -34,7 +34,7 @@ export type SpeedId = Opaque<string, 'SpeedId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
 
-export interface Availability extends HasId<AvailabilityId>, HasName {
+export interface Availability extends HasBaseProperties<AvailabilityId> {
   labels: {
     description: string;
     tooltip?: string;
@@ -49,18 +49,14 @@ export interface Npc {
   };
 }
 
-export interface BestiaryFaction {
-  id: BestiaryFactionId;
-  name: string;
+export interface BestiaryFaction extends HasBaseProperties<BestiaryFactionId> {
   labels?: {
     description?: string;
     tooltip?: string;
   };
 }
 
-export interface BestiaryRole {
-  id: BestiaryRoleId;
-  name: string;
+export interface BestiaryRole extends HasBaseProperties<BestiaryRoleId> {
   labels: {
     description: string;
     tooltip?: string;
@@ -71,18 +67,14 @@ export interface BestiaryRole {
   critical_wounds_max: number;
 }
 
-export interface BestiaryTrait {
-  id: BestiaryTraitId;
-  name: string;
+export interface BestiaryTrait extends HasBaseProperties<BestiaryTraitId> {
   labels: {
     description: string;
     tooltip?: string;
   };
 }
 
-export interface BestiaryType {
-  id: BestiaryTypeId;
-  name: string;
+export interface BestiaryType extends HasBaseProperties<BestiaryTypeId> {
   labels?: {
     description?: string;
     tooltip?: string;
@@ -119,8 +111,7 @@ export interface Faction {
   };
 }
 
-export interface Item extends HasId<ItemId>, HasName {
-  name: string;
+export interface Item extends HasBaseProperties<ItemId> {
   type: ItemTypeId;
   availability: string;
   encumbrance: number;
@@ -142,8 +133,7 @@ export interface Item extends HasId<ItemId>, HasName {
   system?: Partial<System>;
 }
 
-export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
-  name: string;
+export interface ItemTrait extends HasBaseProperties<ItemTraitId> {
   labels: {
     description: string;
     tooltip?: string;
@@ -151,20 +141,20 @@ export interface ItemTrait extends HasId<ItemTraitId>, HasCommonFields {
   system?: Partial<System>;
 }
 
-export interface ItemType extends HasId<ItemTypeId>, HasName {
+export interface ItemType extends HasBaseProperties<ItemTypeId> {
   labels: {
     description: string;
   };
 }
 
-export interface Malignancy extends HasId<MalignancyId>, HasName, HasWeight {
+export interface Malignancy extends HasBaseProperties<MalignancyId>, HasWeight {
   labels: {
     description: string;
     tooltip?: string;
   };
 }
 
-export interface Mutation extends HasId<MutationId>, HasName, HasWeight {
+export interface Mutation extends HasBaseProperties<MutationId>, HasWeight {
   labels: {
     description: string;
     tooltip?: string;
@@ -248,7 +238,7 @@ export interface PatronPaymentGrade {
   value: number;
 }
 
-export interface PerilOfTheWarp extends HasId<PerilOfTheWarpId>, HasName, HasWeight {
+export interface PerilOfTheWarp extends HasBaseProperties<PerilOfTheWarpId>, HasWeight {
   corruption: number;
   order: number;
   labels: {
@@ -257,7 +247,7 @@ export interface PerilOfTheWarp extends HasId<PerilOfTheWarpId>, HasName, HasWei
   };
 }
 
-export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, HasWeight {
+export interface PsychicPhenomena extends HasBaseProperties<PsychicPhenomenaId>, HasWeight {
   order: number;
   labels: {
     description: string;
@@ -266,38 +256,38 @@ export interface PsychicPhenomena extends HasId<PsychicPhenomenaId>, HasName, Ha
   };
 }
 
-export interface PsychicDiscipline extends HasId<PsychicDisciplineId>, HasName {
+export interface PsychicDiscipline extends HasBaseProperties<PsychicDisciplineId> {
   labels: {
     description: string;
   };
 }
 
-export interface PsychicPower extends HasId<PsychicPowerId>, HasName {
+export interface PsychicPower extends HasBaseProperties<PsychicPowerId> {
   labels: {
     description: string;
     tooltip?: string;
   };
 }
 
-export interface Range extends HasId<RangeId>, HasName {
+export interface Range extends HasBaseProperties<RangeId> {
   labels: {
     description: string;
   };
 }
 
-export interface Size extends HasId<SizeId>, HasName {
+export interface Size extends HasBaseProperties<SizeId> {
   labels: {
     description: string;
   };
 }
 
-export interface Speed extends HasId<SpeedId>, HasName {
+export interface Speed extends HasBaseProperties<SpeedId> {
   labels: {
     description: string;
   };
 }
 
-export interface Skill extends HasId<SkillId>, HasName {
+export interface Skill extends HasBaseProperties<SkillId> {
   characteristic: CharacteristicId;
   labels: {
     description: string;
@@ -319,9 +309,7 @@ export interface Specialisation {
   system?: Partial<System>;
 }
 
-export interface Talent {
-  id: TalentId;
-  name: string;
+export interface Talent extends HasBaseProperties<TalentId> {
   labels: {
     description: string;
     requirements: string;

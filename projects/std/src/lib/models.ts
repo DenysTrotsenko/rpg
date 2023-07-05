@@ -13,6 +13,16 @@ export interface AuthWithEmailAndPassword {
   password: string;
 }
 
+export interface HasBaseProperties<T> {
+  id: T;
+  name: string;
+  default?: boolean;
+  labels?: {
+    description?: string;
+    tooltip?: string;
+  };
+}
+
 export interface HasId<T> {
   id: T;
 }
