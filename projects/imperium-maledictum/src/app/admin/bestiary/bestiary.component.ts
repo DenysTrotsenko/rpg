@@ -76,24 +76,14 @@ export class BestiaryComponent implements OnInit {
     map(([roles, id]) => roles.find(i => i.id === id)?.characteristic_maximum ?? 99)
   );
 
-  readonly selectedSkills$: Observable<Skill[]> = combineLatest([
-    this.skills$,
-    this.form.get('skills').valueChanges.pipe(startWith([]))
-  ]).pipe(
-    map(([all, selected]) => {
-      const selectedIds: SkillId[] = selected.map(i => i.id);
-      return all.filter(i => selectedIds.includes(i.id));
-    })
+  readonly selectedSkills$: Observable<Skill[]> = this.form.get('skills').valueChanges.pipe(
+    startWith([]),
+    map(skills => skills.map(i => i.id).map(i => this.data.get(i)))
   );
 
-  readonly selectedSpecialisations$: Observable<Specialisation[]> = combineLatest([
-    this.specialisations$,
-    this.form.get('specialisations').valueChanges.pipe(startWith([]))
-  ]).pipe(
-    map(([all, selected]) => {
-      const selectedIds: SpecialisationId[] = selected.map(i => i.id);
-      return all.filter(i => selectedIds.includes(i.id));
-    })
+  readonly selectedSpecialisations$: Observable<Specialisation[]> = this.form.get('specialisations').valueChanges.pipe(
+    startWith([]),
+    map(specialisations => specialisations.map(i => i.id).map(i => this.data.get(i)))
   );
 
   constructor(
@@ -133,7 +123,7 @@ export class BestiaryComponent implements OnInit {
       .pipe(
         take(1),
         switchMap(specialisations => this.dialog.open(AddSpecialisationDialogComponent, {
-          data: specialisations
+          data: specialisations.filter(i => !(selected.includes(i.id) && !i.multiple))
         }).afterClosed()),
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
