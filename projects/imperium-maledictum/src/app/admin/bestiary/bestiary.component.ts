@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import {combineLatest, Observable, switchMap} from 'rxjs';
-import {filter, map, shareReplay, startWith, take, tap} from 'rxjs/operators';
+import {AbstractControl, FormControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import { combineLatest, Observable, switchMap } from 'rxjs';
+import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import {
   BestiaryFaction,
@@ -29,9 +29,9 @@ export class BestiaryComponent implements OnInit {
     type: new UntypedFormControl(null, [Validators.required]),
     faction: new UntypedFormControl(null, [Validators.required]),
     role: new UntypedFormControl(null, [Validators.required]),
-    characteristics: new UntypedFormGroup({}),
-    skills: new UntypedFormGroup({}),
-    specialisations: new UntypedFormGroup({}),
+    characteristics: new UntypedFormArray([]),
+    skills: new UntypedFormArray([]),
+    specialisations: new UntypedFormArray([]),
     traits: new UntypedFormControl(null, [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
@@ -41,10 +41,11 @@ export class BestiaryComponent implements OnInit {
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$.pipe(
     map(characteristics => characteristics?.sort((a, b) => a.order - b.order)),
     tap(characteristics => {
-      const group = this.form.get('characteristics') as UntypedFormGroup;
-      characteristics.forEach(i => group.addControl(i.id, new UntypedFormControl(10, [
-        Validators.required, Validators.min(10),
-      ])));
+      const group = this.form.get('characteristics') as UntypedFormArray;
+      characteristics.forEach(i => group.push(new UntypedFormGroup({
+        id: new UntypedFormControl(i.id),
+        value: new UntypedFormControl(10)
+      })));
     }),
     shareReplay(1)
   );
@@ -76,6 +77,26 @@ export class BestiaryComponent implements OnInit {
     this.form.get('role').valueChanges.pipe(startWith(null))
   ]).pipe(
     map(([roles, id]) => roles.find(i => i.id === id)?.characteristic_maximum ?? 99)
+  );
+
+  readonly selectedSkills$: Observable<Skill[]> = combineLatest([
+    this.skills$,
+    this.form.get('skills').valueChanges.pipe(startWith([]))
+  ]).pipe(
+    map(([all, selected]) => {
+      const selectedIds: SkillId[] = selected.map(i => i.id);
+      return all.filter(i => selectedIds.includes(i.id));
+    })
+  );
+
+  readonly selectedSpecialisations$: Observable<Specialisation[]> = combineLatest([
+    this.specialisations$,
+    this.form.get('specialisations').valueChanges.pipe(startWith([]))
+  ]).pipe(
+    map(([all, selected]) => {
+      const selectedIds: SpecialisationId[] = selected.map(i => i.id);
+      return all.filter(i => selectedIds.includes(i.id));
+    })
   );
 
   constructor(
