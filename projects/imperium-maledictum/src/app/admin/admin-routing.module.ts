@@ -16,8 +16,8 @@ import { PsychicPhenomenasComponent } from './psychic-phenomenas/psychic-phenome
 import { SkillsComponent } from './skills/skills.component';
 import { SpecialisationsComponent } from './specialisations/specialisations.component';
 import { TalentsComponent } from './talents/talents.component';
-import { BestiaryRolesComponent } from './beastiary-roles/beastiary-roles.component';
-import { BestiaryTraitsComponent } from './beastiary-traits/beastiary-traits.component';
+import { BestiaryRolesComponent } from './bestiary-roles/bestiary-roles.component';
+import { BestiaryTraitsComponent } from './bestiary-traits/bestiary-traits.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
@@ -30,13 +30,6 @@ import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
-import {
-  BestiaryFactionResolver,
-  BestiaryRoleResolver,
-  BestiaryTraitResolver,
-  BestiaryTypeResolver,
-  SizeResolver
-} from '../common/data.resolvers';
 
 export const routes: Routes = [
   {
