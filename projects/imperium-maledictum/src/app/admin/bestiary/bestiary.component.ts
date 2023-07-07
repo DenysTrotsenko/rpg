@@ -110,39 +110,31 @@ export class BestiaryComponent implements OnInit {
   }
 
   onAddSkillClick(): void {
-    const group = this.form.get('skills') as UntypedFormGroup;
+    const group = this.form.get('skills') as UntypedFormArray;
     this.skills$
       .pipe(
         take(1),
         switchMap(skills => this.dialog.open(SkillDialogComponent, { data: skills }).afterClosed()),
         filter(res => !!res),
-        tap(id => group.addControl(
-          id,
-          new UntypedFormControl(0, [
-            Validators.required,
-            Validators.min(0),
-            Validators.max(20)
-          ])
-        ))
+        tap(id => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(id),
+          value: new UntypedFormControl(0)
+        })))
       )
       .subscribe();
   }
 
   onAddSpecialisationClick(): void {
-    const group = this.form.get('specialisations') as UntypedFormGroup;
+    const group = this.form.get('specialisations') as UntypedFormArray;
     this.specialisations$
       .pipe(
         take(1),
         switchMap(specialisations => this.dialog.open(SpecialisationDialogComponent, { data: specialisations }).afterClosed()),
         filter(res => !!res),
-        tap(id => group.addControl(
-          id,
-          new UntypedFormControl(0, [
-            Validators.required,
-            Validators.min(0),
-            Validators.max(20)
-          ])
-        ))
+        tap(id => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(id),
+          value: new UntypedFormControl(0)
+        })))
       )
       .subscribe();
   }
