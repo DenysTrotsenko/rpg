@@ -69,11 +69,9 @@ export class BestiaryComponent implements OnInit {
     tap(items => this.setToDefault(this.form.get('type'), items))
   );
 
-  readonly characteristicMax$: Observable<number> = combineLatest([
-    this.roles$,
-    this.form.get('role').valueChanges.pipe(startWith(null))
-  ]).pipe(
-    map(([roles, id]) => roles.find(i => i.id === id)?.characteristic_maximum ?? 99)
+  readonly characteristicMax$: Observable<number> = this.form.get('role').valueChanges.pipe(
+    startWith(null),
+    map(id => this.data.get<BestiaryRole>(id).characteristic_maximum ?? 99)
   );
 
   readonly selectedSkills$: Observable<Skill[]> = this.form.get('skills').valueChanges.pipe(
@@ -109,7 +107,7 @@ export class BestiaryComponent implements OnInit {
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
           id: new UntypedFormControl(id),
-          value: new UntypedFormControl(0)
+          value: new UntypedFormControl(5)
         })))
       )
       .subscribe();
@@ -128,7 +126,7 @@ export class BestiaryComponent implements OnInit {
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
           id: new UntypedFormControl(id),
-          value: new UntypedFormControl(0)
+          value: new UntypedFormControl(5)
         })))
       )
       .subscribe();
