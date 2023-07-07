@@ -133,7 +133,7 @@ export class DataService {
     return this.storage.download<T[]>(`/${storage}/${file}`);
   }
 
-  get<T>(id: string): T {
+  get<T extends object>(id: string): T {
     return this.cache.get(id) as T;
   }
 

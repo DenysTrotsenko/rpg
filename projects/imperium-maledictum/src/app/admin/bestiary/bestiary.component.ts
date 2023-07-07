@@ -71,17 +71,17 @@ export class BestiaryComponent implements OnInit {
 
   readonly characteristicMax$: Observable<number> = this.form.get('role').valueChanges.pipe(
     startWith(null),
-    map(id => this.data.get<BestiaryRole>(id).characteristic_maximum ?? 99)
+    map(id => this.data.get<BestiaryRole>(id)?.characteristic_maximum ?? 99)
   );
 
-  readonly selectedSkills$: Observable<Skill[]> = this.form.get('skills').valueChanges.pipe(
+  readonly formSkills$: Observable<Skill[]> = this.form.get('skills').valueChanges.pipe(
     startWith([]),
     map(skills => skills.map(i => i.id).map(i => this.data.get(i)))
   );
 
-  readonly selectedSpecialisations$: Observable<Specialisation[]> = this.form.get('specialisations').valueChanges.pipe(
+  readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.form.get('specialisations').valueChanges.pipe(
     startWith([]),
-    map(specialisations => specialisations.map(i => i.id).map(i => this.data.get(i)))
+    map(specialisations => specialisations.map(i => ({ ...this.data.get(i.id), details: i.details })))
   );
 
   constructor(
@@ -124,9 +124,10 @@ export class BestiaryComponent implements OnInit {
           data: specialisations.filter(i => !(selected.includes(i.id) && !i.multiple))
         }).afterClosed()),
         filter(res => !!res),
-        tap(id => group.push(new UntypedFormGroup({
-          id: new UntypedFormControl(id),
-          value: new UntypedFormControl(5)
+        tap(res => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(res.id),
+          value: new UntypedFormControl(5),
+          ...(res.details ? { details: new UntypedFormControl(res.details) } : {})
         })))
       )
       .subscribe();

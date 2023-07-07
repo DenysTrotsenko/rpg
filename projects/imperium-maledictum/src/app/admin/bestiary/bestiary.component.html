@@ -70,7 +70,7 @@
     <div class="d-f g-5 fw-w">
       <ng-container formArrayName="skills">
         <mat-form-field
-          *ngFor="let skill of selectedSkills$ | async; trackBy: trackById; let i = index"
+          *ngFor="let skill of formSkills$ | async; trackBy: trackById; let i = index"
           [formGroupName]="i"
           appearance="outline" class="no-padding-bottom">
           <mat-label>{{skill.name}}</mat-label>
@@ -79,10 +79,12 @@
       </ng-container>
       <ng-container formArrayName="specialisations">
         <mat-form-field
-          *ngFor="let specialisation of selectedSpecialisations$ | async; trackBy: trackById; let i = index"
+          *ngFor="let s of formSpecialisations$ | async; trackBy: trackById; let i = index"
           [formGroupName]="i"
           appearance="outline" class="no-padding-bottom">
-          <mat-label>{{(specialisation.skill | getById)?.name}} ({{specialisation.name}})</mat-label>
+          <mat-label>
+            {{(s.skill | getById)?.name}} ({{s.name}}) <span *ngIf="s.details">[{{s.details}}]</span>
+          </mat-label>
           <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
         </mat-form-field>
       </ng-container>
