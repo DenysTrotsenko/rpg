@@ -5,7 +5,7 @@ import { BestiaryTrait } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@shared';
 
 @Component({
-  templateUrl: './beastiary-traits.component.html',
+  templateUrl: './bestiary-traits.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BestiaryTraitsComponent implements OnInit {

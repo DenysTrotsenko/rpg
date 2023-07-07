@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { BestiaryRole, Characteristic } from '@imperium-maledictum-1e/models/common';
+import { BestiaryRole } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@shared';
 
 @Component({
-  templateUrl: './beastiary-roles.component.html',
+  templateUrl: './bestiary-roles.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BestiaryRolesComponent implements OnInit {
