@@ -67,40 +67,32 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="onAddSkillClick()">Add Skill</button>
-    <button mat-flat-button color="primary" (click)="onAddSpecialisationClick()">Add Specialisation</button>
-    <div class="d-f fd-c" formArrayName="skills">
-      <mat-form-field
-        *ngFor="let skill of selectedSkills$ | async; trackBy: trackById; let i = index"
-        [formGroupName]="i"
-        appearance="outline">
-        <mat-label>{{skill.name}}</mat-label>
-        <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
-      </mat-form-field>
+    <div class="d-f g-5 fw-w">
+      <ng-container formArrayName="skills">
+        <mat-form-field
+          *ngFor="let skill of selectedSkills$ | async; trackBy: trackById; let i = index"
+          [formGroupName]="i"
+          appearance="outline" class="no-padding-bottom">
+          <mat-label>{{skill.name}}</mat-label>
+          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+        </mat-form-field>
+      </ng-container>
+      <ng-container formArrayName="specialisations">
+        <mat-form-field
+          *ngFor="let specialisation of selectedSpecialisations$ | async; trackBy: trackById; let i = index"
+          [formGroupName]="i"
+          appearance="outline" class="no-padding-bottom">
+          <mat-label>{{(specialisation.skill | getById)?.name}} ({{specialisation.name}})</mat-label>
+          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+        </mat-form-field>
+      </ng-container>
     </div>
-    <div class="d-f fd-c" formArrayName="specialisations">
-      <mat-form-field
-        *ngFor="let specialisation of selectedSpecialisations$ | async; trackBy: trackById; let i = index"
-        [formGroupName]="i"
-        appearance="outline">
-        <mat-label>{{specialisation.name}}</mat-label>
-        <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
-      </mat-form-field>
-    </div>
-<!--    <div class="d-f fd-c" formGroupName="skills">-->
-<!--      <mat-form-field *ngFor="let i of skills$ | async; trackBy: trackById;" appearance="outline">-->
-<!--        <mat-label>{{i.name}}</mat-label>-->
-<!--        <input matInput type="number" [formControlName]="i.id" [min]="0" [max]="20" [step]="5">-->
-<!--      </mat-form-field>-->
-<!--    </div>-->
-<!--    <div class="d-f jc-sb" formGroupName="specialisations">-->
-<!--      <mat-form-field *ngFor="let i of specialisations$ | async; trackBy: trackById;" appearance="outline">-->
-<!--        <mat-label>{{(i.skill | getById)?.name}} ({{i.name}})</mat-label>-->
-<!--        <input matInput type="number" [formControlName]="i.id" [min]="0" [max]="20" [step]="5">-->
-<!--      </mat-form-field>-->
-<!--    </div>-->
   </div>
-  <div mat-dialog-actions>
+  <div mat-dialog-actions class="g-5">
+    <button mat-stroked-button color="primary" (click)="onAddSkillClick()">Add Skill</button>
+    <button mat-stroked-button color="primary" (click)="onAddSpecialisationClick()">Add Specialisation</button>
+    <button mat-stroked-button color="primary">Add Weapon</button>
+    <span class="f-1"></span>
     <button mat-button [mat-dialog-close]="null">Cancel</button>
     <button mat-flat-button color="primary" (click)="onTest()">Add</button>
   </div>

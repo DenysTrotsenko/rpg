@@ -1,20 +1,16 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { combineLatest, Observable, switchMap } from 'rxjs';
 import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import {
-  BestiaryFaction,
-  BestiaryRole,
-  BestiaryTrait,
-  BestiaryType,
-  Characteristic,
-  Npc,
-  Size, Skill, SkillId, Specialisation, SpecialisationId
+  BestiaryFaction, BestiaryRole, BestiaryTrait, BestiaryType,
+  Characteristic, Npc, Size, Skill, SkillId, Specialisation, SpecialisationId
 } from '@imperium-maledictum-1e/models/common';
 import { DialogService, getId16, HasBaseProperties } from '@shared';
 import { DataService } from '../../common/data.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { AddSpecialisationDialogComponent } from './add-specialisation-dialog.component';
+import { AddSkillDialogComponent } from './add-skill-dialog.component';
 
 @Component({
   templateUrl: './bestiary.component.html',
@@ -33,8 +29,9 @@ export class BestiaryComponent implements OnInit {
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
     traits: new UntypedFormControl(null, [Validators.required]),
+    items: new UntypedFormControl(null, [Validators.required]),
     labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
+      description: new UntypedFormControl(''),
     }),
   });
 
@@ -111,10 +108,14 @@ export class BestiaryComponent implements OnInit {
 
   onAddSkillClick(): void {
     const group = this.form.get('skills') as UntypedFormArray;
+    const selected = group.value?.map(i => i.id);
+
     this.skills$
       .pipe(
         take(1),
-        switchMap(skills => this.dialog.open(SkillDialogComponent, { data: skills }).afterClosed()),
+        switchMap(skills => this.dialog.open(AddSkillDialogComponent, {
+          data: skills.filter(i => !selected.includes(i.id))
+        }).afterClosed()),
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
           id: new UntypedFormControl(id),
@@ -126,10 +127,14 @@ export class BestiaryComponent implements OnInit {
 
   onAddSpecialisationClick(): void {
     const group = this.form.get('specialisations') as UntypedFormArray;
+    const selected = group.value?.map(i => i.id);
+
     this.specialisations$
       .pipe(
         take(1),
-        switchMap(specialisations => this.dialog.open(SpecialisationDialogComponent, { data: specialisations }).afterClosed()),
+        switchMap(specialisations => this.dialog.open(AddSpecialisationDialogComponent, {
+          data: specialisations
+        }).afterClosed()),
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
           id: new UntypedFormControl(id),
@@ -141,7 +146,6 @@ export class BestiaryComponent implements OnInit {
 
   onTest(): void {
     console.log(this.form.getRawValue());
-    console.log(this.form.get('skills'));
   }
 
   private setToDefault<T extends HasBaseProperties<unknown>>(control: AbstractControl, items: T[]): void {
@@ -149,57 +153,4 @@ export class BestiaryComponent implements OnInit {
   }
 
   trackById(_, i): string { return i.id; }
-}
-
-
-@Component({
-  template: `
-    <h1 mat-dialog-title>Add Skill</h1>
-    <div mat-dialog-content class="d-f fd-c">
-      <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Skill</mat-label>
-        <mat-select [formControl]="form">
-          <mat-option *ngFor="let i of data;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="null">Cancel</button>
-      <button mat-flat-button color="primary" [disabled]="!form.valid" [mat-dialog-close]="form.getRawValue()">Add</button>
-    </div>`
-})
-export class SkillDialogComponent {
-  readonly form = new FormControl<SkillId>(null, [Validators.required]);
-  constructor(
-    public dialogRef: MatDialogRef<SkillDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Skill[]
-  ) {}
-}
-
-@Component({
-  template: `
-  <h1 mat-dialog-title>Add Specialisation</h1>
-    <div mat-dialog-content class="d-f fd-c">
-      <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Specialisation</mat-label>
-        <mat-select [formControl]="form">
-          <mat-option *ngFor="let i of data;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="null">Cancel</button>
-      <button mat-flat-button color="primary" [disabled]="!form.valid" [mat-dialog-close]="form.getRawValue()">Add</button>
-    </div>`
-})
-export class SpecialisationDialogComponent {
-  readonly form = new FormControl<SpecialisationId>(null, [Validators.required]);
-  constructor(
-    public dialogRef: MatDialogRef<SpecialisationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Specialisation[]
-  ) {}
 }

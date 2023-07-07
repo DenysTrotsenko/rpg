@@ -25,10 +25,12 @@ import { SizesComponent } from './sizes/sizes.component';
 import { SpeedComponent } from './speed/speed.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
-import { BestiaryComponent, SkillDialogComponent, SpecialisationDialogComponent } from './bestiary/bestiary.component';
+import { BestiaryComponent } from './bestiary/bestiary.component';
 import { CommonModule } from '../common/common.module';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
+import { AddSkillDialogComponent } from './bestiary/add-skill-dialog.component';
+import { AddSpecialisationDialogComponent } from './bestiary/add-specialisation-dialog.component';
 
 
 @NgModule({
@@ -60,8 +62,8 @@ import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.componen
     BestiaryFactionsComponent,
     BestiaryTypesComponent,
     BestiaryComponent,
-    SkillDialogComponent,
-    SpecialisationDialogComponent
+    AddSkillDialogComponent,
+    AddSpecialisationDialogComponent
   ],
   imports: [
     SharedModule,
