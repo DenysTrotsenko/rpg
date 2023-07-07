@@ -4,12 +4,14 @@ import { PortraitComponent } from './components/portrait/portrait.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { NumberInputComponent } from './components/number-input/number-input.component';
 import { NumberInputCellComponent } from './components/number-input-cell/number-input-cell.component';
+import { GetByIdPipe } from './pipes/get-by-id.pipe';
 
 const DECLARATION = [
   PortraitComponent,
   FileInputComponent,
   NumberInputComponent,
-  NumberInputCellComponent
+  NumberInputCellComponent,
+  GetByIdPipe
 ];
 
 @NgModule({
@@ -19,8 +21,9 @@ const DECLARATION = [
   imports: [
     SharedModule
   ],
-  exports: [
-    ...DECLARATION
-  ]
+    exports: [
+        ...DECLARATION,
+        GetByIdPipe
+    ]
 })
 export class CommonModule { }

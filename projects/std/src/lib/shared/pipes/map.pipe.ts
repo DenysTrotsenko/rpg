@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MapPipe implements PipeTransform {
   transform(value: object | object[], property: string): any | any[] {
-    return Array.isArray(value) ? value.map(i => i[property]) : value[property];
+    return Array.isArray(value) ? value?.map(i => i[property]) : value?.[property];
   }
 }

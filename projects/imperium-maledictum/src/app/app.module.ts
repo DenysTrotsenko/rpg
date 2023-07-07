@@ -9,6 +9,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,10 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     ),
   ],
   providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [

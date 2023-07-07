@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FindPipe implements PipeTransform {
   transform<T>(value: T[], property: string, comparator: any): T {
-    return value.find(i => i[property] === comparator);
+    return value?.find(i => i[property] === comparator);
   }
 }

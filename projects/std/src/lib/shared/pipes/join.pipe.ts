@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'join'
 })
 export class JoinPipe implements PipeTransform {
-  transform(value: any[], separator: string): string {
-    return value.join(separator);
+  transform(value: unknown[], separator: string): string {
+    return value?.join(separator);
   }
 }
