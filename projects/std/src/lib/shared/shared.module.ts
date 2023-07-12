@@ -5,6 +5,7 @@ import { CdkModule } from '../cdk/cdk.module';
 import { MaterialModule } from '../material/material.module';
 import { JoinPipe } from './pipes/join.pipe';
 import { MapPipe } from './pipes/map.pipe';
+import { FilterTruthyPipe } from './pipes/filter-truthy.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { FindPipe } from './pipes/find.pipe';
 import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
@@ -15,6 +16,7 @@ import { AdminUsersModule } from './admin-users/admin-users.module';
 const DECLARATIONS = [
   JoinPipe,
   MapPipe,
+  FilterTruthyPipe,
   FilterByPipe,
   FindPipe,
   KeyValueArrayComponent,

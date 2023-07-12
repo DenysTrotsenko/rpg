@@ -26,8 +26,8 @@ Cognomen x3 (2 pilots + servant of cannon commander)
 Chrono
 Magnoculars
 Shock Maul
-300 Solars
-50 Solars
+
+10 Solars
 Disguised Kit
 Excrutiator Kit
 Chirurgeon Tools
@@ -48,3 +48,12 @@ St. Lucius
 Forum Mercatum
 Mercatum Minor
 Mercatum Magna
+
+Carapace
+Data Slate
+Manacles Key
+Vox
+50 Solars
+Stub 17b
+Maul
+Choke Granade

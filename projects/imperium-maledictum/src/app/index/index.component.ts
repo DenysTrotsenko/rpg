@@ -1,31 +1,30 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { AuthService, CampaignService, DialogService } from '@shared';
+import { DataService } from '../common/data.service';
 
 @Component({
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
   expanded = true;
-  // readonly campaign$: Observable<CampaignId> = this.campaign.campaign$;
-  // readonly campaigns$: Observable<Campaign[]> = this.data.campaignsAll$;
   readonly logged$: Observable<boolean> = this.auth.logged$;
 
   constructor(
     private auth: AuthService,
     private campaign: CampaignService,
-    // private data: DataService,
+    private data: DataService,
     private dialog: DialogService,
     private router: Router
   ) {}
 
-  // onCampaignChange(id: CampaignId): void {
-  //   this.campaign.setCampaign(id);
-  // }
+  ngOnInit(): void {
+    this.data.init();
+  }
 
   onToggleSidenavClick(): void {
     this.expanded = !this.expanded;

@@ -81,7 +81,7 @@ export class BestiaryComponent implements OnInit {
 
   readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.form.get('specialisations').valueChanges.pipe(
     startWith([]),
-    map(specialisations => specialisations.map(i => ({ ...this.data.get(i.id), details: i.details })))
+    map(specialisations => specialisations.map(i => ({ ...this.data.get<Specialisation>(i.id), details: i.details })))
   );
 
   constructor(

@@ -133,8 +133,20 @@ export class DataService {
     return this.storage.download<T[]>(`/${storage}/${file}`);
   }
 
-  get<T extends object>(id: string): T {
+  get<T>(id: string): T {
     return this.cache.get(id) as T;
+  }
+
+  init(): void {
+    this.bestiaryFactions$.subscribe().unsubscribe();
+    this.bestiaryRoles$.subscribe().unsubscribe();
+    this.bestiaryTypes$.subscribe().unsubscribe();
+    this.bestiaryTraits$.subscribe().unsubscribe();
+    this.characteristics$.subscribe().unsubscribe();
+    this.sizes$.subscribe().unsubscribe();
+    this.skills$.subscribe().unsubscribe();
+    this.specialisations$.subscribe().unsubscribe();
+    this.talents$.subscribe().unsubscribe();
   }
 
   private handleData<T extends HasId<unknown> & HasCommonFields>(file: FileName): OperatorFunction<Data, T[]> {
