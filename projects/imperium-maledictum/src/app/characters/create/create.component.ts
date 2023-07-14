@@ -9,8 +9,7 @@ import {
   DialogService,
   FirestoreService,
   getId16,
-  setFormControlsEditable,
-  UnsubscribeDirective
+  setFormControlsEditable
 } from '@shared';
 import { CharacterService } from '../../common/character.service';
 import { Character } from '@imperium-maledictum-1e/models/character';
@@ -20,7 +19,7 @@ import { Character } from '@imperium-maledictum-1e/models/character';
   styleUrls: ['./create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateComponent extends UnsubscribeDirective implements OnInit {
+export class CreateComponent implements OnInit {
   readonly form1: UntypedFormGroup = new UntypedFormGroup({
     campaign: new UntypedFormControl(null, [Validators.required]),
     name: new UntypedFormControl('', [Validators.required]),
@@ -71,9 +70,7 @@ export class CreateComponent extends UnsubscribeDirective implements OnInit {
     private readonly router: Router,
     // private readonly data: DataService,
     private readonly dialog: DialogService
-  ) {
-    super();
-  }
+  ) {}
 
   ngOnInit(): void {
     // this.subscriptions = this.character$.subscribe();
