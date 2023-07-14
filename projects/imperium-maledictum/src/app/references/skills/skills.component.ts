@@ -1,8 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Skill, SkillId, Specialisation } from '@imperium-maledictum-1e/models/common';
+import { Characteristic, Skill, SkillId, Specialisation, SpecialisationId } from '@imperium-maledictum-1e/models/common';
 import { DataService } from '../../common/data.service';
+
+interface SkillView {
+  id: SkillId;
+  name: string;
+  characteristic: string;
+  description: string;
+}
+
+interface SpecialisationView {
+  id: SpecialisationId;
+  name: string;
+  description: string;
+}
 
 @Component({
   templateUrl: './skills.component.html',
@@ -10,13 +23,32 @@ import { DataService } from '../../common/data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillsComponent {
-  readonly skills$: Observable<Skill[]> = this.data.skills$;
   readonly opened$: BehaviorSubject<SkillId> = new BehaviorSubject<SkillId>(null);
-  readonly specialisations$: Observable<Specialisation[]> = combineLatest([
+  readonly skills$: Observable<SkillView[]> = this.data.skills$.pipe(
+    map(skills => skills.map(i => {
+      return {
+        id: i.id,
+        name: i.name,
+        characteristic: this.data.get<Characteristic>(i.characteristic)?.labels?.abbreviation,
+        description: i.labels?.description
+      };
+    }))
+  );
+  readonly specialisations$: Observable<SpecialisationView[]> = combineLatest([
     this.data.specialisations$,
     this.opened$.asObservable()
   ]).pipe(
-    map(([specialisations, id]) => specialisations.filter(i => i.skill === id))
+    map(([specialisations, id]) => specialisations.filter(i => i.skill === id).map(i => {
+      const suffix = i.multiple || i.restricted
+        ? [i.multiple ? 'Various' : null, i.restricted ? 'Restricted' : null].filter(res => !!res).join(', ')
+        : null;
+
+      return {
+        id: i.id,
+        name: `${i.name}${suffix ? ` (${suffix})` : ''}`,
+        description: i.labels?.description
+      };
+    }))
   );
 
   constructor(private data: DataService) {}
