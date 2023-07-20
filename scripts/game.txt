@@ -27,7 +27,6 @@ Chrono
 Magnoculars
 Shock Maul
 
-10 Solars
 Disguised Kit
 Excrutiator Kit
 Chirurgeon Tools
@@ -49,11 +48,8 @@ Forum Mercatum
 Mercatum Minor
 Mercatum Magna
 
-Carapace
 Data Slate
-Manacles Key
-Vox
-50 Solars
-Stub 17b
-Maul
-Choke Granade
+
+2 Smoke
+2 Choke
+

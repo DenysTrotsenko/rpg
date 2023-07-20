@@ -31,6 +31,7 @@ import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
 import { AddSkillDialogComponent } from './bestiary/add-skill-dialog.component';
 import { AddSpecialisationDialogComponent } from './bestiary/add-specialisation-dialog.component';
+import { DifficultiesComponent } from './difficulties/difficulties.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AddSpecialisationDialogComponent } from './bestiary/add-specialisation-
     BestiaryTypesComponent,
     BestiaryComponent,
     AddSkillDialogComponent,
-    AddSpecialisationDialogComponent
+    AddSpecialisationDialogComponent,
+    DifficultiesComponent
   ],
   imports: [
     SharedModule,

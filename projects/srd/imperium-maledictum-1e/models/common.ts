@@ -9,6 +9,7 @@ export type BestiaryTypeId = Opaque<string, 'BestiaryTypeId'>;
 export type NpcId = Opaque<string, 'NpcId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
+export type DifficultyId = Opaque<string, 'DifficultyId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemId = Opaque<string, 'ItemId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
@@ -101,6 +102,12 @@ export interface Condition {
     tooltip?: string;
   };
   system?: Partial<System>;
+}
+
+export interface Difficulty {
+  id: DifficultyId;
+  name: string;
+  bonus: number;
 }
 
 export interface Faction {
@@ -263,6 +270,8 @@ export interface PsychicDiscipline extends HasBaseProperties<PsychicDisciplineId
 }
 
 export interface PsychicPower extends HasBaseProperties<PsychicPowerId> {
+  discipline: PsychicDisciplineId;
+  difficulty: DifficultyId;
   labels: {
     description: string;
     tooltip?: string;

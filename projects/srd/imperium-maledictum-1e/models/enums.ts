@@ -7,6 +7,7 @@ export enum FileName {
   BESTIARY = 'bestiary.json',
   CHARACTERISTICS = 'characteristics.json',
   CONDITIONS = 'conditions.json',
+  DIFFICULTIES = 'difficulties.json',
   FACTIONS = 'factions.json',
   ITEMS = 'items.json',
   ITEM_QUALITIES = 'item-qualities.json',

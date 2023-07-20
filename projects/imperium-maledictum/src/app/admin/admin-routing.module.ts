@@ -30,6 +30,7 @@ import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
+import { DifficultiesComponent } from './difficulties/difficulties.component';
 
 export const routes: Routes = [
   {
@@ -75,6 +76,11 @@ export const routes: Routes = [
         path: 'conditions',
         component: AdminBaseComponent,
         data: { path: FileName.CONDITIONS, component: ConditionsComponent }
+      },
+      {
+        path: 'difficulties',
+        component: AdminBaseComponent,
+        data: { path: FileName.DIFFICULTIES, component: DifficultiesComponent }
       },
       {
         path: 'factions',
