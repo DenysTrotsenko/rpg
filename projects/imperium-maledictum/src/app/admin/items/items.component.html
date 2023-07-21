@@ -5,6 +5,35 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
+    <div class="d-f g-10">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let i of itemTypes$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Availability</mat-label>
+        <mat-select formControlName="availability">
+          <mat-option *ngFor="let i of availabilities$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Encumbrance</mat-label>
+        <input matInput formControlName="encumbrance">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Cost</mat-label>
+        <input matInput formControlName="cost">
+      </mat-form-field>
+    </div>
+    <ng-container formGroupName="data">
+
+    </ng-container>
     <ng-container formGroupName="labels">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>

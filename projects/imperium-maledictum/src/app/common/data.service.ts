@@ -3,10 +3,11 @@ import { forkJoin, Observable, OperatorFunction } from 'rxjs';
 import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { AuthService, CacheService, HasCommonFields, HasId, Setting, SettingService, StorageService } from '@shared';
 import {
+  Availability,
   BestiaryFaction,
   BestiaryRole,
   BestiaryTrait, BestiaryType,
-  Characteristic,
+  Characteristic, ItemTrait, ItemType,
   Size,
   Skill,
   Specialisation,
@@ -15,6 +16,7 @@ import {
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 interface Data {
+  [FileName.AVAILABILITIES]: Availability[];
   [FileName.BESTIARY_FACTIONS]: BestiaryFaction[];
   [FileName.BESTIARY_ROLES]: BestiaryRole[];
   [FileName.BESTIARY_TYPES]: BestiaryType[];
@@ -45,17 +47,25 @@ export class DataService {
   );
   private readonly data$: Observable<Data> = this.storage$.pipe(
     switchMap(storage => forkJoin({
+      [FileName.AVAILABILITIES]: this.download<Availability>(storage, FileName.AVAILABILITIES),
       [FileName.BESTIARY_FACTIONS]: this.download<BestiaryFaction>(storage, FileName.BESTIARY_FACTIONS),
       [FileName.BESTIARY_ROLES]: this.download<BestiaryRole>(storage, FileName.BESTIARY_ROLES),
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
       [FileName.BESTIARY_TYPES]: this.download<BestiaryType>(storage, FileName.BESTIARY_TYPES),
       [FileName.CHARACTERISTICS]: this.download<Characteristic>(storage, FileName.CHARACTERISTICS),
+      [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
+      [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
+      [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
+      [FileName.ITEM_TYPES]: this.download<ItemType>(storage, FileName.ITEM_TYPES),
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
       [FileName.SPECIALISATIONS]: this.download<Specialisation>(storage, FileName.SPECIALISATIONS),
       [FileName.TALENTS]: this.download<Talent>(storage, FileName.TALENTS)
     })),
     shareReplay(1)
+  );
+  readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
+    this.handleData<Availability>(FileName.AVAILABILITIES)
   );
   readonly bestiaryFactions$: Observable<BestiaryFaction[]> = this.data$.pipe(
     this.handleData<BestiaryFaction>(FileName.BESTIARY_FACTIONS)
@@ -71,6 +81,18 @@ export class DataService {
   );
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     this.handleData<Characteristic>(FileName.CHARACTERISTICS)
+  );
+  readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(
+    this.handleData<ItemTrait>(FileName.ITEM_FLAWS)
+  );
+  readonly itemQualities$: Observable<ItemTrait[]> = this.data$.pipe(
+    this.handleData<ItemTrait>(FileName.ITEM_QUALITIES)
+  );
+  readonly itemTraits$: Observable<ItemTrait[]> = this.data$.pipe(
+    this.handleData<ItemTrait>(FileName.ITEM_TRAITS)
+  );
+  readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(
+    this.handleData<ItemType>(FileName.ITEM_TYPES)
   );
   readonly sizes$: Observable<Size[]> = this.data$.pipe(
     this.handleData<Size>(FileName.SIZES)
@@ -138,11 +160,16 @@ export class DataService {
   }
 
   init(): void {
+    this.availabilities$.subscribe().unsubscribe();
     this.bestiaryFactions$.subscribe().unsubscribe();
     this.bestiaryRoles$.subscribe().unsubscribe();
     this.bestiaryTypes$.subscribe().unsubscribe();
     this.bestiaryTraits$.subscribe().unsubscribe();
     this.characteristics$.subscribe().unsubscribe();
+    this.itemFlaws$.subscribe().unsubscribe();
+    this.itemQualities$.subscribe().unsubscribe();
+    this.itemTraits$.subscribe().unsubscribe();
+    this.itemTypes$.subscribe().unsubscribe();
     this.sizes$.subscribe().unsubscribe();
     this.skills$.subscribe().unsubscribe();
     this.specialisations$.subscribe().unsubscribe();

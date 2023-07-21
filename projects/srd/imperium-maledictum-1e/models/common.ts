@@ -129,8 +129,11 @@ export interface Item extends HasBaseProperties<ItemId> {
     range?: RangeId;
     magazine?: number;
     magazineCost?: number;
+    magazineCostMultiplier?: number;
     locations?: string[];
     armour?: number;
+    flaws?: { id: ItemTraitId; value?: number | string | boolean; }[];
+    qualities?: { id: ItemTraitId; value?: number | string | boolean; }[];
     traits?: { id: ItemTraitId; value?: number | string | boolean; }[];
   };
   labels: {

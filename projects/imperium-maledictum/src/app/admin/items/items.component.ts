@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { Item } from '@imperium-maledictum-1e/models/common';
-import { getId16 } from '@shared';
+import { Availability, Item, ItemTrait, ItemType } from '@imperium-maledictum-1e/models/common';
+import { getId16, HasBaseProperties } from '@shared';
+import { DataService } from '../../common/data.service';
 
 @Component({
   templateUrl: './items.component.html',
@@ -12,14 +15,47 @@ export class ItemsComponent {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
+    type: new UntypedFormControl(null, [Validators.required]),
+    availability: new UntypedFormControl(null, [Validators.required]),
+    encumbrance: new UntypedFormControl(0, [Validators.required, Validators.min(0)]),
+    cost: new UntypedFormControl(10, [Validators.required, Validators.min(0)]),
+    data: new UntypedFormGroup({
+      specialisations: new UntypedFormControl([]),
+      damage: new UntypedFormControl(null),
+      range: new UntypedFormControl(null),
+      magazine: new UntypedFormControl(null),
+      magazineCost: new UntypedFormControl(null),
+      locations: new UntypedFormControl([]),
+      armour: new UntypedFormControl(null),
+      flaws: new UntypedFormControl(null),
+      qualities: new UntypedFormControl(null),
+      traits: new UntypedFormControl(null),
+    }),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
     }),
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Item) {}
+  readonly availabilities$: Observable<Availability[]> = this.data.availabilities$.pipe(
+    tap(items => this.setToDefault(this.form.get('availability'), items))
+  );
+  readonly itemFlaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
+  readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
+  readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
+  readonly itemTypes$: Observable<ItemType[]> = this.data.itemTypes$;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public item: Item,
+    private readonly data: DataService,
+  ) {}
 
   ngOnInit(): void {
     this.form.patchValue(!!this.data ? this.data : { id: getId16() });
+  }
+
+  trackById(_, i): string { return i.id; }
+
+  private setToDefault<T extends HasBaseProperties<unknown>>(control: AbstractControl, items: T[]): void {
+    control.setValue(items.find(i => i.default)?.id);
   }
 }
