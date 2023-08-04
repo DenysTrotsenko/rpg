@@ -32,7 +32,76 @@
       </mat-form-field>
     </div>
     <ng-container formGroupName="data">
-
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Qualities</mat-label>
+          <mat-select formControlName="qualities" multiple>
+            <mat-option *ngFor="let i of itemQualities$ | async; trackBy: trackById;" [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Flaws</mat-label>
+          <mat-select formControlName="flaws" multiple>
+            <mat-option *ngFor="let i of itemFlaws$ | async; trackBy: trackById;" [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Traits</mat-label>
+          <mat-select formControlName="traits" multiple>
+            <mat-option *ngFor="let i of itemTraits$ | async; trackBy: trackById;" [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Specialisations</mat-label>
+        <mat-select formControlName="specialisations" multiple>
+          <mat-option *ngFor="let i of specialisations$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}} ({{(i.skill | getById)?.name}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Range</mat-label>
+          <mat-select formControlName="range">
+            <mat-option *ngFor="let i of ranges$ | async; trackBy: trackById;" [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Magazine</mat-label>
+          <input matInput type="number" formControlName="magazine">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Magazine Cost</mat-label>
+          <input matInput type="number" formControlName="magazineCost">
+        </mat-form-field>
+      </div>
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Damage</mat-label>
+          <input matInput type="number" formControlName="damage">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Armour</mat-label>
+          <input matInput type="number" formControlName="armour">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Locations</mat-label>
+          <mat-select formControlName="locations" multiple>
+            <mat-option *ngFor="let i of locations;" [value]="i">
+              {{i}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </ng-container>
     <ng-container formGroupName="labels">
       <mat-form-field appearance="outline">

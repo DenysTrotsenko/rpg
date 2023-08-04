@@ -36,7 +36,7 @@ export class BestiaryComponent implements OnInit {
   });
 
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$.pipe(
-    map(characteristics => characteristics?.sort((a, b) => a.order - b.order)),
+    map(characteristics => characteristics?.sort((a, b) => a?.order - b?.order)),
     tap(characteristics => {
       const group = this.form.get('characteristics') as UntypedFormArray;
       characteristics.forEach(i => group.push(new UntypedFormGroup({

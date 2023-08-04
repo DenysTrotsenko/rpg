@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { Availability, Item, ItemTrait, ItemType } from '@imperium-maledictum-1e/models/common';
+import { Availability, Item, ItemTrait, ItemType, Range, Specialisation } from '@imperium-maledictum-1e/models/common';
 import { getId16, HasBaseProperties } from '@shared';
 import { DataService } from '../../common/data.service';
 
@@ -20,20 +20,20 @@ export class ItemsComponent {
     encumbrance: new UntypedFormControl(0, [Validators.required, Validators.min(0)]),
     cost: new UntypedFormControl(10, [Validators.required, Validators.min(0)]),
     data: new UntypedFormGroup({
+      qualities: new UntypedFormControl([]),
+      flaws: new UntypedFormControl([]),
+      traits: new UntypedFormControl([]),
       specialisations: new UntypedFormControl([]),
       damage: new UntypedFormControl(null),
       range: new UntypedFormControl(null),
       magazine: new UntypedFormControl(null),
       magazineCost: new UntypedFormControl(null),
-      locations: new UntypedFormControl([]),
       armour: new UntypedFormControl(null),
-      flaws: new UntypedFormControl(null),
-      qualities: new UntypedFormControl(null),
-      traits: new UntypedFormControl(null),
+      locations: new UntypedFormControl([]),
     }),
     labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
-    }),
+      description: new UntypedFormControl(''),
+    })
   });
 
   readonly availabilities$: Observable<Availability[]> = this.data.availabilities$.pipe(
@@ -43,6 +43,11 @@ export class ItemsComponent {
   readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly itemTypes$: Observable<ItemType[]> = this.data.itemTypes$;
+  readonly ranges$: Observable<Range[]> = this.data.ranges$.pipe(
+    map(ranges => ranges?.sort((a, b) => a?.order - b?.order))
+  );
+  readonly specialisations$: Observable<Specialisation[]> = this.data.specialisations$;
+  readonly locations = ['Head', 'Body', 'Arms', 'Legs', 'All', 'Special'];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public item: Item,

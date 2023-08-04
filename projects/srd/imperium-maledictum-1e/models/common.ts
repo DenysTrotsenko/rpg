@@ -132,9 +132,9 @@ export interface Item extends HasBaseProperties<ItemId> {
     magazineCostMultiplier?: number;
     locations?: string[];
     armour?: number;
-    flaws?: { id: ItemTraitId; value?: number | string | boolean; }[];
-    qualities?: { id: ItemTraitId; value?: number | string | boolean; }[];
-    traits?: { id: ItemTraitId; value?: number | string | boolean; }[];
+    flaws?: ItemTraitId[];
+    qualities?: ItemTraitId[];
+    traits?: ItemTraitId[];
   };
   labels: {
     description?: string;
@@ -282,6 +282,7 @@ export interface PsychicPower extends HasBaseProperties<PsychicPowerId> {
 }
 
 export interface Range extends HasBaseProperties<RangeId> {
+  order?: number;
   labels: {
     description: string;
   };

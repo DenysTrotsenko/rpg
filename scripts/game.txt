@@ -20,9 +20,6 @@ Holy Icon
 Vox Bead (Connection to Hammer&Key)
 Rebreather
 Respirator
-Explosive
-Explosive
-Cognomen x3 (2 pilots + servant of cannon commander)
 Chrono
 Magnoculars
 Shock Maul
@@ -53,3 +50,10 @@ Data Slate
 2 Smoke
 2 Choke
 
+Armor
+Hd 4
+Bd 3
+Ar 4
+Lg 4
+
+Ripper-Doc Nestorium

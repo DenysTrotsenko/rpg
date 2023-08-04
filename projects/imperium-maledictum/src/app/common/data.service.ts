@@ -7,7 +7,7 @@ import {
   BestiaryFaction,
   BestiaryRole,
   BestiaryTrait, BestiaryType,
-  Characteristic, ItemTrait, ItemType,
+  Characteristic, ItemTrait, ItemType, Range,
   Size,
   Skill,
   Specialisation,
@@ -57,6 +57,7 @@ export class DataService {
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
       [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
       [FileName.ITEM_TYPES]: this.download<ItemType>(storage, FileName.ITEM_TYPES),
+      [FileName.RANGES]: this.download<Range>(storage, FileName.RANGES),
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
       [FileName.SPECIALISATIONS]: this.download<Specialisation>(storage, FileName.SPECIALISATIONS),
@@ -93,6 +94,9 @@ export class DataService {
   );
   readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(
     this.handleData<ItemType>(FileName.ITEM_TYPES)
+  );
+  readonly ranges$: Observable<Range[]> = this.data$.pipe(
+    this.handleData<Range>(FileName.RANGES)
   );
   readonly sizes$: Observable<Size[]> = this.data$.pipe(
     this.handleData<Size>(FileName.SIZES)
@@ -170,6 +174,7 @@ export class DataService {
     this.itemQualities$.subscribe().unsubscribe();
     this.itemTraits$.subscribe().unsubscribe();
     this.itemTypes$.subscribe().unsubscribe();
+    this.ranges$.subscribe().unsubscribe();
     this.sizes$.subscribe().unsubscribe();
     this.skills$.subscribe().unsubscribe();
     this.specialisations$.subscribe().unsubscribe();
