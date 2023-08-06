@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Availability, Item, ItemTrait, ItemType, Range, Specialisation } from '@imperium-maledictum-1e/models/common';
-import { getId16, HasBaseProperties } from '@shared';
+import { getId16 } from '@shared';
 import { DataService } from '../../common/data.service';
+import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
 
 @Component({
   templateUrl: './items.component.html',
@@ -37,7 +38,7 @@ export class ItemsComponent {
   });
 
   readonly availabilities$: Observable<Availability[]> = this.data.availabilities$.pipe(
-    tap(items => this.setToDefault(this.form.get('availability'), items))
+    tap(items => AdminBaseService.setControlDefault(this.form.get('availability'), items))
   );
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
   readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
@@ -55,12 +56,8 @@ export class ItemsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.form.patchValue(!!this.data ? this.data : { id: getId16() });
+    this.form.patchValue(!!this.item ? this.item : { id: getId16() });
   }
 
   trackById(_, i): string { return i.id; }
-
-  private setToDefault<T extends HasBaseProperties<unknown>>(control: AbstractControl, items: T[]): void {
-    control.setValue(items.find(i => i.default)?.id);
-  }
 }

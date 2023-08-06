@@ -22,10 +22,13 @@
           <span *ngIf="i.system?.VALUE_REQUIRED" class="ml-5">({{i.system?.VALUE_PLACEHOLDER ?? 'X'}})</span>
           <span class="ml-10 c-gray">({{i.id}})</span>
           <span class="f-1"></span>
-          <button mat-icon-button (click)="onEditClick(i)">
+          <button mat-icon-button (click)="onEditClick(i)" matTooltip="Edit">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="onDeleteClick(i.id)">
+          <button mat-icon-button (click)="onCloneClick(i)" matTooltip="Clone">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDeleteClick(i.id)" matTooltip="Remove">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-panel-title>

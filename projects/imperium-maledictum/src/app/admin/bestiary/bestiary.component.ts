@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { combineLatest, Observable, switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import {
   BestiaryFaction, BestiaryRole, BestiaryTrait, BestiaryType,
-  Characteristic, Npc, Size, Skill, SkillId, Specialisation, SpecialisationId
+  Characteristic, Npc, Size, Skill, Specialisation
 } from '@imperium-maledictum-1e/models/common';
 import { DialogService, getId16, HasBaseProperties } from '@shared';
 import { DataService } from '../../common/data.service';
 import { AddSpecialisationDialogComponent } from './add-specialisation-dialog.component';
 import { AddSkillDialogComponent } from './add-skill-dialog.component';
+import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
 
 @Component({
   templateUrl: './bestiary.component.html',
@@ -48,15 +49,15 @@ export class BestiaryComponent implements OnInit {
   );
 
   readonly factions$: Observable<BestiaryFaction[]> = this.data.bestiaryFactions$.pipe(
-    tap(items => this.setToDefault(this.form.get('faction'), items))
+    tap(items => AdminBaseService.setControlDefault(this.form.get('faction'), items))
   );
 
   readonly roles$: Observable<BestiaryRole[]> = this.data.bestiaryRoles$.pipe(
-    tap(items => this.setToDefault(this.form.get('role'), items))
+    tap(items => AdminBaseService.setControlDefault(this.form.get('role'), items))
   );
 
   readonly sizes$: Observable<Size[]> = this.data.sizes$.pipe(
-    tap(items => this.setToDefault(this.form.get('size'), items))
+    tap(items => AdminBaseService.setControlDefault(this.form.get('size'), items))
   );
 
   readonly skills$: Observable<Skill[]> = this.data.skills$;
@@ -66,7 +67,7 @@ export class BestiaryComponent implements OnInit {
   readonly traits$: Observable<BestiaryTrait[]> = this.data.bestiaryTraits$;
 
   readonly types$: Observable<BestiaryType[]> = this.data.bestiaryTypes$.pipe(
-    tap(items => this.setToDefault(this.form.get('type'), items))
+    tap(items => AdminBaseService.setControlDefault(this.form.get('type'), items))
   );
 
   readonly characteristicMax$: Observable<number> = this.form.get('role').valueChanges.pipe(
@@ -135,10 +136,6 @@ export class BestiaryComponent implements OnInit {
 
   onTest(): void {
     console.log(this.form.getRawValue());
-  }
-
-  private setToDefault<T extends HasBaseProperties<unknown>>(control: AbstractControl, items: T[]): void {
-    control.setValue(items.find(i => i.default)?.id);
   }
 
   trackById(_, i): string { return i.id; }

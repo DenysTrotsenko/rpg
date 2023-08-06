@@ -52,6 +52,10 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
     this.admin.add();
   }
 
+  onCloneClick(item: T): void {
+    this.admin.clone(item);
+  }
+
   onDeleteClick(id: K): void {
     this.admin.delete(id);
   }

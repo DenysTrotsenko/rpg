@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
-import { DialogService, getId16, HasId, SnackbarService, sortByName, StorageService } from '@shared';
+import { DialogService, getId16, HasBaseProperties, HasId, SnackbarService, sortByName, StorageService } from '@shared';
 import { AdminServiceConfig } from './admin-base.models';
 import { AdminBaseEditorDialogComponent } from './admin-base-editor-dialog.component';
+import { AbstractControl } from '@angular/forms';
 
 @Injectable()
 export class AdminBaseService<T extends HasId<K>, K> {
@@ -18,6 +19,12 @@ export class AdminBaseService<T extends HasId<K>, K> {
     private snackbar: SnackbarService,
     private storage: StorageService
   ) {}
+
+  static setControlDefault<T extends HasBaseProperties<unknown>>(control: AbstractControl, items: T[]): void {
+    if (!control.value) {
+      control.setValue(items.find(i => i.default)?.id);
+    }
+  }
 
   init(config: AdminServiceConfig<T>): void {
     this.path = config.path;
@@ -59,6 +66,19 @@ export class AdminBaseService<T extends HasId<K>, K> {
         filter(res => !!res),
         tap(() => this.items$.next([
           ...this.items$.value.filter(i => i.id !== id)
+        ])),
+        tap(() => this.changed$.next(true))
+      )
+      .subscribe();
+  }
+
+  clone(item: T): void {
+    this.dialog.open(this.component, { data: item, width: '800px' }).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(res => this.items$.next([
+          { ...item, ...res, id: getId16() },
+          ...this.items$.value
         ])),
         tap(() => this.changed$.next(true))
       )
