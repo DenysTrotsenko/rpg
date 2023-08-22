@@ -1,5 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
+import { UserRecord } from 'firebase-admin/lib/auth';
 
 admin.initializeApp(functions.config().firebase);
 
@@ -18,11 +19,13 @@ export const getSettings = functions.https.onCall((data, context) => {
   });
 });
 
-export const onUserCreate = functions.auth.user().onCreate((user) => {
+export const onUserCreate = functions.auth.user().onCreate((user: UserRecord) => {
   return Promise
     .all([
       admin.firestore().collection(FS_COLLECTION.USERS).doc(user.uid).set({
         id: user.uid,
+        name: user?.displayName,
+        email: user?.email,
         permissions: []
       })
     ])

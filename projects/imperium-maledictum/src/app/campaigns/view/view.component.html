@@ -1,41 +1,81 @@
-<mat-toolbar class="toolbar-main">
-  <h1>Campaign View</h1>
-</mat-toolbar>
 <ng-container *ngIf="campaign$ | async as campaign;">
-  <p class="ff-g fs-16">{{campaign.name}}</p>
-  <mat-tab-group>
+  <mat-toolbar class="g-10">
+    <h1>Campaign View</h1>
+    <span class="f-1"></span>
+    <button mat-flat-button color="primary" (click)="onAddEventClick(campaign)">
+      + Event
+    </button>
+    <button mat-flat-button color="primary" (click)="onAddLocationClick(campaign)">
+      + Location
+    </button>
+    <button mat-flat-button color="primary" (click)="onAddPersonaClick(campaign)">
+      + Persona
+    </button>
+  </mat-toolbar>
+  <p class="ff-g fs-16 p-10 m-0">{{campaign.name}}</p>
+  <mat-tab-group class="p-10">
     <mat-tab label="Events">
-<!--      <im-portrait></im-portrait>-->
-<!--      <button mat-flat-button (click)="onEventAddClick()">-->
-<!--        <mat-icon>add</mat-icon>-->
-<!--      </button>-->
-<!--      <mat-icon class="material-icons-outlined" *ngFor="let i of itemGroups;" [matTooltip]="i.label">{{i.icon}}</mat-icon>-->
-      <mat-accordion class="o-a">
+      <mat-accordion class="o-a d-b mt-10">
         <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEventEditClick(i)">
+              <button mat-icon-button (click)="onEditEventClick(i)">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="onEventDeleteClick(i.id)">
+              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
-            <p *ngIf="!i.description" matLine class="c-red">NO DESCRIPTION AVAILABLE</p>
+            <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Locations">
+      <mat-accordion class="o-a d-b mt-10">
+        <mat-expansion-panel *ngFor="let i of campaign.locations;" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditEventClick(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
     <mat-tab label="Personas">
-      Content 2
-    </mat-tab>
-    <mat-tab label="Locations">
-      Content 3
+      <mat-accordion class="o-a d-b mt-10">
+        <mat-expansion-panel *ngFor="let i of campaign.personas;" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditEventClick(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </mat-tab>
   </mat-tab-group>
 </ng-container>

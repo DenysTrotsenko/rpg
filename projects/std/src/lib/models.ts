@@ -68,25 +68,21 @@ export interface Campaign {
   members: UserId[];
   setting: SettingId;
   events: CampaignEvent[];
-  personas: CampaignPersona[];
-  locations: CampaignLocation[];
+  personas: CampaignEvent[];
+  locations: CampaignEvent[];
 }
 
-export interface CampaignEvent extends HasId<string>, HasName {
+export interface CampaignEvent extends HasId<string> {
   icon: string | null;
+  name: string;
   description: string;
-}
-
-export interface CampaignPersona extends HasId<string> {
-  icon: string | null;
-  description: string;
-}
-
-export interface CampaignLocation extends HasId<string> {
-  icon: string | null;
-  description: string;
+  members: UserId[];
+  createdAt: number;
+  updatedAt: number;
 }
 
 export interface User extends HasId<UserId> {
+  name: string;
+  email: string;
   permissions: PermissionId[];
 }

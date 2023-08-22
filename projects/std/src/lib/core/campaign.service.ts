@@ -69,7 +69,7 @@ export class CampaignService {
 
   get(id: CampaignId): Observable<Campaign>  {
     return this.allObservable.pipe(
-      map(all => all.find(i => i.id === id))
+      map(all => all?.find(i => i.id === id))
     );
   }
 

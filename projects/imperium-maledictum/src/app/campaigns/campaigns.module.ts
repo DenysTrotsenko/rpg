@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 import { CreateComponent } from './create/create.component';
 import { CommonModule } from '../common/common.module';
+import { EventEditDialogComponent } from './event-edit-dialog/event-edit-dialog.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CommonModule } from '../common/common.module';
     CampaignsComponent,
     ListComponent,
     ViewComponent,
-    CreateComponent
+    CreateComponent,
+    EventEditDialogComponent
   ],
   imports: [
     SharedModule,

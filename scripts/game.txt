@@ -1,21 +1,38 @@
 Ash
 Korvin
 Darrial
-
 Captain Solomon Enomoto
 Quartermaster Quan Chi
-
-Санктора Люстіна
-
+Санктор Люстін
 Адʼютант Яго
 Zetta 178
-
 Капітан Гармати Гедульд
-
 Rex Beatus
 Blighteum Hive
+Rose - sister of Hammer & Key
+Lorelei - Blank
+Elena Proskofya
+Vorasitas Tenebra
+St. Lucius
+Forum Mercatum
+Mercatum Minor
+Mercatum Magna
+Ripper-Doc Nestorium
+Justicius Senioris Ad-Ultra Maxell Resl
+Grand Majistic
+Sr Tech-Luminarius Ignatius
+Lania Hronis
+Parvis Hronis
+Efralin
+Ad. Arbites Korisus
 
+3 Priests
+20 People
 
+Romius od St. Lucius (carps-starch saint)
+
+INVENTORY:
+690$
 Holy Icon
 Vox Bead (Connection to Hammer&Key)
 Rebreather
@@ -24,44 +41,20 @@ Chrono
 Magnoculars
 Shock Maul
 
-Disguised Kit
+Disguise Kit
 Excrutiator Kit
 Chirurgeon Tools
 MasterCrafted Pict Recorder
 Climbing Harness
-
-
-Rose - sister of Hammer & Key
-
-Lorelei - Blank
-Elena Proskofya
-
-Vorasitas Tenebra
-St. Lucius
-
-5в
-
-Forum Mercatum
-Mercatum Minor
-Mercatum Magna
-
+Multikey
+Lascutter
+Manacles x2
 Data Slate
-
 2 Smoke
 2 Choke
+Ornamental Robes
+Ornamental Knife
 
-Armor
-Hd 4
-Bd 3
-Ar 4
-Lg 4
-
-Ripper-Doc Nestorium
-
-Prudence Loyalty
-Magnus Sen
-
-3 Priests
-20 People
-
-490$
+RETINUE:
+Loyalty Prudence - mercenary, jack-of-all-trades
+Magnus Sen - adept, writer

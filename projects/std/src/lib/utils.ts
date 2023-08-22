@@ -14,7 +14,7 @@ export function getFilteredObject<T>(obj: object, allowed: string[]): T {
   }, {} as T);
 }
 
-export function getId16(): string {
+export function getId16<T = string>(): T {
   /* @ts-ignore */
   return ([1e3] + -2e3 + -4e3 + -8e3)
     .replace(/[018]/g, c =>
@@ -54,6 +54,10 @@ export function getIntegerInRange(min: number, max: number): number {
 
 export function getSumFromOneToN(n: number = 1): number {
   return typeof n === 'number' ? n * (n + 1) / 2 : null;
+}
+
+export function getUnixTimestamp(): number {
+  return Date.now();
 }
 
 export function getWeightedRandomItem<T extends HasWeight>(arr: T[]): T {

@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Campaign, CampaignEvent, CampaignId, CampaignService } from '@shared';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Campaign, CampaignEvent, CampaignId, CampaignService, DialogService, FirestoreService } from '@shared';
+import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
 
 @Component({
   templateUrl: './view.component.html',
@@ -10,11 +11,12 @@ import { Campaign, CampaignEvent, CampaignId, CampaignService } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent {
-  readonly campaign$: Observable<Campaign> = this.route.paramMap
-    .pipe(
-      map(res => res.get('id') as CampaignId),
-      switchMap(id => this.campaign.get(id))
-    );
+  readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
+    map(params => params.get('id') as CampaignId),
+    switchMap(id => this.campaign.get(id)),
+    distinctUntilChanged((p: Campaign, q: Campaign) => JSON.stringify(p) === JSON.stringify(q)),
+    shareReplay(1)
+  );
 
   // readonly itemGroups = [
   //   { icon: 'swords', label: 'Melee Weapons' },
@@ -28,13 +30,70 @@ export class ViewComponent {
 
   constructor(
     private readonly campaign: CampaignService,
+    private readonly dialog: DialogService,
+    private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
   ) {}
 
-  onEventAddClick(): void {
+  onAddEventClick(campaign: Campaign): void {
+    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(event => !!event),
+        switchMap(event => {
+          const events: CampaignEvent[] = campaign?.events
+            ? [...campaign.events, event]
+            : [event];
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, events
+          });
+        })
+      )
+      .subscribe();
   }
 
-  onEventEditClick(event: CampaignEvent): void {}
+  onAddLocationClick(campaign: Campaign): void {
+    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(location => !!location),
+        switchMap(location => {
+          const locations: CampaignEvent[] = campaign?.locations
+            ? [...campaign.events, location]
+            : [location];
 
-  onEventDeleteClick(id: string): void {}
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, locations
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  onAddPersonaClick(campaign: Campaign): void {
+    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(persona => !!persona),
+        switchMap(persona => {
+          const personas: CampaignEvent[] = campaign?.personas
+            ? [...campaign.personas, persona]
+            : [persona];
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, personas
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  onEditEventClick(event: CampaignEvent): void {
+    console.log('Not implemented yet.');
+  }
+
+  onDeleteEventClick(id: string): void {
+    console.log('Not implemented yet.');
+  }
 }
