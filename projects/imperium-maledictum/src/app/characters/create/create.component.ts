@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest, Observable, take } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
+import { Observable, take } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import {
-  Campaign,
-  CampaignService, CharacterId,
-  DialogService,
-  FirestoreService,
+  CampaignService,
+  CharacterId,
+  // DialogService,
   getId16,
   setFormControlsEditable
 } from '@shared';
@@ -19,7 +18,7 @@ import { Character } from '@imperium-maledictum-1e/models/character';
   styleUrls: ['./create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   readonly form1: UntypedFormGroup = new UntypedFormGroup({
     campaign: new UntypedFormControl(null, [Validators.required]),
     name: new UntypedFormControl('', [Validators.required]),
@@ -51,17 +50,13 @@ export class CreateComponent implements OnInit {
         const isNew = !res;
         this.form.patchValue({
           ...res,
-          id: res?.id ?? getId16(),
+          id: res?.id ?? getId16()
         });
 
-        setFormControlsEditable(this.form, [
-          'archetype',
-          'trait'
-        ], isNew);
+        setFormControlsEditable(this.form, ['archetype', 'trait'], isNew);
       }),
       shareReplay(1)
     );
-  readonly campaigns$: Observable<Campaign[]> = this.campaign.all$;
 
   constructor(
     private readonly character: CharacterService,
@@ -69,29 +64,22 @@ export class CreateComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     // private readonly data: DataService,
-    private readonly dialog: DialogService
+    // private readonly dialog: DialogService
   ) {}
-
-  ngOnInit(): void {
-    // this.subscriptions = this.character$.subscribe();
-  }
 
   onSubmit(form): void {
     if (!this.form.valid) {
       return;
     }
 
-    combineLatest([this.character$, this.campaigns$])
+    this.character$
       .pipe(
         take(1),
-        map(([character, campaigns]) => [character, campaigns.find(i => i.id === form.campaign)]),
-        switchMap(([character, campaign]: [Character, Campaign]) => {
-          const authors = !!character?.authors?.length
-            ? character.authors
-            : [this.route.snapshot.data?.user?.uid];
+        switchMap(character => {
+          const author = character?.author ?? this.route.snapshot.data?.user?.uid;
           const id = character.id || getId16();
 
-          return this.character.update(form.id, { ...form, authors, id });
+          return this.character.update(form.id, { ...form, author, id });
         }),
         tap(() => this.router.navigate(['characters/list']))
       )

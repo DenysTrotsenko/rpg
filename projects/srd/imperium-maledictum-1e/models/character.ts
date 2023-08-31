@@ -3,7 +3,7 @@ import { Characteristic, CharacteristicId, PatronId } from './common';
 
 export class Character {
   id: CharacterId;
-  authors: UserId[];
+  author: UserId;
   campaign: CampaignId;
   name: string;
   patron: PatronId;

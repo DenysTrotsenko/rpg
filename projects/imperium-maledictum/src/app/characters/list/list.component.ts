@@ -21,7 +21,7 @@ export class ListComponent {
     map(([uid, characters, campaigns]) => {
       const filtered = characters.filter(i => {
         const campaign = campaigns.find(j => j.id === i.campaign);
-        const isMy = i.authors?.includes(uid);
+        const isMy = i.author === uid;
         const isMaster = campaign?.authors?.includes(uid);
 
         return isMy || isMaster;
@@ -30,7 +30,7 @@ export class ListComponent {
       return filtered.map(i => {
         return {
           ...i,
-          canDelete: i.authors?.includes(uid)
+          canDelete: i.author === uid
         };
       });
     })
