@@ -7,7 +7,7 @@ import { AuthService, AuthWithEmailAndPassword } from '@shared';
 
 @Component({
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  styleUrls: ['../auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent {

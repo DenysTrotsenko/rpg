@@ -1,27 +1,35 @@
-<form class="p-10" [formGroup]="form">
-  <h1 mat-dialog-title>Profile</h1>
-  <div mat-dialog-content class="d-f fd-c">
-    <mat-form-field appearance="outline">
-      <mat-label>ID</mat-label>
-      <input matInput formControlName="uid" readonly>
-      <button mat-icon-button matSuffix (click)="onCopyToClipboardClick(form.get('uid').value)">
-        <mat-icon>content_copy</mat-icon>
+<ng-container *ngIf="loading$ | async; else loaded;">
+  <mat-spinner color="accent" style="margin: 10px auto;"></mat-spinner>
+</ng-container>
+
+<ng-template #loaded>
+  <form [formGroup]="form" (ngSubmit)="onSubmitClick(form.getRawValue())">
+    <mat-toolbar class="f-0-0-a">
+      <h1>Profile</h1>
+      <span class="f-1"></span>
+      <button mat-flat-button color="accent" type="submit" [disabled]="!(changed$ | async)">
+        Save
       </button>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" readonly>
-      <button mat-icon-button matSuffix (click)="onCopyToClipboardClick(form.get('email').value)">
-        <mat-icon>content_copy</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="displayName" readonly>
-    </mat-form-field>
-  </div>
-<!--  <div mat-dialog-actions>-->
-<!--    <button mat-button [mat-dialog-close]="null">Cancel</button>-->
-<!--    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>-->
-<!--  </div>-->
-</form>
+    </mat-toolbar>
+    <div class="d-f fd-c p-10">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="uid" readonly>
+        <button mat-icon-button matSuffix (click)="onCopyToClipboardClick(form.get('uid').value)">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" readonly>
+        <button mat-icon-button matSuffix (click)="onCopyToClipboardClick(form.get('email').value)">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+  </form>
+</ng-template>

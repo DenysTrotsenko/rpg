@@ -24,7 +24,6 @@ export const onUserCreate = functions.auth.user().onCreate((user: UserRecord) =>
     .all([
       admin.firestore().collection(FS_COLLECTION.USERS).doc(user.uid).set({
         id: user.uid,
-        name: user?.displayName,
         email: user?.email,
         permissions: []
       })

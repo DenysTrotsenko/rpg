@@ -4,7 +4,6 @@ import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
-import User = firebase.User;
 import { AuthWithEmailAndPassword } from '../models';
 import { getErrorMessage } from '../utils';
 
@@ -32,7 +31,7 @@ export class AuthService {
       .subscribe();
   }
 
-  deleteUser(data: AuthWithEmailAndPassword): Observable<User | void> {
+  deleteUser(data: AuthWithEmailAndPassword): Observable<firebase.User | void> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       switchMap(res => res.user.delete()),
       catchError((err: firebase.auth.Error) => {

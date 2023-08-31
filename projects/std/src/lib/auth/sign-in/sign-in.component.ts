@@ -7,7 +7,7 @@ import { finalize, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  styleUrls: ['../auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInComponent {
