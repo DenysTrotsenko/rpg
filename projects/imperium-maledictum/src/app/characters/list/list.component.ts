@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { AuthService, DialogService } from '@shared';
+import { AuthService, CampaignService, DialogService } from '@shared';
 import { Character } from '@imperium-maledictum-1e/models/character';
 import { CharacterService } from '../../common/character.service';
 
@@ -16,18 +16,29 @@ interface VM extends Character {
 })
 export class ListComponent {
   readonly characters$: Observable<VM[]> = combineLatest([
-    this.auth.uid$, this.character.member$]
+    this.auth.uid$, this.character.all$, this.campaign.all$]
   ).pipe(
-    map(([uid, characters]) => characters.map(i => {
-      return {
-        ...i,
-        canDelete: i.authors?.includes(uid)
-      };
-    }))
+    map(([uid, characters, campaigns]) => {
+      const filtered = characters.filter(i => {
+        const campaign = campaigns.find(j => j.id === i.campaign);
+        const isMy = i.authors?.includes(uid);
+        const isMaster = campaign?.authors?.includes(uid);
+
+        return isMy || isMaster;
+      });
+
+      return filtered.map(i => {
+        return {
+          ...i,
+          canDelete: i.authors?.includes(uid)
+        };
+      });
+    })
   );
 
   constructor(
     private readonly auth: AuthService,
+    private readonly campaign: CampaignService,
     private readonly character: CharacterService,
     private readonly dialog: DialogService
   ) {}

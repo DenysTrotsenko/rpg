@@ -89,12 +89,9 @@ export class CreateComponent implements OnInit {
           const authors = !!character?.authors?.length
             ? character.authors
             : [this.route.snapshot.data?.user?.uid];
-          const members = !!character?.members?.length
-            ? character.members
-            : [...new Set([this.route.snapshot.data?.user?.uid, ...authors])];
           const id = character.id || getId16();
 
-          return this.character.update(form.id, { ...form, authors, members, id });
+          return this.character.update(form.id, { ...form, authors, id });
         }),
         tap(() => this.router.navigate(['characters/list']))
       )

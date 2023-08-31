@@ -19,37 +19,37 @@ export class CharacterService {
     })
   );
 
-  private readonly ownObservable: Observable<Character[]> = this.auth.auth$.pipe(
-    switchMap(user => this.firestore.collection<Character>(
-      FS_COLLECTION.CHARACTERS, ref => ref.where('authors', 'array-contains', user.uid)
-    )),
-    catchError(() => of([])),
-    distinctUntilChanged(),
-    share({
-      connector: () => new ReplaySubject(),
-      resetOnComplete: true,
-      resetOnError: true,
-      resetOnRefCountZero: true
-    })
-  );
+  // private readonly ownObservable: Observable<Character[]> = this.auth.auth$.pipe(
+  //   switchMap(user => this.firestore.collection<Character>(
+  //     FS_COLLECTION.CHARACTERS, ref => ref.where('authors', 'array-contains', user.uid)
+  //   )),
+  //   catchError(() => of([])),
+  //   distinctUntilChanged(),
+  //   share({
+  //     connector: () => new ReplaySubject(),
+  //     resetOnComplete: true,
+  //     resetOnError: true,
+  //     resetOnRefCountZero: true
+  //   })
+  // );
 
-  private readonly ownOrMasterObservable: Observable<Character[]> = this.auth.auth$.pipe(
-    switchMap(user => this.firestore.collection<Character>(
-      FS_COLLECTION.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
-    )),
-    catchError(() => of([])),
-    distinctUntilChanged(),
-    share({
-      connector: () => new ReplaySubject(),
-      resetOnComplete: true,
-      resetOnError: true,
-      resetOnRefCountZero: true
-    })
-  );
+  // private readonly ownOrMasterObservable: Observable<Character[]> = this.auth.auth$.pipe(
+  //   switchMap(user => this.firestore.collection<Character>(
+  //     FS_COLLECTION.CHARACTERS, ref => ref.where('members', 'array-contains', user.uid)
+  //   )),
+  //   catchError(() => of([])),
+  //   distinctUntilChanged(),
+  //   share({
+  //     connector: () => new ReplaySubject(),
+  //     resetOnComplete: true,
+  //     resetOnError: true,
+  //     resetOnRefCountZero: true
+  //   })
+  // );
 
   get all$(): Observable<Character[]> { return this.allObservable; }
-  get author$(): Observable<Character[]> { return this.ownObservable; }
-  get member$(): Observable<Character[]> { return this.ownOrMasterObservable; }
+  // get author$(): Observable<Character[]> { return this.ownObservable; }
+  // get member$(): Observable<Character[]> { return this.ownOrMasterObservable; }
 
   constructor(
     private readonly auth: AuthService,
