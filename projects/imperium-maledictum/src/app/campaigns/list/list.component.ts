@@ -1,8 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService, Campaign, CampaignService, DialogService, FirestoreService } from '@shared';
 
+interface VM extends Campaign {
+  canDelete: boolean;
+}
 
 @Component({
   templateUrl: './list.component.html',
@@ -10,8 +13,16 @@ import { AuthService, Campaign, CampaignService, DialogService, FirestoreService
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly campaigns$: Observable<Campaign[]> = this.campaign.member$;
-  readonly uid$: Observable<string> = this.auth.uid$;
+  readonly campaigns$: Observable<VM[]> = combineLatest([
+    this.auth.uid$, this.campaign.member$
+  ]).pipe(
+    map(([uid, campaigns]) => campaigns.map(i => {
+      return {
+        ...i,
+        canDelete: i.authors?.includes(uid)
+      };
+    }))
+  );
 
   constructor(
     private readonly auth: AuthService,
@@ -19,10 +30,6 @@ export class ListComponent {
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService
   ) {}
-
-  canDelete(authors: string[]): Observable<boolean> {
-    return this.uid$.pipe(map(uid => authors?.includes(uid)));
-  }
 
   onDeleteClick(i: Campaign): void {
     this.dialog

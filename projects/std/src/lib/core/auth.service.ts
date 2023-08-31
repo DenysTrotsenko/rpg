@@ -4,7 +4,7 @@ import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
-import { AuthWithEmailAndPassword } from '../models';
+import { AuthWithEmailAndPassword, UserId } from '../models';
 import { getErrorMessage } from '../utils';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class AuthService {
 
   get auth$(): Observable<firebase.User | null> { return this.authObservable; }
   get logged$(): Observable<boolean> { return this.auth$.pipe(map(res => !!res)); }
-  get uid$(): Observable<string | null> { return this.auth$.pipe(map(res => res?.uid)); }
+  get uid$(): Observable<UserId | null> { return this.auth$.pipe(map(res => res?.uid as UserId)); }
 
   constructor(private afa: AngularFireAuth, private snackbar: SnackbarService) {
     this.afa.authState

@@ -1,7 +1,16 @@
-<mat-nav-list>
-  <mat-list-item>
-    <a matLine routerLink="../pc/create">Create PC</a>
+<mat-toolbar class="f-0-0-a">
+  <a mat-flat-button color="primary" routerLink="../create">Create Character</a>
+</mat-toolbar>
+<mat-nav-list class="p-10">
+  <mat-list-item *ngFor="let i of characters$ | async; trackBy: trackById;">
+    <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
+    <button *ngIf="i.canDelete" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-list-item>
+</mat-nav-list>
+
+<mat-nav-list>
   <mat-list-item *ngFor="let i of characters$ | async">
     <a matLine [routerLink]="['../pc/view', i.id]">{{ i.name }}</a>
     <a mat-icon-button [routerLink]="['../pc/update', i.id]" matTooltip="Upgrade">

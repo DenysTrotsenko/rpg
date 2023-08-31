@@ -1,9 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { AuthService, DialogService } from '@shared';
 import { Character } from '@imperium-maledictum-1e/models/character';
 import { CharacterService } from '../../common/character.service';
+
+interface VM extends Character {
+  canDelete: boolean;
+}
 
 @Component({
   templateUrl: './list.component.html',
@@ -11,7 +15,16 @@ import { CharacterService } from '../../common/character.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
-  readonly characters$: Observable<Character[]> = this.character.member$;
+  readonly characters$: Observable<VM[]> = combineLatest([
+    this.auth.uid$, this.character.member$]
+  ).pipe(
+    map(([uid, characters]) => characters.map(i => {
+      return {
+        ...i,
+        canDelete: i.authors?.includes(uid)
+      };
+    }))
+  );
 
   constructor(
     private readonly auth: AuthService,
@@ -36,4 +49,6 @@ export class ListComponent {
       )
       .subscribe();
   }
+
+  trackById(_, i): string { return i.id; }
 }
