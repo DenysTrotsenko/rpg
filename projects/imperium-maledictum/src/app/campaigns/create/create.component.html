@@ -8,11 +8,19 @@
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
-      <mat-form-field appearance="outline" class="f-1">
+      <mat-form-field appearance="outline">
         <mat-label>Setting</mat-label>
         <mat-select formControlName="setting">
           <mat-option *ngFor="let i of settings$ | async; trackBy: trackById;" [value]="i.id">
             {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Have Access</mat-label>
+        <mat-select formControlName="members" multiple>
+          <mat-option *ngFor="let i of users$ | async;" [value]="i.id">
+            {{i.name || i.email}}<span *ngIf="i.email" class="c-gray"> ({{i.email}})</span>
           </mat-option>
         </mat-select>
       </mat-form-field>

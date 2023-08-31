@@ -10,8 +10,8 @@ import {
   FirestoreService,
   getId16,
   Setting,
-  SettingService,
-  UserId
+  SettingService, User,
+  UserId, UserService
 } from '@shared';
 
 @Component({
@@ -23,10 +23,12 @@ export class CreateComponent {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     name: new UntypedFormControl('', [Validators.required]),
     setting: new UntypedFormControl(null, [Validators.required]),
+    members: new UntypedFormControl([]),
   });
 
   // readonly campaigns$: Observable<Campaign[]> = this.campaign.all$;
   readonly settings$: Observable<Setting[]> = this.setting.all$;
+  readonly users$: Observable<User[]> = this.user.all$;
   readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
     map(params => params.get('id') as CampaignId),
     switchMap(id => this.campaign.get(id)),
@@ -39,13 +41,12 @@ export class CreateComponent {
     private readonly setting: SettingService,
     private readonly firestore: FirestoreService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly user: UserService
   ) {}
 
   onSubmit(form): void {
-    if (!this.form.valid) {
-      return;
-    }
+    if (!this.form.valid) { return; }
 
     this.campaign$
       .pipe(
@@ -55,12 +56,9 @@ export class CreateComponent {
           const authors: UserId[] = !!campaign?.authors?.length
             ? [...campaign.authors]
             : [this.route.snapshot.data?.user?.uid];
-          const members: UserId[] = !!campaign?.members?.length
-            ? [...campaign.members]
-            : [...new Set([this.route.snapshot.data?.user?.uid, ...authors])];
 
           return this.firestore.update(`campaigns/${id}`, {
-            ...form, authors, members, id
+            ...form, authors, id
           });
         }),
         tap(() => this.router.navigate(['campaigns/list']))
