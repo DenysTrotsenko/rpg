@@ -1,17 +1,18 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, switchMap } from 'rxjs';
 import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import {
   BestiaryFaction, BestiaryRole, BestiaryTrait, BestiaryType,
-  Characteristic, Npc, Size, Skill, Specialisation
+  Characteristic, Item, ItemTraitId, Npc, Size, Skill, Specialisation
 } from '@imperium-maledictum-1e/models/common';
-import { DialogService, getId16, HasBaseProperties } from '@shared';
+import { DialogService, getId16 } from '@shared';
 import { DataService } from '../../common/data.service';
 import { AddSpecialisationDialogComponent } from './add-specialisation-dialog.component';
 import { AddSkillDialogComponent } from './add-skill-dialog.component';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
+import { AddItemDialogComponent } from './add-item-dialog.component';
 
 @Component({
   templateUrl: './bestiary.component.html',
@@ -30,7 +31,7 @@ export class BestiaryComponent implements OnInit {
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
     traits: new UntypedFormControl(null, [Validators.required]),
-    items: new UntypedFormControl(null, [Validators.required]),
+    items: new UntypedFormArray([], [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl(''),
     }),
@@ -82,7 +83,18 @@ export class BestiaryComponent implements OnInit {
 
   readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.form.get('specialisations').valueChanges.pipe(
     startWith([]),
-    map(specialisations => specialisations.map(i => ({ ...this.data.get<Specialisation>(i.id), details: i.details })))
+    map(specialisations => specialisations.map(i => ({
+      ...this.data.get<Specialisation>(i.id),
+      details: i.details
+    })))
+  );
+
+  readonly formItems$: Observable<(Item & { traits: ItemTraitId[] })[]> = this.form.get('items').valueChanges.pipe(
+    startWith([]),
+    map(items => items.map(i => ({
+      ...this.data.get<Item>(i.id),
+      traits: i.traits
+    })))
   );
 
   constructor(
@@ -129,6 +141,20 @@ export class BestiaryComponent implements OnInit {
           id: new UntypedFormControl(res.id),
           value: new UntypedFormControl(5),
           ...(res.details ? { details: new UntypedFormControl(res.details) } : {})
+        })))
+      )
+      .subscribe();
+  }
+
+  onAddItemClick(): void {
+    const group = this.form.get('items') as UntypedFormArray;
+
+    this.dialog.open(AddItemDialogComponent).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(res => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(res.id),
+          traits: new UntypedFormControl(res.traits)
         })))
       )
       .subscribe();

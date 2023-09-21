@@ -7,7 +7,7 @@ import {
   BestiaryFaction,
   BestiaryRole,
   BestiaryTrait, BestiaryType,
-  Characteristic, ItemTrait, ItemType, Range,
+  Characteristic, Item, ItemTrait, ItemType, Range,
   Size,
   Skill,
   Specialisation,
@@ -53,6 +53,7 @@ export class DataService {
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
       [FileName.BESTIARY_TYPES]: this.download<BestiaryType>(storage, FileName.BESTIARY_TYPES),
       [FileName.CHARACTERISTICS]: this.download<Characteristic>(storage, FileName.CHARACTERISTICS),
+      [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
       [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
@@ -82,6 +83,9 @@ export class DataService {
   );
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     this.handleData<Characteristic>(FileName.CHARACTERISTICS)
+  );
+  readonly items$: Observable<Item[]> = this.data$.pipe(
+    this.handleData<Item>(FileName.ITEMS)
   );
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(
     this.handleData<ItemTrait>(FileName.ITEM_FLAWS)
@@ -164,21 +168,22 @@ export class DataService {
   }
 
   init(): void {
-    this.availabilities$.subscribe().unsubscribe();
-    this.bestiaryFactions$.subscribe().unsubscribe();
-    this.bestiaryRoles$.subscribe().unsubscribe();
-    this.bestiaryTypes$.subscribe().unsubscribe();
-    this.bestiaryTraits$.subscribe().unsubscribe();
-    this.characteristics$.subscribe().unsubscribe();
-    this.itemFlaws$.subscribe().unsubscribe();
-    this.itemQualities$.subscribe().unsubscribe();
-    this.itemTraits$.subscribe().unsubscribe();
-    this.itemTypes$.subscribe().unsubscribe();
-    this.ranges$.subscribe().unsubscribe();
-    this.sizes$.subscribe().unsubscribe();
-    this.skills$.subscribe().unsubscribe();
-    this.specialisations$.subscribe().unsubscribe();
-    this.talents$.subscribe().unsubscribe();
+    this.data$.subscribe().unsubscribe();
+    // this.bestiaryFactions$.subscribe().unsubscribe();
+    // this.bestiaryRoles$.subscribe().unsubscribe();
+    // this.bestiaryTypes$.subscribe().unsubscribe();
+    // this.bestiaryTraits$.subscribe().unsubscribe();
+    // this.characteristics$.subscribe().unsubscribe();
+    // this.items$.subscribe().unsubscribe();
+    // this.itemFlaws$.subscribe().unsubscribe();
+    // this.itemQualities$.subscribe().unsubscribe();
+    // this.itemTraits$.subscribe().unsubscribe();
+    // this.itemTypes$.subscribe().unsubscribe();
+    // this.ranges$.subscribe().unsubscribe();
+    // this.sizes$.subscribe().unsubscribe();
+    // this.skills$.subscribe().unsubscribe();
+    // this.specialisations$.subscribe().unsubscribe();
+    // this.talents$.subscribe().unsubscribe();
   }
 
   private handleData<T extends HasId<unknown> & HasCommonFields>(file: FileName): OperatorFunction<Data, T[]> {

@@ -12,9 +12,9 @@ const routes: Routes = [
     component: CharactersComponent,
     children: [
       { path: 'list', component: ListComponent, resolve: { user: AuthResolver } },
-      { path: 'pc/create', component: CreateComponent, resolve: { user: AuthResolver } },
-      { path: 'pc/update/:id', component: CreateComponent, resolve: { user: AuthResolver } },
-      { path: 'pc/view/:id', component: ViewComponent, resolve: { user: AuthResolver } },
+      { path: 'create', component: CreateComponent, resolve: { user: AuthResolver } },
+      { path: 'update/:id', component: CreateComponent, resolve: { user: AuthResolver } },
+      { path: 'view/:id', component: ViewComponent, resolve: { user: AuthResolver } },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]
   }

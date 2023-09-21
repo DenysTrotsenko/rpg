@@ -19,15 +19,15 @@ import { Character } from '@imperium-maledictum-1e/models/character';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent {
-  readonly form1: UntypedFormGroup = new UntypedFormGroup({
-    campaign: new UntypedFormControl(null, [Validators.required]),
-    name: new UntypedFormControl('', [Validators.required]),
-  });
-  readonly form2: UntypedFormGroup = new UntypedFormGroup({
-    // attributes: new FormGroup({
-    //   [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
-    // }),
-  });
+  // readonly form1: UntypedFormGroup = new UntypedFormGroup({
+  //   campaign: new UntypedFormControl(null, [Validators.required]),
+  //   name: new UntypedFormControl('', [Validators.required]),
+  // });
+  // readonly form2: UntypedFormGroup = new UntypedFormGroup({
+  //   attributes: new FormGroup({
+  //     [ATTRIBUTE_ID_COMBAT]: new FormControl(DEFAULT_ATTRIBUTE_PERCENTAGES, [Validators.required]),
+  //   }),
+  // });
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     campaign: new UntypedFormControl(null, [Validators.required]),
@@ -41,22 +41,22 @@ export class CreateComponent {
     // spells: new FormControl([]),
   });
 
-  readonly character$: Observable<Character> = this.route.paramMap
-    .pipe(
-      map(params => params.get('id') as CharacterId),
-      switchMap(id => this.character.get(id) as Observable<Character>),
-      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
-      tap(res => {
-        const isNew = !res;
-        this.form.patchValue({
-          ...res,
-          id: res?.id ?? getId16()
-        });
-
-        setFormControlsEditable(this.form, ['archetype', 'trait'], isNew);
-      }),
-      shareReplay(1)
-    );
+  // readonly character$: Observable<Character> = this.route.paramMap
+  //   .pipe(
+  //     map(params => params.get('id') as CharacterId),
+  //     switchMap(id => this.character.get(id) as Observable<Character>),
+  //     distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
+  //     tap(res => {
+  //       const isNew = !res;
+  //       this.form.patchValue({
+  //         ...res,
+  //         id: res?.id ?? getId16()
+  //       });
+  //
+  //       setFormControlsEditable(this.form, ['archetype', 'trait'], isNew);
+  //     }),
+  //     shareReplay(1)
+  //   );
 
   constructor(
     private readonly character: CharacterService,
@@ -72,18 +72,18 @@ export class CreateComponent {
       return;
     }
 
-    this.character$
-      .pipe(
-        take(1),
-        switchMap(character => {
-          const author = character?.author ?? this.route.snapshot.data?.user?.uid;
-          const id = character.id || getId16();
-
-          return this.character.update(form.id, { ...form, author, id });
-        }),
-        tap(() => this.router.navigate(['characters/list']))
-      )
-      .subscribe();
+    // this.character$
+    //   .pipe(
+    //     take(1),
+    //     switchMap(character => {
+    //       const author = character?.author ?? this.route.snapshot.data?.user?.uid;
+    //       const id = character.id || getId16();
+    //
+    //       return this.character.update(form.id, { ...form, author, id });
+    //     }),
+    //     tap(() => this.router.navigate(['characters/list']))
+    //   )
+    //   .subscribe();
   }
 
   trackById(_: number, item): unknown {
