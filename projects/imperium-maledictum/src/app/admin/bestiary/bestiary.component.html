@@ -67,6 +67,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field appearance="outline" style="align-items:stretch;">
+      <mat-label>Powers</mat-label>
+      <mat-select formControlName="powers" multiple>
+        <mat-option *ngFor="let i of powers$ | async; trackBy: trackById;" [value]="i.id">
+          {{i.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="d-f g-5 fw-w">
       <ng-container formArrayName="skills">
         <mat-form-field
@@ -83,22 +91,22 @@
           [formGroupName]="i"
           appearance="outline" class="no-padding-bottom">
           <mat-label>
-            {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="s.details">[{{s.details}}]</span>
+            {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="spec.details">[{{spec.details}}]</span>
           </mat-label>
           <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
         </mat-form-field>
       </ng-container>
     </div>
     <div class="d-f g-5 fw-w">
-<!--      <ng-container formArrayName="items">-->
-<!--        <mat-form-field-->
-<!--          *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index"-->
-<!--          [formGroupName]="i"-->
-<!--          appearance="outline" class="no-padding-bottom">-->
-<!--          <mat-label>{{item.name}}</mat-label>-->
-<!--          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">-->
-<!--        </mat-form-field>-->
-<!--      </ng-container>-->
+      <ng-container formArrayName="items">
+        <mat-form-field
+          *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index"
+          [formGroupName]="i"
+          appearance="outline" class="no-padding-bottom">
+          <mat-label>{{item.name}}</mat-label>
+          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+        </mat-form-field>
+      </ng-container>
     </div>
   </div>
   <div mat-dialog-actions class="g-5">

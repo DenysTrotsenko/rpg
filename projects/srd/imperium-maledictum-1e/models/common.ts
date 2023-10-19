@@ -2,6 +2,7 @@ import { HasBaseProperties, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
 export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
+export type BestiaryId = Opaque<string, 'BestiaryId'>;
 export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
 export type BestiaryFactionId = Opaque<string, 'BestiaryFactionId'>;
 export type BestiaryTraitId = Opaque<string, 'BestiaryTraitId'>;
@@ -55,6 +56,18 @@ export interface BestiaryFaction extends HasBaseProperties<BestiaryFactionId> {
     description?: string;
     tooltip?: string;
   };
+}
+
+export interface Bestiary extends HasBaseProperties<BestiaryId> {
+  size: SizeId;
+  type: BestiaryTypeId;
+  faction: BestiaryFactionId;
+  role: BestiaryRoleId;
+  characteristics: { id: CharacteristicId; value: number; }[];
+  skills: { id: SkillId; value: number; }[];
+  specialisations: { id: SpecialisationId; value: number; }[];
+  traits: BestiaryTraitId[];
+  powers: PsychicPowerId[];
 }
 
 export interface BestiaryRole extends HasBaseProperties<BestiaryRoleId> {

@@ -6,8 +6,16 @@ import {
   Availability,
   BestiaryFaction,
   BestiaryRole,
-  BestiaryTrait, BestiaryType,
-  Characteristic, Item, ItemTrait, ItemType, Range,
+  BestiaryTrait,
+  BestiaryType,
+  Characteristic,
+  Item,
+  ItemTrait,
+  ItemType,
+  PsychicDiscipline,
+  PsychicPhenomena,
+  PsychicPower,
+  Range,
   Size,
   Skill,
   Specialisation,
@@ -58,6 +66,9 @@ export class DataService {
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
       [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
       [FileName.ITEM_TYPES]: this.download<ItemType>(storage, FileName.ITEM_TYPES),
+      [FileName.PSYCHIC_DISCIPLINES]: this.download<PsychicDiscipline>(storage, FileName.PSYCHIC_DISCIPLINES),
+      [FileName.PSYCHIC_PHENOMENAS]: this.download<PsychicPhenomena>(storage, FileName.PSYCHIC_PHENOMENAS),
+      [FileName.PSYCHIC_POWERS]: this.download<PsychicPower>(storage, FileName.PSYCHIC_POWERS),
       [FileName.RANGES]: this.download<Range>(storage, FileName.RANGES),
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
@@ -98,6 +109,15 @@ export class DataService {
   );
   readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(
     this.handleData<ItemType>(FileName.ITEM_TYPES)
+  );
+  readonly psychicDisciplines$: Observable<PsychicDiscipline[]> = this.data$.pipe(
+    this.handleData<PsychicDiscipline>(FileName.PSYCHIC_DISCIPLINES)
+  );
+  readonly psychicPhenomenas$: Observable<PsychicPhenomena[]> = this.data$.pipe(
+    this.handleData<PsychicPhenomena>(FileName.PSYCHIC_PHENOMENAS)
+  );
+  readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(
+    this.handleData<PsychicPower>(FileName.PSYCHIC_POWERS)
   );
   readonly ranges$: Observable<Range[]> = this.data$.pipe(
     this.handleData<Range>(FileName.RANGES)
@@ -159,7 +179,7 @@ export class DataService {
     ].filter(i => !!i).join('\n');
   }
 
-  download<T>(storage: string, file: FileName): Observable<T[]> {
+  private download<T>(storage: string, file: FileName): Observable<T[]> {
     return this.storage.download<T[]>(`/${storage}/${file}`);
   }
 
@@ -168,22 +188,25 @@ export class DataService {
   }
 
   init(): void {
-    this.data$.subscribe().unsubscribe();
-    // this.bestiaryFactions$.subscribe().unsubscribe();
-    // this.bestiaryRoles$.subscribe().unsubscribe();
-    // this.bestiaryTypes$.subscribe().unsubscribe();
-    // this.bestiaryTraits$.subscribe().unsubscribe();
-    // this.characteristics$.subscribe().unsubscribe();
-    // this.items$.subscribe().unsubscribe();
-    // this.itemFlaws$.subscribe().unsubscribe();
-    // this.itemQualities$.subscribe().unsubscribe();
-    // this.itemTraits$.subscribe().unsubscribe();
-    // this.itemTypes$.subscribe().unsubscribe();
-    // this.ranges$.subscribe().unsubscribe();
-    // this.sizes$.subscribe().unsubscribe();
-    // this.skills$.subscribe().unsubscribe();
-    // this.specialisations$.subscribe().unsubscribe();
-    // this.talents$.subscribe().unsubscribe();
+    this.availabilities$.subscribe().unsubscribe();
+    this.bestiaryFactions$.subscribe().unsubscribe();
+    this.bestiaryRoles$.subscribe().unsubscribe();
+    this.bestiaryTypes$.subscribe().unsubscribe();
+    this.bestiaryTraits$.subscribe().unsubscribe();
+    this.characteristics$.subscribe().unsubscribe();
+    this.items$.subscribe().unsubscribe();
+    this.itemFlaws$.subscribe().unsubscribe();
+    this.itemQualities$.subscribe().unsubscribe();
+    this.itemTraits$.subscribe().unsubscribe();
+    this.itemTypes$.subscribe().unsubscribe();
+    this.psychicDisciplines$.subscribe().unsubscribe();
+    this.psychicPhenomenas$.subscribe().unsubscribe();
+    this.psychicPowers$.subscribe().unsubscribe();
+    this.ranges$.subscribe().unsubscribe();
+    this.sizes$.subscribe().unsubscribe();
+    this.skills$.subscribe().unsubscribe();
+    this.specialisations$.subscribe().unsubscribe();
+    this.talents$.subscribe().unsubscribe();
   }
 
   private handleData<T extends HasId<unknown> & HasCommonFields>(file: FileName): OperatorFunction<Data, T[]> {

@@ -1,11 +1,25 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, switchMap } from 'rxjs';
 import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import {
-  BestiaryFaction, BestiaryRole, BestiaryTrait, BestiaryType,
-  Characteristic, Item, ItemTraitId, Npc, Size, Skill, Specialisation
+  BestiaryFaction,
+  BestiaryFactionId,
+  BestiaryId,
+  BestiaryRole,
+  BestiaryRoleId,
+  BestiaryTrait, BestiaryTraitId,
+  BestiaryType,
+  BestiaryTypeId,
+  Characteristic,
+  Item,
+  ItemTraitId,
+  Npc, PsychicPower, PsychicPowerId,
+  Size,
+  SizeId,
+  Skill,
+  Specialisation
 } from '@imperium-maledictum-1e/models/common';
 import { DialogService, getId16 } from '@shared';
 import { DataService } from '../../common/data.service';
@@ -21,16 +35,17 @@ import { AddItemDialogComponent } from './add-item-dialog.component';
 })
 export class BestiaryComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
-    id: new UntypedFormControl(null),
-    name: new UntypedFormControl('', [Validators.required]),
-    size: new UntypedFormControl(null, [Validators.required]),
-    type: new UntypedFormControl(null, [Validators.required]),
-    faction: new UntypedFormControl(null, [Validators.required]),
-    role: new UntypedFormControl(null, [Validators.required]),
+    id: new FormControl<BestiaryId>(null),
+    name: new FormControl<string>('', [Validators.required]),
+    size: new FormControl<SizeId>(null, [Validators.required]),
+    type: new FormControl<BestiaryTypeId>(null, [Validators.required]),
+    faction: new FormControl<BestiaryFactionId>(null, [Validators.required]),
+    role: new FormControl<BestiaryRoleId>(null, [Validators.required]),
     characteristics: new UntypedFormArray([]),
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
-    traits: new UntypedFormControl(null, [Validators.required]),
+    traits: new FormControl<BestiaryTraitId[]>(null, [Validators.required]),
+    powers: new UntypedFormControl(null, [Validators.required]),
     items: new UntypedFormArray([], [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl(''),
@@ -52,6 +67,8 @@ export class BestiaryComponent implements OnInit {
   readonly factions$: Observable<BestiaryFaction[]> = this.data.bestiaryFactions$.pipe(
     tap(items => AdminBaseService.setControlDefault(this.form.get('faction'), items))
   );
+
+  readonly powers$: Observable<PsychicPower[]> = this.data.psychicPowers$;
 
   readonly roles$: Observable<BestiaryRole[]> = this.data.bestiaryRoles$.pipe(
     tap(items => AdminBaseService.setControlDefault(this.form.get('role'), items))
@@ -153,8 +170,8 @@ export class BestiaryComponent implements OnInit {
       .pipe(
         filter(res => !!res),
         tap(res => group.push(new UntypedFormGroup({
-          id: new UntypedFormControl(res.id),
-          traits: new UntypedFormControl(res.traits)
+          id: new FormControl(res.id),
+          traits: new FormControl<BestiaryTrait[]>(res.traits)
         })))
       )
       .subscribe();
