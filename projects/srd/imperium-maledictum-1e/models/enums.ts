@@ -8,6 +8,7 @@ export enum FileName {
   CHARACTERISTICS = 'characteristics.json',
   CONDITIONS = 'conditions.json',
   DIFFICULTIES = 'difficulties.json',
+  DURATIONS = 'durations.json',
   FACTIONS = 'factions.json',
   ITEMS = 'items.json',
   ITEM_QUALITIES = 'item-qualities.json',
@@ -25,5 +26,6 @@ export enum FileName {
   SKILLS = 'skills.json',
   SPECIALISATIONS = 'specialisations.json',
   SPEED = 'speed.json',
-  TALENTS = 'talents.json'
+  TALENTS = 'talents.json',
+  TARGETS = 'targets.json'
 }

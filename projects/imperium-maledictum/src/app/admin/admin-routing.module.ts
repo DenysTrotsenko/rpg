@@ -31,6 +31,8 @@ import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
 import { DifficultiesComponent } from './difficulties/difficulties.component';
+import { DurationsComponent } from './durations/durations.component';
+import { TargetsComponent } from './targets/targets.component';
 
 export const routes: Routes = [
   {
@@ -81,6 +83,11 @@ export const routes: Routes = [
         path: 'difficulties',
         component: AdminBaseComponent,
         data: { path: FileName.DIFFICULTIES, component: DifficultiesComponent }
+      },
+      {
+        path: 'durations',
+        component: AdminBaseComponent,
+        data: { path: FileName.DURATIONS, component: DurationsComponent }
       },
       {
         path: 'factions',
@@ -171,6 +178,11 @@ export const routes: Routes = [
         path: 'talents',
         component: AdminBaseComponent,
         data: { path: FileName.TALENTS, component: TalentsComponent }
+      },
+      {
+        path: 'targets',
+        component: AdminBaseComponent,
+        data: { path: FileName.TARGETS, component: TargetsComponent }
       },
       {
         path: 'users',

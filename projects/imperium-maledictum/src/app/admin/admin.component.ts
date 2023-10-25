@@ -15,6 +15,7 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './characteristics', label: 'Characteristics', permission: PermissionId.ADMIN_SETTING },
   { link: './conditions', label: 'Conditions', permission: PermissionId.ADMIN_SETTING },
   { link: './difficulties', label: 'Difficulties', permission: PermissionId.ADMIN_SETTING },
+  { link: './durations', label: 'Durations', permission: PermissionId.ADMIN_SETTING },
   { link: './factions', label: 'Factions', permission: PermissionId.ADMIN_SETTING },
   { link: './items', label: 'Items', permission: PermissionId.ADMIN_SETTING },
   { link: './item-flaws', label: 'Item Flaws', permission: PermissionId.ADMIN_SETTING },
@@ -33,6 +34,7 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './speed', label: 'Speed', permission: PermissionId.ADMIN_SETTING },
   { link: './specialisations', label: 'Specialisations', permission: PermissionId.ADMIN_SETTING },
   { link: './talents', label: 'Talents', permission: PermissionId.ADMIN_SETTING },
+  { link: './targets', label: 'Targets', permission: PermissionId.ADMIN_SETTING }
 ];
 
 const OTHER_OPTIONS: NavListItemData[] = [

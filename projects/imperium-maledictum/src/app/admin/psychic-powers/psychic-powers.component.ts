@@ -1,41 +1,52 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { PsychicDiscipline, PsychicPower } from '@imperium-maledictum-1e/models/common';
-import { getId16, Setting, SettingService, StorageService } from '@shared';
-import { Observable, switchMap } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { FileName } from '@imperium-maledictum-1e/models/enums';
+import {
+  Difficulty,
+  DifficultyId, Duration,
+  DurationId,
+  PsychicDiscipline, PsychicDisciplineId,
+  PsychicPower, PsychicPowerId, Range,
+  RangeId, Target, TargetId
+} from '@imperium-maledictum-1e/models/common';
+import { getId16 } from '@shared';
+import { Observable } from 'rxjs';
+import { DataService } from '../../common/data.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './psychic-powers.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PsychicPowersComponent implements OnInit {
-  readonly form: UntypedFormGroup = new UntypedFormGroup({
-    id: new UntypedFormControl(null),
-    name: new UntypedFormControl('', [Validators.required]),
-    discipline: new UntypedFormControl(null, [Validators.required]),
-    labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
+  readonly form: FormGroup = new FormGroup({
+    id: new FormControl<PsychicPowerId>(null),
+    name: new FormControl<string>('', [Validators.required]),
+    overt: new FormControl<boolean>(null),
+    discipline: new FormControl<PsychicDisciplineId>(null, [Validators.required]),
+    cost: new FormControl<number>(1, [Validators.required]),
+    difficulty: new FormControl<DifficultyId>(null, [Validators.required]),
+    range: new FormControl<RangeId>(null, [Validators.required]),
+    target: new FormControl<TargetId[]>([], [Validators.required]),
+    duration: new FormControl<DurationId>(null, [Validators.required]),
+    labels: new FormGroup({
+      description: new FormControl<string>('', [Validators.required]),
     }),
   });
 
-  readonly setting$: Observable<Setting | null> = this.setting.selected$;
-
-  readonly disciplines$: Observable<PsychicDiscipline[]> = this.setting$.pipe(
-    map(setting => `/${setting?.storage}/${FileName.PSYCHIC_DISCIPLINES}`),
-    switchMap(path => this.storage.download<PsychicDiscipline[]>(path))
-  );
+  readonly disciplines$: Observable<PsychicDiscipline[]> = this.data.psychicDisciplines$;
+  readonly difficulties$: Observable<Difficulty[]> = this.data.difficulties$;
+  readonly durations$: Observable<Duration[]> = this.data.durations$;
+  readonly ranges$: Observable<Range[]> = this.data.ranges$;
+  readonly targets$: Observable<Target[]> = this.data.targets$;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: PsychicPower,
-    private readonly setting: SettingService,
-    private readonly storage: StorageService
+    @Inject(MAT_DIALOG_DATA) public power: PsychicPower,
+    private readonly data: DataService
   ) {}
 
   ngOnInit(): void {
-    this.form.patchValue(!!this.data ? this.data : { id: getId16() });
+    this.form.patchValue(!!this.power ? this.power : { id: getId16() });
   }
 
   trackById(_, i): string { return i.id; }

@@ -15,7 +15,7 @@ import {
   Characteristic,
   Item,
   ItemTraitId,
-  Npc, PsychicPower, PsychicPowerId,
+  Npc, PsychicPower,
   Size,
   SizeId,
   Skill,
@@ -45,7 +45,7 @@ export class BestiaryComponent implements OnInit {
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
     traits: new FormControl<BestiaryTraitId[]>(null, [Validators.required]),
-    powers: new UntypedFormControl(null, [Validators.required]),
+    powers: new FormControl<PsychicPower[]>(null, [Validators.required]),
     items: new UntypedFormArray([], [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl(''),

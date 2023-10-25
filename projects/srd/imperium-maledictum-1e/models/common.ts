@@ -11,6 +11,7 @@ export type NpcId = Opaque<string, 'NpcId'>;
 export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type DifficultyId = Opaque<string, 'DifficultyId'>;
+export type DurationId = Opaque<string, 'DurationId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemId = Opaque<string, 'ItemId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
@@ -35,6 +36,7 @@ export type SkillId = Opaque<string, 'SkillId'>;
 export type SpeedId = Opaque<string, 'SpeedId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
+export type TargetId = Opaque<string, 'TargetId'>;
 
 export interface Availability extends HasBaseProperties<AvailabilityId> {
   labels: {
@@ -122,6 +124,8 @@ export interface Difficulty {
   name: string;
   bonus: number;
 }
+
+export type Duration = HasBaseProperties<DurationId>;
 
 export interface Faction {
   id: FactionId | string;
@@ -343,6 +347,8 @@ export interface Talent extends HasBaseProperties<TalentId> {
   };
   system?: Partial<System>;
 }
+
+export type Target = HasBaseProperties<TargetId>;
 
 export interface Modification {
   type: SYSTEM_OPERATORS;

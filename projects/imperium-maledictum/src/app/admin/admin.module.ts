@@ -33,6 +33,8 @@ import { AddSkillDialogComponent } from './bestiary/add-skill-dialog.component';
 import { AddSpecialisationDialogComponent } from './bestiary/add-specialisation-dialog.component';
 import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { AddItemDialogComponent } from './bestiary/add-item-dialog.component';
+import { DurationsComponent } from './durations/durations.component';
+import { TargetsComponent } from './targets/targets.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { AddItemDialogComponent } from './bestiary/add-item-dialog.component';
     AddItemDialogComponent,
     AddSkillDialogComponent,
     AddSpecialisationDialogComponent,
-    DifficultiesComponent
+    DifficultiesComponent,
+    DurationsComponent,
+    TargetsComponent
   ],
   imports: [
     SharedModule,

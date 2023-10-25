@@ -8,7 +8,7 @@ import {
   BestiaryRole,
   BestiaryTrait,
   BestiaryType,
-  Characteristic,
+  Characteristic, Difficulty, Duration,
   Item,
   ItemTrait,
   ItemType,
@@ -19,7 +19,7 @@ import {
   Size,
   Skill,
   Specialisation,
-  Talent
+  Talent, Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 
@@ -61,6 +61,8 @@ export class DataService {
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
       [FileName.BESTIARY_TYPES]: this.download<BestiaryType>(storage, FileName.BESTIARY_TYPES),
       [FileName.CHARACTERISTICS]: this.download<Characteristic>(storage, FileName.CHARACTERISTICS),
+      [FileName.DIFFICULTIES]: this.download<Difficulty>(storage, FileName.DIFFICULTIES),
+      [FileName.DURATIONS]: this.download<Difficulty>(storage, FileName.DURATIONS),
       [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
@@ -73,8 +75,10 @@ export class DataService {
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
       [FileName.SPECIALISATIONS]: this.download<Specialisation>(storage, FileName.SPECIALISATIONS),
-      [FileName.TALENTS]: this.download<Talent>(storage, FileName.TALENTS)
+      [FileName.TALENTS]: this.download<Talent>(storage, FileName.TALENTS),
+      [FileName.TARGETS]: this.download<Target>(storage, FileName.TARGETS)
     })),
+    tap(() => console.log('Downloaded all data.')),
     shareReplay(1)
   );
   readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
@@ -94,6 +98,12 @@ export class DataService {
   );
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     this.handleData<Characteristic>(FileName.CHARACTERISTICS)
+  );
+  readonly difficulties$: Observable<Difficulty[]> = this.data$.pipe(
+    this.handleData<Difficulty>(FileName.DIFFICULTIES)
+  );
+  readonly durations$: Observable<Duration[]> = this.data$.pipe(
+    this.handleData<Duration>(FileName.DURATIONS)
   );
   readonly items$: Observable<Item[]> = this.data$.pipe(
     this.handleData<Item>(FileName.ITEMS)
@@ -133,6 +143,9 @@ export class DataService {
   );
   readonly talents$: Observable<Talent[]> = this.data$.pipe(
     this.handleData<Talent>(FileName.TALENTS)
+  );
+  readonly targets$: Observable<Target[]> = this.data$.pipe(
+    this.handleData<Target>(FileName.TARGETS)
   );
 
   constructor(
@@ -180,7 +193,9 @@ export class DataService {
   }
 
   private download<T>(storage: string, file: FileName): Observable<T[]> {
-    return this.storage.download<T[]>(`/${storage}/${file}`);
+    return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
+      tap(res => console.log('Downloaded:', file, res?.length, 'items loaded.'))
+    );
   }
 
   get<T>(id: string): T {
@@ -194,6 +209,8 @@ export class DataService {
     this.bestiaryTypes$.subscribe().unsubscribe();
     this.bestiaryTraits$.subscribe().unsubscribe();
     this.characteristics$.subscribe().unsubscribe();
+    this.difficulties$.subscribe().unsubscribe();
+    this.durations$.subscribe().unsubscribe();
     this.items$.subscribe().unsubscribe();
     this.itemFlaws$.subscribe().unsubscribe();
     this.itemQualities$.subscribe().unsubscribe();
@@ -207,6 +224,7 @@ export class DataService {
     this.skills$.subscribe().unsubscribe();
     this.specialisations$.subscribe().unsubscribe();
     this.talents$.subscribe().unsubscribe();
+    this.targets$.subscribe().unsubscribe();
   }
 
   private handleData<T extends HasId<unknown> & HasCommonFields>(file: FileName): OperatorFunction<Data, T[]> {
