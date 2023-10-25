@@ -107,6 +107,8 @@
 .o-h { overflow: hidden !important; }
 .o-a { overflow: auto !important; }
 
+.pe-n { pointer-events: none !important; }
+
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {
   .mobile-hidden {

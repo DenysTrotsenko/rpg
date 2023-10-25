@@ -18,3 +18,14 @@ body {
 
 .tc-white { color: $color-white !important; }
 .tc-gray { color: $color-gray !important; }
+
+
+.mat-expansion-panel:hover {
+  .visible-on-hover {
+    display: block;
+  }
+}
+
+.visible-on-hover {
+  display: none;
+}
