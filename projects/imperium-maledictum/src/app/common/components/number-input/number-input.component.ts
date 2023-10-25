@@ -40,7 +40,6 @@ export class NumberInputComponent implements ControlValueAccessor {
 
   propagateChange = (_: any) => {};
   writeValue(value: number): void {
-    console.log('writeValue', value);
     this.value = value;
   }
   registerOnChange(fn: any): void { this.propagateChange = fn; }

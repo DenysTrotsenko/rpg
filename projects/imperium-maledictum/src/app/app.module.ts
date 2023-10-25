@@ -10,6 +10,7 @@ import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { MatDialogRef } from '@angular/material/dialog';
+import { LoggerModule } from '../../../std/src/lib/logger/logger.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogRef } from '@angular/material/dialog';
       provideStorage(() => getStorage()),
       provideFunctions(() => getFunctions())
     ),
+    LoggerModule.forRoot(!environment.production)
   ],
   providers: [
     {

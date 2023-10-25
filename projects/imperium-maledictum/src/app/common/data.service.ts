@@ -22,6 +22,7 @@ import {
   Talent, Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
+import { LoggerService } from '../../../../std/src/lib/logger/logger.service';
 
 interface Data {
   [FileName.AVAILABILITIES]: Availability[];
@@ -78,7 +79,7 @@ export class DataService {
       [FileName.TALENTS]: this.download<Talent>(storage, FileName.TALENTS),
       [FileName.TARGETS]: this.download<Target>(storage, FileName.TARGETS)
     })),
-    tap(() => console.log('Downloaded all data.')),
+    tap(() => this.logger.log('Downloaded all data.')),
     shareReplay(1)
   );
   readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
@@ -151,6 +152,7 @@ export class DataService {
   constructor(
     private readonly auth: AuthService,
     private readonly cache: CacheService,
+    private readonly logger: LoggerService,
     private readonly setting: SettingService,
     private readonly storage: StorageService
   ) {}
@@ -194,7 +196,7 @@ export class DataService {
 
   private download<T>(storage: string, file: FileName): Observable<T[]> {
     return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
-      tap(res => console.log('Downloaded:', file, res?.length, 'items loaded.'))
+      tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.'))
     );
   }
 
