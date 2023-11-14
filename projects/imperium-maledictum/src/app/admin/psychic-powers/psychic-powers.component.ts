@@ -12,7 +12,6 @@ import {
 import { getId16 } from '@shared';
 import { Observable } from 'rxjs';
 import { DataService } from '../../common/data.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './psychic-powers.component.html',

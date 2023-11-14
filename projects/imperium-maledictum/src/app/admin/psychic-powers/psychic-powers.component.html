@@ -25,7 +25,7 @@
         <mat-label>Difficulty</mat-label>
         <mat-select formControlName="difficulty">
           <mat-option *ngFor="let i of difficulties$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
+            {{i.name}} ({{(i.bonus < 0 ? '' : '+') + i.bonus}})
           </mat-option>
         </mat-select>
       </mat-form-field>
