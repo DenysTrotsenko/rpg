@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
-import { AuthService, CampaignService, DialogService } from '@shared';
+import { filter, map, tap } from 'rxjs/operators';
+import { AuthService, CampaignService, DialogService, NavListItemData, PermissionId, UserService } from '@shared';
 import { DataService } from '../common/data.service';
+
+const LOGGED_OPTIONS: NavListItemData[] = [
+  { link: './admin', icon: 'admin_panel_settings', label: 'Admin', permission: PermissionId.ADMIN },
+  { link: './campaigns', icon: 'grade', label: 'Campaigns', permission: PermissionId.CAMPAIGNS },
+  { link: './characters', icon: 'group', label: 'Characters', permission: PermissionId.CHARACTERS },
+  { link: './references', icon: 'format_list_bulleted', label: 'References' },
+  { link: './profile', icon: 'account_circle', label: 'Profile' },
+];
 
 @Component({
   templateUrl: './index.component.html',
@@ -13,13 +21,18 @@ import { DataService } from '../common/data.service';
 export class IndexComponent implements OnInit {
   expanded = true;
   readonly logged$: Observable<boolean> = this.auth.logged$;
+  readonly options$: Observable<NavListItemData[]> = this.user.me$.pipe(
+    map(user => user?.permissions ?? []),
+    map(permissions => LOGGED_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
+  );
 
   constructor(
-    private auth: AuthService,
-    private campaign: CampaignService,
-    private data: DataService,
-    private dialog: DialogService,
-    private router: Router
+    private readonly auth: AuthService,
+    private readonly campaign: CampaignService,
+    private readonly data: DataService,
+    private readonly dialog: DialogService,
+    private readonly router: Router,
+    private readonly user: UserService
   ) {}
 
   ngOnInit(): void {

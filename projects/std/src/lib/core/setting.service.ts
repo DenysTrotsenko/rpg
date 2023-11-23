@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject, share } from 'rxjs';
 import { catchError, distinctUntilChanged, map, take, tap } from 'rxjs/operators';
-import { FirestoreService, Setting } from '@shared';
+import { FirestoreService, Setting, SettingId } from '@shared';
 
 @Injectable()
 export class SettingService {
@@ -45,5 +45,10 @@ export class SettingService {
   }
 
   create(): void {}
+
+  update(id: SettingId, setting: Setting): Observable<void> {
+    return this.firestore.update(`settings/${id}`, setting);
+  }
+
   delete(): void {}
 }

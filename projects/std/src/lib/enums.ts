@@ -13,4 +13,6 @@ export enum PermissionId {
   ADMIN = 'admin',
   ADMIN_SETTING = 'admin::setting',
   ADMIN_USERS = 'admin::users',
+  CAMPAIGNS = 'campaigns',
+  CHARACTERS = 'characters'
 }

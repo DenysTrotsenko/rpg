@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { Observable, Subject } from 'rxjs';
-import { finalize, switchMap, take } from 'rxjs/operators';
+import { forkJoin, Observable, Subject } from 'rxjs';
+import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
 import { HttpService } from './http.service';
 
 @Injectable()
@@ -30,5 +30,18 @@ export class StorageService {
         take(1),
         switchMap(() => this.storage.ref(path).getDownloadURL())
       );
+  }
+
+  clone(to: string, from: string): Observable<any> {
+    return this.storage.ref(from).listAll().pipe(
+      map(res => res.items.map(i => i.name)),
+      switchMap(names => forkJoin(names.map(i => this.download(`/${from}/${i}`))).pipe(
+        switchMap(files => forkJoin(files.map((j, index) => {
+          const data = JSON.stringify(j, null, 2);
+          const blob = new Blob([data], { type: 'application/json' });
+          return this.upload(`/${to}/${names[index]}`, blob);
+        })))
+      ))
+    );
   }
 }

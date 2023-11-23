@@ -48,6 +48,7 @@ export interface HasWeight {
 }
 
 export interface NavListItemData {
+  icon?: string;
   link: string;
   label: string;
   class?: string;

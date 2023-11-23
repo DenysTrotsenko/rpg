@@ -38,6 +38,7 @@ const SETTING_OPTIONS: NavListItemData[] = [
 ];
 
 const OTHER_OPTIONS: NavListItemData[] = [
+  { link: './settings', label: 'Settings', permission: PermissionId.ADMIN_SETTING },
   { link: './users', label: 'Users', permission: PermissionId.ADMIN_USERS }
 ];
 
@@ -50,11 +51,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   readonly valid: boolean = !hasDuplicates(routes[0].children.map(i => i.data?.path).filter(i => !!i));
   readonly settingOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
-    map(permissions => SETTING_OPTIONS.filter(i => permissions.includes(i.permission)))
+    map(permissions => SETTING_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
   readonly otherOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
-    map(permissions => OTHER_OPTIONS.filter(i => permissions.includes(i.permission)))
+    map(permissions => OTHER_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
 
   readonly control: FormControl = new FormControl(null);
