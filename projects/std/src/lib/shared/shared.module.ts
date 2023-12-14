@@ -13,6 +13,9 @@ import { SelectionListComponent } from './components/selection-list/selection-li
 import { AdminBaseModule } from './admin-base/admin-base.module';
 import { AdminUsersModule } from './admin-users/admin-users.module';
 import { AdminSettingsModule } from './admin-settings/admin-settings.module';
+import { AdminDictionaryModule } from './admin-dictionary/admin-dictionary.module';
+import { JsonEditorDialogComponent } from './json-editor-dialog/json-editor-dialog.component';
+import { CodeEditorModule } from './code-editor/code-editor.module';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -21,7 +24,8 @@ const DECLARATIONS = [
   FilterByPipe,
   FindPipe,
   KeyValueArrayComponent,
-  SelectionListComponent
+  SelectionListComponent,
+  JsonEditorDialogComponent
 ];
 
 const IMPORTS = [
@@ -30,7 +34,9 @@ const IMPORTS = [
   FormsModule,
   MaterialModule,
   ReactiveFormsModule,
+  CodeEditorModule,
   AdminBaseModule,
+  AdminDictionaryModule,
   AdminUsersModule,
   AdminSettingsModule
 ];

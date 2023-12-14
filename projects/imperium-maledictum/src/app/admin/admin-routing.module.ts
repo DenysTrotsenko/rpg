@@ -36,6 +36,7 @@ import { TargetsComponent } from './targets/targets.component';
 import { permissionGuard } from '../common/guards';
 import { PermissionId } from '@shared';
 import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
+import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,12 @@ export const routes: Routes = [
     component: AdminComponent,
     canActivate: [permissionGuard(PermissionId.ADMIN)],
     children: [
+      {
+        path: 'dictionary',
+        component: AdminDictionaryComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.DICTIONARY }
+      },
       {
         path: 'availability',
         component: AdminBaseComponent,

@@ -10,7 +10,7 @@ import { AbstractControl } from '@angular/forms';
 export class AdminBaseService<T extends HasId<K>, K> {
   private path: string = null;
   private component: any = null;
-  readonly items$ = new BehaviorSubject([]);
+  readonly items$ = new BehaviorSubject(null);
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   readonly changed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -33,7 +33,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
 
     this.storage.download(this.path)
       .pipe(
-        catchError(() => of([])),
+        catchError(() => of(null)),
         tap((res: T[]) => this.items$.next(res)),
         finalize(() => this.loading$.next(false))
       )

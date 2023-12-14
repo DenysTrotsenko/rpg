@@ -6,6 +6,7 @@ import { hasDuplicates, NavListItemData, PermissionId, Setting, SettingService, 
 import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
+  { link: './dictionary', label: 'Dictionary', permission: PermissionId.ADMIN_SETTING },
   { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-factions', label: 'Bestiary Factions', permission: PermissionId.ADMIN_SETTING },
   { link: './bestiary-roles', label: 'Bestiary Roles', permission: PermissionId.ADMIN_SETTING },
