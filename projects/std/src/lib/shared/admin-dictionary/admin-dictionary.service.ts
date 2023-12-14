@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, SnackbarService, StorageService } from '@shared';
+import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
 
 @Injectable()
 export class AdminDictionaryService {
@@ -30,18 +31,18 @@ export class AdminDictionaryService {
   }
 
   editor(): void {
-    // this.dialog.open(AdminBaseEditorDialogComponent, {
-    //   data: this.dictionary$.value,
-    //   width: '1200px'
-    // }).afterClosed()
-    //   .pipe(
-    //     filter(res => !!res),
-    //     tap(result => {
-    //       this.dictionary$.next(result);
-    //       this.changed$.next(true);
-    //     })
-    //   )
-    //   .subscribe();
+    this.dialog.open(JsonEditorDialogComponent, {
+      data: this.dictionary$.value,
+      width: '1200px'
+    }).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(result => {
+          this.dictionary$.next(result);
+          this.changed$.next(true);
+        })
+      )
+      .subscribe();
   }
 
   save(): void {

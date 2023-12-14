@@ -24,8 +24,7 @@ const DECLARATIONS = [
   FilterByPipe,
   FindPipe,
   KeyValueArrayComponent,
-  SelectionListComponent,
-  JsonEditorDialogComponent
+  SelectionListComponent
 ];
 
 const IMPORTS = [
@@ -38,7 +37,8 @@ const IMPORTS = [
   AdminBaseModule,
   AdminDictionaryModule,
   AdminUsersModule,
-  AdminSettingsModule
+  AdminSettingsModule,
+  JsonEditorDialogComponent
 ];
 
 @NgModule({

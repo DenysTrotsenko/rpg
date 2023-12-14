@@ -3,8 +3,8 @@ import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, getId16, HasBaseProperties, HasId, SnackbarService, sortByName, StorageService } from '@shared';
 import { AdminServiceConfig } from './admin-base.models';
-import { AdminBaseEditorDialogComponent } from './admin-base-editor-dialog.component';
 import { AbstractControl } from '@angular/forms';
+import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
 
 @Injectable()
 export class AdminBaseService<T extends HasId<K>, K> {
@@ -99,7 +99,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
   }
 
   editor(): void {
-    this.dialog.open(AdminBaseEditorDialogComponent, {
+    this.dialog.open(JsonEditorDialogComponent, {
       data: this.items$.value,
       width: '1200px'
     }).afterClosed()

@@ -2,21 +2,17 @@ import { NgModule } from '@angular/core';
 import { AdminBaseComponent } from './admin-base.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material/material.module';
-import { AdminBaseEditorDialogComponent } from './admin-base-editor-dialog.component';
-import { CodeEditorModule } from '../code-editor/code-editor.module';
 
 @NgModule({
   declarations: [
-    AdminBaseComponent,
-    AdminBaseEditorDialogComponent
+    AdminBaseComponent
   ],
   exports: [
     AdminBaseComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    CodeEditorModule
+    MaterialModule
   ]
 })
 export class AdminBaseModule {}
