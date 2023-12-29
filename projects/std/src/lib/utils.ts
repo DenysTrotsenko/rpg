@@ -91,3 +91,11 @@ export function sortByName(a, b): -1 | 0 | 1 {
     return 0;
   }
 }
+
+export function swap<T>(arr: T[], a, b): T[] {
+  return arr.map((current, idx) => {
+    if (idx === a) { return arr[b]; }
+    if (idx === b) { return arr[a]; }
+    return current;
+  });
+}
