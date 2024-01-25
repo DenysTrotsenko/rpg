@@ -33,8 +33,8 @@ export class AdminBaseService<T extends HasId<K>, K> {
 
     this.storage.download(this.path)
       .pipe(
-        catchError(() => of(null)),
-        tap((res: T[]) => this.items$.next(res)),
+        catchError(() => of([])),
+        tap((res: T[]) => this.items$.next(res ?? [])),
         finalize(() => this.loading$.next(false))
       )
       .subscribe();
@@ -78,7 +78,7 @@ export class AdminBaseService<T extends HasId<K>, K> {
         filter(res => !!res),
         tap(res => this.items$.next([
           { ...item, ...res, id: getId16() },
-          ...this.items$.value
+          ...this.items$.value ?? []
         ])),
         tap(() => this.changed$.next(true))
       )
