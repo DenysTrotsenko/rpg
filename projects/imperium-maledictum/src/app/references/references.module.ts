@@ -5,13 +5,17 @@ import { SharedModule } from '@shared';
 import { TalentsComponent } from './talents/talents.component';
 import { SkillsComponent } from './skills/skills.component';
 import { CommonModule } from '../common/common.module';
+import { CharacteristicsComponent } from './characteristics/characteristics.component';
+import { ItemTraitsComponent } from './item-traits/item-traits.component';
 
 
 @NgModule({
   declarations: [
     ReferencesComponent,
     TalentsComponent,
-    SkillsComponent
+    SkillsComponent,
+    CharacteristicsComponent,
+    ItemTraitsComponent
   ],
   imports: [
     SharedModule,

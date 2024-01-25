@@ -3,43 +3,38 @@ import { FormControl } from '@angular/forms';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { NavListItemData, Setting, SettingService } from '@shared';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   templateUrl: './references.component.html',
   styleUrls: ['./references.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReferencesComponent implements OnInit, OnDestroy {
+export class ReferencesComponent {
   readonly control: FormControl = new FormControl(null);
   readonly settings$: Observable<Setting[]> = this.setting.all$;
-  private readonly destroy$: Subject<void> = new Subject<void>();
   readonly options: NavListItemData[] = [
+    { link: './characteristics', label: 'Characteristics' },
     { link: './skills', label: 'Skills' },
-    { link: './talents', label: 'Talents' }
+    { link: './talents', label: 'Talents' },
+    { link: './item-traits', label: 'Item Traits' }
   ];
 
   constructor(
     private readonly setting: SettingService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.setting.selected$
       .pipe(
-        takeUntil(this.destroy$),
+        takeUntilDestroyed(),
         tap(res => this.control.patchValue(!!res ? res.id : null, { emitEvent: false }))
       )
       .subscribe();
     this.control.valueChanges
       .pipe(
-        takeUntil(this.destroy$),
+        takeUntilDestroyed(),
         tap(id => this.setting.set(id))
       )
       .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   trackById(_, i): string { return i.id; }

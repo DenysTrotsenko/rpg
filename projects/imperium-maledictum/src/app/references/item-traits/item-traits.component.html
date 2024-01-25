@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Qualities</h1>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of itemQualities$ | async; trackBy: trackById;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine><i>{{i.labels?.description}}</i></p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<h1 mat-dialog-title>Flaws</h1>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of itemFlaws$ | async; trackBy: trackById;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine><i>{{i.labels?.description}}</i></p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<h1 mat-dialog-title>Traits</h1>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let i of itemTraits$ | async; trackBy: trackById;" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p matLine><i>{{i.labels?.description}}</i></p>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
