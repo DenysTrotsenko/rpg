@@ -10,7 +10,7 @@ import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dia
 export class AdminBaseService<T extends HasId<K>, K> {
   private path: string = null;
   private component: any = null;
-  readonly items$ = new BehaviorSubject(null);
+  readonly items$ = new BehaviorSubject([]);
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   readonly changed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
