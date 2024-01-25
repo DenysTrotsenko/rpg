@@ -37,6 +37,10 @@ import { permissionGuard } from '../common/guards';
 import { PermissionId } from '@shared';
 import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
 import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
+import { VirtuesComponent } from './virtues/virtues.component';
+import { FlawsComponent } from './flaws/flaws.component';
+import { MotivationsComponent } from './motivations/motivations.component';
+import { StatusComponent } from './status/status.component';
 
 export const routes: Routes = [
   {
@@ -223,6 +227,30 @@ export const routes: Routes = [
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.TARGETS, component: TargetsComponent }
+      },
+      {
+        path: 'virtues',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        data: { path: FileName.VIRTUES, component: VirtuesComponent }
+      },
+      {
+        path: 'flaws',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        data: { path: FileName.FLAWS, component: FlawsComponent }
+      },
+      {
+        path: 'motivations',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        data: { path: FileName.MOTIVATIONS, component: MotivationsComponent }
+      },
+      {
+        path: 'status',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        data: { path: FileName.STATUS, component: StatusComponent }
       },
       {
         path: 'settings',

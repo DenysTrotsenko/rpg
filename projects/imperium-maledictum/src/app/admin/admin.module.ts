@@ -35,6 +35,10 @@ import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { AddItemDialogComponent } from './bestiary/add-item-dialog.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
+import { VirtuesComponent } from './virtues/virtues.component';
+import { FlawsComponent } from './flaws/flaws.component';
+import { MotivationsComponent } from './motivations/motivations.component';
+import { StatusComponent } from './status/status.component';
 
 
 @NgModule({
@@ -71,7 +75,11 @@ import { TargetsComponent } from './targets/targets.component';
     AddSpecialisationDialogComponent,
     DifficultiesComponent,
     DurationsComponent,
-    TargetsComponent
+    TargetsComponent,
+    VirtuesComponent,
+    FlawsComponent,
+    MotivationsComponent,
+    StatusComponent
   ],
   imports: [
     SharedModule,

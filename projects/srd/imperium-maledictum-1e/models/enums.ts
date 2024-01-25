@@ -28,5 +28,9 @@ export enum FileName {
   SPECIALISATIONS = 'specialisations.json',
   SPEED = 'speed.json',
   TALENTS = 'talents.json',
-  TARGETS = 'targets.json'
+  TARGETS = 'targets.json',
+  VIRTUES = 'virtues.json',
+  FLAWS = 'flaws.json',
+  MOTIVATIONS = 'motivations.json',
+  STATUS = 'status.json'
 }
