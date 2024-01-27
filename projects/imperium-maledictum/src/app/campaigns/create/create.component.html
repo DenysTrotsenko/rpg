@@ -17,7 +17,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Have Access</mat-label>
+        <mat-label>Members</mat-label>
         <mat-select formControlName="members" multiple>
           <mat-option *ngFor="let i of users$ | async;" [value]="i.id">
             {{i.name || i.email}}<span *ngIf="i.email" class="c-gray"> ({{i.email}})</span>

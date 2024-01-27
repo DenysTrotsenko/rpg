@@ -1,6 +1,6 @@
 <ng-container *ngIf="campaign$ | async as campaign;">
   <mat-toolbar class="g-10">
-    <h1>Campaign View</h1>
+    <h1>Campaign: <span class="ff-g">{{campaign.name}}</span></h1>
     <span class="f-1"></span>
     <button mat-flat-button color="primary" (click)="onAddEventClick(campaign)">
       + Event
@@ -15,7 +15,6 @@
       + XP
     </button>
   </mat-toolbar>
-  <p class="ff-g fs-16 p-10 m-0">{{campaign.name}}</p>
   <mat-tab-group class="p-10">
     <mat-tab label="Events">
       <mat-accordion class="o-a d-b mt-10">
