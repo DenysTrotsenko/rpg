@@ -29,3 +29,9 @@ body {
 .visible-on-hover {
   display: none;
 }
+
+.select-in-toolbar {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 0 5px;
+}

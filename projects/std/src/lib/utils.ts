@@ -92,6 +92,50 @@ export function sortByName(a, b): -1 | 0 | 1 {
   }
 }
 
+export function sortBy(prop: string): (a, b) => -1 | 0 | 1 {
+  return (a, b): -1 | 0 | 1 => {
+    if (a[prop] > b[prop]) {
+      return 1;
+    } else if (a[prop] < b[prop]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+}
+
+export function getObjectKeys(obj, prefix = ''): string[] {
+  return Object.entries(obj).reduce((collector, [key, val]) => {
+    if (Object.prototype.toString.call(val) === '[object Object]') {
+      const newPrefix = prefix ? `${prefix}.${key}` : key;
+      const otherKeys = getObjectKeys(val, newPrefix);
+
+      return [ ...collector, ...otherKeys ];
+    } else {
+      return [ ...collector, prefix ? `${prefix}.${key}` : key ];
+    }
+  }, []);
+}
+
+export function getObjectProperty(obj, property = ''): string[] {
+  return property.split('.').reduce((o, i) => o[i], obj);
+}
+
+export function sortByProperty(prop: string): (a, b) => -1 | 0 | 1 {
+  return (a, b): -1 | 0 | 1 => {
+    const aProp = getObjectProperty(a, prop);
+    const bProp = getObjectProperty(b, prop);
+
+    if (aProp > bProp) {
+      return 1;
+    } else if (aProp < bProp) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+}
+
 export function swap<T>(arr: T[], a, b): T[] {
   return arr.map((current, idx) => {
     if (idx === a) { return arr[b]; }

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { HasCommonFields, HasId, HasSystem, Setting } from '@shared';
-import { AdminBaseService } from './admin-base.service';
 import { ActivatedRoute, Data } from '@angular/router';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
-import { SettingService } from '@shared';
+import { HasCommonFields, HasId, HasSystem, Setting, SettingService } from '@shared';
+import { AdminBaseService } from './admin-base.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './admin-base.component.html',
@@ -17,11 +17,13 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
   readonly route = inject(ActivatedRoute);
   readonly setting = inject(SettingService);
   readonly items$: BehaviorSubject<T[]> = this.admin.items$;
+  readonly properties$: BehaviorSubject<string[]> = this.admin.properties$;
   readonly loading$: BehaviorSubject<boolean> = this.admin.loading$;
   readonly changed$: BehaviorSubject<boolean> = this.admin.changed$;
   readonly data$: Observable<Data> = this.route.data;
   readonly setting$: Observable<Setting | null> = this.setting.selected$;
   readonly destroy$: Subject<void> = new Subject();
+  readonly sort: FormControl<string> = new FormControl('name');
 
   ngOnInit(): void {
     combineLatest([this.data$, this.setting$])
@@ -34,6 +36,15 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
               component: data.component
             });
           }
+        })
+      )
+      .subscribe();
+
+    this.sort.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        tap(key => {
+          this.admin.sort(key);
         })
       )
       .subscribe();

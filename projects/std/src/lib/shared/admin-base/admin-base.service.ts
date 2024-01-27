@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, of, skip } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
-import { DialogService, getId16, HasBaseProperties, HasId, SnackbarService, sortByName, StorageService } from '@shared';
+import {
+  DialogService,
+  getId16,
+  getObjectKeys,
+  HasBaseProperties,
+  HasId,
+  SnackbarService,
+  sortByName, sortByProperty,
+  StorageService
+} from '@shared';
 import { AdminServiceConfig } from './admin-base.models';
 import { AbstractControl } from '@angular/forms';
 import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
@@ -11,6 +20,8 @@ export class AdminBaseService<T extends HasId<K>, K> {
   private path: string = null;
   private component: any = null;
   readonly items$ = new BehaviorSubject([]);
+  readonly properties$: BehaviorSubject<string[]> = new BehaviorSubject([]);
+  readonly sort$: BehaviorSubject<string> = new BehaviorSubject(null);
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   readonly changed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -34,10 +45,32 @@ export class AdminBaseService<T extends HasId<K>, K> {
     this.storage.download(this.path)
       .pipe(
         catchError(() => of([])),
-        tap((res: T[]) => this.items$.next(res ?? [])),
+        tap((res: T[]) => {
+          const items = res ?? [];
+          const options = items.reduce((acc, cur) => {
+            return [...acc, ...getObjectKeys(cur)];
+          }, []);
+          const unique = [...new Set(options)];
+
+          this.properties$.next(unique);
+          this.items$.next(items.sort(sortByProperty(this.sort$.value ?? 'name')));
+        }),
         finalize(() => this.loading$.next(false))
       )
       .subscribe();
+
+    this.sort$
+      .pipe(
+        skip(1),
+        tap(key => {
+          this.items$.next(this.items$.value.sort(sortByProperty(key ?? 'name')));
+        })
+      )
+      .subscribe();
+  }
+
+  sort(key: string): void {
+    this.sort$.next(key);
   }
 
   add(): void {

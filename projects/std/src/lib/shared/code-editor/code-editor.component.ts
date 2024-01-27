@@ -24,6 +24,8 @@ import { takeUntil, tap } from 'rxjs/operators';
 export class CodeEditorComponent implements AfterViewInit, OnDestroy {
   @Input() set json(json) { this.json$.next(json); }
 
+  @Input() readonly: boolean = false;
+
   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() errorChange: EventEmitter<any> = new EventEmitter<any>();
@@ -42,6 +44,7 @@ export class CodeEditorComponent implements AfterViewInit, OnDestroy {
       props: {
         content: { json: this.json$.getValue() },
         mode: Mode.text,
+        readOnly: this.readonly,
         mainMenuBar: false,
         navigationBar: false,
         statusBar: false,

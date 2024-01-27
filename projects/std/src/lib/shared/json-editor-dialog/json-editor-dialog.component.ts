@@ -15,5 +15,5 @@ import { CodeEditorModule } from '../code-editor/code-editor.module';
 export class JsonEditorDialogComponent {
   readonly data = inject(MAT_DIALOG_DATA);
   readonly error$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  readonly value$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.data);
+  readonly value$: BehaviorSubject<any> = new BehaviorSubject<any>(this.data);
 }
