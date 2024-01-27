@@ -11,12 +11,15 @@
     <button mat-flat-button color="primary" (click)="onAddPersonaClick(campaign)">
       + Persona
     </button>
+    <button mat-flat-button color="primary" (click)="onAddExperienceClick(campaign)">
+      + XP
+    </button>
   </mat-toolbar>
   <p class="ff-g fs-16 p-10 m-0">{{campaign.name}}</p>
   <mat-tab-group class="p-10">
     <mat-tab label="Events">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.events | sort : 'createdAt' : 'desc';" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -73,6 +76,50 @@
           </mat-expansion-panel-header>
           <div>
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+    <mat-tab label="XP">
+      <mat-accordion class="o-a d-b mt-10">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">TOTAL</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <ng-container *ngIf="users$ | async as users">
+              <table *ngIf="getTotalNormalizedExperience(users, campaign.experience) as xps" class="mat-table bs-0 w-100">
+                <tr class="mat-row">
+                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>
+                </tr>
+                <tr class="mat-row">
+                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>
+                </tr>
+              </table>
+            </ng-container>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc';" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditExperienceClick(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteExperienceClick(i.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
+            <ng-container *ngIf="users$ | async as users">
+              <table *ngIf="getNormalizedExperience(users, i) as xps" class="mat-table bs-0 w-100">
+                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td></tr>
+                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td></tr>
+              </table>
+            </ng-container>
           </div>
         </mat-expansion-panel>
       </mat-accordion>

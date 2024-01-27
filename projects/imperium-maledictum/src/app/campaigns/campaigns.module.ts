@@ -7,6 +7,7 @@ import { ViewComponent } from './view/view.component';
 import { CreateComponent } from './create/create.component';
 import { CommonModule } from '../common/common.module';
 import { EventEditDialogComponent } from './event-edit-dialog/event-edit-dialog.component';
+import { XpEditDialogComponent } from './xp-edit-dialog/xp-edit-dialog.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EventEditDialogComponent } from './event-edit-dialog/event-edit-dialog.
     ListComponent,
     ViewComponent,
     CreateComponent,
-    EventEditDialogComponent
+    EventEditDialogComponent,
+    XpEditDialogComponent
   ],
   imports: [
     SharedModule,

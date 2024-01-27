@@ -71,6 +71,7 @@ export interface Campaign {
   events: CampaignEvent[];
   personas: CampaignEvent[];
   locations: CampaignEvent[];
+  experience: CampaignExperience[];
 }
 
 export interface CampaignEvent extends HasId<string> {
@@ -78,6 +79,14 @@ export interface CampaignEvent extends HasId<string> {
   name: string;
   description: string;
   members: UserId[];
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface CampaignExperience extends HasId<string> {
+  name: string;
+  description: string;
+  value: Record<UserId, number>;
   createdAt: number;
   updatedAt: number;
 }

@@ -14,8 +14,11 @@
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($general-typography);`
 @include mat.legacy-core();
-@include mat.all-legacy-component-themes($app-theme);
 @include mat.all-component-themes($app-theme);
+@include mat.all-legacy-component-themes($app-theme);
+@include mat.all-component-typographies(mat.define-typography-config(
+  $font-family: '"Catamaran", sans-serif'
+));
 
 html, body {
   overscroll-behavior-x: none;

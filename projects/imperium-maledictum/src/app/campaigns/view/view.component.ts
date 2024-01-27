@@ -1,9 +1,18 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { Campaign, CampaignEvent, CampaignId, CampaignService, DialogService, FirestoreService } from '@shared';
+import { combineLatest, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
+import {
+  Campaign,
+  CampaignEvent,
+  CampaignExperience,
+  CampaignId,
+  CampaignService,
+  DialogService,
+  FirestoreService, User, UserService
+} from '@shared';
 import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
+import { XpEditDialogComponent } from '../xp-edit-dialog/xp-edit-dialog.component';
 
 @Component({
   templateUrl: './view.component.html',
@@ -11,29 +20,22 @@ import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent {
+  readonly campaign = inject(CampaignService);
+  readonly dialog = inject(DialogService);
+  readonly firestore = inject(FirestoreService);
+  readonly route = inject(ActivatedRoute);
+  readonly user = inject(UserService);
+
   readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
     map(params => params.get('id') as CampaignId),
     switchMap(id => this.campaign.get(id)),
     distinctUntilChanged((p: Campaign, q: Campaign) => JSON.stringify(p) === JSON.stringify(q)),
     shareReplay(1)
   );
-
-  // readonly itemGroups = [
-  //   { icon: 'swords', label: 'Melee Weapons' },
-  //   { icon: 'explosion', label: 'Grenades & Explosives' },
-  //   { icon: 'shield', label: 'Armour' },
-  //   { icon: 'handyman', label: 'Tools' },
-  //   { icon: 'night_shelter', label: 'Accommodations & Lodgings' },
-  //   { icon: 'lunch_dining', label: 'Provisions & Meals' },
-  //   { icon: 'syringe', label: 'Drugs' },
-  // ];
-
-  constructor(
-    private readonly campaign: CampaignService,
-    private readonly dialog: DialogService,
-    private readonly firestore: FirestoreService,
-    private readonly route: ActivatedRoute,
-  ) {}
+  readonly users$: Observable<User[]> = this.user.all$;
+  readonly members$: Observable<User[]> = combineLatest([this.user.all$, this.campaign$]).pipe(
+    map(([users, campaign]) => users.filter(i => campaign?.members?.includes(i.id)))
+  );
 
   onAddEventClick(campaign: Campaign): void {
     this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
@@ -89,11 +91,68 @@ export class ViewComponent {
       .subscribe();
   }
 
+  onAddExperienceClick(campaign: Campaign): void {
+    this.dialog.open(XpEditDialogComponent, { data: {campaign}, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(xp => !!xp),
+        switchMap(xp => {
+          const experience: CampaignExperience[] = campaign?.experience
+            ? [...campaign.experience, xp]
+            : [xp];
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, experience
+          });
+        })
+      )
+      .subscribe();
+  }
+
   onEditEventClick(event: CampaignEvent): void {
     console.log('Not implemented yet.');
   }
 
   onDeleteEventClick(id: string): void {
     console.log('Not implemented yet.');
+  }
+
+  onEditExperienceClick(event: CampaignExperience): void {
+    console.log('Not implemented yet.');
+  }
+
+  onDeleteExperienceClick(id: string): void {
+    console.log('Not implemented yet.');
+  }
+
+  getNormalizedExperience(users: User[], xp: CampaignExperience): { name: string; value: number; }[] {
+    return Object.entries(xp.value).map(i => {
+      const user = users.find(j => j.id === i[0]);
+      return {
+        name: user?.name ?? user?.email,
+        value: i[1]
+      };
+    });
+  }
+
+  getTotalNormalizedExperience(users: User[], xp: CampaignExperience[]): { name: string; value: number; }[] {
+    const reducedXp = xp.reduce((acc, cur) => {
+      Object.entries(cur.value).forEach(entry => {
+        const id = entry[0];
+        const value = entry[1] ?? 0;
+
+        acc[id] = !!acc[id] ? acc[id] + value : value;
+      });
+
+      return acc;
+    }, {} as Record<string, number>);
+
+    return Object.entries(reducedXp).map(i => {
+      const user = users.find(j => j.id === i[0]);
+      return {
+        name: user?.name ?? user?.email,
+        value: i[1]
+      };
+    });
   }
 }

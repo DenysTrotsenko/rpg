@@ -8,6 +8,7 @@ import { MapPipe } from './pipes/map.pipe';
 import { FilterTruthyPipe } from './pipes/filter-truthy.pipe';
 import { FilterByPipe } from './pipes/filter-by.pipe';
 import { FindPipe } from './pipes/find.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
 import { SelectionListComponent } from './components/selection-list/selection-list.component';
 import { AdminBaseModule } from './admin-base/admin-base.module';
@@ -23,6 +24,7 @@ const DECLARATIONS = [
   FilterTruthyPipe,
   FilterByPipe,
   FindPipe,
+  SortPipe,
   KeyValueArrayComponent,
   SelectionListComponent
 ];
