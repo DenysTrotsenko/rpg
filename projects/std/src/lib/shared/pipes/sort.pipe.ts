@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform<T>(value: T[], property: keyof T, order: 'asc' | 'desc' = 'asc'): T[] {
-    return value.sort((a, b) => {
+    return value?.sort((a, b) => {
       const aProp = a[property] as number;
       const bProp = b[property] as number;
       const isNumbers = typeof aProp === 'number' && typeof bProp === 'number';

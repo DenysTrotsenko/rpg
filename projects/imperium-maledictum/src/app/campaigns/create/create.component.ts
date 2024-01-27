@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, OnInit, OnDestroy } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, take } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Observable, Subject, take } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay, switchMap, takeUntil, tap } from 'rxjs/operators';
 import {
   Campaign,
   CampaignId,
@@ -19,7 +19,14 @@ import {
   styleUrls: ['./create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit, OnDestroy {
+  readonly campaign = inject(CampaignService);
+  readonly setting = inject(SettingService);
+  readonly firestore = inject(FirestoreService);
+  readonly route = inject(ActivatedRoute);
+  readonly router = inject(Router);
+  readonly user = inject(UserService);
+
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     name: new UntypedFormControl('', [Validators.required]),
     setting: new UntypedFormControl(null, [Validators.required]),
@@ -27,6 +34,7 @@ export class CreateComponent {
   });
 
   // readonly campaigns$: Observable<Campaign[]> = this.campaign.all$;
+  readonly destroy$: Subject<void> = new Subject();
   readonly settings$: Observable<Setting[]> = this.setting.all$;
   readonly users$: Observable<User[]> = this.user.all$;
   readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
@@ -36,14 +44,19 @@ export class CreateComponent {
     shareReplay(1)
   );
 
-  constructor(
-    private readonly campaign: CampaignService,
-    private readonly setting: SettingService,
-    private readonly firestore: FirestoreService,
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
-    private readonly user: UserService
-  ) {}
+  ngOnInit(): void {
+    this.campaign$
+      .pipe(
+        takeUntil(this.destroy$),
+        tap(campaign => this.form.patchValue(campaign))
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   onSubmit(form): void {
     if (!this.form.valid) { return; }
@@ -52,6 +65,7 @@ export class CreateComponent {
       .pipe(
         take(1),
         switchMap((campaign: Campaign) => {
+          console.log('HERE!');
           const id: CampaignId = campaign?.id ?? getId16();
           const authors: UserId[] = !!campaign?.authors?.length
             ? [...campaign.authors]

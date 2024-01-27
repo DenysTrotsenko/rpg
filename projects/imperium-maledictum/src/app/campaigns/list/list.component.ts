@@ -31,6 +31,10 @@ export class ListComponent {
     private readonly firestore: FirestoreService
   ) {}
 
+  onEditClick(i: Campaign): void {
+
+  }
+
   onDeleteClick(i: Campaign): void {
     this.dialog
       .confirm({

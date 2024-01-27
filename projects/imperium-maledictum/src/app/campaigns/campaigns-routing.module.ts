@@ -13,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: ListComponent, resolve: { user: AuthResolver } },
       { path: 'create', component: CreateComponent, resolve: { user: AuthResolver } },
+      { path: 'create/:id', component: CreateComponent, resolve: { user: AuthResolver } },
       { path: 'view/:id', component: ViewComponent, resolve: { user: AuthResolver } },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]

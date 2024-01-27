@@ -126,7 +126,7 @@ export class ViewComponent {
   }
 
   getNormalizedExperience(users: User[], xp: CampaignExperience): { name: string; value: number; }[] {
-    return Object.entries(xp.value).map(i => {
+    return Object.entries(xp?.value ?? {}).map(i => {
       const user = users.find(j => j.id === i[0]);
       return {
         name: user?.name ?? user?.email,
@@ -136,7 +136,7 @@ export class ViewComponent {
   }
 
   getTotalNormalizedExperience(users: User[], xp: CampaignExperience[]): { name: string; value: number; }[] {
-    const reducedXp = xp.reduce((acc, cur) => {
+    const reducedXp = xp?.reduce((acc, cur) => {
       Object.entries(cur.value).forEach(entry => {
         const id = entry[0];
         const value = entry[1] ?? 0;
@@ -147,7 +147,7 @@ export class ViewComponent {
       return acc;
     }, {} as Record<string, number>);
 
-    return Object.entries(reducedXp).map(i => {
+    return Object.entries(reducedXp ?? {}).map(i => {
       const user = users.find(j => j.id === i[0]);
       return {
         name: user?.name ?? user?.email,
