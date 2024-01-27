@@ -39,7 +39,7 @@
     </mat-tab>
     <mat-tab label="Locations">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.locations;" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.locations | sort : 'name' : 'desc';" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -60,7 +60,7 @@
     </mat-tab>
     <mat-tab label="Personas">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.personas;" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.personas | sort : 'name' : 'desc';" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
