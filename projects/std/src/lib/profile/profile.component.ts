@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject } from '@angular/core';
 import { AuthService, FirestoreService, SnackbarService, UserService } from '@shared';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, combineLatest, throttleTime } from 'rxjs';
@@ -31,6 +31,13 @@ export class ProfileComponent {
     this.init();
   }
 
+  @HostListener('document:keydown.control.s', ['$event']) onCtrlS(event: KeyboardEvent): void {
+    event.preventDefault();
+    if (this.changed$.value && !this.loading$.value) {
+      this.onSubmitClick();
+    }
+  }
+
   onCopyToClipboardClick(content: string): void {
     this.navigator.clipboard
       .writeText(`${content}`)
@@ -40,7 +47,9 @@ export class ProfileComponent {
       );
   }
 
-  onSubmitClick(form): void {
+  onSubmitClick(): void {
+    const form = this.form.getRawValue();
+
     if (!form?.uid) { return; }
 
     this.loading$.next(true);

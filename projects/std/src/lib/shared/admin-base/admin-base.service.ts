@@ -15,15 +15,23 @@ import { AdminServiceConfig } from './admin-base.models';
 import { AbstractControl } from '@angular/forms';
 import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
 
+const getCount = items => items.reduce((result, value) => {
+  return { ...result, [value]: (result[value] || 0) + 1 };
+}, {});
+
+const getDuplicates = dict => Object.keys(dict).filter((a) => dict[a] > 1);
+
 @Injectable()
 export class AdminBaseService<T extends HasId<K>, K> {
   private path: string = null;
   private component: any = null;
   readonly items$ = new BehaviorSubject([]);
-  readonly properties$: BehaviorSubject<string[]> = new BehaviorSubject([]);
   readonly sort$: BehaviorSubject<string> = new BehaviorSubject(null);
+  readonly properties$: BehaviorSubject<string[]> = new BehaviorSubject([]);
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   readonly changed$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  readonly duplicates$: BehaviorSubject<string> = new BehaviorSubject(null);
+  readonly valid$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private dialog: DialogService,
@@ -64,6 +72,17 @@ export class AdminBaseService<T extends HasId<K>, K> {
         skip(1),
         tap(key => {
           this.items$.next(this.items$.value.sort(sortByProperty(key ?? 'name')));
+        })
+      )
+      .subscribe();
+
+    this.items$
+      .pipe(
+        tap(items => {
+          const duplicates = getDuplicates(getCount(items.map(i => i.id))).join(', ');
+
+          this.duplicates$.next(duplicates);
+          this.valid$.next(!duplicates.length);
         })
       )
       .subscribe();

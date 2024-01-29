@@ -14,11 +14,16 @@
     <button mat-flat-button color="primary" (click)="onEditorClick()">
       JSON
     </button>
-    <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">
+    <button mat-flat-button color="accent" [disabled]="!(changed$.value && valid$.value && !loading$.value)" (click)="onSaveClick()">
       Save
     </button>
   </mat-toolbar>
-  <mat-accordion class="o-a">
+  <ng-container *ngIf="duplicates$ | async as duplicates">
+    <p *ngIf="!!duplicates?.length" class="validation-message">
+      List have duplicated IDs: {{duplicates}}
+    </p>
+  </ng-container>
+  <mat-accordion class="o-a p-5">
     <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title class="ff-g">

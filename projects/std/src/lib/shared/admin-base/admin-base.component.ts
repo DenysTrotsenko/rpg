@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
   readonly admin = inject(AdminBaseService<T, K>);
   readonly route = inject(ActivatedRoute);
   readonly setting = inject(SettingService);
+
   readonly items$: BehaviorSubject<T[]> = this.admin.items$;
   readonly properties$: BehaviorSubject<string[]> = this.admin.properties$;
   readonly loading$: BehaviorSubject<boolean> = this.admin.loading$;
@@ -23,7 +24,16 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
   readonly data$: Observable<Data> = this.route.data;
   readonly setting$: Observable<Setting | null> = this.setting.selected$;
   readonly destroy$: Subject<void> = new Subject();
+  readonly duplicates$: BehaviorSubject<string> = this.admin.duplicates$;
+  readonly valid$: BehaviorSubject<boolean> = this.admin.valid$;
   readonly sort: FormControl<string> = new FormControl('name');
+
+  @HostListener('document:keydown.control.s', ['$event']) onCtrlS(event: KeyboardEvent): void {
+    event.preventDefault();
+    if (this.changed$.value && this.valid$.value && !this.loading$.value) {
+      this.onSaveClick();
+    }
+  }
 
   ngOnInit(): void {
     combineLatest([this.data$, this.setting$])
