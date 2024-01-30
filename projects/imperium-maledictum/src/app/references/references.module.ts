@@ -7,6 +7,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { CommonModule } from '../common/common.module';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ItemTraitsComponent } from './item-traits/item-traits.component';
     TalentsComponent,
     SkillsComponent,
     CharacteristicsComponent,
-    ItemTraitsComponent
+    ItemTraitsComponent,
+    ConditionsComponent
   ],
   imports: [
     SharedModule,

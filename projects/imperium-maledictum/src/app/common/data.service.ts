@@ -8,7 +8,7 @@ import {
   BestiaryRole,
   BestiaryTrait,
   BestiaryType,
-  Characteristic, Difficulty, Duration,
+  Characteristic, Condition, Difficulty, Duration,
   Item,
   ItemTrait,
   ItemType,
@@ -31,6 +31,7 @@ interface Data {
   [FileName.BESTIARY_TYPES]: BestiaryType[];
   [FileName.BESTIARY_TRAITS]: BestiaryTrait[];
   [FileName.CHARACTERISTICS]: Characteristic[];
+  [FileName.CONDITIONS]: Condition[];
   [FileName.SIZES]: Size[];
   [FileName.SKILLS]: Skill[];
   [FileName.SPECIALISATIONS]: Specialisation[];
@@ -62,8 +63,9 @@ export class DataService {
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
       [FileName.BESTIARY_TYPES]: this.download<BestiaryType>(storage, FileName.BESTIARY_TYPES),
       [FileName.CHARACTERISTICS]: this.download<Characteristic>(storage, FileName.CHARACTERISTICS),
+      [FileName.CONDITIONS]: this.download<Condition>(storage, FileName.CONDITIONS),
       [FileName.DIFFICULTIES]: this.download<Difficulty>(storage, FileName.DIFFICULTIES),
-      [FileName.DURATIONS]: this.download<Difficulty>(storage, FileName.DURATIONS),
+      [FileName.DURATIONS]: this.download<Duration>(storage, FileName.DURATIONS),
       [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
@@ -99,6 +101,9 @@ export class DataService {
   );
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     this.handleData<Characteristic>(FileName.CHARACTERISTICS)
+  );
+  readonly conditions$: Observable<Condition[]> = this.data$.pipe(
+    this.handleData<Condition>(FileName.CONDITIONS)
   );
   readonly difficulties$: Observable<Difficulty[]> = this.data$.pipe(
     this.handleData<Difficulty>(FileName.DIFFICULTIES)
@@ -211,6 +216,7 @@ export class DataService {
     this.bestiaryTypes$.subscribe().unsubscribe();
     this.bestiaryTraits$.subscribe().unsubscribe();
     this.characteristics$.subscribe().unsubscribe();
+    this.conditions$.subscribe().unsubscribe();
     this.difficulties$.subscribe().unsubscribe();
     this.durations$.subscribe().unsubscribe();
     this.items$.subscribe().unsubscribe();

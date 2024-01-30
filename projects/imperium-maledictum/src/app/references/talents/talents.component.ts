@@ -5,7 +5,7 @@ import { Talent } from '@imperium-maledictum-1e/models/common';
 
 @Component({
   templateUrl: './talents.component.html',
-  styleUrls: ['./talents.component.scss'],
+  styleUrls: ['../references.base.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TalentsComponent {

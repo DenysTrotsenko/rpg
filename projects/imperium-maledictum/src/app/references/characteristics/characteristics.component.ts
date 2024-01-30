@@ -5,7 +5,7 @@ import { DataService } from '../../common/data.service';
 
 @Component({
   templateUrl: './characteristics.component.html',
-  styleUrls: ['./characteristics.component.scss'],
+  styleUrls: ['../references.base.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacteristicsComponent {

@@ -19,7 +19,7 @@ interface SpecialisationView {
 
 @Component({
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss'],
+  styleUrls: ['../references.base.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillsComponent {

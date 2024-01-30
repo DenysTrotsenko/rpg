@@ -5,7 +5,7 @@ import { DataService } from '../../common/data.service';
 
 @Component({
   templateUrl: './item-traits.component.html',
-  styleUrls: ['./item-traits.component.scss'],
+  styleUrls: ['../references.base.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemTraitsComponent {
