@@ -17,7 +17,9 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
   readonly route = inject(ActivatedRoute);
   readonly setting = inject(SettingService);
 
-  readonly items$: BehaviorSubject<T[]> = this.admin.items$;
+  readonly sort: FormControl<string> = new FormControl('name');
+
+  readonly items$: Observable<T[]> = this.admin.items$;
   readonly properties$: BehaviorSubject<string[]> = this.admin.properties$;
   readonly loading$: BehaviorSubject<boolean> = this.admin.loading$;
   readonly changed$: BehaviorSubject<boolean> = this.admin.changed$;
@@ -26,7 +28,6 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
   readonly destroy$: Subject<void> = new Subject();
   readonly duplicates$: BehaviorSubject<string> = this.admin.duplicates$;
   readonly valid$: BehaviorSubject<boolean> = this.admin.valid$;
-  readonly sort: FormControl<string> = new FormControl('name');
 
   @HostListener('document:keydown.control.s', ['$event']) onCtrlS(event: KeyboardEvent): void {
     event.preventDefault();
