@@ -1,0 +1,21 @@
+<div class="d-f ai-c g-5">
+  <button mat-icon-button (click)="onStatusClick()" [class]="style$ | async">
+    <mat-icon>{{icon$ | async}}</mat-icon>
+  </button>
+  <p class="mb-0" [class]="style$ | async">{{(task$ | async)?.name}}</p>
+  <span class="f-1"></span>
+  <span>
+    <button mat-icon-button (click)="onAddClick()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onEditClick()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onDeleteClick()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
+</div>
+<div class="d-f fd-c">
+  <std-todo-task *ngFor="let i of (task$ | async)?.tasks" [task]="i"></std-todo-task>
+</div>

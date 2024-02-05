@@ -1,0 +1,5 @@
+@import "../../../../src/styles/variables";
+
+button.task-completed { color: $color-green; }
+button.task-failed { color: $color-red; }
+p.task-failed { text-decoration: line-through; }
