@@ -1,5 +1,29 @@
 @import "../../../../src/styles/variables";
 
-button.task-completed { color: $color-green; }
-button.task-failed { color: $color-red; }
-p.task-failed { text-decoration: line-through; }
+:host {
+  .actions {
+    display: none;
+    position: absolute;
+    top: -50%;
+    right: 0;
+  }
+
+  &:hover {
+    .actions {
+      display: initial;
+    }
+  }
+}
+
+button.task-completed {
+  color: $color-green;
+}
+
+button.task-failed {
+  color: $color-red;
+}
+
+p.task-failed {
+  color: $color-gray;
+  text-decoration: line-through;
+}

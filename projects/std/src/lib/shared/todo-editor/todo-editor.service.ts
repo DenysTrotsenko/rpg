@@ -48,4 +48,8 @@ export class TodoEditorService {
       )
       .subscribe();
   }
+
+  edit(): void {}
+
+  delete(): void {}
 }

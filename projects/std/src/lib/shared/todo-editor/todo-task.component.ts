@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { TodoTask, TodoStatus } from './todo-editor.models';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { TodoEditorService } from './todo-editor.service';
 
 @Component({
   selector: 'std-todo-task',
@@ -19,6 +20,8 @@ export class TodoTaskComponent {
     .set('completed', 'task-completed')
     .set('failed', 'task-failed');
   static readonly STATUS_ORDER: TodoStatus[] = ['active', 'completed', 'failed'];
+
+  readonly todo = inject(TodoEditorService);
 
   readonly task$: BehaviorSubject<TodoTask> = new BehaviorSubject<TodoTask>(null);
   readonly icon$: Observable<string> = this.task$.pipe(
@@ -41,11 +44,17 @@ export class TodoTaskComponent {
     this.task$.next(task);
   }
 
-  onAddClick(): void {}
+  onAddClick(task: TodoTask): void {
+    this.todo.add();
+  }
 
-  onEditClick(): void {}
+  onEditClick(task: TodoTask): void {
+    this.todo.edit();
+  }
 
-  onDeleteClick(): void {}
+  onDeleteClick(task: TodoTask): void {
+    this.todo.delete();
+  }
 
   private getNextStatus(i: TodoTask): TodoStatus {
     const order = TodoTaskComponent.STATUS_ORDER;
