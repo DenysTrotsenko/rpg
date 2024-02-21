@@ -1,24 +1,24 @@
-import { CampaignId, CharacterId, UserId } from '@shared';
-import { Characteristic, CharacteristicId, PatronId } from './common';
+// import { CampaignId, CharacterId, UserId } from '@shared';
+// import { Characteristic, CharacteristicId, PatronId } from './common';
 
-export class Character {
-  id: CharacterId;
-  author: UserId;
-  campaign: CampaignId;
-  name: string;
-  patron: PatronId;
-  characteristics: { id: CharacteristicId; value: number; }[];
+// export class Character {
+//   id: CharacterId;
+//   author: UserId;
+//   campaign: CampaignId;
+//   name: string;
+  // patron: PatronId;
+  // characteristics: { id: CharacteristicId; value: number; }[];
 
-  static getMaxWounds(character: Character, characteristics: Characteristic[]): number {
-    return characteristics
-      .filter(i => i.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES)
-      .reduce((acc, cur) => {
-        const value = character.characteristics.find(i => i.id === cur.id)?.value ?? 0;
-        const bonus = Math.floor(value / 10);
-        const wounds = Math.round(bonus * cur.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES);
-        return acc + wounds;
-      }, 0);
-  }
+  // static getMaxWounds(character: Character, characteristics: Characteristic[]): number {
+  //   return characteristics
+  //     .filter(i => i.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES)
+  //     .reduce((acc, cur) => {
+  //       const value = character.characteristics.find(i => i.id === cur.id)?.value ?? 0;
+  //       const bonus = Math.floor(value / 10);
+  //       const wounds = Math.round(bonus * cur.system?.MAXIMUM_WOUNDS_CHARACTERISTIC_BONUS_TIMES);
+  //       return acc + wounds;
+  //     }, 0);
+  // }
 //   static getRolledInitiative(): number {
 //     return getIntegerInRange(1, 10);
 //   }
@@ -100,4 +100,4 @@ export class Character {
 //       : fromWillpowerBonus;
 //     return 3 + fromAttribute;
 //   }
-}
+// }

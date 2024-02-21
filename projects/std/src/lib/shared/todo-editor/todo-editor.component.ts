@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
+import { Character } from '@shared';
 
 @Component({
   selector: 'std-todo-editor',
@@ -15,7 +15,7 @@ export class TodoEditorComponent {
 
   @Input() mode: TodoMode = 'view';
   @Input() filter: TodoStatus[] = ['active', 'completed', 'failed'];
-  // @Input() set filter(statuses: TodoStatus[]) { this.todo.filter = statuses; }
+  @Input() set characters(characters: Character[]) { this.todo.characters = characters; }
   @Input() set tasks(tasks: TodoTask[]) { this.todo.tasks = tasks; }
   @Output() valueChange: EventEmitter<TodoTask[]> = new EventEmitter();
 

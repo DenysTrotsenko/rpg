@@ -1,8 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { AuthService, CampaignService, DialogService } from '@shared';
-import { Character } from '@imperium-maledictum-1e/models/character';
+import { AuthService, CampaignService, Character, DialogService } from '@shared';
 import { CharacterService } from '../../common/character.service';
 
 interface VM extends Character {

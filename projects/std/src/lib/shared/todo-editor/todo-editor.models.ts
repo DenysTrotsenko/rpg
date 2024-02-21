@@ -1,10 +1,11 @@
-import { Opaque } from '@shared';
+import { Character, Opaque } from '@shared';
 
 export interface TodoTask {
   id: TodoId;
   name: string;
-  experience: number;
   status: TodoStatus;
+  experience: number;
+  characters: Character[];
   tasks: TodoTask[];
 }
 

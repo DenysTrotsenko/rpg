@@ -11,7 +11,6 @@ import {
   setFormControlsEditable
 } from '@shared';
 import { CharacterService } from '../../common/character.service';
-import { Character } from '@imperium-maledictum-1e/models/character';
 
 @Component({
   templateUrl: './create.component.html',

@@ -20,18 +20,21 @@ export class TestComponent {
       id: 'todo-task-1' as TodoId,
       name: 'Test #1',
       experience: 10,
+      characters: [],
       status: 'active',
       tasks: [
         {
           id: 'todo-task-11' as TodoId,
           name: 'Test #1-1',
           experience: 4,
+          characters: [],
           status: 'active',
           tasks: [
             {
               id: 'todo-task-111' as TodoId,
               name: 'Test #1-1-1',
               experience: 5,
+              characters: [],
               status: 'active',
               tasks: []
             }
@@ -41,6 +44,7 @@ export class TestComponent {
           id: 'todo-task-12' as TodoId,
           name: 'Test #1-2',
           experience: 6,
+          characters: [],
           status: 'active',
           tasks: []
         }

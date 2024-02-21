@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
-import { DialogService, getId16 } from '@shared';
+import { filter, map, shareReplay, tap } from 'rxjs/operators';
+import { Character, DialogService, getId16 } from '@shared';
 import { TodoId, TodoStatus, TodoTask } from './todo-editor.models';
 import { TodoDialogComponent } from './todo-dialog.component';
 
@@ -11,16 +11,19 @@ export class TodoEditorService {
 
   readonly dialog = inject(DialogService);
 
+  readonly charactersSrc$: BehaviorSubject<Character[]> = new BehaviorSubject([]);
   readonly tasksSrc$: BehaviorSubject<TodoTask[]> = new BehaviorSubject([]);
   readonly filterSrc$: BehaviorSubject<TodoStatus[]> = new BehaviorSubject([]);
   readonly tasks$: Observable<TodoTask[]> = this.tasksSrc$.asObservable().pipe(
-    map(tasks => JSON.parse(JSON.stringify(tasks)))
+    map(tasks => JSON.parse(JSON.stringify(tasks))),
+    shareReplay(1)
   );
   readonly filtered$: Observable<TodoTask[]> = combineLatest([
     this.tasks$,
     this.filterSrc$.asObservable()
   ]).pipe(
-    map(([tasks, statuses]) => this.getFilteredTasks(tasks, statuses))
+    map(([tasks, statuses]) => this.getFilteredTasks(tasks, statuses)),
+    shareReplay(1)
   );
 
   getFilteredTasks(tasks: TodoTask[], statuses: TodoStatus[]): TodoTask[] {
@@ -41,6 +44,10 @@ export class TodoEditorService {
     this.tasksSrc$.next(tasks);
   }
 
+  set characters(characters: Character[]) {
+    this.charactersSrc$.next(characters);
+  }
+
   status(ids: TodoId[]): void {
     const tasks = this.tasksSrc$.value;
     const taskRef = this.getTaskRef(tasks, ids);
@@ -51,7 +58,13 @@ export class TodoEditorService {
   }
 
   add(ids: TodoId[]): void {
-    this.dialog.open(TodoDialogComponent, { data: null, width: '800px' }).afterClosed()
+    this.dialog.open(TodoDialogComponent, {
+      data: {
+        characters: this.charactersSrc$.value,
+        task: null
+      },
+      width: '800px'
+    }).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => {
@@ -81,7 +94,10 @@ export class TodoEditorService {
     const taskRef = this.getTaskRef(tasks, ids);
 
     this.dialog.open(TodoDialogComponent, {
-      data: taskRef,
+      data: {
+        characters: this.charactersSrc$.value,
+        task: taskRef
+      },
       width: '800px'
     }).afterClosed()
       .pipe(

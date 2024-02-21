@@ -91,6 +91,13 @@ export interface CampaignExperience extends HasId<string> {
   updatedAt: number;
 }
 
+export interface Character {
+  id: CharacterId;
+  name: string;
+  author: UserId;
+  campaign: CampaignId;
+}
+
 export interface User extends HasId<UserId> {
   name: string;
   email: string;

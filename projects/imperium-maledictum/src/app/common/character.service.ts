@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, share } from 'rxjs';
 import { catchError, distinctUntilChanged, map, tap } from 'rxjs/operators';
-import { Character } from '@imperium-maledictum-1e/models/character';
-import { AuthService, CharacterId, FirestoreService, FS_COLLECTION } from '@shared';
+import { AuthService, Character, CharacterId, FirestoreService, FS_COLLECTION } from '@shared';
 
 @Injectable({
   providedIn: 'root'
