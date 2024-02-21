@@ -8,7 +8,7 @@
     <mat-button-toggle value="failed">Failed</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
-<std-todo-task *ngFor="let i of tasks$ | async;"
+<std-todo-task *ngFor="let i of filtered$ | async;"
   [task]="i"
   [mode]="mode"
   (addClick)="onAddClick($event)"

@@ -27,19 +27,8 @@ button.task-failed {
   color: $color-red;
 }
 
-p.task-completed {
-  text-decoration: line-through;
-}
-
+p.task-completed,
 p.task-failed {
   color: $color-gray;
   text-decoration: line-through;
-
-  .experience {
-    color: $color-gray;
-  }
-
-  .actions {
-    color: $color-white;
-  }
 }

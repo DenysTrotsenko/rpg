@@ -2,8 +2,8 @@
   <button mat-icon-button (click)="onStatusClick([])" [class]="style$ | async">
     <mat-icon>{{icon$ | async}}</mat-icon>
   </button>
-  <p class="mb-0 f-1 p-r" [class]="style$ | async">
-    <span>{{task?.name}}</span>
+  <div class="p-r f-1">
+    <p class="d-ib m-0" [class]="style$ | async">{{task?.name}}</p>
     <span class="experience"> ({{task?.experience}}xp)</span>
     <span *ngIf="mode === 'edit'" class="actions">
       <button mat-icon-button (click)="onAddClick([])">
@@ -16,7 +16,7 @@
         <mat-icon>delete</mat-icon>
       </button>
     </span>
-  </p>
+  </div>
 </div>
 <div class="d-f fd-c pl-30">
   <std-todo-task *ngFor="let i of (task$ | async)?.tasks"

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs/operators';
 import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
 import { Character } from '@shared';
@@ -10,7 +12,7 @@ import { Character } from '@shared';
   providers: [TodoEditorService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoEditorComponent {
+export class TodoEditorComponent implements OnInit {
   readonly todo = inject(TodoEditorService);
 
   @Input() mode: TodoMode = 'view';
@@ -19,9 +21,15 @@ export class TodoEditorComponent {
   @Input() set tasks(tasks: TodoTask[]) { this.todo.tasks = tasks; }
   @Output() valueChange: EventEmitter<TodoTask[]> = new EventEmitter();
 
-  readonly tasks$ = this.todo.filtered$.pipe(
-    // tap(tasks => this.valueChange.next(tasks)),
+  readonly tasks$ = this.todo.tasks$.pipe(
+    takeUntilDestroyed(),
+    tap(tasks => this.valueChange.next(tasks))
   );
+  readonly filtered$ = this.todo.filtered$;
+
+  ngOnInit(): void {
+    this.tasks$.subscribe();
+  }
 
   onAddClick(ids: TodoId[]): void {
     this.todo.add(ids);

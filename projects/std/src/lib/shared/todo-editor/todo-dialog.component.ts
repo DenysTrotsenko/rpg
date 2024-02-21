@@ -16,7 +16,8 @@ interface Data {
 })
 export class TodoDialogComponent implements OnInit {
   readonly data = inject<Data>(MAT_DIALOG_DATA);
-  readonly characters = this.data.characters;
+  readonly characters = this.data?.characters ?? [];
+  readonly task = this.data?.task;
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
@@ -25,6 +26,6 @@ export class TodoDialogComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.form.patchValue(!!this.data?.task ? this.data.task : { id: getId16() });
+    this.form.patchValue(!!this.task ? this.task : { id: getId16() });
   }
 }
