@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TodoStatus, TodoMode } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
+import {
+  TodoStatus,
+  TodoMode,
+  TodoTask,
+  TodoId
+} from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
 
 @Component({
   selector: 'app-test',
@@ -9,23 +14,31 @@ import { TodoStatus, TodoMode } from '../../../../../std/src/lib/shared/todo-edi
 })
 export class TestComponent {
   mode: TodoMode = 'edit';
-  filter: TodoStatus = null;
-  tasks = [
+  filter: TodoStatus[] = ['active', 'completed', 'failed'];
+  tasks: TodoTask[] = [
     {
-      id: 'todo-task-1',
+      id: 'todo-task-1' as TodoId,
       name: 'Test #1',
       experience: 10,
       status: 'active',
       tasks: [
         {
-          id: 'todo-task-11',
+          id: 'todo-task-11' as TodoId,
           name: 'Test #1-1',
           experience: 4,
           status: 'active',
-          tasks: []
+          tasks: [
+            {
+              id: 'todo-task-111' as TodoId,
+              name: 'Test #1-1-1',
+              experience: 5,
+              status: 'active',
+              tasks: []
+            }
+          ]
         },
         {
-          id: 'todo-task-12',
+          id: 'todo-task-12' as TodoId,
           name: 'Test #1-2',
           experience: 6,
           status: 'active',
@@ -34,4 +47,8 @@ export class TestComponent {
       ]
     }
   ];
+
+  onResultChange(res: any): void {
+    console.log(JSON.stringify(res));
+  }
 }

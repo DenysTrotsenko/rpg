@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { TodoTask, TodoStatus, TodoMode } from './todo-editor.models';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
 
 @Component({
@@ -13,12 +14,32 @@ export class TodoEditorComponent {
   readonly todo = inject(TodoEditorService);
 
   @Input() mode: TodoMode = 'view';
-  @Input() set filter(status: TodoStatus) { this.todo.filter = status; }
+  @Input() filter: TodoStatus[] = ['active', 'completed', 'failed'];
+  // @Input() set filter(statuses: TodoStatus[]) { this.todo.filter = statuses; }
   @Input() set tasks(tasks: TodoTask[]) { this.todo.tasks = tasks; }
+  @Output() valueChange: EventEmitter<TodoTask[]> = new EventEmitter();
 
-  readonly tasks$ = this.todo.filtered$;
+  readonly tasks$ = this.todo.filtered$.pipe(
+    // tap(tasks => this.valueChange.next(tasks)),
+  );
 
-  onAddClick(): void {
-    this.todo.add();
+  onAddClick(ids: TodoId[]): void {
+    this.todo.add(ids);
+  }
+
+  onDeleteClick(ids: TodoId[]): void {
+    this.todo.delete(ids);
+  }
+
+  onEditClick(ids: TodoId[]): void {
+    this.todo.edit(ids);
+  }
+
+  onStatusClick(ids: TodoId[]): void {
+    this.todo.status(ids);
+  }
+
+  onFilterChange(statuses: TodoStatus[]): void {
+    this.todo.filter = statuses;
   }
 }

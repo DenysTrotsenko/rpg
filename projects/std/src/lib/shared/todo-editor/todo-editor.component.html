@@ -1,2 +1,18 @@
-<button mat-flat-button (click)="onAddClick()">Add Task</button>
-<std-todo-task *ngFor="let i of tasks$ | async;" [task]="i"></std-todo-task>
+<div class="d-f g-5">
+  <button mat-flat-button class="f-1" (click)="onAddClick([])">Add Task</button>
+  <mat-button-toggle-group multiple appearance="standard"
+    [value]="filter"
+    (valueChange)="onFilterChange($event)">
+    <mat-button-toggle value="active">Active</mat-button-toggle>
+    <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    <mat-button-toggle value="failed">Failed</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<std-todo-task *ngFor="let i of tasks$ | async;"
+  [task]="i"
+  [mode]="mode"
+  (addClick)="onAddClick($event)"
+  (statusClick)="onStatusClick($event)"
+  (editClick)="onEditClick($event)"
+  (deleteClick)="onDeleteClick($event)">
+</std-todo-task>

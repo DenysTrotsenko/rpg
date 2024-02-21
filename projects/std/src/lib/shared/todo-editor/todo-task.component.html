@@ -1,22 +1,30 @@
-<div *ngIf="task$ | async as task" class="d-f ai-c g-5">
-  <button mat-icon-button (click)="onStatusClick()" [class]="style$ | async">
+<div *ngIf="task$ | async as task" class="d-f ai-c g-5 show-on-hover-area">
+  <button mat-icon-button (click)="onStatusClick([])" [class]="style$ | async">
     <mat-icon>{{icon$ | async}}</mat-icon>
   </button>
   <p class="mb-0 f-1 p-r" [class]="style$ | async">
-    {{task?.name}}
-    <span class="actions">
-      <button mat-icon-button (click)="onAddClick(task)">
+    <span>{{task?.name}}</span>
+    <span class="experience"> ({{task?.experience}}xp)</span>
+    <span *ngIf="mode === 'edit'" class="actions">
+      <button mat-icon-button (click)="onAddClick([])">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-icon-button (click)="onEditClick(task)">
+      <button mat-icon-button (click)="onEditClick([])">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="onDeleteClick(task)">
+      <button mat-icon-button (click)="onDeleteClick([])">
         <mat-icon>delete</mat-icon>
       </button>
     </span>
   </p>
 </div>
 <div class="d-f fd-c pl-30">
-  <std-todo-task *ngFor="let i of (task$ | async)?.tasks" [task]="i"></std-todo-task>
+  <std-todo-task *ngFor="let i of (task$ | async)?.tasks"
+    [task]="i"
+    [mode]="mode"
+    (addClick)="onAddClick($event)"
+    (deleteClick)="onDeleteClick($event)"
+    (editClick)="onEditClick($event)"
+    (statusClick)="onStatusClick($event)">
+  </std-todo-task>
 </div>

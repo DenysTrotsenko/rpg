@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { TodoTask, TodoStatus } from './todo-editor.models';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
 
 @Component({
@@ -19,9 +19,15 @@ export class TodoTaskComponent {
     .set('active', 'task-ongoing')
     .set('completed', 'task-completed')
     .set('failed', 'task-failed');
-  static readonly STATUS_ORDER: TodoStatus[] = ['active', 'completed', 'failed'];
 
   readonly todo = inject(TodoEditorService);
+
+  @Input() set task(task: TodoTask) { this.task$.next(task); }
+  @Input() mode: TodoMode;
+  @Output() addClick: EventEmitter<TodoId[]> = new EventEmitter();
+  @Output() editClick: EventEmitter<TodoId[]> = new EventEmitter();
+  @Output() deleteClick: EventEmitter<TodoId[]> = new EventEmitter();
+  @Output() statusClick: EventEmitter<TodoId[]> = new EventEmitter();
 
   readonly task$: BehaviorSubject<TodoTask> = new BehaviorSubject<TodoTask>(null);
   readonly icon$: Observable<string> = this.task$.pipe(
@@ -32,33 +38,19 @@ export class TodoTaskComponent {
     shareReplay(1)
   );
 
-  @Input() set task(task: TodoTask) {
-    this.task$.next(task);
+  onStatusClick(ids: TodoId[]): void {
+    this.statusClick.emit([this.task$.value?.id, ...ids]);
   }
 
-  onStatusClick(): void {
-    const task = this.task$.value;
-
-    task.status = this.getNextStatus(task);
-
-    this.task$.next(task);
+  onAddClick(ids: TodoId[]): void {
+    this.addClick.emit([this.task$.value?.id, ...ids]);
   }
 
-  onAddClick(task: TodoTask): void {
-    this.todo.add();
+  onEditClick(ids: TodoId[]): void {
+    this.editClick.emit([this.task$.value?.id, ...ids]);
   }
 
-  onEditClick(task: TodoTask): void {
-    this.todo.edit();
-  }
-
-  onDeleteClick(task: TodoTask): void {
-    this.todo.delete();
-  }
-
-  private getNextStatus(i: TodoTask): TodoStatus {
-    const order = TodoTaskComponent.STATUS_ORDER;
-
-    return order[order.indexOf(i.status) + 1] ?? order[0];
+  onDeleteClick(ids: TodoId[]): void {
+    this.deleteClick.emit([this.task$.value?.id, ...ids]);
   }
 }

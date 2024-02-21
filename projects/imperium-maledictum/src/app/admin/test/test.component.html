@@ -1,1 +1,5 @@
-<std-todo-editor [mode]="mode" [filter]="filter" [tasks]="tasks"></std-todo-editor>
+<std-todo-editor
+  [mode]="mode"
+  [tasks]="tasks"
+  (valueChange)="onResultChange($event)">
+</std-todo-editor>

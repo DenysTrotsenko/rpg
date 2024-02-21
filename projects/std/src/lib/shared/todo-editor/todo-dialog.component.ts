@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { getId16 } from '@shared';
+import { TodoTask } from './todo-editor.models';
 
 @Component({
   templateUrl: './todo-dialog.component.html',
@@ -9,7 +10,7 @@ import { getId16 } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoDialogComponent implements OnInit {
-  readonly data = inject(MAT_DIALOG_DATA);
+  readonly data = inject<TodoTask>(MAT_DIALOG_DATA);
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
