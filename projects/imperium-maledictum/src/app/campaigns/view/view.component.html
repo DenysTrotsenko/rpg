@@ -111,13 +111,6 @@
           </mat-expansion-panel-header>
           <div>
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
-<!--            <ng-container *ngIf="users$ | async as users">-->
-<!--              <table *ngIf="getNormalizedExperience(users, i) as xps" class="mat-table bs-0 w-100">-->
-<!--                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td></tr>-->
-<!--                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td></tr>-->
-<!--              </table>-->
-<!--            </ng-container>-->
-            <mat-divider class="mt-5 mb-5"></mat-divider>
             <std-todo-editor class="mt-10"
               [mode]="mode$ | async"
               [hide]="hide$ | async"
