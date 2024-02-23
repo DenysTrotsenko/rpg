@@ -1,45 +1,52 @@
 <mat-toolbar>
   <h1>Character Creation</h1>
 </mat-toolbar>
-<!--<mat-stepper orientation="vertical" [linear]="true" #stepper>-->
-<!--  <mat-step [stepControl]="form1">-->
-<!--    <form [formGroup]="form1">-->
-<!--      <ng-template matStepLabel>Fill out your name</ng-template>-->
-<!--      <mat-form-field>-->
-<!--        <mat-label>Name</mat-label>-->
-<!--        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
-<!--      </mat-form-field>-->
-<!--      <div>-->
-<!--        <button mat-button matStepperNext>Next</button>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </mat-step>-->
+<mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <!-- STEP 1: GENERAL -->
+  <mat-step [stepControl]="form1">
+    <form [formGroup]="form1" class="d-f fd-c">
+      <ng-template matStepLabel>Campaign, Name & Details</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Campaign</mat-label>
+        <mat-select formControlName="campaign">
+          <mat-option *ngFor="let i of campaigns$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext [disabled]="!form1.valid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- STEP 2: -->
 <!--  <mat-step [stepControl]="form2">-->
-<!--    <form [formGroup]="form2">-->
-<!--      <ng-template matStepLabel>Fill out your address</ng-template>-->
-<!--      <mat-form-field>-->
-<!--        <mat-label>Address</mat-label>-->
-<!--        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"-->
-<!--               required>-->
-<!--      </mat-form-field>-->
+<!--    <form [formGroup]="form2" class="d-f fd-c">-->
+<!--      <ng-template matStepLabel>Characteristics</ng-template>-->
 <!--      <div>-->
 <!--        <button mat-button matStepperPrevious>Back</button>-->
-<!--        <button mat-button matStepperNext>Next</button>-->
+<!--        <button mat-button matStepperNext [disabled]="!form2.valid">Next</button>-->
 <!--      </div>-->
 <!--    </form>-->
 <!--  </mat-step>-->
-<!--  <mat-step>-->
-<!--    <ng-template matStepLabel>Done</ng-template>-->
-<!--    <p>You are now done.</p>-->
-<!--    <div>-->
-<!--      <button mat-button matStepperPrevious>Back</button>-->
-<!--      <button mat-button (click)="stepper.reset()">Reset</button>-->
-<!--    </div>-->
-<!--  </mat-step>-->
-<!--</mat-stepper>-->
+  <!-- STEP 3: -->
+  <mat-step>
+    <ng-template matStepLabel>Overview</ng-template>
+    <p class="mt-5">
+      You are now done.
+    </p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button color="primary" (click)="onSubmit()">Save</button>
+    </div>
+  </mat-step>
+</mat-stepper>
 
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.getRawValue())">
+<!--<form [formGroup]="form" (ngSubmit)="onSubmit(form.getRawValue())">-->
 <!--  <mat-card class="mb-15">-->
 <!--    <mat-card-content class="d-f fd-c">-->
 <!--      <mat-form-field appearance="outline">-->
@@ -327,10 +334,10 @@
 <!--    </mat-card-content>-->
 <!--  </mat-card>-->
 
-  <mat-card class="mb-15">
-    <mat-card-actions>
-      <button type="reset" mat-button class="mr-15">Reset</button>
-      <button type="submit" mat-flat-button color="primary" [disabled]="!form.valid">Save</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+<!--  <mat-card class="mb-15">-->
+<!--    <mat-card-actions>-->
+<!--      <button type="button" mat-button class="mr-15" (click)="stepper.reset()">Reset</button>-->
+<!--      <button type="submit" mat-flat-button color="primary" [disabled]="!form.valid">Save</button>-->
+<!--    </mat-card-actions>-->
+<!--  </mat-card>-->
+<!--</form>-->

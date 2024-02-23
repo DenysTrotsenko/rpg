@@ -6,13 +6,14 @@ import { distinctUntilChanged, map, shareReplay, switchMap, takeUntil, tap } fro
 import {
   Campaign,
   CampaignId,
-  CampaignService,
+  CampaignService, Character,
   FirestoreService,
   getId16,
   Setting,
   SettingService, User,
   UserId, UserService
 } from '@shared';
+import { CharacterService } from '../../common/character.service';
 
 @Component({
   templateUrl: './create.component.html',
@@ -21,6 +22,7 @@ import {
 })
 export class CreateComponent implements OnInit, OnDestroy {
   readonly campaign = inject(CampaignService);
+  readonly character = inject(CharacterService);
   readonly setting = inject(SettingService);
   readonly firestore = inject(FirestoreService);
   readonly route = inject(ActivatedRoute);
@@ -31,10 +33,11 @@ export class CreateComponent implements OnInit, OnDestroy {
     name: new UntypedFormControl('', [Validators.required]),
     setting: new UntypedFormControl(null, [Validators.required]),
     members: new UntypedFormControl([]),
+    characters: new UntypedFormControl([]),
   });
 
-  // readonly campaigns$: Observable<Campaign[]> = this.campaign.all$;
   readonly destroy$: Subject<void> = new Subject();
+  readonly characters$: Observable<Character[]> = this.character.all$;
   readonly settings$: Observable<Setting[]> = this.setting.all$;
   readonly users$: Observable<User[]> = this.user.all$;
   readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
@@ -65,7 +68,6 @@ export class CreateComponent implements OnInit, OnDestroy {
       .pipe(
         take(1),
         switchMap((campaign: Campaign) => {
-          console.log('HERE!');
           const id: CampaignId = campaign?.id ?? getId16();
           const authors: UserId[] = !!campaign?.authors?.length
             ? [...campaign.authors]

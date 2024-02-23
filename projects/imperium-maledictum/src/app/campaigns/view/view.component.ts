@@ -7,13 +7,14 @@ import {
   CampaignEvent,
   CampaignExperience,
   CampaignId,
-  CampaignService,
+  CampaignService, Character,
   DialogService,
   FirestoreService, User, UserService
 } from '@shared';
 import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent } from '../xp-edit-dialog/xp-edit-dialog.component';
-import { TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
+import { TodoMode, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
+import { CharacterService } from '../../common/character.service';
 
 @Component({
   templateUrl: './view.component.html',
@@ -22,6 +23,7 @@ import { TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-edi
 })
 export class ViewComponent {
   readonly campaign = inject(CampaignService);
+  readonly character = inject(CharacterService);
   readonly dialog = inject(DialogService);
   readonly firestore = inject(FirestoreService);
   readonly route = inject(ActivatedRoute);
@@ -33,9 +35,21 @@ export class ViewComponent {
     distinctUntilChanged((p: Campaign, q: Campaign) => JSON.stringify(p) === JSON.stringify(q)),
     shareReplay(1)
   );
-  readonly users$: Observable<User[]> = this.user.all$;
-  readonly members$: Observable<User[]> = combineLatest([this.user.all$, this.campaign$]).pipe(
-    map(([users, campaign]) => users.filter(i => campaign?.members?.includes(i.id)))
+  readonly members$: Observable<User[]> = combineLatest([this.campaign$, this.user.all$]).pipe(
+    map(([campaign, users]) => users.filter(i => campaign?.members?.includes(i.id))),
+    shareReplay(1)
+  );
+  readonly characters$: Observable<Character[]> = combineLatest([this.campaign$, this.character.all$]).pipe(
+    map(([campaign, characters]) => characters.filter(i => campaign?.characters?.includes(i.id))),
+    shareReplay(1)
+  );
+  readonly mode$: Observable<TodoMode> = combineLatest([this.campaign$, this.user.me$]).pipe(
+    map(([campaign, user]) => campaign.authors.includes(user.id) ? 'edit' : 'view' as TodoMode),
+    shareReplay(1)
+  );
+  readonly hide$: Observable<boolean> = combineLatest([this.campaign$, this.user.me$]).pipe(
+    map(([campaign, user]) => !campaign.authors.includes(user.id)),
+    shareReplay(1)
   );
 
   onAddEventClick(campaign: Campaign): void {
@@ -127,7 +141,6 @@ export class ViewComponent {
   }
 
   onResultChange(tasks: TodoTask[], campaign: Campaign, xp: CampaignExperience): void {
-    console.log('onResultChange');
     const xpRef: CampaignExperience | null = campaign?.experience.find(i => i.id === xp.id);
 
     if (!xpRef) { return; }

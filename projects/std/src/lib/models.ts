@@ -68,6 +68,7 @@ export interface Campaign {
   name: string;
   authors: UserId[];
   members: UserId[];
+  characters: CharacterId[];
   setting: SettingId;
   events: CampaignEvent[];
   personas: CampaignEvent[];

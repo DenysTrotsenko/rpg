@@ -30,5 +30,8 @@ button.task-failed {
 p.task-completed,
 p.task-failed {
   color: $color-gray;
+}
+
+p.task-failed {
   text-decoration: line-through;
 }

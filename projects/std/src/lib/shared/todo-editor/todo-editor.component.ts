@@ -15,6 +15,7 @@ import { Character } from '@shared';
 export class TodoEditorComponent implements OnInit {
   readonly todo = inject(TodoEditorService);
 
+  @Input() hide: boolean = true;
   @Input() mode: TodoMode = 'view';
   @Input() filter: TodoStatus[] = ['active', 'completed', 'failed'];
   @Input() set characters(characters: Character[]) { this.todo.characters = characters; }
@@ -31,6 +32,10 @@ export class TodoEditorComponent implements OnInit {
   ngOnInit(): void {
     this.todo.tasks = this.tasks ?? [];
     this.tasks$.subscribe();
+  }
+
+  onJsonClick(): void {
+    this.todo.editor();
   }
 
   onAddClick(ids: TodoId[]): void {

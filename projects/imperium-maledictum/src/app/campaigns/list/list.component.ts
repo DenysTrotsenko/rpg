@@ -4,6 +4,7 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService, Campaign, CampaignService, DialogService, FirestoreService } from '@shared';
 
 interface VM extends Campaign {
+  canEdit: boolean;
   canDelete: boolean;
 }
 
@@ -19,6 +20,7 @@ export class ListComponent {
     map(([uid, campaigns]) => campaigns.map(i => {
       return {
         ...i,
+        canEdit: i.authors?.includes(uid),
         canDelete: i.authors?.includes(uid)
       };
     }))

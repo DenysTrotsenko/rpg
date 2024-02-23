@@ -4,6 +4,7 @@ import { filter, map, shareReplay, tap } from 'rxjs/operators';
 import { Character, DialogService, getId16 } from '@shared';
 import { TodoId, TodoStatus, TodoTask } from './todo-editor.models';
 import { TodoDialogComponent } from './todo-dialog.component';
+import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
 
 @Injectable()
 export class TodoEditorService {
@@ -105,6 +106,8 @@ export class TodoEditorService {
         tap(res => {
           taskRef.name = res.name;
           taskRef.experience = res.experience;
+          taskRef.characters = res.characters;
+          taskRef.hidden = res.hidden;
 
           this.tasksSrc$.next(tasks);
         })
@@ -129,6 +132,21 @@ export class TodoEditorService {
     this.tasksSrc$.next(tasks);
   }
 
+  editor(): void {
+    this.dialog.open(JsonEditorDialogComponent, {
+      data: this.tasksSrc$.value,
+      width: '1200px'
+    }).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(result => {
+          this.populateTaskIds(result);
+          this.tasksSrc$.next(result);
+        })
+      )
+      .subscribe();
+  }
+
   private getNextStatus(i: TodoTask): TodoStatus {
     const order = TodoEditorService.STATUS_ORDER;
 
@@ -150,5 +168,12 @@ export class TodoEditorService {
     });
 
     return taskRef;
+  }
+
+  private populateTaskIds(tasks: TodoTask[]): void {
+    tasks.forEach((task) => {
+      task.id = task.id ?? getId16();
+      this.populateTaskIds(task.tasks);
+    });
   }
 }

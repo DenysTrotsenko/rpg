@@ -119,8 +119,9 @@
 <!--            </ng-container>-->
             <mat-divider class="mt-5 mb-5"></mat-divider>
             <std-todo-editor class="mt-10"
-              [mode]="'edit'"
-              [characters]="[]"
+              [mode]="mode$ | async"
+              [hide]="hide$ | async"
+              [characters]="characters$ | async"
               [tasks]="i.tasks"
               (valueChange)="onResultChange($event, campaign, i)">
             </std-todo-editor>

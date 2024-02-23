@@ -3,7 +3,9 @@
     <mat-icon>{{icon$ | async}}</mat-icon>
   </button>
   <div class="p-r f-1">
-    <p class="d-ib m-0" [class]="style$ | async">{{task?.name}}</p>
+    <p class="d-ib m-0" [class]="style$ | async">
+      {{task.hidden && hide ? '[ HIDDEN ]' : task?.name}}
+    </p>
     <span class="experience"> ({{task?.experience}}xp)</span>
     <span *ngIf="mode === 'edit'" class="actions">
       <button mat-icon-button (click)="onAddClick([])">
@@ -22,6 +24,7 @@
   <std-todo-task *ngFor="let i of (task$ | async)?.tasks"
     [task]="i"
     [mode]="mode"
+    [hide]="hide"
     (addClick)="onAddClick($event)"
     (deleteClick)="onDeleteClick($event)"
     (editClick)="onEditClick($event)"

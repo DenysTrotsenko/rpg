@@ -6,6 +6,7 @@ export interface TodoTask {
   status: TodoStatus;
   experience: number;
   characters: Character[];
+  hidden?: boolean;
   tasks: TodoTask[];
 }
 

@@ -4,7 +4,7 @@
 <mat-nav-list class="p-10">
   <mat-list-item *ngFor="let i of campaigns$ | async; trackBy: trackById;">
     <a matLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
-    <a *ngIf="i.canDelete" mat-icon-button [routerLink]="['../create', i.id]" matTooltip="Edit">
+    <a *ngIf="i.canEdit" mat-icon-button [routerLink]="['../create', i.id]" matTooltip="Edit">
       <mat-icon>edit</mat-icon>
     </a>
     <button *ngIf="i.canDelete" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">

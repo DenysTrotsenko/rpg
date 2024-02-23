@@ -25,7 +25,7 @@ export class CharacterService {
     private readonly firestore: FirestoreService
   ) { }
 
-  get(id: CharacterId): Observable<Character>  {
+  get(id: CharacterId): Observable<Character | null>  {
     return this.allObservable.pipe(
       map(all => all.find(i => i.id === id))
     );

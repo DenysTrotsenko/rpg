@@ -5,6 +5,7 @@ import {
   TodoTask,
   TodoId
 } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
+import { CampaignId, Character, CharacterId, UserId } from '@shared';
 
 @Component({
   selector: 'app-test',
@@ -14,7 +15,22 @@ import {
 })
 export class TestComponent {
   mode: TodoMode = 'edit';
+  hide: boolean = true;
   filter: TodoStatus[] = ['active', 'completed', 'failed'];
+  characters: Character[] = [
+    {
+      id: 'chr-1' as CharacterId,
+      name: 'Tester #1',
+      author: 'xxx' as UserId,
+      campaign: 'yyy' as CampaignId
+    },
+    {
+      id: 'chr-2' as CharacterId,
+      name: 'Tester #2',
+      author: 'xxx' as UserId,
+      campaign: 'yyy' as CampaignId
+    },
+  ];
   tasks: TodoTask[] = [
     {
       id: 'todo-task-1' as TodoId,
@@ -29,6 +45,7 @@ export class TestComponent {
           experience: 4,
           characters: [],
           status: 'active',
+          hidden: true,
           tasks: [
             {
               id: 'todo-task-111' as TodoId,

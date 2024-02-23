@@ -24,6 +24,7 @@ export class TodoTaskComponent {
 
   @Input() set task(task: TodoTask) { this.task$.next(task); }
   @Input() mode: TodoMode;
+  @Input() hide: boolean;
   @Output() addClick: EventEmitter<TodoId[]> = new EventEmitter();
   @Output() editClick: EventEmitter<TodoId[]> = new EventEmitter();
   @Output() deleteClick: EventEmitter<TodoId[]> = new EventEmitter();
@@ -39,6 +40,7 @@ export class TodoTaskComponent {
   );
 
   onStatusClick(ids: TodoId[]): void {
+    if (this.mode === 'view') { return; }
     this.statusClick.emit([this.task$.value?.id, ...ids]);
   }
 
