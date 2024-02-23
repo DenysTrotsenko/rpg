@@ -85,20 +85,18 @@
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">TOTAL</mat-panel-title>
           </mat-expansion-panel-header>
-          <div>
-            <ng-container *ngIf="users$ | async as users">
-              <table *ngIf="getTotalNormalizedExperience(users, campaign.experience) as xps" class="mat-table bs-0 w-100">
-                <tr class="mat-row">
-                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>
-                </tr>
-                <tr class="mat-row">
-                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>
-                </tr>
-              </table>
-            </ng-container>
-          </div>
+<!--            <ng-container *ngIf="users$ | async as users">-->
+<!--              <table *ngIf="getTotalNormalizedExperience(users, campaign.experience) as xps" class="mat-table bs-0 w-100">-->
+<!--                <tr class="mat-row">-->
+<!--                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>-->
+<!--                </tr>-->
+<!--                <tr class="mat-row">-->
+<!--                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>-->
+<!--                </tr>-->
+<!--              </table>-->
+<!--            </ng-container>-->
         </mat-expansion-panel>
-        <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc';" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc'; trackBy: trackById" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -113,12 +111,19 @@
           </mat-expansion-panel-header>
           <div>
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
-            <ng-container *ngIf="users$ | async as users">
-              <table *ngIf="getNormalizedExperience(users, i) as xps" class="mat-table bs-0 w-100">
-                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td></tr>
-                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td></tr>
-              </table>
-            </ng-container>
+<!--            <ng-container *ngIf="users$ | async as users">-->
+<!--              <table *ngIf="getNormalizedExperience(users, i) as xps" class="mat-table bs-0 w-100">-->
+<!--                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td></tr>-->
+<!--                <tr class="mat-row"><td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td></tr>-->
+<!--              </table>-->
+<!--            </ng-container>-->
+            <mat-divider class="mt-5 mb-5"></mat-divider>
+            <std-todo-editor class="mt-10"
+              [mode]="'edit'"
+              [characters]="[]"
+              [tasks]="i.tasks"
+              (valueChange)="onResultChange($event, campaign, i)">
+            </std-todo-editor>
           </div>
         </mat-expansion-panel>
       </mat-accordion>

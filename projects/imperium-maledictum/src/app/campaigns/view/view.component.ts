@@ -13,6 +13,7 @@ import {
 } from '@shared';
 import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent } from '../xp-edit-dialog/xp-edit-dialog.component';
+import { TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
 
 @Component({
   templateUrl: './view.component.html',
@@ -125,34 +126,49 @@ export class ViewComponent {
     console.log('Not implemented yet.');
   }
 
+  onResultChange(tasks: TodoTask[], campaign: Campaign, xp: CampaignExperience): void {
+    console.log('onResultChange');
+    const xpRef: CampaignExperience | null = campaign?.experience.find(i => i.id === xp.id);
+
+    if (!xpRef) { return; }
+
+    xpRef.tasks = tasks;
+
+    this.firestore.update(`campaigns/${campaign.id}`, campaign);
+  }
+
   getNormalizedExperience(users: User[], xp: CampaignExperience): { name: string; value: number; }[] {
-    return Object.entries(xp?.value ?? {}).map(i => {
-      const user = users.find(j => j.id === i[0]);
-      return {
-        name: user?.name ?? user?.email,
-        value: i[1]
-      };
-    });
+    // return Object.entries(xp?.value ?? {}).map(i => {
+    //   const user = users.find(j => j.id === i[0]);
+    //   return {
+    //     name: user?.name ?? user?.email,
+    //     value: i[1]
+    //   };
+    // });
+    return [];
   }
 
   getTotalNormalizedExperience(users: User[], xp: CampaignExperience[]): { name: string; value: number; }[] {
-    const reducedXp = xp?.reduce((acc, cur) => {
-      Object.entries(cur.value).forEach(entry => {
-        const id = entry[0];
-        const value = entry[1] ?? 0;
-
-        acc[id] = !!acc[id] ? acc[id] + value : value;
-      });
-
-      return acc;
-    }, {} as Record<string, number>);
-
-    return Object.entries(reducedXp ?? {}).map(i => {
-      const user = users.find(j => j.id === i[0]);
-      return {
-        name: user?.name ?? user?.email,
-        value: i[1]
-      };
-    });
+    // const reducedXp = xp?.reduce((acc, cur) => {
+    //   Object.entries(cur.value).forEach(entry => {
+    //     const id = entry[0];
+    //     const value = entry[1] ?? 0;
+    //
+    //     acc[id] = !!acc[id] ? acc[id] + value : value;
+    //   });
+    //
+    //   return acc;
+    // }, {} as Record<string, number>);
+    //
+    // return Object.entries(reducedXp ?? {}).map(i => {
+    //   const user = users.find(j => j.id === i[0]);
+    //   return {
+    //     name: user?.name ?? user?.email,
+    //     value: i[1]
+    //   };
+    // });
+    return [];
   }
+
+  trackById(_, i): string { return i.id; }
 }

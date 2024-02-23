@@ -1,4 +1,5 @@
 import { PermissionId } from './enums';
+import { TodoTask } from './shared/todo-editor/todo-editor.models';
 
 export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
@@ -86,7 +87,7 @@ export interface CampaignEvent extends HasId<string> {
 export interface CampaignExperience extends HasId<string> {
   name: string;
   description: string;
-  value: Record<UserId, number>;
+  tasks: TodoTask[];
   createdAt: number;
   updatedAt: number;
 }
