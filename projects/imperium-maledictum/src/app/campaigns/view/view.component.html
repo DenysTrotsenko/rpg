@@ -85,16 +85,14 @@
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">TOTAL</mat-panel-title>
           </mat-expansion-panel-header>
-<!--            <ng-container *ngIf="users$ | async as users">-->
-<!--              <table *ngIf="getTotalNormalizedExperience(users, campaign.experience) as xps" class="mat-table bs-0 w-100">-->
-<!--                <tr class="mat-row">-->
-<!--                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>-->
-<!--                </tr>-->
-<!--                <tr class="mat-row">-->
-<!--                  <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>-->
-<!--                </tr>-->
-<!--              </table>-->
-<!--            </ng-container>-->
+          <table *ngIf="experience$ | async as xps" class="mat-table bs-0 w-100">
+            <tr class="mat-row">
+              <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>
+            </tr>
+            <tr class="mat-row">
+              <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>
+            </tr>
+          </table>
         </mat-expansion-panel>
         <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc'; trackBy: trackById" hideToggle>
           <mat-expansion-panel-header>

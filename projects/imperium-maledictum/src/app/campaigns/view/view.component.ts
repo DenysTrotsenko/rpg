@@ -7,7 +7,7 @@ import {
   CampaignEvent,
   CampaignExperience,
   CampaignId,
-  CampaignService, Character,
+  CampaignService, Character, CharacterId,
   DialogService,
   FirestoreService, User, UserService
 } from '@shared';
@@ -49,6 +49,24 @@ export class ViewComponent {
   );
   readonly hide$: Observable<boolean> = combineLatest([this.campaign$, this.user.me$]).pipe(
     map(([campaign, user]) => !campaign.authors.includes(user.id)),
+    shareReplay(1)
+  );
+  experience$: Observable<{ name: string; value: number; }[]> = combineLatest([
+    this.campaign$, this.characters$
+  ]).pipe(
+    map(([campaign, characters]) => {
+      const characterExperienceMap: Map<CharacterId, number> = campaign.experience
+        .reduce((acc, cur) => this.getXpMap(acc, cur.tasks), new Map());
+      const characterExperienceArr: { name: string; value: number; }[] = Array
+        .from(characterExperienceMap)
+        .map(entry => ({
+          name: characters.find(i => i.id === entry[0])?.name,
+          value: entry[1]
+        }))
+        .filter(i => !!i.name);
+
+      return characterExperienceArr;
+    }),
     shareReplay(1)
   );
 
@@ -150,37 +168,18 @@ export class ViewComponent {
     this.firestore.update(`campaigns/${campaign.id}`, campaign);
   }
 
-  getNormalizedExperience(users: User[], xp: CampaignExperience): { name: string; value: number; }[] {
-    // return Object.entries(xp?.value ?? {}).map(i => {
-    //   const user = users.find(j => j.id === i[0]);
-    //   return {
-    //     name: user?.name ?? user?.email,
-    //     value: i[1]
-    //   };
-    // });
-    return [];
-  }
+  getXpMap(characterExperienceMap: Map<CharacterId, number>, tasks: TodoTask[] = []): Map<CharacterId, number> {
+    tasks.forEach(task => {
+      task.characters.forEach(characterId => {
+        const xp = characterExperienceMap.get(characterId) ?? 0;
+        const bonus = task.status === 'completed' ? task.experience : 0;
 
-  getTotalNormalizedExperience(users: User[], xp: CampaignExperience[]): { name: string; value: number; }[] {
-    // const reducedXp = xp?.reduce((acc, cur) => {
-    //   Object.entries(cur.value).forEach(entry => {
-    //     const id = entry[0];
-    //     const value = entry[1] ?? 0;
-    //
-    //     acc[id] = !!acc[id] ? acc[id] + value : value;
-    //   });
-    //
-    //   return acc;
-    // }, {} as Record<string, number>);
-    //
-    // return Object.entries(reducedXp ?? {}).map(i => {
-    //   const user = users.find(j => j.id === i[0]);
-    //   return {
-    //     name: user?.name ?? user?.email,
-    //     value: i[1]
-    //   };
-    // });
-    return [];
+        characterExperienceMap.set(characterId, xp + bonus);
+      });
+      this.getXpMap(characterExperienceMap, task.tasks);
+    });
+
+    return characterExperienceMap;
   }
 
   trackById(_, i): string { return i.id; }

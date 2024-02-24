@@ -9,6 +9,7 @@
     "start:std": "ng serve --project=std",
     "start:std:hmr": "ng serve --hmr --project=std",
     "build:std": "ng build --configuration=production --project=std",
+    "test:im": "ng test --project=imperium-maledictum",
     "start:im": "ng serve --project=imperium-maledictum",
     "start:im:hmr": "ng serve --hmr --project=imperium-maledictum",
     "build:im": "ng build --configuration=production --project=imperium-maledictum",
