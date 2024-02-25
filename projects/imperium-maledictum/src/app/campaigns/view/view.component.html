@@ -26,7 +26,7 @@
               <button mat-icon-button (click)="onEditEventClick(i)">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
+              <button mat-icon-button (click)="onDeleteEventClick(i.id, campaign)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-panel-title>
@@ -44,10 +44,10 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditEventClick(i)">
+              <button mat-icon-button (click)="onEditLocationClick(i)">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
+              <button mat-icon-button (click)="onDeleteLocationClick(i.id, campaign)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-panel-title>
@@ -65,10 +65,10 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditEventClick(i)">
+              <button mat-icon-button (click)="onEditPersonaClick(i)">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="onDeleteEventClick(i.id)">
+              <button mat-icon-button (click)="onDeletePersonaClick(i.id, campaign)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-panel-title>
@@ -102,7 +102,7 @@
               <button mat-icon-button (click)="onEditExperienceClick(i)">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="onDeleteExperienceClick(i.id)">
+              <button mat-icon-button (click)="onDeleteExperienceClick(i.id, campaign)">
                 <mat-icon>delete</mat-icon>
               </button>
             </mat-panel-title>

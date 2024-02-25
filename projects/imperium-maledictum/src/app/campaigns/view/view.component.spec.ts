@@ -63,7 +63,7 @@ describe('ViewComponent', () => {
   });
 
   it('should correctly calculate xp', () => {
-    const xpMap = component.getXpMap(new Map(), tasks);
+    const xpMap = component.updateXpMap(new Map(), tasks);
     expect(xpMap.get('1' as CharacterId)).toEqual(21);
     expect(xpMap.get('2' as CharacterId)).toEqual(15);
     expect(xpMap.get('3' as CharacterId)).toEqual(6);

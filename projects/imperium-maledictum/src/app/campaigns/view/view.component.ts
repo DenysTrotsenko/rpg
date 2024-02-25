@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import {
   Campaign,
   CampaignEvent,
@@ -56,7 +56,7 @@ export class ViewComponent {
   ]).pipe(
     map(([campaign, characters]) => {
       const characterExperienceMap: Map<CharacterId, number> = campaign.experience
-        .reduce((acc, cur) => this.getXpMap(acc, cur.tasks), new Map());
+        .reduce((acc, cur) => this.updateXpMap(acc, cur.tasks), new Map());
       const characterExperienceArr: { name: string; value: number; }[] = Array
         .from(characterExperienceMap)
         .map(entry => ({
@@ -146,16 +146,112 @@ export class ViewComponent {
     console.log('Not implemented yet.');
   }
 
-  onDeleteEventClick(id: string): void {
+  onDeleteEventClick(id: string, campaign: Campaign): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(() => {
+          const events: CampaignEvent[] = campaign?.events.filter(i => i.id !== id);
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, events
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  onEditLocationClick(event: CampaignEvent): void {
     console.log('Not implemented yet.');
+  }
+
+  onDeleteLocationClick(id: string, campaign: Campaign): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(() => {
+          const locations: CampaignEvent[] = campaign?.locations.filter(i => i.id !== id);
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, locations
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  onEditPersonaClick(event: CampaignEvent): void {
+    console.log('Not implemented yet.');
+  }
+
+  onDeletePersonaClick(id: string, campaign: Campaign): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(() => {
+          const personas: CampaignEvent[] = campaign?.personas.filter(i => i.id !== id);
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, personas
+          });
+        })
+      )
+      .subscribe();
   }
 
   onEditExperienceClick(event: CampaignExperience): void {
     console.log('Not implemented yet.');
   }
 
-  onDeleteExperienceClick(id: string): void {
-    console.log('Not implemented yet.');
+  onDeleteExperienceClick(id: string, campaign: Campaign): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(() => {
+          const experience: CampaignExperience[] = campaign?.experience.filter(i => i.id !== id);
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign, experience
+          });
+        })
+      )
+      .subscribe();
   }
 
   onResultChange(tasks: TodoTask[], campaign: Campaign, xp: CampaignExperience): void {
@@ -168,7 +264,7 @@ export class ViewComponent {
     this.firestore.update(`campaigns/${campaign.id}`, campaign);
   }
 
-  getXpMap(characterExperienceMap: Map<CharacterId, number>, tasks: TodoTask[] = []): Map<CharacterId, number> {
+  updateXpMap(characterExperienceMap: Map<CharacterId, number>, tasks: TodoTask[] = []): Map<CharacterId, number> {
     tasks.forEach(task => {
       task.characters.forEach(characterId => {
         const xp = characterExperienceMap.get(characterId) ?? 0;
@@ -176,7 +272,7 @@ export class ViewComponent {
 
         characterExperienceMap.set(characterId, xp + bonus);
       });
-      this.getXpMap(characterExperienceMap, task.tasks);
+      this.updateXpMap(characterExperienceMap, task.tasks);
     });
 
     return characterExperienceMap;
