@@ -147,27 +147,13 @@ export class ViewComponent {
   }
 
   onDeleteEventClick(id: string, campaign: Campaign): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Delete Entry',
-          description: `Are sure you want to delete this entry?`,
-          ok: 'Delete',
-          cancel: 'Cancel'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        switchMap(() => {
-          const events: CampaignEvent[] = campaign?.events.filter(i => i.id !== id);
+    this.onDeleteDialog(() => {
+      const events: CampaignEvent[] = campaign?.events.filter(i => i.id !== id);
 
-          return this.firestore.update(`campaigns/${campaign.id}`, {
-            ...campaign, events
-          });
-        })
-      )
-      .subscribe();
+      return this.firestore.update(`campaigns/${campaign.id}`, {
+        ...campaign, events
+      });
+    });
   }
 
   onEditLocationClick(event: CampaignEvent): void {
@@ -175,27 +161,13 @@ export class ViewComponent {
   }
 
   onDeleteLocationClick(id: string, campaign: Campaign): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Delete Entry',
-          description: `Are sure you want to delete this entry?`,
-          ok: 'Delete',
-          cancel: 'Cancel'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        switchMap(() => {
-          const locations: CampaignEvent[] = campaign?.locations.filter(i => i.id !== id);
+    this.onDeleteDialog(() => {
+      const locations: CampaignEvent[] = campaign?.locations.filter(i => i.id !== id);
 
-          return this.firestore.update(`campaigns/${campaign.id}`, {
-            ...campaign, locations
-          });
-        })
-      )
-      .subscribe();
+      return this.firestore.update(`campaigns/${campaign.id}`, {
+        ...campaign, locations
+      });
+    });
   }
 
   onEditPersonaClick(event: CampaignEvent): void {
@@ -203,27 +175,13 @@ export class ViewComponent {
   }
 
   onDeletePersonaClick(id: string, campaign: Campaign): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Delete Entry',
-          description: `Are sure you want to delete this entry?`,
-          ok: 'Delete',
-          cancel: 'Cancel'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        switchMap(() => {
-          const personas: CampaignEvent[] = campaign?.personas.filter(i => i.id !== id);
+    this.onDeleteDialog(() => {
+      const personas: CampaignEvent[] = campaign?.personas.filter(i => i.id !== id);
 
-          return this.firestore.update(`campaigns/${campaign.id}`, {
-            ...campaign, personas
-          });
-        })
-      )
-      .subscribe();
+      return this.firestore.update(`campaigns/${campaign.id}`, {
+        ...campaign, personas
+      });
+    });
   }
 
   onEditExperienceClick(event: CampaignExperience): void {
@@ -231,27 +189,13 @@ export class ViewComponent {
   }
 
   onDeleteExperienceClick(id: string, campaign: Campaign): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Delete Entry',
-          description: `Are sure you want to delete this entry?`,
-          ok: 'Delete',
-          cancel: 'Cancel'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        switchMap(() => {
-          const experience: CampaignExperience[] = campaign?.experience.filter(i => i.id !== id);
+    this.onDeleteDialog(() => {
+      const experience: CampaignExperience[] = campaign?.experience.filter(i => i.id !== id);
 
-          return this.firestore.update(`campaigns/${campaign.id}`, {
-            ...campaign, experience
-          });
-        })
-      )
-      .subscribe();
+      return this.firestore.update(`campaigns/${campaign.id}`, {
+        ...campaign, experience
+      });
+    });
   }
 
   onResultChange(tasks: TodoTask[], campaign: Campaign, xp: CampaignExperience): void {
@@ -279,4 +223,22 @@ export class ViewComponent {
   }
 
   trackById(_, i): string { return i.id; }
+
+  private onDeleteDialog(cb: () => Observable<unknown>): void {
+    this.dialog
+      .confirm({
+        data: {
+          title: 'Delete Entry',
+          description: `Are sure you want to delete this entry?`,
+          ok: 'Delete',
+          cancel: 'Cancel'
+        }
+      })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(() => cb())
+      )
+      .subscribe();
+  }
 }
