@@ -147,13 +147,10 @@ export class ViewComponent {
   }
 
   onDeleteEventClick(id: string, campaign: Campaign): void {
-    this.onDeleteDialog(() => {
-      const events: CampaignEvent[] = campaign?.events.filter(i => i.id !== id);
-
-      return this.firestore.update(`campaigns/${campaign.id}`, {
-        ...campaign, events
-      });
-    });
+    this.onDeleteDialog(() => this.firestore.update(`campaigns/${campaign.id}`, {
+      ...campaign,
+      events: campaign?.events.filter(i => i.id !== id)
+    }));
   }
 
   onEditLocationClick(event: CampaignEvent): void {
@@ -161,13 +158,10 @@ export class ViewComponent {
   }
 
   onDeleteLocationClick(id: string, campaign: Campaign): void {
-    this.onDeleteDialog(() => {
-      const locations: CampaignEvent[] = campaign?.locations.filter(i => i.id !== id);
-
-      return this.firestore.update(`campaigns/${campaign.id}`, {
-        ...campaign, locations
-      });
-    });
+    this.onDeleteDialog(() => this.firestore.update(`campaigns/${campaign.id}`, {
+      ...campaign,
+      locations: campaign?.locations.filter(i => i.id !== id)
+    }));
   }
 
   onEditPersonaClick(event: CampaignEvent): void {
@@ -175,13 +169,10 @@ export class ViewComponent {
   }
 
   onDeletePersonaClick(id: string, campaign: Campaign): void {
-    this.onDeleteDialog(() => {
-      const personas: CampaignEvent[] = campaign?.personas.filter(i => i.id !== id);
-
-      return this.firestore.update(`campaigns/${campaign.id}`, {
-        ...campaign, personas
-      });
-    });
+    this.onDeleteDialog(() => this.firestore.update(`campaigns/${campaign.id}`, {
+      ...campaign,
+      personas: campaign?.personas.filter(i => i.id !== id)
+    }));
   }
 
   onEditExperienceClick(event: CampaignExperience): void {
@@ -189,13 +180,10 @@ export class ViewComponent {
   }
 
   onDeleteExperienceClick(id: string, campaign: Campaign): void {
-    this.onDeleteDialog(() => {
-      const experience: CampaignExperience[] = campaign?.experience.filter(i => i.id !== id);
-
-      return this.firestore.update(`campaigns/${campaign.id}`, {
-        ...campaign, experience
-      });
-    });
+    this.onDeleteDialog(() => this.firestore.update(`campaigns/${campaign.id}`, {
+      ...campaign,
+      experience: campaign?.experience.filter(i => i.id !== id)
+    }));
   }
 
   onResultChange(tasks: TodoTask[], campaign: Campaign, xp: CampaignExperience): void {
@@ -224,7 +212,7 @@ export class ViewComponent {
 
   trackById(_, i): string { return i.id; }
 
-  private onDeleteDialog(cb: () => Observable<unknown>): void {
+  private onDeleteDialog(cb: () => Observable<void>): void {
     this.dialog
       .confirm({
         data: {
