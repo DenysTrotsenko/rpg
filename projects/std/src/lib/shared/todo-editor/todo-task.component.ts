@@ -45,14 +45,17 @@ export class TodoTaskComponent {
   }
 
   onAddClick(ids: TodoId[]): void {
+    if (this.mode === 'view') { return; }
     this.addClick.emit([this.task$.value?.id, ...ids]);
   }
 
   onEditClick(ids: TodoId[]): void {
+    if (this.mode === 'view') { return; }
     this.editClick.emit([this.task$.value?.id, ...ids]);
   }
 
   onDeleteClick(ids: TodoId[]): void {
+    if (this.mode === 'view') { return; }
     this.deleteClick.emit([this.task$.value?.id, ...ids]);
   }
 }

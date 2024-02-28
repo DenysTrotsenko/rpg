@@ -18,6 +18,7 @@ import { AdminDictionaryModule } from './admin-dictionary/admin-dictionary.modul
 import { JsonEditorDialogComponent } from './json-editor-dialog/json-editor-dialog.component';
 import { CodeEditorModule } from './code-editor/code-editor.module';
 import { TodoEditorModule } from './todo-editor/todo-editor.module';
+import { TreeEditorModule } from './tree-editor/tree-editor.module';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -42,7 +43,8 @@ const IMPORTS = [
   AdminDictionaryModule,
   AdminUsersModule,
   AdminSettingsModule,
-  JsonEditorDialogComponent
+  JsonEditorDialogComponent,
+  TreeEditorModule
 ];
 
 @NgModule({

@@ -40,10 +40,10 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
     combineLatest([this.data$, this.setting$])
       .pipe(
         takeUntil(this.destroy$),
-        tap(([data, { storage }]) => {
-          if (!!data && !!storage) {
+        tap(([data, setting]) => {
+          if (!!data && !!setting?.storage) {
             this.admin.init({
-              path: `/${storage}/${data.path}`,
+              path: `/${setting?.storage}/${data.path}`,
               component: data.component
             });
           }

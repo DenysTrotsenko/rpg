@@ -80,11 +80,11 @@
       </mat-accordion>
     </mat-tab>
     <mat-tab label="XP">
-      <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title class="ff-g">TOTAL</mat-panel-title>
-          </mat-expansion-panel-header>
+      <mat-card class="mt-10 mb-10">
+        <mat-card-header>
+          <mat-card-title class="ff-g">TOTAL</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
           <table *ngIf="experience$ | async as xps" class="mat-table bs-0 w-100">
             <tr class="mat-row">
               <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.name}}</td>
@@ -93,7 +93,9 @@
               <td *ngFor="let xp of xps;" class="mat-cell p-5">{{xp.value}}</td>
             </tr>
           </table>
-        </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+      <mat-accordion class="o-a d-b mt-10">
         <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc'; trackBy: trackById" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">

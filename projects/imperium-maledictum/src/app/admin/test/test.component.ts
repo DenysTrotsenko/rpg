@@ -1,11 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  TodoStatus,
-  TodoMode,
-  TodoTask,
-  TodoId
-} from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
-import { CampaignId, Character, CharacterId, UserId } from '@shared';
+import { TreeNode } from '../../../../../std/src/lib/shared/tree-editor/tree-editor.models';
+
+const TREE_DATA: TreeNode[] = [
+  {
+    name: 'Vegetables',
+    children: [
+      {
+        name: 'Green',
+        children: [
+          {name: 'Broccoli'},
+          {name: 'Brussels sprouts'}
+        ],
+      },
+      {
+        name: 'Orange',
+        children: [
+          {name: 'Pumpkins'},
+          {name: 'Carrots'}
+        ],
+      },
+    ],
+  },
+];
 
 @Component({
   selector: 'app-test',
@@ -14,62 +30,5 @@ import { CampaignId, Character, CharacterId, UserId } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestComponent {
-  mode: TodoMode = 'edit';
-  hide: boolean = true;
-  filter: TodoStatus[] = ['active', 'completed', 'failed'];
-  characters: Character[] = [
-    {
-      id: 'chr-1' as CharacterId,
-      name: 'Tester #1',
-      author: 'xxx' as UserId,
-      campaign: 'yyy' as CampaignId
-    },
-    {
-      id: 'chr-2' as CharacterId,
-      name: 'Tester #2',
-      author: 'xxx' as UserId,
-      campaign: 'yyy' as CampaignId
-    },
-  ];
-  tasks: TodoTask[] = [
-    {
-      id: 'todo-task-1' as TodoId,
-      name: 'Test #1',
-      experience: 10,
-      characters: [],
-      status: 'active',
-      tasks: [
-        {
-          id: 'todo-task-11' as TodoId,
-          name: 'Test #1-1',
-          experience: 4,
-          characters: [],
-          status: 'active',
-          hidden: true,
-          tasks: [
-            {
-              id: 'todo-task-111' as TodoId,
-              name: 'Test #1-1-1',
-              experience: 5,
-              characters: [],
-              status: 'active',
-              tasks: []
-            }
-          ]
-        },
-        {
-          id: 'todo-task-12' as TodoId,
-          name: 'Test #1-2',
-          experience: 6,
-          characters: [],
-          status: 'active',
-          tasks: []
-        }
-      ]
-    }
-  ];
-
-  onResultChange(res: any): void {
-    console.log(JSON.stringify(res));
-  }
+  nodes = TREE_DATA;
 }
