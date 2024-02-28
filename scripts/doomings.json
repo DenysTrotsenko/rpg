@@ -1,0 +1,702 @@
+[
+  {
+    "id": null,
+    "name": "1",
+    "labels": {
+      "description": "The witches word shall write your doom."
+    }
+  },
+  {
+    "id": null,
+    "name": "2",
+    "labels": {
+      "description": "The warmth of drink shall be blood welling from the wound."
+    }
+  },
+  {
+    "id": null,
+    "name": "3",
+    "labels": {
+      "description": "Sweets and honey are to thee as blood and boils."
+    }
+  },
+  {
+    "id": null,
+    "name": "4",
+    "labels": {
+      "description": "Beware of what hides in folds and ruffles."
+    }
+  },
+  {
+    "id": null,
+    "name": "5",
+    "labels": {
+      "description": "A sure foot is a life continued."
+    }
+  },
+  {
+    "id": null,
+    "name": "6",
+    "labels": {
+      "description": "Thou mind lingers overlong in the land of dreams."
+    }
+  },
+  {
+    "id": null,
+    "name": "7",
+    "labels": {
+      "description": "Forget not the word of thou mother, nor yet the face of thou father."
+    }
+  },
+  {
+    "id": null,
+    "name": "8",
+    "labels": {
+      "description": "To darkness shall a light soul be delivered."
+    }
+  },
+  {
+    "id": null,
+    "name": "9",
+    "labels": {
+      "description": "Pinch closed thine nose lest the stench of death find its home."
+    }
+  },
+  {
+    "id": null,
+    "name": "10",
+    "labels": {
+      "description": "Death gathers under dark clouds."
+    }
+  },
+  {
+    "id": null,
+    "name": "11",
+    "labels": {
+      "description": "Open not the door knocked but once."
+    }
+  },
+  {
+    "id": null,
+    "name": "12",
+    "labels": {
+      "description": "Tread not upon the roots of trees."
+    }
+  },
+  {
+    "id": null,
+    "name": "13",
+    "labels": {
+      "description": "It ringeth once: peace. It ringeth twice: pleasure. It ringeth thrice: damnation."
+    }
+  },
+  {
+    "id": null,
+    "name": "14",
+    "labels": {
+      "description": "Fear not the witch, but cower before the witch hunter."
+    }
+  },
+  {
+    "id": null,
+    "name": "15",
+    "labels": {
+      "description": "When ice burns and fire freezes, then shall be the hour of your death."
+    }
+  },
+  {
+    "id": null,
+    "name": "16",
+    "labels": {
+      "description": "Suffer not the scales in balance."
+    }
+  },
+  {
+    "id": null,
+    "name": "17",
+    "labels": {
+      "description": "Beware gutters and drains for they are the edge between worlds."
+    }
+  },
+  {
+    "id": null,
+    "name": "18",
+    "labels": {
+      "description": "As new life cries out, Father Morr shall welcome thee."
+    }
+  },
+  {
+    "id": null,
+    "name": "19",
+    "labels": {
+      "description": "Beware the raven that lingers overlong."
+    }
+  },
+  {
+    "id": null,
+    "name": "20",
+    "labels": {
+      "description": "Can you not hear the hounds in the clinking of brass coins?"
+    }
+  },
+  {
+    "id": null,
+    "name": "21",
+    "labels": {
+      "description": "When the beast bows its head, death shall be close behind."
+    }
+  },
+  {
+    "id": null,
+    "name": "22",
+    "labels": {
+      "description": "Discard the meat of the hoofed beast — it shall be ever ash in your mouth!"
+    }
+  },
+  {
+    "id": null,
+    "name": "23",
+    "labels": {
+      "description": "Trust not the signs of Ranald."
+    }
+  },
+  {
+    "id": null,
+    "name": "24",
+    "labels": {
+      "description": "Look but once into the mirror’s frame, for what stares out second shall come to claim."
+    }
+  },
+  {
+    "id": null,
+    "name": "25",
+    "labels": {
+      "description": "Thy death shall be found in a festering warren."
+    }
+  },
+  {
+    "id": null,
+    "name": "26",
+    "labels": {
+      "description": "Beware the Men that walk as Beasts. Beware the Beasts that walk as Men."
+    }
+  },
+  {
+    "id": null,
+    "name": "27",
+    "labels": {
+      "description": "Step not into the houses of the Gods, for they know your name and welcome you not."
+    }
+  },
+  {
+    "id": null,
+    "name": "28",
+    "labels": {
+      "description": "Beware the bed who holds no owner."
+    }
+  },
+  {
+    "id": null,
+    "name": "29",
+    "labels": {
+      "description": "All the pleasures of the flesh shall be as knives in your back."
+    }
+  },
+  {
+    "id": null,
+    "name": "30",
+    "labels": {
+      "description": "Let no one wake thee, for fear of what may follow."
+    }
+  },
+  {
+    "id": null,
+    "name": "31",
+    "labels": {
+      "description": "Sorrow stems from soiled breeches."
+    }
+  },
+  {
+    "id": null,
+    "name": "32",
+    "labels": {
+      "description": "Thy death will be ugly, and will be born of ugliness."
+    }
+  },
+  {
+    "id": null,
+    "name": "33",
+    "labels": {
+      "description": "Heed not the engineer, for their artifice brings only suffering."
+    }
+  },
+  {
+    "id": null,
+    "name": "34",
+    "labels": {
+      "description": "Trust not the woman who gives no name, for she hides far worse within her heart."
+    }
+  },
+  {
+    "id": null,
+    "name": "35",
+    "labels": {
+      "description": "Hold thou breath under Morrsleib’s light, lest darkness take root in thou soul."
+    }
+  },
+  {
+    "id": null,
+    "name": "36",
+    "labels": {
+      "description": "Thou first sip of beer shall be thine last."
+    }
+  },
+  {
+    "id": null,
+    "name": "37",
+    "labels": {
+      "description": "Beware the purse that floweth over."
+    }
+  },
+  {
+    "id": null,
+    "name": "38",
+    "labels": {
+      "description": "Death shall fly a false flag, and in its shade take thee to rest."
+    }
+  },
+  {
+    "id": null,
+    "name": "39",
+    "labels": {
+      "description": "Upon bright sands is both promise and blood."
+    }
+  },
+  {
+    "id": null,
+    "name": "40",
+    "labels": {
+      "description": "Fear the land bereft of the gull’s cry."
+    }
+  },
+  {
+    "id": null,
+    "name": "41",
+    "labels": {
+      "description": "If thine eyes close with knowledge of the unjust, they shall never again open."
+    }
+  },
+  {
+    "id": null,
+    "name": "42",
+    "labels": {
+      "description": "Thy passing shall go unmourned, unremembered, and unremarked."
+    }
+  },
+  {
+    "id": null,
+    "name": "43",
+    "labels": {
+      "description": "Trust not in shades of purple."
+    }
+  },
+  {
+    "id": null,
+    "name": "44",
+    "labels": {
+      "description": "Never before was there one such as thee, who drowned on land and not at sea."
+    }
+  },
+  {
+    "id": null,
+    "name": "45",
+    "labels": {
+      "description": "Thou shall live only whilst beholden to friends."
+    }
+  },
+  {
+    "id": null,
+    "name": "46",
+    "labels": {
+      "description": "An idle mind is a feast for Ruin."
+    }
+  },
+  {
+    "id": null,
+    "name": "47",
+    "labels": {
+      "description": "Thou most certainly can die from such a small thing."
+    }
+  },
+  {
+    "id": null,
+    "name": "48",
+    "labels": {
+      "description": "Beware thou own mind, for it speaks to the soul of invincibility."
+    }
+  },
+  {
+    "id": null,
+    "name": "49",
+    "labels": {
+      "description": "Laugh not in the face of the flatulent lest thou gut twist."
+    }
+  },
+  {
+    "id": null,
+    "name": "50",
+    "labels": {
+      "description": "The horses know more than they let slip, but their moment of truth will be thy doom."
+    }
+  },
+  {
+    "id": null,
+    "name": "51",
+    "labels": {
+      "description": "Linger not upon the privy, nor close thine eyes within the tub."
+    }
+  },
+  {
+    "id": null,
+    "name": "52",
+    "labels": {
+      "description": "When night falls, knives move silently from their sheaths."
+    }
+  },
+  {
+    "id": null,
+    "name": "53",
+    "labels": {
+      "description": "Let not thy neighbour’s belly rumble, for too quickly does hunger become murder."
+    }
+  },
+  {
+    "id": null,
+    "name": "54",
+    "labels": {
+      "description": "In freezing mist shall thee be swallowed."
+    }
+  },
+  {
+    "id": null,
+    "name": "55",
+    "labels": {
+      "description": "Trust not the written word, for the quill cuts deeper than any blade."
+    }
+  },
+  {
+    "id": null,
+    "name": "56",
+    "labels": {
+      "description": "56 Thou shall die of thirst whilst surrounded by drink, hunger whilst surrounded by food."
+    }
+  },
+  {
+    "id": null,
+    "name": "57",
+    "labels": {
+      "description": "Beware the launder, for the mangle shall live up to its name."
+    }
+  },
+  {
+    "id": null,
+    "name": "58",
+    "labels": {
+      "description": "When the shadows pass overhead, do not look up for fear of death."
+    }
+  },
+  {
+    "id": null,
+    "name": "59",
+    "labels": {
+      "description": "The number three shall end thee."
+    }
+  },
+  {
+    "id": null,
+    "name": "60",
+    "labels": {
+      "description": "Thou shall float in a foam of blood before the waves take thee."
+    }
+  },
+  {
+    "id": null,
+    "name": "61",
+    "labels": {
+      "description": "Sleep not beneath the twin moons, for their shadows are long and deep."
+    }
+  },
+  {
+    "id": null,
+    "name": "62",
+    "labels": {
+      "description": "Avoid rot, mould, and all decay, for it knows your name and calls you kin."
+    }
+  },
+  {
+    "id": null,
+    "name": "63",
+    "labels": {
+      "description": "At no baker’s hearth shall ye sit."
+    }
+  },
+  {
+    "id": null,
+    "name": "64",
+    "labels": {
+      "description": "Thou shall die chained to a trusted friend."
+    }
+  },
+  {
+    "id": null,
+    "name": "65",
+    "labels": {
+      "description": "When freedom bought, thine end is wrought."
+    }
+  },
+  {
+    "id": null,
+    "name": "66",
+    "labels": {
+      "description": "Thy bones shall litter a foreign land."
+    }
+  },
+  {
+    "id": null,
+    "name": "67",
+    "labels": {
+      "description": "No spear shall end thee, but thou will wish it did."
+    }
+  },
+  {
+    "id": null,
+    "name": "68",
+    "labels": {
+      "description": "Beware the barking of hounds, especially whose source you cannot see."
+    }
+  },
+  {
+    "id": null,
+    "name": "69",
+    "labels": {
+      "description": "Death comes to thee when blue is all you see."
+    }
+  },
+  {
+    "id": null,
+    "name": "70",
+    "labels": {
+      "description": "Glance not behind, for doom approaches from the front."
+    }
+  },
+  {
+    "id": null,
+    "name": "71",
+    "labels": {
+      "description": "Hide not the blemish lest it fester out of sight."
+    }
+  },
+  {
+    "id": null,
+    "name": "72",
+    "labels": {
+      "description": "Thine ears shall be filled with laughter before the screams."
+    }
+  },
+  {
+    "id": null,
+    "name": "73",
+    "labels": {
+      "description": "Suffer not the witch to live, for they shall not suffer thee."
+    }
+  },
+  {
+    "id": null,
+    "name": "74",
+    "labels": {
+      "description": "Hold thy cup in both hands, lest the Ruinous Powers takes up from thee."
+    }
+  },
+  {
+    "id": null,
+    "name": "75",
+    "labels": {
+      "description": "Death shall be but blood on the vine."
+    }
+  },
+  {
+    "id": null,
+    "name": "76",
+    "labels": {
+      "description": "No mortal warrior shall be thine end."
+    }
+  },
+  {
+    "id": null,
+    "name": "77",
+    "labels": {
+      "description": "Trust not the strength of bridges."
+    }
+  },
+  {
+    "id": null,
+    "name": "78",
+    "labels": {
+      "description": "Wipe not the tear from thine eye, for it shall be the last."
+    }
+  },
+  {
+    "id": null,
+    "name": "79",
+    "labels": {
+      "description": "The songs of birds shall be the last thing you hear."
+    }
+  },
+  {
+    "id": null,
+    "name": "80",
+    "labels": {
+      "description": "The latest fashions hold the newest threats."
+    }
+  },
+  {
+    "id": null,
+    "name": "81",
+    "labels": {
+      "description": "Thou thinketh the one-edge blade cannot cut the wielder, but thou wouldst be wrong."
+    }
+  },
+  {
+    "id": null,
+    "name": "82",
+    "labels": {
+      "description": "Violence begets violence, but peace begets death."
+    }
+  },
+  {
+    "id": null,
+    "name": "83",
+    "labels": {
+      "description": "The drumming of feet shall see thee to Morr’s embrace."
+    }
+  },
+  {
+    "id": null,
+    "name": "84",
+    "labels": {
+      "description": "A night without song precedes a morning without waking."
+    }
+  },
+  {
+    "id": null,
+    "name": "85",
+    "labels": {
+      "description": "Pluck not water from the well, lest it pluck thee from the earth."
+    }
+  },
+  {
+    "id": null,
+    "name": "86",
+    "labels": {
+      "description": "Trust not the hooting owl, for thou cannot hear them, and thus hears something else."
+    }
+  },
+  {
+    "id": null,
+    "name": "87",
+    "labels": {
+      "description": "When thou feet are buried in mud, thy death will be close behind."
+    }
+  },
+  {
+    "id": null,
+    "name": "88",
+    "labels": {
+      "description": "A true haunting comes in threes."
+    }
+  },
+  {
+    "id": null,
+    "name": "89",
+    "labels": {
+      "description": "No bells toll when the door is ajar, but fiddlers shall dance upon thy grave."
+    }
+  },
+  {
+    "id": null,
+    "name": "90",
+    "labels": {
+      "description": "Thou life undone by the smallest flea."
+    }
+  },
+  {
+    "id": null,
+    "name": "91",
+    "labels": {
+      "description": "When the peasant stands triumphant shall your head separate from your shoulders."
+    }
+  },
+  {
+    "id": null,
+    "name": "92",
+    "labels": {
+      "description": "Trust not the innocence of children, for their plans are far from sound."
+    }
+  },
+  {
+    "id": null,
+    "name": "93",
+    "labels": {
+      "description": "Consider not the cloth of green."
+    }
+  },
+  {
+    "id": null,
+    "name": "94",
+    "labels": {
+      "description": "Beware all that swims in the sea."
+    }
+  },
+  {
+    "id": null,
+    "name": "95",
+    "labels": {
+      "description": "Rise not before midmorning, for thine death is early indeed."
+    }
+  },
+  {
+    "id": null,
+    "name": "96",
+    "labels": {
+      "description": "Save not the needy for they shall carry thine noose."
+    }
+  },
+  {
+    "id": null,
+    "name": "97",
+    "labels": {
+      "description": "False courage spells certain doom."
+    }
+  },
+  {
+    "id": null,
+    "name": "98",
+    "labels": {
+      "description": "There shall be no ravens to pick upon your bones."
+    }
+  },
+  {
+    "id": null,
+    "name": "99",
+    "labels": {
+      "description": "Death sends a maiden."
+    }
+  },
+  {
+    "id": null,
+    "name": "100",
+    "labels": {
+      "description": "Thy death will mark the virtuous with sin."
+    }
+  }
+]
