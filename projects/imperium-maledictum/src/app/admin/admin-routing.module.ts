@@ -236,25 +236,25 @@ export const routes: Routes = [
       {
         path: 'virtues',
         component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.VIRTUES, component: VirtuesComponent }
       },
       {
         path: 'flaws',
         component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.FLAWS, component: FlawsComponent }
       },
       {
         path: 'motivations',
         component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.MOTIVATIONS, component: MotivationsComponent }
       },
       {
         path: 'status',
         component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_USERS)],
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.STATUS, component: StatusComponent }
       },
       {

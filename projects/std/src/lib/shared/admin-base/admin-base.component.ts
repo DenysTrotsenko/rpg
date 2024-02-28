@@ -43,7 +43,7 @@ export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem
         tap(([data, setting]) => {
           if (!!data && !!setting?.storage) {
             this.admin.init({
-              path: `/${setting?.storage}/${data.path}`,
+              path: `/${setting.storage}/${data.path}`,
               component: data.component
             });
           }
