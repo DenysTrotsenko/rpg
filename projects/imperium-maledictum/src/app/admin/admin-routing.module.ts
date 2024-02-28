@@ -42,6 +42,7 @@ import { FlawsComponent } from './flaws/flaws.component';
 import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
 import { TestComponent } from './test/test.component';
+import { DoomingsComponent } from './doomings/doomings.component';
 
 export const routes: Routes = [
   {
@@ -256,6 +257,12 @@ export const routes: Routes = [
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.STATUS, component: StatusComponent }
+      },
+      {
+        path: 'doomings',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.DOOMINGS, component: DoomingsComponent }
       },
       {
         path: 'settings',

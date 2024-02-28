@@ -40,7 +40,8 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './virtues', label: 'Virtues', permission: PermissionId.ADMIN_SETTING },
   { link: './flaws', label: 'Flaws', permission: PermissionId.ADMIN_SETTING },
   { link: './motivations', label: 'Motivations', permission: PermissionId.ADMIN_SETTING },
-  { link: './status', label: 'Status', permission: PermissionId.ADMIN_SETTING }
+  { link: './status', label: 'Status', permission: PermissionId.ADMIN_SETTING },
+  { link: './doomings', label: 'Doomings', permission: PermissionId.ADMIN_SETTING },
 ];
 
 const OTHER_OPTIONS: NavListItemData[] = [

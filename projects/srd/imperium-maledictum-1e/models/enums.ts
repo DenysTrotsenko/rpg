@@ -32,5 +32,6 @@ export enum FileName {
   VIRTUES = 'virtues.json',
   FLAWS = 'flaws.json',
   MOTIVATIONS = 'motivations.json',
-  STATUS = 'status.json'
+  STATUS = 'status.json',
+  DOOMINGS = 'doomings.json',
 }

@@ -40,6 +40,7 @@ import { FlawsComponent } from './flaws/flaws.component';
 import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
 import { TestComponent } from './test/test.component';
+import { DoomingsComponent } from './doomings/doomings.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { TestComponent } from './test/test.component';
     FlawsComponent,
     MotivationsComponent,
     StatusComponent,
-    TestComponent
+    TestComponent,
+    DoomingsComponent
   ],
   imports: [
     SharedModule,
