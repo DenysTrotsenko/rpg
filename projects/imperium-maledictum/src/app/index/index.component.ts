@@ -9,6 +9,7 @@ const LOGGED_OPTIONS: NavListItemData[] = [
   { link: './admin', icon: 'admin_panel_settings', label: 'Admin', permission: PermissionId.ADMIN },
   { link: './campaigns', icon: 'grade', label: 'Campaigns', permission: PermissionId.CAMPAIGNS },
   { link: './characters', icon: 'group', label: 'Characters', permission: PermissionId.CHARACTERS },
+  { link: './system', icon: 'book_2', label: 'Rulebook' },
   { link: './references', icon: 'format_list_bulleted', label: 'References' },
   { link: './profile', icon: 'account_circle', label: 'Profile' },
 ];

@@ -44,8 +44,8 @@ export class BestiaryComponent implements OnInit {
     characteristics: new UntypedFormArray([]),
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
-    traits: new FormControl<BestiaryTraitId[]>(null, [Validators.required]),
-    powers: new FormControl<PsychicPower[]>(null, [Validators.required]),
+    traits: new FormControl<BestiaryTraitId[]>(null),
+    powers: new FormControl<PsychicPower[]>(null),
     items: new UntypedFormArray([], [Validators.required]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl(''),

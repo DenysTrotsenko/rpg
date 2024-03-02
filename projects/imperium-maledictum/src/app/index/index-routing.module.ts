@@ -29,6 +29,10 @@ const routes: Routes = [
         canActivate: [AuthGuard, permissionGuard(PermissionId.CHARACTERS)]
       },
       {
+        path: 'system',
+        loadChildren: () => import('../system/system.module').then(m => m.SystemModule)
+      },
+      {
         path: 'references',
         loadChildren: () => import('../references/references.module').then(m => m.ReferencesModule)
       },
