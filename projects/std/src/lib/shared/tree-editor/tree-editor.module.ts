@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CdkModule } from '../../cdk/cdk.module';
 import { MaterialModule } from '../../material/material.module';
 import { TreeEditorComponent } from './tree-editor.component';
 import { TreeNodeComponent } from './tree-node.component';
@@ -11,7 +12,8 @@ import { TreeNodeComponent } from './tree-node.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    CdkModule
   ],
   exports: [
     TreeEditorComponent

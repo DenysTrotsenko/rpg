@@ -1,22 +1,37 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TreeNode } from '../../../../../std/src/lib/shared/tree-editor/tree-editor.models';
+import { TreeNode, TreeNodeId } from '../../../../../std/src/lib/shared/tree-editor/tree-editor.models';
 
 const TREE_DATA: TreeNode[] = [
   {
+    id: '1' as TreeNodeId,
     name: 'Vegetables',
     children: [
       {
+        id: '2' as TreeNodeId,
         name: 'Green',
         children: [
-          {name: 'Broccoli'},
-          {name: 'Brussels sprouts'}
+          {
+            id: '3' as TreeNodeId,
+            name: 'Broccoli'
+          },
+          {
+            id: '4' as TreeNodeId,
+            name: 'Brussels sprouts'
+          }
         ],
       },
       {
+        id: '5' as TreeNodeId,
         name: 'Orange',
         children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'}
+          {
+            id: '6' as TreeNodeId,
+            name: 'Pumpkins'
+          },
+          {
+            id: '7' as TreeNodeId,
+            name: 'Carrots'
+          }
         ],
       },
     ],

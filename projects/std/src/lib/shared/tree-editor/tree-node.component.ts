@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TreeMode, TreeNode } from './tree-editor.models';
-import { TodoId } from '../todo-editor/todo-editor.models';
 
 @Component({
   selector: 'std-tree-node',
@@ -11,13 +10,28 @@ import { TodoId } from '../todo-editor/todo-editor.models';
 export class TreeNodeComponent {
   @Input() node: TreeNode;
   @Input() mode: TreeMode;
-  @Output() addClick: EventEmitter<TodoId[]> = new EventEmitter();
-  @Output() editClick: EventEmitter<TodoId[]> = new EventEmitter();
-  @Output() deleteClick: EventEmitter<TodoId[]> = new EventEmitter();
-  @Output() statusClick: EventEmitter<TodoId[]> = new EventEmitter();
+  @Output() addClick: EventEmitter<TreeNode> = new EventEmitter();
+  @Output() editClick: EventEmitter<TreeNode> = new EventEmitter();
+  @Output() deleteClick: EventEmitter<TreeNode> = new EventEmitter();
+  @Output() infoClick: EventEmitter<TreeNode> = new EventEmitter();
 
-  onAddClick(): void {}
-  onEditClick(): void {}
-  onInfoClick(): void {}
-  onDeleteClick(): void {}
+  onAddClick(node: TreeNode): void {
+    if (this.mode === 'view') { return; }
+    this.addClick.emit(node);
+  }
+
+  onEditClick(node: TreeNode): void {
+    if (this.mode === 'view') { return; }
+    this.editClick.emit(node);
+  }
+
+  onInfoClick(node: TreeNode): void {
+    if (this.mode === 'view') { return; }
+    this.infoClick.emit(node);
+  }
+
+  onDeleteClick(node: TreeNode): void {
+    if (this.mode === 'view') { return; }
+    this.deleteClick.emit(node);
+  }
 }
