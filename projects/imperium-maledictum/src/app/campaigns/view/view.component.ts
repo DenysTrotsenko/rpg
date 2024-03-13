@@ -71,7 +71,10 @@ export class ViewComponent {
   );
 
   onAddEventClick(campaign: Campaign): void {
-    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+    const data = {
+      members: campaign.members
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
       .pipe(
         filter(event => !!event),
@@ -89,7 +92,10 @@ export class ViewComponent {
   }
 
   onAddLocationClick(campaign: Campaign): void {
-    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+    const data = {
+      members: campaign.members
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
       .pipe(
         filter(location => !!location),
@@ -107,7 +113,10 @@ export class ViewComponent {
   }
 
   onAddPersonaClick(campaign: Campaign): void {
-    this.dialog.open(EventEditDialogComponent, { data: null, width: '800px' })
+    const data = {
+      members: campaign.members
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
       .pipe(
         filter(persona => !!persona),

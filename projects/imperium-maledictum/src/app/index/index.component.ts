@@ -62,22 +62,6 @@ export class IndexComponent implements OnInit {
       .subscribe();
   }
 
-  // onSaveDataClick(): void {
-  //   const path = StoragePath.THREAT_TYPES;
-  //   this.storage.download<any[]>(path).pipe(
-  //     switchMap(items => {
-  //       const data = JSON.stringify(items, null, 2);
-  //       const blob = new Blob([data], { type: 'application/json' });
-  //       return this.storage.upload(path.replace('_', '-'), blob);
-  //     }),
-  //     tap(() => this.snackbar.success('Data successfully saved!')),
-  //     catchError(() => {
-  //       this.snackbar.error('Some error occurred, try again later!');
-  //       return of(null);
-  //     })
-  //   ).subscribe();
-  // }
-
   trackById(_: number, item): unknown {
     return item.id;
   }

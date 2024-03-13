@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+// import { NestedTreeControl } from '@angular/cdk/tree';
+// import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { TreeMode, TreeNode } from './tree-editor.models';
 import { TreeEditorService } from './tree-editor.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -18,14 +18,14 @@ export class TreeEditorComponent implements OnInit {
   @Input() nodes: TreeNode[];
   @Input() mode: TreeMode;
 
-  readonly treeControl = new NestedTreeControl<TreeNode>(node => node?.children);
-  readonly dataSource = new MatTreeNestedDataSource<TreeNode>();
+  // readonly treeControl = new NestedTreeControl<TreeNode>(node => node?.children);
+  // readonly dataSource = new MatTreeNestedDataSource<TreeNode>();
 
   ngOnInit(): void {
-    this.dataSource.data = this.nodes;
+    // this.dataSource.data = this.nodes;
   }
 
-  hasChild = (_: number, node: TreeNode) => !!node?.children && node?.children?.length > 0;
+  // hasChild = (_: number, node: TreeNode) => !!node?.children && node?.children?.length > 0;
 
   onAddClick(node: TreeNode): void {
 

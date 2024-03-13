@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { forkJoin, Observable, Subject } from 'rxjs';
-import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
+import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { HttpService } from './http.service';
 
 @Injectable()
 export class StorageService {
-  constructor(private readonly http: HttpService, private readonly storage: AngularFireStorage) {}
+  private readonly http = inject(HttpService);
+  private readonly storage = inject(AngularFireStorage);
 
   download<T>(path: string): Observable<T> {
     return this.storage

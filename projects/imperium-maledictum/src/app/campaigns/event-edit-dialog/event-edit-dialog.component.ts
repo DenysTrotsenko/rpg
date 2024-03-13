@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Observable } from 'rxjs';
 import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './event-edit-dialog.component.html',
@@ -10,28 +11,30 @@ import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } f
 })
 export class EventEditDialogComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({
-    name: new FormControl<string>('', [Validators.required]),
-    description: new FormControl<string>('', [Validators.required]),
+    name: new FormControl<string>(null, [Validators.required]),
+    description: new FormControl<string>(null),
     members: new FormControl<UserId[]>([])
   });
 
-  readonly members$: Observable<User[]> = this.user.all$;
+  readonly members$: Observable<User[]> = this.user.all$.pipe(
+    map(users => users.filter(i => this.event.members.includes(i.id)))
+  );
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public original: CampaignEvent,
+    @Inject(MAT_DIALOG_DATA) public event: CampaignEvent,
     private readonly user: UserService
   ) {}
 
   ngOnInit(): void {
-    this.form.patchValue(!!this.original ? this.original : null);
+    this.form.patchValue(!!this.event ? this.event : null);
   }
 
-  onSubmit(form: Partial<CampaignEvent>, original: CampaignEvent): CampaignEvent {
+  onSubmit(form: Partial<CampaignEvent>, event: CampaignEvent): CampaignEvent {
     return {
-      ...original,
+      ...event,
       ...form,
-      id: original?.id ?? getId16(),
-      createdAt: original?.createdAt ?? getUnixTimestamp()
+      id: event?.id ?? getId16(),
+      createdAt: event?.createdAt ?? getUnixTimestamp()
     };
   }
 }
