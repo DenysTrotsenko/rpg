@@ -9,19 +9,12 @@
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <h2>XP</h2>
-    <div formGroupName="value" class="d-f ai-c g-5">
-      <mat-form-field *ngFor="let i of members$ | async;" appearance="outline">
-        <mat-label>{{i.name ?? i.email}}</mat-label>
-        <input matInput type="number" min="0" [formControlName]="i.id">
-      </mat-form-field>
-    </div>
   </div>
   <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="null">
       Cancel
     </button>
-    <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue(), data?.original)" [disabled]="!form.valid">
+    <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue(), data?.event)" [disabled]="!form.valid">
       Add
     </button>
   </div>

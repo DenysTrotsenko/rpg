@@ -30,7 +30,7 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditEventClick(i)">
+              <button mat-icon-button (click)="onEditEventClick(i, campaign)">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button (click)="onDeleteEventClick(i.id, campaign)">
@@ -51,7 +51,7 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditLocationClick(i)">
+              <button mat-icon-button (click)="onEditLocationClick(i, campaign)">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button (click)="onDeleteLocationClick(i.id, campaign)">
@@ -72,7 +72,7 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditPersonaClick(i)">
+              <button mat-icon-button (click)="onEditPersonaClick(i, campaign)">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button (click)="onDeletePersonaClick(i.id, campaign)">
@@ -108,7 +108,7 @@
             <mat-panel-title class="ff-g">
               {{i.name}}
               <span class="f-1"></span>
-              <button mat-icon-button (click)="onEditExperienceClick(i)">
+              <button mat-icon-button (click)="onEditExperienceClick(i, campaign)">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button (click)="onDeleteExperienceClick(i.id, campaign)">

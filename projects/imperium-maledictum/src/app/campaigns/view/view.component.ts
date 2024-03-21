@@ -11,8 +11,8 @@ import {
   DialogService,
   FirestoreService, getId16, User, UserService
 } from '@shared';
-import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
-import { XpEditDialogComponent } from '../xp-edit-dialog/xp-edit-dialog.component';
+import { EventEditDialogComponent, EventEditDialogData } from '../event-edit-dialog/event-edit-dialog.component';
+import { XpEditDialogComponent, XpEditDialogData } from '../xp-edit-dialog/xp-edit-dialog.component';
 import { TodoMode, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
 import { CharacterService } from '../../common/character.service';
 import {
@@ -74,8 +74,9 @@ export class ViewComponent {
   );
 
   onAddEventClick(campaign: Campaign): void {
-    const data = {
-      members: campaign.members
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event: null
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -95,8 +96,9 @@ export class ViewComponent {
   }
 
   onAddLocationClick(campaign: Campaign): void {
-    const data = {
-      members: campaign.members
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event: null
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -116,8 +118,9 @@ export class ViewComponent {
   }
 
   onAddPersonaClick(campaign: Campaign): void {
-    const data = {
-      members: campaign.members
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event: null
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -166,8 +169,26 @@ export class ViewComponent {
       .subscribe();
   }
 
-  onEditEventClick(event: CampaignEvent): void {
-    console.log('Not implemented yet.');
+  onEditEventClick(event: CampaignEvent, campaign: Campaign): void {
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(res => {
+          const index = campaign?.events?.findIndex(i => i.id === event.id);
+
+          campaign.events[index] = res;
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign
+          });
+        })
+      )
+      .subscribe();
   }
 
   onDeleteEventClick(id: string, campaign: Campaign): void {
@@ -177,8 +198,26 @@ export class ViewComponent {
     }));
   }
 
-  onEditLocationClick(event: CampaignEvent): void {
-    console.log('Not implemented yet.');
+  onEditLocationClick(event: CampaignEvent, campaign: Campaign): void {
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(res => {
+          const index = campaign?.locations?.findIndex(i => i.id === event.id);
+
+          campaign.locations[index] = res;
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign
+          });
+        })
+      )
+      .subscribe();
   }
 
   onDeleteLocationClick(id: string, campaign: Campaign): void {
@@ -188,8 +227,26 @@ export class ViewComponent {
     }));
   }
 
-  onEditPersonaClick(event: CampaignEvent): void {
-    console.log('Not implemented yet.');
+  onEditPersonaClick(event: CampaignEvent, campaign: Campaign): void {
+    const data: EventEditDialogData = {
+      members: campaign.members,
+      event
+    };
+    this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(res => {
+          const index = campaign?.personas?.findIndex(i => i.id === event.id);
+
+          campaign.personas[index] = res;
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign
+          });
+        })
+      )
+      .subscribe();
   }
 
   onDeletePersonaClick(id: string, campaign: Campaign): void {
@@ -199,8 +256,26 @@ export class ViewComponent {
     }));
   }
 
-  onEditExperienceClick(event: CampaignExperience): void {
-    console.log('Not implemented yet.');
+  onEditExperienceClick(event: CampaignExperience, campaign: Campaign): void {
+    const data: XpEditDialogData = {
+      campaign,
+      event
+    };
+    this.dialog.open(XpEditDialogComponent, { data, width: '800px' })
+      .afterClosed()
+      .pipe(
+        filter(xp => !!xp),
+        switchMap(xp => {
+          const index = campaign?.experience?.findIndex(i => i.id === event.id);
+
+          campaign.experience[index] = xp;
+
+          return this.firestore.update(`campaigns/${campaign.id}`, {
+            ...campaign
+          });
+        })
+      )
+      .subscribe();
   }
 
   onDeleteExperienceClick(id: string, campaign: Campaign): void {

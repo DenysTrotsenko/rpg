@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
 import { map } from 'rxjs/operators';
 
+export interface EventEditDialogData {
+  event: CampaignEvent;
+  members: UserId[];
+}
+
 @Component({
   templateUrl: './event-edit-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,16 +22,16 @@ export class EventEditDialogComponent implements OnInit {
   });
 
   readonly members$: Observable<User[]> = this.user.all$.pipe(
-    map(users => users.filter(i => this.event?.members.includes(i.id)))
+    map(users => users.filter(i => this.data?.members.includes(i.id)))
   );
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public event: CampaignEvent,
+    @Inject(MAT_DIALOG_DATA) public data: EventEditDialogData,
     private readonly user: UserService
   ) {}
 
   ngOnInit(): void {
-    this.form.patchValue(!!this.event ? this.event : null);
+    this.form.patchValue(!!this.data?.event ? this.data.event : null);
   }
 
   onSubmit(form: Partial<CampaignEvent>, event: CampaignEvent): CampaignEvent {
