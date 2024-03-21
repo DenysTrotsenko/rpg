@@ -122,10 +122,22 @@ export const routes: Routes = [
         data: { path: FileName.DURATIONS, component: DurationsComponent }
       },
       {
+        path: 'endeavours',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ENDEAVOURS, component: EnvironmentalTraitsComponent }
+      },
+      {
         path: 'environmental-traits',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.ENVIRONMENTAL_TRAITS, component: EnvironmentalTraitsComponent }
+      },
+      {
+        path: 'events',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.EVENTS, component: EnvironmentalTraitsComponent }
       },
       {
         path: 'factions',
