@@ -43,6 +43,7 @@ import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
 import { TestComponent } from './test/test.component';
 import { DoomingsComponent } from './doomings/doomings.component';
+import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 
 export const routes: Routes = [
   {
@@ -119,6 +120,12 @@ export const routes: Routes = [
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.DURATIONS, component: DurationsComponent }
+      },
+      {
+        path: 'environmental-traits',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ENVIRONMENTAL_TRAITS, component: EnvironmentalTraitsComponent }
       },
       {
         path: 'factions',

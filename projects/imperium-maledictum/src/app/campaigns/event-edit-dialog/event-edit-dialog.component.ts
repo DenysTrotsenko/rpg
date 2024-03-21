@@ -17,7 +17,7 @@ export class EventEditDialogComponent implements OnInit {
   });
 
   readonly members$: Observable<User[]> = this.user.all$.pipe(
-    map(users => users.filter(i => this.event.members.includes(i.id)))
+    map(users => users.filter(i => this.event?.members.includes(i.id)))
   );
 
   constructor(

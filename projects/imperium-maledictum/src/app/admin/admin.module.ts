@@ -41,6 +41,7 @@ import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
 import { TestComponent } from './test/test.component';
 import { DoomingsComponent } from './doomings/doomings.component';
+import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { DoomingsComponent } from './doomings/doomings.component';
     MotivationsComponent,
     StatusComponent,
     TestComponent,
-    DoomingsComponent
+    DoomingsComponent,
+    EnvironmentalTraitsComponent
   ],
   imports: [
     SharedModule,

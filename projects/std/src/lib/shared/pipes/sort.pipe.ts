@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'sort'
 })
 export class SortPipe implements PipeTransform {
-
   transform<T>(value: T[], property: keyof T, order: 'asc' | 'desc' = 'asc'): T[] {
     return value?.sort((a, b) => {
       const aProp = a[property] as number;
@@ -23,5 +22,4 @@ export class SortPipe implements PipeTransform {
       return 0;
     });
   }
-
 }

@@ -9,12 +9,15 @@ import {
   CampaignId,
   CampaignService, Character, CharacterId,
   DialogService,
-  FirestoreService, User, UserService
+  FirestoreService, getId16, User, UserService
 } from '@shared';
 import { EventEditDialogComponent } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent } from '../xp-edit-dialog/xp-edit-dialog.component';
 import { TodoMode, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
 import { CharacterService } from '../../common/character.service';
+import {
+  JsonEditorDialogComponent
+} from '../../../../../std/src/lib/shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
   templateUrl: './view.component.html',
@@ -55,7 +58,7 @@ export class ViewComponent {
     this.campaign$, this.characters$
   ]).pipe(
     map(([campaign, characters]) => {
-      const characterExperienceMap: Map<CharacterId, number> = campaign.experience
+      const characterExperienceMap: Map<CharacterId, number> = (campaign.experience ?? [])
         .reduce((acc, cur) => this.updateXpMap(acc, cur.tasks), new Map());
       const characterExperienceArr: { name: string; value: number; }[] = Array
         .from(characterExperienceMap)
@@ -101,7 +104,7 @@ export class ViewComponent {
         filter(location => !!location),
         switchMap(location => {
           const locations: CampaignEvent[] = campaign?.locations
-            ? [...campaign.events, location]
+            ? [...campaign.locations, location]
             : [location];
 
           return this.firestore.update(`campaigns/${campaign.id}`, {
@@ -147,6 +150,18 @@ export class ViewComponent {
             ...campaign, experience
           });
         })
+      )
+      .subscribe();
+  }
+
+  onJsonClick(campaign: Campaign): void {
+    this.dialog.open(JsonEditorDialogComponent, {
+      data: campaign,
+      width: '1200px'
+    }).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        switchMap(result => this.firestore.update(`campaigns/${campaign.id}`, result))
       )
       .subscribe();
   }

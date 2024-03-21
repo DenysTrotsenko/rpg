@@ -1,19 +1,26 @@
 <ng-container *ngIf="campaign$ | async as campaign;">
-  <mat-toolbar class="g-10">
-    <h1>Campaign: <span class="ff-g">{{campaign.name}}</span></h1>
+  <mat-toolbar>
+    <h1>
+      Campaign: <span class="ff-g">{{campaign.name}}</span>
+    </h1>
     <span class="f-1"></span>
-    <button mat-flat-button color="primary" (click)="onAddEventClick(campaign)">
-      + Event
-    </button>
-    <button mat-flat-button color="primary" (click)="onAddLocationClick(campaign)">
-      + Location
-    </button>
-    <button mat-flat-button color="primary" (click)="onAddPersonaClick(campaign)">
-      + Persona
-    </button>
-    <button mat-flat-button color="primary" (click)="onAddExperienceClick(campaign)">
-      + XP
-    </button>
+    <div *ngIf="(mode$ | async) === 'edit'" class="d-f g-10">
+      <button mat-flat-button color="primary" (click)="onAddEventClick(campaign)">
+        + Event
+      </button>
+      <button mat-flat-button color="primary" (click)="onAddLocationClick(campaign)">
+        + Location
+      </button>
+      <button mat-flat-button color="primary" (click)="onAddPersonaClick(campaign)">
+        + Persona
+      </button>
+      <button mat-flat-button color="primary" (click)="onAddExperienceClick(campaign)">
+        + XP
+      </button>
+      <button mat-flat-button color="accent" (click)="onJsonClick(campaign)">
+        JSON
+      </button>
+    </div>
   </mat-toolbar>
   <mat-tab-group class="p-10">
     <mat-tab label="Events">

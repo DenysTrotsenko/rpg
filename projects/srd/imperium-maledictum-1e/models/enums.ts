@@ -10,6 +10,7 @@ export enum FileName {
   DICTIONARY = 'dictionary.json',
   DIFFICULTIES = 'difficulties.json',
   DURATIONS = 'durations.json',
+  ENVIRONMENTAL_TRAITS = 'environmental-traits.json',
   FACTIONS = 'factions.json',
   ITEMS = 'items.json',
   ITEM_QUALITIES = 'item-qualities.json',

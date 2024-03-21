@@ -18,8 +18,10 @@ export class TodoEditorComponent implements OnInit {
   @Input() hide: boolean = true;
   @Input() mode: TodoMode = 'view';
   @Input() filter: TodoStatus[] = ['active', 'completed', 'failed'];
-  @Input() set characters(characters: Character[]) { this.todo.characters = characters; }
   @Input() tasks: TodoTask[];
+  @Input() set characters(characters: Character[]) {
+    this.todo.characters = characters;
+  }
   @Output() valueChange: EventEmitter<TodoTask[]> = new EventEmitter();
 
   readonly tasks$ = this.todo.tasks$.pipe(

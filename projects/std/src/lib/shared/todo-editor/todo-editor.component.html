@@ -1,5 +1,7 @@
 <div class="d-f g-5">
-  <button mat-flat-button color="primary" class="f-1" (click)="onAddClick([])">Add Task</button>
+  <button *ngIf="mode === 'edit'" mat-flat-button color="primary" class="f-1" (click)="onAddClick([])">
+    Add Task
+  </button>
   <mat-button-toggle-group multiple appearance="standard"
     [value]="filter"
     (valueChange)="onFilterChange($event)">
@@ -7,7 +9,9 @@
     <mat-button-toggle value="completed">Completed</mat-button-toggle>
     <mat-button-toggle value="failed">Failed</mat-button-toggle>
   </mat-button-toggle-group>
-  <button *ngIf="mode === 'edit'" mat-flat-button color="accent" (click)="onJsonClick()">JSON</button>
+  <button *ngIf="mode === 'edit'" mat-flat-button color="accent" (click)="onJsonClick()">
+    JSON
+  </button>
 </div>
 <std-todo-task *ngFor="let i of filtered$ | async;"
   [task]="i"
