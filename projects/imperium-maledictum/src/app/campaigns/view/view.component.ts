@@ -258,7 +258,6 @@ export class ViewComponent {
 
   onEditExperienceClick(event: CampaignExperience, campaign: Campaign): void {
     const data: XpEditDialogData = {
-      campaign,
       event
     };
     this.dialog.open(XpEditDialogComponent, { data, width: '800px' })
