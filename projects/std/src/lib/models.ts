@@ -19,6 +19,7 @@ export interface HasBaseProperties<T> {
   name: string;
   default?: boolean;
   labels?: {
+    flavor?: string;
     description?: string;
     tooltip?: string;
   };

@@ -1,4 +1,5 @@
 export enum FileName {
+  ACTIONS = 'actions.json',
   AVAILABILITIES = 'availabilities.json',
   BESTIARY_ROLES = 'bestiary-roles.json',
   BESTIARY_FACTIONS = 'bestiary-factions.json',

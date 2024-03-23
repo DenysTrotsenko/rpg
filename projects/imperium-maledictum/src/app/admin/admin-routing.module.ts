@@ -62,6 +62,12 @@ export const routes: Routes = [
         data: { path: FileName.DICTIONARY }
       },
       {
+        path: 'actions',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ACTIONS, component: ItemAvailabilitiesComponent }
+      },
+      {
         path: 'availability',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],

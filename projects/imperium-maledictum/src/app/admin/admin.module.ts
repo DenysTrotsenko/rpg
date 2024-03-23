@@ -44,6 +44,7 @@ import { DoomingsComponent } from './doomings/doomings.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 import { EventsComponent } from './events/events.component';
 import { EndeavoursComponent } from './endeavours/endeavours.component';
+import { ActionsComponent } from './actions/actions.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { EndeavoursComponent } from './endeavours/endeavours.component';
     DoomingsComponent,
     EnvironmentalTraitsComponent,
     EventsComponent,
-    EndeavoursComponent
+    EndeavoursComponent,
+    ActionsComponent
   ],
   imports: [
     SharedModule,

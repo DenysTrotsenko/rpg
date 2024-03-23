@@ -321,7 +321,6 @@ export interface Skill extends HasBaseProperties<SkillId> {
   characteristic: CharacteristicId;
   labels: {
     description: string;
-    tooltip?: string;
   };
   system?: Partial<System>;
 }
