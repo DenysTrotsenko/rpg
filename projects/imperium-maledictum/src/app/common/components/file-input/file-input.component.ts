@@ -16,7 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input() accept: string;
-  @Output() valueChanges: EventEmitter<File> = new EventEmitter();
+  @Output() valueChanges: EventEmitter<FileList> = new EventEmitter();
 
   onFileChange(e: Event): void {
     const input: HTMLInputElement = e.target as HTMLInputElement;
@@ -26,9 +26,8 @@ export class FileInputComponent implements ControlValueAccessor {
       this.propagateChange(null);
       this.valueChanges.emit(null);
     } else {
-      const file: File = files[0];
-      this.propagateChange(file);
-      this.valueChanges.emit(file);
+      this.propagateChange(files);
+      this.valueChanges.emit(files);
     }
 
     input.value = null;

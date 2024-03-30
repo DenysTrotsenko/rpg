@@ -25,7 +25,7 @@
   <mat-tab-group class="p-10">
     <mat-tab label="Events">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.events | sort : 'createdAt' : 'desc';" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -46,7 +46,7 @@
     </mat-tab>
     <mat-tab label="Locations">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.locations | sort : 'name';" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.locations;" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -67,7 +67,7 @@
     </mat-tab>
     <mat-tab label="Personas">
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.personas | sort : 'name';" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.personas;" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
@@ -103,7 +103,7 @@
         </mat-card-content>
       </mat-card>
       <mat-accordion class="o-a d-b mt-10">
-        <mat-expansion-panel *ngFor="let i of campaign.experience | sort : 'createdAt' : 'desc'; trackBy: trackById" hideToggle>
+        <mat-expansion-panel *ngFor="let i of campaign.experience; trackBy: trackById" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
               {{i.name}}
