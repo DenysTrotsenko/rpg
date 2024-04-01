@@ -1,0 +1,2 @@
+<button type="button" mat-flat-button color="primary" (click)="file.click()">Upload File</button>
+<input #file type="file" hidden [accept]="accept" (change)="onFileChange($event)">

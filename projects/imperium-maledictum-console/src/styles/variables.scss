@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+$app-primary-palette: mat.$blue-palette;
+$app-accent-palette: mat.$amber-palette;
+$app-warn-palette: mat.$red-palette;
+
+$color-primary: mat.get-color-from-palette($app-primary-palette, 600);
+$color-accent: mat.get-color-from-palette($app-accent-palette, 500);
+$color-warn: mat.get-color-from-palette($app-warn-palette, 500);
+
+$app-primary: mat.define-palette($app-primary-palette, 600);
+$app-accent: mat.define-palette($app-accent-palette, 500);
+$app-warn: mat.define-palette($app-warn-palette, 500);
+$app-theme: mat.define-dark-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  ),
+  typography: mat.define-typography-config($font-family: '"Catamaran", sans-serif'),
+  density: -3
+));
+
+$font-gothic-1: 'IM Fell English SC';
+$font-gothic-2: 'IM Fell English';

@@ -5,8 +5,8 @@
   "targets": {
     "imperium-maledictum": {
       "hosting": {
-        "app": [
-          "imperium-maledictum"
+        "console": [
+          "imperium-maledictum-console"
         ]
       }
     }

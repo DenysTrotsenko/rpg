@@ -19,7 +19,7 @@
     }
   ],
   "hosting": {
-    "target": "app",
+    "target": "console",
     "public": "dist",
     "ignore": [
       "firebase.json",

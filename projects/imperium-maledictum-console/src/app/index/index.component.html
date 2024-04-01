@@ -1,0 +1,37 @@
+<mat-sidenav-container [class.expanded]="expanded">
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar class="d-f jc-sb">
+      <img class="logo f-1 not-expanded-hide" src="assets/images/logo.png">
+      <button mat-icon-button class="f-0" (click)="onToggleSidenavClick()" matTooltip="{{ expanded ? 'Collapse' : 'Expand' }}">
+        <mat-icon>{{ expanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+<!--    <mat-form-field appearance="outline" class="ml-5 mr-5 mt-5">-->
+<!--      <mat-label>Campaign</mat-label>-->
+<!--      <mat-select [value]="campaign$ | async" (selectionChange)="onCampaignChange($event.value)">-->
+<!--        <mat-option [value]="null">-</mat-option>-->
+<!--        <mat-option *ngFor="let i of campaigns$ | async; trackBy: trackById;" [value]="i.id">-->
+<!--          {{i.name}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+    <mat-nav-list *ngIf="!(logged$ | async)" dense>
+      <a mat-list-item routerLink="auth/sign-in" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Authorization' }}">
+        <mat-icon>fingerprint</mat-icon><span class="ml-10 not-expanded-hide">Authorization</span>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="logged$ | async" dense>
+      <a *ngFor="let i of options$ | async;" mat-list-item [routerLink]="i.link" routerLinkActive="active" matTooltip="{{ expanded ? '' : i.label }}">
+        <mat-icon>{{i.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{i.label}}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <button mat-list-item matTooltip="{{ expanded ? '' : 'Logout' }}" (click)="onLogoutClick()">
+        <mat-icon color="warn">logout</mat-icon><span class="ml-10 not-expanded-hide warn">Logout</span>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
