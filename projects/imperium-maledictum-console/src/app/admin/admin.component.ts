@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { hasDuplicates, NavListItemData, PermissionId, SettingService, UserService } from '@shared';
+import { hasDuplicates, NavListItemData, PermissionId, UserService } from '@shared';
 import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
@@ -58,6 +58,7 @@ const OTHER_OPTIONS: NavListItemData[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminComponent {
+  private readonly user = inject(UserService);
   readonly valid: boolean = !hasDuplicates(routes[0].children.map(i => i.data?.path).filter(i => !!i));
   readonly settingOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
@@ -67,11 +68,6 @@ export class AdminComponent {
     map(user => user?.permissions ?? []),
     map(permissions => OTHER_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
-
-  constructor(
-    private readonly setting: SettingService,
-    private readonly user: UserService
-  ) {}
 
   trackById(_, i): string { return i.id; }
 }
