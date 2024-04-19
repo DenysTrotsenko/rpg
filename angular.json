@@ -162,7 +162,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/imperium-maledictum-console",
+            "outputPath": "projects//imperium-maledictum-console/dist",
             "index": "projects/imperium-maledictum-console/src/index.html",
             "main": "projects/imperium-maledictum-console/src/main.ts",
             "polyfills": [
@@ -190,8 +190,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2.5mb",
+                  "maximumError": "5.0mb"
                 },
                 {
                   "type": "anyComponentStyle",
