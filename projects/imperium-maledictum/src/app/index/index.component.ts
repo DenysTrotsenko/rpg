@@ -1,12 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { AuthService, CampaignService, DialogService, NavListItemData, PermissionId, UserService } from '@shared';
+import {
+  AuthService, Campaign, CampaignId,
+  CampaignService,
+  DialogService,
+  NavListItemData,
+  PermissionId,
+  UserService
+} from '@shared';
 import { DataService } from '../common/data.service';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
-  { link: './admin', icon: 'admin_panel_settings', label: 'Admin', permission: PermissionId.ADMIN },
   { link: './campaigns', icon: 'grade', label: 'Campaigns', permission: PermissionId.CAMPAIGNS },
   { link: './characters', icon: 'group', label: 'Characters', permission: PermissionId.CHARACTERS },
   { link: './system', icon: 'book_2', label: 'Rulebook' },
@@ -20,24 +26,28 @@ const LOGGED_OPTIONS: NavListItemData[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent implements OnInit {
+  private readonly auth = inject(AuthService);
+  private readonly campaign = inject(CampaignService);
+  private readonly data = inject(DataService);
+  private readonly dialog = inject(DialogService);
+  private readonly router = inject(Router);
+  private readonly user = inject(UserService);
+
   expanded = true;
   readonly logged$: Observable<boolean> = this.auth.logged$;
+  readonly campaign$: Observable<Campaign> = this.campaign.selected$;
   readonly options$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
     map(permissions => LOGGED_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
 
-  constructor(
-    private readonly auth: AuthService,
-    private readonly campaign: CampaignService,
-    private readonly data: DataService,
-    private readonly dialog: DialogService,
-    private readonly router: Router,
-    private readonly user: UserService
-  ) {}
-
   ngOnInit(): void {
     this.data.init();
+    this.auth.option$
+      .pipe(
+        tap(res => this.campaign.set(res as CampaignId))
+      )
+      .subscribe();
   }
 
   onToggleSidenavClick(): void {
