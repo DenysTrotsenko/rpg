@@ -1,8 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { AuthService, CampaignService, DialogService, NavListItemData, PermissionId, UserService } from '@shared';
+import {
+  AuthService,
+  CampaignService,
+  DialogService,
+  NavListItemData,
+  PermissionId, Setting,
+  SettingService,
+  UserService
+} from '@shared';
 import { DataService } from '../common/data.service';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
@@ -15,24 +23,28 @@ const LOGGED_OPTIONS: NavListItemData[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent implements OnInit {
+  private readonly auth = inject(AuthService);
+  private readonly data = inject(DataService);
+  private readonly dialog = inject(DialogService);
+  private readonly router = inject(Router);
+  private readonly user = inject(UserService);
+  private readonly setting = inject(SettingService);
+
   expanded = true;
   readonly logged$: Observable<boolean> = this.auth.logged$;
+  readonly setting$: Observable<Setting> = this.setting.selected$;
   readonly options$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
     map(permissions => LOGGED_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
 
-  constructor(
-    private readonly auth: AuthService,
-    private readonly campaign: CampaignService,
-    private readonly data: DataService,
-    private readonly dialog: DialogService,
-    private readonly router: Router,
-    private readonly user: UserService
-  ) {}
-
   ngOnInit(): void {
     this.data.init();
+    this.auth.option$
+      .pipe(
+        tap(res => this.setting.set(res as string))
+      )
+      .subscribe();
   }
 
   onToggleSidenavClick(): void {
@@ -52,6 +64,7 @@ export class IndexComponent implements OnInit {
       .pipe(
         filter(res => !!res),
         switchMap(() => this.auth.signOut()),
+        tap(() => this.setting.set(null)),
         tap(() => this.router.navigate(['/auth/sign-in']))
       )
       .subscribe();

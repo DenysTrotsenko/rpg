@@ -26,6 +26,16 @@
         <mat-error *ngIf="form.controls['password'].hasError('required')">Password is required.</mat-error>
       </mat-form-field>
     </mat-card-content>
+    <mat-card-content *ngIf="options && label" class="d-f fd-c ai-s">
+        <mat-form-field appearance="outline">
+          <mat-label>{{label}}</mat-label>
+          <mat-select formControlName="resource">
+            <mat-option *ngFor="let i of options;" [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </mat-card-content>
     <mat-card-actions class="d-f fd-r jc-fe">
       <button mat-raised-button color="primary" type="submit" class="m-l-10" [disabled]="!form.valid">Continue</button>
     </mat-card-actions>

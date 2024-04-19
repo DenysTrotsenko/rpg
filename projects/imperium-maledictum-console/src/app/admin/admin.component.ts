@@ -1,8 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable, Subject, takeUntil } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { hasDuplicates, NavListItemData, PermissionId, Setting, SettingService, UserService } from '@shared';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { hasDuplicates, NavListItemData, PermissionId, SettingService, UserService } from '@shared';
 import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
@@ -58,7 +57,7 @@ const OTHER_OPTIONS: NavListItemData[] = [
   styleUrls: ['./admin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminComponent implements OnInit, OnDestroy {
+export class AdminComponent {
   readonly valid: boolean = !hasDuplicates(routes[0].children.map(i => i.data?.path).filter(i => !!i));
   readonly settingOptions$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
@@ -69,36 +68,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     map(permissions => OTHER_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
 
-  readonly control: FormControl = new FormControl(null);
-
-  readonly settings$: Observable<Setting[]> = this.setting.all$;
-
-  private readonly destroy$: Subject<void> = new Subject<void>();
-
   constructor(
     private readonly setting: SettingService,
     private readonly user: UserService
   ) {}
-
-  ngOnInit(): void {
-    this.setting.selected$
-      .pipe(
-        takeUntil(this.destroy$),
-        tap(res => this.control.patchValue(!!res ? res.id : null, { emitEvent: false }))
-      )
-      .subscribe();
-    this.control.valueChanges
-      .pipe(
-        takeUntil(this.destroy$),
-        tap(id => this.setting.set(id))
-      )
-      .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 
   trackById(_, i): string { return i.id; }
 }

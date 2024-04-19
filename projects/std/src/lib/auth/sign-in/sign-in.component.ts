@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService, AuthWithEmailAndPassword } from '@shared';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, tap } from 'rxjs/operators';
 
 @Component({
@@ -11,19 +11,25 @@ import { finalize, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInComponent {
+  private readonly auth = inject(AuthService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+
   readonly progress$ = new BehaviorSubject(false);
-  readonly form: UntypedFormGroup = new UntypedFormGroup({
-    email: new UntypedFormControl('', [Validators.required, Validators.email]),
-    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+  readonly form: FormGroup = new FormGroup({
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
+    resource: new FormControl<unknown>(null, [Validators.required]),
   });
+  readonly label = this.route.parent.snapshot.data?.label;
+  readonly options = this.route.parent.snapshot.data?.options;
 
-  constructor(private auth: AuthService, private router: Router) {}
-
-  onSignIn(model: AuthWithEmailAndPassword): void {
+  onSignIn(model: AuthWithEmailAndPassword & { resource: unknown; }): void {
     this.progress$.next(true);
     this.auth.signIn(model)
       .pipe(
-        tap((res) => res ? this.router.navigate(['/']) : null),
+        tap(res => res ? this.auth.setOption(model?.resource) : null),
+        tap(res => res ? this.router.navigate(['/']) : null),
         finalize(() => this.progress$.next(false))
       )
       .subscribe();

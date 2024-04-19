@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { inject, NgModule } from '@angular/core';
+import { ResolveFn, RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
-import { AuthGuard, PermissionId } from '@shared';
+import { AuthGuard, PermissionId, Setting, SettingService } from '@shared';
 import { permissionGuard } from '../common/guards';
+
+const authResolver: ResolveFn<Setting[]> = () => inject(SettingService).all$;
 
 const routes: Routes = [
   {
@@ -11,7 +13,9 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
-        loadChildren: () => import('../../../../std/src/lib/auth/auth.module').then(m => m.AuthModule)
+        loadChildren: () => import('../../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
+        data: { label: 'Setting' },
+        resolve: { options: authResolver }
       },
       {
         path: 'admin',

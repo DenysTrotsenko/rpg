@@ -35,3 +35,9 @@ body {
   border-radius: 5px;
   padding: 0 5px;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

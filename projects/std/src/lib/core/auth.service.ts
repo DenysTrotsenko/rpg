@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
@@ -10,14 +10,19 @@ import { getErrorMessage } from '../utils';
 @Injectable()
 export class AuthService {
   private readonly authSource: BehaviorSubject<firebase.User | null> = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
-  private readonly authObservable: Observable<firebase.User | null> = this.authSource.asObservable()
-    .pipe(
-      distinctUntilChanged(),
-      shareReplay(1)
-    );
+  private readonly authObservable: Observable<firebase.User | null> = this.authSource.asObservable().pipe(
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
+  private readonly optionSource: Subject<unknown> = new Subject();
+  private readonly optionObservable: Observable<unknown> = this.optionSource.asObservable().pipe(
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
 
   get auth$(): Observable<firebase.User | null> { return this.authObservable; }
   get logged$(): Observable<boolean> { return this.auth$.pipe(map(res => !!res)); }
+  get option$(): Observable<unknown> { return this.optionObservable; }
   get uid$(): Observable<UserId | null> { return this.auth$.pipe(map(res => res?.uid as UserId)); }
 
   constructor(private afa: AngularFireAuth, private snackbar: SnackbarService) {
@@ -39,6 +44,10 @@ export class AuthService {
         return of(null);
       })
     );
+  }
+
+  setOption(value: unknown): void {
+    this.optionSource.next(value);
   }
 
   signIn(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
