@@ -17,6 +17,7 @@ const LOGGED_OPTIONS: NavListItemData[] = [
   { link: './characters', icon: 'group', label: 'Characters', permission: PermissionId.CHARACTERS },
   { link: './system', icon: 'book_2', label: 'Rulebook' },
   { link: './references', icon: 'format_list_bulleted', label: 'References' },
+  { link: './tools', icon: 'handyman', label: 'Tools' },
   { link: './profile', icon: 'account_circle', label: 'Profile' },
 ];
 

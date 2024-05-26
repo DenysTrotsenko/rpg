@@ -1,0 +1,22 @@
+@import "../../../src/styles/variables";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+mat-sidenav-container {
+  height: 100%;
+
+  .mat-toolbar-single-row {
+    padding: 0 8px;
+  }
+
+  mat-sidenav {
+    width: 150px;
+  }
+}
+
+.active {
+  color: $color-primary;
+}

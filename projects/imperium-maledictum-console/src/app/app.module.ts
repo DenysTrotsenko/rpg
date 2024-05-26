@@ -30,10 +30,7 @@ import { LoggerModule } from '../../../std/src/lib/logger/logger.module';
     LoggerModule.forRoot(!environment.production)
   ],
   providers: [
-    {
-      provide: MatDialogRef,
-      useValue: {}
-    },
+    { provide: MatDialogRef, useValue: {} },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [

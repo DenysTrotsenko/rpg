@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ToolsRoutingModule } from './tools-routing.module';
 import { ToolsComponent } from './tools.component';
+import { SharedModule } from '@shared';
 
 
 @NgModule({
@@ -9,7 +9,7 @@ import { ToolsComponent } from './tools.component';
     ToolsComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     ToolsRoutingModule
   ]
 })

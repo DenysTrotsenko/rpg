@@ -4,11 +4,15 @@ import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { AuthService, CacheService, HasCommonFields, HasId, Setting, SettingService, StorageService } from '@shared';
 import {
   Availability,
+  Bestiary,
   BestiaryFaction,
   BestiaryRole,
   BestiaryTrait,
   BestiaryType,
-  Characteristic, Condition, Difficulty, Duration,
+  Characteristic,
+  Condition,
+  Difficulty,
+  Duration,
   Item,
   ItemTrait,
   ItemType,
@@ -19,13 +23,15 @@ import {
   Size,
   Skill,
   Specialisation,
-  Talent, Target
+  Talent,
+  Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 import { LoggerService } from '../../../../std/src/lib/logger/logger.service';
 
 interface Data {
   [FileName.AVAILABILITIES]: Availability[];
+  [FileName.BESTIARY]: Bestiary[];
   [FileName.BESTIARY_FACTIONS]: BestiaryFaction[];
   [FileName.BESTIARY_ROLES]: BestiaryRole[];
   [FileName.BESTIARY_TYPES]: BestiaryType[];
@@ -58,6 +64,7 @@ export class DataService {
   private readonly data$: Observable<Data> = this.storage$.pipe(
     switchMap(storage => forkJoin({
       [FileName.AVAILABILITIES]: this.download<Availability>(storage, FileName.AVAILABILITIES),
+      [FileName.BESTIARY]: this.download<Bestiary>(storage, FileName.BESTIARY),
       [FileName.BESTIARY_FACTIONS]: this.download<BestiaryFaction>(storage, FileName.BESTIARY_FACTIONS),
       [FileName.BESTIARY_ROLES]: this.download<BestiaryRole>(storage, FileName.BESTIARY_ROLES),
       [FileName.BESTIARY_TRAITS]: this.download<BestiaryTrait>(storage, FileName.BESTIARY_TRAITS),
@@ -86,6 +93,9 @@ export class DataService {
   );
   readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
     this.handleData<Availability>(FileName.AVAILABILITIES)
+  );
+  readonly bestiary$: Observable<Bestiary[]> = this.data$.pipe(
+    this.handleData<Bestiary>(FileName.BESTIARY)
   );
   readonly bestiaryFactions$: Observable<BestiaryFaction[]> = this.data$.pipe(
     this.handleData<BestiaryFaction>(FileName.BESTIARY_FACTIONS)
@@ -211,6 +221,7 @@ export class DataService {
 
   init(): void {
     this.availabilities$.subscribe().unsubscribe();
+    this.bestiary$.subscribe().unsubscribe();
     this.bestiaryFactions$.subscribe().unsubscribe();
     this.bestiaryRoles$.subscribe().unsubscribe();
     this.bestiaryTypes$.subscribe().unsubscribe();

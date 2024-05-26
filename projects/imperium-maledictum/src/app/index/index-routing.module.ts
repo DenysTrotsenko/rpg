@@ -36,9 +36,14 @@ const routes: Routes = [
         loadChildren: () => import('../references/references.module').then(m => m.ReferencesModule)
       },
       {
-        path: 'profile',
-        loadChildren: () => import('../../../../std/src/lib/profile/profile.module').then(m => m.ProfileModule)
+        path: 'tools',
+        loadChildren: () => import('../tools/tools.module').then(m => m.ToolsModule)
       },
+      {
+        path: 'profile',
+        loadChildren: () => import('../../../../std/src/lib/profile/profile.module').then(m => m.ProfileModule),
+        canActivate: [AuthGuard]
+      }
     ]
   }
 ];

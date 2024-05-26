@@ -4,10 +4,10 @@ import { ReferencesComponent } from './references.component';
 import { SharedModule } from '@shared';
 import { TalentsComponent } from './talents/talents.component';
 import { SkillsComponent } from './skills/skills.component';
-import { CommonModule } from '../common/common.module';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
-import { ItemTraitsComponent } from './item-traits/item-traits.component';
 import { ConditionsComponent } from './conditions/conditions.component';
+import { BestiaryComponent } from './bestiary/bestiary.component';
+import { ArmouryComponent } from './armoury/armoury.component';
 
 
 @NgModule({
@@ -16,12 +16,12 @@ import { ConditionsComponent } from './conditions/conditions.component';
     TalentsComponent,
     SkillsComponent,
     CharacteristicsComponent,
-    ItemTraitsComponent,
-    ConditionsComponent
+    ConditionsComponent,
+    BestiaryComponent,
+    ArmouryComponent
   ],
   imports: [
     SharedModule,
-    CommonModule,
     ReferencesRoutingModule
   ]
 })

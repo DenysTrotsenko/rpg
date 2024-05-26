@@ -4,11 +4,11 @@ import { ItemTrait } from '@imperium-maledictum-1e/models/common';
 import { DataService } from '../../common/data.service';
 
 @Component({
-  templateUrl: './item-traits.component.html',
+  templateUrl: './armoury.component.html',
   styleUrls: ['../references.base.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemTraitsComponent {
+export class ArmouryComponent {
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
