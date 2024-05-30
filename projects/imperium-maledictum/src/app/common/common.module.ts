@@ -5,6 +5,7 @@ import { FileInputComponent } from './components/file-input/file-input.component
 import { NumberInputComponent } from './components/number-input/number-input.component';
 import { NumberInputCellComponent } from './components/number-input-cell/number-input-cell.component';
 import { GetByIdPipe } from './pipes/get-by-id.pipe';
+import { InteractiveComponent } from './components/interactive/interactive.component';
 
 const DECLARATION = [
   PortraitComponent,
@@ -16,14 +17,16 @@ const DECLARATION = [
 
 @NgModule({
   declarations: [
-    ...DECLARATION
+    ...DECLARATION,
+    InteractiveComponent
   ],
   imports: [
     SharedModule
   ],
     exports: [
         ...DECLARATION,
-        GetByIdPipe
+        GetByIdPipe,
+        InteractiveComponent
     ]
 })
 export class CommonModule { }

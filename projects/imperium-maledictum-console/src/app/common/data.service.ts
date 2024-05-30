@@ -43,6 +43,7 @@ interface Data {
 })
 export class DataService {
   static readonly tooltips: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
+    .set(FileName.BESTIARY_ROLES, DataService.getBestiaryRoleTooltip)
     .set(FileName.CHARACTERISTICS, DataService.getCharacteristicTooltip)
     .set(FileName.SIZES, DataService.getSizeTooltip)
     .set(FileName.SKILLS, DataService.getSkillTooltip)
@@ -161,6 +162,13 @@ export class DataService {
     private readonly setting: SettingService,
     private readonly storage: StorageService
   ) {}
+
+  static getBestiaryRoleTooltip(item: Characteristic, data: Data): string {
+    return [
+      `${item.name} (${item.labels?.abbreviation})\n`,
+      `${item.labels?.description}`,
+    ].join('\n');
+  }
 
   static getCharacteristicTooltip(item: Characteristic, data: Data): string {
     return [

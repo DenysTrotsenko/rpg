@@ -49,6 +49,7 @@ interface Data {
 })
 export class DataService {
   static readonly tooltips: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
+    .set(FileName.BESTIARY_ROLES, DataService.getBestiaryRoleTooltip)
     .set(FileName.CHARACTERISTICS, DataService.getCharacteristicTooltip)
     .set(FileName.SIZES, DataService.getSizeTooltip)
     .set(FileName.SKILLS, DataService.getSkillTooltip)
@@ -171,6 +172,17 @@ export class DataService {
     private readonly setting: SettingService,
     private readonly storage: StorageService
   ) {}
+
+  static getBestiaryRoleTooltip(item: BestiaryRole, data: Data): string {
+    return [
+      `${item.name}\n`,
+      `${item.labels?.description}\n`,
+      `● A Characteristic Maximum of ${item.characteristic_maximum}.`,
+      `● A combined Characteristics total of ${item.characteristics_total}`,
+      `● Around ${item.skill_spec_advances} Advances in relevant Skills or Specialisations.`,
+      `● ${item.name}s have ${item.critical_wounds_max} Critical Wound(s).`,
+    ].join('\n');
+  }
 
   static getCharacteristicTooltip(item: Characteristic, data: Data): string {
     return [

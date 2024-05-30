@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <h1 mat-dialog-title>Add Event</h1>
+  <h1 mat-dialog-title>{{data?.title ?? 'Add Event'}}</h1>
   <div mat-dialog-content class="d-f fd-c">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
@@ -8,6 +8,13 @@
     <mat-form-field appearance="outline">
       <mat-label>Have Access</mat-label>
       <mat-select formControlName="members" multiple>
+        <div class="select-all">
+          <mat-checkbox
+            [(ngModel)]="isAllSelected"
+            [ngModelOptions]="{standalone: true}"
+            (change)="onSelectAllClick()">Toggle All
+          </mat-checkbox>
+        </div>
         <mat-option *ngFor="let i of members$ | async;" [value]="i.id">
           {{i?.name}}<span *ngIf="i?.email" class="c-gray"> ({{i.email}})</span>
         </mat-option>
@@ -23,7 +30,7 @@
       Cancel
     </button>
     <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue(), data?.event)" [disabled]="!form.valid">
-      Add
+      Save
     </button>
   </div>
 </form>

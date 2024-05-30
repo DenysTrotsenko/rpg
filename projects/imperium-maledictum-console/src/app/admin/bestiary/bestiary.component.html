@@ -98,15 +98,15 @@
       </ng-container>
     </div>
     <div class="d-f g-5 fw-w">
-      <ng-container formArrayName="items">
-        <mat-form-field
-          *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index"
-          [formGroupName]="i"
-          appearance="outline" class="no-padding-bottom">
-          <mat-label>{{item.name}}</mat-label>
-          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
-        </mat-form-field>
-      </ng-container>
+<!--      <ng-container formArrayName="items">-->
+<!--        <mat-form-field-->
+<!--          *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index"-->
+<!--          [formGroupName]="i"-->
+<!--          appearance="outline" class="no-padding-bottom">-->
+<!--          <mat-label>{{item.name}}</mat-label>-->
+<!--          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">-->
+<!--        </mat-form-field>-->
+<!--      </ng-container>-->
     </div>
   </div>
   <div mat-dialog-actions class="g-5">
@@ -121,6 +121,6 @@
     </button>
     <span class="f-1"></span>
     <button mat-button [mat-dialog-close]="null">Cancel</button>
-    <button mat-flat-button color="primary" (click)="onTest()">Add</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
   </div>
 </form>

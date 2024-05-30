@@ -75,6 +75,7 @@ export class ViewComponent {
 
   onAddEventClick(campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Add Event',
       members: campaign.members,
       event: null
     };
@@ -97,6 +98,7 @@ export class ViewComponent {
 
   onAddLocationClick(campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Add Location',
       members: campaign.members,
       event: null
     };
@@ -119,6 +121,7 @@ export class ViewComponent {
 
   onAddPersonaClick(campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Add Persona',
       members: campaign.members,
       event: null
     };
@@ -171,6 +174,7 @@ export class ViewComponent {
 
   onEditEventClick(event: CampaignEvent, campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Edit Event',
       members: campaign.members,
       event
     };
@@ -200,6 +204,7 @@ export class ViewComponent {
 
   onEditLocationClick(event: CampaignEvent, campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Edit Location',
       members: campaign.members,
       event
     };
@@ -229,6 +234,7 @@ export class ViewComponent {
 
   onEditPersonaClick(event: CampaignEvent, campaign: Campaign): void {
     const data: EventEditDialogData = {
+      title: 'Edit Persona',
       members: campaign.members,
       event
     };

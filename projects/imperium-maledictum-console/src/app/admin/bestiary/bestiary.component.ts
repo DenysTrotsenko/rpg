@@ -177,9 +177,5 @@ export class BestiaryComponent implements OnInit {
       .subscribe();
   }
 
-  onTest(): void {
-    console.log(this.form.getRawValue());
-  }
-
   trackById(_, i): string { return i.id; }
 }
