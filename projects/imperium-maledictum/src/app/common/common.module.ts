@@ -6,27 +6,27 @@ import { NumberInputComponent } from './components/number-input/number-input.com
 import { NumberInputCellComponent } from './components/number-input-cell/number-input-cell.component';
 import { GetByIdPipe } from './pipes/get-by-id.pipe';
 import { InteractiveComponent } from './components/interactive/interactive.component';
+import { MaterialModule } from '../../../../std/src/lib/material/material.module';
 
-const DECLARATION = [
+const DECLARATIONS = [
   PortraitComponent,
   FileInputComponent,
   NumberInputComponent,
   NumberInputCellComponent,
-  GetByIdPipe
+  GetByIdPipe,
+  InteractiveComponent
 ];
 
 @NgModule({
   declarations: [
-    ...DECLARATION,
-    InteractiveComponent
+    ...DECLARATIONS
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
-    exports: [
-        ...DECLARATION,
-        GetByIdPipe,
-        InteractiveComponent
-    ]
+  exports: [
+    ...DECLARATIONS
+  ]
 })
 export class CommonModule { }

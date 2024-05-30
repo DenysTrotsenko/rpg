@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Observable, take } from 'rxjs';
-import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
 import { map, tap } from 'rxjs/operators';
-import { MatLegacyOption } from '@angular/material/legacy-core';
+import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
 
 export interface EventEditDialogData {
   title?: string;
@@ -14,7 +13,6 @@ export interface EventEditDialogData {
 
 @Component({
   templateUrl: './event-edit-dialog.component.html',
-  styles: [`.select-all{margin:5px 17px;}`],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventEditDialogComponent implements OnInit {
@@ -27,6 +25,10 @@ export class EventEditDialogComponent implements OnInit {
 
   readonly members$: Observable<User[]> = this.user.all$.pipe(
     map(users => users.filter(i => this.data?.members.includes(i.id))),
+  );
+
+  readonly memberIds$: Observable<UserId[]> = this.members$.pipe(
+    map(members => members.map(i => i.id))
   );
 
   constructor(

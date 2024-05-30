@@ -19,6 +19,7 @@ import { JsonEditorDialogComponent } from './json-editor-dialog/json-editor-dial
 import { CodeEditorModule } from './code-editor/code-editor.module';
 import { TodoEditorModule } from './todo-editor/todo-editor.module';
 import { TreeEditorModule } from './tree-editor/tree-editor.module';
+import { SelectAllComponent } from './components/select-all/select-all.component';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -28,7 +29,8 @@ const DECLARATIONS = [
   FindPipe,
   SortPipe,
   KeyValueArrayComponent,
-  SelectionListComponent
+  SelectionListComponent,
+  SelectAllComponent
 ];
 
 const IMPORTS = [

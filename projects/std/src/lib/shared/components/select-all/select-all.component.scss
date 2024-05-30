@@ -1,0 +1,9 @@
+:host {
+  .mat-checkbox-layout, .mat-checkbox-label {
+    width:100% !important;
+  }
+
+  mat-checkbox {
+    padding: 0 11px;
+  }
+}

@@ -8,13 +8,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Have Access</mat-label>
       <mat-select formControlName="members" multiple>
-        <div class="select-all">
-          <mat-checkbox
-            [(ngModel)]="isAllSelected"
-            [ngModelOptions]="{standalone: true}"
-            (change)="onSelectAllClick()">Toggle All
-          </mat-checkbox>
-        </div>
+        <select-all [model]="form.get('members')" [values]="memberIds$ | async"></select-all>
         <mat-option *ngFor="let i of members$ | async;" [value]="i.id">
           {{i?.name}}<span *ngIf="i?.email" class="c-gray"> ({{i.email}})</span>
         </mat-option>
