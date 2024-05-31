@@ -20,6 +20,7 @@ import { CodeEditorModule } from './code-editor/code-editor.module';
 import { TodoEditorModule } from './todo-editor/todo-editor.module';
 import { TreeEditorModule } from './tree-editor/tree-editor.module';
 import { SelectAllComponent } from './components/select-all/select-all.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -30,7 +31,8 @@ const DECLARATIONS = [
   SortPipe,
   KeyValueArrayComponent,
   SelectionListComponent,
-  SelectAllComponent
+  SelectAllComponent,
+  FileInputComponent
 ];
 
 const IMPORTS = [

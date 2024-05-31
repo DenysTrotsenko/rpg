@@ -68,7 +68,10 @@ export class IndexComponent implements OnInit {
       .pipe(
         filter(res => !!res),
         switchMap(() => this.auth.signOut()),
-        tap(() => this.router.navigate(['/auth/sign-in']))
+        tap(() => {
+          this.campaign.set(null);
+          this.router.navigate(['/auth/sign-in']);
+        })
       )
       .subscribe();
   }

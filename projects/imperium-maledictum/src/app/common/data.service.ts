@@ -58,6 +58,7 @@ export class DataService {
 
   private readonly setting$: Observable<Setting> = this.setting.selected$;
   private readonly storage$: Observable<string> = this.setting$.pipe(
+    tap(setting => console.log(setting)),
     map(setting => setting?.storage),
     filter(storage => !!storage),
     tap(() => this.cache.clear())

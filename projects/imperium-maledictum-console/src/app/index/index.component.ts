@@ -4,7 +4,6 @@ import { Observable, switchMap } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import {
   AuthService,
-  CampaignService,
   DialogService,
   NavListItemData,
   PermissionId, Setting,
@@ -64,8 +63,10 @@ export class IndexComponent implements OnInit {
       .pipe(
         filter(res => !!res),
         switchMap(() => this.auth.signOut()),
-        tap(() => this.setting.set(null)),
-        tap(() => this.router.navigate(['/auth/sign-in']))
+        tap(() => {
+          this.setting.set(null);
+          this.router.navigate(['/auth/sign-in']);
+        })
       )
       .subscribe();
   }

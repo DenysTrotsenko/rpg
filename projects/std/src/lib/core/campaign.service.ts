@@ -1,12 +1,23 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject, share } from 'rxjs';
-import { AuthService, Campaign, CampaignId, FirestoreService, FS_COLLECTION } from '@shared';
+import {
+  AuthService,
+  Campaign,
+  CampaignId,
+  FirestoreService,
+  FS_COLLECTION,
+  SettingService
+} from '@shared';
 import { catchError, distinctUntilChanged, map, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
+  private readonly auth = inject(AuthService);
+  private readonly firestore = inject(FirestoreService);
+  private readonly setting = inject(SettingService);
+
   private readonly allObservable: Observable<Campaign[]> = this.firestore.collection<Campaign>(FS_COLLECTION.CAMPAIGNS).pipe(
     catchError(() => of([])),
     distinctUntilChanged(),
@@ -62,11 +73,6 @@ export class CampaignService {
   get author$(): Observable<Campaign[]> { return this.authorObservable; }
   get member$(): Observable<Campaign[]> { return this.memberObservable; }
 
-  constructor(
-    private readonly auth: AuthService,
-    private readonly firestore: FirestoreService
-  ) {}
-
   get(id: CampaignId): Observable<Campaign>  {
     return this.allObservable.pipe(
       map(all => all?.find(i => i.id === id))
@@ -81,6 +87,7 @@ export class CampaignService {
         tap(campaign => {
           localStorage.setItem('campaign', !!campaign ? JSON.stringify(campaign) : null);
           this.campaignSource.next(!!campaign ? campaign : null);
+          this.setting.set(!!campaign ? campaign.setting : null);
         })
       )
       .subscribe();
