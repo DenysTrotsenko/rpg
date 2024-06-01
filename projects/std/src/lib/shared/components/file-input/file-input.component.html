@@ -1,2 +1,7 @@
-<button type="button" mat-flat-button color="primary" (click)="file.click()">Upload File</button>
-<input #file type="file" hidden [accept]="accept" (change)="onFileChange($event)">
+<button type="button" mat-flat-button color="primary" (click)="file.click()">
+  <div class="d-f g-5 ai-c">
+    <span>Upload File</span>
+    <mat-spinner *ngIf="loading" [diameter]="16"></mat-spinner>
+  </div>
+</button>
+<input #file type="file" hidden [accept]="accept" [multiple]="multiple" (change)="onFileChange($event)">

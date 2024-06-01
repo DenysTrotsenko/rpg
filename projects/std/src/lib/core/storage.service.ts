@@ -33,7 +33,7 @@ export class StorageService {
       );
   }
 
-  clone(to: string, from: string): Observable<any> {
+  clone(to: string, from: string): Observable<unknown> {
     return this.storage.ref(from).listAll().pipe(
       map(res => res.items.map(i => i.name)),
       switchMap(names => forkJoin(names.map(i => this.download(`/${from}/${i}`))).pipe(
@@ -44,5 +44,9 @@ export class StorageService {
         })))
       ))
     );
+  }
+
+  delete(path: string): Observable<unknown> {
+    return this.storage.ref(path).delete();
   }
 }

@@ -253,6 +253,45 @@
           }
         }
       }
+    },
+    "imperium-maledictum-common": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "scss"
+        }
+      },
+      "root": "projects/imperium-maledictum-common",
+      "sourceRoot": "projects/imperium-maledictum-common/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/imperium-maledictum-common/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/imperium-maledictum-common/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/imperium-maledictum-common/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/imperium-maledictum-common/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

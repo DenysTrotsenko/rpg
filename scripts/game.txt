@@ -5,7 +5,6 @@ Vampire Hunter D
 
 
 
-
 Ash
 Korvin
 Darrial
@@ -44,7 +43,6 @@ INVENTORY:
 Holy Icon
 Vox Bead (Connection to Hammer&Key)
 Rebreather
-Respirator
 Chrono
 Magnoculars
 Shock Maul
@@ -67,13 +65,14 @@ RETINUE:
 Loyalty Prudence - mercenary, jack-of-all-trades
 Magnus Sen - adept, writer
 
-Ютти
-exitus ammunition - shield-breaking rounds
-Дракслер, солнце Сцинтиллы
-
 Отто Даговер
 Cool Autopistol + 2 clips
 Case Armored Isoletaed
 Masterwork Hot-Shot Las-Carbine with Knife
 
 Меркатум-Інвестігатор Траварус
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Найт Флавій
+4-0-4 (Фор)

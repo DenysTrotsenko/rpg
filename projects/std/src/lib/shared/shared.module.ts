@@ -21,6 +21,7 @@ import { TodoEditorModule } from './todo-editor/todo-editor.module';
 import { TreeEditorModule } from './tree-editor/tree-editor.module';
 import { SelectAllComponent } from './components/select-all/select-all.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -32,7 +33,8 @@ const DECLARATIONS = [
   KeyValueArrayComponent,
   SelectionListComponent,
   SelectAllComponent,
-  FileInputComponent
+  FileInputComponent,
+  ImageUploadComponent
 ];
 
 const IMPORTS = [

@@ -23,6 +23,9 @@
       ],
       "@imperium-maledictum-1e/*": [
         "projects/srd/imperium-maledictum-1e/*"
+      ],
+      "imperium-maledictum-common": [
+        "dist/imperium-maledictum-common"
       ]
     },
     "useDefineForClassFields": false

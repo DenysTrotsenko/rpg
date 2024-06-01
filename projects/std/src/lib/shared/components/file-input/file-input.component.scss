@@ -1,2 +1,12 @@
-:host { display: inline-flex; }
-button { width: 100%; }
+:host {
+  display: inline-flex;
+
+  button { width: 100%; }
+
+  ::ng-deep {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: white;
+    }
+  }
+}

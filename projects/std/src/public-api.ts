@@ -4,6 +4,7 @@
 export * from './lib/auth';
 export * from './lib/core';
 export * from './lib/dialog';
+export * from './lib/logger';
 export * from './lib/snackbar';
 export * from './lib/shared';
 export * from './lib/enums';

@@ -16,6 +16,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input() accept: string;
+  @Input() loading: boolean = false;
+  @Input() multiple: boolean = false;
   @Output() valueChanges: EventEmitter<FileList> = new EventEmitter();
 
   onFileChange(e: Event): void {

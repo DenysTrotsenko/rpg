@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, OperatorFunction } from 'rxjs';
 import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { AuthService, CacheService, HasCommonFields, HasId, Setting, SettingService, StorageService } from '@shared';
+import {
+  AuthService,
+  CacheService,
+  HasCommonFields,
+  HasId,
+  LoggerService,
+  Setting,
+  SettingService,
+  StorageService
+} from '@shared';
 import {
   Availability,
   Bestiary,
@@ -27,7 +36,7 @@ import {
   Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
-import { LoggerService } from '../../../../std/src/lib/logger/logger.service';
+
 
 interface Data {
   [FileName.AVAILABILITIES]: Availability[];
@@ -44,9 +53,7 @@ interface Data {
   [FileName.TALENTS]: Talent[];
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DataService {
   static readonly tooltips: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
     .set(FileName.BESTIARY_ROLES, DataService.getBestiaryRoleTooltip)
