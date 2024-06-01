@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataService } from '../data.service';
 import {
   BestiaryFaction,
   BestiaryFactionId, BestiaryRole, BestiaryRoleId,
@@ -8,6 +7,7 @@ import {
   Skill, SkillId,
   Specialisation, SpecialisationId
 } from '@imperium-maledictum-1e/models/common';
+import { DataService } from '@im-common';
 
 @Pipe({
   name: 'getById'

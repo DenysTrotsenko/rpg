@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CoreModule, SharedModule } from '@shared';
+import { CoreModule, LoggerModule, SharedModule } from '@shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -10,7 +10,10 @@ import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { MatDialogRef } from '@angular/material/dialog';
-import { LoggerModule } from '../../../std/src/lib/logger/logger.module';
+import {
+  ImperiumMaledictumCommonModule
+} from '../../../imperium-maledictum-common/src/lib/imperium-maledictum-common.module';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { LoggerModule } from '../../../std/src/lib/logger/logger.module';
       provideStorage(() => getStorage()),
       provideFunctions(() => getFunctions())
     ),
-    LoggerModule.forRoot(!environment.production)
+    LoggerModule.forRoot(!environment.production),
+    ImperiumMaledictumCommonModule
   ],
   providers: [
     { provide: MatDialogRef, useValue: {} },

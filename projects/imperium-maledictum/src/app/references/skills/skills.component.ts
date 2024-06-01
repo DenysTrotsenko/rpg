@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Characteristic, Skill, SkillId, Specialisation, SpecialisationId } from '@imperium-maledictum-1e/models/common';
-import { DataService } from '../../common/data.service';
+import { Characteristic, SkillId, SpecialisationId } from '@imperium-maledictum-1e/models/common';
+import { DataService } from '@im-common';
+
 
 interface SkillView {
   id: SkillId;

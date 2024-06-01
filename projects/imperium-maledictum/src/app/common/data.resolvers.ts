@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DataService } from './data.service';
 import { BestiaryFaction, BestiaryRole, BestiaryTrait, BestiaryType, Size } from '@imperium-maledictum-1e/models/common';
+import { DataService } from '@im-common';
 
 @Injectable()
 export class BestiaryFactionResolver implements Resolve<BestiaryFaction[]> {

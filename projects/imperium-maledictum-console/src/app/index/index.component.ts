@@ -10,7 +10,7 @@ import {
   SettingService,
   UserService
 } from '@shared';
-import { DataService } from '../common/data.service';
+import { DataService } from '@im-common';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
   { link: './admin', icon: 'admin_panel_settings', label: 'Admin', permission: PermissionId.ADMIN },

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DataService } from '../../common/data.service';
 import { BestiaryId } from '@imperium-maledictum-1e/models/common';
+import { DataService } from '@im-common';
 
 @Component({
   templateUrl: './bestiary.component.html',

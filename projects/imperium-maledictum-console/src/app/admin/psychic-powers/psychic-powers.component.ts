@@ -11,7 +11,8 @@ import {
 } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@shared';
 import { Observable } from 'rxjs';
-import { DataService } from '../../common/data.service';
+import { DataService } from '@im-common';
+
 
 @Component({
   templateUrl: './psychic-powers.component.html',

@@ -12,7 +12,7 @@ import {
   setFormControlsEditable
 } from '@shared';
 import { CharacterService } from '../../common/character.service';
-import { DataService } from '../../common/data.service';
+import { DataService } from '@im-common';
 
 @Component({
   templateUrl: './create.component.html',

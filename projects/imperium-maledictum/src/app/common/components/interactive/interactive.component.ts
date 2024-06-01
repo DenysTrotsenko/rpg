@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { DataService } from '../../data.service';
 import { HasCommonFields } from '@shared';
+import { DataService } from '@im-common';
 
 @Component({
   selector: 'interactive',

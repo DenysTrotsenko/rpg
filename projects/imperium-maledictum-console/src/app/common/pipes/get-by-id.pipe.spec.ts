@@ -1,5 +1,5 @@
 import { GetByIdPipe } from './get-by-id.pipe';
-import { DataService } from '../data.service';
+import { DataService } from '@im-common';
 
 describe('GetByIdPipe', () => {
   it('create an instance', () => {

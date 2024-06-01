@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ItemTrait } from '@imperium-maledictum-1e/models/common';
-import { DataService } from '../../common/data.service';
+import { DataService } from '@im-common';
+
 
 @Component({
   templateUrl: './armoury.component.html',

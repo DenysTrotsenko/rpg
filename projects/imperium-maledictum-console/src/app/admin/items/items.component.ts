@@ -5,8 +5,8 @@ import { map, tap } from 'rxjs/operators';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Availability, Item, ItemTrait, ItemType, Range, Specialisation } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@shared';
-import { DataService } from '../../common/data.service';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
+import { DataService } from '@im-common';
 
 @Component({
   templateUrl: './items.component.html',

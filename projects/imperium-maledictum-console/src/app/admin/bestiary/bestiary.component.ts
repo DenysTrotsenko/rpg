@@ -22,11 +22,11 @@ import {
   Specialisation
 } from '@imperium-maledictum-1e/models/common';
 import { DialogService, getId16 } from '@shared';
-import { DataService } from '../../common/data.service';
 import { AddSpecialisationDialogComponent } from './add-specialisation-dialog.component';
 import { AddSkillDialogComponent } from './add-skill-dialog.component';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
 import { AddItemDialogComponent } from './add-item-dialog.component';
+import { DataService } from '@im-common';
 
 @Component({
   templateUrl: './bestiary.component.html',

@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item, ItemId, ItemTrait } from '@imperium-maledictum-1e/models/common';
 import { Observable } from 'rxjs';
-import { DataService } from '../../common/data.service';
+import { DataService } from '@im-common';
+
 
 @Component({
   template: `
@@ -38,7 +39,7 @@ import { DataService } from '../../common/data.service';
     </div>`
 })
 export class AddItemDialogComponent {
-  private readonly data: DataService = inject(DataService);
+  private readonly data = inject(DataService);
 
   readonly items$: Observable<Item[]> = this.data.items$;
   readonly traits$: Observable<ItemTrait[]> = this.data.itemTraits$;

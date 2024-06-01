@@ -10,7 +10,7 @@ import {
   PermissionId,
   UserService
 } from '@shared';
-import { DataService } from '../common/data.service';
+import { DataService } from '@im-common';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
   { link: './campaigns', icon: 'grade', label: 'Campaigns', permission: PermissionId.CAMPAIGNS },
