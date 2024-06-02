@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkModule } from '../cdk/cdk.module';
 import { MaterialModule } from '../material/material.module';
@@ -22,6 +22,8 @@ import { TreeEditorModule } from './tree-editor/tree-editor.module';
 import { SelectAllComponent } from './components/select-all/select-all.component';
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { ImageInputComponent } from './components/image-input/image-input.component';
+import { ImageInputDialogComponent } from './components/image-input/image-input-dialog.component';
 
 const DECLARATIONS = [
   JoinPipe,
@@ -34,7 +36,8 @@ const DECLARATIONS = [
   SelectionListComponent,
   SelectAllComponent,
   FileInputComponent,
-  ImageUploadComponent
+  ImageUploadComponent,
+  ImageInputComponent
 ];
 
 const IMPORTS = [
@@ -50,12 +53,13 @@ const IMPORTS = [
   AdminUsersModule,
   AdminSettingsModule,
   JsonEditorDialogComponent,
-  TreeEditorModule
+  TreeEditorModule,
+  NgOptimizedImage
 ];
 
 @NgModule({
-  declarations: [ ...DECLARATIONS ],
-  imports: [ ...IMPORTS ],
+  declarations: [ ...DECLARATIONS, ImageInputDialogComponent ],
+  imports: [...IMPORTS],
   exports: [ ...DECLARATIONS, ...IMPORTS ]
 })
 export class SharedModule {}

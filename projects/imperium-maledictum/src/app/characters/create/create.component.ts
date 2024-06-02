@@ -65,7 +65,6 @@ export class CreateComponent {
         switchMap(res => {
           const author = res?.author ?? this.route.snapshot.data?.user?.uid;
           const id = res?.id || getId16();
-          console.log(author, id);
 
           const character: Character = {
             id,

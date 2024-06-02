@@ -49,4 +49,11 @@ export class StorageService {
   delete(path: string): Observable<unknown> {
     return this.storage.ref(path).delete();
   }
+
+  getDownloadUrls(path: string): Observable<string[]> {
+    return this.storage.ref(path).listAll().pipe(
+      map(res => res.items.map(i => i.name)),
+      switchMap(names => forkJoin(names.map(i => this.storage.ref(`/${path}/${i}`).getDownloadURL())))
+    );
+  }
 }

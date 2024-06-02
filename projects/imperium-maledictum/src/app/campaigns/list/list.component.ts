@@ -15,15 +15,18 @@ interface VM extends Campaign {
 })
 export class ListComponent {
   readonly campaigns$: Observable<VM[]> = combineLatest([
-    this.auth.uid$, this.campaign.member$
+    this.auth.uid$, this.campaign.member$, this.campaign.selected$
   ]).pipe(
-    map(([uid, campaigns]) => campaigns.map(i => {
-      return {
-        ...i,
-        canEdit: i.authors?.includes(uid),
-        canDelete: i.authors?.includes(uid)
-      };
-    }))
+    map(([uid, campaigns, selected]) => campaigns
+      .filter(i => i.id === selected.id)
+      .map(i => {
+        return {
+          ...i,
+          canEdit: i.authors?.includes(uid),
+          canDelete: i.authors?.includes(uid)
+        };
+      })
+    )
   );
 
   constructor(
@@ -32,10 +35,6 @@ export class ListComponent {
     private readonly dialog: DialogService,
     private readonly firestore: FirestoreService
   ) {}
-
-  onEditClick(i: Campaign): void {
-
-  }
 
   onDeleteClick(i: Campaign): void {
     this.dialog

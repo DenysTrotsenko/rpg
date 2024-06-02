@@ -1,6 +1,6 @@
-<button type="button" mat-flat-button color="primary" (click)="file.click()">
+<button type="button" mat-flat-button [color]="color" (click)="file.click()">
   <div class="d-f g-5 ai-c">
-    <span>Upload File</span>
+    <span>{{label}}</span>
     <mat-spinner *ngIf="loading" [diameter]="16"></mat-spinner>
   </div>
 </button>

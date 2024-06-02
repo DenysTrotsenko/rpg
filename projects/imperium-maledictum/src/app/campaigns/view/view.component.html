@@ -20,10 +20,15 @@
       <button mat-flat-button color="accent" (click)="onJsonClick(campaign)">
         JSON
       </button>
+      <image-upload color="accent" [path]="path$ | async"></image-upload>
     </div>
   </mat-toolbar>
   <mat-tab-group class="p-10">
-    <mat-tab label="Events">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-5">event</mat-icon>
+        Events
+      </ng-template>
       <mat-accordion class="o-a d-b mt-10">
         <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
           <mat-expansion-panel-header>
@@ -39,12 +44,17 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
+            <img *ngIf="i.image" class="event-image" [src]="i.image" alt="image">
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
-    <mat-tab label="Locations">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-5">location_on</mat-icon>
+        Locations
+      </ng-template>
       <mat-accordion class="o-a d-b mt-10">
         <mat-expansion-panel *ngFor="let i of campaign.locations;" hideToggle>
           <mat-expansion-panel-header>
@@ -60,12 +70,17 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
+            <img *ngIf="i.image" class="event-image" [src]="i.image" alt="image">
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-tab>
-    <mat-tab label="Personas">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-5">person</mat-icon>
+        Personas
+      </ng-template>
       <mat-accordion class="o-a d-b mt-10">
         <mat-expansion-panel *ngFor="let i of campaign.personas;" hideToggle>
           <mat-expansion-panel-header>
@@ -81,6 +96,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div>
+            <img *ngIf="i.image" class="event-image" [src]="i.image" alt="image">
             <p *ngIf="i.description" matLine class="ws-pw">{{i.description}}</p>
           </div>
         </mat-expansion-panel>

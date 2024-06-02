@@ -5,6 +5,11 @@
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
+    <image-input
+      formControlName="image"
+      class="mb-20"
+      [path]="path">
+    </image-input>
     <mat-form-field appearance="outline">
       <mat-label>Have Access</mat-label>
       <mat-select formControlName="members" multiple>

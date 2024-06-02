@@ -9,7 +9,7 @@ import {
   CampaignId,
   CampaignService, Character, CharacterId,
   DialogService,
-  FirestoreService, getId16, User, UserService
+  FirestoreService, User, UserService
 } from '@shared';
 import { EventEditDialogComponent, EventEditDialogData } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent, XpEditDialogData } from '../xp-edit-dialog/xp-edit-dialog.component';
@@ -32,10 +32,19 @@ export class ViewComponent {
   readonly route = inject(ActivatedRoute);
   readonly user = inject(UserService);
 
-  readonly campaign$: Observable<Campaign> = this.route.paramMap.pipe(
+  readonly id$: Observable<CampaignId> = this.route.paramMap.pipe(
     map(params => params.get('id') as CampaignId),
+    distinctUntilChanged(),
+    shareReplay(1)
+  );
+  readonly campaign$: Observable<Campaign> = this.id$.pipe(
     switchMap(id => this.campaign.get(id)),
     distinctUntilChanged((p: Campaign, q: Campaign) => JSON.stringify(p) === JSON.stringify(q)),
+    shareReplay(1)
+  );
+  readonly path$: Observable<string> = this.id$.pipe(
+    map(id => `campaigns/${id}/images`),
+    distinctUntilChanged(),
     shareReplay(1)
   );
   readonly members$: Observable<User[]> = combineLatest([this.campaign$, this.user.all$]).pipe(
@@ -77,7 +86,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Add Event',
       members: campaign.members,
-      event: null
+      event: null,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -100,7 +110,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Add Location',
       members: campaign.members,
-      event: null
+      event: null,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -123,7 +134,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Add Persona',
       members: campaign.members,
-      event: null
+      event: null,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -176,7 +188,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Edit Event',
       members: campaign.members,
-      event
+      event,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -206,7 +219,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Edit Location',
       members: campaign.members,
-      event
+      event,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()
@@ -236,7 +250,8 @@ export class ViewComponent {
     const data: EventEditDialogData = {
       title: 'Edit Persona',
       members: campaign.members,
-      event
+      event,
+      campaign: campaign.id
     };
     this.dialog.open(EventEditDialogComponent, { data, width: '800px' })
       .afterClosed()

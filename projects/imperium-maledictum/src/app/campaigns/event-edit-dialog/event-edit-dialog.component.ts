@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Observable, take } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CampaignEvent, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
+import { CampaignEvent, CampaignId, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
 
 export interface EventEditDialogData {
   title?: string;
   event: CampaignEvent;
   members: UserId[];
+  campaign: CampaignId;
 }
 
 @Component({
@@ -16,8 +17,11 @@ export interface EventEditDialogData {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventEditDialogComponent implements OnInit {
+  readonly user = inject(UserService);
+  readonly data: EventEditDialogData = inject(MAT_DIALOG_DATA);
   readonly form: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
+    image: new FormControl<string>(null, [Validators.required]),
     description: new FormControl<string>(null),
     members: new FormControl<UserId[]>([])
   });
@@ -31,10 +35,7 @@ export class EventEditDialogComponent implements OnInit {
     map(members => members.map(i => i.id))
   );
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: EventEditDialogData,
-    private readonly user: UserService
-  ) {}
+  readonly path = `campaigns/${this.data.campaign}/images`;
 
   ngOnInit(): void {
     this.members$
@@ -56,15 +57,5 @@ export class EventEditDialogComponent implements OnInit {
       id: event?.id ?? getId16(),
       createdAt: event?.createdAt ?? getUnixTimestamp()
     };
-  }
-
-  onSelectAllClick(): void {
-    this.members$
-      .pipe(
-        take(1),
-        map(members => members.map(i => i.id)),
-        tap(members => this.form.get('members').patchValue(this.isAllSelected ? members : []))
-      )
-      .subscribe();
   }
 }

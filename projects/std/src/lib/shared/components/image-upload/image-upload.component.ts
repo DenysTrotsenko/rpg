@@ -14,8 +14,10 @@ export class ImageUploadComponent {
   private readonly storage = inject(StorageService);
   private readonly snackbar = inject(SnackbarService);
 
+  @Input({ required: true }) path: string;
+  @Input() color: 'primary' | 'accent' = 'primary';
+  @Input() label: string = 'Upload Images';
   @Input() limit: number = BYTES_IN_MB * 10;
-  @Input() path: string;
 
   readonly loading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -31,7 +33,7 @@ export class ImageUploadComponent {
 
     this.loading$.next(true);
 
-    forkJoin([...files.map(file => this.storage.upload(this.path, file))])
+    forkJoin([...files.map(file => this.storage.upload(`${this.path}/${file.name}`, file))])
       .pipe(
         tap(() => {
           this.snackbar.success('Images successfully saved!');
@@ -41,7 +43,7 @@ export class ImageUploadComponent {
           return of(null);
         }),
         finalize(() => this.loading$.next(false))
-      );
-      // .subscribe();
+      )
+      .subscribe();
   }
 }

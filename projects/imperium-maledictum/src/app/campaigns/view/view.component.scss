@@ -1,11 +1,3 @@
-:host {
-  ::ng-deep .mat-tab-label-active {
-    .add-button {
-      display: inline-block;
-    }
-  }
-}
-
-.add-button {
-  display: none;
+.event-image {
+  max-width: 200px;
 }

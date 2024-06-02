@@ -16,8 +16,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input() accept: string;
+  @Input() color: 'primary' | 'accent' = 'primary';
   @Input() loading: boolean = false;
   @Input() multiple: boolean = false;
+  @Input() label: string = 'Upload File';
   @Output() valueChanges: EventEmitter<FileList> = new EventEmitter();
 
   onFileChange(e: Event): void {

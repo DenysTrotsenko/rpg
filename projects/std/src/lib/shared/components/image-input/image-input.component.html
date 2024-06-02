@@ -1,0 +1,16 @@
+<img
+  *ngIf="src$ | async as src"
+  class="image"
+  alt="image"
+  [width]="width"
+  [height]="height"
+  [src]="src$ | async"
+  (click)="onClick(src)">
+<div
+  *ngIf="!(src$ | async)"
+  class="no-image"
+  [style.width]="width + 'px'"
+  [style.height]="height + 'px'"
+  (click)="onClick()">
+  <mat-icon class="no-image-icon">add_photo_alternate</mat-icon>
+</div>
