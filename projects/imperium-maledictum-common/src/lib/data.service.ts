@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, OperatorFunction } from 'rxjs';
+import { catchError, forkJoin, Observable, of, OperatorFunction } from 'rxjs';
 import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import {
   AuthService,
@@ -12,6 +12,7 @@ import {
   StorageService
 } from '@shared';
 import {
+  Action,
   Availability,
   Bestiary,
   BestiaryFaction,
@@ -21,7 +22,7 @@ import {
   Characteristic,
   Condition,
   Difficulty,
-  Duration,
+  Duration, Endeavour, EnvironmentalTrait, Event,
   Item,
   ItemTrait,
   ItemType,
@@ -58,7 +59,7 @@ export class DataService {
   static readonly tooltips: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
     .set(FileName.BESTIARY_ROLES, DataService.getBestiaryRoleTooltip)
     .set(FileName.CHARACTERISTICS, DataService.getCharacteristicTooltip)
-    .set(FileName.SIZES, DataService.getSizeTooltip)
+    .set(FileName.SIZES, DataService.getTooltip)
     .set(FileName.SKILLS, DataService.getSkillTooltip)
     .set(FileName.SPECIALISATIONS, DataService.getSpecialisationTooltip)
     .set(FileName.TALENTS, DataService.getTalentTooltip);
@@ -71,6 +72,7 @@ export class DataService {
   );
   private readonly data$: Observable<Data> = this.storage$.pipe(
     switchMap(storage => forkJoin({
+      [FileName.ACTIONS]: this.download<Action>(storage, FileName.ACTIONS),
       [FileName.AVAILABILITIES]: this.download<Availability>(storage, FileName.AVAILABILITIES),
       [FileName.BESTIARY]: this.download<Bestiary>(storage, FileName.BESTIARY),
       [FileName.BESTIARY_FACTIONS]: this.download<BestiaryFaction>(storage, FileName.BESTIARY_FACTIONS),
@@ -81,6 +83,9 @@ export class DataService {
       [FileName.CONDITIONS]: this.download<Condition>(storage, FileName.CONDITIONS),
       [FileName.DIFFICULTIES]: this.download<Difficulty>(storage, FileName.DIFFICULTIES),
       [FileName.DURATIONS]: this.download<Duration>(storage, FileName.DURATIONS),
+      [FileName.ENDEAVOURS]: this.download<Endeavour>(storage, FileName.ENDEAVOURS),
+      [FileName.ENVIRONMENTAL_TRAITS]: this.download<EnvironmentalTrait>(storage, FileName.ENVIRONMENTAL_TRAITS),
+      [FileName.EVENTS]: this.download<Event>(storage, FileName.EVENTS),
       [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
@@ -98,6 +103,9 @@ export class DataService {
     })),
     tap(() => this.logger.log('Downloaded all data.')),
     shareReplay(1)
+  );
+  readonly actions$: Observable<Action[]> = this.data$.pipe(
+    this.handleData<Action>(FileName.ACTIONS)
   );
   readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
     this.handleData<Availability>(FileName.AVAILABILITIES)
@@ -128,6 +136,15 @@ export class DataService {
   );
   readonly durations$: Observable<Duration[]> = this.data$.pipe(
     this.handleData<Duration>(FileName.DURATIONS)
+  );
+  readonly endeavours$: Observable<Endeavour[]> = this.data$.pipe(
+    this.handleData<Endeavour>(FileName.ENDEAVOURS)
+  );
+  readonly environmentalTraits$: Observable<EnvironmentalTrait[]> = this.data$.pipe(
+    this.handleData<EnvironmentalTrait>(FileName.ENVIRONMENTAL_TRAITS)
+  );
+  readonly events$: Observable<Event[]> = this.data$.pipe(
+    this.handleData<Event>(FileName.EVENTS)
   );
   readonly items$: Observable<Item[]> = this.data$.pipe(
     this.handleData<Item>(FileName.ITEMS)
@@ -180,6 +197,13 @@ export class DataService {
     private readonly storage: StorageService
   ) {}
 
+  static getTooltip(item: Size, data: Data): string {
+    return [
+      `${item.name}\n`,
+      `${item.labels?.description}`
+    ].join('\n');
+  }
+
   static getBestiaryRoleTooltip(item: BestiaryRole, data: Data): string {
     return [
       `${item.name}\n`,
@@ -194,13 +218,6 @@ export class DataService {
   static getCharacteristicTooltip(item: Characteristic, data: Data): string {
     return [
       `${item.name} (${item.labels?.abbreviation})\n`,
-      `${item.labels?.description}`,
-    ].join('\n');
-  }
-
-  static getSizeTooltip(item: Size, data: Data): string {
-    return [
-      `${item.name}\n`,
       `${item.labels?.description}`,
     ].join('\n');
   }
@@ -230,7 +247,8 @@ export class DataService {
 
   private download<T>(storage: string, file: FileName): Observable<T[]> {
     return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
-      tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.'))
+      tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.')),
+      catchError(() => of([]))
     );
   }
 
@@ -239,6 +257,7 @@ export class DataService {
   }
 
   init(): void {
+    this.actions$.subscribe().unsubscribe();
     this.availabilities$.subscribe().unsubscribe();
     this.bestiary$.subscribe().unsubscribe();
     this.bestiaryFactions$.subscribe().unsubscribe();
@@ -249,6 +268,9 @@ export class DataService {
     this.conditions$.subscribe().unsubscribe();
     this.difficulties$.subscribe().unsubscribe();
     this.durations$.subscribe().unsubscribe();
+    this.endeavours$.subscribe().unsubscribe();
+    this.environmentalTraits$.subscribe().unsubscribe();
+    this.events$.subscribe().unsubscribe();
     this.items$.subscribe().unsubscribe();
     this.itemFlaws$.subscribe().unsubscribe();
     this.itemQualities$.subscribe().unsubscribe();

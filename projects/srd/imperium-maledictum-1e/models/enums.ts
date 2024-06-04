@@ -33,6 +33,7 @@ export enum FileName {
   SPEED = 'speed.json',
   TALENTS = 'talents.json',
   TARGETS = 'targets.json',
+  //
   VIRTUES = 'virtues.json',
   FLAWS = 'flaws.json',
   MOTIVATIONS = 'motivations.json',

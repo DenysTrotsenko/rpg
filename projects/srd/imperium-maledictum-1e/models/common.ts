@@ -1,6 +1,7 @@
 import { HasBaseProperties, HasWeight, Opaque } from '@shared';
 import { System } from './system';
 
+export type ActionId = Opaque<string, 'ActionId'>;
 export type AvailabilityId = Opaque<string, 'AvailabilityId'>;
 export type BestiaryId = Opaque<string, 'BestiaryId'>;
 export type BestiaryRoleId = Opaque<string, 'BestiaryRoleId'>;
@@ -12,6 +13,9 @@ export type CharacteristicId = Opaque<string, 'CharacteristicId'>;
 export type ConditionId = Opaque<string, 'ConditionId'>;
 export type DifficultyId = Opaque<string, 'DifficultyId'>;
 export type DurationId = Opaque<string, 'DurationId'>;
+export type EndeavourId = Opaque<string, 'EndeavourId'>;
+export type EnvironmentalTraitId = Opaque<string, 'EnvironmentalTraitId'>;
+export type EventId = Opaque<string, 'EventId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemId = Opaque<string, 'ItemId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
@@ -37,6 +41,13 @@ export type SpeedId = Opaque<string, 'SpeedId'>;
 export type SpecialisationId = Opaque<string, 'SpecialisationId'>;
 export type TalentId = Opaque<string, 'TalentId'>;
 export type TargetId = Opaque<string, 'TargetId'>;
+
+export interface Action extends HasBaseProperties<ActionId> {
+  labels: {
+    description: string;
+    tooltip?: string;
+  };
+}
 
 export interface Availability extends HasBaseProperties<AvailabilityId> {
   labels: {
@@ -126,6 +137,12 @@ export interface Difficulty {
 }
 
 export type Duration = HasBaseProperties<DurationId>;
+
+export type Endeavour = HasBaseProperties<EndeavourId>;
+
+export type EnvironmentalTrait = HasBaseProperties<EnvironmentalTraitId>;
+
+export type Event = HasBaseProperties<EventId>;
 
 export interface Faction {
   id: FactionId | string;
