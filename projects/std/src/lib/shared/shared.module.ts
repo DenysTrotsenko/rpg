@@ -37,7 +37,8 @@ const DECLARATIONS = [
   SelectAllComponent,
   FileInputComponent,
   ImageUploadComponent,
-  ImageInputComponent
+  ImageInputComponent,
+  ImageInputDialogComponent
 ];
 
 const IMPORTS = [
@@ -58,7 +59,7 @@ const IMPORTS = [
 ];
 
 @NgModule({
-  declarations: [ ...DECLARATIONS, ImageInputDialogComponent ],
+  declarations: [ ...DECLARATIONS ],
   imports: [...IMPORTS],
   exports: [ ...DECLARATIONS, ...IMPORTS ]
 })

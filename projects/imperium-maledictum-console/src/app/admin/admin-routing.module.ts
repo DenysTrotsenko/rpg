@@ -41,7 +41,6 @@ import { VirtuesComponent } from './virtues/virtues.component';
 import { FlawsComponent } from './flaws/flaws.component';
 import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
-import { TestComponent } from './test/test.component';
 import { DoomingsComponent } from './doomings/doomings.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 
@@ -51,10 +50,6 @@ export const routes: Routes = [
     component: AdminComponent,
     canActivate: [permissionGuard(PermissionId.ADMIN)],
     children: [
-      {
-        path: 'test',
-        component: TestComponent
-      },
       {
         path: 'dictionary',
         component: AdminDictionaryComponent,

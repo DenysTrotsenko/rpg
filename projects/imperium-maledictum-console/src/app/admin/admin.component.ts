@@ -5,7 +5,6 @@ import { hasDuplicates, NavListItemData, PermissionId, UserService } from '@shar
 import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [
-  { link: './test', label: 'Testing', permission: PermissionId.ADMIN },
   { link: './dictionary', label: 'Dictionary', permission: PermissionId.ADMIN_SETTING },
   { link: './actions', label: 'Actions', permission: PermissionId.ADMIN_SETTING },
   { link: './availability', label: 'Availability', permission: PermissionId.ADMIN_SETTING },

@@ -39,7 +39,6 @@ import { VirtuesComponent } from './virtues/virtues.component';
 import { FlawsComponent } from './flaws/flaws.component';
 import { MotivationsComponent } from './motivations/motivations.component';
 import { StatusComponent } from './status/status.component';
-import { TestComponent } from './test/test.component';
 import { DoomingsComponent } from './doomings/doomings.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 import { EventsComponent } from './events/events.component';
@@ -86,7 +85,6 @@ import { ActionsComponent } from './actions/actions.component';
     FlawsComponent,
     MotivationsComponent,
     StatusComponent,
-    TestComponent,
     DoomingsComponent,
     EnvironmentalTraitsComponent,
     EventsComponent,
