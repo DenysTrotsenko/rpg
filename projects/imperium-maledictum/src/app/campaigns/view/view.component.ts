@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import {
   Campaign,
   CampaignEvent,
@@ -9,7 +9,7 @@ import {
   CampaignId,
   CampaignService, Character, CharacterId,
   DialogService,
-  FirestoreService, User, UserService
+  FirestoreService, FS_COLLECTION, User, UserService
 } from '@shared';
 import { EventEditDialogComponent, EventEditDialogData } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent, XpEditDialogData } from '../xp-edit-dialog/xp-edit-dialog.component';
@@ -43,7 +43,7 @@ export class ViewComponent {
     shareReplay(1)
   );
   readonly path$: Observable<string> = this.id$.pipe(
-    map(id => `campaigns/${id}/images`),
+    map(id => `${FS_COLLECTION.CAMPAIGNS}/${id}/images`),
     distinctUntilChanged(),
     shareReplay(1)
   );

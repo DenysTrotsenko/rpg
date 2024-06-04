@@ -7,7 +7,7 @@ import {
   Campaign,
   CampaignId,
   CampaignService, Character,
-  FirestoreService,
+  FirestoreService, FS_COLLECTION,
   getId16,
   Setting,
   SettingService, User,
@@ -73,7 +73,7 @@ export class CreateComponent implements OnInit, OnDestroy {
             ? [...campaign.authors]
             : [this.route.snapshot.data?.user?.uid];
 
-          return this.firestore.update(`campaigns/${id}`, {
+          return this.firestore.update(`${FS_COLLECTION.CAMPAIGNS}/${id}`, {
             ...form, authors, id
           });
         }),

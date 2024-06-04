@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { getId16, Setting, SettingId, SettingService } from '@shared';
+import { FS_COLLECTION, getId16, Setting, SettingId, SettingService } from '@shared';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 
 @Component({
@@ -25,6 +25,6 @@ export class AdminSettingsEditComponent {
 
   ngOnInit(): void {
     const id = getId16();
-    this.form.patchValue(!!this.data ? this.data : { id, storage: id });
+    this.form.patchValue(!!this.data ? this.data : { id, storage: `${FS_COLLECTION.SETTINGS}/${id}` });
   }
 }

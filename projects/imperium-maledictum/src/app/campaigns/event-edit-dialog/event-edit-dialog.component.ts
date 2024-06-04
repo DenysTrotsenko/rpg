@@ -3,7 +3,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Observable, take } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CampaignEvent, CampaignId, getId16, getUnixTimestamp, User, UserId, UserService } from '@shared';
+import {
+  CampaignEvent,
+  CampaignId,
+  FS_COLLECTION,
+  getId16,
+  getUnixTimestamp,
+  User,
+  UserId,
+  UserService
+} from '@shared';
 
 export interface EventEditDialogData {
   title?: string;
@@ -35,7 +44,7 @@ export class EventEditDialogComponent implements OnInit {
     map(members => members.map(i => i.id))
   );
 
-  readonly path = `campaigns/${this.data.campaign}/images`;
+  readonly path = `${FS_COLLECTION.CAMPAIGNS}/${this.data.campaign}/images`;
 
   ngOnInit(): void {
     this.members$
