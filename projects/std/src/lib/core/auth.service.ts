@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject, from, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
@@ -14,7 +14,7 @@ export class AuthService {
     distinctUntilChanged(),
     shareReplay(1)
   );
-  private readonly optionSource: Subject<unknown> = new Subject();
+  private readonly optionSource: BehaviorSubject<unknown> = new BehaviorSubject(JSON.parse(localStorage.getItem('option')));
   private readonly optionObservable: Observable<unknown> = this.optionSource.asObservable().pipe(
     distinctUntilChanged(),
     shareReplay(1)
@@ -34,6 +34,7 @@ export class AuthService {
         })
       )
       .subscribe();
+    console.log();
   }
 
   deleteUser(data: AuthWithEmailAndPassword): Observable<firebase.User | void> {
@@ -47,6 +48,7 @@ export class AuthService {
   }
 
   setOption(value: unknown): void {
+    localStorage.setItem('option', value ? JSON.stringify(value) : null);
     this.optionSource.next(value);
   }
 

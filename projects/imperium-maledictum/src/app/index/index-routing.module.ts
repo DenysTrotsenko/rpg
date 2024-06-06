@@ -1,22 +1,14 @@
-import { inject, NgModule } from '@angular/core';
-import { ResolveFn, RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
-import { AuthGuard, Campaign, CampaignService, PermissionId } from '@std';
-import { permissionGuard } from '../../../../std/src/lib/guards';
-
-const authResolver: ResolveFn<Campaign[]> = () => inject(CampaignService).all$;
+import { AuthGuard, PermissionId } from '@std';
+import { permissionGuard } from '@std';
 
 const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
     children: [
-      {
-        path: 'auth',
-        loadChildren: () => import('../../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
-        data: { label: 'Campaign' },
-        resolve: { options: authResolver }
-      },
       {
         path: 'campaigns',
         loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule),
