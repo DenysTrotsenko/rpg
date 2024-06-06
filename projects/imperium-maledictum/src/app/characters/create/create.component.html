@@ -56,6 +56,22 @@
       </div>
     </form>
   </mat-step>
+  <!-- STEP 4: ROLE -->
+  <mat-step [stepControl]="step4">
+    <form [formGroup]="step4" class="d-f fd-c">
+      <ng-template matStepLabel>Role</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="faction">
+          <mat-option *ngFor="let i of roles$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext [disabled]="!step4.valid">Next</button>
+      </div>
+    </form>
+  </mat-step>
   <!-- STEP 10: GENERAL -->
   <mat-step [stepControl]="form10">
     <form [formGroup]="form10" class="d-f fd-c">

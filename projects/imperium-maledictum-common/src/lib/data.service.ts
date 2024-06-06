@@ -29,7 +29,7 @@ import {
   PsychicDiscipline,
   PsychicPhenomena,
   PsychicPower,
-  Range,
+  Range, Role,
   Size,
   Skill,
   Specialisation,
@@ -149,6 +149,7 @@ export class DataService {
       [FileName.PSYCHIC_PHENOMENAS]: this.download<PsychicPhenomena>(storage, FileName.PSYCHIC_PHENOMENAS),
       [FileName.PSYCHIC_POWERS]: this.download<PsychicPower>(storage, FileName.PSYCHIC_POWERS),
       [FileName.RANGES]: this.download<Range>(storage, FileName.RANGES),
+      [FileName.ROLES]: this.download<Range>(storage, FileName.ROLES),
       [FileName.SIZES]: this.download<Size>(storage, FileName.SIZES),
       [FileName.SKILLS]: this.download<Skill>(storage, FileName.SKILLS),
       [FileName.SPECIALISATIONS]: this.download<Specialisation>(storage, FileName.SPECIALISATIONS),
@@ -196,6 +197,7 @@ export class DataService {
   readonly psychicPhenomenas$: Observable<PsychicPhenomena[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_PHENOMENAS]));
   readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_POWERS]));
   readonly ranges$: Observable<Range[]> = this.data$.pipe(map(data => data[FileName.RANGES]));
+  readonly roles$: Observable<Role[]> = this.data$.pipe(map(data => data[FileName.ROLES]));
   readonly sizes$: Observable<Size[]> = this.data$.pipe(map(data => data[FileName.SIZES]));
   readonly skills$: Observable<Skill[]> = this.data$.pipe(map(data => data[FileName.SKILLS]));
   readonly specialisations$: Observable<Specialisation[]> = this.data$.pipe(map(data => data[FileName.SPECIALISATIONS]));

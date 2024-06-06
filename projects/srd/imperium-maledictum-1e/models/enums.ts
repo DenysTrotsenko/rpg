@@ -28,6 +28,7 @@ export enum FileName {
   PSYCHIC_DISCIPLINES = 'psychic-disciplines.json',
   PSYCHIC_POWERS = 'psychic-powers.json',
   RANGES = 'ranges.json',
+  ROLES = 'roles.json',
   SIZES = 'sizes.json',
   SKILLS = 'skills.json',
   SPECIALISATIONS = 'specialisations.json',

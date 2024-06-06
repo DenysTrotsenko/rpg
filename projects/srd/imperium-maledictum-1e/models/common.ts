@@ -35,6 +35,7 @@ export type PerilOfTheWarpId = Opaque<string, 'PerilOfTheWarpId'>;
 export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type PsychicPowerId = Opaque<string, 'PsychicPowerId'>;
 export type RangeId = Opaque<string, 'RangeId'>;
+export type RoleId = Opaque<string, 'RoleId'>;
 export type PsychicDisciplineId = Opaque<string, 'PsychicDisciplineId'>;
 export type SizeId = Opaque<string, 'SizeId'>;
 export type SkillId = Opaque<string, 'SkillId'>;
@@ -317,6 +318,13 @@ export interface PsychicPower extends HasBaseProperties<PsychicPowerId> {
 }
 
 export interface Range extends HasBaseProperties<RangeId> {
+  order?: number;
+  labels: {
+    description: string;
+  };
+}
+
+export interface Role extends HasBaseProperties<RoleId> {
   order?: number;
   labels: {
     description: string;

@@ -19,7 +19,7 @@ import {
 } from '@std';
 import { CharacterService } from '../../character.service';
 import { DataService } from '@im-common';
-import { Characteristic, Faction, FactionId, Origin, OriginId } from '@imperium-maledictum-1e/models/common';
+import { Characteristic, Faction, FactionId, Origin, OriginId, RoleId } from '@imperium-maledictum-1e/models/common';
 
 @Component({
   templateUrl: './create.component.html',
@@ -35,6 +35,9 @@ export class CreateComponent {
   });
   readonly step3: FormGroup = new FormGroup({
     faction: new FormControl<FactionId>(null, [Validators.required]),
+  });
+  readonly step4: FormGroup = new FormGroup({
+    role: new FormControl<RoleId>(null, [Validators.required]),
   });
   readonly form10: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
@@ -68,6 +71,7 @@ export class CreateComponent {
   );
   readonly origins$: Observable<Origin[]> = this.data.origins$;
   readonly factions$: Observable<Faction[]> = this.data.factions$;
+  readonly roles$: Observable<Faction[]> = this.data.roles$;
 
   constructor(
     private readonly character: CharacterService,
