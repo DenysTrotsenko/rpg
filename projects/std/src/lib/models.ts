@@ -1,5 +1,11 @@
 import { PermissionId } from './enums';
 import { TodoTask } from './shared/todo-editor/todo-editor.models';
+import {
+  CharacteristicId,
+  PsychicPowerId,
+  SkillId,
+  SpecialisationId, TalentId
+} from '@imperium-maledictum-1e/models/common';
 
 export type Opaque<T, K> = T & { __opaque__: K };
 export type JsonString<T> = Opaque<string, T>;
@@ -27,10 +33,6 @@ export interface HasBaseProperties<T> {
 
 export interface HasId<T> {
   id: T;
-}
-
-export interface HasName {
-  name: string;
 }
 
 export interface HasCommonFields {
@@ -99,6 +101,12 @@ export interface Character {
   name: string;
   author: UserId;
   campaign: CampaignId;
+
+  characteristics: { id: CharacteristicId; value: number; advances: number; }[];
+  skills: { id: SkillId; value: number; }[];
+  specialisations: { id: SpecialisationId; value: number; }[];
+  talents: { id: TalentId; value: unknown; }[];
+  powers: PsychicPowerId[];
 }
 
 export interface User extends HasId<UserId> {

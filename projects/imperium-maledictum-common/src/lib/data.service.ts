@@ -1,11 +1,8 @@
-import { Injectable } from '@angular/core';
-import { catchError, forkJoin, Observable, of, OperatorFunction } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { catchError, forkJoin, Observable, of } from 'rxjs';
 import { filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import {
-  AuthService,
   CacheService,
-  HasCommonFields,
-  HasId,
   LoggerService,
   Setting,
   SettingService,
@@ -22,10 +19,13 @@ import {
   Characteristic,
   Condition,
   Difficulty,
-  Duration, Endeavour, EnvironmentalTrait, Event,
+  Duration,
+  Endeavour,
+  EnvironmentalTrait,
+  Event, Faction,
   Item,
   ItemTrait,
-  ItemType,
+  ItemType, Origin,
   PsychicDiscipline,
   PsychicPhenomena,
   PsychicPower,
@@ -37,7 +37,6 @@ import {
   Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
-
 
 interface Data {
   [FileName.AVAILABILITIES]: Availability[];
@@ -54,15 +53,68 @@ interface Data {
   [FileName.TALENTS]: Talent[];
 }
 
+function getTooltip(item: Size, data: Data): string {
+  return [
+    `${item.name}\n`,
+    `${item.labels?.description}`
+  ].join('\n');
+}
+
+function getBestiaryRoleTooltip(item: BestiaryRole, data: Data): string {
+  return [
+    `${item.name}\n`,
+    `${item.labels?.description}\n`,
+    `● A Characteristic Maximum of ${item.characteristic_maximum}.`,
+    `● A combined Characteristics total of ${item.characteristics_total}`,
+    `● Around ${item.skill_spec_advances} Advances in relevant Skills or Specialisations.`,
+    `● ${item.name}s have ${item.critical_wounds_max} Critical Wound(s).`,
+  ].join('\n');
+}
+
+function getCharacteristicTooltip(item: Characteristic, data: Data): string {
+  return [
+    `${item.name} (${item.labels?.abbreviation})\n`,
+    `${item.labels?.description}`,
+  ].join('\n');
+}
+
+function getSkillTooltip(item: Skill, data: Data): string {
+  const characteristic: Characteristic = data[FileName.CHARACTERISTICS]?.find(i => i.id === item.characteristic);
+  return [
+    `${item.name} (${characteristic?.labels?.abbreviation})\n`,
+    `${item.labels?.description}`,
+  ].join('\n');
+}
+
+function getSpecialisationTooltip(item: Specialisation, data: Data): string {
+  return [
+    `${item.name}${item.restricted ? ' (Restricted)' : ''}\n`,
+    `${item.labels?.description}`,
+  ].join('\n');
+}
+
+function getTalentTooltip(item: Talent, data: Data): string {
+  return [
+    `${item.name}\n`,
+    item.labels?.requirements ? `Requirements: ${item.labels?.requirements}\n` : null,
+    `${item.labels?.description}`,
+  ].filter(i => !!i).join('\n');
+}
+
+const TOOLTIPS: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
+  .set(FileName.BESTIARY_ROLES, getBestiaryRoleTooltip)
+  .set(FileName.CHARACTERISTICS, getCharacteristicTooltip)
+  .set(FileName.SIZES, getTooltip)
+  .set(FileName.SKILLS, getSkillTooltip)
+  .set(FileName.SPECIALISATIONS, getSpecialisationTooltip)
+  .set(FileName.TALENTS, getTalentTooltip);
+
 @Injectable()
 export class DataService {
-  static readonly tooltips: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
-    .set(FileName.BESTIARY_ROLES, DataService.getBestiaryRoleTooltip)
-    .set(FileName.CHARACTERISTICS, DataService.getCharacteristicTooltip)
-    .set(FileName.SIZES, DataService.getTooltip)
-    .set(FileName.SKILLS, DataService.getSkillTooltip)
-    .set(FileName.SPECIALISATIONS, DataService.getSpecialisationTooltip)
-    .set(FileName.TALENTS, DataService.getTalentTooltip);
+  private readonly cache = inject(CacheService);
+  private readonly logger = inject(LoggerService);
+  private readonly setting = inject(SettingService);
+  private readonly storage = inject(StorageService);
 
   private readonly setting$: Observable<Setting> = this.setting.selected$;
   private readonly storage$: Observable<string> = this.setting$.pipe(
@@ -86,11 +138,13 @@ export class DataService {
       [FileName.ENDEAVOURS]: this.download<Endeavour>(storage, FileName.ENDEAVOURS),
       [FileName.ENVIRONMENTAL_TRAITS]: this.download<EnvironmentalTrait>(storage, FileName.ENVIRONMENTAL_TRAITS),
       [FileName.EVENTS]: this.download<Event>(storage, FileName.EVENTS),
+      [FileName.FACTIONS]: this.download<Faction>(storage, FileName.FACTIONS),
       [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
       [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
       [FileName.ITEM_TYPES]: this.download<ItemType>(storage, FileName.ITEM_TYPES),
+      [FileName.ORIGINS]: this.download<Origin>(storage, FileName.ORIGINS),
       [FileName.PSYCHIC_DISCIPLINES]: this.download<PsychicDiscipline>(storage, FileName.PSYCHIC_DISCIPLINES),
       [FileName.PSYCHIC_PHENOMENAS]: this.download<PsychicPhenomena>(storage, FileName.PSYCHIC_PHENOMENAS),
       [FileName.PSYCHIC_POWERS]: this.download<PsychicPower>(storage, FileName.PSYCHIC_POWERS),
@@ -102,205 +156,64 @@ export class DataService {
       [FileName.TARGETS]: this.download<Target>(storage, FileName.TARGETS)
     })),
     tap(() => this.logger.log('Downloaded all data.')),
+    tap(data => {
+      const keys: FileName[] = Object.keys(data) as FileName[];
+      keys.forEach(key => {
+        const items = data[key];
+        items.forEach(i => {
+          if (TOOLTIPS.has(key)) {
+            if (!i.labels) { i.labels = {}; }
+            i.labels.tooltip = TOOLTIPS.get(key)(i, data);
+          }
+          this.cache.set(i.id, i);
+        });
+      });
+    }),
     shareReplay(1)
   );
-  readonly actions$: Observable<Action[]> = this.data$.pipe(
-    this.handleData<Action>(FileName.ACTIONS)
-  );
-  readonly availabilities$: Observable<Availability[]> = this.data$.pipe(
-    this.handleData<Availability>(FileName.AVAILABILITIES)
-  );
-  readonly bestiary$: Observable<Bestiary[]> = this.data$.pipe(
-    this.handleData<Bestiary>(FileName.BESTIARY)
-  );
-  readonly bestiaryFactions$: Observable<BestiaryFaction[]> = this.data$.pipe(
-    this.handleData<BestiaryFaction>(FileName.BESTIARY_FACTIONS)
-  );
-  readonly bestiaryRoles$: Observable<BestiaryRole[]> = this.data$.pipe(
-    this.handleData<BestiaryRole>(FileName.BESTIARY_ROLES)
-  );
-  readonly bestiaryTraits$: Observable<BestiaryTrait[]> = this.data$.pipe(
-    this.handleData<BestiaryTrait>(FileName.BESTIARY_TRAITS)
-  );
-  readonly bestiaryTypes$: Observable<BestiaryType[]> = this.data$.pipe(
-    this.handleData<BestiaryType>(FileName.BESTIARY_TYPES)
-  );
-  readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
-    this.handleData<Characteristic>(FileName.CHARACTERISTICS)
-  );
-  readonly conditions$: Observable<Condition[]> = this.data$.pipe(
-    this.handleData<Condition>(FileName.CONDITIONS)
-  );
-  readonly difficulties$: Observable<Difficulty[]> = this.data$.pipe(
-    this.handleData<Difficulty>(FileName.DIFFICULTIES)
-  );
-  readonly durations$: Observable<Duration[]> = this.data$.pipe(
-    this.handleData<Duration>(FileName.DURATIONS)
-  );
-  readonly endeavours$: Observable<Endeavour[]> = this.data$.pipe(
-    this.handleData<Endeavour>(FileName.ENDEAVOURS)
-  );
-  readonly environmentalTraits$: Observable<EnvironmentalTrait[]> = this.data$.pipe(
-    this.handleData<EnvironmentalTrait>(FileName.ENVIRONMENTAL_TRAITS)
-  );
-  readonly events$: Observable<Event[]> = this.data$.pipe(
-    this.handleData<Event>(FileName.EVENTS)
-  );
-  readonly items$: Observable<Item[]> = this.data$.pipe(
-    this.handleData<Item>(FileName.ITEMS)
-  );
-  readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(
-    this.handleData<ItemTrait>(FileName.ITEM_FLAWS)
-  );
-  readonly itemQualities$: Observable<ItemTrait[]> = this.data$.pipe(
-    this.handleData<ItemTrait>(FileName.ITEM_QUALITIES)
-  );
-  readonly itemTraits$: Observable<ItemTrait[]> = this.data$.pipe(
-    this.handleData<ItemTrait>(FileName.ITEM_TRAITS)
-  );
-  readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(
-    this.handleData<ItemType>(FileName.ITEM_TYPES)
-  );
-  readonly psychicDisciplines$: Observable<PsychicDiscipline[]> = this.data$.pipe(
-    this.handleData<PsychicDiscipline>(FileName.PSYCHIC_DISCIPLINES)
-  );
-  readonly psychicPhenomenas$: Observable<PsychicPhenomena[]> = this.data$.pipe(
-    this.handleData<PsychicPhenomena>(FileName.PSYCHIC_PHENOMENAS)
-  );
-  readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(
-    this.handleData<PsychicPower>(FileName.PSYCHIC_POWERS)
-  );
-  readonly ranges$: Observable<Range[]> = this.data$.pipe(
-    this.handleData<Range>(FileName.RANGES)
-  );
-  readonly sizes$: Observable<Size[]> = this.data$.pipe(
-    this.handleData<Size>(FileName.SIZES)
-  );
-  readonly skills$: Observable<Skill[]> = this.data$.pipe(
-    this.handleData<Skill>(FileName.SKILLS)
-  );
-  readonly specialisations$: Observable<Specialisation[]> = this.data$.pipe(
-    this.handleData<Specialisation>(FileName.SPECIALISATIONS)
-  );
-  readonly talents$: Observable<Talent[]> = this.data$.pipe(
-    this.handleData<Talent>(FileName.TALENTS)
-  );
-  readonly targets$: Observable<Target[]> = this.data$.pipe(
-    this.handleData<Target>(FileName.TARGETS)
-  );
-
-  constructor(
-    private readonly auth: AuthService,
-    private readonly cache: CacheService,
-    private readonly logger: LoggerService,
-    private readonly setting: SettingService,
-    private readonly storage: StorageService
-  ) {}
-
-  static getTooltip(item: Size, data: Data): string {
-    return [
-      `${item.name}\n`,
-      `${item.labels?.description}`
-    ].join('\n');
-  }
-
-  static getBestiaryRoleTooltip(item: BestiaryRole, data: Data): string {
-    return [
-      `${item.name}\n`,
-      `${item.labels?.description}\n`,
-      `● A Characteristic Maximum of ${item.characteristic_maximum}.`,
-      `● A combined Characteristics total of ${item.characteristics_total}`,
-      `● Around ${item.skill_spec_advances} Advances in relevant Skills or Specialisations.`,
-      `● ${item.name}s have ${item.critical_wounds_max} Critical Wound(s).`,
-    ].join('\n');
-  }
-
-  static getCharacteristicTooltip(item: Characteristic, data: Data): string {
-    return [
-      `${item.name} (${item.labels?.abbreviation})\n`,
-      `${item.labels?.description}`,
-    ].join('\n');
-  }
-
-  static getSkillTooltip(item: Skill, data: Data): string {
-    const characteristic: Characteristic = data[FileName.CHARACTERISTICS]?.find(i => i.id === item.characteristic);
-    return [
-      `${item.name} (${characteristic?.labels?.abbreviation})\n`,
-      `${item.labels?.description}`,
-    ].join('\n');
-  }
-
-  static getSpecialisationTooltip(item: Specialisation, data: Data): string {
-    return [
-      `${item.name}${item.restricted ? ' (Restricted)' : ''}\n`,
-      `${item.labels?.description}`,
-    ].join('\n');
-  }
-
-  static getTalentTooltip(item: Talent, data: Data): string {
-    return [
-      `${item.name}\n`,
-      item.labels?.requirements ? `Requirements: ${item.labels?.requirements}\n` : null,
-      `${item.labels?.description}`,
-    ].filter(i => !!i).join('\n');
-  }
-
-  private download<T>(storage: string, file: FileName): Observable<T[]> {
-    return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
-      tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.')),
-      catchError(() => of([]))
-    );
-  }
+  readonly actions$: Observable<Action[]> = this.data$.pipe(map(data => data[FileName.ACTIONS]));
+  readonly availabilities$: Observable<Availability[]> = this.data$.pipe(map(data => data[FileName.AVAILABILITIES]));
+  readonly bestiary$: Observable<Bestiary[]> = this.data$.pipe(map(data => data[FileName.BESTIARY]));
+  readonly bestiaryFactions$: Observable<BestiaryFaction[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_FACTIONS]));
+  readonly bestiaryRoles$: Observable<BestiaryRole[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_ROLES]));
+  readonly bestiaryTraits$: Observable<BestiaryTrait[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_TRAITS]));
+  readonly bestiaryTypes$: Observable<BestiaryType[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_TYPES]));
+  readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(map(data => data[FileName.CHARACTERISTICS]));
+  readonly conditions$: Observable<Condition[]> = this.data$.pipe(map(data => data[FileName.CONDITIONS]));
+  readonly difficulties$: Observable<Difficulty[]> = this.data$.pipe(map(data => data[FileName.DIFFICULTIES]));
+  readonly durations$: Observable<Duration[]> = this.data$.pipe(map(data => data[FileName.DURATIONS]));
+  readonly endeavours$: Observable<Endeavour[]> = this.data$.pipe(map(data => data[FileName.ENDEAVOURS]));
+  readonly environmentalTraits$: Observable<EnvironmentalTrait[]> = this.data$.pipe(map(data => data[FileName.ENVIRONMENTAL_TRAITS]));
+  readonly events$: Observable<Event[]> = this.data$.pipe(map(data => data[FileName.EVENTS]));
+  readonly factions$: Observable<Faction[]> = this.data$.pipe(map(data => data[FileName.FACTIONS]));
+  readonly items$: Observable<Item[]> = this.data$.pipe(map(data => data[FileName.ITEMS]));
+  readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_FLAWS]));
+  readonly itemQualities$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_QUALITIES]));
+  readonly itemTraits$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_TRAITS]));
+  readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(map(data => data[FileName.ITEM_TYPES]));
+  readonly origins$: Observable<Origin[]> = this.data$.pipe(map(data => data[FileName.ORIGINS]));
+  readonly psychicDisciplines$: Observable<PsychicDiscipline[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_DISCIPLINES]));
+  readonly psychicPhenomenas$: Observable<PsychicPhenomena[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_PHENOMENAS]));
+  readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_POWERS]));
+  readonly ranges$: Observable<Range[]> = this.data$.pipe(map(data => data[FileName.RANGES]));
+  readonly sizes$: Observable<Size[]> = this.data$.pipe(map(data => data[FileName.SIZES]));
+  readonly skills$: Observable<Skill[]> = this.data$.pipe(map(data => data[FileName.SKILLS]));
+  readonly specialisations$: Observable<Specialisation[]> = this.data$.pipe(map(data => data[FileName.SPECIALISATIONS]));
+  readonly talents$: Observable<Talent[]> = this.data$.pipe(map(data => data[FileName.TALENTS]));
+  readonly targets$: Observable<Target[]> = this.data$.pipe(map(data => data[FileName.TARGETS]));
 
   get<T>(id: string): T {
     return this.cache.get(id) as T;
   }
 
   init(): void {
-    this.actions$.subscribe().unsubscribe();
-    this.availabilities$.subscribe().unsubscribe();
-    this.bestiary$.subscribe().unsubscribe();
-    this.bestiaryFactions$.subscribe().unsubscribe();
-    this.bestiaryRoles$.subscribe().unsubscribe();
-    this.bestiaryTypes$.subscribe().unsubscribe();
-    this.bestiaryTraits$.subscribe().unsubscribe();
-    this.characteristics$.subscribe().unsubscribe();
-    this.conditions$.subscribe().unsubscribe();
-    this.difficulties$.subscribe().unsubscribe();
-    this.durations$.subscribe().unsubscribe();
-    this.endeavours$.subscribe().unsubscribe();
-    this.environmentalTraits$.subscribe().unsubscribe();
-    this.events$.subscribe().unsubscribe();
-    this.items$.subscribe().unsubscribe();
-    this.itemFlaws$.subscribe().unsubscribe();
-    this.itemQualities$.subscribe().unsubscribe();
-    this.itemTraits$.subscribe().unsubscribe();
-    this.itemTypes$.subscribe().unsubscribe();
-    this.psychicDisciplines$.subscribe().unsubscribe();
-    this.psychicPhenomenas$.subscribe().unsubscribe();
-    this.psychicPowers$.subscribe().unsubscribe();
-    this.ranges$.subscribe().unsubscribe();
-    this.sizes$.subscribe().unsubscribe();
-    this.skills$.subscribe().unsubscribe();
-    this.specialisations$.subscribe().unsubscribe();
-    this.talents$.subscribe().unsubscribe();
-    this.targets$.subscribe().unsubscribe();
+    this.data$.subscribe().unsubscribe();
   }
 
-  private handleData<T extends HasId<unknown> & HasCommonFields>(file: FileName): OperatorFunction<Data, T[]> {
-    return source$ => source$.pipe(
-      map(data => {
-        const items: T[] = data[file];
-        items.forEach(i => {
-          if (DataService.tooltips.has(file)) {
-            if (!i.labels) { i.labels = {}; }
-            i.labels.tooltip = DataService.tooltips.get(file)(i, data);
-          }
-          this.cache.set(i.id, i);
-        });
-        return items;
-      }),
-      shareReplay(1)
+  private download<T>(storage: string, file: FileName): Observable<T[]> {
+    return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
+      tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.')),
+      catchError(() => of([]))
     );
   }
 }

@@ -22,6 +22,7 @@ export enum FileName {
   ITEM_TYPES = 'item-types.json',
   MALIGNANCIES = 'malignancies.json',
   MUTATIONS = 'mutations.json',
+  ORIGINS = 'origins.json',
   PERILS_OF_THE_WARP = 'perils-of-the-warp.json',
   PSYCHIC_PHENOMENAS = 'psychic-phenomenas.json',
   PSYCHIC_DISCIPLINES = 'psychic-disciplines.json',

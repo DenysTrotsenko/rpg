@@ -22,6 +22,7 @@ export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
 export type ItemTypeId = Opaque<string, 'ItemTypeId'>;
 export type MalignancyId = Opaque<string, 'MalignancyId'>;
 export type MutationId = Opaque<string, 'MutationId'>;
+export type OriginId = Opaque<string, 'OriginId'>;
 export type PatronId = Opaque<string, 'PatronId'>;
 export type PatronBoonId = Opaque<string, 'PatronBoonId'>;
 export type PatronDemeanorId = Opaque<string, 'PatronDemeanorId'>;
@@ -206,7 +207,7 @@ export interface Mutation extends HasBaseProperties<MutationId>, HasWeight {
 }
 
 export interface Origin {
-  id: string;
+  id: OriginId;
   name: string;
   labels: {
     example?: string;
