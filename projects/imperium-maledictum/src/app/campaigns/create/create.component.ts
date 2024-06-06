@@ -12,8 +12,8 @@ import {
   Setting,
   SettingService, User,
   UserId, UserService
-} from '@shared';
-import { CharacterService } from '../../common/character.service';
+} from '@std';
+import { CharacterService } from '../../character.service';
 
 @Component({
   templateUrl: './create.component.html',

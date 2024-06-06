@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { skip, tap } from 'rxjs/operators';
 import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
-import { Character } from '@shared';
+import { Character } from '@std';
 
 @Component({
   selector: 'std-todo-editor',

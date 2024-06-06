@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { ItemTrait } from '@imperium-maledictum-1e/models/common';
-import { getId16 } from '@shared';
+import { getId16 } from '@std';
 
 @Component({
   templateUrl: './item-flaws.component.html',

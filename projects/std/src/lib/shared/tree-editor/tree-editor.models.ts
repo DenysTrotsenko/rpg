@@ -1,4 +1,4 @@
-import { Opaque } from '@shared';
+import { Opaque } from '@std';
 
 export interface TreeNode {
   id: TreeNodeId;

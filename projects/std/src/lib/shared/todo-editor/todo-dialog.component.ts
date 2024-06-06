@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { Character, CharacterId, getId16 } from '@shared';
+import { Character, CharacterId, getId16 } from '@std';
 import { TodoTask } from './todo-editor.models';
 
 interface Data {

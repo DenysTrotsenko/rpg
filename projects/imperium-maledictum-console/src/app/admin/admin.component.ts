@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { hasDuplicates, NavListItemData, PermissionId, UserService } from '@shared';
+import { hasDuplicates, NavListItemData, PermissionId, UserService } from '@std';
 import { routes } from './admin-routing.module';
 
 const SETTING_OPTIONS: NavListItemData[] = [

@@ -16,7 +16,7 @@
       "dom"
     ],
     "paths": {
-      "@shared": [
+      "@std": [
         "projects/std/src/public-api",
         "dist/std/std",
         "dist/std"

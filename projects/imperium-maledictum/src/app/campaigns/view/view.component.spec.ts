@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewComponent } from './view.component';
 import { TodoId, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
-import { CharacterId } from '@shared';
+import { CharacterId } from '@std';
 
 const tasks: TodoTask[] = [
   {

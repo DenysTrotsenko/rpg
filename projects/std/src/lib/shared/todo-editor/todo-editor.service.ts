@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { filter, map, shareReplay, tap } from 'rxjs/operators';
-import { Character, DialogService, getId16 } from '@shared';
+import { Character, DialogService, getId16 } from '@std';
 import { TodoId, TodoStatus, TodoTask } from './todo-editor.models';
 import { TodoDialogComponent } from './todo-dialog.component';
 import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';

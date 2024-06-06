@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostListener, inject, OnDestroy, On
 import { ActivatedRoute, Data } from '@angular/router';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
-import { HasCommonFields, HasId, HasSystem, Setting, SettingService } from '@shared';
+import { HasCommonFields, HasId, HasSystem, Setting, SettingService } from '@std';
 import { AdminBaseService } from './admin-base.service';
 import { FormControl } from '@angular/forms';
 

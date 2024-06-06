@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CoreModule, LoggerModule, SharedModule } from '@shared';
+import { CoreModule, LoggerModule, SharedModule } from '@std';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';

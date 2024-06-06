@@ -10,7 +10,7 @@ import {
   SnackbarService,
   sortByName, sortByProperty,
   StorageService
-} from '@shared';
+} from '@std';
 import { AdminServiceConfig } from './admin-base.models';
 import { AbstractControl } from '@angular/forms';
 import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';

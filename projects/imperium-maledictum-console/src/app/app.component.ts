@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { MaterialIconFont } from '@shared';
+import { MaterialIconFont } from '@std';
 
 @Component({
   selector: 'app-root',

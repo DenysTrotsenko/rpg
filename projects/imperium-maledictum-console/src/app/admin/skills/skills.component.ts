@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Characteristic, Skill } from '@imperium-maledictum-1e/models/common';
-import { getId16, Setting, SettingService, StorageService } from '@shared';
+import { getId16, Setting, SettingService, StorageService } from '@std';
 import { Observable, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FileName } from '@imperium-maledictum-1e/models/enums';

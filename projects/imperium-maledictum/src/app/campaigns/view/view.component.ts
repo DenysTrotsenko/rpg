@@ -10,11 +10,11 @@ import {
   CampaignService, Character, CharacterId,
   DialogService,
   FirestoreService, FS_COLLECTION, User, UserService
-} from '@shared';
+} from '@std';
 import { EventEditDialogComponent, EventEditDialogData } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent, XpEditDialogData } from '../xp-edit-dialog/xp-edit-dialog.component';
 import { TodoMode, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
-import { CharacterService } from '../../common/character.service';
+import { CharacterService } from '../../character.service';
 import {
   JsonEditorDialogComponent
 } from '../../../../../std/src/lib/shared/json-editor-dialog/json-editor-dialog.component';

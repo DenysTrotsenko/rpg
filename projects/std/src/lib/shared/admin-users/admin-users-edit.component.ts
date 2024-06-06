@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
-import { PermissionId, User } from '@shared';
+import { PermissionId, User } from '@std';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({

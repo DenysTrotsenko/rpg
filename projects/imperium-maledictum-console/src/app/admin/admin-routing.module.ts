@@ -33,8 +33,7 @@ import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.componen
 import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
-import { permissionGuard } from '../common/guards';
-import { PermissionId } from '@shared';
+import { permissionGuard, PermissionId } from '@std';
 import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
 import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
 import { VirtuesComponent } from './virtues/virtues.component';

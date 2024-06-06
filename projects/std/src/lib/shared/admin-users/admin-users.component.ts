@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { DialogService, User, UserService } from '@shared';
+import { DialogService, User, UserService } from '@std';
 import { AdminUsersEditComponent } from './admin-users-edit.component';
 
 @Component({

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
+import { SharedModule } from '@std';
 import { IndexRoutingModule } from './index-routing.module';
 import { IndexComponent } from './index.component';
 

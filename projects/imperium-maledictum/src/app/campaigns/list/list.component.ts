@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { AuthService, Campaign, CampaignService, DialogService, FirestoreService } from '@shared';
+import { AuthService, Campaign, CampaignService, DialogService, FirestoreService } from '@std';
 
 interface VM extends Campaign {
   canEdit: boolean;

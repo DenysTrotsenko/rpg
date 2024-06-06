@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject, share } from 'rxjs';
 import { catchError, distinctUntilChanged, map, take, tap } from 'rxjs/operators';
-import { FirestoreService, Setting, SettingId } from '@shared';
+import { FirestoreService, Setting, SettingId } from '@std';
 
 @Injectable()
 export class SettingService {

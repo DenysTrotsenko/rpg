@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
+import { SharedModule } from '@std';
 import { CampaignsRoutingModule } from './campaigns-routing.module';
 import { CampaignsComponent } from './campaigns.component';
 import { ListComponent } from './list/list.component';

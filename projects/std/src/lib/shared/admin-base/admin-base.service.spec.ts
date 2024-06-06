@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AdminBaseService } from './admin-base.service';
-import { HasId } from '@shared';
+import { HasId } from '@std';
 
 describe('AdminService', () => {
   let service: AdminBaseService<HasId<unknown>, unknown>;

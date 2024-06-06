@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
-import { AuthService, AuthWithEmailAndPassword } from '@shared';
+import { AuthService, AuthWithEmailAndPassword } from '@std';
 
 @Component({
   templateUrl: './sign-up.component.html',

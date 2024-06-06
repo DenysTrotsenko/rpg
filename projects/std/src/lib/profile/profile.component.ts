@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostListener, Inject } from '@angular/core';
-import { AuthService, FirestoreService, SnackbarService, UserService } from '@shared';
+import { AuthService, FirestoreService, SnackbarService, UserService } from '@std';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, combineLatest, throttleTime } from 'rxjs';
 import { distinctUntilChanged, take, tap } from 'rxjs/operators';

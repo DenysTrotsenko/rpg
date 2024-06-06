@@ -1,4 +1,4 @@
-import { HasBaseProperties, HasWeight, Opaque } from '@shared';
+import { HasBaseProperties, HasWeight, Opaque } from '@std';
 import { System } from './system';
 
 export type ActionId = Opaque<string, 'ActionId'>;

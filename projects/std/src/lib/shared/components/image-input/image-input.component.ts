@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, inject, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DialogService } from '@shared';
+import { DialogService } from '@std';
 import { ImageInputDialogComponent, ImageInputDialogData } from './image-input-dialog.component';
 import { filter, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';

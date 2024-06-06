@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Data } from '@angular/router';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
-import { Setting, SettingService } from '@shared';
+import { Setting, SettingService } from '@std';
 import { AdminDictionaryService } from './admin-dictionary.service';
 
 @Component({

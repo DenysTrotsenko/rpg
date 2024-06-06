@@ -3,8 +3,8 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { Character, DialogService, FirestoreService, getId16 } from '@shared';
-import { CharacterService } from '../../common/character.service';
+import { Character, DialogService, FirestoreService, getId16 } from '@std';
+import { CharacterService } from '../../character.service';
 
 @Component({
   templateUrl: './view.component.html',

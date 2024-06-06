@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NavListItemData } from '@shared';
+import { NavListItemData } from '@std';
 
 @Component({
   templateUrl: './tools.component.html',

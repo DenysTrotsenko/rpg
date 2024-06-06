@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthResolver } from '@shared';
+import { AuthResolver } from '@std';
 import { CharactersComponent } from './characters.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';

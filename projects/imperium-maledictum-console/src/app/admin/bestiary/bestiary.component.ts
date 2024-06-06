@@ -21,7 +21,7 @@ import {
   Skill,
   Specialisation
 } from '@imperium-maledictum-1e/models/common';
-import { DialogService, getId16 } from '@shared';
+import { DialogService, getId16 } from '@std';
 import { AddSpecialisationDialogComponent } from './add-specialisation-dialog.component';
 import { AddSkillDialogComponent } from './add-skill-dialog.component';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';

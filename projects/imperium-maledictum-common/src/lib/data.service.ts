@@ -10,7 +10,7 @@ import {
   Setting,
   SettingService,
   StorageService
-} from '@shared';
+} from '@std';
 import {
   Action,
   Availability,

@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService, AuthWithEmailAndPassword } from '@shared';
+import { AuthService, AuthWithEmailAndPassword } from '@std';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, tap } from 'rxjs/operators';
 

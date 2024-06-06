@@ -20,7 +20,7 @@ import {
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
-import { DialogService } from '@shared';
+import { DialogService } from '@std';
 
 function validateKey(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {

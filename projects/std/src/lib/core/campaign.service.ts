@@ -7,7 +7,7 @@ import {
   FirestoreService,
   FS_COLLECTION,
   SettingService
-} from '@shared';
+} from '@std';
 import { catchError, distinctUntilChanged, map, switchMap, take, tap } from 'rxjs/operators';
 
 @Injectable({

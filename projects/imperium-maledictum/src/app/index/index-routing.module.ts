@@ -1,8 +1,8 @@
 import { inject, NgModule } from '@angular/core';
 import { ResolveFn, RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
-import { AuthGuard, Campaign, CampaignService, PermissionId } from '@shared';
-import { permissionGuard } from '../common/guards';
+import { AuthGuard, Campaign, CampaignService, PermissionId } from '@std';
+import { permissionGuard } from '../../../../std/src/lib/guards';
 
 const authResolver: ResolveFn<Campaign[]> = () => inject(CampaignService).all$;
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { SnackbarService, StorageService } from '@shared';
+import { SnackbarService, StorageService } from '@std';
 import { BehaviorSubject, forkJoin, of } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { BYTES_IN_MB } from '../../../const';

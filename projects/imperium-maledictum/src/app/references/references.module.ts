@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ReferencesRoutingModule } from './references-routing.module';
 import { ReferencesComponent } from './references.component';
-import { SharedModule } from '@shared';
+import { SharedModule } from '@std';
 import { TalentsComponent } from './talents/talents.component';
 import { SkillsComponent } from './skills/skills.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { ArmouryComponent } from './armoury/armoury.component';
-import { CommonModule } from '../common/common.module';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { CommonModule } from '../common/common.module';
   ],
   imports: [
     SharedModule,
-    CommonModule,
     ReferencesRoutingModule
   ]
 })

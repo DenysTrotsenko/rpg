@@ -9,7 +9,7 @@ import {
   PsychicPower, PsychicPowerId, Range,
   RangeId, Target, TargetId
 } from '@imperium-maledictum-1e/models/common';
-import { getId16 } from '@shared';
+import { getId16 } from '@std';
 import { Observable } from 'rxjs';
 import { DataService } from '@im-common';
 

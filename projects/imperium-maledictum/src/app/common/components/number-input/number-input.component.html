@@ -1,8 +1,0 @@
-<mat-form-field appearance="outline" floatLabel="always" class="no-padding-bottom" style="width:80px;">
-  <mat-label *ngIf="label">{{label}}</mat-label>
-  <input matInput type="text" readonly [value]="value?.toString(10)">
-  <div *ngIf="edit" matSuffix class="d-f fd-c" style="position:relative;top:-0.5em;">
-    <mat-icon (click)="onChangeClick(step)" class="c-green" style="cursor:pointer;">add</mat-icon>
-    <mat-icon (click)="onChangeClick(-step)" class="c-red" style="cursor:pointer;">remove</mat-icon>
-  </div>
-</mat-form-field>

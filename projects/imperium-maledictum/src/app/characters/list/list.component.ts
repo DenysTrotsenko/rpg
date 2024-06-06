@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { AuthService, CampaignService, Character, DialogService } from '@shared';
-import { CharacterService } from '../../common/character.service';
+import { AuthService, CampaignService, Character, DialogService } from '@std';
+import { CharacterService } from '../../character.service';
+
 
 interface VM extends Character {
   canDelete: boolean;

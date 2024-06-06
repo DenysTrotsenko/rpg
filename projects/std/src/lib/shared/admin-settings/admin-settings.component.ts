@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
-import { DialogService, Setting, SettingService, SnackbarService, StorageService } from '@shared';
+import { DialogService, Setting, SettingService, SnackbarService, StorageService } from '@std';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { AdminSettingsEditComponent } from './admin-settings-edit.component';
 

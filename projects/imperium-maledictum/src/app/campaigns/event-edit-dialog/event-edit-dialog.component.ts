@@ -12,7 +12,7 @@ import {
   User,
   UserId,
   UserService
-} from '@shared';
+} from '@std';
 
 export interface EventEditDialogData {
   title?: string;

@@ -10,8 +10,8 @@ import {
   DialogService,
   getId16,
   setFormControlsEditable
-} from '@shared';
-import { CharacterService } from '../../common/character.service';
+} from '@std';
+import { CharacterService } from '../../character.service';
 import { DataService } from '@im-common';
 
 @Component({

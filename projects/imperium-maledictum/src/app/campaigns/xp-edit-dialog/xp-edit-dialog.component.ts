@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CampaignExperience, getId16, getUnixTimestamp } from '@shared';
+import { CampaignExperience, getId16, getUnixTimestamp } from '@std';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 
 export interface XpEditDialogData {

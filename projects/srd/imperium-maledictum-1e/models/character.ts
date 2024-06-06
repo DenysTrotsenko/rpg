@@ -1,4 +1,4 @@
-// import { CampaignId, CharacterId, UserId } from '@shared';
+// import { CampaignId, CharacterId, UserId } from '@std';
 // import { Characteristic, CharacteristicId, PatronId } from './common';
 
 // export class Character {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
+import { SharedModule } from '@std';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
@@ -26,7 +26,6 @@ import { SpeedComponent } from './speed/speed.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
-import { CommonModule } from '../common/common.module';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
 import { AddSkillDialogComponent } from './bestiary/add-skill-dialog.component';
@@ -44,6 +43,7 @@ import { EnvironmentalTraitsComponent } from './environmental-traits/environment
 import { EventsComponent } from './events/events.component';
 import { EndeavoursComponent } from './endeavours/endeavours.component';
 import { ActionsComponent } from './actions/actions.component';
+import { ImperiumMaledictumCommonModule } from '@im-common';
 
 
 @NgModule({
@@ -93,7 +93,7 @@ import { ActionsComponent } from './actions/actions.component';
   ],
   imports: [
     SharedModule,
-    CommonModule,
+    ImperiumMaledictumCommonModule,
     AdminRoutingModule
   ]
 })

@@ -1,4 +1,4 @@
-import { CharacterId, Opaque } from '@shared';
+import { CharacterId, Opaque } from '@std';
 
 export interface TodoTask {
   id: TodoId;

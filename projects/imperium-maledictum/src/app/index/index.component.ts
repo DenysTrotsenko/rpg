@@ -9,7 +9,7 @@ import {
   NavListItemData,
   PermissionId,
   UserService
-} from '@shared';
+} from '@std';
 import { DataService } from '@im-common';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
