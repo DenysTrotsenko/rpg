@@ -26,7 +26,7 @@ export class CharacteristicsComponent {
         ...i,
         ...characteristic,
         current: i.starting + i.advances,
-        bonus: Math.floor(i.starting + i.advances)
+        bonus: Math.floor((i.starting + i.advances) / 10)
       };
     });
     console.log(hydrated);
