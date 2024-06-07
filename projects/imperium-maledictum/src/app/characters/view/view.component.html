@@ -1,9 +1,12 @@
-<mat-toolbar class="toolbar-main">
-  <h1>Character View</h1>
-</mat-toolbar>
 <ng-container *ngIf="character$ | async as character;">
-  <p class="ff-g fs-16">{{character.name}}</p>
-  <characteristics [character]="character"></characteristics>
+  <mat-toolbar>
+    <h1>Character View</h1>
+  </mat-toolbar>
+  <div class="p-10">
+    <p class="ff-g fs-16">{{character.name}}</p>
+    <characteristics class="mb-10" [character]="character"></characteristics>
+    <talents [character]="character"></talents>
+  </div>
 <!--  <p class="c-gray">-->
 <!--    <i>{{description}}</i>-->
 <!--  </p>-->
@@ -47,12 +50,6 @@
 <!--      </td>-->
 <!--    </tr>-->
 <!--  </table>-->
-<!--  <p *ngIf="talents.length > 0">-->
-<!--    <b class="c-gray">Talents:</b>-->
-<!--    <span *ngFor="let i of talents;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">-->
-<!--      {{i.name}}-->
-<!--    </span>-->
-<!--  </p>-->
 <!--  <p>-->
 <!--    <b class="c-gray">Traits:</b>-->
 <!--    <span *ngFor="let i of traits;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">-->

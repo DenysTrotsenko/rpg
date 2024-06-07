@@ -26,7 +26,7 @@ import {
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId,
-  RoleId, Skill, Specialisation, Talent, TalentId
+  RoleId, Skill, SkillId, Specialisation, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
 import {
   CharacteristicValue,
@@ -187,8 +187,9 @@ export class CreateComponent {
         }).afterClosed()),
         filter(res => !!res),
         tap(id => group.push(new UntypedFormGroup({
-          id: new UntypedFormControl(id),
-          value: new UntypedFormControl(5)
+          id: new FormControl<SkillId>(id),
+          starting: new FormControl<number>(5),
+          advances: new FormControl<number>(0)
         })))
       )
       .subscribe();
@@ -207,7 +208,8 @@ export class CreateComponent {
         filter(res => !!res),
         tap(res => group.push(new UntypedFormGroup({
           id: new UntypedFormControl(res.id),
-          value: new UntypedFormControl(5),
+          starting: new FormControl<number>(5),
+          advances: new FormControl<number>(0),
           ...(res.details ? { details: new UntypedFormControl(res.details) } : {})
         })))
       )

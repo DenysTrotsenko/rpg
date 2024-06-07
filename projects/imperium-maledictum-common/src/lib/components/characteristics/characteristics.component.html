@@ -6,12 +6,7 @@
   </tr>
   <tr class="mat-row bg-gray-800">
     <td *ngFor="let i of characteristics; trackBy: trackById;" class="mat-cell p-5">
-      {{i.current}}%
-    </td>
-  </tr>
-  <tr class="mat-row">
-    <td *ngFor="let i of characteristics; trackBy: trackById;" class="mat-cell p-5">
-      {{i.bonus}}
+      {{i.current}}% ({{i.bonus}})
     </td>
   </tr>
 </table>

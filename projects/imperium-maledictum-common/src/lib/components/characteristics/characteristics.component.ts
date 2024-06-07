@@ -8,6 +8,10 @@ type CharacteristicView = Characteristic & CharacteristicValue & {
   bonus: number;
 };
 
+function getCharacteristicBonus(value: CharacteristicValue): number {
+  return Math.floor((value.starting + value.advances) / 10);
+}
+
 @Component({
   selector: 'characteristics',
   templateUrl: './characteristics.component.html',
@@ -26,7 +30,7 @@ export class CharacteristicsComponent {
         ...i,
         ...characteristic,
         current: i.starting + i.advances,
-        bonus: Math.floor((i.starting + i.advances) / 10)
+        bonus: getCharacteristicBonus(i)
       };
     });
 
