@@ -1,1 +1,12 @@
-<p>skills-specializations works!</p>
+<p *ngIf="skills.length > 0">
+  <b class="c-gray">Skills: </b>
+  <span *ngFor="let i of skills;" class="comma-separated ws-pl c-pointer" [matTooltip]="i.labels?.tooltip">
+    {{i.name}} {{i.value}}%
+  </span>
+</p>
+<p *ngIf="specialisations.length > 0">
+  <b class="c-gray">Specialisations: </b>
+  <span *ngFor="let i of specialisations;" class="comma-separated ws-pl c-pointer" [matTooltip]="i.labels?.tooltip">
+    {{i.name}} {{i.value}}%
+  </span>
+</p>

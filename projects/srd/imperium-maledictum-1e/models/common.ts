@@ -350,22 +350,13 @@ export interface Speed extends HasBaseProperties<SpeedId> {
 
 export interface Skill extends HasBaseProperties<SkillId> {
   characteristic: CharacteristicId;
-  labels: {
-    description: string;
-  };
   system?: Partial<System>;
 }
 
-export interface Specialisation {
-  id: SpecialisationId;
-  name: string;
+export interface Specialisation extends HasBaseProperties<SpecialisationId> {
   restricted?: boolean;
   multiple?: boolean;
   skill: SkillId;
-  labels: {
-    description: string;
-    tooltip?: string;
-  };
   system?: Partial<System>;
 }
 
