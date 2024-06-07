@@ -44,6 +44,10 @@ export class SkillsSpecializationsComponent {
         tooltip: skill.labels?.tooltip,
         value: characteristic.starting + characteristic.advances + i.starting + i.advances
       } as SkillView;
+    }).sort((a, b) => {
+      if (a?.name < b?.name) { return -1; }
+      if (a?.name > b?.name) { return 1; }
+      return 0;
     });
 
     this.specialisations = specialisations.map(i => {
@@ -60,6 +64,10 @@ export class SkillsSpecializationsComponent {
         tooltip: specialisation.labels?.tooltip,
         value: value + i.starting + i.advances
       };
+    }).sort((a, b) => {
+      if (a?.skill < b?.skill) { return -1; }
+      if (a?.skill > b?.skill) { return 1; }
+      return 0;
     });
   }
 
