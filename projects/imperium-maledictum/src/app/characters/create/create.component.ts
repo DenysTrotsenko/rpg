@@ -122,6 +122,15 @@ export class CreateComponent {
     })))
   );
 
+  readonly talentsSelectTrigger$: Observable<string> = this.formTemp.get('talents').valueChanges.pipe(
+    startWith([]),
+    map(talents => talents.map(i => this.data.get<Talent>(i)?.name).join(', '))
+  );
+  readonly powersSelectTrigger$: Observable<string> = this.formTemp.get('powers').valueChanges.pipe(
+    startWith([]),
+    map(powers => powers.map(i => this.data.get<PsychicPower>(i)?.name).join(', '))
+  );
+
   readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
     startWith([]),
     map(items => items.map(i => {

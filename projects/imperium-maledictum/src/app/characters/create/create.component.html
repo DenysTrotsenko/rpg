@@ -127,6 +127,9 @@
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Talents</mat-label>
         <mat-select formControlName="talents" multiple>
+          <mat-select-trigger>
+            {{talentsSelectTrigger$ | async}}
+          </mat-select-trigger>
           <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
             {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
           </mat-option>
@@ -135,6 +138,9 @@
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Psychic Powers</mat-label>
         <mat-select formControlName="powers" multiple>
+          <mat-select-trigger>
+            {{powersSelectTrigger$ | async}}
+          </mat-select-trigger>
           <mat-option *ngFor="let i of powers$ | async; trackBy: trackById;" [value]="i.id">
             {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
           </mat-option>
