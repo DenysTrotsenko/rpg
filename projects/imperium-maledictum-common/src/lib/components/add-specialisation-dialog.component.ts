@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Specialisation, SpecialisationId } from '@imperium-maledictum-1e/models/common';
+import { Skill, Specialisation, SpecialisationId } from '@imperium-maledictum-1e/models/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { map, startWith } from 'rxjs/operators';
           <mat-label>Specialisation</mat-label>
           <mat-select formControlName="id">
             <mat-option *ngFor="let i of data;" [value]="i.id">
-              {{i.name}}
+              {{i.name}} ({{(i.skill | getById)?.name}}<span *ngIf="i.restricted">, Restricted</span>)
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -33,6 +33,7 @@ import { map, startWith } from 'rxjs/operators';
     </form>`
 })
 export class AddSpecialisationDialogComponent {
+  readonly data: Specialisation[] = inject(MAT_DIALOG_DATA);
   readonly form = new FormGroup({
     id: new FormControl<SpecialisationId>(null, [Validators.required]),
     details: new FormControl<string>(null)
@@ -42,9 +43,4 @@ export class AddSpecialisationDialogComponent {
     startWith(null),
     map(id => this.data.find(i => i.id === id))
   );
-
-  constructor(
-    public dialogRef: MatDialogRef<AddSpecialisationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Specialisation[]
-  ) {}
 }

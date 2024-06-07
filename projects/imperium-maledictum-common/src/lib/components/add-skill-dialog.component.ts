@@ -1,8 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {Skill, SkillId} from '@imperium-maledictum-1e/models/common';
-import {MatDialogRef} from '@angular/material/dialog';
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA} from '@angular/material/legacy-dialog';
+import { Component, inject } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Skill, SkillId } from '@imperium-maledictum-1e/models/common';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 
 @Component({
   template: `
@@ -12,7 +11,7 @@ import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA} from '@angular/material/legac
         <mat-label>Skill</mat-label>
         <mat-select [formControl]="form">
           <mat-option *ngFor="let i of data;" [value]="i.id">
-            {{i.name}}
+            {{i.name}} ({{(i.characteristic | getById)?.labels?.abbreviation}})
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -23,9 +22,6 @@ import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA} from '@angular/material/legac
     </div>`
 })
 export class AddSkillDialogComponent {
+  readonly data: Skill[] = inject(MAT_DIALOG_DATA);
   readonly form = new FormControl<SkillId>(null, [Validators.required]);
-  constructor(
-    public dialogRef: MatDialogRef<AddSkillDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Skill[]
-  ) {}
 }

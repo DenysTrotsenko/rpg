@@ -36,12 +36,9 @@ import { TargetsComponent } from './targets/targets.component';
 import { permissionGuard, PermissionId } from '@std';
 import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
 import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
-import { VirtuesComponent } from './virtues/virtues.component';
-import { FlawsComponent } from './flaws/flaws.component';
-import { MotivationsComponent } from './motivations/motivations.component';
-import { StatusComponent } from './status/status.component';
-import { DoomingsComponent } from './doomings/doomings.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
+import { OriginsComponent } from './origins/origins.component';
+import { RolesComponent } from './roles/roles.component';
 
 export const routes: Routes = [
   {
@@ -188,6 +185,12 @@ export const routes: Routes = [
         data: { path: FileName.MUTATIONS, component: MutationsComponent }
       },
       {
+        path: 'origins',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ORIGINS, component: OriginsComponent }
+      },
+      {
         path: 'perils-of-the-warp',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
@@ -216,6 +219,12 @@ export const routes: Routes = [
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.RANGES, component: RangesComponent }
+      },
+      {
+        path: 'roles',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ROLES, component: RolesComponent }
       },
       {
         path: 'sizes',
@@ -252,36 +261,6 @@ export const routes: Routes = [
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.TARGETS, component: TargetsComponent }
-      },
-      {
-        path: 'virtues',
-        component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.VIRTUES, component: VirtuesComponent }
-      },
-      {
-        path: 'flaws',
-        component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.FLAWS, component: FlawsComponent }
-      },
-      {
-        path: 'motivations',
-        component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.MOTIVATIONS, component: MotivationsComponent }
-      },
-      {
-        path: 'status',
-        component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.STATUS, component: StatusComponent }
-      },
-      {
-        path: 'doomings',
-        component: AdminBaseComponent,
-        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.DOOMINGS, component: DoomingsComponent }
       },
       {
         path: 'settings',

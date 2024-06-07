@@ -8,6 +8,7 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
 import { ConditionsComponent } from './conditions/conditions.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { ArmouryComponent } from './armoury/armoury.component';
+import { ImperiumMaledictumCommonModule } from '@im-common';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ArmouryComponent } from './armoury/armoury.component';
   ],
   imports: [
     SharedModule,
+    ImperiumMaledictumCommonModule,
     ReferencesRoutingModule
   ]
 })

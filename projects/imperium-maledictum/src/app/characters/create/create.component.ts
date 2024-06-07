@@ -8,8 +8,8 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, take, combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Observable, take } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import {
   CampaignService, Character,
   CharacterId,
@@ -19,7 +19,25 @@ import {
 } from '@std';
 import { CharacterService } from '../../character.service';
 import { DataService } from '@im-common';
-import { Characteristic, Faction, FactionId, Origin, OriginId, RoleId } from '@imperium-maledictum-1e/models/common';
+import {
+  BestiaryTrait,
+  Characteristic,
+  Faction,
+  FactionId,
+  Origin,
+  OriginId, PsychicPower,
+  PsychicPowerId,
+  RoleId, Skill, Specialisation, Talent
+} from '@imperium-maledictum-1e/models/common';
+import {
+  AddSkillDialogComponent
+} from '../../../../../imperium-maledictum-common/src/lib/components/add-skill-dialog.component';
+import {
+  AddSpecialisationDialogComponent
+} from '../../../../../imperium-maledictum-common/src/lib/components/add-specialisation-dialog.component';
+import {
+  AddItemDialogComponent
+} from '../../../../../imperium-maledictum-common/src/lib/components/add-item-dialog.component';
 
 @Component({
   templateUrl: './create.component.html',
@@ -38,6 +56,16 @@ export class CreateComponent {
   });
   readonly step4: FormGroup = new FormGroup({
     role: new FormControl<RoleId>(null, [Validators.required]),
+  });
+  readonly step5: FormGroup = new FormGroup({
+    equipment: new UntypedFormArray([]),
+  });
+  readonly formTemp: FormGroup = new FormGroup({
+    skills: new UntypedFormArray([]),
+    specialisations: new UntypedFormArray([]),
+    talents: new UntypedFormArray([]),
+    powers: new FormControl<PsychicPowerId[]>([]),
+    items: new UntypedFormArray([]),
   });
   readonly form10: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
@@ -72,6 +100,24 @@ export class CreateComponent {
   readonly origins$: Observable<Origin[]> = this.data.origins$;
   readonly factions$: Observable<Faction[]> = this.data.factions$;
   readonly roles$: Observable<Faction[]> = this.data.roles$;
+  readonly skills$: Observable<Skill[]> = this.data.skills$;
+  readonly specialisations$: Observable<Specialisation[]> = this.data.specialisations$;
+  readonly talents$: Observable<Talent[]> = this.data.talents$;
+  readonly powers$: Observable<PsychicPower[]> = this.data.psychicPowers$;
+
+  readonly formSkills$: Observable<Skill[]> = this.formTemp.get('skills').valueChanges.pipe(
+    startWith([]),
+    map(skills => skills.map(i => i.id).map(i => this.data.get(i)))
+  );
+
+  readonly specialisationsChanges = this.formTemp.get('specialisations').valueChanges;
+  readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.specialisationsChanges.pipe(
+    startWith([]),
+    map(specialisations => specialisations.map(i => ({
+      ...this.data.get<Specialisation>(i.id),
+      details: i.details
+    })))
+  );
 
   constructor(
     private readonly character: CharacterService,
@@ -110,6 +156,59 @@ export class CreateComponent {
     //     tap(() => this.router.navigate(['characters/list']))
     //   )
     //   .subscribe();
+  }
+
+  onAddSkillClick(): void {
+    const group = this.formTemp.get('skills') as UntypedFormArray;
+    const ids = group.value?.map(i => i.id);
+
+    this.skills$
+      .pipe(
+        take(1),
+        switchMap(skills => this.dialog.open(AddSkillDialogComponent, {
+          data: skills.filter(i => !ids.includes(i.id))
+        }).afterClosed()),
+        filter(res => !!res),
+        tap(id => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(id),
+          value: new UntypedFormControl(5)
+        })))
+      )
+      .subscribe();
+  }
+
+  onAddSpecialisationClick(): void {
+    const group = this.formTemp.get('specialisations') as UntypedFormArray;
+    const ids = group.value?.map(i => i.id);
+
+    this.specialisations$
+      .pipe(
+        take(1),
+        switchMap(specialisations => this.dialog.open(AddSpecialisationDialogComponent, {
+          data: specialisations.filter(i => !(ids.includes(i.id) && !i.multiple))
+        }).afterClosed()),
+        filter(res => !!res),
+        tap(res => group.push(new UntypedFormGroup({
+          id: new UntypedFormControl(res.id),
+          value: new UntypedFormControl(5),
+          ...(res.details ? { details: new UntypedFormControl(res.details) } : {})
+        })))
+      )
+      .subscribe();
+  }
+
+  onAddItemClick(): void {
+    const group = this.formTemp.get('items') as UntypedFormArray;
+
+    this.dialog.open(AddItemDialogComponent).afterClosed()
+      .pipe(
+        filter(res => !!res),
+        tap(res => group.push(new UntypedFormGroup({
+          id: new FormControl(res.id),
+          traits: new FormControl<BestiaryTrait[]>(res.traits)
+        })))
+      )
+      .subscribe();
   }
 
   trackById(_: number, item): unknown {

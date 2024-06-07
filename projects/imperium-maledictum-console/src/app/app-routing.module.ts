@@ -1,8 +1,36 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService, SettingService } from '@std';
+import { DataService } from '@im-common';
+import { filter, tap } from 'rxjs/operators';
+import { take } from 'rxjs';
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./index/index.module').then(m => m.IndexModule) },
+  {
+    path: 'auth',
+    loadChildren: () => import('../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
+    data: { label: 'Setting' },
+    resolve: { options: () => inject(SettingService).all$ }
+  },
+  {
+    path: '',
+    loadChildren: () => import('./index/index.module').then(m => m.IndexModule),
+    resolve: { init: () => {
+      const data = inject(DataService);
+      const auth = inject(AuthService);
+      const setting = inject(SettingService);
+
+      return auth.option$
+        .pipe(
+          filter(res => !!res),
+          take(1),
+          tap(res => {
+            setting.set(res as string);
+            data.init();
+          })
+        );
+    }}
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

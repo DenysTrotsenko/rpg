@@ -28,10 +28,7 @@ import { ItemTypesComponent } from './item-types/item-types.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
-import { AddSkillDialogComponent } from './bestiary/add-skill-dialog.component';
-import { AddSpecialisationDialogComponent } from './bestiary/add-specialisation-dialog.component';
 import { DifficultiesComponent } from './difficulties/difficulties.component';
-import { AddItemDialogComponent } from './bestiary/add-item-dialog.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
 import { VirtuesComponent } from './virtues/virtues.component';
@@ -44,6 +41,8 @@ import { EventsComponent } from './events/events.component';
 import { EndeavoursComponent } from './endeavours/endeavours.component';
 import { ActionsComponent } from './actions/actions.component';
 import { ImperiumMaledictumCommonModule } from '@im-common';
+import { RolesComponent } from './roles/roles.component';
+import { OriginsComponent } from './origins/origins.component';
 
 
 @NgModule({
@@ -75,9 +74,6 @@ import { ImperiumMaledictumCommonModule } from '@im-common';
     BestiaryFactionsComponent,
     BestiaryTypesComponent,
     BestiaryComponent,
-    AddItemDialogComponent,
-    AddSkillDialogComponent,
-    AddSpecialisationDialogComponent,
     DifficultiesComponent,
     DurationsComponent,
     TargetsComponent,
@@ -89,7 +85,9 @@ import { ImperiumMaledictumCommonModule } from '@im-common';
     EnvironmentalTraitsComponent,
     EventsComponent,
     EndeavoursComponent,
-    ActionsComponent
+    ActionsComponent,
+    RolesComponent,
+    OriginsComponent
   ],
   imports: [
     SharedModule,

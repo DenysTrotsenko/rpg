@@ -78,8 +78,27 @@ function getCharacteristicTooltip(item: Characteristic, data: Data): string {
   ].join('\n');
 }
 
+function getPsychicPowersTooltip(item: PsychicPower, data: Data): string {
+  const discipline: PsychicDiscipline = data[FileName.PSYCHIC_DISCIPLINES]?.find(i => i.id === item.discipline);
+  const difficulty: Difficulty = data[FileName.DIFFICULTIES]?.find(i => i.id === item.difficulty);
+  const range: Range = data[FileName.RANGES]?.find(i => i.id === item.range);
+  const targets: Target[] = data[FileName.TARGETS]?.filter(i => item.target?.includes(i.id));
+  const duration: Duration = data[FileName.DURATIONS]?.find(i => i.id === item.duration);
+
+  return [
+    `${item.name}${item.overt ? '*' : ''} (${discipline?.name})\n`,
+    `Warp Rating: ${item.cost}`,
+    `Difficulty: ${difficulty.name} (${difficulty.bonus > 0 ? '+' : ''}${difficulty.bonus})`,
+    `Range: ${range.name}`,
+    `Target: ${targets.map(i => i.name).join(', ')}`,
+    `Duration: ${duration.name}`,
+    `${item.labels?.description}`,
+  ].join('\n');
+}
+
 function getSkillTooltip(item: Skill, data: Data): string {
   const characteristic: Characteristic = data[FileName.CHARACTERISTICS]?.find(i => i.id === item.characteristic);
+
   return [
     `${item.name} (${characteristic?.labels?.abbreviation})\n`,
     `${item.labels?.description}`,
@@ -104,6 +123,7 @@ function getTalentTooltip(item: Talent, data: Data): string {
 const TOOLTIPS: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
   .set(FileName.BESTIARY_ROLES, getBestiaryRoleTooltip)
   .set(FileName.CHARACTERISTICS, getCharacteristicTooltip)
+  .set(FileName.PSYCHIC_POWERS, getPsychicPowersTooltip)
   .set(FileName.SIZES, getTooltip)
   .set(FileName.SKILLS, getSkillTooltip)
   .set(FileName.SPECIALISATIONS, getSpecialisationTooltip)

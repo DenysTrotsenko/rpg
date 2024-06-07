@@ -1,11 +1,7 @@
-import { inject, NgModule } from '@angular/core';
-import { ResolveFn, RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
-import { AuthGuard, PermissionId, Setting, SettingService } from '@std';
-import { permissionGuard } from '../../../../std/src/lib/guards';
-
-
-const authResolver: ResolveFn<Setting[]> = () => inject(SettingService).all$;
+import { AuthGuard, PermissionId, permissionGuard } from '@std';
 
 const routes: Routes = [
   {
@@ -13,16 +9,11 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
       {
-        path: 'auth',
-        loadChildren: () => import('../../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
-        data: { label: 'Setting' },
-        resolve: { options: authResolver }
-      },
-      {
         path: 'admin',
         loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule),
         canActivate: [AuthGuard, permissionGuard(PermissionId.ADMIN)]
-      }
+      },
+      { path: '**', redirectTo: 'admin', pathMatch: 'full' }
     ]
   }
 ];

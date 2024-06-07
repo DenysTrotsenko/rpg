@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { inject, Pipe, PipeTransform } from '@angular/core';
 import {
   BestiaryTrait, BestiaryTraitId,
   Characteristic, CharacteristicId,
@@ -11,7 +11,7 @@ import { DataService } from '@im-common';
   name: 'getById'
 })
 export class GetByIdPipe implements PipeTransform {
-  constructor(private data: DataService) {}
+  private readonly data = inject(DataService);
 
   transform(value: BestiaryTraitId): BestiaryTrait;
   transform(value: CharacteristicId): Characteristic;

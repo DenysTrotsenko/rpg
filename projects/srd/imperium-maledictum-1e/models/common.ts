@@ -309,8 +309,13 @@ export interface PsychicDiscipline extends HasBaseProperties<PsychicDisciplineId
 }
 
 export interface PsychicPower extends HasBaseProperties<PsychicPowerId> {
+  cost: number;
   discipline: PsychicDisciplineId;
   difficulty: DifficultyId;
+  duration: DurationId;
+  overt: boolean;
+  range: RangeId;
+  target: TargetId[];
   labels: {
     description: string;
     tooltip?: string;

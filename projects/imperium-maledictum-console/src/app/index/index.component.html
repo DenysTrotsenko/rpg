@@ -6,13 +6,7 @@
         <mat-icon>{{ expanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-nav-list *ngIf="!(logged$ | async)" dense>
-      <a mat-list-item routerLink="auth/sign-in" routerLinkActive="active" matTooltip="{{ expanded ? '' : 'Authorization' }}">
-        <mat-icon>fingerprint</mat-icon><span class="ml-10 not-expanded-hide">Authorization</span>
-      </a>
-      <mat-divider></mat-divider>
-    </mat-nav-list>
-    <mat-nav-list *ngIf="logged$ | async" dense>
+    <mat-nav-list dense>
       <a *ngFor="let i of options$ | async;" mat-list-item [routerLink]="i.link" routerLinkActive="active" matTooltip="{{ expanded ? '' : i.label }}">
         <mat-icon>{{i.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{i.label}}</span>
       </a>
