@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, delay } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService, AuthWithEmailAndPassword } from '@std';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +29,7 @@ export class SignInComponent {
     this.auth.signIn(model)
       .pipe(
         tap(res => res ? this.auth.setOption(model?.resource) : null),
+        delay(100),
         tap(res => res ? this.router.navigate(['/']) : null),
         finalize(() => this.progress$.next(false))
       )

@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, delay } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthService, AuthWithEmailAndPassword } from '@std';
 
@@ -11,18 +11,24 @@ import { AuthService, AuthWithEmailAndPassword } from '@std';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent {
+  private readonly auth = inject(AuthService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+
   readonly progress$ = new BehaviorSubject(false);
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
   });
+  readonly label = this.route.parent.snapshot.data?.label;
+  readonly options = this.route.parent.snapshot.data?.options;
 
-  constructor(private auth: AuthService, private router: Router) {}
-
-  onSignUp(model: AuthWithEmailAndPassword): void {
+  onSignUp(model: AuthWithEmailAndPassword & { resource: unknown; }): void {
     this.progress$.next(true);
     this.auth.signUp(model)
       .pipe(
+        tap(res => res ? this.auth.setOption(model?.resource) : null),
+        delay(100),
         tap(() => this.router.navigate(['/'])),
         finalize(() => this.progress$.next(false))
       )

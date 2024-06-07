@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index.component';
-import { AuthGuard, PermissionId } from '@std';
-import { permissionGuard } from '@std';
+import { AuthGuard } from '@std';
 
 const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'campaigns',
         loadChildren: () => import('../campaigns/campaigns.module').then(m => m.CampaignsModule),
-        canActivate: [AuthGuard, permissionGuard(PermissionId.CAMPAIGNS)]
+        canActivate: [AuthGuard]
       },
       {
         path: 'characters',
         loadChildren: () => import('../characters/characters.module').then(m => m.CharactersModule),
-        canActivate: [AuthGuard, permissionGuard(PermissionId.CHARACTERS)]
+        canActivate: [AuthGuard]
       },
       {
         path: 'system',
