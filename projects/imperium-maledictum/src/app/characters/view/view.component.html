@@ -2,9 +2,8 @@
   <h1>Character View</h1>
 </mat-toolbar>
 <ng-container *ngIf="character$ | async as character;">
-  <p class="ff-g fs-16">
-    {{character.name}}
-  </p>
+  <p class="ff-g fs-16">{{character.name}}</p>
+  <characteristics [character]="character"></characteristics>
 <!--  <p class="c-gray">-->
 <!--    <i>{{description}}</i>-->
 <!--  </p>-->

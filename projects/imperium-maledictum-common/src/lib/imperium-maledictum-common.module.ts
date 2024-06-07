@@ -8,6 +8,7 @@ import { InteractiveComponent } from './components/interactive/interactive.compo
 import { AddItemDialogComponent } from './components/add-item-dialog.component';
 import { AddSkillDialogComponent } from './components/add-skill-dialog.component';
 import { AddSpecialisationDialogComponent } from './components/add-specialisation-dialog.component';
+import { CharacteristicsComponent } from './components/characteristics/characteristics.component';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -16,6 +17,7 @@ const DECLARATION = [
   AddItemDialogComponent,
   AddSkillDialogComponent,
   AddSpecialisationDialogComponent,
+  CharacteristicsComponent,
   GetByIdPipe
 ];
 

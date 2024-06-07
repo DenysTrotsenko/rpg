@@ -1,6 +1,6 @@
 import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { filter, tap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { AuthService, Campaign, CampaignId, CampaignService } from '@std';
 import { DataService } from '@im-common';
 import { take } from 'rxjs';
@@ -24,10 +24,10 @@ const routes: Routes = [
         .pipe(
           filter(res => !!res),
           take(1),
-          tap(res => {
+          switchMap(res => {
             campaign.set(res as CampaignId);
-            data.init();
-          })
+            return data.data$;
+          }),
         );
     }}
   },

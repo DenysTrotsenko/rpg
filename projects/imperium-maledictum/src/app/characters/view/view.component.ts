@@ -3,8 +3,9 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { Character, DialogService, FirestoreService, getId16 } from '@std';
+import { DialogService, FirestoreService, getId16 } from '@std';
 import { CharacterService } from '../../character.service';
+import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1e/models/character';
 
 @Component({
   templateUrl: './view.component.html',
@@ -239,20 +240,6 @@ export class ViewComponent implements OnDestroy {
   //   return effects.join('\n\n');
   // }
   //
-  // // getAilmentsTooltip(): string {
-  // //   const ids: AilmentId[] = this.form.get('ailments').value ?? [];
-  // //   const ailments: Ailment[] = this.data[DataTypes.AILMENTS].filter(i => ids.includes(i.id));
-  // //   const effects: string[] = ailments.map(i => i.labels?.tooltip).filter(i => !!i);
-  // //   return effects.join('\n\n***\n\n');
-  // // }
-  // //
-  // // getDrugsTooltip(): string {
-  // //   const ids: DrugId[] = this.form.get('drugs').value ?? [];
-  // //   const drugs: Drug[] = this.data[DataTypes.DRUGS].filter(i => ids.includes(i.id));
-  // //   const effects: string[] = drugs.map(i => i.labels?.tooltip).filter(i => !!i);
-  // //   return effects.join('\n\n***\n\n');
-  // // }
-  //
   // getPerilThresholds(character: Character): string {
   //   return this.getThresholds(Character.getPerilThreshold(character, this.data[DataTypes.TALENTS]));
   // }
@@ -329,7 +316,7 @@ export class ViewComponent implements OnDestroy {
   //   // control.setValue(weapons);
   // }
   //
-  // trackById(_, item): string {
-  //   return item.id;
-  // }
+  trackById(_, item): string {
+    return item.id;
+  }
 }

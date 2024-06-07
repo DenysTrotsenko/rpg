@@ -142,7 +142,7 @@ export class DataService {
     filter(storage => !!storage),
     tap(() => this.cache.clear()),
   );
-  private readonly data$: Observable<Data> = this.storage$.pipe(
+  readonly data$: Observable<Data> = this.storage$.pipe(
     switchMap(storage => forkJoin({
       [FileName.ACTIONS]: this.download<Action>(storage, FileName.ACTIONS),
       [FileName.AVAILABILITIES]: this.download<Availability>(storage, FileName.AVAILABILITIES),
@@ -226,10 +226,6 @@ export class DataService {
 
   get<T>(id: string): T {
     return this.cache.get(id) as T;
-  }
-
-  init(): void {
-    this.data$.subscribe().unsubscribe();
   }
 
   private download<T>(storage: string, file: FileName): Observable<T[]> {

@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, take, combineLatest } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import {
-  CampaignService, Character,
+  CampaignService,
   CharacterId,
   DialogService,
   getId16,
@@ -28,6 +28,10 @@ import {
   PsychicPowerId,
   RoleId, Skill, Specialisation, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
+import {
+  CharacteristicValue,
+  ImperiumMaledictumCharacter as Character
+} from '@imperium-maledictum-1e/models/character';
 import {
   AddSkillDialogComponent
 } from '../../../../../imperium-maledictum-common/src/lib/components/add-skill-dialog.component';
@@ -90,7 +94,7 @@ export class CreateComponent {
       const group = this.step1.get('characteristics') as UntypedFormArray;
       characteristics.forEach(i => group.push(new UntypedFormGroup({
         id: new UntypedFormControl(i.id),
-        value: new UntypedFormControl(20, [Validators.required, Validators.min(20), Validators.max(50)]),
+        starting: new UntypedFormControl(20, [Validators.required, Validators.min(20), Validators.max(50)]),
         advances: new UntypedFormControl(0)
       })));
     }),

@@ -2,7 +2,7 @@ import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService, SettingService } from '@std';
 import { DataService } from '@im-common';
-import { filter, tap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { take } from 'rxjs';
 
 const routes: Routes = [
@@ -24,9 +24,9 @@ const routes: Routes = [
         .pipe(
           filter(res => !!res),
           take(1),
-          tap(res => {
+          switchMap(res => {
             setting.set(res as string);
-            data.init();
+            return data.data$;
           })
         );
     }}

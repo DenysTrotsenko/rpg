@@ -13,7 +13,7 @@
           appearance="outline"
           style="width:80px;">
           <mat-label>{{characteristic.labels?.abbreviation}}</mat-label>
-          <input matInput type="number" formControlName="value" [min]="20" [max]="50" [step]="1">
+          <input matInput type="number" formControlName="starting" [min]="20" [max]="50" [step]="1">
           <mat-error *ngIf="step1.get('characteristics.' + i + '.value').hasError('required')">Required</mat-error>
           <mat-error *ngIf="step1.get('characteristics.' + i + '.value').hasError('min')">Min is 20</mat-error>
           <mat-error *ngIf="step1.get('characteristics.' + i + '.value').hasError('max')">Max is 50</mat-error>
