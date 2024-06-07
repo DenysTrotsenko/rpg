@@ -29,7 +29,7 @@ export class CharacteristicsComponent {
         bonus: Math.floor((i.starting + i.advances) / 10)
       };
     });
-    console.log(hydrated);
+
     this.characteristics = hydrated?.sort((a, b) => a?.order - b?.order);
   }
 
