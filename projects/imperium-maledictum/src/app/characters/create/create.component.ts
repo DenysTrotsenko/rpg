@@ -8,7 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, take } from 'rxjs';
+import { Observable, take, combineLatest } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import {
   CampaignService, Character,
@@ -23,11 +23,11 @@ import {
   BestiaryTrait,
   Characteristic,
   Faction,
-  FactionId,
+  FactionId, Item, ItemTrait, ItemTraitId,
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId,
-  RoleId, Skill, Specialisation, Talent
+  RoleId, Skill, Specialisation, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
 import {
   AddSkillDialogComponent
@@ -58,12 +58,12 @@ export class CreateComponent {
     role: new FormControl<RoleId>(null, [Validators.required]),
   });
   readonly step5: FormGroup = new FormGroup({
-    equipment: new UntypedFormArray([]),
+    items: new UntypedFormArray([]),
   });
   readonly formTemp: FormGroup = new FormGroup({
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
-    talents: new UntypedFormArray([]),
+    talents: new FormControl<TalentId[]>([]),
     powers: new FormControl<PsychicPowerId[]>([]),
     items: new UntypedFormArray([]),
   });
@@ -119,6 +119,18 @@ export class CreateComponent {
     })))
   );
 
+  readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
+    startWith([]),
+    map(items => items.map(i => {
+      const item = this.data.get<Item>(i.id);
+      const qualities = i.qualities?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+      const flaws = i.flaws?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+      const traits = item?.data?.traits?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+
+      return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
+    }))
+  );
+
   constructor(
     private readonly character: CharacterService,
     private readonly campaign: CampaignService,
@@ -132,30 +144,32 @@ export class CreateComponent {
     const isValid = this.step1.valid && this.form10.valid;
 
     if (!isValid) { return; }
-    console.log(this.step1.value);
-    console.log(this.step2.value);
-    console.log(this.step3.value);
-    console.log(this.form10.value);
-    // combineLatest([
-    //   this.character$,
-    //   this.campaign.selected$
-    // ])
-    //   .pipe(
-    //     take(1),
-    //     switchMap(([character, campaign]) => {
-    //       const id = character?.id || getId16();
-    //
-    //       return this.character.update(id, {
-    //         id,
-    //         author: character?.author ?? this.route.snapshot.data?.user?.uid,
-    //         campaign: character?.campaign ?? campaign.id,
-    //         ...this.form1.value,
-    //         ...this.form2.value
-    //       });
-    //     }),
-    //     tap(() => this.router.navigate(['characters/list']))
-    //   )
-    //   .subscribe();
+
+    combineLatest([
+      this.character$,
+      this.campaign.selected$
+    ])
+      .pipe(
+        take(1),
+        switchMap(([character, campaign]) => {
+          const id = character?.id || getId16();
+
+          return this.character.update(id, {
+            id,
+            author: character?.author ?? this.route.snapshot.data?.user?.uid,
+            campaign: character?.campaign ?? campaign.id,
+            ...this.step1.value,
+            ...this.step2.value,
+            ...this.step3.value,
+            ...this.step4.value,
+            ...this.step5.value,
+            ...this.form10.value,
+            ...this.formTemp.value,
+          });
+        }),
+        tap(() => this.router.navigate(['characters/list']))
+      )
+      .subscribe();
   }
 
   onAddSkillClick(): void {
@@ -198,14 +212,15 @@ export class CreateComponent {
   }
 
   onAddItemClick(): void {
-    const group = this.formTemp.get('items') as UntypedFormArray;
+    const group = this.step5.get('items') as UntypedFormArray;
 
     this.dialog.open(AddItemDialogComponent).afterClosed()
       .pipe(
         filter(res => !!res),
         tap(res => group.push(new UntypedFormGroup({
           id: new FormControl(res.id),
-          traits: new FormControl<BestiaryTrait[]>(res.traits)
+          qualities: new FormControl<ItemTraitId[]>(res.qualities),
+          flaws: new FormControl<ItemTraitId[]>(res.flaws),
         })))
       )
       .subscribe();

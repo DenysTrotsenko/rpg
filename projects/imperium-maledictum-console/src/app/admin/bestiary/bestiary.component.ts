@@ -13,7 +13,7 @@ import {
   BestiaryType,
   BestiaryTypeId,
   Characteristic,
-  Item,
+  Item, ItemTrait,
   ItemTraitId,
   Npc, PsychicPower,
   Size,
@@ -52,7 +52,7 @@ export class BestiaryComponent implements OnInit {
     specialisations: new UntypedFormArray([]),
     traits: new FormControl<BestiaryTraitId[]>(null),
     powers: new FormControl<PsychicPower[]>(null),
-    items: new UntypedFormArray([], [Validators.required]),
+    items: new UntypedFormArray([]),
     labels: new UntypedFormGroup({
       description: new UntypedFormControl(''),
     }),
@@ -112,12 +112,16 @@ export class BestiaryComponent implements OnInit {
     })))
   );
 
-  readonly formItems$: Observable<(Item & { traits: ItemTraitId[] })[]> = this.form.get('items').valueChanges.pipe(
+  readonly formItems$: Observable<string[]> = this.form.get('items').valueChanges.pipe(
     startWith([]),
-    map(items => items.map(i => ({
-      ...this.data.get<Item>(i.id),
-      traits: i.traits
-    })))
+    map(items => items.map(i => {
+      const item = this.data.get<Item>(i.id);
+      const qualities = i.qualities?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+      const flaws = i.flaws?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+      const traits = item?.data?.traits?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+
+      return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
+    }))
   );
 
   constructor(
@@ -177,7 +181,8 @@ export class BestiaryComponent implements OnInit {
         filter(res => !!res),
         tap(res => group.push(new UntypedFormGroup({
           id: new FormControl(res.id),
-          traits: new FormControl<BestiaryTrait[]>(res.traits)
+          qualities: new FormControl<ItemTraitId[]>(res.qualities),
+          flaws: new FormControl<ItemTraitId[]>(res.flaws),
         })))
       )
       .subscribe();

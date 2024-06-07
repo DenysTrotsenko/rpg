@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Item, ItemId, ItemTrait } from '@imperium-maledictum-1e/models/common';
+import { Item, ItemId, ItemTrait, ItemTraitId } from '@imperium-maledictum-1e/models/common';
 import { Observable } from 'rxjs';
 import { DataService } from '@im-common';
 
@@ -18,18 +18,19 @@ import { DataService } from '@im-common';
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Qualities & Flaws</mat-label>
-        <mat-select formControlName="traits" multiple>
-          <mat-optgroup label="Qualities">
-            <mat-option *ngFor="let i of qualities$ | async;" [value]="i.id">
-              {{i.name}}
-            </mat-option>
-          </mat-optgroup>
-          <mat-optgroup label="Flaws">
-            <mat-option *ngFor="let i of flaws$ | async;" [value]="i.id">
-              {{i.name}}
-            </mat-option>
-          </mat-optgroup>
+        <mat-label>Qualities</mat-label>
+        <mat-select formControlName="qualities" multiple>
+          <mat-option *ngFor="let i of qualities$ | async;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="align-items:stretch;">
+        <mat-label>Flaws</mat-label>
+        <mat-select formControlName="flaws" multiple>
+          <mat-option *ngFor="let i of flaws$ | async;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -48,6 +49,8 @@ export class AddItemDialogComponent {
 
   readonly form = new FormGroup({
     id: new FormControl<ItemId>(null, [Validators.required]),
-    traits: new FormControl([])
+    qualities: new FormControl<ItemTraitId[]>([]),
+    flaws: new FormControl<ItemTraitId[]>([]),
+    traits: new FormControl<ItemTraitId[]>([])
   });
 }

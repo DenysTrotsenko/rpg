@@ -2,62 +2,6 @@
   <h1>Character Creation</h1>
 </mat-toolbar>
 <mat-stepper orientation="vertical" [linear]="true" #stepper>
-  <!-- STEP 6: EQUIPMENT -->
-  <mat-step [stepControl]="formTemp">
-    <form [formGroup]="formTemp" class="d-f fd-c">
-      <ng-template matStepLabel>Skills, Specializations & Talents</ng-template>
-      <div class="d-f g-5 fw-w">
-        <ng-container formArrayName="skills">
-          <mat-form-field
-            *ngFor="let skill of formSkills$ | async; trackBy: trackById; let i = index"
-            [formGroupName]="i"
-            appearance="outline">
-            <mat-label>{{skill.name}} ({{(skill.characteristic | getById)?.labels?.abbreviation}})</mat-label>
-            <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
-            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('required')">Required</mat-error>
-            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('min')">Min is 0</mat-error>
-            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('max')">Max is 10</mat-error>
-          </mat-form-field>
-        </ng-container>
-        <ng-container formArrayName="specialisations">
-          <mat-form-field
-            *ngFor="let spec of formSpecialisations$ | async; trackBy: trackById; let i = index"
-            [formGroupName]="i"
-            appearance="outline">
-            <mat-label>
-              {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="spec.details">[{{spec.details}}]</span>
-            </mat-label>
-            <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
-            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('required')">Required</mat-error>
-            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('min')">Min is 0</mat-error>
-            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('max')">Max is 10</mat-error>
-          </mat-form-field>
-        </ng-container>
-      </div>
-      <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Talents</mat-label>
-        <mat-select formControlName="talents" multiple>
-          <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Psychic Powers</mat-label>
-        <mat-select formControlName="powers" multiple>
-          <mat-option *ngFor="let i of powers$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="d-f g-5">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext [disabled]="!formTemp.valid">Next</button>
-        <button mat-stroked-button color="primary" (click)="onAddSkillClick()">Add Skill</button>
-        <button mat-stroked-button color="primary" (click)="onAddSpecialisationClick()">Add Specialisation</button>
-      </div>
-    </form>
-  </mat-step>
   <!-- STEP 1: CHARACTERISTICS -->
   <mat-step [stepControl]="step1">
     <form [formGroup]="step1" class="d-f fd-c">
@@ -138,10 +82,69 @@
   <mat-step [stepControl]="step5">
     <form [formGroup]="step5" class="d-f fd-c">
       <ng-template matStepLabel>Equipment</ng-template>
+      <div class="d-f fd-c g-5 mb-5">
+        <div *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index">{{item}}</div>
+      </div>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="!step5.valid">Next</button>
         <button mat-stroked-button color="primary" (click)="onAddItemClick()">Add Item</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- STEP 6: SKILLS, SPECS & TALENTS -->
+  <mat-step [stepControl]="formTemp">
+    <form [formGroup]="formTemp" class="d-f fd-c">
+      <ng-template matStepLabel>Skills, Specializations & Talents</ng-template>
+      <div class="d-f g-5 fw-w">
+        <ng-container formArrayName="skills">
+          <mat-form-field
+            *ngFor="let skill of formSkills$ | async; trackBy: trackById; let i = index"
+            [formGroupName]="i"
+            appearance="outline">
+            <mat-label>{{skill.name}} ({{(skill.characteristic | getById)?.labels?.abbreviation}})</mat-label>
+            <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('required')">Required</mat-error>
+            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('min')">Min is 0</mat-error>
+            <mat-error *ngIf="formTemp.get('skills.' + i + '.value').hasError('max')">Max is 10</mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-container formArrayName="specialisations">
+          <mat-form-field
+            *ngFor="let spec of formSpecialisations$ | async; trackBy: trackById; let i = index"
+            [formGroupName]="i"
+            appearance="outline">
+            <mat-label>
+              {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="spec.details">[{{spec.details}}]</span>
+            </mat-label>
+            <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('required')">Required</mat-error>
+            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('min')">Min is 0</mat-error>
+            <mat-error *ngIf="formTemp.get('specialisations.' + i + '.value').hasError('max')">Max is 10</mat-error>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <mat-form-field appearance="outline" style="align-items:stretch;">
+        <mat-label>Talents</mat-label>
+        <mat-select formControlName="talents" multiple>
+          <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="align-items:stretch;">
+        <mat-label>Psychic Powers</mat-label>
+        <mat-select formControlName="powers" multiple>
+          <mat-option *ngFor="let i of powers$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="d-f g-5">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext [disabled]="!formTemp.valid">Next</button>
+        <button mat-stroked-button color="primary" (click)="onAddSkillClick()">Add Skill</button>
+        <button mat-stroked-button color="primary" (click)="onAddSpecialisationClick()">Add Specialisation</button>
       </div>
     </form>
   </mat-step>
