@@ -20,7 +20,6 @@ import {
 import { CharacterService } from '../../character.service';
 import { DataService } from '@im-common';
 import {
-  BestiaryTrait,
   Characteristic,
   Faction,
   FactionId, Item, ItemTrait, ItemTraitId,
