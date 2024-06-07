@@ -4,15 +4,21 @@ import {
   ImperiumMaledictumCharacter, SkillValue,
   SpecialisationValue
 } from '@imperium-maledictum-1e/models/character';
-import { Characteristic, Skill, Specialisation } from '@imperium-maledictum-1e/models/common';
+import { Characteristic, Skill, SkillId, Specialisation } from '@imperium-maledictum-1e/models/common';
 
-type SkillView = Skill & SkillValue & {
+interface SkillView {
+  id: SkillId;
+  name: string;
   value: number;
-};
+  tooltip: string;
+}
 
-type SpecializationView = Specialisation & SpecialisationValue & {
+interface SpecializationView {
+  skill: string;
+  name: string;
   value: number;
-};
+  tooltip: string;
+}
 
 @Component({
   selector: 'skills-specializations',
@@ -33,23 +39,25 @@ export class SkillsSpecializationsComponent {
       const characteristic = characteristics.find(c => c.id === skill.characteristic);
 
       return {
-        ...i,
-        ...skill,
+        id: skill.id,
+        name: skill.name,
+        tooltip: skill.labels?.tooltip,
         value: characteristic.starting + characteristic.advances + i.starting + i.advances
-      };
+      } as SkillView;
     });
 
     this.specialisations = specialisations.map(i => {
       const specialisation = this.data.get<Specialisation>(i.id);
       const skill = this.data.get<Skill>(specialisation.skill);
       const characteristic = this.data.get<Characteristic>(skill.characteristic);
-      const fromSkill = this.skills.find(s => s.id === specialisation.skill);
-      const fromCharacteristic = characteristics.find(c => c.id === characteristic.id);
-      const value = !!fromSkill?.value ? fromSkill.value : fromCharacteristic.starting + fromCharacteristic.advances;
+      const skillView = this.skills.find(s => s.id === specialisation.skill);
+      const characteristicValue = characteristics.find(c => c.id === characteristic.id);
+      const value = !!skillView?.value ? skillView.value : characteristicValue.starting + characteristicValue.advances;
 
       return {
-        ...i,
-        ...specialisation,
+        skill: skill.name,
+        name: specialisation.name,
+        tooltip: specialisation.labels?.tooltip,
         value: value + i.starting + i.advances
       };
     });
