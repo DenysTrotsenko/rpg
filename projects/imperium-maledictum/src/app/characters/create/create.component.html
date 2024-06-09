@@ -163,6 +163,11 @@
         <input matInput formControlName="name">
         <mat-error *ngIf="form10.get('name').hasError('required')">Name is required</mat-error>
       </mat-form-field>
+      <image-input
+        formControlName="image"
+        class="mb-20"
+        [path]="imagePath$ | async">
+      </image-input>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="!form10.valid">Next</button>

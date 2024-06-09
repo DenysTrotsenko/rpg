@@ -30,7 +30,8 @@ export class EventEditDialogComponent implements OnInit {
   readonly data: EventEditDialogData = inject(MAT_DIALOG_DATA);
   readonly form: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
-    image: new FormControl<string>(null, [Validators.required]),
+    short: new FormControl<string>(null),
+    image: new FormControl<string>(null),
     description: new FormControl<string>(null),
     members: new FormControl<UserId[]>([])
   });

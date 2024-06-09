@@ -13,7 +13,7 @@ import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, t
 import {
   CampaignService,
   CharacterId,
-  DialogService,
+  DialogService, FS_COLLECTION,
   getId16,
   setFormControlsEditable
 } from '@std';
@@ -72,6 +72,7 @@ export class CreateComponent {
   });
   readonly form10: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
+    image: new FormControl<string>(null),
   });
 
   readonly character$: Observable<Character> = this.route.paramMap
@@ -141,6 +142,9 @@ export class CreateComponent {
 
       return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
     }))
+  );
+  readonly imagePath$ = this.campaign.selected$.pipe(
+    map(campaign => `${FS_COLLECTION.CAMPAIGNS}/${campaign.id}/images`)
   );
 
   constructor(

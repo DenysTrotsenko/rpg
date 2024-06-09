@@ -76,6 +76,7 @@ export interface Campaign {
 export interface CampaignEvent extends HasId<string> {
   image: string | null;
   name: string;
+  short?: string;
   description: string;
   members: UserId[];
   createdAt: number;

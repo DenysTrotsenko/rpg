@@ -33,7 +33,7 @@
         <mat-expansion-panel *ngFor="let i of campaign.events;" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title class="ff-g">
-              {{i.name}}
+              {{i.name}}<span class="c-gray" *ngIf="i.short">, {{i.short}}</span>
               <span class="f-1"></span>
               <button mat-icon-button (click)="onEditEventClick(i, campaign)">
                 <mat-icon>edit</mat-icon>
