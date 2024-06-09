@@ -96,6 +96,7 @@ export interface Character {
   name: string;
   author: UserId;
   campaign: CampaignId;
+  image?: string | null;
 }
 
 export interface User extends HasId<UserId> {

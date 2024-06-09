@@ -11,6 +11,7 @@ import { AddSpecialisationDialogComponent } from './components/add-specialisatio
 import { CharacteristicsComponent } from './components/characteristics/characteristics.component';
 import { TalentsComponent } from './components/talents/talents.component';
 import { SkillsSpecializationsComponent } from './components/skills-specializations/skills-specializations.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -22,6 +23,7 @@ const DECLARATION = [
   CharacteristicsComponent,
   TalentsComponent,
   SkillsSpecializationsComponent,
+  CharacterDetailsComponent,
   GetByIdPipe
 ];
 

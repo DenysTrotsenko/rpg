@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, share } from 'rxjs';
 import { catchError, distinctUntilChanged, map, tap } from 'rxjs/operators';
-import { AuthService, Character, CharacterId, FirestoreService, FS_COLLECTION } from '@std';
+import { AuthService, CharacterId, FirestoreService, FS_COLLECTION } from '@std';
+import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1e/models/character';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class CharacterService {
   constructor(
     private readonly auth: AuthService,
     private readonly firestore: FirestoreService
-  ) { }
+  ) {}
 
   get(id: CharacterId): Observable<Character | null>  {
     return this.allObservable.pipe(
@@ -35,7 +36,7 @@ export class CharacterService {
     return this.firestore.update(`characters/${character.id}`, character);
   }
 
-  update(id, data): Observable<void> {
+  update(id: CharacterId, data: Partial<Character>): Observable<void> {
     return this.firestore.update(`characters/${id}`, data);
   }
 

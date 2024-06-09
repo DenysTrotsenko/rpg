@@ -1,13 +1,17 @@
 import { Character } from '@std';
 import {
-  CharacteristicId,
-  PsychicPowerId,
+  CharacteristicId, FactionId, OriginId,
+  PsychicPowerId, RoleId,
   SkillId,
   SpecialisationId,
   TalentId
 } from '@imperium-maledictum-1e/models/common';
 
 export interface ImperiumMaledictumCharacter extends Character {
+  origin: OriginId;
+  faction: FactionId;
+  role: RoleId;
+
   characteristics: CharacteristicValue[];
   skills: SkillValue[];
   specialisations: SpecialisationValue[];

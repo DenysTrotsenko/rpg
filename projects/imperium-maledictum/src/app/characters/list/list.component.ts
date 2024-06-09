@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { AuthService, CampaignService, Character, DialogService } from '@std';
+import { AuthService, CampaignService, DialogService } from '@std';
 import { CharacterService } from '../../character.service';
+import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
 
 
-interface VM extends Character {
+interface VM extends ImperiumMaledictumCharacter {
   canDelete: boolean;
 }
 
@@ -43,7 +44,7 @@ export class ListComponent {
     private readonly dialog: DialogService
   ) {}
 
-  onDeleteClick(i: Character): void {
+  onDeleteClick(i: VM): void {
     this.dialog
       .confirm({
         data: {
