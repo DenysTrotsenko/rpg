@@ -14,14 +14,12 @@ export class CharacterDetailsComponent {
 
   @Input() set character(character: ImperiumMaledictumCharacter) {
     this.image = character?.image;
-    this.name = character?.name;
     this.origin = this.data.get<Origin>(character?.origin);
     this.faction = this.data.get<Faction>(character?.faction);
     this.role = this.data.get<Role>(character?.role);
   }
 
   image: string = null;
-  name: string = null;
   origin: Origin = null;
   faction: Faction = null;
   role: Role = null;
