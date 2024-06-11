@@ -13,14 +13,14 @@ function getCharacteristicBonus(value: CharacteristicValue): number {
 }
 
 @Component({
-  selector: 'characteristics',
-  templateUrl: './characteristics.component.html',
-  styleUrls: ['./characteristics.component.scss'],
+  selector: 'character-characteristics',
+  templateUrl: './character-characteristics.component.html',
+  styleUrls: ['./character-characteristics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CharacteristicsComponent {
+export class CharacterCharacteristicsComponent {
   readonly data = inject(DataService);
-
+  @Input() view = 'short';
   @Input() set character(character: ImperiumMaledictumCharacter) {
     const characteristics = character?.characteristics;
     const hydrated: CharacteristicView[] = characteristics.map(i => {

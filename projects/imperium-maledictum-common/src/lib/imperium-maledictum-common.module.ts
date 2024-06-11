@@ -8,10 +8,11 @@ import { InteractiveComponent } from './components/interactive/interactive.compo
 import { AddItemDialogComponent } from './components/add-item-dialog.component';
 import { AddSkillDialogComponent } from './components/add-skill-dialog.component';
 import { AddSpecialisationDialogComponent } from './components/add-specialisation-dialog.component';
-import { CharacteristicsComponent } from './components/characteristics/characteristics.component';
-import { TalentsComponent } from './components/talents/talents.component';
-import { SkillsSpecializationsComponent } from './components/skills-specializations/skills-specializations.component';
+import { CharacterCharacteristicsComponent } from './components/character-characteristics/character-characteristics.component';
+import { CharacterTalentsComponent } from './components/character-talents/character-talents.component';
+import { CharacterSkillsSpecializationsComponent } from './components/character-skills-specializations/character-skills-specializations.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { CharacterPowersComponent } from './components/character-powers/character-powers.component';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -20,10 +21,11 @@ const DECLARATION = [
   AddItemDialogComponent,
   AddSkillDialogComponent,
   AddSpecialisationDialogComponent,
-  CharacteristicsComponent,
-  TalentsComponent,
-  SkillsSpecializationsComponent,
+  CharacterCharacteristicsComponent,
+  CharacterTalentsComponent,
+  CharacterSkillsSpecializationsComponent,
   CharacterDetailsComponent,
+  CharacterPowersComponent,
   GetByIdPipe
 ];
 

@@ -5,20 +5,18 @@ import {
 } from '@imperium-maledictum-1e/models/character';
 import { Characteristic, Talent } from '@imperium-maledictum-1e/models/common';
 
-type TalentView = Talent;
-
 @Component({
-  selector: 'talents',
-  templateUrl: './talents.component.html',
-  styleUrls: ['./talents.component.scss'],
+  selector: 'character-talents',
+  templateUrl: './character-talents.component.html',
+  styleUrls: ['./character-talents.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TalentsComponent {
+export class CharacterTalentsComponent {
   readonly data = inject(DataService);
-
+  @Input() view = 'short';
   @Input() set character(character: ImperiumMaledictumCharacter) {
     const talents = character?.talents;
-    const hydrated: TalentView[] = talents.map(i => {
+    const hydrated: Talent[] = talents.map(i => {
       const talent = this.data.get<Talent>(i);
 
       return {
@@ -29,7 +27,7 @@ export class TalentsComponent {
     this.talents = hydrated;
   }
 
-  talents: TalentView[] = [];
+  talents: Talent[] = [];
 
   trackById(_, item: Characteristic): string {
     return item.id;

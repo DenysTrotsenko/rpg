@@ -21,14 +21,14 @@ interface SpecializationView {
 }
 
 @Component({
-  selector: 'skills-specializations',
-  templateUrl: './skills-specializations.component.html',
-  styleUrls: ['./skills-specializations.component.scss'],
+  selector: 'character-skills-specializations',
+  templateUrl: './character-skills-specializations.component.html',
+  styleUrls: ['./character-skills-specializations.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkillsSpecializationsComponent {
+export class CharacterSkillsSpecializationsComponent {
   readonly data = inject(DataService);
-
+  @Input() view = 'short';
   @Input() set character(character: ImperiumMaledictumCharacter) {
     const characteristics = character?.characteristics;
     const skills = character?.skills;

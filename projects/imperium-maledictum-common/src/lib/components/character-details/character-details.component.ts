@@ -11,7 +11,7 @@ import { Faction, Origin, Role } from '@imperium-maledictum-1e/models/common';
 })
 export class CharacterDetailsComponent {
   readonly data = inject(DataService);
-
+  @Input() view = 'short';
   @Input() set character(character: ImperiumMaledictumCharacter) {
     this.image = character?.image;
     this.origin = this.data.get<Origin>(character?.origin);

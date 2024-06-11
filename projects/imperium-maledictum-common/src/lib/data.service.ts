@@ -91,7 +91,7 @@ function getPsychicPowersTooltip(item: PsychicPower, data: Data): string {
     `Difficulty: ${difficulty.name} (${difficulty.bonus > 0 ? '+' : ''}${difficulty.bonus})`,
     `Range: ${range.name}`,
     `Target: ${targets.map(i => i.name).join(', ')}`,
-    `Duration: ${duration.name}`,
+    `Duration: ${duration.name}\n`,
     `${item.labels?.description}`,
   ].join('\n');
 }
