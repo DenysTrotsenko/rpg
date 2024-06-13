@@ -269,7 +269,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/imperium-maledictum-common/ng-package.json"
+            "project": "projects/imperium-maledictum-common/ng-package.json",
+            "styles": [
+              "projects/std/src/index.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/std/src/styles/"
+              ]
+            }
           },
           "configurations": {
             "production": {

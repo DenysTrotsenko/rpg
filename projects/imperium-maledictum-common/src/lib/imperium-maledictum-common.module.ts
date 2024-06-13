@@ -13,6 +13,7 @@ import { CharacterTalentsComponent } from './components/character-talents/charac
 import { CharacterSkillsSpecializationsComponent } from './components/character-skills-specializations/character-skills-specializations.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterPowersComponent } from './components/character-powers/character-powers.component';
+import { CharacterEquipmentComponent } from './components/character-equipment/character-equipment.component';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -26,6 +27,7 @@ const DECLARATION = [
   CharacterSkillsSpecializationsComponent,
   CharacterDetailsComponent,
   CharacterPowersComponent,
+  CharacterEquipmentComponent,
   GetByIdPipe
 ];
 

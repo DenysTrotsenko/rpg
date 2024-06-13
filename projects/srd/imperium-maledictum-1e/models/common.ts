@@ -168,8 +168,6 @@ export interface Item extends HasBaseProperties<ItemId> {
     magazineCostMultiplier?: number;
     locations?: string[];
     armour?: number;
-    flaws?: ItemTraitId[];
-    qualities?: ItemTraitId[];
     traits?: ItemTraitId[];
   };
   labels: {

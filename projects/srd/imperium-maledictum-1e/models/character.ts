@@ -1,7 +1,12 @@
 import { Character } from '@std';
 import {
-  CharacteristicId, FactionId, OriginId,
-  PsychicPowerId, RoleId,
+  CharacteristicId,
+  FactionId,
+  ItemId,
+  ItemTraitId,
+  OriginId,
+  PsychicPowerId,
+  RoleId,
   SkillId,
   SpecialisationId,
   TalentId
@@ -17,6 +22,7 @@ export interface ImperiumMaledictumCharacter extends Character {
   specialisations: SpecialisationValue[];
   talents: TalentId[];
   powers: PsychicPowerId[];
+  items: ItemValue[];
   // patron: PatronId;
 }
 
@@ -26,10 +32,10 @@ export interface CharacteristicValue {
   advances: number;
 }
 
-// export interface TalentValue {
-//   id: TalentId;
-//   value: unknown;
-// }
+export interface TalentValue {
+  id: TalentId;
+  value: unknown;
+}
 
 export interface SkillValue {
   id: SkillId;
@@ -41,4 +47,10 @@ export interface SpecialisationValue {
   id: SpecialisationId;
   starting: number;
   advances: number;
+}
+
+export interface ItemValue {
+  id: ItemId;
+  qualities: ItemTraitId[];
+  flaws: ItemTraitId[];
 }

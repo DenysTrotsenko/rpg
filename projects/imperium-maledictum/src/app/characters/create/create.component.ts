@@ -67,8 +67,7 @@ export class CreateComponent {
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
     talents: new FormControl<TalentId[]>([]),
-    powers: new FormControl<PsychicPowerId[]>([]),
-    items: new UntypedFormArray([]),
+    powers: new FormControl<PsychicPowerId[]>([])
   });
   readonly form10: FormGroup = new FormGroup({
     name: new FormControl<string>(null, [Validators.required]),
