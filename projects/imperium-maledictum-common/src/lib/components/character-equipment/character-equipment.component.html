@@ -1,8 +1,18 @@
-<ng-container *ngIf="items.length > 0">
-  <b class="c-gray">Equipment: </b>
-  <span *ngFor="let i of items;" class="comma-separated ws-pl c-pointer" [matTooltip]="i.tooltip">
-    <interactive *ngFor="let q of i.qualities;" class="space-separated quality" [id]="q.id"></interactive>
-    <interactive *ngFor="let f of i.flaws;" class="space-separated flaw" [id]="f.id"></interactive>
+<ng-container *ngIf="items?.length">
+  <b class="c-gray mb-5">Equipment: </b>
+  <p *ngFor="let i of items;" class="comma-separated ws-pl c-pointer mb-0" [matTooltip]="i.tooltip">
+    <interactive *ngFor="let q of i.qualities;" class="space-separated c-green" [id]="q.id"></interactive>
+    <interactive *ngFor="let f of i.flaws;" class="space-separated c-red" [id]="f.id"></interactive>
     <span>{{i.name}}</span>
-  </span>
+    <span class="c-gray">
+      (<span *ngIf="i.specialisation" class="comma-separated">{{i.specialisation}}</span>
+      <span *ngIf="i.damage" class="comma-separated"><b>Dam </b>{{i.damage}}</span>
+      <span *ngIf="i.range" class="comma-separated"><b>Rng </b>{{i.range}}</span>
+      <span *ngIf="i.magazine" class="comma-separated"><b>Mag </b>{{i.magazine}}</span>
+      <span *ngIf="i.encumbrance" class="comma-separated"><b>Enc </b>{{i.encumbrance}}</span>
+      <span *ngIf="i.cost" class="comma-separated"><b>Cost </b>{{i.cost}}</span>
+      <span *ngIf="i.availability" class="comma-separated"><b>Avl </b>{{i.availability}}</span>
+      <span *ngIf="i.traits?.length" class="comma-separated"><b>Traits: </b><interactive *ngFor="let t of i.traits;" class="comma-separated" [id]="t.id"></interactive></span>)
+    </span>
+  </p>
 </ng-container>

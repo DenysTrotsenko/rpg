@@ -156,7 +156,7 @@ export interface Faction {
 
 export interface Item extends HasBaseProperties<ItemId> {
   type: ItemTypeId;
-  availability: string;
+  availability: AvailabilityId;
   encumbrance: number;
   cost: number;
   data: {
