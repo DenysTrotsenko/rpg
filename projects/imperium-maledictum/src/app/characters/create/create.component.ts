@@ -188,8 +188,8 @@ export class CreateComponent {
   }
 
   onAddSkillClick(): void {
-    const group = this.formTemp.get('skills') as UntypedFormArray;
-    const ids = group.value?.map(i => i.id);
+    const array = this.formTemp.get('skills') as UntypedFormArray;
+    const ids = array.value?.map(i => i.id);
 
     this.skills$
       .pipe(
@@ -198,7 +198,7 @@ export class CreateComponent {
           data: skills.filter(i => !ids.includes(i.id))
         }).afterClosed()),
         filter(res => !!res),
-        tap(id => group.push(new UntypedFormGroup({
+        tap(id => array.push(new UntypedFormGroup({
           id: new FormControl<SkillId>(id),
           starting: new FormControl<number>(5),
           advances: new FormControl<number>(0)
@@ -208,8 +208,8 @@ export class CreateComponent {
   }
 
   onAddSpecialisationClick(): void {
-    const group = this.formTemp.get('specialisations') as UntypedFormArray;
-    const ids = group.value?.map(i => i.id);
+    const array = this.formTemp.get('specialisations') as UntypedFormArray;
+    const ids = array.value?.map(i => i.id);
 
     this.specialisations$
       .pipe(
@@ -218,7 +218,7 @@ export class CreateComponent {
           data: specialisations.filter(i => !(ids.includes(i.id) && !i.multiple))
         }).afterClosed()),
         filter(res => !!res),
-        tap(res => group.push(new UntypedFormGroup({
+        tap(res => array.push(new UntypedFormGroup({
           id: new UntypedFormControl(res.id),
           starting: new FormControl<number>(5),
           advances: new FormControl<number>(0),
@@ -226,6 +226,14 @@ export class CreateComponent {
         })))
       )
       .subscribe();
+  }
+
+  onRemoveSkillClick(index: number): void {
+    this.removeFromFormArray(this.formTemp.get('skills') as UntypedFormArray, index);
+  }
+
+  onRemoveSpecialisationClick(index: number): void {
+    this.removeFromFormArray(this.formTemp.get('specialisations') as UntypedFormArray, index);
   }
 
   onAddItemClick(): void {
@@ -245,5 +253,9 @@ export class CreateComponent {
 
   trackById(_: number, item): unknown {
     return item.id;
+  }
+
+  private removeFromFormArray(arr: UntypedFormArray, index: number): void {
+    arr.removeAt(index);
   }
 }

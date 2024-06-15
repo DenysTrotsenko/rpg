@@ -104,6 +104,7 @@
             appearance="outline">
             <mat-label>{{skill.name}} ({{(skill.characteristic | getById)?.labels?.abbreviation}})</mat-label>
             <input matInput type="number" formControlName="starting" [min]="0" [max]="20" [step]="5">
+            <mat-icon matSuffix (click)="onRemoveSkillClick(i)">close</mat-icon>
             <mat-error *ngIf="formTemp.get('skills.' + i + '.starting')?.hasError('required')">Required</mat-error>
             <mat-error *ngIf="formTemp.get('skills.' + i + '.starting')?.hasError('min')">Min is 0</mat-error>
             <mat-error *ngIf="formTemp.get('skills.' + i + '.starting')?.hasError('max')">Max is 10</mat-error>
@@ -118,6 +119,7 @@
               {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="spec.details">[{{spec.details}}]</span>
             </mat-label>
             <input matInput type="number" formControlName="starting" [min]="0" [max]="20" [step]="5">
+            <mat-icon matSuffix (click)="onRemoveSpecialisationClick(i)">close</mat-icon>
             <mat-error *ngIf="formTemp.get('specialisations.' + i + '.starting')?.hasError('required')">Required</mat-error>
             <mat-error *ngIf="formTemp.get('specialisations.' + i + '.starting')?.hasError('min')">Min is 0</mat-error>
             <mat-error *ngIf="formTemp.get('specialisations.' + i + '.starting')?.hasError('max')">Max is 10</mat-error>
