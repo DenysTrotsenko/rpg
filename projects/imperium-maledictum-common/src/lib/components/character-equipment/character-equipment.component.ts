@@ -12,6 +12,7 @@ import {
 } from '@imperium-maledictum-1e/models/common';
 
 interface VM {
+  icon?: string; // deployed_code, apparel
   name: string;
   qualities: ItemTrait[];
   flaws: ItemTrait[];
