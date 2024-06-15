@@ -1,7 +1,6 @@
 <ng-container *ngIf="items?.length">
   <b class="c-gray mb-5">Equipment: </b>
   <p *ngFor="let i of items;" class="comma-separated ws-pl c-pointer mb-0" [matTooltip]="i.tooltip">
-    <mat-icon *ngIf="false">package_2</mat-icon>
     <interactive *ngFor="let q of i.qualities;" class="space-separated c-green" [id]="q.id"></interactive>
     <interactive *ngFor="let f of i.flaws;" class="space-separated c-red" [id]="f.id"></interactive>
     <span>{{i.name}}</span>

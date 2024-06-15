@@ -6,13 +6,11 @@ import {
   Characteristic,
   Item,
   ItemTrait,
-  PsychicPower,
   Range,
   Specialisation
 } from '@imperium-maledictum-1e/models/common';
 
 interface VM {
-  icon?: string; // deployed_code, apparel
   name: string;
   qualities: ItemTrait[];
   flaws: ItemTrait[];
@@ -38,7 +36,7 @@ export class CharacterEquipmentComponent {
   @Input() view = 'short';
   @Input() set character(character: ImperiumMaledictumCharacter) {
     const items = character?.items;
-    const hydrated: VM[] = items.map(i => {
+    this.items = items.map(i => {
       const item = this.data.get<Item>(i.id);
       const qualities = (i.qualities ?? []).map(j => this.data.get<ItemTrait>(j));
       const flaws = (i.flaws ?? []).map(j => this.data.get<ItemTrait>(j));
@@ -66,8 +64,6 @@ export class CharacterEquipmentComponent {
         availability: availability?.name,
       };
     });
-
-    this.items = hydrated;
   }
 
   items: VM[] = [];
