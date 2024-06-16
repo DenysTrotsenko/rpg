@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '@material/button';
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 
 @import 'variables';
@@ -14,15 +13,9 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($general-typography);`
-/* TODO(mdc-migration): Remove legacy-core once all legacy components are migrated*/
-@include mat.legacy-core();
 @include mat.core();
 @include mat.all-component-themes($app-theme);
-/* TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated*/
-@include mat.all-legacy-component-themes($app-theme);
-@include mat.all-component-typographies(mat.define-typography-config(
-  $font-family: '"Catamaran", sans-serif'
-));
+@include mat.all-component-typographies(mat.define-typography-config($font-family: '"Catamaran", sans-serif'));
 
 html, body {
   overscroll-behavior-x: none;
@@ -54,18 +47,4 @@ table.mat-mdc-table {
   padding: 0 10px !important;
   margin: -10px 0 10px -10px !important;
   box-sizing: content-box !important;
-}
-
-.no-padding-bottom {
-  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-  .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-  }
-}
-
-.form-field-no-bottom-padding {
-  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-  .mat-form-field-wrapper {
-    margin-bottom: -1.25em !important;
-  }
 }

@@ -6,7 +6,7 @@
       <input matInput formControlName="name">
     </mat-form-field>
     <div class="d-f ai-c g-20 mb-20">
-      <mat-form-field class="form-field-no-bottom-padding f-1" appearance="outline">
+      <mat-form-field class="f-1" appearance="outline">
         <mat-label>Psychic Discipline</mat-label>
         <mat-select formControlName="discipline">
           <mat-option *ngFor="let i of disciplines$ | async; trackBy: trackById;" [value]="i.id">

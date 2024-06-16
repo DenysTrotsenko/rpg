@@ -80,7 +80,7 @@
         <mat-form-field
           *ngFor="let skill of formSkills$ | async; trackBy: trackById; let i = index"
           [formGroupName]="i"
-          appearance="outline" class="no-padding-bottom">
+          appearance="outline">
           <mat-label>{{skill.name}}</mat-label>
           <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
         </mat-form-field>
@@ -89,7 +89,7 @@
         <mat-form-field
           *ngFor="let spec of formSpecialisations$ | async; trackBy: trackById; let i = index"
           [formGroupName]="i"
-          appearance="outline" class="no-padding-bottom">
+          appearance="outline">
           <mat-label>
             {{(spec.skill | getById)?.name}} ({{spec.name}}) <span *ngIf="spec.details">[{{spec.details}}]</span>
           </mat-label>
