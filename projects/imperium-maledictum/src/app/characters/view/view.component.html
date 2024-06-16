@@ -1,19 +1,18 @@
 <ng-container *ngIf="character$ | async as character;">
   <mat-toolbar class="d-f jc-sb">
     <h1>Character View</h1>
-    <mat-button-toggle-group [formControl]="view">
-      <mat-button-toggle value="short">Short</mat-button-toggle>
-      <mat-button-toggle value="full">Full</mat-button-toggle>
-    </mat-button-toggle-group>
+<!--    <button mat-icon-button (click)="expand = !expand">-->
+<!--      <mat-icon>{{expand ? 'collapse_content' : 'expand_content'}}</mat-icon>-->
+<!--    </button>-->
   </mat-toolbar>
   <div class="p-10">
     <p class="ff-g fs-16">{{character.name}}</p>
-    <character-details class="mb-10" [character]="character" [view]="view.valueChanges | async"></character-details>
-    <character-characteristics class="mb-10" [character]="character" [view]="view.valueChanges | async"></character-characteristics>
-    <character-skills-specializations [character]="character" [view]="view.valueChanges | async"></character-skills-specializations>
-    <character-talents [character]="character" [view]="view.valueChanges | async"></character-talents>
-    <character-powers [character]="character" [view]="view.valueChanges | async"></character-powers>
-    <character-equipment [character]="character" [view]="view.valueChanges | async"></character-equipment>
+    <character-details class="mb-10" [character]="character"></character-details>
+    <character-characteristics class="mb-10" [character]="character"></character-characteristics>
+    <character-skills-specializations [character]="character"></character-skills-specializations>
+    <character-talents [character]="character"></character-talents>
+    <character-powers [character]="character"></character-powers>
+    <character-equipment [character]="character"></character-equipment>
   </div>
 <!--  <p class="c-gray">-->
 <!--    <i>{{description}}</i>-->

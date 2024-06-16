@@ -13,7 +13,7 @@ import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent implements OnDestroy {
-  readonly view: FormControl<'short' | 'full'> = new FormControl<'short' | 'full'>('short');
+  expand = false;
   // readonly form: FormGroup = new FormGroup({
   //   notes: new FormControl(''),
   //   damage: new FormControl(0),
