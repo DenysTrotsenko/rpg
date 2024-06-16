@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Skill, SkillId } from '@imperium-maledictum-1e/models/common';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   template: `

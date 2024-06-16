@@ -1,11 +1,20 @@
 @import "../../../src/styles/variables";
 
+:host {
+  ::ng-deep {
+    .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mat-mdc-list-item-unscoped-content {
+      display: flex;
+    }
+  }
+}
+
 mat-sidenav-container {
   height: 100%;
-
-  .mat-toolbar-single-row {
-    padding: 0 8px;
-  }
 
   mat-sidenav {
     width: 200px;
@@ -44,11 +53,4 @@ mat-sidenav-container {
 
 .warn {
   color: $color-warn;
-}
-
-::ng-deep {
-  .mat-drawer-inner-container {
-    display: flex;
-    flex-direction: column;
-  }
 }

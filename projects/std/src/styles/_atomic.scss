@@ -1,5 +1,29 @@
 @import "variables";
 
+$properties:
+  '.g'  'gap',
+  '.cg' 'column-gap',
+  '.rg' 'row-gap',
+  '.m'  'margin',
+  '.mt' 'margin-top',
+  '.mr' 'margin-right',
+  '.mb' 'margin-bottom',
+  '.ml' 'margin-left',
+  '.p'  'padding',
+  '.pt' 'padding-top',
+  '.pr' 'padding-right',
+  '.pb' 'padding-bottom',
+  '.pl' 'padding-left';
+$step: 5;
+
+@for $i from 0 through 10 {
+  $value: $step * $i;
+
+  @each $class, $property in $properties {
+    #{$class}-#{$value} { #{$property}: #{$value}px !important; }
+  }
+}
+
 .p-r { position: relative !important; }
 
 .d-b { display: block !important; }
@@ -23,50 +47,7 @@
 .f-1 { flex: 1 !important; }
 .f-0-0-a { flex: 0 0 auto !important; }
 
-.g-5 { gap: 5px !important; }
-.g-10 { gap: 10px !important; }
-.g-15 { gap: 15px !important; }
-.g-20 { gap: 20px !important; }
-.cg-5 { column-gap: 5px !important; }
-.cg-10 { column-gap: 10px !important; }
-.cg-15 { column-gap: 15px !important; }
-.rg-5 { row-gap: 5px !important; }
-.rg-10 { row-gap: 10px !important; }
-.rg-15 { row-gap: 15px !important; }
-
 .w-100 { width: 100% !important; }
-
-.m-0 { margin: 0 !important; }
-.m-5 { margin: 5px !important; }
-.m-10 { margin: 10px !important; }
-.m-15 { margin: 15px !important; }
-.m-20 { margin: 20px !important; }
-.mt-0 { margin-top: 0 !important; }
-.mt-5 { margin-top: 5px !important; }
-.mt-10 { margin-top: 10px !important; }
-.mt-15 { margin-top: 15px !important; }
-.mt-20 { margin-top: 20px !important; }
-.mr-0 { margin-right: 0 !important; }
-.mr-5 { margin-right: 5px !important; }
-.mr-10 { margin-right: 10px !important; }
-.mr-15 { margin-right: 15px !important; }
-.mr-20 { margin-right: 20px !important; }
-.mb-0 { margin-bottom: 0 !important; }
-.mb-5 { margin-bottom: 5px !important; }
-.mb-10 { margin-bottom: 10px !important; }
-.mb-15 { margin-bottom: 15px !important; }
-.mb-20 { margin-bottom: 20px !important; }
-.ml-0 { margin-left: 0 !important; }
-.ml-5 { margin-left: 5px !important; }
-.ml-10 { margin-left: 10px !important; }
-.ml-15 { margin-left: 15px !important; }
-.ml-20 { margin-left: 20px !important; }
-
-.p-5 { padding: 5px !important; }
-.p-10 { padding: 10px !important; }
-.p-15 { padding: 15px !important; }
-.p-20 { padding: 20px !important; }
-.pl-30 { padding-left: 30px; }
 
 .lh-0 { line-height: 0 !important; }
 .bs-0 { border-spacing: 0 !important; }

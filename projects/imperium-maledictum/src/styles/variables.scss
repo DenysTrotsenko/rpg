@@ -19,7 +19,7 @@ $app-theme: mat.define-dark-theme((
     warn: $app-warn,
   ),
   typography: mat.define-typography-config($font-family: '"Catamaran", sans-serif'),
-  density: -3
+  density: 0
 ));
 
 $font-gothic-1: 'IM Fell English SC';

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, forwardRef, OnInit, OnDestroy } from '@angular/core';
-import { MatLegacySelectionList as MatSelectionList } from '@angular/material/legacy-list';
+import { MatSelectionList } from '@angular/material/list';
 import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';

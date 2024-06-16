@@ -7,5 +7,8 @@ export const environment = {
     storageBucket: 'imperium-maledictum.appspot.com',
     messagingSenderId: '707060552162',
     appId: '1:707060552162:web:deb0267337553aa048e9bb'
+  },
+  ripple: {
+    disabled: true
   }
 };

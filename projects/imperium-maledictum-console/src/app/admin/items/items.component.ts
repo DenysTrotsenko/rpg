@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Availability, Item, ItemTrait, ItemType, Range, Specialisation } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';

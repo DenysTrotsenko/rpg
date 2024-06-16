@@ -13,6 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {
   ImperiumMaledictumCommonModule
 } from '../../../imperium-maledictum-common/src/lib/imperium-maledictum-common.module';
+import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,9 @@ import {
     ImperiumMaledictumCommonModule
   ],
   providers: [
-    {
-      provide: MatDialogRef,
-      useValue: {}
-    },
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+    { provide: MatDialogRef, useValue: {} },
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: environment.ripple }
   ],
   bootstrap: [
     AppComponent
