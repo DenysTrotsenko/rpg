@@ -20,9 +20,7 @@
 /* TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated*/
 @include mat.all-legacy-component-themes($app-theme);
 @include mat.all-component-themes($app-theme);
-@include mat.all-component-typographies(mat.define-typography-config(
-  $font-family: '"Catamaran", sans-serif'
-));
+@include mat.all-component-typographies(mat.define-typography-config($font-family: '"Catamaran", sans-serif'));
 
 html, body {
   overscroll-behavior-x: none;
