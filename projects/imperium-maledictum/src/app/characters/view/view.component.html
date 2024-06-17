@@ -1,9 +1,9 @@
 <ng-container *ngIf="character$ | async as character;">
   <mat-toolbar class="d-f jc-sb">
     <h1>Character View</h1>
-<!--    <button mat-icon-button (click)="expand = !expand">-->
-<!--      <mat-icon>{{expand ? 'collapse_content' : 'expand_content'}}</mat-icon>-->
-<!--    </button>-->
+    <button mat-icon-button (click)="expand = !expand">
+      <mat-icon>{{expand ? 'expand_content' : 'collapse_content'}}</mat-icon>
+    </button>
   </mat-toolbar>
   <div class="p-10">
     <p class="ff-g fs-16">{{character.name}}</p>

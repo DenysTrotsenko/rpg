@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { MaterialIconFont } from '@std';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,4 @@ import { MaterialIconFont } from '@std';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  constructor(icons: MatIconRegistry) {
-    icons.setDefaultFontSetClass(MaterialIconFont.OUTLINED);
-  }
-}
+export class AppComponent {}

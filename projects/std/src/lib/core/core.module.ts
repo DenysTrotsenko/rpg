@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconRegistry } from '@angular/material/icon';
 import { AuthGuard } from './auth.guard';
 import { AuthResolver } from './auth.resolver';
 import { AppService } from './app.service';
@@ -15,6 +16,7 @@ import { DialogModule } from '../dialog/dialog.module';
 import { SnackbarModule } from '../snackbar/snackbar.module';
 import { FunctionsService } from './functions.service';
 import { SettingService } from './setting.service';
+import { MaterialIconFont } from '../enums';
 
 export const NAVIGATOR = new InjectionToken<Navigator>('Navigator');
 
@@ -41,4 +43,8 @@ export const NAVIGATOR = new InjectionToken<Navigator>('Navigator');
     { provide: NAVIGATOR, useValue: navigator }
   ]
 })
-export class CoreModule {}
+export class CoreModule {
+  constructor(icons: MatIconRegistry) {
+    icons.setDefaultFontSetClass(MaterialIconFont.SYMBOLS_OUTLINED);
+  }
+}

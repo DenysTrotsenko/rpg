@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined');
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;500;700&family=IM+Fell+DW+Pica+SC&family=Herr+Von+Muellerhoff&family=Mrs+Saint+Delafield&family=Give+You+Glory&display=swap');
 @import "variables";
 
@@ -10,15 +9,6 @@ body {
   padding: 0;
   overflow:hidden;
 }
-
-body {
-  color: $color-white;
-  background-color: #424242;
-}
-
-.tc-white { color: $color-white !important; }
-.tc-gray { color: $color-gray !important; }
-
 
 .mat-expansion-panel:hover {
   .visible-on-hover {

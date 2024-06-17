@@ -1,5 +1,5 @@
 export enum MaterialIconFont {
-  OUTLINED = 'material-icons-outlined'
+  SYMBOLS_OUTLINED = 'material-symbols-outlined'
 }
 
 export enum FS_COLLECTION {
