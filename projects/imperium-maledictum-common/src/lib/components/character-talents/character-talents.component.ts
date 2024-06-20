@@ -17,7 +17,7 @@ export class CharacterTalentsComponent {
   @Input() set character(character: ImperiumMaledictumCharacter) {
     const talents = character?.talents;
     const hydrated: Talent[] = talents.map(i => {
-      const talent = this.data.get<Talent>(i);
+      const talent = this.data.get<Talent>(i.id);
 
       return {
         ...talent

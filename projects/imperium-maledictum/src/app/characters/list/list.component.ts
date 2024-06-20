@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { AuthService, CampaignService, DialogService } from '@std';
@@ -16,6 +16,11 @@ interface VM extends ImperiumMaledictumCharacter {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
+  private readonly auth = inject(AuthService);
+  private readonly campaign = inject(CampaignService);
+  private readonly character = inject(CharacterService);
+  private readonly dialog = inject(DialogService);
+
   readonly characters$: Observable<VM[]> = combineLatest([
     this.auth.uid$, this.character.all$, this.campaign.all$]
   ).pipe(
@@ -36,13 +41,6 @@ export class ListComponent {
       });
     })
   );
-
-  constructor(
-    private readonly auth: AuthService,
-    private readonly campaign: CampaignService,
-    private readonly character: CharacterService,
-    private readonly dialog: DialogService
-  ) {}
 
   onDeleteClick(i: VM): void {
     this.dialog

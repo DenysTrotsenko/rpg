@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { DataService } from './data.service';
 import { SharedModule } from '@std';
 import { NumberInputComponent } from './components/number-input/number-input.component';
 import { NumberInputCellComponent } from './components/number-input-cell/number-input-cell.component';
@@ -14,6 +13,7 @@ import { CharacterSkillsSpecializationsComponent } from './components/character-
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterPowersComponent } from './components/character-powers/character-powers.component';
 import { CharacterEquipmentComponent } from './components/character-equipment/character-equipment.component';
+import { AddTalentDialogComponent } from './components/add-talent-dialog.component';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -21,6 +21,7 @@ const DECLARATION = [
   InteractiveComponent,
   AddItemDialogComponent,
   AddSkillDialogComponent,
+  AddTalentDialogComponent,
   AddSpecialisationDialogComponent,
   CharacterCharacteristicsComponent,
   CharacterTalentsComponent,
@@ -41,8 +42,5 @@ const DECLARATION = [
   exports: [
     ...DECLARATION
   ],
-  providers: [
-    DataService
-  ]
 })
 export class ImperiumMaledictumCommonModule { }

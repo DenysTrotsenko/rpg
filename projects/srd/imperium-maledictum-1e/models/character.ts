@@ -20,7 +20,7 @@ export interface ImperiumMaledictumCharacter extends Character {
   characteristics: CharacteristicValue[];
   skills: SkillValue[];
   specialisations: SpecialisationValue[];
-  talents: TalentId[];
+  talents: TalentValue[];
   powers: PsychicPowerId[];
   items: ItemValue[];
   // patron: PatronId;
@@ -34,7 +34,7 @@ export interface CharacteristicValue {
 
 export interface TalentValue {
   id: TalentId;
-  value: unknown;
+  value?: unknown;
 }
 
 export interface SkillValue {

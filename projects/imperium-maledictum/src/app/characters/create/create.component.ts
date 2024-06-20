@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, take, combineLatest } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import {
+  AuthService,
   CampaignService,
   CharacterId,
   DialogService, FS_COLLECTION,
@@ -41,6 +42,9 @@ import {
 import {
   AddItemDialogComponent
 } from '../../../../../imperium-maledictum-common/src/lib/components/add-item-dialog.component';
+import {
+  AddTalentDialogComponent
+} from '../../../../../imperium-maledictum-common/src/lib/components/add-talent-dialog.component';
 
 @Component({
   templateUrl: './create.component.html',
@@ -66,7 +70,7 @@ export class CreateComponent {
   readonly formTemp: FormGroup = new FormGroup({
     skills: new UntypedFormArray([]),
     specialisations: new UntypedFormArray([]),
-    talents: new FormControl<TalentId[]>([]),
+    talents: new UntypedFormArray([]),
     powers: new FormControl<PsychicPowerId[]>([])
   });
   readonly form10: FormGroup = new FormGroup({
@@ -122,6 +126,14 @@ export class CreateComponent {
     })))
   );
 
+  readonly talentsChanges = this.formTemp.get('talents').valueChanges;
+  readonly formTalents$: Observable<(Talent)[]> = this.talentsChanges.pipe(
+    startWith([]),
+    map(talents => talents.map(i => ({
+      ...this.data.get<Specialisation>(i.id),
+    })))
+  );
+
   readonly talentsSelectTrigger$: Observable<string> = this.formTemp.get('talents').valueChanges.pipe(
     startWith([]),
     map(talents => talents.map(i => this.data.get<Talent>(i)?.name).join(', '))
@@ -142,11 +154,14 @@ export class CreateComponent {
       return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
     }))
   );
-  readonly imagePath$ = this.campaign.selected$.pipe(
-    map(campaign => `${FS_COLLECTION.CAMPAIGNS}/${campaign.id}/images`)
+  readonly path$ = this.auth.uid$.pipe(
+    map(id => `${FS_COLLECTION.USERS}/${id}/images`),
+    distinctUntilChanged(),
+    shareReplay(1)
   );
 
   constructor(
+    private readonly auth: AuthService,
     private readonly character: CharacterService,
     private readonly campaign: CampaignService,
     private readonly route: ActivatedRoute,
@@ -228,12 +243,34 @@ export class CreateComponent {
       .subscribe();
   }
 
+  onAddTalentClick(): void {
+    const array = this.formTemp.get('talents') as UntypedFormArray;
+    const ids = array.value?.map(i => i.id);
+
+    this.talents$
+      .pipe(
+        take(1),
+        switchMap(talents => this.dialog.open(AddTalentDialogComponent, {
+          data: talents.filter(i => !ids.includes(i.id))
+        }).afterClosed()),
+        filter(res => !!res),
+        tap(res => array.push(new UntypedFormGroup({
+          id: new UntypedFormControl(res.id),
+        })))
+      )
+      .subscribe();
+  }
+
   onRemoveSkillClick(index: number): void {
     this.removeFromFormArray(this.formTemp.get('skills') as UntypedFormArray, index);
   }
 
   onRemoveSpecialisationClick(index: number): void {
     this.removeFromFormArray(this.formTemp.get('specialisations') as UntypedFormArray, index);
+  }
+
+  onRemoveTalentClick(index: number): void {
+    this.removeFromFormArray(this.formTemp.get('talents') as UntypedFormArray, index);
   }
 
   onAddItemClick(): void {

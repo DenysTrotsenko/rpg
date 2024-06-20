@@ -139,7 +139,9 @@ const TOOLTIPS: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
   .set(FileName.SPECIALISATIONS, getSpecialisationTooltip)
   .set(FileName.TALENTS, getTalentTooltip);
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
   private readonly cache = inject(CacheService);
   private readonly logger = inject(LoggerService);

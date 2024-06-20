@@ -126,17 +126,17 @@
           </mat-form-field>
         </ng-container>
       </div>
-      <mat-form-field appearance="outline" style="align-items:stretch;">
-        <mat-label>Talents</mat-label>
-        <mat-select formControlName="talents" multiple>
-          <mat-select-trigger>
-            {{talentsSelectTrigger$ | async}}
-          </mat-select-trigger>
-          <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<!--      <mat-form-field appearance="outline" style="align-items:stretch;">-->
+<!--        <mat-label>Talents</mat-label>-->
+<!--        <mat-select formControlName="talents" multiple>-->
+<!--          <mat-select-trigger>-->
+<!--            {{talentsSelectTrigger$ | async}}-->
+<!--          </mat-select-trigger>-->
+<!--          <mat-option *ngFor="let i of talents$ | async; trackBy: trackById;" [value]="i.id">-->
+<!--            {{i.name}} <mat-icon [matTooltip]="i.labels?.tooltip">info</mat-icon>-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Psychic Powers</mat-label>
         <mat-select formControlName="powers" multiple>
@@ -148,11 +148,22 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-list>
+        <mat-list-item *ngFor="let talent of formTalents$ | async; trackBy: trackById; let i = index">
+          <span matListItemLine>{{talent.name}}</span>
+          <span matListItemMeta>
+            <button mat-icon-button (click)="onRemoveTalentClick(i)" matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+        </mat-list-item>
+      </mat-list>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="!formTemp.valid">Next</button>
         <button mat-stroked-button color="primary" (click)="onAddSkillClick()">Add Skill</button>
         <button mat-stroked-button color="primary" (click)="onAddSpecialisationClick()">Add Specialisation</button>
+        <button mat-stroked-button color="primary" (click)="onAddTalentClick()">Add Specialisation</button>
       </div>
     </form>
   </mat-step>
@@ -165,11 +176,14 @@
         <input matInput formControlName="name">
         <mat-error *ngIf="form10.get('name').hasError('required')">Name is required</mat-error>
       </mat-form-field>
-      <image-input
-        formControlName="image"
-        class="mb-20"
-        [path]="imagePath$ | async">
-      </image-input>
+      <div class="d-f g-10">
+        <image-input
+          formControlName="image"
+          class="mb-20"
+          [path]="path$ | async">
+        </image-input>
+        <image-upload color="accent" [path]="path$ | async"></image-upload>
+      </div>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="!form10.valid">Next</button>
