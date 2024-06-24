@@ -20,19 +20,15 @@ import {
 import { CharacterService } from '../../character.service';
 import {
   DataService,
-  AddSkillDialogComponent,
-  AddSpecialisationDialogComponent,
-  AddItemDialogComponent,
-  AddTalentDialogComponent
 } from '@im-common';
 import {
-  Characteristic, CharacteristicId,
+  Characteristic,
   Faction,
-  FactionId, Item, ItemId, ItemTrait, ItemTraitId,
+  FactionId,
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId, Role,
-  RoleId, Skill, SkillId, Specialisation, Talent, TalentId
+  RoleId, Skill, Specialisation, Talent
 } from '@imperium-maledictum-1e/models/common';
 import {
   CharacteristicValue,
@@ -135,14 +131,11 @@ export class CreateComponent {
   readonly totalSelectedBonuses$: Observable<Map<BonusId, number>> = this.bonuses.valueChanges.pipe(
     map(form => {
       const total = new Map<BonusId, number>();
-      const originMap = form.origin;
-      const factionMap = form.faction;
-      const roleMap = form.role;
-      const setToTotalSelectedBonuses = (value: number, key: BonusId) => total.set(key, (total.get(key) ?? 0) + value);
+      const addToTotalSelectedBonuses = (value: number, key: BonusId) => total.set(key, (total.get(key) ?? 0) + value);
 
-      originMap?.forEach(setToTotalSelectedBonuses);
-      factionMap?.forEach(setToTotalSelectedBonuses);
-      roleMap?.forEach(setToTotalSelectedBonuses);
+      form.origin?.forEach(addToTotalSelectedBonuses);
+      form.faction?.forEach(addToTotalSelectedBonuses);
+      form.role?.forEach(addToTotalSelectedBonuses);
 
       return total;
     })
