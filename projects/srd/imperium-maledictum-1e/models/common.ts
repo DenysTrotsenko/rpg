@@ -110,6 +110,17 @@ export interface BestiaryType extends HasBaseProperties<BestiaryTypeId> {
   };
 }
 
+export interface BonusOption {
+  id: CharacteristicId | SkillId | SpecialisationId | TalentId | ItemId;
+  value?: number;
+}
+
+export interface Bonus {
+  type: 'characteristics' | 'skills' | 'specialisation' | 'talents' | 'items';
+  pick: number;
+  options: BonusOption[];
+}
+
 export interface Characteristic {
   id: CharacteristicId;
   name: string;
@@ -214,6 +225,7 @@ export interface Origin {
     description: string;
   };
   modifications: Modification[];
+  bonuses: Bonus[];
 }
 
 export interface Patron {

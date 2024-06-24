@@ -1,0 +1,66 @@
+import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectBonusComponent } from '@im-common';
+import { NgFor } from '@angular/common';
+import {
+  Bonus,
+  BonusOption,
+  CharacteristicId,
+  SkillId,
+  SpecialisationId,
+  TalentId
+} from '@imperium-maledictum-1e/models/common';
+
+type Id = CharacteristicId | SkillId | SpecialisationId | TalentId;
+
+@Component({
+  selector: 'selected-bonuses',
+  templateUrl: './selected-bonuses.component.html',
+  styleUrls: ['./selected-bonuses.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgFor, SelectBonusComponent],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectedBonusesComponent),
+      multi: true
+    }
+  ]
+})
+export class SelectedBonusesComponent implements ControlValueAccessor {
+  @Input() set value(bonuses: Bonus[]) {
+    this.internal = [];
+    this.bonuses = bonuses;
+  }
+  @Output() valueChanges: EventEmitter<Map<Id, number>> = new EventEmitter();
+
+  bonuses = null;
+  private internal = [];
+
+  onBonusChange(index: number, bonus: Bonus, selected: number[]): void {
+    this.internal[index] = [
+      ...bonus.options.filter((o, i) => selected.includes(i))
+    ];
+    const external: Map<Id, number> = this.internal.reduce((acc, bonuses: BonusOption[]) => {
+      bonuses.forEach(bonus => {
+        const id = bonus.id;
+        const value = acc.get(id) ?? 0;
+        acc.set(id, value + bonus.value);
+      });
+      return acc;
+    }, new Map());
+    this.emit(external);
+  }
+
+  private emit(values: Map<Id, number>): void {
+    this.propagateChange(values);
+    this.valueChanges.emit(values);
+  }
+
+  propagateChange = (_: any) => {};
+  writeValue(value: number): void {}
+  registerOnChange(fn: any): void { this.propagateChange = fn; }
+  registerOnTouched(fn: any): void {}
+  trackById(_: number, item): unknown { return item.id; }
+}

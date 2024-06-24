@@ -1,6 +1,6 @@
+@use '@angular/material' as mat;
 @import 'material-symbols';
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
-@use '@angular/material' as mat;
 
 @import 'variables';
 @import './styles/variables';
@@ -14,12 +14,7 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($general-typography);`
-/* TODO(mdc-migration): Remove legacy-core once all legacy components are migrated*/
-@include mat.legacy-core();
 @include mat.core();
-@include mat.all-component-themes($app-theme);
-/* TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated*/
-@include mat.all-legacy-component-themes($app-theme);
 @include mat.all-component-themes($app-theme);
 @include mat.all-component-typographies(mat.define-typography-config($font-family: '"Catamaran", sans-serif'));
 

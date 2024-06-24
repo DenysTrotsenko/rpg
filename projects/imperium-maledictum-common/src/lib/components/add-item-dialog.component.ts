@@ -33,6 +33,12 @@ import { DataService } from '@im-common';
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" formControlName="quantity">
+        <mat-error *ngIf="form.get('quantity').hasError('required')">Quantity is required</mat-error>
+        <mat-error *ngIf="form.get('quantity').hasError('min')">Minimum is 0</mat-error>
+      </mat-form-field>
     </div>
     <div mat-dialog-actions>
       <button mat-button [mat-dialog-close]="null">Cancel</button>
@@ -51,6 +57,7 @@ export class AddItemDialogComponent {
     id: new FormControl<ItemId>(null, [Validators.required]),
     qualities: new FormControl<ItemTraitId[]>([]),
     flaws: new FormControl<ItemTraitId[]>([]),
-    traits: new FormControl<ItemTraitId[]>([])
+    traits: new FormControl<ItemTraitId[]>([]),
+    quantity: new FormControl<number>(1, [Validators.required, Validators.min(0)]),
   });
 }

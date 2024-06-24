@@ -40,7 +40,7 @@ import { EnvironmentalTraitsComponent } from './environmental-traits/environment
 import { EventsComponent } from './events/events.component';
 import { EndeavoursComponent } from './endeavours/endeavours.component';
 import { ActionsComponent } from './actions/actions.component';
-import { ImperiumMaledictumCommonModule } from '@im-common';
+import { GetByIdPipe, ImperiumMaledictumCommonModule } from '@im-common';
 import { RolesComponent } from './roles/roles.component';
 import { OriginsComponent } from './origins/origins.component';
 
@@ -92,7 +92,8 @@ import { OriginsComponent } from './origins/origins.component';
   imports: [
     SharedModule,
     ImperiumMaledictumCommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    GetByIdPipe
   ]
 })
 export class AdminModule {}

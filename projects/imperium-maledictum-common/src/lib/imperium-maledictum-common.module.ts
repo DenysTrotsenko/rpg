@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@std';
 import { NumberInputComponent } from './components/number-input/number-input.component';
 import { NumberInputCellComponent } from './components/number-input-cell/number-input-cell.component';
-import { GetByIdPipe } from './pipes/get-by-id.pipe';
 import { InteractiveComponent } from './components/interactive/interactive.component';
 import { AddItemDialogComponent } from './components/add-item-dialog.component';
 import { AddSkillDialogComponent } from './components/add-skill-dialog.component';
@@ -14,6 +13,8 @@ import { CharacterDetailsComponent } from './components/character-details/charac
 import { CharacterPowersComponent } from './components/character-powers/character-powers.component';
 import { CharacterEquipmentComponent } from './components/character-equipment/character-equipment.component';
 import { AddTalentDialogComponent } from './components/add-talent-dialog.component';
+import { SelectAdvanceComponent } from './components/select-advance/select-advance.component';
+import { GetByIdPipe } from './pipes/get-by-id.pipe';
 
 const DECLARATION = [
   NumberInputComponent,
@@ -29,7 +30,7 @@ const DECLARATION = [
   CharacterDetailsComponent,
   CharacterPowersComponent,
   CharacterEquipmentComponent,
-  GetByIdPipe
+  SelectAdvanceComponent,
 ];
 
 @NgModule({
@@ -37,7 +38,8 @@ const DECLARATION = [
     ...DECLARATION
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    GetByIdPipe
   ],
   exports: [
     ...DECLARATION

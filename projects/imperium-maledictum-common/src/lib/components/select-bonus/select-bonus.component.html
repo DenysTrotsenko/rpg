@@ -1,0 +1,15 @@
+<mat-label *ngIf="bonus.pick !== bonus.options.length" class="label">
+  Pick {{bonus?.pick}}:
+</mat-label>
+<mat-selection-list #bonuses dense class="p-0"
+  [formControl]="control"
+  [multiple]="bonus?.pick > 1"
+  (selectionChange)="onSelectionChange(bonuses.selectedOptions.selected)">
+  <mat-list-option
+    *ngFor="let option of bonus?.options; trackBy: trackById; let i = index"
+    [value]="i"
+    [class.hide_selector]="bonus.pick === bonus.options.length"
+    [disabled]="bonus.pick === bonus.options.length || (bonus.pick > 1 && bonuses.selectedOptions.selected?.length >= bonus?.pick && !control.value.includes(i))">
+    {{option.value ? (option.value > 0 ? '+' + option.value : option.value) + ' ' : ''}}{{(option.id | getById)?.name}}
+  </mat-list-option>
+</mat-selection-list>

@@ -36,11 +36,12 @@
           <mat-option *ngFor="let i of origins$ | async; trackBy: trackById;" [value]="i.id">{{i.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="d-f g-5">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext [disabled]="!step2.valid">Next</button>
-      </div>
     </form>
+    <selected-bonuses *ngIf="originBonuses$ | async" [value]="originBonuses$ | async"></selected-bonuses>
+    <div class="d-f g-5">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext [disabled]="!step2.valid">Next</button>
+    </div>
   </mat-step>
   <!-- STEP 3: FACTION -->
   <mat-step [stepControl]="step3">

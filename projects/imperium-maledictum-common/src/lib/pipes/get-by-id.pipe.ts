@@ -8,7 +8,8 @@ import {
 import { DataService } from '@im-common';
 
 @Pipe({
-  name: 'getById'
+  name: 'getById',
+  standalone: true
 })
 export class GetByIdPipe implements PipeTransform {
   private readonly data = inject(DataService);

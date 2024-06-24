@@ -5,8 +5,7 @@ import { CharactersComponent } from './characters.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
-import { ImperiumMaledictumCommonModule } from '@im-common';
-
+import { GetByIdPipe, ImperiumMaledictumCommonModule, SelectedBonusesComponent } from '@im-common';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,9 @@ import { ImperiumMaledictumCommonModule } from '@im-common';
     SharedModule,
     DialogModule,
     ImperiumMaledictumCommonModule,
-    CharactersRoutingModule
+    CharactersRoutingModule,
+    SelectedBonusesComponent,
+    GetByIdPipe
   ]
 })
 export class CharactersModule { }

@@ -39,9 +39,7 @@ export class NumberInputComponent implements ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
-  writeValue(value: number): void {
-    this.value = value;
-  }
+  writeValue(value: number): void { this.value = value; }
   registerOnChange(fn: any): void { this.propagateChange = fn; }
   registerOnTouched(fn: any): void {}
 }

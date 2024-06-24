@@ -53,4 +53,5 @@ export interface ItemValue {
   id: ItemId;
   qualities: ItemTraitId[];
   flaws: ItemTraitId[];
+  quantity: number;
 }

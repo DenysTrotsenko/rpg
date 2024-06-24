@@ -1,0 +1,22 @@
+:host {
+  position: relative;
+  display: block;
+  border: 1px solid white;
+  border-radius: 5px;
+
+  .hide_selector {
+    ::ng-deep {
+      .mdc-list-item__end { display: none !important; }
+    }
+  }
+}
+
+.label {
+  position: absolute;
+  top: -11px;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: var(--mat-expansion-container-background-color);
+  padding: 0 3px;
+  pointer-events: none;
+}

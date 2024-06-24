@@ -16,14 +16,19 @@ import {
   CharacterId,
   DialogService, FS_COLLECTION,
   getId16,
-  setFormControlsEditable
 } from '@std';
 import { CharacterService } from '../../character.service';
-import { DataService } from '@im-common';
 import {
-  Characteristic,
+  DataService,
+  AddSkillDialogComponent,
+  AddSpecialisationDialogComponent,
+  AddItemDialogComponent,
+  AddTalentDialogComponent
+} from '@im-common';
+import {
+  Characteristic, CharacteristicId,
   Faction,
-  FactionId, Item, ItemTrait, ItemTraitId,
+  FactionId, Item, ItemId, ItemTrait, ItemTraitId,
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId,
@@ -33,23 +38,11 @@ import {
   CharacteristicValue,
   ImperiumMaledictumCharacter as Character
 } from '@imperium-maledictum-1e/models/character';
-import {
-  AddSkillDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-skill-dialog.component';
-import {
-  AddSpecialisationDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-specialisation-dialog.component';
-import {
-  AddItemDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-item-dialog.component';
-import {
-  AddTalentDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-talent-dialog.component';
 
 @Component({
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateComponent {
   readonly step1: FormGroup = new FormGroup({
@@ -116,7 +109,6 @@ export class CreateComponent {
     startWith([]),
     map(skills => skills.map(i => i.id).map(i => this.data.get(i)))
   );
-
   readonly specialisationsChanges = this.formTemp.get('specialisations').valueChanges;
   readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.specialisationsChanges.pipe(
     startWith([]),
@@ -125,7 +117,6 @@ export class CreateComponent {
       details: i.details
     })))
   );
-
   readonly talentsChanges = this.formTemp.get('talents').valueChanges;
   readonly formTalents$: Observable<(Talent)[]> = this.talentsChanges.pipe(
     startWith([]),
@@ -133,7 +124,6 @@ export class CreateComponent {
       ...this.data.get<Specialisation>(i.id),
     })))
   );
-
   readonly talentsSelectTrigger$: Observable<string> = this.formTemp.get('talents').valueChanges.pipe(
     startWith([]),
     map(talents => talents.map(i => this.data.get<Talent>(i)?.name).join(', '))
@@ -142,7 +132,6 @@ export class CreateComponent {
     startWith([]),
     map(powers => powers.map(i => this.data.get<PsychicPower>(i)?.name).join(', '))
   );
-
   readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
     startWith([]),
     map(items => items.map(i => {
@@ -159,6 +148,58 @@ export class CreateComponent {
     distinctUntilChanged(),
     shareReplay(1)
   );
+  readonly originBonuses$ = this.step2.get('origin').valueChanges.pipe(
+    distinctUntilChanged(),
+    map(id => id ? this.data.get<Origin>(id)?.bonuses : []),
+    shareReplay(1)
+  );
+
+  // readonly testBonuses: Bonus[] = [
+  //   {
+  //     type: 'characteristics', pick: 1, options: [
+  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
+  //     ]
+  //   },
+  //   {
+  //     type: 'characteristics', pick: 1, options: [
+  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
+  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
+  //       { id: '5f5321934646b7e7' as CharacteristicId, value: 5 },
+  //     ]
+  //   },
+  //   {
+  //     type: 'characteristics', pick: 2, options: [
+  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
+  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
+  //     ]
+  //   },
+  //   {
+  //     type: 'characteristics', pick: 2, options: [
+  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
+  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
+  //       { id: '5f5321934646b7e7' as CharacteristicId, value: 5 },
+  //     ]
+  //   },
+  //   {
+  //     type: 'items', pick: 1, options: [
+  //       { id: '15372dd84271a572' as ItemId },
+  //     ]
+  //   },
+  // ];
+  // readonly testResponse = {
+  //   characteristics: [
+  //     { id: '', starting: 5, advances: 0 },
+  //     { id: '', starting: 5, advances: 0 },
+  //     { id: '', starting: 5, advances: 0 },
+  //     { id: '', starting: 5, advances: 0 },
+  //     { id: '', starting: 5, advances: 0 },
+  //   ],
+  //   items: [
+  //     { id: '', qualities: [], flaws: [], quantity: 1 }
+  //   ]
+  // };
+  // readonly originBonuses = [];
+  // readonly originBonusesObj = {};
 
   constructor(
     private readonly auth: AuthService,
@@ -283,6 +324,7 @@ export class CreateComponent {
           id: new FormControl(res.id),
           qualities: new FormControl<ItemTraitId[]>(res.qualities),
           flaws: new FormControl<ItemTraitId[]>(res.flaws),
+          quantity: new FormControl<number>(res.quantity),
         })))
       )
       .subscribe();
