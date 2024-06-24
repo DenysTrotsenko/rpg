@@ -31,13 +31,16 @@ import {
   FactionId, Item, ItemId, ItemTrait, ItemTraitId,
   Origin,
   OriginId, PsychicPower,
-  PsychicPowerId,
+  PsychicPowerId, Role,
   RoleId, Skill, SkillId, Specialisation, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
 import {
   CharacteristicValue,
   ImperiumMaledictumCharacter as Character
 } from '@imperium-maledictum-1e/models/character';
+import {
+  BonusId
+} from '../../../../../imperium-maledictum-common/src/lib/components/selected-bonuses/selected-bonuses.component';
 
 @Component({
   templateUrl: './create.component.html',
@@ -60,15 +63,15 @@ export class CreateComponent {
   readonly step5: FormGroup = new FormGroup({
     items: new UntypedFormArray([]),
   });
-  readonly formTemp: FormGroup = new FormGroup({
-    skills: new UntypedFormArray([]),
-    specialisations: new UntypedFormArray([]),
-    talents: new UntypedFormArray([]),
-    powers: new FormControl<PsychicPowerId[]>([])
-  });
-  readonly form10: FormGroup = new FormGroup({
+  readonly step6: FormGroup = new FormGroup<any>({
     name: new FormControl<string>(null, [Validators.required]),
     image: new FormControl<string>(null),
+    powers: new FormControl<PsychicPowerId[]>([])
+  });
+  readonly bonuses: FormGroup = new FormGroup<any>({
+    origin: new FormControl<Map<BonusId, number>>(null),
+    faction: new FormControl<Map<BonusId, number>>(null),
+    role: new FormControl<Map<BonusId, number>>(null),
   });
 
   readonly character$: Observable<Character> = this.route.paramMap
@@ -76,13 +79,6 @@ export class CreateComponent {
       map(params => params.get('id') as CharacterId),
       switchMap(id => this.character.get(id) as Observable<Character>),
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
-      tap(res => {
-        // const isNew = !res;
-        // this.form.patchValue({
-        //   ...res,
-        // });
-        // setFormControlsEditable(this.form, ['archetype', 'trait'], isNew);
-      }),
       shareReplay(1)
     );
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$.pipe(
@@ -105,45 +101,18 @@ export class CreateComponent {
   readonly talents$: Observable<Talent[]> = this.data.talents$;
   readonly powers$: Observable<PsychicPower[]> = this.data.psychicPowers$;
 
-  readonly formSkills$: Observable<Skill[]> = this.formTemp.get('skills').valueChanges.pipe(
-    startWith([]),
-    map(skills => skills.map(i => i.id).map(i => this.data.get(i)))
-  );
-  readonly specialisationsChanges = this.formTemp.get('specialisations').valueChanges;
-  readonly formSpecialisations$: Observable<(Specialisation & { details: string })[]> = this.specialisationsChanges.pipe(
-    startWith([]),
-    map(specialisations => specialisations.map(i => ({
-      ...this.data.get<Specialisation>(i.id),
-      details: i.details
-    })))
-  );
-  readonly talentsChanges = this.formTemp.get('talents').valueChanges;
-  readonly formTalents$: Observable<(Talent)[]> = this.talentsChanges.pipe(
-    startWith([]),
-    map(talents => talents.map(i => ({
-      ...this.data.get<Specialisation>(i.id),
-    })))
-  );
-  readonly talentsSelectTrigger$: Observable<string> = this.formTemp.get('talents').valueChanges.pipe(
-    startWith([]),
-    map(talents => talents.map(i => this.data.get<Talent>(i)?.name).join(', '))
-  );
-  readonly powersSelectTrigger$: Observable<string> = this.formTemp.get('powers').valueChanges.pipe(
-    startWith([]),
-    map(powers => powers.map(i => this.data.get<PsychicPower>(i)?.name).join(', '))
-  );
-  readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
-    startWith([]),
-    map(items => items.map(i => {
-      const item = this.data.get<Item>(i.id);
-      const qualities = i.qualities?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-      const flaws = i.flaws?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-      const traits = item?.data?.traits?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-
-      return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
-    }))
-  );
-  readonly path$ = this.auth.uid$.pipe(
+  // readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
+  //   startWith([]),
+  //   map(items => items.map(i => {
+  //     const item = this.data.get<Item>(i.id);
+  //     const qualities = i.qualities?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+  //     const flaws = i.flaws?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+  //     const traits = item?.data?.traits?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
+  //
+  //     return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
+  //   }))
+  // );
+  readonly imagesPath$ = this.auth.uid$.pipe(
     map(id => `${FS_COLLECTION.USERS}/${id}/images`),
     distinctUntilChanged(),
     shareReplay(1)
@@ -153,53 +122,31 @@ export class CreateComponent {
     map(id => id ? this.data.get<Origin>(id)?.bonuses : []),
     shareReplay(1)
   );
+  readonly factionBonuses$ = this.step3.get('faction').valueChanges.pipe(
+    distinctUntilChanged(),
+    map(id => id ? this.data.get<Faction>(id)?.bonuses : []),
+    shareReplay(1)
+  );
+  readonly roleBonuses$ = this.step4.get('role').valueChanges.pipe(
+    distinctUntilChanged(),
+    map(id => id ? this.data.get<Role>(id)?.bonuses : []),
+    shareReplay(1)
+  );
+  readonly totalSelectedBonuses$: Observable<Map<BonusId, number>> = this.bonuses.valueChanges.pipe(
+    map(form => {
+      const total = new Map<BonusId, number>();
+      const originMap = form.origin;
+      const factionMap = form.faction;
+      const roleMap = form.role;
+      const setToTotalSelectedBonuses = (value: number, key: BonusId) => total.set(key, (total.get(key) ?? 0) + value);
 
-  // readonly testBonuses: Bonus[] = [
-  //   {
-  //     type: 'characteristics', pick: 1, options: [
-  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
-  //     ]
-  //   },
-  //   {
-  //     type: 'characteristics', pick: 1, options: [
-  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
-  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
-  //       { id: '5f5321934646b7e7' as CharacteristicId, value: 5 },
-  //     ]
-  //   },
-  //   {
-  //     type: 'characteristics', pick: 2, options: [
-  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
-  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
-  //     ]
-  //   },
-  //   {
-  //     type: 'characteristics', pick: 2, options: [
-  //       { id: '9c4022694b3cb20e' as CharacteristicId, value: 5 },
-  //       { id: '42152a5244faa518' as CharacteristicId, value: 5 },
-  //       { id: '5f5321934646b7e7' as CharacteristicId, value: 5 },
-  //     ]
-  //   },
-  //   {
-  //     type: 'items', pick: 1, options: [
-  //       { id: '15372dd84271a572' as ItemId },
-  //     ]
-  //   },
-  // ];
-  // readonly testResponse = {
-  //   characteristics: [
-  //     { id: '', starting: 5, advances: 0 },
-  //     { id: '', starting: 5, advances: 0 },
-  //     { id: '', starting: 5, advances: 0 },
-  //     { id: '', starting: 5, advances: 0 },
-  //     { id: '', starting: 5, advances: 0 },
-  //   ],
-  //   items: [
-  //     { id: '', qualities: [], flaws: [], quantity: 1 }
-  //   ]
-  // };
-  // readonly originBonuses = [];
-  // readonly originBonusesObj = {};
+      originMap?.forEach(setToTotalSelectedBonuses);
+      factionMap?.forEach(setToTotalSelectedBonuses);
+      roleMap?.forEach(setToTotalSelectedBonuses);
+
+      return total;
+    })
+  );
 
   constructor(
     private readonly auth: AuthService,
@@ -208,11 +155,13 @@ export class CreateComponent {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly data: DataService,
-    private readonly dialog: DialogService
-  ) {}
+  ) {
+    // TODO: REMOVE
+    this.totalSelectedBonuses$.subscribe(res => console.log(res));
+  }
 
   onSubmit(): void {
-    const isValid = this.step1.valid && this.form10.valid;
+    const isValid = this.step1.valid && this.step6.valid;
 
     if (!isValid) { return; }
 
@@ -234,8 +183,7 @@ export class CreateComponent {
             ...this.step3.value,
             ...this.step4.value,
             ...this.step5.value,
-            ...this.form10.value,
-            ...this.formTemp.value,
+            ...this.step6.value,
           });
         }),
         tap(() => this.router.navigate(['characters/list']))
@@ -243,98 +191,23 @@ export class CreateComponent {
       .subscribe();
   }
 
-  onAddSkillClick(): void {
-    const array = this.formTemp.get('skills') as UntypedFormArray;
-    const ids = array.value?.map(i => i.id);
-
-    this.skills$
-      .pipe(
-        take(1),
-        switchMap(skills => this.dialog.open(AddSkillDialogComponent, {
-          data: skills.filter(i => !ids.includes(i.id))
-        }).afterClosed()),
-        filter(res => !!res),
-        tap(id => array.push(new UntypedFormGroup({
-          id: new FormControl<SkillId>(id),
-          starting: new FormControl<number>(5),
-          advances: new FormControl<number>(0)
-        })))
-      )
-      .subscribe();
-  }
-
-  onAddSpecialisationClick(): void {
-    const array = this.formTemp.get('specialisations') as UntypedFormArray;
-    const ids = array.value?.map(i => i.id);
-
-    this.specialisations$
-      .pipe(
-        take(1),
-        switchMap(specialisations => this.dialog.open(AddSpecialisationDialogComponent, {
-          data: specialisations.filter(i => !(ids.includes(i.id) && !i.multiple))
-        }).afterClosed()),
-        filter(res => !!res),
-        tap(res => array.push(new UntypedFormGroup({
-          id: new UntypedFormControl(res.id),
-          starting: new FormControl<number>(5),
-          advances: new FormControl<number>(0),
-          ...(res.details ? { details: new UntypedFormControl(res.details) } : {})
-        })))
-      )
-      .subscribe();
-  }
-
-  onAddTalentClick(): void {
-    const array = this.formTemp.get('talents') as UntypedFormArray;
-    const ids = array.value?.map(i => i.id);
-
-    this.talents$
-      .pipe(
-        take(1),
-        switchMap(talents => this.dialog.open(AddTalentDialogComponent, {
-          data: talents.filter(i => !ids.includes(i.id))
-        }).afterClosed()),
-        filter(res => !!res),
-        tap(res => array.push(new UntypedFormGroup({
-          id: new UntypedFormControl(res.id),
-        })))
-      )
-      .subscribe();
-  }
-
-  onRemoveSkillClick(index: number): void {
-    this.removeFromFormArray(this.formTemp.get('skills') as UntypedFormArray, index);
-  }
-
-  onRemoveSpecialisationClick(index: number): void {
-    this.removeFromFormArray(this.formTemp.get('specialisations') as UntypedFormArray, index);
-  }
-
-  onRemoveTalentClick(index: number): void {
-    this.removeFromFormArray(this.formTemp.get('talents') as UntypedFormArray, index);
-  }
-
-  onAddItemClick(): void {
-    const group = this.step5.get('items') as UntypedFormArray;
-
-    this.dialog.open(AddItemDialogComponent).afterClosed()
-      .pipe(
-        filter(res => !!res),
-        tap(res => group.push(new UntypedFormGroup({
-          id: new FormControl(res.id),
-          qualities: new FormControl<ItemTraitId[]>(res.qualities),
-          flaws: new FormControl<ItemTraitId[]>(res.flaws),
-          quantity: new FormControl<number>(res.quantity),
-        })))
-      )
-      .subscribe();
-  }
+  // onAddItemClick(): void {
+  //   const group = this.step5.get('items') as UntypedFormArray;
+  //
+  //   this.dialog.open(AddItemDialogComponent).afterClosed()
+  //     .pipe(
+  //       filter(res => !!res),
+  //       tap(res => group.push(new UntypedFormGroup({
+  //         id: new FormControl(res.id),
+  //         qualities: new FormControl<ItemTraitId[]>(res.qualities),
+  //         flaws: new FormControl<ItemTraitId[]>(res.flaws),
+  //         quantity: new FormControl<number>(res.quantity),
+  //       })))
+  //     )
+  //     .subscribe();
+  // }
 
   trackById(_: number, item): unknown {
     return item.id;
-  }
-
-  private removeFromFormArray(arr: UntypedFormArray, index: number): void {
-    arr.removeAt(index);
   }
 }

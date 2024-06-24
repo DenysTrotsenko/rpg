@@ -11,7 +11,7 @@ import {
   TalentId
 } from '@imperium-maledictum-1e/models/common';
 
-type Id = CharacteristicId | SkillId | SpecialisationId | TalentId;
+export type BonusId = CharacteristicId | SkillId | SpecialisationId | TalentId;
 
 @Component({
   selector: 'selected-bonuses',
@@ -31,9 +31,10 @@ type Id = CharacteristicId | SkillId | SpecialisationId | TalentId;
 export class SelectedBonusesComponent implements ControlValueAccessor {
   @Input() set value(bonuses: Bonus[]) {
     this.internal = [];
+    this.emit(new Map());
     this.bonuses = bonuses;
   }
-  @Output() valueChanges: EventEmitter<Map<Id, number>> = new EventEmitter();
+  @Output() valueChanges: EventEmitter<Map<BonusId, number>> = new EventEmitter();
 
   bonuses = null;
   private internal = [];
@@ -42,7 +43,7 @@ export class SelectedBonusesComponent implements ControlValueAccessor {
     this.internal[index] = [
       ...bonus.options.filter((o, i) => selected.includes(i))
     ];
-    const external: Map<Id, number> = this.internal.reduce((acc, bonuses: BonusOption[]) => {
+    const external: Map<BonusId, number> = this.internal.reduce((acc, bonuses: BonusOption[]) => {
       bonuses.forEach(bonus => {
         const id = bonus.id;
         const value = acc.get(id) ?? 0;
@@ -53,7 +54,7 @@ export class SelectedBonusesComponent implements ControlValueAccessor {
     this.emit(external);
   }
 
-  private emit(values: Map<Id, number>): void {
+  private emit(values: Map<BonusId, number>): void {
     this.propagateChange(values);
     this.valueChanges.emit(values);
   }

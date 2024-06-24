@@ -163,6 +163,7 @@ export interface Faction {
   labels: {
     description: string;
   };
+  bonuses: Bonus[];
 }
 
 export interface Item extends HasBaseProperties<ItemId> {
@@ -344,6 +345,7 @@ export interface Role extends HasBaseProperties<RoleId> {
   labels: {
     description: string;
   };
+  bonuses: Bonus[];
 }
 
 export interface Size extends HasBaseProperties<SizeId> {
