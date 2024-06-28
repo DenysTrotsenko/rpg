@@ -38,7 +38,10 @@
       </mat-form-field>
     </form>
     <ng-container *ngIf="originBonuses$ | async" [formGroup]="bonuses">
-      <selected-bonuses formControlName="origin" [value]="originBonuses$ | async"></selected-bonuses>
+      <selected-bonuses
+        formControlName="origin"
+        [value]="originBonuses$ | async">
+      </selected-bonuses>
     </ng-container>
     <div class="d-f g-5">
       <button mat-button matStepperPrevious>Back</button>

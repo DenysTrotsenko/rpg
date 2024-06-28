@@ -3,13 +3,22 @@
 </mat-label>
 <mat-selection-list #bonuses dense class="p-0"
   [formControl]="control"
-  [multiple]="bonus?.pick > 1"
+  [multiple]="true"
   (selectionChange)="onSelectionChange(bonuses.selectedOptions.selected)">
   <mat-list-option
     *ngFor="let option of bonus?.options; trackBy: trackById; let i = index"
     [value]="i"
     [class.hide_selector]="bonus.pick === bonus.options.length"
-    [disabled]="bonus.pick === bonus.options.length || (bonus.pick > 1 && bonuses.selectedOptions.selected?.length >= bonus?.pick && !control.value.includes(i))">
-    {{option.value ? (option.value > 0 ? '+' + option.value : option.value) + ' ' : ''}}{{(option.id | getById)?.name}}
+    [matTooltip]="(option.id | getById)?.labels?.tooltip"
+    [disabled]="bonus.pick === bonus.options.length || bonuses.selectedOptions.selected?.length >= bonus?.pick && !control.value.includes(i) || (option?.disabled && !control.value.includes(i))">
+    <ng-container *ngIf="bonus.type === 'characteristics' || bonus.type === 'skills'">
+      {{option.value > 0 ? '+' + option.value : option.value}} {{(option.id | getById)?.name}}
+    </ng-container>
+    <ng-container *ngIf="bonus.type === 'specialisations'">
+      {{option.value > 0 ? '+' + option.value : option.value}} {{((option.id | getById)?.skill | getById)?.name}} ({{(option.id | getById)?.name}})
+    </ng-container>
+    <ng-container *ngIf="bonus.type === 'talents'">
+      {{(option.id | getById)?.name}}
+    </ng-container>
   </mat-list-option>
 </mat-selection-list>

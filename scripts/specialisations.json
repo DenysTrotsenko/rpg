@@ -1,0 +1,712 @@
+[
+  {
+    "id": "df4d21d74898b16f",
+    "name": "Academics",
+    "labels": {
+      "description": "Grants the ability to write Low Gothic along with some knowledge of arts, economics, books, and local planetary culture. Generally reserved for more connected or well-to-do members of the Imperium."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "8ced246f4e23ba60",
+    "name": "Acrobatics",
+    "labels": {
+      "description": "Training in gymnastic exercises, with increased capacity for gracefully jumping, rolling, and tumbling. Can be used to swiftly traverse otherwise difficult terrain."
+    },
+    "skill": "7eea2fba4406a306"
+  },
+  {
+    "id": "54ef2be449fbb21b",
+    "name": "Adeptus Terra",
+    "labels": {
+      "description": "Knowledge not only of the Adeptus Terra itself, but of the many Adepta that make up the structure of the Imperium. This specialisation does not necessarily confer knowledge of any but the most well known members of any particular organisation, but it does cover knowledge of the roles and responsibilities of these organisations and their position with the Imperium at large."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "dc4e245c4bad8c34",
+    "name": "Aeronautica",
+    "labels": {
+      "description": "Advanced training in how to operate flying vehicles, from transports to combat aircraft. This specialisation is sufficient for taking capable craft from orbit down to a planet, but not for performing complex manoeuvres outside of a planet's atmosphere."
+    },
+    "skill": "174b27f54fde9a2b"
+  },
+  {
+    "id": "2d832fc4447e9198",
+    "name": "Animal",
+    "labels": {
+      "description": "Studied in the medical arts that deal specifically with the prevention and treatment of disease and injuries to animals. Includes extensive knowledge of their anatomies, patterns of behaviour, and products derived from them."
+    },
+    "skill": "b6cd224148989afc"
+  },
+  {
+    "id": "014924cb432c9abc",
+    "name": "Animals",
+    "labels": {
+      "description": "Aptitude for gaining the friendship and affection of simple beasts, along with the knowledge of how to care for them. Useful for interacting with guardian canids to, for example, issue one a command, or get a hostile one to stop barking."
+    },
+    "skill": "6af7251c498f8a2d"
+  },
+  {
+    "id": "2eb529c44309891a",
+    "name": "Augmetics",
+    "restricted": true,
+    "multiple": null,
+    "labels": {
+      "description": "Studied in the use and repair of different types of augmetic devices. Most augmetics are mechanical or electrical augmetic substitutes for Human biological parts, many with enhanced capacities, though some offer entirely new capabilities. Augmetics requires at least 1 Advance in the Medicae Skill."
+    },
+    "skill": "d51d23ed46cbb8b4"
+  },
+  {
+    "id": "26a22fbe463e8923",
+    "name": "Balance",
+    "labels": {
+      "description": "Practice in keeping on one’s feet, despite uncertain ground, pools of slippery unguents, or treacherous walkways."
+    },
+    "skill": "7eea2fba4406a306"
+  },
+  {
+    "id": "00ad28b340199aff",
+    "name": "Biomancy",
+    "restricted": true,
+    "multiple": null,
+    "labels": {
+      "description": "For more information on Psychic Disciplines, see page 160."
+    },
+    "skill": "b3d528aa48a9bd89"
+  },
+  {
+    "id": "2b6b2b604fd5aaad",
+    "name": "Brawling",
+    "labels": {
+      "description": "Experience in the brutal art of pugilism. Covers everything from fighting with bare hands or brass knuckles, through to inflicting devastating blows with a mighty Power Fist (page 128)."
+    },
+    "skill": "a67a24674152b445"
+  },
+  {
+    "id": "7d762a2b432694ca",
+    "name": "Charm",
+    "labels": {
+      "description": "Skilled at being exceedingly agreeable and pleasant company, leading to increased ability to make ‘reasonable’ requests of one’s new friends. Charm is often opposed by Discipline (Composure)."
+    },
+    "skill": "6af7251c498f8a2d"
+  },
+  {
+    "id": "dea62006425fb0ae",
+    "name": "Civilian",
+    "labels": {
+      "description": "Advanced training in how to operate non-military ground vehicles such as cargo haulers or personal transports."
+    },
+    "skill": "174b27f54fde9a2b"
+  },
+  {
+    "id": "4b0f272b4ab3b171",
+    "name": "Climbing",
+    "labels": {
+      "description": "Practised ability to safely and efficiently traverse vertical surfaces. Frequently useful on both Feral and Hive Worlds. Valuable in combat if one has to scale the side of a servo-hauler to get the drop on a heretical demagogue."
+    },
+    "skill": "22b2211c4d0baac8"
+  },
+  {
+    "id": "e4962f654fa1b0e0",
+    "name": "Composure",
+    "labels": {
+      "description": "Practised at resisting charm, intimidation, and other social pressures. Those with strong Composure are gifted at maintaining their integrity in the face of temptation."
+    },
+    "skill": "fe9e2d5c4664b65b"
+  },
+  {
+    "id": "d66d24394cb383bb",
+    "name": "Conceal",
+    "labels": {
+      "description": "Aptitude for knowing how to obscure places and objects so that others cannot easily find them. Conceal is often opposed by either Awareness (Sight) or Intuition (Surroundings)."
+    },
+    "skill": "c12a287c497d937f"
+  },
+  {
+    "id": "f67a28b64b1fafc8",
+    "name": "Cypher",
+    "labels": {
+      "description": "Training in identifying, deciphering, and using secret writing codes. Some cyphers are clearly coded communications that may require a literary key of some kind to unlock, others are messages carefully disguised within other writings."
+    },
+    "skill": "ebc329fb4688be0e"
+  },
+  {
+    "id": "01cd27ba4b3b9148",
+    "name": "Deception",
+    "labels": {
+      "description": "Well-practised, or specifically trained, to deceive without flinching. Deception is often opposed by Intuition."
+    },
+    "skill": "6af7251c498f8a2d"
+  },
+  {
+    "id": "a5072fd94c3e91a7",
+    "name": "Defuse",
+    "restricted": true,
+    "labels": {
+      "description": "Practical rote instruction in the various techniques and prayers used to harmlessly deactivate explosive devices and disarm trap mechanisms. Defuse requires at least 1 Advance in the Tech Skill (see page 101)."
+    },
+    "skill": "fb6b2add49d5b64c"
+  },
+  {
+    "id": "c4dc21274bbb93df",
+    "name": "Divination",
+    "restricted": true,
+    "labels": {
+      "description": "For more information on Psychic Disciplines, see page 160."
+    },
+    "skill": "b3d528aa48a9bd89"
+  },
+  {
+    "id": "7e602b934196a3de",
+    "name": "Dodge",
+    "labels": {
+      "description": "Capacity for avoiding injury or accident through quick movements designed to sidestep the danger. Can be used to defend yourself in combat against melee and ranged attacks. While the unaugmented cannot directly dodge bullets, they can avoid being shot by swiftly removing themselves from the line of fire."
+    },
+    "skill": "7eea2fba4406a306"
+  },
+  {
+    "id": "0e2824dc440e895b",
+    "name": "Endurance",
+    "labels": {
+      "description": "Trained to go without sleep for significantly extended periods, pushing on through exhaustion due to greater stamina."
+    },
+    "skill": "4d012f954eceae1e"
+  },
+  {
+    "id": "36a62fe44712b471",
+    "name": "Engineering",
+    "labels": {
+      "description": "Knowledge of the construction, use, and restoration of technological and mechanical devices. Encompasses the crafting of such items, as well as weapons and explosives. Within the Imperium, the Adeptus Mechanicus considers this entire branch of knowledge to be their exclusive right and will punish those who use it, or even study it, without their sanction. Notably, an individual that knows only how to assemble or repair a device by rote need not have this skill."
+    },
+    "skill": "d51d23ed46cbb8b4"
+  },
+  {
+    "id": "b5392c9e4182ab0d",
+    "name": "Evaluation",
+    "labels": {
+      "description": "The ability to assess relative worth based on perceived qualities. Useful for determining the value of practical goods and equipment, or the soundness of a given structure or device."
+    },
+    "skill": "b5ce2a7545079d27"
+  },
+  {
+    "id": "53a7224b4753b8c6",
+    "name": "Fear",
+    "labels": {
+      "description": "Mentally hardened to stand firm in the face of the unnatural fear caused by exposure to heretical and corrupt beings. Fear is often used to resist and recover from the Frightened Condition."
+    },
+    "skill": "fe9e2d5c4664b65b"
+  },
+  {
+    "id": "6f5d2e134a9d8249",
+    "name": "Forbidden, Adeptus Mechanicus",
+    "restricted": true,
+    "labels": {
+      "description": "Examples include knowledge of the installation and configuration of various radical Augmetics. Advanced medical training in treating disease and injuries in a specific species of xenos creature — typically used after a battle to stabilise one of them long enough for interrogation. Knowledge of diseases borne of the warp. Each Forbidden Medicae requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b6cd224148989afc"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Xenos",
+    "restricted": true,
+    "labels": {
+      "description": "Examples include knowledge of the installation and configuration of various radical Augmetics. Advanced medical training in treating disease and injuries in a specific species of xenos creature — typically used after a battle to stabilise one of them long enough for interrogation. Knowledge of diseases borne of the warp. Each Forbidden Medicae requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b6cd224148989afc"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Mutants",
+    "restricted": true,
+    "labels": {
+      "description": "Examples include knowledge of the installation and configuration of various radical Augmetics. Advanced medical training in treating disease and injuries in a specific species of xenos creature — typically used after a battle to stabilise one of them long enough for interrogation. Knowledge of diseases borne of the warp. Each Forbidden Medicae requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b6cd224148989afc"
+  },
+  {
+    "id": "ef852f2e4241a312",
+    "name": "Forbidden, Warp",
+    "restricted": true,
+    "labels": {
+      "description": "Knowledge and training in a specific subject that is utterly suppressed within the Imperium. Knowing information about aliens or psykers without specific dispensation from a powerful individual or group can get you in serious trouble. True knowledge of Daemons can get you summarily executed. Any knowledge of the immaterium, beyond common myth, is typically strictly obscured within the Imperium, as is real knowledge about the Adeptus Astartes. Each Forbidden Lore requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Xenos",
+    "restricted": true,
+    "labels": {
+      "description": "Knowledge and training in a specific subject that is utterly suppressed within the Imperium. Knowing information about aliens or psykers without specific dispensation from a powerful individual or group can get you in serious trouble. True knowledge of Daemons can get you summarily executed. Any knowledge of the immaterium, beyond common myth, is typically strictly obscured within the Imperium, as is real knowledge about the Adeptus Astartes. Each Forbidden Lore requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Daemons",
+    "restricted": true,
+    "labels": {
+      "description": "Knowledge and training in a specific subject that is utterly suppressed within the Imperium. Knowing information about aliens or psykers without specific dispensation from a powerful individual or group can get you in serious trouble. True knowledge of Daemons can get you summarily executed. Any knowledge of the immaterium, beyond common myth, is typically strictly obscured within the Imperium, as is real knowledge about the Adeptus Astartes. Each Forbidden Lore requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Archaeotech",
+    "restricted": true,
+    "labels": {
+      "description": "Knowledge and training in a specific subject that is utterly suppressed within the Imperium. Knowing information about aliens or psykers without specific dispensation from a powerful individual or group can get you in serious trouble. True knowledge of Daemons can get you summarily executed. Any knowledge of the immaterium, beyond common myth, is typically strictly obscured within the Imperium, as is real knowledge about the Adeptus Astartes. Each Forbidden Lore requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Heresy",
+    "restricted": true,
+    "labels": {
+      "description": "Knowledge and training in a specific subject that is utterly suppressed within the Imperium. Knowing information about aliens or psykers without specific dispensation from a powerful individual or group can get you in serious trouble. True knowledge of Daemons can get you summarily executed. Any knowledge of the immaterium, beyond common myth, is typically strictly obscured within the Imperium, as is real knowledge about the Adeptus Astartes. Each Forbidden Lore requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "e963254749f49d80",
+    "name": "Forbidden, Xenos",
+    "restricted": true,
+    "labels": {
+      "description": "Those possessed of this skill understand a language or form of communication that is either highly restricted or prohibited within the Imperium. With few exceptions, it is considered heretical to know the languages of aliens; however, the Sisters of the Orders Dialogus are frequently granted special dispensation from the Adeptus Ministorum to learn such in pursuit of their duties. Some xenos languages, such as the Kroot’s, are unpronounceable by a Human tongue without augmentation. While some languages are considered too profane to speak, others are too holy for common knowledge. The Lingua-Technis of the Adeptus Mechanicus is a forbidden language that few outside their order have ever learned, in part, because it is based on binary machine code that all but the most gifted individuals require cybernetic implants to speak. Thoughtmark, the form of sign language used by the Sisters of Silence, is also known to very few outsiders. Each Forbidden Language requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "ebc329fb4688be0e"
+  },
+  {
+    "id": null,
+    "name": "Forbidden, Lingua-Technis",
+    "restricted": true,
+    "labels": {
+      "description": "Those possessed of this skill understand a language or form of communication that is either highly restricted or prohibited within the Imperium. With few exceptions, it is considered heretical to know the languages of aliens; however, the Sisters of the Orders Dialogus are frequently granted special dispensation from the Adeptus Ministorum to learn such in pursuit of their duties. Some xenos languages, such as the Kroot’s, are unpronounceable by a Human tongue without augmentation. While some languages are considered too profane to speak, others are too holy for common knowledge. The Lingua-Technis of the Adeptus Mechanicus is a forbidden language that few outside their order have ever learned, in part, because it is based on binary machine code that all but the most gifted individuals require cybernetic implants to speak. Thoughtmark, the form of sign language used by the Sisters of Silence, is also known to very few outsiders. Each Forbidden Language requires taking a corresponding Forbidden Knowledge Talent (page 110) in order to learn it."
+    },
+    "skill": "ebc329fb4688be0e"
+  },
+  {
+    "id": "28b929be4c358391",
+    "name": "Group",
+    "restricted": null,
+    "multiple": true,
+    "labels": {
+      "description": "As above, but for a group of people who are partly or entirely something other than Human. This includes heavily augmented Tech-priests, Space Marines, or even xenos."
+    },
+    "skill": "a58e220b4afdbdbb"
+  },
+  {
+    "id": "b1c12030492bbca3",
+    "name": "Haggle",
+    "labels": {
+      "description": "Versed in the ancient art of bargaining for the best deal. Haggle is often opposed by either Discipline (Composure) or Logic (Evaluation)."
+    },
+    "skill": "6af7251c498f8a2d"
+  },
+  {
+    "id": "1296208d46ac939d",
+    "name": "Hearing",
+    "labels": {
+      "description": "Facility for detecting and identifying unusual sounds that stand out from local ambient ones. Greater ability to determine where a sound originated from."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "15ac295c40669e78",
+    "name": "Hide",
+    "labels": {
+      "description": "Competence at becoming unseen or unremarked by others, such as when camoflaged admist xenofoliage or tailing someone through a crowd. Hide is usually opposed by an observor's Awareness (Sight)."
+    },
+    "skill": "c12a287c497d937f"
+  },
+  {
+    "id": "0608279640aca42c",
+    "name": "High Gothic",
+    "labels": {
+      "description": "Familiarity with the formal language of the Imperium, spoken only in rarefied circles. Knowledge of High Gothic is held within the various branches of the Imperium, the Adeptus Mechanicus, and some older Noble Houses. The eldest histories of the Imperium, along with its most ancient secrets, are often preserved within datavaults in High Gothic."
+    },
+    "skill": "ebc329fb4688be0e"
+  },
+  {
+    "id": "0eeb25704f97a440",
+    "name": "Human",
+    "labels": {
+      "description": "Advanced training in treating disease and injuries in Humans. Used for first aid, stabilising the heavily injured, and stopping bleeding. Despite the name, it will work on Abhumans such as Ratlings, Ogryn, and Kin of the Leagues of Votann."
+    },
+    "skill": "b6cd224148989afc"
+  },
+  {
+    "id": "49e1242d42eb873a",
+    "name": "Human",
+    "labels": {
+      "description": "Extensive practice in studying patterns of Human behaviour, allowing one to notice when someone is lying, hiding something, or acting strangely. This skill is often used to oppose Rapport (Deception)."
+    },
+    "skill": "a58e220b4afdbdbb"
+  },
+  {
+    "id": "830b215847ed95a1",
+    "name": "Inquiry",
+    "labels": {
+      "description": "Trained, or naturally skilled, at getting answers out of others via gossip, friendly conversation, or pointed questions. Inquiry can be opposed by either Discipline (Composure) or Presence (Intimidation)."
+    },
+    "skill": "6af7251c498f8a2d"
+  },
+  {
+    "id": "44502c334d559cd7",
+    "name": "Interrogation",
+    "labels": {
+      "description": "Aptitude in a variety of techniques designed to elicit answers out of a subject. A skilled interrogator implies pressure in many ways, subtle and not, in order to discover as much information as they can, even when a subject is cooperative. Interrogation is not physical torture, though undergoing a long interrogation may certainly feel agonising. Interrogation is opposed by the target's Discipline (Composure) or Endurance (Pain)."
+    },
+    "skill": "8e992beb42b9819a"
+  },
+  {
+    "id": "61eb20364e91b087",
+    "name": "Intimidation",
+    "labels": {
+      "description": "Applying pressure through threats, subtle or blatant, that physical chastisement and other dire fates await those that fail to do as they are told or confess all they know. Intimidation is often opposed by Discipline (Composure)."
+    },
+    "skill": "8e992beb42b9819a"
+  },
+  {
+    "id": "560823d645bda907",
+    "name": "Investigation",
+    "labels": {
+      "description": "Training on how to read a crime scene for clues as to what occurred, including inferring whom the parties involved might be, as well as drawing pertinent information from any corpse present. Includes some forensic knowledge, such as knowing how to assess the angle of a strike and the sort of weapons used due to the angle of blood splatters, as well as time since the attack by studying how congealed the gore is."
+    },
+    "skill": "b5ce2a7545079d27"
+  },
+  {
+    "id": "0524211e4f2182df",
+    "name": "Leadership",
+    "labels": {
+      "description": "Trained to inspire others to put in their best efforts to achieve a desired goal. This can range anywhere from motivating a few clerks to finish a long survey in record time, to giving a group of desperate soldiers the courage to charge a fortified enemy bunker."
+    },
+    "skill": "8e992beb42b9819a"
+  },
+  {
+    "id": "d6ee28d945c9866d",
+    "name": "Lock Picking",
+    "labels": {
+      "description": "Experience in the art of opening mechanical locks without keys. Locks sophisticated enough to have a machine spirit likely requires a Tech (Security) Test to convince them to open."
+    },
+    "skill": "fb6b2add49d5b64c"
+  },
+  {
+    "id": "a9ab208b4e7dbb67",
+    "name": "Long Guns",
+    "labels": {
+      "description": "Extensive training in the use of longer firearms, such as lasguns, shotguns, bolters, autoguns, meltaguns, and similar ranged weapons."
+    },
+    "skill": "ed112adf43a18e12"
+  },
+  {
+    "id": "9fa923d14dff8861",
+    "name": "Major Voidship",
+    "restricted": true,
+    "labels": {
+      "description": "Training in how to operate the truly vast ships of the Imperial Fleet — Cruisers, Destroyers, Frigates, and similar. Typically, training in this specialisation is given by Imperial Navy instructors, to characters of sufficient rank."
+    },
+    "skill": "174b27f54fde9a2b"
+  },
+  {
+    "id": "bcf529a24bc197b0",
+    "name": "Might",
+    "labels": {
+      "description": "Advanced capacity for moving greater weight, breaking physical objects, and enduring heavy loads. In appropriate circumstances, an Athletics (Might) Test can be used in place of a Presence (Intimidation) Test to achieve similar aims."
+    },
+    "skill": "22b2211c4d0baac8"
+  },
+  {
+    "id": "095d23e4415e8fcf",
+    "name": "Military",
+    "restricted": true,
+    "labels": {
+      "description": "Advanced training in how to operate military ground vehicles, such as tanks. Typically, training in this specialisation is given by Astra Militarum instructors, to characters of sufficient rank."
+    },
+    "skill": "174b27f54fde9a2b"
+  },
+  {
+    "id": "b3402fa74cb2b322",
+    "name": "Minor Voidship",
+    "restricted": true,
+    "labels": {
+      "description": "Advanced training in operating smaller space vessels, from void fighters to transports. Typically, training in this specialisation is given by Imperial Navy instructors, to characters of sufficient rank."
+    },
+    "skill": "174b27f54fde9a2b"
+  },
+  {
+    "id": "00942c5d42c8a5d5",
+    "name": "Move Silently",
+    "labels": {
+      "description": "Trained facility for moving soundlessly and avoiding drawing attention. Move Silently is usually opposed by Awareness (Hearing)."
+    },
+    "skill": "c12a287c497d937f"
+  },
+  {
+    "id": "c3432c4c45ee8f0e",
+    "name": "One-Handed",
+    "labels": {
+      "description": "Extensive training in the use of swords, axes, maces, and other melee weapons that can be used with a single hand."
+    },
+    "skill": "a67a24674152b445"
+  },
+  {
+    "id": "ed0b2a80475cbd1a",
+    "name": "Ordnance",
+    "labels": {
+      "description": "Extensive training in the use of heavier ranged weaponry, such as lascannons, heavy bolters, missile launchers, and similarly devastating means of causing death and destruction."
+    },
+    "skill": "ed112adf43a18e12"
+  },
+  {
+    "id": "b5ee22ca4599b470",
+    "name": "Pain",
+    "labels": {
+      "description": "Increased capability for resisting torture and doing one’s duty despite injuries, due to extensive training in withstanding pain."
+    },
+    "skill": "4d012f954eceae1e"
+  },
+  {
+    "id": "fcb326874fd0b281",
+    "name": "Pickpocket",
+    "labels": {
+      "description": "Competence in pilfering the contents of others’ pockets, bags, backpacks, etc. without their noticing. Can also be used in reverse to place (incriminating) items within. Pickpocket is usually opposed by Awareness (Touch)."
+    },
+    "skill": "fb6b2add49d5b64c"
+  },
+  {
+    "id": "53e121c8468ea5c2",
+    "name": "Pistols",
+    "labels": {
+      "description": "Extensive training in the use of handguns, such as laspistols, bolt pistols, autopistols, stub revolvers, and similar firearms."
+    },
+    "skill": "ed112adf43a18e12"
+  },
+  {
+    "id": "50f122a0400b89b0",
+    "name": "Planet",
+    "multiple": true,
+    "labels": {
+      "description": "Specific knowledge about a particular planet, which must be chosen when this specialisation is first taken. For example, Lore (Voll) knowledge about the world of Voll (page 280), its customs, governance, locations, hazards, and so on. It is possible to take this specialisation more than once. Each time you do so, choose another planet."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "807f264a4f83b0bb",
+    "name": "Poison",
+    "labels": {
+      "description": "Precise exposure to a variety of toxins helps build up resistance, as well as granting experience in how to focus and continue to act effectively, despite having been poisoned."
+    },
+    "skill": "4d012f954eceae1e"
+  },
+  {
+    "id": "852329bd4ab28a48",
+    "name": "Psychic",
+    "labels": {
+      "description": "Advanced training in mentally resisting various psychic powers that can unduly influence or suborn one’s mind."
+    },
+    "skill": "fe9e2d5c4664b65b"
+  },
+  {
+    "id": "83de295d4becb18d",
+    "name": "Psyniscience",
+    "restricted": true,
+    "multiple": null,
+    "labels": {
+      "description": "Psykers can be trained to use their connection to the immaterium in order to discern areas where realspace is being, or has been, disrupted due to the intrusion of the warp. This allows them to detect the presence of warp entities and even locate other psykers, so long as they draw on the empyrean to use their psychic\nabilities. Psyniscience requires the Psyker Talent (see page 114), though prolonged exposure to warp phenomena and at the GM's discretion may allow others to take a single advance in this skill."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "c60e25f6417a93a6",
+    "name": "Pyromancy",
+    "restricted": true,
+    "multiple": null,
+    "labels": {
+      "description": "For more information on Psychic Disciplines, see page 160."
+    },
+    "skill": "b3d528aa48a9bd89"
+  },
+  {
+    "id": "4afc24224a01a04d",
+    "name": "Riding",
+    "labels": {
+      "description": "Increased aptitude in piloting equines, or their xenos equivalents. All but essential for controlling such beasts in combat."
+    },
+    "skill": "22b2211c4d0baac8"
+  },
+  {
+    "id": "0b5225c64effa083",
+    "name": "Running",
+    "labels": {
+      "description": "Greater capability for moving at speed over longer distances. Useful for catching fleeing foes, and escaping from dangerous opponents."
+    },
+    "skill": "22b2211c4d0baac8"
+  },
+  {
+    "id": "96422ada490c96fd",
+    "name": "Sector, Macharian",
+    "labels": {
+      "description": "Broad knowledge about a Macharian Sector. It would cover the subsectors, power structures, important figures, and general place of the Macharian Sector within the wider Imperium."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Sector, Calixis",
+    "labels": {
+      "description": "Broad knowledge about a Calixis Sector. It would cover the subsectors, power structures, important figures, and general place of the Calixis Sector within the wider Imperium."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": null,
+    "name": "Sector, Gothic",
+    "labels": {
+      "description": "Broad knowledge about a Gothic Sector. It would cover the subsectors, power structures, important figures, and general place of the Gothic Sector within the wider Imperium."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "e7d4288e4f34ac92",
+    "name": "Security",
+    "labels": {
+      "description": "Knowledge of how to interact with the Machine Spirits that control security devices, along with whatever other systems have been linked to the same, such as doors, thermo-regulators, weapons systems, and so forth, in order to direct them in specific ways. Accomplished through the use of binary codes, modern and ancient, along with various techniques used to sift information from datavaults, secured or otherwise. A skill known to few outside the Adeptus Mechanicus."
+    },
+    "skill": "d51d23ed46cbb8b4"
+  },
+  {
+    "id": "60842a0a4a8fb3bc",
+    "name": "Sight",
+    "labels": {
+      "description": "Advanced capacity for perceiving important details and training in noticing elements that seem even a little incongruous."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "93d62c3d469d9609",
+    "name": "Sleight of Hand",
+    "labels": {
+      "description": "Training in performing tricks of prestidigitation and secreting various items even while being observed. A master can conceal a weapon with the Subtle Trait even while being searched. Sleight of Hand is usually opposed by Awareness (Sight)."
+    },
+    "skill": "fb6b2add49d5b64c"
+  },
+  {
+    "id": "d2c5201144b4908f",
+    "name": "Smell",
+    "labels": {
+      "description": "Aptitude for noting and identifying particularly distinct or unusual aromas. Some rare augmentations and genetic enhancements allow those imbued with them to track others entirely by scent alone."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "f6722fb14e61b4a7",
+    "name": "Surface",
+    "labels": {
+      "description": "Training in plotting and following a likely course over land or sea in order to reach a chosen destination in the most efficient way possible."
+    },
+    "skill": "a60a2b4547219845"
+  },
+  {
+    "id": "747a27314b02995a",
+    "name": "Surroundings",
+    "labels": {
+      "description": "Training in learning to continually read the surrounding environment, noting unusual mistakes in layout, furtive steps, concealed shapes, or ominous patterns of behaviour which indicate something is wrong."
+    },
+    "skill": "a58e220b4afdbdbb"
+  },
+  {
+    "id": "7d7d253e4bd5bcab",
+    "name": "Swimming",
+    "labels": {
+      "description": "Better aptitude at swimming through liquids, typically water. Essential on some worlds with planet-spanning oceans, and almost unknown on others."
+    },
+    "skill": "22b2211c4d0baac8"
+  },
+  {
+    "id": "62e12f9247369e6a",
+    "name": "Taste",
+    "labels": {
+      "description": "Superior ability to discern various flavours, including the signs of certain poisons and drugs."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "ac872b334a498e41",
+    "name": "Telekinesis",
+    "restricted": true,
+    "labels": {
+      "description": "For more information on Psychic Disciplines, see page 160."
+    },
+    "skill": "b3d528aa48a9bd89"
+  },
+  {
+    "id": "e7c32a894ff9afd5",
+    "name": "Telepathy",
+    "restricted": true,
+    "labels": {
+      "description": "For more information on Psychic Disciplines, see page 160."
+    },
+    "skill": "b3d528aa48a9bd89"
+  },
+  {
+    "id": "61f72f1946f2adc1",
+    "name": "Theology",
+    "restricted": true,
+    "labels": {
+      "description": "Training in the Imperial Creed, including various sects and interpretations. Passing knowledge of the Cult Mechanicus. Only cursory knowledge at best of any heretical sects of the Imperial Creed and none whatsoever of any forbidden cults. Theology requires at least 1 Advance in Linguistics (High Gothic)."
+    },
+    "skill": "b7f326aa46cf9ae1"
+  },
+  {
+    "id": "8de426f04d9eba0a",
+    "name": "Thrown",
+    "labels": {
+      "description": "Extensive training in the use of hurled weapons, such as grenades and throwing knives."
+    },
+    "skill": "ed112adf43a18e12"
+  },
+  {
+    "id": "8a82273749c2b2f8",
+    "name": "Touch",
+    "labels": {
+      "description": "Capacity to feel unusual vibrations which\nindicate the passage of subterranean vehicles and weapon systems. Trained to discern the origin of fabrics and unusual materials by feel. Useful for detecting pickpockets."
+    },
+    "skill": "fa2e273d428a96a3"
+  },
+  {
+    "id": "03f025d94387aa2e",
+    "name": "Tracking",
+    "labels": {
+      "description": "Extensive training in how to read the marks left by the passage of others, in order to follow them, but also to determine information such as their numbers, if they are carrying a heavy load or travelling light, if they were in a hurry, and so on."
+    },
+    "skill": "a60a2b4547219845"
+  },
+  {
+    "id": "0241279342409500",
+    "name": "Two-Handed",
+    "labels": {
+      "description": "Extensive training in the use of larger swords, bigger axes, heavier maces, and other melee weapons that require two hands to use, along with various polearms such as spears and halberds."
+    },
+    "skill": "a67a24674152b445"
+  },
+  {
+    "id": "228723474d47b57b",
+    "name": "Void",
+    "labels": {
+      "description": "Capacity with the unusual knowledge of how to plot and follow a course between celestial bodies within a system."
+    },
+    "skill": "a60a2b4547219845"
+  },
+  {
+    "id": "c94f2d26487eb66d",
+    "name": "Warp",
+    "restricted": true,
+    "labels": {
+      "description": "The ability to plot a course through the uncertain eddies and currents of the immaterium. A skill based on feeling as much as knowledge, it is impossible to accurately navigate the warp without the ability to perceive it, which is why this skill is held exclusively by the mutant Navigators of the Navis Nobilite. Using this skill requires the Inheritor (Navis Nobilite) Talent (see page 113)."
+    },
+    "skill": "a60a2b4547219845"
+  }
+]

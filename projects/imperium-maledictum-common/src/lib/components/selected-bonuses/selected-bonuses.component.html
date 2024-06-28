@@ -1,5 +1,5 @@
 <select-bonus
-  *ngFor="let bonus of bonuses; trackBy: trackById; let i = index"
+  *ngFor="let bonus of bonuses; trackBy: trackByIndex; let i = index"
   class="mb-15"
   [value]="bonus"
   (valueChanges)="onBonusChange(i, bonus, $event)">

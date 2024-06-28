@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, inject, Input, Output } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule, MatListOption } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Bonus } from '@imperium-maledictum-1e/models/common';
 import { DataService } from '../../data.service';
 import { GetByIdPipe } from '../../pipes/get-by-id.pipe';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { Bonus } from '@imperium-maledictum-1e/models/common';
 
 @Component({
   selector: 'select-bonus',
@@ -13,7 +14,7 @@ import { Bonus } from '@imperium-maledictum-1e/models/common';
   styleUrls: ['./select-bonus.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatListModule, NgFor, NgIf, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule],
+  imports: [MatListModule, NgFor, NgIf, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule, MatTooltipModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -29,9 +30,9 @@ export class SelectBonusComponent implements ControlValueAccessor {
     this.bonus = bonus;
 
     if (bonus.pick === bonus.options.length) {
-      const values = new Array(bonus.options.length).fill(0).map((_, i) => i);
-      this.control.setValue(values);
-      this.emit(values);
+      const all = new Array(bonus.options.length).fill(0).map((_, i) => i);
+      this.control.setValue(all);
+      this.emit(all);
     } else {
       this.control.setValue([]);
       this.emit([]);

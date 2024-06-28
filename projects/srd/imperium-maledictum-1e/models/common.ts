@@ -113,10 +113,11 @@ export interface BestiaryType extends HasBaseProperties<BestiaryTypeId> {
 export interface BonusOption {
   id: CharacteristicId | SkillId | SpecialisationId | TalentId | ItemId;
   value?: number;
+  disabled?: boolean;
 }
 
 export interface Bonus {
-  type: 'characteristics' | 'skills' | 'specialisation' | 'talents' | 'items';
+  type: 'characteristics' | 'skills' | 'specialisations' | 'talents' | 'items';
   pick: number;
   options: BonusOption[];
 }

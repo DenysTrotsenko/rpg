@@ -1,0 +1,870 @@
+[
+  {
+    "id": "6bc720ca4615b0fc",
+    "name": "Adeptus Administratum",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "71ad288d411492df"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "590c24b64015b8bb",
+    "name": "Adeptus Astra Telepathica",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "b3d528aa48a9bd89",
+            "value": 5
+          },
+          {
+            "id": "b3d528aa48a9bd89",
+            "value": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "66f62bd747349b71",
+    "name": "Adeptus Mechanicus",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cc5125ef482287b6",
+    "name": "Adeptus Ministorum",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "3f6d2ff54547a2a7"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "649d25ea4cb980e1",
+    "name": "Astra Militarum",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3e342610487caa67",
+            "value": 5
+          },
+          {
+            "id": "693d2eab4376b077",
+            "value": 5
+          },
+          {
+            "id": "a97a29984504832c",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "118b2b5147639afd"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "24f527e84ddd970e",
+    "name": "Imperial Fleet",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "a97a29984504832c",
+            "value": 5
+          },
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "902c2f7942558ccd"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ca402a10446fa74a",
+    "name": "Infractionists",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "caf123914ebe825c"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "17ef26784e31a629",
+    "name": "Rogue Trader Dynasty",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          },
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "0d5a23a24d42bcca"}
+        ]
+      }
+    ]
+  },
+  {
+    "id": "07262ce5405b8f5d",
+    "name": "The Inquisition",
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "skills",
+        "pick": 5,
+        "options": [
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"id": "73a12b22416484e8"}
+        ]
+      }
+    ]
+  }
+]

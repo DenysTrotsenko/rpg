@@ -22,13 +22,14 @@ import {
   DataService,
 } from '@im-common';
 import {
+  Bonus,
   Characteristic,
   Faction,
   FactionId,
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId, Role,
-  RoleId, Skill, Specialisation, Talent
+  RoleId, Skill, SkillId, Specialisation, SpecialisationId, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
 import {
   CharacteristicValue,
@@ -113,21 +114,6 @@ export class CreateComponent {
     distinctUntilChanged(),
     shareReplay(1)
   );
-  readonly originBonuses$ = this.step2.get('origin').valueChanges.pipe(
-    distinctUntilChanged(),
-    map(id => id ? this.data.get<Origin>(id)?.bonuses : []),
-    shareReplay(1)
-  );
-  readonly factionBonuses$ = this.step3.get('faction').valueChanges.pipe(
-    distinctUntilChanged(),
-    map(id => id ? this.data.get<Faction>(id)?.bonuses : []),
-    shareReplay(1)
-  );
-  readonly roleBonuses$ = this.step4.get('role').valueChanges.pipe(
-    distinctUntilChanged(),
-    map(id => id ? this.data.get<Role>(id)?.bonuses : []),
-    shareReplay(1)
-  );
   readonly totalSelectedBonuses$: Observable<Map<BonusId, number>> = this.bonuses.valueChanges.pipe(
     map(form => {
       const total = new Map<BonusId, number>();
@@ -139,6 +125,33 @@ export class CreateComponent {
 
       return total;
     })
+  );
+  readonly originBonuses$ = combineLatest([
+    this.step2.get('origin').valueChanges.pipe(startWith(null)),
+    this.totalSelectedBonuses$.pipe(startWith(new Map()))
+  ]).pipe(
+    map(([id, total]) => {
+      return this.setBonusOptionsDisabled(id ? this.data.get<Origin>(id)?.bonuses : [], total);
+    }),
+    shareReplay(1)
+  );
+  readonly factionBonuses$ = combineLatest([
+    this.step3.get('faction').valueChanges.pipe(startWith(null)),
+    this.totalSelectedBonuses$.pipe(startWith(new Map()))
+  ]).pipe(
+    map(([id, total]) => {
+      return this.setBonusOptionsDisabled(id ? this.data.get<Faction>(id)?.bonuses : [], total);
+    }),
+    shareReplay(1)
+  );
+  readonly roleBonuses$ = combineLatest([
+    this.step4.get('role').valueChanges.pipe(startWith(null)),
+    this.totalSelectedBonuses$.pipe(startWith(new Map()))
+  ]).pipe(
+    map(([id, total]) => {
+      return this.setBonusOptionsDisabled(id ? this.data.get<Role>(id)?.bonuses : [], total);
+    }),
+    shareReplay(1)
   );
 
   constructor(
@@ -202,5 +215,26 @@ export class CreateComponent {
 
   trackById(_: number, item): unknown {
     return item.id;
+  }
+
+  private setBonusOptionsDisabled(bonuses: Bonus[], total: Map<BonusId, number>): Bonus[] {
+    bonuses.forEach(bonus => {
+      const options = bonus.options;
+
+      options.forEach(option => {
+        if (bonus.type === 'skills') {
+          const id = option.id as SkillId;
+          option.disabled = total.get(id) && total.get(id) >= 10;
+        } else if (bonus.type === 'specialisations') {
+          const id = option.id as SpecialisationId;
+          option.disabled = total.get(id) && total.get(id) >= 5;
+        } else if (bonus.type === 'talents') {
+          const id = option.id as TalentId;
+          option.disabled = total.has(id);
+        }
+      });
+    });
+
+    return bonuses;
   }
 }
