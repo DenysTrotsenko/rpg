@@ -9,12 +9,12 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, take, combineLatest } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import {
   AuthService,
   CampaignService,
   CharacterId,
-  DialogService, FS_COLLECTION,
+  FS_COLLECTION,
   getId16,
 } from '@std';
 import { CharacterService } from '../../character.service';
@@ -33,7 +33,8 @@ import {
 } from '@imperium-maledictum-1e/models/common';
 import {
   CharacteristicValue,
-  ImperiumMaledictumCharacter as Character
+  SkillValue, SpecialisationValue,
+  ImperiumMaledictumCharacter as Character, TalentValue,
 } from '@imperium-maledictum-1e/models/character';
 import {
   BonusId
@@ -121,7 +122,8 @@ export class CreateComponent {
       form.role?.forEach(addToTotalSelectedBonuses);
 
       return total;
-    })
+    }),
+    shareReplay(1)
   );
   readonly originBonuses$ = combineLatest([
     this.step2.get('origin').valueChanges.pipe(startWith(null)),
@@ -158,38 +160,38 @@ export class CreateComponent {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly data: DataService,
-  ) {
-    // TODO: REMOVE
-    this.totalSelectedBonuses$.subscribe(res => console.log(res));
-  }
+  ) {}
 
   onSubmit(): void {
     const isValid = this.step1.valid && this.step2.valid && this.step3.valid && this.step4.valid && this.step5.valid;
 
     if (!isValid) { return; }
 
-    combineLatest([
-      this.character$,
-      this.campaign.selected$,
-      this.totalSelectedBonuses$,
-      this.skills$,
-      this.specialisations$
-    ])
+    const combined = {
+      character: this.character$.pipe(tap(() => console.log('1'))),
+      campaign: this.campaign.selected$.pipe(tap(() => console.log('2'))),
+      bonuses: this.totalSelectedBonuses$.pipe(tap(() => console.log('3'))),
+      skills: this.skills$.pipe(tap(() => console.log('4'))),
+      specialisations: this.specialisations$.pipe(tap(() => console.log('5'))),
+      talents: this.talents$.pipe(tap(() => console.log('6')))
+    };
+
+    combineLatest(combined)
       .pipe(
         take(1),
-        switchMap(([character, campaign, bonuses, skills, specialisations]) => {
+        switchMap(({character, campaign, bonuses, skills, specialisations, talents}) => {
           const id = character?.id || getId16();
 
           return this.character.update(id, {
             id,
             author: character?.author ?? this.route.snapshot.data?.user?.uid,
             campaign: character?.campaign ?? campaign.id,
-            characteristics: this.step1.value.map(i => {
+            characteristics: this.step1.value?.characteristics?.map(i => {
               return {
                 id: i.id,
                 starting: i.starting + (bonuses.get(i.id) ?? 0),
                 advances: 0
-              };
+              } as CharacteristicValue;
             }),
             ...this.step2.value,
             ...this.step3.value,
@@ -200,15 +202,21 @@ export class CreateComponent {
                 id: i.id,
                 starting: bonuses.get(i.id),
                 advances: 0
-              };
+              } as SkillValue;
             }),
             specialisations: specialisations.filter(i => bonuses.has(i.id)).map(i => {
               return {
                 id: i.id,
                 starting: bonuses.get(i.id),
                 advances: 0
-              };
+              } as SpecialisationValue;
             }),
+            talents: talents.filter(i => bonuses.has(i.id)).map(i => {
+              return {
+                id: i.id
+              } as TalentValue;
+            }),
+            items: []
           });
         }),
         tap(() => this.router.navigate(['characters/list']))
