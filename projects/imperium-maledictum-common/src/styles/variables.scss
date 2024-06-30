@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-red: mat.get-color-from-palette(mat.$red-palette, 500);
+$color-pink: mat.get-color-from-palette(mat.$pink-palette, 500);
+$color-purple: mat.get-color-from-palette(mat.$purple-palette, 500);
+$color-deep-purple: mat.get-color-from-palette(mat.$deep-purple-palette, 500);
+$color-indigo: mat.get-color-from-palette(mat.$indigo-palette, 500);
+$color-blue: mat.get-color-from-palette(mat.$blue-palette, 500);
+$color-light-blue: mat.get-color-from-palette(mat.$light-blue-palette, 500);
+$color-cyan: mat.get-color-from-palette(mat.$cyan-palette, 500);
+$color-teal: mat.get-color-from-palette(mat.$teal-palette, 500);
+$color-green: mat.get-color-from-palette(mat.$green-palette, 500);
+$color-light-green: mat.get-color-from-palette(mat.$light-green-palette, 500);
+$color-lime: mat.get-color-from-palette(mat.$lime-palette, 500);
+$color-yellow: mat.get-color-from-palette(mat.$yellow-palette, 500);
+$color-amber: mat.get-color-from-palette(mat.$amber-palette, 500);
+$color-orange: mat.get-color-from-palette(mat.$orange-palette, 500);
+$color-deep-orange: mat.get-color-from-palette(mat.$deep-orange-palette, 500);
+$color-brown: mat.get-color-from-palette(mat.$brown-palette, 500);
+$color-gray: mat.get-color-from-palette(mat.$gray-palette, 500);
+$color-blue-gray: mat.get-color-from-palette(mat.$blue-gray-palette, 500);

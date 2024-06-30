@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
-  AuthService, Campaign,
+  Campaign,
   CampaignService,
-  DialogService,
   NavListItemData,
   PermissionId,
   UserService
@@ -26,45 +25,18 @@ const LOGGED_OPTIONS: NavListItemData[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent {
-  private readonly auth = inject(AuthService);
   private readonly campaign = inject(CampaignService);
-  private readonly dialog = inject(DialogService);
   private readonly router = inject(Router);
   private readonly user = inject(UserService);
 
-  expanded = true;
   readonly campaign$: Observable<Campaign> = this.campaign.selected$;
   readonly options$: Observable<NavListItemData[]> = this.user.me$.pipe(
     map(user => user?.permissions ?? []),
     map(permissions => LOGGED_OPTIONS.filter(i => i.permission ? permissions.includes(i.permission) : true))
   );
 
-  onToggleSidenavClick(): void {
-    this.expanded = !this.expanded;
-  }
-
-  onLogoutClick(): void {
-    this.dialog
-      .confirm({
-        data: {
-          title: 'Logout',
-          description: 'Are you sure you want to Logout?',
-          ok: 'Logout'
-        }
-      })
-      .afterClosed()
-      .pipe(
-        filter(res => !!res),
-        switchMap(() => this.auth.signOut()),
-        tap(() => {
-          this.campaign.set(null);
-          this.router.navigate(['/auth/sign-in']);
-        })
-      )
-      .subscribe();
-  }
-
-  trackById(_: number, item): unknown {
-    return item.id;
+  onLogout(): void {
+    this.campaign.set(null);
+    this.router.navigate(['/auth/sign-in']);
   }
 }

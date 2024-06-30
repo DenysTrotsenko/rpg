@@ -13,7 +13,6 @@ import { CharacterDetailsComponent } from './components/character-details/charac
 import { CharacterPowersComponent } from './components/character-powers/character-powers.component';
 import { CharacterEquipmentComponent } from './components/character-equipment/character-equipment.component';
 import { AddTalentDialogComponent } from './components/add-talent-dialog.component';
-import { SelectAdvanceComponent } from './components/select-advance/select-advance.component';
 import { GetByIdPipe } from './pipes/get-by-id.pipe';
 
 const DECLARATION = [
@@ -30,7 +29,6 @@ const DECLARATION = [
   CharacterDetailsComponent,
   CharacterPowersComponent,
   CharacterEquipmentComponent,
-  SelectAdvanceComponent,
 ];
 
 @NgModule({
