@@ -90,28 +90,14 @@
       <button mat-button matStepperNext [disabled]="!step4.valid">Next</button>
     </div>
   </mat-step>
-  <!-- STEP 5: EQUIPMENT -->
+  <!-- STEP 5: GENERAL -->
   <mat-step [stepControl]="step5">
-<!--    <form [formGroup]="step5" class="d-f fd-c">-->
-<!--      <ng-template matStepLabel>Equipment</ng-template>-->
-<!--      <div class="d-f fd-c g-5 mb-5">-->
-<!--        <div *ngFor="let item of formItems$ | async; trackBy: trackById; let i = index">{{item}}</div>-->
-<!--      </div>-->
-<!--    </form>-->
-    <div class="d-f g-5">
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext [disabled]="!step5.valid">Next</button>
-<!--      <button mat-stroked-button color="primary" (click)="onAddItemClick()">Add Item</button>-->
-    </div>
-  </mat-step>
-  <!-- STEP 10: GENERAL -->
-  <mat-step [stepControl]="step6">
-    <form [formGroup]="step6" class="d-f fd-c">
+    <form [formGroup]="step5" class="d-f fd-c">
       <ng-template matStepLabel>Name & Details</ng-template>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
-        <mat-error *ngIf="step6.get('name').hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="step5.get('name').hasError('required')">Name is required</mat-error>
       </mat-form-field>
       <div class="d-f g-10">
         <image-input
@@ -131,7 +117,7 @@
       </mat-form-field>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext [disabled]="!step6.valid">Next</button>
+        <button mat-button matStepperNext [disabled]="!step5.valid">Next</button>
       </div>
     </form>
   </mat-step>

@@ -57,10 +57,7 @@ export class CreateComponent {
   readonly step4: FormGroup = new FormGroup({
     role: new FormControl<RoleId>(null, [Validators.required]),
   });
-  readonly step5: FormGroup = new FormGroup({
-    items: new UntypedFormArray([]),
-  });
-  readonly step6: FormGroup = new FormGroup<any>({
+  readonly step5: FormGroup = new FormGroup<any>({
     name: new FormControl<string>(null, [Validators.required]),
     image: new FormControl<string>(null),
     powers: new FormControl<PsychicPowerId[]>([])
@@ -167,29 +164,51 @@ export class CreateComponent {
   }
 
   onSubmit(): void {
-    const isValid = this.step1.valid && this.step6.valid;
+    const isValid = this.step1.valid && this.step2.valid && this.step3.valid && this.step4.valid && this.step5.valid;
 
     if (!isValid) { return; }
 
     combineLatest([
       this.character$,
-      this.campaign.selected$
+      this.campaign.selected$,
+      this.totalSelectedBonuses$,
+      this.skills$,
+      this.specialisations$
     ])
       .pipe(
         take(1),
-        switchMap(([character, campaign]) => {
+        switchMap(([character, campaign, bonuses, skills, specialisations]) => {
           const id = character?.id || getId16();
 
           return this.character.update(id, {
             id,
             author: character?.author ?? this.route.snapshot.data?.user?.uid,
             campaign: character?.campaign ?? campaign.id,
-            ...this.step1.value,
+            characteristics: this.step1.value.map(i => {
+              return {
+                id: i.id,
+                starting: i.starting + (bonuses.get(i.id) ?? 0),
+                advances: 0
+              };
+            }),
             ...this.step2.value,
             ...this.step3.value,
             ...this.step4.value,
             ...this.step5.value,
-            ...this.step6.value,
+            skills: skills.filter(i => bonuses.has(i.id)).map(i => {
+              return {
+                id: i.id,
+                starting: bonuses.get(i.id),
+                advances: 0
+              };
+            }),
+            specialisations: specialisations.filter(i => bonuses.has(i.id)).map(i => {
+              return {
+                id: i.id,
+                starting: bonuses.get(i.id),
+                advances: 0
+              };
+            }),
           });
         }),
         tap(() => this.router.navigate(['characters/list']))
