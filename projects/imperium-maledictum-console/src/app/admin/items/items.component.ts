@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -13,6 +13,9 @@ import { DataService } from '@im-common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemsComponent {
+  private readonly data = inject(DataService);
+  private readonly item: Item = inject(MAT_DIALOG_DATA);
+
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
@@ -50,13 +53,18 @@ export class ItemsComponent {
   readonly specialisations$: Observable<Specialisation[]> = this.data.specialisations$;
   readonly locations = ['Head', 'Body', 'Arms', 'Legs', 'All', 'Special'];
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public item: Item,
-    private readonly data: DataService,
-  ) {}
-
   ngOnInit(): void {
     this.form.patchValue(!!this.item ? this.item : { id: getId16() });
+  }
+
+  onSubmit(item: Item): Item {
+    Object.keys(item?.data).forEach(key => {
+      if (item.data[key] == null || item.data[key]?.length === 0) {
+        delete item.data[key];
+      }
+    });
+
+    return item;
   }
 
   trackById(_, i): string { return i.id; }

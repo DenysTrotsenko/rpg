@@ -112,6 +112,6 @@
   </div>
   <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="null">Cancel</button>
-    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue())" [disabled]="!form.valid">Add</button>
   </div>
 </form>

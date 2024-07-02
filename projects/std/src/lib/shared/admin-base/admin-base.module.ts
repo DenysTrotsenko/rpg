@@ -3,6 +3,7 @@ import { AdminBaseComponent } from './admin-base.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CodeEditorModule } from '../code-editor/code-editor.module';
 
 @NgModule({
   declarations: [
@@ -11,10 +12,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     AdminBaseComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        CodeEditorModule
+    ]
 })
 export class AdminBaseModule {}

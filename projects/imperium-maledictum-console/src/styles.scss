@@ -34,7 +34,10 @@ table.mat-mdc-table {
   }
 }
 
-.mat-mdc-tooltip {
+/* Tooltip */
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  max-width: 300px !important;
+  max-height: unset !important;
   line-height: 1.25;
   white-space: pre-line;
 }
