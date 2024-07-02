@@ -5,7 +5,7 @@ import { CharactersComponent } from './characters.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
-import { GetByIdPipe, ImperiumMaledictumCommonModule, SelectedBonusesComponent } from '@im-common';
+import { GetByIdPipe, ImperiumMaledictumCommonModule, SelectedBonusesComponent, SelectedItemsComponent } from '@im-common';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { GetByIdPipe, ImperiumMaledictumCommonModule, SelectedBonusesComponent }
     ImperiumMaledictumCommonModule,
     CharactersRoutingModule,
     SelectedBonusesComponent,
+    SelectedItemsComponent,
     GetByIdPipe
   ]
 })

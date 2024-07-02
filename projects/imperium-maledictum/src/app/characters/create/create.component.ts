@@ -25,7 +25,7 @@ import {
   Bonus,
   Characteristic,
   Faction,
-  FactionId,
+  FactionId, ItemBonus,
   Origin,
   OriginId, PsychicPower,
   PsychicPowerId, Role,
@@ -34,7 +34,7 @@ import {
 import {
   CharacteristicValue,
   SkillValue, SpecialisationValue,
-  ImperiumMaledictumCharacter as Character, TalentValue,
+  ImperiumMaledictumCharacter as Character, TalentValue, ItemValue,
 } from '@imperium-maledictum-1e/models/character';
 import {
   BonusId
@@ -68,6 +68,11 @@ export class CreateComponent {
     faction: new FormControl<Map<BonusId, number>>(null),
     role: new FormControl<Map<BonusId, number>>(null),
   });
+  readonly items: FormGroup = new FormGroup<any>({
+    origin: new FormControl([]),
+    faction: new FormControl([]),
+    role: new FormControl([]),
+  });
 
   readonly character$: Observable<Character> = this.route.paramMap
     .pipe(
@@ -96,17 +101,6 @@ export class CreateComponent {
   readonly talents$: Observable<Talent[]> = this.data.talents$;
   readonly powers$: Observable<PsychicPower[]> = this.data.psychicPowers$;
 
-  // readonly formItems$: Observable<string[]> = this.step5.get('items').valueChanges.pipe(
-  //   startWith([]),
-  //   map(items => items.map(i => {
-  //     const item = this.data.get<Item>(i.id);
-  //     const qualities = i.qualities?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-  //     const flaws = i.flaws?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-  //     const traits = item?.data?.traits?.map(q => this.data.get<ItemTrait>(q)?.name) ?? [];
-  //
-  //     return `${[...qualities, ...flaws].join(' ')} ${item?.name} ${traits.length ? '(' + traits.join(', ') + ')' : ''}`;
-  //   }))
-  // );
   readonly imagesPath$ = this.auth.uid$.pipe(
     map(id => `${FS_COLLECTION.USERS}/${id}/images`),
     distinctUntilChanged(),
@@ -125,6 +119,16 @@ export class CreateComponent {
     }),
     shareReplay(1)
   );
+  readonly totalSelectedItems$: Observable<ItemValue[]> = this.items.valueChanges.pipe(
+    map(form => {
+      return [
+        ...form.origin,
+        ...form.faction,
+        ...form.role
+      ];
+    }),
+    shareReplay(1)
+  );
   readonly originBonuses$ = combineLatest([
     this.step2.get('origin').valueChanges.pipe(startWith(null)),
     this.totalSelectedBonuses$.pipe(startWith(new Map()))
@@ -132,6 +136,13 @@ export class CreateComponent {
     map(([id, total]) => {
       return this.setBonusOptionsDisabled(id ? this.data.get<Origin>(id)?.bonuses : [], total);
     }),
+    shareReplay(1)
+  );
+  readonly originItems$: Observable<ItemBonus[]> = combineLatest([
+    this.step2.get('origin').valueChanges.pipe(startWith(null)),
+    this.totalSelectedItems$.pipe(startWith([] as ItemValue[]))
+  ]).pipe(
+    map(([id, total]) => this.data.get<Origin>(id)?.items ?? []),
     shareReplay(1)
   );
   readonly factionBonuses$ = combineLatest([
@@ -143,6 +154,13 @@ export class CreateComponent {
     }),
     shareReplay(1)
   );
+  readonly factionItems$: Observable<ItemBonus[]> = combineLatest([
+    this.step3.get('faction').valueChanges.pipe(startWith(null)),
+    this.totalSelectedItems$.pipe(startWith([] as ItemValue[]))
+  ]).pipe(
+    map(([id, total]) => this.data.get<Faction>(id)?.items ?? []),
+    shareReplay(1)
+  );
   readonly roleBonuses$ = combineLatest([
     this.step4.get('role').valueChanges.pipe(startWith(null)),
     this.totalSelectedBonuses$.pipe(startWith(new Map()))
@@ -150,6 +168,13 @@ export class CreateComponent {
     map(([id, total]) => {
       return this.setBonusOptionsDisabled(id ? this.data.get<Role>(id)?.bonuses : [], total);
     }),
+    shareReplay(1)
+  );
+  readonly roleItems$: Observable<ItemBonus[]> = combineLatest([
+    this.step4.get('role').valueChanges.pipe(startWith(null)),
+    this.totalSelectedItems$.pipe(startWith([] as ItemValue[]))
+  ]).pipe(
+    map(([id, total]) => this.data.get<Role>(id)?.items ?? []),
     shareReplay(1)
   );
 
@@ -168,12 +193,12 @@ export class CreateComponent {
     if (!isValid) { return; }
 
     const combined = {
-      character: this.character$.pipe(tap(() => console.log('1'))),
-      campaign: this.campaign.selected$.pipe(tap(() => console.log('2'))),
-      bonuses: this.totalSelectedBonuses$.pipe(tap(() => console.log('3'))),
-      skills: this.skills$.pipe(tap(() => console.log('4'))),
-      specialisations: this.specialisations$.pipe(tap(() => console.log('5'))),
-      talents: this.talents$.pipe(tap(() => console.log('6')))
+      character: this.character$,
+      campaign: this.campaign.selected$,
+      bonuses: this.totalSelectedBonuses$,
+      skills: this.skills$,
+      specialisations: this.specialisations$,
+      talents: this.talents$
     };
 
     combineLatest(combined)
@@ -223,22 +248,6 @@ export class CreateComponent {
       )
       .subscribe();
   }
-
-  // onAddItemClick(): void {
-  //   const group = this.step5.get('items') as UntypedFormArray;
-  //
-  //   this.dialog.open(AddItemDialogComponent).afterClosed()
-  //     .pipe(
-  //       filter(res => !!res),
-  //       tap(res => group.push(new UntypedFormGroup({
-  //         id: new FormControl(res.id),
-  //         qualities: new FormControl<ItemTraitId[]>(res.qualities),
-  //         flaws: new FormControl<ItemTraitId[]>(res.flaws),
-  //         quantity: new FormControl<number>(res.quantity),
-  //       })))
-  //     )
-  //     .subscribe();
-  // }
 
   trackById(_: number, item): unknown {
     return item.id;

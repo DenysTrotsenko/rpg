@@ -1,0 +1,417 @@
+[
+  {
+    "id": "25152f1d43f98dfa",
+    "name": "Agri World",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "a97a29984504832c",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          },
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "d9aa2cfc49fcae80",
+            "flaws": [
+              "7986251a4e1e8114"
+            ],
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "e8dd26e74acaad23",
+    "name": "Feral World",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3e342610487caa67",
+            "value": 5
+          },
+          {
+            "id": "a97a29984504832c",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3d2b20554306b2ff",
+            "flaws": [
+              "7986251a4e1e8114"
+            ],
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ffa7274041c5aa93",
+    "name": "Feudal World",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3e342610487caa67",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "a97a29984504832c",
+            "value": 5
+          },
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "5dab21bd4de4954e",
+            "flaws": [
+              "7986251a4e1e8114"
+            ],
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "93aa2782444aab3c",
+    "name": "Forge World",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "693d2eab4376b077",
+            "value": 5
+          },
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          },
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "1afa29e94152bdd3",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "e00f2880407a9a8c",
+    "name": "Hive World",
+    "weight": 3,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "693d2eab4376b077",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "4219275b406784f6",
+            "flaws": [
+              "31f0242c43bf917f"
+            ],
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d53026f5495fac76",
+    "name": "Schola Progenium",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "3e342610487caa67",
+            "value": 5
+          },
+          {
+            "id": "693d2eab4376b077",
+            "value": 5
+          },
+          {
+            "id": "9c4022694b3cb20e",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "19a22dd84aebad7a",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "645225e6410abc80",
+    "name": "Shrine World",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          },
+          {
+            "id": "3d5b23d1478987c8",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "ac25229046409ba5",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "50d427444aef8900",
+    "name": "Voidborn",
+    "weight": 1,
+    "labels": {
+      "description": "todo"
+    },
+    "bonuses": [
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "9d9b2e2a45c98615",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "type": "characteristics",
+        "pick": 1,
+        "options": [
+          {
+            "id": "42152a5244faa518",
+            "value": 5
+          },
+          {
+            "id": "b68f237845fcab57",
+            "value": 5
+          },
+          {
+            "id": "5f5321934646b7e7",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {
+            "id": "840626d04f95946c",
+            "flaws": [
+              "7986251a4e1e8114"
+            ],
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  }
+]

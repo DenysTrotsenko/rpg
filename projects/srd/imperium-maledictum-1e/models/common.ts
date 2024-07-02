@@ -111,15 +111,33 @@ export interface BestiaryType extends HasBaseProperties<BestiaryTypeId> {
 }
 
 export interface BonusOption {
-  id: CharacteristicId | SkillId | SpecialisationId | TalentId | ItemId;
-  value?: number;
+  id: CharacteristicId | SkillId | SpecialisationId | TalentId;
+  value: number;
+  /* internal, VM */
   disabled?: boolean;
+  label?: string;
 }
 
 export interface Bonus {
-  type: 'characteristics' | 'skills' | 'specialisations' | 'talents' | 'items';
+  type: 'characteristics' | 'skills' | 'specialisations' | 'talents';
   pick: number;
   options: BonusOption[];
+}
+
+export interface ItemBonusOption {
+  id: ItemId;
+  qualities: ItemTraitId[];
+  flaws: ItemTraitId[];
+  quantity: number;
+  /* internal, VM */
+  disabled?: boolean;
+  label?: string;
+}
+
+export interface ItemBonus {
+  type: 'items';
+  pick: number;
+  options: ItemBonusOption[];
 }
 
 export interface Characteristic {
@@ -165,6 +183,7 @@ export interface Faction {
     description: string;
   };
   bonuses: Bonus[];
+  items: ItemBonus[];
 }
 
 export interface Item extends HasBaseProperties<ItemId> {
@@ -228,6 +247,7 @@ export interface Origin {
   };
   modifications: Modification[];
   bonuses: Bonus[];
+  items: ItemBonus[];
 }
 
 export interface Patron {
@@ -347,6 +367,7 @@ export interface Role extends HasBaseProperties<RoleId> {
     description: string;
   };
   bonuses: Bonus[];
+  items: ItemBonus[];
 }
 
 export interface Size extends HasBaseProperties<SizeId> {

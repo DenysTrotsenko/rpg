@@ -23,6 +23,7 @@ export interface ImperiumMaledictumCharacter extends Character {
   talents: TalentValue[];
   powers: PsychicPowerId[];
   items: ItemValue[];
+  prosthetics: ItemValue[];
   // patron: PatronId;
 }
 
