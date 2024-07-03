@@ -28,6 +28,7 @@ export class ViewComponent implements OnDestroy {
       distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
       shareReplay(1),
       tap(character => {
+        console.log(character);
         // this.attributes = this.getAttributes(character);
         // this.description = this.getDescription(character);
         // this.languages = this.getLanguages(character);

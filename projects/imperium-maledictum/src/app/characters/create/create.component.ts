@@ -196,6 +196,7 @@ export class CreateComponent {
       character: this.character$,
       campaign: this.campaign.selected$,
       bonuses: this.totalSelectedBonuses$,
+      items: this.totalSelectedItems$,
       skills: this.skills$,
       specialisations: this.specialisations$,
       talents: this.talents$
@@ -204,9 +205,9 @@ export class CreateComponent {
     combineLatest(combined)
       .pipe(
         take(1),
-        switchMap(({character, campaign, bonuses, skills, specialisations, talents}) => {
+        switchMap(({character, campaign, bonuses, items, skills, specialisations, talents}) => {
           const id = character?.id || getId16();
-
+          console.log(items);
           return this.character.update(id, {
             id,
             author: character?.author ?? this.route.snapshot.data?.user?.uid,
@@ -241,7 +242,9 @@ export class CreateComponent {
                 id: i.id
               } as TalentValue;
             }),
-            items: []
+            items: [
+              ...items
+            ]
           });
         }),
         tap(() => this.router.navigate(['characters/list']))

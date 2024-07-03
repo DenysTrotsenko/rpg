@@ -24,8 +24,6 @@ export class ItemsComponent {
     encumbrance: new UntypedFormControl(0, [Validators.required, Validators.min(0)]),
     cost: new UntypedFormControl(10, [Validators.required, Validators.min(0)]),
     data: new UntypedFormGroup({
-      qualities: new UntypedFormControl([]),
-      flaws: new UntypedFormControl([]),
       traits: new UntypedFormControl([]),
       specialisations: new UntypedFormControl([]),
       damage: new UntypedFormControl(null),
@@ -43,8 +41,6 @@ export class ItemsComponent {
   readonly availabilities$: Observable<Availability[]> = this.data.availabilities$.pipe(
     tap(items => AdminBaseService.setControlDefault(this.form.get('availability'), items))
   );
-  readonly itemFlaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
-  readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly itemTypes$: Observable<ItemType[]> = this.data.itemTypes$;
   readonly ranges$: Observable<Range[]> = this.data.ranges$.pipe(

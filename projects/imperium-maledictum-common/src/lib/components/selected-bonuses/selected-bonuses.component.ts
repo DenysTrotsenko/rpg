@@ -43,11 +43,18 @@ export class SelectedBonusesComponent implements ControlValueAccessor {
     this.internal[index] = [
       ...bonus.options.filter((o, i) => selected.includes(i))
     ];
-    const external: Map<BonusId, number> = this.internal.reduce((acc, bonuses: BonusOption[]) => {
-      bonuses.forEach(bonus => {
-        const id = bonus.id;
-        const value = acc.get(id) ?? 0;
-        acc.set(id, value + bonus.value);
+    const external: Map<BonusId, number> = this.internal.reduce((acc, options: BonusOption[]) => {
+      options.forEach(option => {
+        if (option.ids) {
+          option.ids.forEach(id => {
+            const value = acc.get(id) ?? 0;
+            acc.set(id, value + option.value);
+          });
+        } else {
+          const id = option.id;
+          const value = acc.get(id) ?? 0;
+          acc.set(id, value + option.value);
+        }
       });
       return acc;
     }, new Map());

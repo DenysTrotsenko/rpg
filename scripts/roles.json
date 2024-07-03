@@ -10,49 +10,162 @@
         "type": "talents",
         "pick": 4,
         "options": [
-          {"id": "e3ee26b6436a8d84"},
-          {"id": "2b622b454b2ca5b1"},
-          {"id": "0d5a23a24d42bcca"},
-          {"id": "72242f1344038381"},
-          {"id": "c3d32d5846a1a6df"},
-          {"id": "55252a3f4075a141"},
-          {"id": "2c7629f843338655"},
-          {"id": "68d62a764a7490b3"}
+          {
+            "id": "e3ee26b6436a8d84"
+          },
+          {
+            "id": "2b622b454b2ca5b1"
+          },
+          {
+            "id": "0d5a23a24d42bcca"
+          },
+          {
+            "id": "72242f1344038381"
+          },
+          {
+            "id": "c3d32d5846a1a6df"
+          },
+          {
+            "id": "55252a3f4075a141"
+          },
+          {
+            "id": "2c7629f843338655"
+          },
+          {
+            "id": "68d62a764a7490b3"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "a58e220b4afdbdbb", "value": 5},
-          {"id": "a58e220b4afdbdbb", "value": 5},
-          {"id": "ebc329fb4688be0e", "value": 5},
-          {"id": "ebc329fb4688be0e", "value": 5},
-          {"id": "8e992beb42b9819a", "value": 5},
-          {"id": "8e992beb42b9819a", "value": 5},
-          {"id": "6af7251c498f8a2d", "value": 5},
-          {"id": "6af7251c498f8a2d", "value": 5}
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          },
+          {
+            "id": "6af7251c498f8a2d",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "28b929be4c358391", "value": 5},
-          {"id": "49e1242d42eb873a", "value": 5},
-          {"id": "747a27314b02995a", "value": 5},
-          {"id": "44502c334d559cd7", "value": 5},
-          {"id": "61eb20364e91b087", "value": 5},
-          {"id": "0524211e4f2182df", "value": 5},
-          {"id": "830b215847ed95a1", "value": 5},
-          {"id": "7d762a2b432694ca", "value": 5},
-          {"id": "01cd27ba4b3b9148", "value": 5},
-          {"id": "b1c12030492bbca3", "value": 5},
-          {"id": "830b215847ed95a1", "value": 5}
+          {
+            "id": "28b929be4c358391",
+            "value": 5
+          },
+          {
+            "id": "49e1242d42eb873a",
+            "value": 5
+          },
+          {
+            "id": "747a27314b02995a",
+            "value": 5
+          },
+          {
+            "id": "44502c334d559cd7",
+            "value": 5
+          },
+          {
+            "id": "61eb20364e91b087",
+            "value": 5
+          },
+          {
+            "id": "0524211e4f2182df",
+            "value": 5
+          },
+          {
+            "id": "830b215847ed95a1",
+            "value": 5
+          },
+          {
+            "id": "7d762a2b432694ca",
+            "value": 5
+          },
+          {
+            "id": "01cd27ba4b3b9148",
+            "value": 5
+          },
+          {
+            "id": "b1c12030492bbca3",
+            "value": 5
+          },
+          {
+            "id": "830b215847ed95a1",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "3d2b20554306b2ff", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "fc7e20da42279e1c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "f42d27fe45569bc7", "quantity": 1},
+          {"id": "cb1a29f247beb91a", "quantity": 1},
+          {"id": "b2e22ca543dc938a", "quantity": 1}
         ]
       }
     ]
@@ -68,60 +181,190 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "4dbc21f1425993b3"},
-          {"id": "97e12db2480ba0f9"},
-          {"id": "248426114f169ff3"},
-          {"id": "621b2a204d27968c"},
-          {"id": "2af929a74e2f8043"}
+          {
+            "id": "4dbc21f1425993b3"
+          },
+          {
+            "id": "97e12db2480ba0f9"
+          },
+          {
+            "id": "248426114f169ff3"
+          },
+          {
+            "id": "621b2a204d27968c"
+          },
+          {
+            "id": "2af929a74e2f8043"
+          }
         ]
       },
       {
         "type": "talents",
         "pick": 2,
         "options": [
-          {"id": "25b62456480ab37f"},
-          {"id": "d1d623964ae1b7ed"},
-          {"id": "80d62f3143d4bc51"},
-          {"id": "c506284a4073b23a"},
-          {"id": "675d22274113856c"},
-          {"id": "25942ca142be86d7"},
-          {"id": "5b78259f4b00949d"}
+          {
+            "id": "25b62456480ab37f"
+          },
+          {
+            "id": "d1d623964ae1b7ed"
+          },
+          {
+            "id": "80d62f3143d4bc51"
+          },
+          {
+            "id": "c506284a4073b23a"
+          },
+          {
+            "id": "675d22274113856c"
+          },
+          {
+            "id": "25942ca142be86d7"
+          },
+          {
+            "id": "5b78259f4b00949d"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "a58e220b4afdbdbb", "value": 5},
-          {"id": "a58e220b4afdbdbb", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "a60a2b4547219845", "value": 5},
-          {"id": "a60a2b4547219845", "value": 5},
-          {"id": "b3d528aa48a9bd89", "value": 5},
-          {"id": "b3d528aa48a9bd89", "value": 5}
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "a58e220b4afdbdbb",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "b3d528aa48a9bd89",
+            "value": 5
+          },
+          {
+            "id": "b3d528aa48a9bd89",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "53a7224b4753b8c6", "value": 5},
-          {"id": "e963254749f49d80", "value": 5},
-          {"id": "78a128fd45e7b531", "value": 5},
-          {"id": "fdf72c5d46459879", "value": 5},
-          {"id": "ef852f2e4241a312", "value": 5},
-          {"id": "92fc2e5e4dd798ef", "value": 5},
-          {"id": "83de295d4becb18d", "value": 5},
-          {"id": "00ad28b340199aff", "value": 5},
-          {"id": "c4dc21274bbb93df", "value": 5},
-          {"id": "c60e25f6417a93a6", "value": 5},
-          {"id": "ac872b334a498e41", "value": 5},
-          {"id": "e7c32a894ff9afd5", "value": 5}
+          {
+            "id": "53a7224b4753b8c6",
+            "value": 5
+          },
+          {
+            "id": "e963254749f49d80",
+            "value": 5
+          },
+          {
+            "id": "78a128fd45e7b531",
+            "value": 5
+          },
+          {
+            "id": "fdf72c5d46459879",
+            "value": 5
+          },
+          {
+            "id": "ef852f2e4241a312",
+            "value": 5
+          },
+          {
+            "id": "92fc2e5e4dd798ef",
+            "value": 5
+          },
+          {
+            "id": "83de295d4becb18d",
+            "value": 5
+          },
+          {
+            "id": "00ad28b340199aff",
+            "value": 5
+          },
+          {
+            "id": "c4dc21274bbb93df",
+            "value": 5
+          },
+          {
+            "id": "c60e25f6417a93a6",
+            "value": 5
+          },
+          {
+            "id": "ac872b334a498e41",
+            "value": 5
+          },
+          {
+            "id": "e7c32a894ff9afd5",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "e2c1267a4ec3a815", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "fc7e20da42279e1c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "3d2b20554306b2ff", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "b655208147c580ef", "quantity": 1},
+          {"id": "3989213c44dd8f90", "quantity": 1}
         ]
       }
     ]
@@ -137,57 +380,197 @@
         "type": "talents",
         "pick": 2,
         "options": [
-          {"id": "a80b2064472bbb49"},
-          {"id": "c11a24e646628205"},
-          {"id": "5cd12f4b41ebbfb0"},
-          {"id": "2ccd2d84493cb380"},
-          {"id": "3e81242049c98898"},
-          {"id": "71632fe64126b321"},
-          {"id": "d4bc29264da39edc"},
-          {"id": "e16029b34b7ba1fc"},
-          {"id": "3b692e1f44f99a3f"},
-          {"id": "73e921b74d5ab06d"},
-          {"id": "4da22ea44ce49ff4"},
-          {"id": "a1c727e445e99b86"},
-          {"id": "3656252b47399205"},
-          {"id": "30d02729441cbe24"}
+          {
+            "id": "a80b2064472bbb49"
+          },
+          {
+            "id": "c11a24e646628205"
+          },
+          {
+            "id": "5cd12f4b41ebbfb0"
+          },
+          {
+            "id": "2ccd2d84493cb380"
+          },
+          {
+            "id": "3e81242049c98898"
+          },
+          {
+            "id": "71632fe64126b321"
+          },
+          {
+            "id": "d4bc29264da39edc"
+          },
+          {
+            "id": "e16029b34b7ba1fc"
+          },
+          {
+            "id": "3b692e1f44f99a3f"
+          },
+          {
+            "id": "73e921b74d5ab06d"
+          },
+          {
+            "id": "4da22ea44ce49ff4"
+          },
+          {
+            "id": "a1c727e445e99b86"
+          },
+          {
+            "id": "3656252b47399205"
+          },
+          {
+            "id": "30d02729441cbe24"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "22b2211c4d0baac8", "value": 5},
-          {"id": "22b2211c4d0baac8", "value": 5},
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fa2e273d428a96a3", "value": 5},
-          {"id": "fb6b2add49d5b64c", "value": 5},
-          {"id": "fb6b2add49d5b64c", "value": 5},
-          {"id": "ed112adf43a18e12", "value": 5},
-          {"id": "ed112adf43a18e12", "value": 5},
-          {"id": "7eea2fba4406a306", "value": 5},
-          {"id": "7eea2fba4406a306", "value": 5},
-          {"id": "c12a287c497d937f", "value": 5},
-          {"id": "c12a287c497d937f", "value": 5}
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fa2e273d428a96a3",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "fb6b2add49d5b64c",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          },
+          {
+            "id": "c12a287c497d937f",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "a9ab208b4e7dbb67", "value": 5},
-          {"id": "ed0b2a80475cbd1a", "value": 5},
-          {"id": "53e121c8468ea5c2", "value": 5},
-          {"id": "8de426f04d9eba0a", "value": 5},
-          {"id": "8ced246f4e23ba60", "value": 5},
-          {"id": "26a22fbe463e8923", "value": 5},
-          {"id": "7e602b934196a3de", "value": 5},
-          {"id": "d66d24394cb383bb", "value": 5},
-          {"id": "15ac295c40669e78", "value": 5},
-          {"id": "00942c5d42c8a5d5", "value": 5}
+          {
+            "id": "a9ab208b4e7dbb67",
+            "value": 5
+          },
+          {
+            "id": "ed0b2a80475cbd1a",
+            "value": 5
+          },
+          {
+            "id": "53e121c8468ea5c2",
+            "value": 5
+          },
+          {
+            "id": "8de426f04d9eba0a",
+            "value": 5
+          },
+          {
+            "id": "8ced246f4e23ba60",
+            "value": 5
+          },
+          {
+            "id": "26a22fbe463e8923",
+            "value": 5
+          },
+          {
+            "id": "7e602b934196a3de",
+            "value": 5
+          },
+          {
+            "id": "d66d24394cb383bb",
+            "value": 5
+          },
+          {
+            "id": "15ac295c40669e78",
+            "value": 5
+          },
+          {
+            "id": "00942c5d42c8a5d5",
+            "value": 5
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 6,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "2b5b26dc40929a6b", "quantity": 1},
+          {"id": "afea220b4415b908", "quantity": 1},
+          {"id": "3d2b20554306b2ff", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "9d8e23b54ee9894d", "quantity": 1},
+          {"id": "e39e2ec141e5921c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "a37324224a16ad0c", "quantity": 1},
+          {"id": "a75128984b33ad91", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "3989213c44dd8f90", "quantity": 1},
+          {"id": "d18a2a8e45edbe77", "quantity": 1},
+          {"id": "b8c421284bb38aef", "quantity": 1},
+          {"id": "c524233c4b64ae9b", "quantity": 1},
+          {"id": "f841252343a5a00c", "quantity": 1},
+          {"id": "59ca2b334057b0a7", "quantity": 1},
+          {"id": "cb1a29f247beb91a", "quantity": 1},
+          {"id": "62382602453c827e", "quantity": 1},
+          {"id": "633b2f5242fdaeb4", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 0
   },
   {
     "id": "20a8298945f8b44e",
@@ -200,54 +583,179 @@
         "type": "talents",
         "pick": 2,
         "options": [
-          {"id": "88222e6248b185e4"},
-          {"id": "54222ecd4c5cab88"},
-          {"id": "3edd2ee7403c9fb0"},
-          {"id": "87aa2c764643ae2a"},
-          {"id": "d12c27cc4c5eb131"},
-          {"id": "47732ee946f5970d"},
-          {"id": "71ad288d411492df"},
-          {"id": "312d29524321bd31"},
-          {"id": "cbaf2c68407f8bfe"}
+          {
+            "id": "88222e6248b185e4"
+          },
+          {
+            "id": "54222ecd4c5cab88"
+          },
+          {
+            "id": "3edd2ee7403c9fb0"
+          },
+          {
+            "id": "87aa2c764643ae2a"
+          },
+          {
+            "id": "d12c27cc4c5eb131"
+          },
+          {
+            "id": "47732ee946f5970d"
+          },
+          {
+            "id": "71ad288d411492df"
+          },
+          {
+            "id": "312d29524321bd31"
+          },
+          {
+            "id": "cbaf2c68407f8bfe"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "b5ce2a7545079d27", "value": 5},
-          {"id": "b5ce2a7545079d27", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "b6cd224148989afc", "value": 5},
-          {"id": "b6cd224148989afc", "value": 5},
-          {"id": "a60a2b4547219845", "value": 5},
-          {"id": "a60a2b4547219845", "value": 5},
-          {"id": "174b27f54fde9a2b", "value": 5},
-          {"id": "174b27f54fde9a2b", "value": 5},
-          {"id": "d51d23ed46cbb8b4", "value": 5},
-          {"id": "d51d23ed46cbb8b4", "value": 5}
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b5ce2a7545079d27",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "a60a2b4547219845",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "174b27f54fde9a2b",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          },
+          {
+            "id": "d51d23ed46cbb8b4",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "df4d21d74898b16f", "value": 5},
-          {"id": "54ef2be449fbb21b", "value": 5},
-          {"id": "3edf23464074a0b1", "value": 5},
-          {"id": "78a128fd45e7b531", "value": 5},
-          {"id": "fdf72c5d46459879", "value": 5},
-          {"id": "ef852f2e4241a312", "value": 5},
-          {"id": "92fc2e5e4dd798ef", "value": 5},
-          {"id": "80072119446ea4ad", "value": 5},
-          {"id": "dbb62c4747c18e1a", "value": 5},
-          {"id": "96422ada490c96fd", "value": 5},
-          {"id": "61f72f1946f2adc1", "value": 5},
-          {"id": "50f122a0400b89b0", "value": 5}
+          {
+            "id": "df4d21d74898b16f",
+            "value": 5
+          },
+          {
+            "id": "54ef2be449fbb21b",
+            "value": 5
+          },
+          {
+            "id": "3edf23464074a0b1",
+            "value": 5
+          },
+          {
+            "id": "78a128fd45e7b531",
+            "value": 5
+          },
+          {
+            "id": "fdf72c5d46459879",
+            "value": 5
+          },
+          {
+            "id": "ef852f2e4241a312",
+            "value": 5
+          },
+          {
+            "id": "92fc2e5e4dd798ef",
+            "value": 5
+          },
+          {
+            "id": "80072119446ea4ad",
+            "value": 5
+          },
+          {
+            "id": "dbb62c4747c18e1a",
+            "value": 5
+          },
+          {
+            "id": "96422ada490c96fd",
+            "value": 5
+          },
+          {
+            "id": "61f72f1946f2adc1",
+            "value": 5
+          },
+          {
+            "id": "50f122a0400b89b0",
+            "value": 5
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 5,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "3c6d21d745dbba45", "quantity": 1},
+          {"id": "281f279148ff8145", "quantity": 1},
+          {"id": "3d2b20554306b2ff", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "fc7e20da42279e1c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "3989213c44dd8f90", "quantity": 1},
+          {"id": "7a6829b040feb910", "quantity": 1},
+          {"id": "c1bd250a447e9374", "quantity": 1},
+          {"id": "d49a2194427e946f", "quantity": 1},
+          {"id": "5d79276145108e1e", "quantity": 1},
+          {"id": "6ffd2f2e4827ab7e", "quantity": 1},
+          {"id": "59ca2b334057b0a7", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 0
   },
   {
     "id": "a3af2fb545a4a201",
@@ -260,46 +768,177 @@
         "type": "talents",
         "pick": 2,
         "options": [
-          {"id": "8b4e2d6244099dde"},
-          {"id": "82ce297d420b96de"},
-          {"id": "118b2b5147639afd"},
-          {"id": "5e5a22a74001afe0"},
-          {"id": "5a8225d5493eb132"},
-          {"id": "244a29e842c09958"}
+          {
+            "id": "8b4e2d6244099dde"
+          },
+          {
+            "id": "82ce297d420b96de"
+          },
+          {
+            "id": "118b2b5147639afd"
+          },
+          {
+            "id": "5e5a22a74001afe0"
+          },
+          {
+            "id": "5a8225d5493eb132"
+          },
+          {
+            "id": "244a29e842c09958"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "22b2211c4d0baac8", "value": 5},
-          {"id": "22b2211c4d0baac8", "value": 5},
-          {"id": "4d012f954eceae1e", "value": 5},
-          {"id": "4d012f954eceae1e", "value": 5},
-          {"id": "b6cd224148989afc", "value": 5},
-          {"id": "b6cd224148989afc", "value": 5},
-          {"id": "a67a24674152b445", "value": 5},
-          {"id": "a67a24674152b445", "value": 5},
-          {"id": "ed112adf43a18e12", "value": 5},
-          {"id": "ed112adf43a18e12", "value": 5},
-          {"id": "7eea2fba4406a306", "value": 5},
-          {"id": "7eea2fba4406a306", "value": 5}
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "22b2211c4d0baac8",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "b6cd224148989afc",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "ed112adf43a18e12",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          },
+          {
+            "id": "7eea2fba4406a306",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "2b6b2b604fd5aaad", "value": 5},
-          {"id": "c3432c4c45ee8f0e", "value": 5},
-          {"id": "0241279342409500", "value": 5},
-          {"id": "a9ab208b4e7dbb67", "value": 5},
-          {"id": "ed0b2a80475cbd1a", "value": 5},
-          {"id": "53e121c8468ea5c2", "value": 5},
-          {"id": "8de426f04d9eba0a", "value": 5},
-          {"id": "8ced246f4e23ba60", "value": 5},
-          {"id": "26a22fbe463e8923", "value": 5},
-          {"id": "7e602b934196a3de", "value": 5}
+          {
+            "id": "2b6b2b604fd5aaad",
+            "value": 5
+          },
+          {
+            "id": "c3432c4c45ee8f0e",
+            "value": 5
+          },
+          {
+            "id": "0241279342409500",
+            "value": 5
+          },
+          {
+            "id": "a9ab208b4e7dbb67",
+            "value": 5
+          },
+          {
+            "id": "ed0b2a80475cbd1a",
+            "value": 5
+          },
+          {
+            "id": "53e121c8468ea5c2",
+            "value": 5
+          },
+          {
+            "id": "8de426f04d9eba0a",
+            "value": 5
+          },
+          {
+            "id": "8ced246f4e23ba60",
+            "value": 5
+          },
+          {
+            "id": "26a22fbe463e8923",
+            "value": 5
+          },
+          {
+            "id": "7e602b934196a3de",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 5,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "303e2e1a4c579626", "quantity": 1},
+          {"id": "3c6d21d745dbba45", "quantity": 1},
+          {"id": "3d2b20554306b2ff", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "fc7e20da42279e1c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "31bb22c54f73960a", "quantity": 1},
+          {"id": "b02d295c430fb8ac", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "84f62f334823b3de", "quantity": 1},
+          {"id": "793628c84e6dacc8", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "dc092eb746d38d51", "quantity": 1},
+          {"id": "e59525704776be5d", "quantity": 1},
+          {"id": "6de42f244528a288", "quantity": 1},
+          {"id": "e4d32ac944599a3b", "quantity": 1},
+          {"id": "0cf823204506a91c", "quantity": 1},
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "e2c1267a4ec3a815", "quantity": 1},
+          {"id": "4f5e2b0f4e3495c1", "quantity": 1},
+          {"id": "1c452fd24d38ac4c", "quantity": 1},
+          {"id": "5e912d2744f0b6e1", "quantity": 1}
         ]
       }
     ]
@@ -315,51 +954,187 @@
         "type": "talents",
         "pick": 2,
         "options": [
-          {"id": "3f6d2ff54547a2a7"},
-          {"id": "ffb120be46b6be14"},
-          {"id": "9c672cc34b98932b"},
-          {"id": "9e36279a4baaafb2"},
-          {"id": "ef6227f14ce199fb"},
-          {"id": "4e23263043d3a1ba"}
+          {
+            "id": "3f6d2ff54547a2a7"
+          },
+          {
+            "id": "ffb120be46b6be14"
+          },
+          {
+            "id": "9c672cc34b98932b"
+          },
+          {
+            "id": "9e36279a4baaafb2"
+          },
+          {
+            "id": "ef6227f14ce199fb"
+          },
+          {
+            "id": "4e23263043d3a1ba"
+          }
         ]
       },
       {
         "type": "skills",
         "pick": 3,
         "options": [
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "fe9e2d5c4664b65b", "value": 5},
-          {"id": "4d012f954eceae1e", "value": 5},
-          {"id": "4d012f954eceae1e", "value": 5},
-          {"id": "ebc329fb4688be0e", "value": 5},
-          {"id": "ebc329fb4688be0e", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "b7f326aa46cf9ae1", "value": 5},
-          {"id": "a67a24674152b445", "value": 5},
-          {"id": "a67a24674152b445", "value": 5},
-          {"id": "8e992beb42b9819a", "value": 5},
-          {"id": "8e992beb42b9819a", "value": 5}
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "fe9e2d5c4664b65b",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "4d012f954eceae1e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "ebc329fb4688be0e",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "b7f326aa46cf9ae1",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "a67a24674152b445",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          },
+          {
+            "id": "8e992beb42b9819a",
+            "value": 5
+          }
         ]
       },
       {
         "type": "specialisations",
         "pick": 2,
         "options": [
-          {"id": "e4962f654fa1b0e0", "value": 5},
-          {"id": "53a7224b4753b8c6", "value": 5},
-          {"id": "852329bd4ab28a48", "value": 5},
-          {"id": "2b6b2b604fd5aaad", "value": 5},
-          {"id": "c3432c4c45ee8f0e", "value": 5},
-          {"id": "0241279342409500", "value": 5},
-          {"id": "df4d21d74898b16f", "value": 5},
-          {"id": "54ef2be449fbb21b", "value": 5},
-          {"id": "78a128fd45e7b531", "value": 5},
-          {"id": "fdf72c5d46459879", "value": 5},
-          {"id": "50f122a0400b89b0", "value": 5},
-          {"id": "80072119446ea4ad", "value": 5},
-          {"id": "dbb62c4747c18e1a", "value": 5},
-          {"id": "96422ada490c96fd", "value": 5},
-          {"id": "61f72f1946f2adc1", "value": 5}
+          {
+            "id": "e4962f654fa1b0e0",
+            "value": 5
+          },
+          {
+            "id": "53a7224b4753b8c6",
+            "value": 5
+          },
+          {
+            "id": "852329bd4ab28a48",
+            "value": 5
+          },
+          {
+            "id": "2b6b2b604fd5aaad",
+            "value": 5
+          },
+          {
+            "id": "c3432c4c45ee8f0e",
+            "value": 5
+          },
+          {
+            "id": "0241279342409500",
+            "value": 5
+          },
+          {
+            "id": "df4d21d74898b16f",
+            "value": 5
+          },
+          {
+            "id": "54ef2be449fbb21b",
+            "value": 5
+          },
+          {
+            "id": "78a128fd45e7b531",
+            "value": 5
+          },
+          {
+            "id": "fdf72c5d46459879",
+            "value": 5
+          },
+          {
+            "id": "50f122a0400b89b0",
+            "value": 5
+          },
+          {
+            "id": "80072119446ea4ad",
+            "value": 5
+          },
+          {
+            "id": "dbb62c4747c18e1a",
+            "value": 5
+          },
+          {
+            "id": "96422ada490c96fd",
+            "value": 5
+          },
+          {
+            "id": "61f72f1946f2adc1",
+            "value": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "ac25229046409ba5", "quantity": 1},
+          {"id": "c137208a41ca80bd", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e4d32ac944599a3b", "quantity": 1},
+          {"id": "5e912d2744f0b6e1", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "3ff322fd42e795db", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "d5ea2b4d4258a178", "quantity": 1},
+          {"id": "951827324eef941d", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "f42d27fe45569bc7", "quantity": 1},
+          {"id": "5dab21bd4de4954e", "quantity": 1}
         ]
       }
     ]

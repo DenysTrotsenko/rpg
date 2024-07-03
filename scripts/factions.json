@@ -92,10 +92,34 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "71ad288d411492df"}
+          {
+            "id": "71ad288d411492df"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "951827324eef941d", "quantity": 1},
+          {"id": "281f279148ff8145", "quantity": 1},
+          {"id": "5dab21bd4de4954e", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "7a6829b040feb910", "quantity": 1},
+          {"id": "c1bd250a447e9374", "quantity": 1},
+          {"id": "cb1a29f247beb91a", "quantity": 1},
+          {"id": "b2e22ca543dc938a", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 800
   },
   {
     "id": "590c24b64015b8bb",
@@ -185,8 +209,33 @@
             "value": 5
           }
         ]
+      },
+      {
+        "type": "talents",
+        "pick": 1,
+        "options": [
+          {"ids": ["4dbc21f1425993b3", "5b78259f4b00949d"]},
+          {"ids": ["97e12db2480ba0f9", "5b78259f4b00949d"]},
+          {"ids": ["248426114f169ff3", "5b78259f4b00949d"]},
+          {"ids": ["621b2a204d27968c", "5b78259f4b00949d"]},
+          {"ids": ["2af929a74e2f8043", "5b78259f4b00949d"]},
+          {"id": "e871225d481a9235"},
+          {"ids": ["25b62456480ab37f", "25942ca142be86d7"]}
+        ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1, "modifications": ["27ee212d44298717"]},
+          {"id": "951827324eef941d", "quantity": 1},
+          {"id": "dcaa2793459785ad", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 500
   },
   {
     "id": "66f62bd747349b71",
@@ -277,7 +326,19 @@
           }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "951827324eef941d", "quantity": 1},
+          {"id": "281f279148ff8145", "quantity": 1},
+          {"id": "1afa29e94152bdd3", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 100
   },
   {
     "id": "cc5125ef482287b6",
@@ -372,10 +433,36 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "3f6d2ff54547a2a7"}
+          {
+            "id": "3f6d2ff54547a2a7"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "951827324eef941d", "quantity": 1},
+          {"id": "ac25229046409ba5", "quantity": 1},
+          {"id": "3c6d21d745dbba45", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "ba7320c642bd8d87", "quantity": 1},
+          {"id": "5e912d2744f0b6e1", "quantity": 1},
+          {"id": "c1bd250a447e9374", "quantity": 1},
+          {"id": "f42d27fe45569bc7", "quantity": 1},
+          {"id": "e2c1267a4ec3a815", "quantity": 1, "qualities": ["67f02b7a4d94bdca"]},
+          {"id": "951827324eef941d", "quantity": 1, "qualities": ["67f02b7a4d94bdca"]}
+        ]
+      }
+    ],
+    "money": 600
   },
   {
     "id": "649d25ea4cb980e1",
@@ -470,10 +557,36 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "118b2b5147639afd"}
+          {
+            "id": "118b2b5147639afd"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 3,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "43a1278546acbadd", "quantity": 1},
+          {"id": "303e2e1a4c579626", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "31bb22c54f73960a", "quantity": 1},
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "d7e429c7499c91ca", "quantity": 1},
+          {"id": "d9aa2cfc49fcae80", "quantity": 1},
+          {"id": "381d24804b74859d", "quantity": 1},
+          {"id": "5e912d2744f0b6e1", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 300
   },
   {
     "id": "24f527e84ddd970e",
@@ -568,10 +681,39 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "902c2f7942558ccd"}
+          {
+            "id": "902c2f7942558ccd"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "1f4a2351405998d6", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "5d0f26824594a8df", "quantity": 1},
+          {"ids": ["d3a324cc46858d24", "840626d04f95946c"], "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "4c6621ea459695e6", "quantity": 1},
+          {"id": "62382602453c827e", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 500
   },
   {
     "id": "ca402a10446fa74a",
@@ -666,10 +808,96 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "caf123914ebe825c"}
+          {
+            "id": "caf123914ebe825c"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "b52328e34577bded", "quantity": 1},
+          {"id": "3c6d21d745dbba45", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "a0fb27b14310b01c", "quantity": 1},
+          {"id": "fc7e20da42279e1c", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "eb0f2fbf45448295", "quantity": 1},
+          {"id": "d5ea2b4d4258a178", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "dc092eb746d38d51", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "e59525704776be5d", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "6de42f244528a288", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "e4d32ac944599a3b", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "0cf823204506a91c", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "b52328e34577bded", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "e2c1267a4ec3a815", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "4f5e2b0f4e3495c1", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "1c452fd24d38ac4c", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "3989213c44dd8f90", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "7a6829b040feb910", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "c1bd250a447e9374", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "19a22dd84aebad7a", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "52422247480ca77d", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "d49a2194427e946f", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "d18a2a8e45edbe77", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "281f279148ff8145", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "5d79276145108e1e", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "b8c421284bb38aef", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "92282b204ba1aa84", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "d9aa2cfc49fcae80", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "1afc2fae48e09928", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "c524233c4b64ae9b", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "b60f235143a7ae11", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "ac25229046409ba5", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "8a4220c646d584f3", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "dcaa2793459785ad", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "4c6621ea459695e6", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "f42d27fe45569bc7", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "840626d04f95946c", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "f841252343a5a00c", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "06322b8d43e58cef", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "6ffd2f2e4827ab7e", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "59ca2b334057b0a7", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "cb1a29f247beb91a", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "b655208147c580ef", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "307c2e514e25a44b", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "1afa29e94152bdd3", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "04272c11449f98ae", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "633b2f5242fdaeb4", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "fdbf2ce8476bb892", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "382b244240d292a3", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "c137208a41ca80bd", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "b2e22ca543dc938a", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]},
+          {"id": "5dab21bd4de4954e", "quantity": 1, "flaws": ["7986251a4e1e8114", "31f0242c43bf917f"]}
+        ]
+      }
+    ],
+    "money": [5, 50]
   },
   {
     "id": "17ef26784e31a629",
@@ -764,10 +992,23 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "0d5a23a24d42bcca"}
+          {
+            "id": "0d5a23a24d42bcca"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 2,
+        "options": [
+          {"id": "307f21e24e76a04d", "quantity": 1},
+          {"id": "6ffd2f2e4827ab7e", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 1200
   },
   {
     "id": "07262ce5405b8f5d",
@@ -862,9 +1103,33 @@
         "type": "talents",
         "pick": 1,
         "options": [
-          {"id": "73a12b22416484e8"}
+          {
+            "id": "73a12b22416484e8"
+          }
         ]
       }
-    ]
+    ],
+    "items": [
+      {
+        "type": "items",
+        "pick": 4,
+        "options": [
+          {"id": "e39e2ec141e5921c", "quantity": 1},
+          {"id": "307f21e24e76a04d", "quantity": 1},
+          {"id": "fdbf2ce8476bb892", "quantity": 1},
+          {"id": "06322b8d43e58cef", "quantity": 1}
+        ]
+      },
+      {
+        "type": "items",
+        "pick": 1,
+        "options": [
+          {"id": "3989213c44dd8f90", "quantity": 1},
+          {"id": "d18a2a8e45edbe77", "quantity": 1},
+          {"id": "cb1a29f247beb91a", "quantity": 1}
+        ]
+      }
+    ],
+    "money": 400
   }
 ]

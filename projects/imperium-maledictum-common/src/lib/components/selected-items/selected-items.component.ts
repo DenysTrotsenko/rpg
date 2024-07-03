@@ -35,10 +35,25 @@ export class SelectedItemsComponent implements ControlValueAccessor {
     this.internal[index] = [
       ...bonus.options.filter((o, i) => selected.includes(i))
     ];
-    const external: ItemValue[] = this.internal.reduce((acc, bonuses: ItemBonusOption[]) => {
+    const external: ItemValue[] = this.internal.reduce((acc, options: ItemBonusOption[]) => {
+      let items = [];
+      options.forEach(option => {
+        if (option.ids) {
+          const {ids, ...rest} = option;
+          items = [
+            ...items,
+            ...ids.map(id => {
+              return {...rest, id};
+            })
+          ];
+        } else {
+          items = [...items, option];
+        }
+      });
+
       return [
         ...acc,
-        ...bonuses
+        ...items
       ];
     }, []);
     this.emit(external);

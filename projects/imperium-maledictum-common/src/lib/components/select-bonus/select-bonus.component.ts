@@ -7,13 +7,55 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   Bonus,
   BonusOption,
-  Characteristic, Item,
+  Characteristic, CharacteristicId, Item,
   ItemBonus,
   ItemBonusOption, ItemTrait,
-  Skill, Specialisation, Talent
+  Skill, SkillId, Specialisation, SpecialisationId, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
 import { DataService } from '../../data.service';
 import { GetByIdPipe } from '../../pipes/get-by-id.pipe';
+
+function getCharacteristicLabel(data: DataService, option: BonusOption): string {
+  const prefix = option?.value > 0 ? '+' + option?.value : option?.value;
+  const characteristic = data.get<Characteristic>(option.id as CharacteristicId);
+  return `${prefix} ${characteristic.name}`;
+}
+
+function getSkillLabel(data: DataService, option: BonusOption): string {
+  const prefix = option.value > 0 ? '+' + option.value : option.value;
+  const skill = data.get<Skill>(option.id as SkillId);
+  return `${prefix} ${skill.name}`;
+}
+
+function getSpecialisationLabel(data: DataService, option: BonusOption): string {
+  const prefix = option.value > 0 ? '+' + option.value : option.value;
+  const specialisation = data.get<Specialisation>(option.id as SpecialisationId);
+  const skill = data.get<Skill>(specialisation.skill);
+  return `${prefix} ${skill.name} (${specialisation.name})`;
+}
+
+function getTalentLabel(data: DataService, option: BonusOption): string {
+  if (option.ids) {
+    const talents = option.ids.map(i => data.get<Talent>(i)?.name);
+    return `${talents.join(', ')}`;
+  } else {
+    const talent = data.get<Talent>(option.id as TalentId);
+    return `${talent.name}`;
+  }
+}
+
+function getItemLabel(data: DataService, option: ItemBonusOption): string {
+  if (option.ids) {
+    const items = option.ids.map(i => data.get<Item>(i)?.name);
+    return `${items.join(', ')}`;
+  } else {
+    const item = data.get<Item>(option.id);
+    const prefix = [...(option.qualities ?? []), ...(option.flaws ?? [])]
+      .map(i => data.get<ItemTrait>(i)?.name)
+      .join(', ');
+    return `${prefix} ${item.name}`;
+  }
+}
 
 @Component({
   selector: 'select-bonus',
@@ -33,11 +75,11 @@ import { GetByIdPipe } from '../../pipes/get-by-id.pipe';
 export class SelectBonusComponent implements ControlValueAccessor {
   private readonly data = inject(DataService);
   private readonly labels = new Map()
-    .set('characteristics', this.getCharacteristicLabel)
-    .set('skills', this.getSkillLabel)
-    .set('specialisations', this.getSpecialisationLabel)
-    .set('talents', this.getTalentLabel)
-    .set('items', this.getItemLabel);
+    .set('characteristics', getCharacteristicLabel)
+    .set('skills', getSkillLabel)
+    .set('specialisations', getSpecialisationLabel)
+    .set('talents', getTalentLabel)
+    .set('items', getItemLabel);
 
   @Input({ required: true }) set value(bonus: Bonus | ItemBonus) {
     this.bonus = {
@@ -68,39 +110,7 @@ export class SelectBonusComponent implements ControlValueAccessor {
   }
 
   private getLabel(type: string, option: BonusOption | ItemBonusOption): string {
-    return this.labels.get(type)(option);
-  }
-
-  private getCharacteristicLabel(option: BonusOption): string {
-    const prefix = option.value > 0 ? '+' + option.value : option.value;
-    const characteristic = this.data.get<Characteristic>(option.id);
-    return `${prefix} ${characteristic.name}`;
-  }
-
-  private getSkillLabel(option: BonusOption): string {
-    const prefix = option.value > 0 ? '+' + option.value : option.value;
-    const skill = this.data.get<Skill>(option.id);
-    return `${prefix} ${skill.name}`;
-  }
-
-  private getSpecialisationLabel(option: BonusOption): string {
-    const prefix = option.value > 0 ? '+' + option.value : option.value;
-    const specialisation = this.data.get<Specialisation>(option.id);
-    const skill = this.data.get<Skill>(specialisation.skill);
-    return `${prefix} ${skill.name} (${specialisation.name})`;
-  }
-
-  private getTalentLabel(option: BonusOption): string {
-    const talent = this.data.get<Talent>(option.id);
-    return `${talent.name}`;
-  }
-
-  private getItemLabel(option: ItemBonusOption): string {
-    const item = this.data.get<Item>(option.id);
-    const prefix = [...(option.qualities ?? []), ...(option.flaws ?? [])]
-      .map(i => this.data.get<ItemTrait>(i)?.name)
-      .join(', ');
-    return `${prefix} ${item.name}`;
+    return this.labels.get(type)(this.data, option);
   }
 
   private emit(values: number[]): void {
