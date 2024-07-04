@@ -207,7 +207,6 @@ export class CreateComponent {
         take(1),
         switchMap(({character, campaign, bonuses, items, skills, specialisations, talents}) => {
           const id = character?.id || getId16();
-          console.log(items);
           return this.character.update(id, {
             id,
             author: character?.author ?? this.route.snapshot.data?.user?.uid,

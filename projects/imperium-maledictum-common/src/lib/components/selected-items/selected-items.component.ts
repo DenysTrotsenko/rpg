@@ -38,8 +38,8 @@ export class SelectedItemsComponent implements ControlValueAccessor {
     const external: ItemValue[] = this.internal.reduce((acc, options: ItemBonusOption[]) => {
       let items = [];
       options.forEach(option => {
+        const {label, ids, ...rest} = option;
         if (option.ids) {
-          const {ids, ...rest} = option;
           items = [
             ...items,
             ...ids.map(id => {
@@ -47,7 +47,10 @@ export class SelectedItemsComponent implements ControlValueAccessor {
             })
           ];
         } else {
-          items = [...items, option];
+          items = [
+            ...items,
+            rest
+          ];
         }
       });
 

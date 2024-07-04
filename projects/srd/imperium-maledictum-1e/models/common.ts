@@ -133,7 +133,6 @@ export interface ItemBonusOption {
   modifications: unknown[];
   quantity: number;
   /* internal, VM */
-  disabled?: boolean;
   label?: string;
 }
 
