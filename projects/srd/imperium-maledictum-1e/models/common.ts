@@ -120,7 +120,7 @@ export interface BonusOption {
 }
 
 export interface Bonus {
-  type: 'characteristics' | 'skills' | 'specialisations' | 'talents';
+  type: string;
   pick: number;
   options: BonusOption[];
 }

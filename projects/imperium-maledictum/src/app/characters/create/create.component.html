@@ -121,6 +121,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <ng-container *ngIf="randomTalentBonuses$ | async" [formGroup]="bonuses">
+        <selected-bonuses formControlName="random" [value]="randomTalentBonuses$ | async"></selected-bonuses>
+      </ng-container>
       <div class="d-f g-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext [disabled]="!step5.valid">Next</button>

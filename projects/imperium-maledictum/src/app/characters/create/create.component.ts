@@ -19,7 +19,7 @@ import {
 } from '@std';
 import { CharacterService } from '../../character.service';
 import {
-  DataService,
+  DataService, BonusId
 } from '@im-common';
 import {
   Bonus,
@@ -36,9 +36,6 @@ import {
   SkillValue, SpecialisationValue,
   ImperiumMaledictumCharacter as Character, TalentValue, ItemValue,
 } from '@imperium-maledictum-1e/models/character';
-import {
-  BonusId
-} from '../../../../../imperium-maledictum-common/src/lib/components/selected-bonuses/selected-bonuses.component';
 
 @Component({
   templateUrl: './create.component.html',
@@ -46,6 +43,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateComponent {
+  private readonly RANDOM_TALENTS_QUANTITY: 2 | 1 = Math.random() < .01 ? 2 : 1;
+  private RANDOM_BONUSES: Bonus[] = null;
+
   readonly step1: FormGroup = new FormGroup({
     characteristics: new UntypedFormArray([]),
   });
@@ -67,6 +67,8 @@ export class CreateComponent {
     origin: new FormControl<Map<BonusId, number>>(null),
     faction: new FormControl<Map<BonusId, number>>(null),
     role: new FormControl<Map<BonusId, number>>(null),
+    /* From Random Talents Table */
+    random: new FormControl<Map<BonusId, number>>(null)
   });
   readonly items: FormGroup = new FormGroup<any>({
     origin: new FormControl([]),
@@ -98,7 +100,19 @@ export class CreateComponent {
   readonly roles$: Observable<Faction[]> = this.data.roles$;
   readonly skills$: Observable<Skill[]> = this.data.skills$;
   readonly specialisations$: Observable<Specialisation[]> = this.data.specialisations$;
-  readonly talents$: Observable<Talent[]> = this.data.talents$;
+  readonly talents$: Observable<Talent[]> = this.data.talents$.pipe(
+    tap(talents => {
+      this.RANDOM_BONUSES = [
+        {
+          type: 'talents',
+          pick: this.RANDOM_TALENTS_QUANTITY,
+          options: talents.map(t => {
+            return { id: t.id, value: undefined };
+          })
+        }
+      ];
+    })
+  );
   readonly powers$: Observable<PsychicPower[]> = this.data.psychicPowers$;
 
   readonly imagesPath$ = this.auth.uid$.pipe(
@@ -114,6 +128,7 @@ export class CreateComponent {
       form.origin?.forEach(addToTotalSelectedBonuses);
       form.faction?.forEach(addToTotalSelectedBonuses);
       form.role?.forEach(addToTotalSelectedBonuses);
+      form.random?.forEach(addToTotalSelectedBonuses);
 
       return total;
     }),
@@ -175,6 +190,15 @@ export class CreateComponent {
     this.totalSelectedItems$.pipe(startWith([] as ItemValue[]))
   ]).pipe(
     map(([id, total]) => this.data.get<Role>(id)?.items ?? []),
+    shareReplay(1)
+  );
+  readonly randomTalentBonuses$ = combineLatest([
+    this.talents$.pipe(take(1)),
+    this.totalSelectedBonuses$.pipe(startWith(new Map()))
+  ]).pipe(
+    map(([talents, total]) => {
+      return this.setBonusOptionsDisabled(this.RANDOM_BONUSES, total);
+    }),
     shareReplay(1)
   );
 

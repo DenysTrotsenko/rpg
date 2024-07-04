@@ -8,7 +8,7 @@ export { AddSkillDialogComponent } from './lib/components/add-skill-dialog.compo
 export { AddSpecialisationDialogComponent } from './lib/components/add-specialisation-dialog.component';
 export { AddTalentDialogComponent } from './lib/components/add-talent-dialog.component';
 export { SelectBonusComponent } from './lib/components/select-bonus/select-bonus.component';
-export { SelectedBonusesComponent } from './lib/components/selected-bonuses/selected-bonuses.component';
+export { SelectedBonusesComponent, BonusId } from './lib/components/selected-bonuses/selected-bonuses.component';
 export { SelectedItemsComponent } from './lib/components/selected-items/selected-items.component';
 export { SidenavComponent } from './lib/components/sidenav/sidenav.component';
 export { GetByIdPipe } from './lib/pipes/get-by-id.pipe';
