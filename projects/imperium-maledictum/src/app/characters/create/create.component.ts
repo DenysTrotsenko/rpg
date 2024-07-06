@@ -84,7 +84,6 @@ export class CreateComponent {
       shareReplay(1)
     );
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$.pipe(
-    map(characteristics => characteristics?.sort((a, b) => a?.order - b?.order)),
     tap(characteristics => {
       const group = this.step1.get('characteristics') as UntypedFormArray;
       characteristics.forEach(i => group.push(new UntypedFormGroup({

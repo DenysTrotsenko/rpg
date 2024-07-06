@@ -10,5 +10,6 @@ export { AddTalentDialogComponent } from './lib/components/add-talent-dialog.com
 export { SelectBonusComponent } from './lib/components/select-bonus/select-bonus.component';
 export { SelectedBonusesComponent, BonusId } from './lib/components/selected-bonuses/selected-bonuses.component';
 export { SelectedItemsComponent } from './lib/components/selected-items/selected-items.component';
+export { AdvancementDialogComponent } from './lib/components/advancement-dialog/advancement-dialog.component';
 export { SidenavComponent } from './lib/components/sidenav/sidenav.component';
 export { GetByIdPipe } from './lib/pipes/get-by-id.pipe';

@@ -7,9 +7,9 @@
     <span *ngIf="!i.image" matListItemAvatar></span>
     <a matListItemLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
     <span matListItemMeta>
-      <!--    <a mat-icon-button [routerLink]="['../update', i.id]" matTooltip="Upgrade">-->
-      <!--      <mat-icon>keyboard_double_arrow_up</mat-icon>-->
-      <!--    </a>-->
+      <button *ngIf="i.canAdvance" mat-icon-button (click)="onAdvanceClick(i.id)" matTooltip="Advance">
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
+      </button>
       <button *ngIf="i.canDelete" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
         <mat-icon>delete</mat-icon>
       </button>

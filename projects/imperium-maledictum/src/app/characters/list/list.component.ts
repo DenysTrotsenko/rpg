@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService, CampaignService, DialogService } from '@std';
 import { CharacterService } from '../../character.service';
 import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
-
+import { AdvancementDialogComponent } from '@im-common';
 
 interface VM extends ImperiumMaledictumCharacter {
+  canAdvance: boolean;
   canDelete: boolean;
 }
 
@@ -34,13 +35,30 @@ export class ListComponent {
       });
 
       return filtered.map(i => {
+        const own = i.author === uid;
+
         return {
           ...i,
-          canDelete: i.author === uid
+          canAdvance: own,
+          canDelete: own,
         };
       });
     })
   );
+
+  onAdvanceClick(id: string): void {
+    this.character.all$
+      .pipe(
+        map(characters => characters.find(c => c.id === id)),
+        switchMap(character => this.dialog.open(AdvancementDialogComponent, {
+          data: character,
+          width: '600px'
+        }).afterClosed()),
+        filter(res => !!res),
+        tap(res => console.log(res)),
+      )
+      .subscribe();
+  }
 
   onDeleteClick(i: VM): void {
     this.dialog

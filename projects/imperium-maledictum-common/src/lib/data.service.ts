@@ -211,7 +211,11 @@ export class DataService {
   readonly bestiaryRoles$: Observable<BestiaryRole[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_ROLES]));
   readonly bestiaryTraits$: Observable<BestiaryTrait[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_TRAITS]));
   readonly bestiaryTypes$: Observable<BestiaryType[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_TYPES]));
-  readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(map(data => data[FileName.CHARACTERISTICS]));
+  readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
+    map(data => data[FileName.CHARACTERISTICS]),
+    map(characteristics => characteristics?.sort((a, b) => a?.order - b?.order)),
+    shareReplay(1)
+  );
   readonly conditions$: Observable<Condition[]> = this.data$.pipe(map(data => data[FileName.CONDITIONS]));
   readonly difficulties$: Observable<Difficulty[]> = this.data$.pipe(map(data => data[FileName.DIFFICULTIES]));
   readonly durations$: Observable<Duration[]> = this.data$.pipe(map(data => data[FileName.DURATIONS]));
@@ -219,7 +223,10 @@ export class DataService {
   readonly environmentalTraits$: Observable<EnvironmentalTrait[]> = this.data$.pipe(map(data => data[FileName.ENVIRONMENTAL_TRAITS]));
   readonly events$: Observable<Event[]> = this.data$.pipe(map(data => data[FileName.EVENTS]));
   readonly factions$: Observable<Faction[]> = this.data$.pipe(map(data => data[FileName.FACTIONS]));
-  readonly items$: Observable<Item[]> = this.data$.pipe(map(data => data[FileName.ITEMS]));
+  readonly items$: Observable<Item[]> = this.data$.pipe(
+    map(data => data[FileName.ITEMS]),
+    shareReplay(1)
+  );
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_FLAWS]));
   readonly itemQualities$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_QUALITIES]));
   readonly itemTraits$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_TRAITS]));
@@ -231,9 +238,18 @@ export class DataService {
   readonly ranges$: Observable<Range[]> = this.data$.pipe(map(data => data[FileName.RANGES]));
   readonly roles$: Observable<Role[]> = this.data$.pipe(map(data => data[FileName.ROLES]));
   readonly sizes$: Observable<Size[]> = this.data$.pipe(map(data => data[FileName.SIZES]));
-  readonly skills$: Observable<Skill[]> = this.data$.pipe(map(data => data[FileName.SKILLS]));
-  readonly specialisations$: Observable<Specialisation[]> = this.data$.pipe(map(data => data[FileName.SPECIALISATIONS]));
-  readonly talents$: Observable<Talent[]> = this.data$.pipe(map(data => data[FileName.TALENTS]));
+  readonly skills$: Observable<Skill[]> = this.data$.pipe(
+    map(data => data[FileName.SKILLS]),
+    shareReplay(1)
+  );
+  readonly specialisations$: Observable<Specialisation[]> = this.data$.pipe(
+    map(data => data[FileName.SPECIALISATIONS]),
+    shareReplay(1)
+  );
+  readonly talents$: Observable<Talent[]> = this.data$.pipe(
+    map(data => data[FileName.TALENTS]),
+    shareReplay(1)
+  );
   readonly targets$: Observable<Target[]> = this.data$.pipe(map(data => data[FileName.TARGETS]));
 
   get<T>(id: string): T {
