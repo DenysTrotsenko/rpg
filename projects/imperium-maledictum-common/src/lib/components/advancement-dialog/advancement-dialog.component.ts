@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { SharedModule, StringPipe } from '@std';
+import { CampaignService, CharacterId, SharedModule, StringPipe } from '@std';
 import { DataService } from '@im-common';
 import { Characteristic, Skill, Specialisation, Talent } from '@imperium-maledictum-1e/models/common';
 import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
@@ -54,6 +54,7 @@ const DEFAULT_OPTION = null;
 })
 export class AdvancementDialogComponent {
   private readonly data = inject(DataService);
+  private readonly campaign = inject(CampaignService);
   private readonly character: ImperiumMaledictumCharacter = inject(MAT_DIALOG_DATA);
   private readonly dialog = inject(MatDialogRef<AdvancementDialogComponent>);
   private readonly TYPE_TO_OPTIONS: Map<string, Observable<Option[]>> = new Map()
@@ -145,6 +146,12 @@ export class AdvancementDialogComponent {
 
       return this.TYPE_TO_COST_MAP.get(type)?.get(next) ?? 0;
     })
+  );
+  readonly totalXp$: Observable<number> = this.campaign.selected$.pipe(
+    map(campaign => {
+      // console.log(campaign.experience);
+      return 1000;
+    }),
   );
 
   onSubmit(): void {

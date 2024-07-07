@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
+import { combineLatest, Observable, take } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService, CampaignService, DialogService } from '@std';
 import { CharacterService } from '../../character.service';
@@ -49,6 +49,7 @@ export class ListComponent {
   onAdvanceClick(id: string): void {
     this.character.all$
       .pipe(
+        take(1),
         map(characters => characters.find(c => c.id === id)),
         switchMap(character => this.dialog.open(AdvancementDialogComponent, {
           data: character,

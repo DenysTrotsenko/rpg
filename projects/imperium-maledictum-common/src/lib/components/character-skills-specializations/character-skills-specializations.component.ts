@@ -56,13 +56,13 @@ export class CharacterSkillsSpecializationsComponent {
       const characteristic = this.data.get<Characteristic>(skill.characteristic);
       const skillView = this.skills.find(s => s.id === specialisation.skill);
       const characteristicValue = characteristics.find(c => c.id === characteristic.id);
-      const value = !!skillView?.value ? skillView.value : characteristicValue.starting + characteristicValue.advances;
+      const value = !!skillView?.value ? skillView.value : (characteristicValue.starting ?? 0) + (characteristicValue.advances ?? 0);
 
       return {
         skill: skill.name,
         name: specialisation.name,
         tooltip: specialisation.labels?.tooltip,
-        value: value + i.starting + i.advances
+        value: value + (i.starting ?? 0) + (i.advances ?? 0)
       };
     }).sort((a, b) => {
       if (a?.skill < b?.skill) { return -1; }
