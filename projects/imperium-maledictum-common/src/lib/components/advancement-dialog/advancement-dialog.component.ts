@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { map, shareReplay, startWith, switchMap } from 'rxjs/operators';
+import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
@@ -14,10 +14,17 @@ import { Characteristic, Skill, Specialisation, Talent } from '@imperium-maledic
 import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
 import { combineLatest, Observable, of } from 'rxjs';
 import {
-  CHARACTERISTIC_ADVANCE, CHARACTERISTIC_COST,
+  CHARACTERISTIC_ADVANCE,
+  CHARACTERISTIC_COST,
   MAX_CHARACTERISTIC,
   MAX_SKILL,
-  MAX_SPECIALISATION, SKILL_ADVANCE, SKILL_COST, SPECIALISATION_ADVANCE, SPECIALISATION_COST, TALENT_COST
+  MAX_SPECIALISATION,
+  SKILL_ADVANCE,
+  SKILL_COST,
+  SPECIALISATION_ADVANCE,
+  SPECIALISATION_COST,
+  TALENT_ADVANCE,
+  TALENT_COST
 } from '@imperium-maledictum-1e/const';
 
 type Option = Characteristic | Skill | Specialisation | Talent;
@@ -48,6 +55,7 @@ const DEFAULT_OPTION = null;
 export class AdvancementDialogComponent {
   private readonly data = inject(DataService);
   private readonly character: ImperiumMaledictumCharacter = inject(MAT_DIALOG_DATA);
+  private readonly dialog = inject(MatDialogRef<AdvancementDialogComponent>);
   private readonly TYPE_TO_OPTIONS: Map<string, Observable<Option[]>> = new Map()
     .set('characteristics', this.data.characteristics$)
     .set('skills', this.data.skills$)
@@ -62,7 +70,7 @@ export class AdvancementDialogComponent {
     .set('characteristics', CHARACTERISTIC_ADVANCE)
     .set('skills', SKILL_ADVANCE)
     .set('specialisations', SPECIALISATION_ADVANCE)
-    .set('talents', 1);
+    .set('talents', TALENT_ADVANCE);
   private readonly TYPE_TO_COST_MAP: Map<string, Map<number, number>> = new Map()
     .set('characteristics', CHARACTERISTIC_COST)
     .set('skills', SKILL_COST)
@@ -77,11 +85,10 @@ export class AdvancementDialogComponent {
   readonly type = new FormControl(DEFAULT_TYPE, [Validators.required]);
   readonly option = new FormControl(DEFAULT_OPTION, [Validators.required]);
   readonly type$ = this.type.valueChanges.pipe(
-    startWith(DEFAULT_TYPE),
+    tap(() => this.option.setValue(DEFAULT_OPTION)),
     shareReplay(1)
   );
   readonly option$ = this.option.valueChanges.pipe(
-    startWith(DEFAULT_OPTION),
     shareReplay(1)
   );
   readonly options$: Observable<Option[]> = this.type$.pipe(
@@ -96,8 +103,14 @@ export class AdvancementDialogComponent {
     }),
     shareReplay(1)
   );
-  readonly show$: Observable<boolean> = this.type$.pipe(
-    map(type => type && type !== 'talents')
+  readonly showProgress$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
+    map(([type, option]) => type && option)
+  );
+  readonly showCost$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
+    map(([type, option]) => type && option && type !== 'talents')
+  );
+  readonly isOkDisabled$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
+    map(([type, option]) => !(type && option))
   );
   readonly current$: Observable<number> = combineLatest([
     this.type$,
@@ -105,9 +118,7 @@ export class AdvancementDialogComponent {
   ]).pipe(
     map(([type, option]) => {
       if (!(type && option)) { return 0; }
-      console.log(type);
       const character = this.character;
-      console.log(character);
       const entity = character[type]?.find(i => i.id === option);
       const starting = entity?.starting ?? 0;
       const advances = entity?.advances ?? 0;
@@ -136,6 +147,27 @@ export class AdvancementDialogComponent {
     })
   );
 
+  onSubmit(): void {
+    const character = this.character;
+    const type = this.type.value;
+    const option = this.option.value;
+    const group = character[type];
+    const entity = group?.find(i => i.id === option);
+    const advance = this.TYPE_TO_ADVANCE.get(type);
+
+    if (!!entity) {
+      if (type === 'talents') {
+        // group.push({ id: option, advances: advance });
+      } else {
+        const advances = entity?.advances ?? 0;
+        entity.advances = advances + advance;
+      }
+    } else {
+      group.push({ id: option, advances: advance });
+    }
+
+    this.dialog.close(character);
+  }
 
   private filterCharacteristic(option: Option, character: ImperiumMaledictumCharacter): boolean {
     const characteristic = character.characteristics.find(i => i.id === option.id);

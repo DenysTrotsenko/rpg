@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { Characteristic } from '@imperium-maledictum-1e/models/common';
-import { CharacteristicValue, ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
+import {
+  CharacteristicValue, getCharacteristicBonus,
+  getCharacteristicValue,
+  ImperiumMaledictumCharacter
+} from '@imperium-maledictum-1e/models/character';
 import { DataService } from '@im-common';
 
 type CharacteristicView = Characteristic & CharacteristicValue & {
   current: number;
   bonus: number;
 };
-
-function getCharacteristicBonus(value: CharacteristicValue): number {
-  return Math.floor((value.starting + value.advances) / 10);
-}
 
 @Component({
   selector: 'character-characteristics',
@@ -29,7 +29,7 @@ export class CharacterCharacteristicsComponent {
       return {
         ...i,
         ...characteristic,
-        current: i.starting + i.advances,
+        current: getCharacteristicValue(i),
         bonus: getCharacteristicBonus(i)
       };
     });

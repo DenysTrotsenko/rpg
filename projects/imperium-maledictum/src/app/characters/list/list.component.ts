@@ -54,8 +54,8 @@ export class ListComponent {
           data: character,
           width: '600px'
         }).afterClosed()),
-        filter(res => !!res),
-        tap(res => console.log(res)),
+        filter(character => !!character),
+        switchMap(character => this.character.update(character.id, character))
       )
       .subscribe();
   }

@@ -106,7 +106,7 @@ export class CreateComponent {
           type: 'talents',
           pick: this.RANDOM_TALENTS_QUANTITY,
           options: talents.map(t => {
-            return { id: t.id, value: undefined };
+            return { id: t.id, value: 1 };
           })
         }
       ];
@@ -261,7 +261,8 @@ export class CreateComponent {
             }),
             talents: talents.filter(i => bonuses.has(i.id)).map(i => {
               return {
-                id: i.id
+                id: i.id,
+                starting: 1
               } as TalentValue;
             }),
             items: [

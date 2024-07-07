@@ -42,7 +42,7 @@ export class CharacterSkillsSpecializationsComponent {
         id: skill.id,
         name: skill.name,
         tooltip: skill.labels?.tooltip,
-        value: characteristic.starting + characteristic.advances + i.starting + i.advances
+        value: (characteristic.starting ?? 0) + (characteristic.advances ?? 0) + (i.starting ?? 0) + (i.advances ?? 0)
       } as SkillView;
     }).sort((a, b) => {
       if (a?.name < b?.name) { return -1; }

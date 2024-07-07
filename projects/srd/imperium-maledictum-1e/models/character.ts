@@ -57,3 +57,11 @@ export interface ItemValue {
   modifications: unknown[];
   quantity: number;
 }
+
+export function getCharacteristicValue(value: CharacteristicValue): number {
+  return (value.starting ?? 0) + (value.advances ?? 0);
+}
+
+export function getCharacteristicBonus(value: CharacteristicValue): number {
+  return Math.floor(getCharacteristicValue(value) / 10);
+}

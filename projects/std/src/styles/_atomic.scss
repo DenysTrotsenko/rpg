@@ -93,6 +93,10 @@ $step: 5;
 
 .pe-n { pointer-events: none !important; }
 
+.ta-l { text-align: left !important; }
+.ta-c { text-align: center !important; }
+.ta-r { text-align: right !important; }
+
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {
   .mobile-hidden {
