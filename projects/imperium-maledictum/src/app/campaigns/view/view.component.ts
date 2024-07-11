@@ -13,7 +13,7 @@ import {
 } from '@std';
 import { EventEditDialogComponent, EventEditDialogData } from '../event-edit-dialog/event-edit-dialog.component';
 import { XpEditDialogComponent, XpEditDialogData } from '../xp-edit-dialog/xp-edit-dialog.component';
-import { TodoMode, TodoTask } from '../../../../../std/src/lib/shared/todo-editor/todo-editor.models';
+import { TodoMode, TodoTask } from '@std';
 import { CharacterService } from '../../character.service';
 import {
   JsonEditorDialogComponent

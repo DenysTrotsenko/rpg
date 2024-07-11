@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { CampaignService, CharacterId, SharedModule, StringPipe } from '@std';
+import { Campaign, CampaignService, CharacterId, SharedModule, StringPipe, TodoTask } from '@std';
 import { DataService } from '@im-common';
 import { Characteristic, Skill, Specialisation, Talent } from '@imperium-maledictum-1e/models/common';
 import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
@@ -105,13 +105,12 @@ export class AdvancementDialogComponent {
     shareReplay(1)
   );
   readonly showProgress$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
-    map(([type, option]) => type && option)
+    map(([type, option]) => type && option && type !== 'talents'),
+    shareReplay(1)
   );
   readonly showCost$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
-    map(([type, option]) => type && option && type !== 'talents')
-  );
-  readonly isOkDisabled$: Observable<boolean> = combineLatest([this.type$, this.option$]).pipe(
-    map(([type, option]) => !(type && option))
+    map(([type, option]) => type && option),
+    shareReplay(1)
   );
   readonly current$: Observable<number> = combineLatest([
     this.type$,
@@ -125,7 +124,8 @@ export class AdvancementDialogComponent {
       const advances = entity?.advances ?? 0;
 
       return !!entity ? starting + advances : 0;
-    })
+    }),
+    shareReplay(1)
   );
   readonly next$: Observable<number> = combineLatest([
     this.type$,
@@ -135,7 +135,8 @@ export class AdvancementDialogComponent {
       if (!type) { return 0; }
 
       return current + this.TYPE_TO_ADVANCE.get(type);
-    })
+    }),
+    shareReplay(1)
   );
   readonly cost$: Observable<number> = combineLatest([
     this.type$,
@@ -145,13 +146,26 @@ export class AdvancementDialogComponent {
       if (type === 'talents') { return TALENT_COST; }
 
       return this.TYPE_TO_COST_MAP.get(type)?.get(next) ?? 0;
-    })
+    }),
+    shareReplay(1)
+  );
+  readonly spentXp$: Observable<number> = of(this.getSpentXp(this.character)).pipe(
+    shareReplay(1)
   );
   readonly totalXp$: Observable<number> = this.campaign.selected$.pipe(
-    map(campaign => {
-      // console.log(campaign.experience);
-      return 1000;
-    }),
+    map(campaign => this.getTotalXp(campaign)),
+    shareReplay(1)
+  );
+  readonly isOkDisabled$: Observable<boolean> = combineLatest([
+    this.type$, this.option$, this.cost$, this.spentXp$, this.totalXp$
+  ]).pipe(
+    map(([type, option, cost, spent, total]) => {
+      const isTypeOptionSelected = type && option;
+      const isEnoughXp = cost + spent <= total;
+      const isEnabled = isTypeOptionSelected && isEnoughXp;
+
+      return !isEnabled;
+    })
   );
 
   onSubmit(): void {
@@ -174,6 +188,76 @@ export class AdvancementDialogComponent {
     }
 
     this.dialog.close(character);
+  }
+
+  private getTasksXp(tasks: TodoTask[] = [], id: CharacterId): number {
+    let xp = 0;
+    tasks.forEach(task => {
+      if (!!task?.characters?.find(i => i === id)) {
+        xp += task?.status === 'completed' ? (task?.experience ?? 0) : 0;
+      }
+      this.getTasksXp(task.tasks, id);
+    });
+
+    return xp;
+  }
+
+  private getTotalXp(campaign: Campaign): number {
+    return campaign.experience?.reduce((acc, cur) => {
+      return acc + this.getTasksXp(cur.tasks, this.character.id);
+    }, 0);
+  }
+
+  private getSpentXp(character: ImperiumMaledictumCharacter): number {
+    const fromCharacteristics = (character.characteristics ?? []).reduce((acc, cur) => {
+      const starting = cur.starting ?? 0;
+      const advances = cur.advances ?? 0;
+
+      if (!advances) { return acc; }
+
+      let sum = 0;
+      for (let i = starting + CHARACTERISTIC_ADVANCE; i <= starting + advances; i++) {
+        sum += CHARACTERISTIC_COST.get(i);
+      }
+
+      return acc + sum;
+    }, 0);
+    const fromSkills = (character.skills ?? []).reduce((acc, cur) => {
+      const starting = cur.starting ?? 0;
+      const advances = cur.advances ?? 0;
+
+      if (!advances) { return acc; }
+
+      let sum = 0;
+      for (let i = starting + SKILL_ADVANCE; i <= starting + advances; i++) {
+        sum += SKILL_COST.get(i);
+      }
+
+      return acc + sum;
+    }, 0);
+    const fromSpecialisations = (character.specialisations ?? []).reduce((acc, cur) => {
+      const starting = cur.starting ?? 0;
+      const advances = cur.advances ?? 0;
+
+      if (!advances) { return acc; }
+
+      let sum = 0;
+      for (let i = starting + SPECIALISATION_ADVANCE; i <= starting + advances; i++) {
+        sum += SPECIALISATION_COST.get(i);
+      }
+
+      return acc + sum;
+    }, 0);
+    const fromTalents = (character.talents ?? []).reduce((acc, cur) => {
+      return cur.advances ? acc + TALENT_COST : acc;
+    }, 0);
+
+    return [
+      fromCharacteristics,
+      fromSkills,
+      fromSpecialisations,
+      fromTalents
+    ].reduce((acc, cur) => acc + cur, 0);
   }
 
   private filterCharacteristic(option: Option, character: ImperiumMaledictumCharacter): boolean {

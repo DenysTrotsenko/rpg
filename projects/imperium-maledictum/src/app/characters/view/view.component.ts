@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, inject, OnDestroy } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, take } from 'rxjs';
 import { distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-import { DialogService, FirestoreService, getId16 } from '@std';
+import { AuthService, DialogService, FirestoreService, getId16 } from '@std';
 import { CharacterService } from '../../character.service';
 import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1e/models/character';
+import { AdvancementDialogComponent } from '@im-common';
 
 @Component({
   templateUrl: './view.component.html',
@@ -13,6 +14,8 @@ import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewComponent implements OnDestroy {
+  private readonly auth = inject(AuthService);
+  private readonly dialog = inject(DialogService);
   expand = false;
   // readonly form: FormGroup = new FormGroup({
   //   notes: new FormControl(''),
@@ -29,45 +32,21 @@ export class ViewComponent implements OnDestroy {
       shareReplay(1),
       tap(character => {
         // console.log(character);
-        // this.attributes = this.getAttributes(character);
-        // this.description = this.getDescription(character);
-        // this.languages = this.getLanguages(character);
-        // this.personality = this.getPersonality(character);
-        // this.quirks = this.getQuirks(character);
-        // this.skills = this.getSkills(character);
-        // this.spells = this.getSpells(character);
-        // this.talents = this.getTalents(character);
-        // this.traits = this.getTraits(character);
         // const temporary = localStorage.getItem(character.id);
         // if (temporary) {
         //   this.form.patchValue(JSON.parse(temporary), { onlySelf: false, emitEvent: true });
         // }
       })
     );
-
-  // attributes: AttributeView[];
-  // description: string;
-  // languages: Language[];
-  // personality: [Belief, Flaw];
-  // quirks: (Quirk | Affliction | PermanentInjury)[];
-  // skills: SkillView[];
-  // spells: Spell[];
-  // talents: Talent[];
-  // traits: Trait[];
-  //
-  // readonly afflictions: Affliction[] = this.data[DataTypes.AFFLICTIONS];
-  // readonly ailments: Ailment[] = this.data[DataTypes.AILMENTS];
-  // readonly drugs: Drug[] = this.data[DataTypes.DRUGS];
-  // readonly injuries: Injury[] = this.data[DataTypes.INJURIES].filter(i => {
-  //   return !EXCLUDED_INJURIES.includes(i.id);
-  // });
+  readonly canAdvance$: Observable<boolean> = combineLatest([this.auth.uid$, this.character$]).pipe(
+    map(([uid, character]) => character.author === uid)
+  );
 
   // @HostListener('window:beforeunload') onBrowserClose(): void {
   //   this.ngOnDestroy();
   // }
 
   constructor(
-    // private readonly dialog: DialogService,
     private readonly character: CharacterService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
@@ -81,6 +60,21 @@ export class ViewComponent implements OnDestroy {
     // const id: string = this.route.snapshot.params.id;
     // const temporary = this.form.getRawValue();
     // localStorage.setItem(id, JSON.stringify(temporary));
+  }
+
+  onAdvanceClick(id: string): void {
+    this.character.all$
+      .pipe(
+        take(1),
+        map(characters => characters.find(c => c.id === id)),
+        switchMap(character => this.dialog.open(AdvancementDialogComponent, {
+          data: character,
+          width: '600px'
+        }).afterClosed()),
+        filter(character => !!character),
+        switchMap(character => this.character.update(character.id, character))
+      )
+      .subscribe();
   }
   // onAddWeaponClick(): void {
   //   this.dialog

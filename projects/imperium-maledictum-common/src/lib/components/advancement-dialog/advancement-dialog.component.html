@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Advance Character</h1>
+<h1 mat-dialog-title>Advance Character ({{spentXp$ | async}}/{{totalXp$ | async}} XP)</h1>
 <div mat-dialog-content class="d-f fd-c">
   <mat-form-field appearance="outline" class="mt-5 ai-s">
     <mat-label>Advancement Type</mat-label>
@@ -29,6 +29,6 @@
     Cancel
   </button>
   <button mat-flat-button color="primary" [disabled]="isOkDisabled$ | async" (click)="onSubmit()">
-    Ok <span *ngIf="showCost$ | async">({{cost$ | async}})</span>
+    Ok <span *ngIf="showCost$ | async">({{cost$ | async}} XP)</span>
   </button>
 </div>

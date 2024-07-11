@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { combineLatest, Observable, take } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { AuthService, CampaignService, DialogService } from '@std';
 import { CharacterService } from '../../character.service';
 import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';

@@ -35,7 +35,8 @@ export interface CharacteristicValue {
 
 export interface TalentValue {
   id: TalentId;
-  value?: unknown;
+  starting: number;
+  advances: number;
 }
 
 export interface SkillValue {

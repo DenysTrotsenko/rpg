@@ -1,6 +1,9 @@
 <ng-container *ngIf="character$ | async as character;">
   <mat-toolbar class="d-f jc-sb">
-    <h1>Character View</h1>
+    <h1 class="f-1">Character View</h1>
+    <button *ngIf="canAdvance$ | async" mat-icon-button (click)="onAdvanceClick(character.id)" matTooltip="Advance">
+      <mat-icon>keyboard_double_arrow_up</mat-icon>
+    </button>
     <button mat-icon-button (click)="expand = !expand">
       <mat-icon>{{expand ? 'expand_content' : 'collapse_content'}}</mat-icon>
     </button>
