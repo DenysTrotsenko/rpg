@@ -25,14 +25,8 @@ import { DialogService, getId16 } from '@std';
 import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
 import { DataService } from '@im-common';
 import {
-  AddSkillDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-skill-dialog.component';
-import {
-  AddSpecialisationDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-specialisation-dialog.component';
-import {
-  AddItemDialogComponent
-} from '../../../../../imperium-maledictum-common/src/lib/components/add-item-dialog.component';
+  AddSkillDialogComponent, AddSpecialisationDialogComponent, AddItemDialogComponent
+} from '@im-common';
 
 @Component({
   templateUrl: './bestiary.component.html',

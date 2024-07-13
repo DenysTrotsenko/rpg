@@ -376,6 +376,7 @@ export interface Role extends HasBaseProperties<RoleId> {
 }
 
 export interface Size extends HasBaseProperties<SizeId> {
+  order?: number;
   labels: {
     description: string;
   };

@@ -73,7 +73,7 @@
         </mat-form-field>
       </div>
       <div class="d-f g-10">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="f-1">
           <mat-label>Specialisations</mat-label>
           <mat-select formControlName="specialisations" multiple>
             <mat-option *ngFor="let i of specialisations$ | async; trackBy: trackById;" [value]="i.id">

@@ -237,7 +237,10 @@ export class DataService {
   readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_POWERS]));
   readonly ranges$: Observable<Range[]> = this.data$.pipe(map(data => data[FileName.RANGES]));
   readonly roles$: Observable<Role[]> = this.data$.pipe(map(data => data[FileName.ROLES]));
-  readonly sizes$: Observable<Size[]> = this.data$.pipe(map(data => data[FileName.SIZES]));
+  readonly sizes$: Observable<Size[]> = this.data$.pipe(
+    map(data => data[FileName.SIZES]),
+    map(sizes => sizes?.sort((a, b) => a?.order - b?.order))
+  );
   readonly skills$: Observable<Skill[]> = this.data$.pipe(
     map(data => data[FileName.SKILLS]),
     shareReplay(1)
