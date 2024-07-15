@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { Characteristic } from '@imperium-maledictum-1e/models/common';
+import { Characteristic, CharacteristicId } from '@imperium-maledictum-1e/models/common';
 import {
-  CharacteristicValue, getCharacteristicBonus,
+  AdvanceableValue,
+  getCharacteristicBonus,
   getCharacteristicValue,
   ImperiumMaledictumCharacter
 } from '@imperium-maledictum-1e/models/character';
 import { DataService } from '@im-common';
 
-type CharacteristicView = Characteristic & CharacteristicValue & {
+type CharacteristicView = Characteristic & AdvanceableValue<CharacteristicId> & {
   current: number;
   bonus: number;
 };

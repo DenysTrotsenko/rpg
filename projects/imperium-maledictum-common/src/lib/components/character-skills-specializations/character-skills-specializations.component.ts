@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { DataService } from '@im-common';
-import {
-  ImperiumMaledictumCharacter, SkillValue,
-  SpecialisationValue
-} from '@imperium-maledictum-1e/models/character';
+import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
 import { Characteristic, Skill, SkillId, Specialisation } from '@imperium-maledictum-1e/models/common';
 
 interface SkillView {

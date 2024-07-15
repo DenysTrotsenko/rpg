@@ -33,9 +33,6 @@ Parvis Hronis
 Efralin
 Ad. Arbites Korisus
 
-3 Priests
-20 People
-
 Romius od St. Lucius (carps-starch saint)
 
 INVENTORY:
@@ -87,15 +84,14 @@ Sagitaur - броневик
 Істерн Бастіон (місто)
 Брокхер Стронцій Люмен (Фордж-Мастер)
 
-300
+180
 700
 500
-650
+410
 
 Найт Флавій
 Азімут Куртц - історик
 Jason Monk
--100
 
 True Shot
 

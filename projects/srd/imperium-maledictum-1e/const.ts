@@ -5,17 +5,17 @@ export const CHARACTERISTIC_ADVANCE = 1;
 export const SKILL_ADVANCE = 5;
 export const SPECIALISATION_ADVANCE = 5;
 export const TALENT_ADVANCE = 1;
-export const SKILL_COST = new Map()
+export const SKILL_COST: Map<number, number> = new Map()
   .set(5, 50)
   .set(10, 100)
   .set(15, 150)
   .set(20, 200);
-export const SPECIALISATION_COST = new Map()
+export const SPECIALISATION_COST: Map<number, number> = new Map()
   .set(5, 50)
   .set(10, 100)
   .set(15, 150)
   .set(20, 200);
-export const CHARACTERISTIC_COST = new Map()
+export const CHARACTERISTIC_COST: Map<number, number> = new Map()
   .set(20, 20)
   .set(21, 20)
   .set(22, 20)

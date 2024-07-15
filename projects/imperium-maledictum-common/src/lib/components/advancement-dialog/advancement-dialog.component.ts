@@ -10,8 +10,17 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { Campaign, CampaignService, CharacterId, SharedModule, StringPipe, TodoTask } from '@std';
 import { DataService } from '@im-common';
-import { Characteristic, Skill, Specialisation, Talent } from '@imperium-maledictum-1e/models/common';
-import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
+import {
+  Characteristic,
+  Skill,
+  Specialisation,
+  Talent
+} from '@imperium-maledictum-1e/models/common';
+import {
+  getAdvancesXpCost,
+  ImperiumMaledictumCharacter,
+  isLessThanMax
+} from '@imperium-maledictum-1e/models/character';
 import { combineLatest, Observable, of } from 'rxjs';
 import {
   CHARACTERISTIC_ADVANCE,
@@ -209,45 +218,9 @@ export class AdvancementDialogComponent {
   }
 
   private getSpentXp(character: ImperiumMaledictumCharacter): number {
-    const fromCharacteristics = (character.characteristics ?? []).reduce((acc, cur) => {
-      const starting = cur.starting ?? 0;
-      const advances = cur.advances ?? 0;
-
-      if (!advances) { return acc; }
-
-      let sum = 0;
-      for (let i = starting + CHARACTERISTIC_ADVANCE; i <= starting + advances; i++) {
-        sum += CHARACTERISTIC_COST.get(i);
-      }
-
-      return acc + sum;
-    }, 0);
-    const fromSkills = (character.skills ?? []).reduce((acc, cur) => {
-      const starting = cur.starting ?? 0;
-      const advances = cur.advances ?? 0;
-
-      if (!advances) { return acc; }
-
-      let sum = 0;
-      for (let i = starting + SKILL_ADVANCE; i <= starting + advances; i++) {
-        sum += SKILL_COST.get(i);
-      }
-
-      return acc + sum;
-    }, 0);
-    const fromSpecialisations = (character.specialisations ?? []).reduce((acc, cur) => {
-      const starting = cur.starting ?? 0;
-      const advances = cur.advances ?? 0;
-
-      if (!advances) { return acc; }
-
-      let sum = 0;
-      for (let i = starting + SPECIALISATION_ADVANCE; i <= starting + advances; i++) {
-        sum += SPECIALISATION_COST.get(i);
-      }
-
-      return acc + sum;
-    }, 0);
+    const fromCharacteristics = getAdvancesXpCost(character.characteristics, CHARACTERISTIC_ADVANCE, CHARACTERISTIC_COST);
+    const fromSkills = getAdvancesXpCost(character.skills, SKILL_ADVANCE, SKILL_COST);
+    const fromSpecialisations = getAdvancesXpCost(character.specialisations, SPECIALISATION_ADVANCE, SPECIALISATION_COST);
     const fromTalents = (character.talents ?? []).reduce((acc, cur) => {
       return cur.advances ? acc + TALENT_COST : acc;
     }, 0);
@@ -261,34 +234,19 @@ export class AdvancementDialogComponent {
   }
 
   private filterCharacteristic(option: Option, character: ImperiumMaledictumCharacter): boolean {
-    const characteristic = character.characteristics.find(i => i.id === option.id);
-    const starting = characteristic?.starting ?? 0;
-    const advances = characteristic?.advances ?? 0;
-    const value = starting + advances;
-    /* Characteristic is less than maximum */
-    return value < MAX_CHARACTERISTIC;
+    return isLessThanMax(option, character.characteristics, MAX_CHARACTERISTIC);
   }
 
   private filterSkill(option: Option, character: ImperiumMaledictumCharacter): boolean {
-    const skill = character.skills.find(i => i.id === option.id);
-    const starting = skill?.starting ?? 0;
-    const advances = skill?.advances ?? 0;
-    const value = starting + advances;
-    /* Skill is less than maximum */
-    return value < MAX_SKILL;
+    return isLessThanMax(option, character.skills, MAX_SKILL);
   }
 
   private filterSpecialisation(option: Option, character: ImperiumMaledictumCharacter): boolean {
-    const specialisation = character.specialisations.find(i => i.id === option.id);
-    const starting = specialisation?.starting ?? 0;
-    const advances = specialisation?.advances ?? 0;
-    const value = starting + advances;
-    /* Specialisation is less than maximum */
-    return value < MAX_SPECIALISATION;
+    return isLessThanMax(option, character.specialisations, MAX_SPECIALISATION);
   }
 
   private filterTalent(option: Option, character: ImperiumMaledictumCharacter): boolean {
-    const talent = character.talents.find(i => i.id === option.id);
+    const talent = character.talents?.find(i => i.id === option.id);
     /* Don't have this talent */
     return !talent;
   }

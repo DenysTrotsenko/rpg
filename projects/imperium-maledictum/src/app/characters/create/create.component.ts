@@ -23,7 +23,7 @@ import {
 } from '@im-common';
 import {
   Bonus,
-  Characteristic,
+  Characteristic, CharacteristicId,
   Faction,
   FactionId, ItemBonus,
   Origin,
@@ -31,11 +31,7 @@ import {
   PsychicPowerId, Role,
   RoleId, Skill, SkillId, Specialisation, SpecialisationId, Talent, TalentId
 } from '@imperium-maledictum-1e/models/common';
-import {
-  CharacteristicValue,
-  SkillValue, SpecialisationValue,
-  ImperiumMaledictumCharacter as Character, TalentValue, ItemValue,
-} from '@imperium-maledictum-1e/models/character';
+import { AdvanceableValue, ImperiumMaledictumCharacter, ItemValue } from '@imperium-maledictum-1e/models/character';
 
 @Component({
   templateUrl: './create.component.html',
@@ -76,11 +72,11 @@ export class CreateComponent {
     role: new FormControl([]),
   });
 
-  readonly character$: Observable<Character> = this.route.paramMap
+  readonly character$: Observable<ImperiumMaledictumCharacter> = this.route.paramMap
     .pipe(
       map(params => params.get('id') as CharacterId),
-      switchMap(id => this.character.get(id) as Observable<Character>),
-      distinctUntilChanged((p: Character, q: Character) => JSON.stringify(p) === JSON.stringify(q)),
+      switchMap(id => this.character.get(id) as Observable<ImperiumMaledictumCharacter>),
+      distinctUntilChanged((p, q) => JSON.stringify(p) === JSON.stringify(q)),
       shareReplay(1)
     );
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$.pipe(
@@ -239,7 +235,7 @@ export class CreateComponent {
                 id: i.id,
                 starting: i.starting + (bonuses.get(i.id) ?? 0),
                 advances: 0
-              } as CharacteristicValue;
+              } as AdvanceableValue<CharacteristicId>;
             }),
             ...this.step2.value,
             ...this.step3.value,
@@ -250,20 +246,20 @@ export class CreateComponent {
                 id: i.id,
                 starting: bonuses.get(i.id),
                 advances: 0
-              } as SkillValue;
+              } as AdvanceableValue<SkillId>;
             }),
             specialisations: specialisations.filter(i => bonuses.has(i.id)).map(i => {
               return {
                 id: i.id,
                 starting: bonuses.get(i.id),
                 advances: 0
-              } as SpecialisationValue;
+              } as AdvanceableValue<SpecialisationId>;
             }),
             talents: talents.filter(i => bonuses.has(i.id)).map(i => {
               return {
                 id: i.id,
                 starting: 1
-              } as TalentValue;
+              } as AdvanceableValue<TalentId>;
             }),
             items: [
               ...items
