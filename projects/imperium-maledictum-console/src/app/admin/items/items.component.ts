@@ -43,9 +43,7 @@ export class ItemsComponent {
   );
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly itemTypes$: Observable<ItemType[]> = this.data.itemTypes$;
-  readonly ranges$: Observable<Range[]> = this.data.ranges$.pipe(
-    map(ranges => ranges?.sort((a, b) => a?.order - b?.order))
-  );
+  readonly ranges$: Observable<Range[]> = this.data.ranges$;
   readonly specialisations$: Observable<Specialisation[]> = this.data.specialisations$;
   readonly locations = ['Head', 'Body', 'Arms', 'Legs', 'All', 'Special'];
 

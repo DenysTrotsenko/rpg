@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { DataService } from '@im-common';
+import { DataService, sortByName } from '@im-common';
 import {
   ImperiumMaledictumCharacter,
 } from '@imperium-maledictum-1e/models/character';
@@ -24,7 +24,7 @@ export class CharacterTalentsComponent {
       };
     });
 
-    this.talents = hydrated;
+    this.talents = hydrated.sort(sortByName);
   }
 
   talents: Talent[] = [];

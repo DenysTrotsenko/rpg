@@ -17,10 +17,18 @@ export class CharacterDetailsComponent {
     this.origin = this.data.get<Origin>(character?.origin);
     this.faction = this.data.get<Faction>(character?.faction);
     this.role = this.data.get<Role>(character?.role);
+    this.fate = character?.fate ?? 3;
+    this.wounds = character?.wounds ?? 0;
+    this.corruption = character?.corruption ?? 0;
+    this.encumbrance = 0;
   }
 
   image: string = null;
   origin: Origin = null;
   faction: Faction = null;
   role: Role = null;
+  fate: number = 0;
+  wounds: number = 0;
+  corruption: number = 0;
+  encumbrance: number = 0;
 }

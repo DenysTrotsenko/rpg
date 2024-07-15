@@ -1,19 +1,26 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { DataService } from '@im-common';
-import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
+import { DataService, sortByName } from '@im-common';
+import { getCharacteristicValue, ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/character';
 import { Characteristic, Skill, SkillId, Specialisation } from '@imperium-maledictum-1e/models/common';
 
 interface SkillView {
   id: SkillId;
   name: string;
-  value: number;
+  characteristic: string;
+  fromCharacteristic: number;
+  advances: number;
+  total: number;
   tooltip: string;
 }
 
 interface SpecializationView {
-  skill: string;
   name: string;
-  value: number;
+  characteristic: string;
+  skill: string;
+  fromCharacteristic: number;
+  fromSkill: number;
+  advances: number;
+  total: number;
   tooltip: string;
 }
 
@@ -34,38 +41,48 @@ export class CharacterSkillsSpecializationsComponent {
     this.skills = skills.map(i => {
       const skill = this.data.get<Skill>(i.id);
       const characteristic = characteristics.find(c => c.id === skill.characteristic);
-
-      return {
+      const fromCharacteristic = getCharacteristicValue(characteristic);
+      const advances = (i.starting ?? 0) + (i.advances ?? 0);
+      const vm: SkillView = {
         id: skill.id,
         name: skill.name,
-        tooltip: skill.labels?.tooltip,
-        value: (characteristic.starting ?? 0) + (characteristic.advances ?? 0) + (i.starting ?? 0) + (i.advances ?? 0)
-      } as SkillView;
-    }).sort((a, b) => {
-      if (a?.name < b?.name) { return -1; }
-      if (a?.name > b?.name) { return 1; }
-      return 0;
-    });
+        characteristic: this.data.get<Characteristic>(characteristic.id)?.labels?.abbreviation,
+        fromCharacteristic,
+        advances,
+        total: fromCharacteristic + advances,
+        tooltip: null
+      };
+
+      return {
+        ...vm,
+        tooltip: this.getSkillAdvancedTooltip(vm)
+      };
+    }).sort(sortByName);
 
     this.specialisations = specialisations.map(i => {
       const specialisation = this.data.get<Specialisation>(i.id);
       const skill = this.data.get<Skill>(specialisation.skill);
       const characteristic = this.data.get<Characteristic>(skill.characteristic);
       const skillView = this.skills.find(s => s.id === specialisation.skill);
-      const characteristicValue = characteristics.find(c => c.id === characteristic.id);
-      const value = !!skillView?.value ? skillView.value : (characteristicValue.starting ?? 0) + (characteristicValue.advances ?? 0);
+      const fromCharacteristic = skillView?.fromCharacteristic;
+      const fromSkill = skillView?.advances;
+      const advances = (i.starting ?? 0) + (i.advances ?? 0);
+      const vm: SpecializationView = {
+        name: specialisation.name,
+        characteristic: characteristic?.name,
+        skill: skill?.name,
+        fromCharacteristic,
+        fromSkill,
+        advances,
+        total: fromCharacteristic + fromSkill + advances,
+        tooltip: null,
+      };
 
       return {
-        skill: skill.name,
-        name: specialisation.name,
-        tooltip: specialisation.labels?.tooltip,
-        value: value + (i.starting ?? 0) + (i.advances ?? 0)
+        ...vm,
+        tooltip: this.getSpecialisationAdvancedTooltip(vm)
       };
-    }).sort((a, b) => {
-      if (a?.skill < b?.skill) { return -1; }
-      if (a?.skill > b?.skill) { return 1; }
-      return 0;
-    });
+    }).sort(sortByName);
   }
 
   skills: SkillView[] = [];
@@ -73,5 +90,24 @@ export class CharacterSkillsSpecializationsComponent {
 
   trackById(_, item: Characteristic): string {
     return item.id;
+  }
+
+  private getSkillAdvancedTooltip(vm: SkillView): string {
+    return [
+      `${vm.name} (${vm.characteristic})\n`,
+      `Characteristic: ${vm.fromCharacteristic}`,
+      `Advances: ${vm.advances}`,
+      `Total: ${vm.total}`
+    ].join('\n');
+  }
+
+  private getSpecialisationAdvancedTooltip(vm: SpecializationView): string {
+    return [
+      `${vm.skill} (${vm.name})\n`,
+      `Characteristic: ${vm.fromCharacteristic}`,
+      `Skill: ${vm.fromSkill}`,
+      `Advances: ${vm.advances}`,
+      `Total: ${vm.total}`
+    ].join('\n');
   }
 }

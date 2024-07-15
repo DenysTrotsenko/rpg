@@ -1,6 +1,12 @@
-<img *ngIf="image" [src]="image" alt="portrait">
+<img *ngIf="image" [ngSrc]="image" width="200" height="200" alt="portrait">
 <div>
   <p><b class="c-gray">Origin: </b><span>{{origin?.name}}</span></p>
   <p><b class="c-gray">Faction: </b><span>{{faction?.name}}</span></p>
   <p><b class="c-gray">Role: </b><span>{{role?.name}}</span></p>
+</div>
+<div>
+  <p><b class="c-gray">Fate: </b><span>{{fate}}</span></p>
+  <p><b class="c-gray">Wounds: </b><span>{{wounds}}</span></p>
+  <p><b class="c-gray">Corruption: </b><span>{{corruption}}</span></p>
+  <p><b class="c-gray">Encumbrance: </b><span>{{encumbrance}}</span></p>
 </div>

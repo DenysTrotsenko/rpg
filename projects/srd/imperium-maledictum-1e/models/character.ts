@@ -17,7 +17,6 @@ export interface ImperiumMaledictumCharacter extends Character {
   origin: OriginId;
   faction: FactionId;
   role: RoleId;
-
   characteristics: AdvanceableValue<CharacteristicId>[];
   skills: AdvanceableValue<SkillId>[];
   specialisations: AdvanceableValue<SpecialisationId>[];
@@ -26,6 +25,10 @@ export interface ImperiumMaledictumCharacter extends Character {
   items: ItemValue[];
   prosthetics: ItemValue[];
   // patron: PatronId;
+
+  fate: number;
+  wounds: number;
+  corruption: number;
 }
 
 export interface AdvanceableValue<T> {
@@ -45,7 +48,7 @@ export interface ItemValue {
 }
 
 export function getCharacteristicValue(value: AdvanceableValue<CharacteristicId>): number {
-  return (value.starting ?? 0) + (value.advances ?? 0);
+  return (value?.starting ?? 0) + (value?.advances ?? 0);
 }
 
 export function getCharacteristicBonus(value: AdvanceableValue<CharacteristicId>): number {

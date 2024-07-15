@@ -6,6 +6,7 @@
 }
 
 img {
-  max-width: 200px;
+  //max-width: 200px;
+  object-fit: cover;
   box-shadow: 0 0 0 1px mat.get-color-from-palette(mat.$gray-palette, 500);
 }

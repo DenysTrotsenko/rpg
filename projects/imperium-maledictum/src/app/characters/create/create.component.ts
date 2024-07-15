@@ -263,7 +263,10 @@ export class CreateComponent {
             }),
             items: [
               ...items
-            ]
+            ],
+            fate: 3,
+            corruption: 0,
+            wounds: 0
           });
         }),
         tap(() => this.router.navigate(['characters/list']))

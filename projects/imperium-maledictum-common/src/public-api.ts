@@ -2,6 +2,7 @@
  * Public API Surface of imperium-maledictum-common
  */
 export * from './lib/data.service';
+export * from './lib/utils';
 export * from './lib/imperium-maledictum-common.module';
 export { AddItemDialogComponent } from './lib/components/add-item-dialog.component';
 export { AddSkillDialogComponent } from './lib/components/add-skill-dialog.component';

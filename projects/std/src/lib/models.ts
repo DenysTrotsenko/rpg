@@ -73,7 +73,8 @@ export interface Campaign {
   experience: CampaignExperience[];
 }
 
-export interface CampaignEvent extends HasId<string> {
+export interface CampaignEvent {
+  id: string;
   image: string | null;
   name: string;
   short?: string;
@@ -83,7 +84,8 @@ export interface CampaignEvent extends HasId<string> {
   updatedAt: number;
 }
 
-export interface CampaignExperience extends HasId<string> {
+export interface CampaignExperience {
+  id: string;
   name: string;
   description: string;
   tasks: TodoTask[];
@@ -93,13 +95,14 @@ export interface CampaignExperience extends HasId<string> {
 
 export interface Character {
   id: CharacterId;
-  name: string;
   author: UserId;
   campaign: CampaignId;
+  name: string;
   image?: string | null;
 }
 
-export interface User extends HasId<UserId> {
+export interface User {
+  id: UserId;
   name: string;
   email: string;
   permissions: PermissionId[];

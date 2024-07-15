@@ -5,7 +5,7 @@
     </td>
   </tr>
   <tr class="mat-row bg-gray-800">
-    <td *ngFor="let i of characteristics; trackBy: trackById;" class="mat-cell p-5">
+    <td *ngFor="let i of characteristics; trackBy: trackById;" class="mat-cell p-5 c-pointer" [matTooltip]="i.labels.tooltip">
       {{i.current}}% ({{i.bonus}})
     </td>
   </tr>

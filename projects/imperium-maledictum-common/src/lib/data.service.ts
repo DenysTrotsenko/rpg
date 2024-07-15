@@ -37,6 +37,7 @@ import {
   Target
 } from '@imperium-maledictum-1e/models/common';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
+import { sortByOrder } from './utils';
 
 interface Data {
   [FileName.AVAILABILITIES]: Availability[];
@@ -213,7 +214,7 @@ export class DataService {
   readonly bestiaryTypes$: Observable<BestiaryType[]> = this.data$.pipe(map(data => data[FileName.BESTIARY_TYPES]));
   readonly characteristics$: Observable<Characteristic[]> = this.data$.pipe(
     map(data => data[FileName.CHARACTERISTICS]),
-    map(characteristics => characteristics?.sort((a, b) => a?.order - b?.order)),
+    map(characteristics => characteristics?.sort(sortByOrder)),
     shareReplay(1)
   );
   readonly conditions$: Observable<Condition[]> = this.data$.pipe(map(data => data[FileName.CONDITIONS]));
@@ -234,12 +235,20 @@ export class DataService {
   readonly origins$: Observable<Origin[]> = this.data$.pipe(map(data => data[FileName.ORIGINS]));
   readonly psychicDisciplines$: Observable<PsychicDiscipline[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_DISCIPLINES]));
   readonly psychicPhenomenas$: Observable<PsychicPhenomena[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_PHENOMENAS]));
-  readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(map(data => data[FileName.PSYCHIC_POWERS]));
-  readonly ranges$: Observable<Range[]> = this.data$.pipe(map(data => data[FileName.RANGES]));
+  readonly psychicPowers$: Observable<PsychicPower[]> = this.data$.pipe(
+    map(data => data[FileName.PSYCHIC_POWERS]),
+    shareReplay(1)
+  );
+  readonly ranges$: Observable<Range[]> = this.data$.pipe(
+    map(data => data[FileName.RANGES]),
+    map(ranges => ranges?.sort(sortByOrder)),
+    shareReplay(1)
+  );
   readonly roles$: Observable<Role[]> = this.data$.pipe(map(data => data[FileName.ROLES]));
   readonly sizes$: Observable<Size[]> = this.data$.pipe(
     map(data => data[FileName.SIZES]),
-    map(sizes => sizes?.sort((a, b) => a?.order - b?.order))
+    map(sizes => sizes?.sort(sortByOrder)),
+    shareReplay(1)
   );
   readonly skills$: Observable<Skill[]> = this.data$.pipe(
     map(data => data[FileName.SKILLS]),

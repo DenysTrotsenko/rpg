@@ -6,7 +6,7 @@ import {
   getCharacteristicValue,
   ImperiumMaledictumCharacter
 } from '@imperium-maledictum-1e/models/character';
-import { DataService } from '@im-common';
+import { DataService, sortByOrder } from '@im-common';
 
 type CharacteristicView = Characteristic & AdvanceableValue<CharacteristicId> & {
   current: number;
@@ -26,21 +26,40 @@ export class CharacterCharacteristicsComponent {
     const characteristics = character?.characteristics;
     const hydrated: CharacteristicView[] = characteristics.map(i => {
       const characteristic = this.data.get<Characteristic>(i.id);
-
-      return {
+      const current = getCharacteristicValue(i);
+      const bonus = getCharacteristicBonus(i);
+      const vm: CharacteristicView = {
         ...i,
         ...characteristic,
-        current: getCharacteristicValue(i),
-        bonus: getCharacteristicBonus(i)
+        current,
+        bonus
+      };
+
+      return {
+        ...vm,
+        labels: {
+          ...vm.labels,
+          tooltip: this.getCharacteristicAdvancedTooltip(vm)
+        },
       };
     });
 
-    this.characteristics = hydrated?.sort((a, b) => a?.order - b?.order);
+    this.characteristics = hydrated?.sort(sortByOrder);
   }
 
   characteristics: CharacteristicView[] = [];
 
   trackById(_, item: Characteristic): string {
     return item.id;
+  }
+
+  private getCharacteristicAdvancedTooltip(vm: CharacteristicView): string {
+    return [
+      `${vm.name} (${vm.labels?.abbreviation})\n`,
+      `Starting: ${vm.starting}`,
+      `Advances: ${vm.advances}`,
+      `Total: ${vm.starting + vm.advances}`,
+      `Bonus: ${vm.bonus}`,
+    ].join('\n');
   }
 }
