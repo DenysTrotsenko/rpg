@@ -151,7 +151,7 @@ export interface Characteristic {
     description: string;
     tooltip?: string;
   };
-  system?: System;
+  system?: Partial<System>;
 }
 
 export interface Condition {
@@ -248,7 +248,6 @@ export interface Origin {
     modifications?: string;
     description: string;
   };
-  modifications: Modification[];
   bonuses: Bonus[];
   items: ItemBonus[];
   money: number | [number, number];
@@ -410,19 +409,3 @@ export interface Talent extends HasBaseProperties<TalentId> {
 }
 
 export type Target = HasBaseProperties<TargetId>;
-
-export interface Modification {
-  type: SYSTEM_OPERATORS;
-  options: string[];
-  value: number;
-}
-
-export type SYSTEM_OPERATORS =
-  | 'ADD_CHARACTERISTIC'
-  | 'ADD_SKILL'
-  | 'ADD_SKILL_ADVANCE'
-  | 'ADD_TALENT'
-  | 'ADD_INFLUENCE'
-  // | ''
-  | 'ADD_ITEM'
-  | 'ADD_SOLARS';
