@@ -17,8 +17,8 @@ export class SignInComponent {
 
   readonly progress$ = new BehaviorSubject(false);
   readonly form: FormGroup = new FormGroup({
-    email: new FormControl<string>('', [Validators.required, Validators.email]),
-    password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
+    email: new FormControl<string>(null, [Validators.required, Validators.email]),
+    password: new FormControl<string>(null, [Validators.required, Validators.minLength(8)]),
     resource: new FormControl<unknown>(null, [Validators.required]),
   });
   readonly label = this.route.parent.snapshot.data?.label;
