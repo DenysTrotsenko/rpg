@@ -113,10 +113,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "imperium-maledictum:build:production"
+              "buildTarget": "imperium-maledictum:build:production"
             },
             "development": {
-              "browserTarget": "imperium-maledictum:build:development"
+              "buildTarget": "imperium-maledictum:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -124,7 +124,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "imperium-maledictum:build"
+            "buildTarget": "imperium-maledictum:build"
           }
         },
         "test": {
@@ -219,10 +219,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "imperium-maledictum-console:build:production"
+              "buildTarget": "imperium-maledictum-console:build:production"
             },
             "development": {
-              "browserTarget": "imperium-maledictum-console:build:development"
+              "buildTarget": "imperium-maledictum-console:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -230,7 +230,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "imperium-maledictum-console:build"
+            "buildTarget": "imperium-maledictum-console:build"
           }
         },
         "test": {
