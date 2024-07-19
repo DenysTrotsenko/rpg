@@ -19,6 +19,7 @@ export enum FileName {
   ITEM_QUALITIES = 'item-qualities.json',
   ITEM_FLAWS = 'item-flaws.json',
   ITEM_TRAITS = 'item-traits.json',
+  ITEM_MODIFICATIONS = 'item-modifications.json',
   ITEM_TYPES = 'item-types.json',
   MALIGNANCIES = 'malignancies.json',
   MUTATIONS = 'mutations.json',

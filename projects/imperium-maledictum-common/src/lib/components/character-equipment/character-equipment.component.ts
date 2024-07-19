@@ -15,6 +15,7 @@ interface VM {
   qualities: ItemTrait[];
   flaws: ItemTrait[];
   traits: ItemTrait[];
+  modifications: ItemTrait[];
   tooltip: string;
   specialisation: string;
   damage: number;
@@ -54,6 +55,7 @@ export class CharacterEquipmentComponent {
         qualities,
         flaws,
         traits,
+        modifications: [],
         tooltip: item?.labels?.tooltip,
         specialisation: specialisations.map(s => s.name).join(', '),
         damage,

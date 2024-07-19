@@ -23,14 +23,6 @@ export type ItemTypeId = Opaque<string, 'ItemTypeId'>;
 export type MalignancyId = Opaque<string, 'MalignancyId'>;
 export type MutationId = Opaque<string, 'MutationId'>;
 export type OriginId = Opaque<string, 'OriginId'>;
-export type PatronId = Opaque<string, 'PatronId'>;
-export type PatronBoonId = Opaque<string, 'PatronBoonId'>;
-export type PatronDemeanorId = Opaque<string, 'PatronDemeanorId'>;
-export type PatronDutyId = Opaque<string, 'PatronDutyId'>;
-export type PatronFactionId = Opaque<string, 'PatronFactionId'>;
-export type PatronLiabilityId = Opaque<string, 'PatronLiabilityId'>;
-export type PatronMotivationId = Opaque<string, 'PatronMotivationId'>;
-export type PatronPaymentGradeId = Opaque<string, 'PatronPaymentGradeId'>;
 export type PerilOfTheWarpId = Opaque<string, 'PerilOfTheWarpId'>;
 export type PsychicPhenomenaId = Opaque<string, 'PsychicPhenomenaId'>;
 export type PsychicPowerId = Opaque<string, 'PsychicPowerId'>;
@@ -98,6 +90,7 @@ export interface BestiaryRole extends HasBaseProperties<BestiaryRoleId> {
 
 export interface BestiaryTrait extends HasBaseProperties<BestiaryTraitId> {
   labels: {
+    flavor?: string;
     description: string;
     tooltip?: string;
   };
@@ -212,8 +205,11 @@ export interface Item extends HasBaseProperties<ItemId> {
   system?: Partial<System>;
 }
 
-export interface ItemTrait extends HasBaseProperties<ItemTraitId> {
+export interface ItemTrait {
+  id: ItemTraitId;
+  name: string;
   labels: {
+    flavor?: string;
     description: string;
     tooltip?: string;
   };
@@ -228,6 +224,7 @@ export interface ItemType extends HasBaseProperties<ItemTypeId> {
 
 export interface Malignancy extends HasBaseProperties<MalignancyId>, HasWeight {
   labels: {
+    flavor?: string;
     description: string;
     tooltip?: string;
   };
@@ -235,6 +232,7 @@ export interface Malignancy extends HasBaseProperties<MalignancyId>, HasWeight {
 
 export interface Mutation extends HasBaseProperties<MutationId>, HasWeight {
   labels: {
+    flavor?: string;
     description: string;
     tooltip?: string;
   };
@@ -251,72 +249,6 @@ export interface Origin {
   bonuses: Bonus[];
   items: ItemBonus[];
   money: number | [number, number];
-}
-
-export interface Patron {
-  id: PatronId;
-}
-
-export interface PatronBoon {
-  id: PatronBoonId | string;
-  name: string;
-  labels: {
-    influence?: string;
-    description: string;
-  };
-}
-
-export interface PatronDemeanor {
-  id: PatronDemeanorId | string;
-  name: string;
-  labels: {
-    description: string;
-  };
-}
-
-export interface PatronDuty {
-  id: PatronDutyId | string;
-  name: string;
-  boon: PatronBoonId;
-  boons: PatronBoonId[] | string[];
-  liabilities: PatronLiabilityId[] | string[];
-  labels: {
-    description: string;
-  };
-}
-
-export interface PatronFaction {
-  id: PatronFactionId | string;
-  name: string;
-  influence?: Record<FactionId | string, number>;
-  duties: PatronDutyId[] | string[];
-  labels: {
-    description: string;
-  };
-}
-
-export interface PatronLiability {
-  id: PatronLiabilityId | string;
-  name: string;
-  labels: {
-    influence?: string;
-    description: string;
-  };
-}
-
-export interface PatronMotivation {
-  id: PatronMotivationId | string;
-  name: string;
-  labels: {
-    quote: string;
-    description: string;
-  };
-}
-
-export interface PatronPaymentGrade {
-  id: PatronPaymentGradeId | string;
-  name: string;
-  value: number;
 }
 
 export interface PerilOfTheWarp extends HasBaseProperties<PerilOfTheWarpId>, HasWeight {
@@ -401,6 +333,7 @@ export interface Specialisation extends HasBaseProperties<SpecialisationId> {
 
 export interface Talent extends HasBaseProperties<TalentId> {
   labels: {
+    flavor?: string;
     description: string;
     requirements: string;
     tooltip?: string;

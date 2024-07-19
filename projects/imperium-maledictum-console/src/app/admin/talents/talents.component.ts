@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Talent } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
@@ -9,16 +9,17 @@ import { getId16 } from '@std';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TalentsComponent implements OnInit {
-  readonly form: UntypedFormGroup = new UntypedFormGroup({
-    id: new UntypedFormControl(null),
-    name: new UntypedFormControl('', [Validators.required]),
-    multiple: new UntypedFormControl(null),
-    cost: new UntypedFormControl(100),
-    labels: new UntypedFormGroup({
-      requirements: new UntypedFormControl(null),
-      description: new UntypedFormControl('', [Validators.required]),
+  readonly form: FormGroup = new FormGroup({
+    id: new FormControl(null),
+    name: new FormControl<string>('', [Validators.required]),
+    multiple: new FormControl<boolean>(null),
+    cost: new FormControl<number>(100),
+    labels: new FormGroup({
+      requirements: new FormControl<string>(null),
+      flavor: new FormControl<string>(null, [Validators.required]),
+      description: new FormControl<string>(null, [Validators.required]),
     }),
-    system: new UntypedFormControl({})
+    system: new FormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Talent) {}

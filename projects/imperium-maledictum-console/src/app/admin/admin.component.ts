@@ -25,6 +25,7 @@ const SETTING_OPTIONS: NavListItemData[] = [
   { link: './item-flaws', label: 'Item Flaws', permission: PermissionId.ADMIN_SETTING },
   { link: './item-qualities', label: 'Item Qualities', permission: PermissionId.ADMIN_SETTING },
   { link: './item-traits', label: 'Item Traits', permission: PermissionId.ADMIN_SETTING },
+  { link: './item-modifications', label: 'Item Modifications', permission: PermissionId.ADMIN_SETTING },
   { link: './item-types', label: 'Item Types', permission: PermissionId.ADMIN_SETTING },
   { link: './malignancies', label: 'Malignancies', permission: PermissionId.ADMIN_SETTING },
   { link: './mutations', label: 'Mutations', permission: PermissionId.ADMIN_SETTING },

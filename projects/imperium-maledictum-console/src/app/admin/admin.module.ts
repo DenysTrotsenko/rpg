@@ -3,8 +3,6 @@ import { SharedModule } from '@std';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
-import { ItemQualitiesComponent } from './item-qualities/item-qualities.component';
-import { ItemFlawsComponent } from './item-flaws/item-flaws.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { TalentsComponent } from './talents/talents.component';
 import { MutationsComponent } from './mutations/mutations.component';
@@ -49,8 +47,6 @@ import { OriginsComponent } from './origins/origins.component';
   declarations: [
     AdminComponent,
     ItemTraitsComponent,
-    ItemQualitiesComponent,
-    ItemFlawsComponent,
     ConditionsComponent,
     TalentsComponent,
     MutationsComponent,
@@ -87,7 +83,7 @@ import { OriginsComponent } from './origins/origins.component';
     EndeavoursComponent,
     ActionsComponent,
     RolesComponent,
-    OriginsComponent
+    OriginsComponent,
   ],
   imports: [
     SharedModule,

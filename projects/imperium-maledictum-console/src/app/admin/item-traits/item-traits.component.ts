@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ItemTrait } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
@@ -9,13 +9,14 @@ import { getId16 } from '@std';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemTraitsComponent implements OnInit {
-  readonly form: UntypedFormGroup = new UntypedFormGroup({
-    id: new UntypedFormControl(null),
-    name: new UntypedFormControl('', [Validators.required]),
-    labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
+  readonly form: FormGroup = new FormGroup({
+    id: new FormControl(null),
+    name: new FormControl<string>('', [Validators.required]),
+    labels: new FormGroup({
+      flavor: new FormControl<string>(null, [Validators.required]),
+      description: new FormControl<string>(null, [Validators.required]),
     }),
-    system: new UntypedFormControl({})
+    system: new FormControl({})
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}

@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { permissionGuard, PermissionId } from '@std';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 import { AdminComponent } from './admin.component';
 import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { FactionsComponent } from './factions/factions.component';
-import { ItemFlawsComponent } from './item-flaws/item-flaws.component';
-import { ItemQualitiesComponent } from './item-qualities/item-qualities.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
 import { MalignanciesComponent } from './malignancies/malignancies.component';
 import { MutationsComponent } from './mutations/mutations.component';
@@ -33,7 +32,6 @@ import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.componen
 import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
-import { permissionGuard, PermissionId } from '@std';
 import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
 import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
@@ -152,19 +150,25 @@ export const routes: Routes = [
         path: 'item-qualities',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.ITEM_QUALITIES, component: ItemQualitiesComponent }
+        data: { path: FileName.ITEM_QUALITIES, component: ItemTraitsComponent }
       },
       {
         path: 'item-flaws',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.ITEM_FLAWS, component: ItemFlawsComponent }
+        data: { path: FileName.ITEM_FLAWS, component: ItemTraitsComponent }
       },
       {
         path: 'item-traits',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
         data: { path: FileName.ITEM_TRAITS, component: ItemTraitsComponent }
+      },
+      {
+        path: 'item-modifications',
+        component: AdminBaseComponent,
+        canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
+        data: { path: FileName.ITEM_MODIFICATIONS, component: ItemTraitsComponent }
       },
       {
         path: 'item-types',
