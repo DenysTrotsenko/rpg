@@ -10,9 +10,7 @@ import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { MatDialogRef } from '@angular/material/dialog';
-import {
-  ImperiumMaledictumCommonModule
-} from '../../../imperium-maledictum-common/src/lib/imperium-maledictum-common.module';
+import { ImperiumMaledictumCommonModule } from '@im-common';
 
 
 @NgModule({
@@ -23,17 +21,15 @@ import {
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    provideFirebaseApp(
-      () => initializeApp(environment.firebase),
-      provideAuth(() => getAuth()),
-      provideFirestore( () => getFirestore()),
-      provideStorage(() => getStorage()),
-      provideFunctions(() => getFunctions())
-    ),
     LoggerModule.forRoot(!environment.production),
     ImperiumMaledictumCommonModule
   ],
   providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore( () => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideFunctions(() => getFunctions()),
     { provide: MatDialogRef, useValue: {} },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],

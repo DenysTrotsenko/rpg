@@ -27,16 +27,17 @@
       </mat-form-field>
     </mat-card-content>
     <mat-card-content *ngIf="options && label" class="d-f fd-c ai-s">
-        <mat-form-field appearance="outline">
-          <mat-label>{{label}}</mat-label>
-          <mat-select formControlName="resource">
-            <mat-option *ngFor="let i of options;" [value]="i.id">
-              {{i.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{label}}</mat-label>
+        <mat-select formControlName="resource">
+          <mat-option *ngFor="let i of options;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-content>
-    <mat-card-actions class="d-f fd-r jc-fe">
+    <mat-card-actions class="d-f fd-r jc-sb">
+      <button mat-button type="button" color="warn" routerLink="/auth/forgot-password">Forgot Password</button>
       <button mat-raised-button color="primary" type="submit" class="m-l-10" [disabled]="!form.valid">Continue</button>
     </mat-card-actions>
   </mat-card>

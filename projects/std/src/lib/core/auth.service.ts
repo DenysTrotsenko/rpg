@@ -25,7 +25,7 @@ export class AuthService {
   get option$(): Observable<unknown> { return this.optionObservable; }
   get uid$(): Observable<UserId | null> { return this.auth$.pipe(map(res => res?.uid as UserId)); }
 
-  constructor(private afa: AngularFireAuth, private snackbar: SnackbarService) {
+  constructor(public afa: AngularFireAuth, private snackbar: SnackbarService) {
     this.afa.authState
       .pipe(
         tap((user: firebase.User | null) => {
@@ -34,7 +34,6 @@ export class AuthService {
         })
       )
       .subscribe();
-    console.log();
   }
 
   deleteUser(data: AuthWithEmailAndPassword): Observable<firebase.User | void> {
@@ -72,6 +71,45 @@ export class AuthService {
 
   signUp(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe(
+      catchError((err: firebase.auth.Error) => {
+        this.snackbar.error(getErrorMessage(err));
+        return of(null);
+      })
+    );
+  }
+
+  sendPasswordResetEmail(email: string): Observable<void> {
+    return from(this.afa.sendPasswordResetEmail(email)).pipe(
+      tap(() => this.snackbar.success('A password reset link has been sent to your email.')),
+      catchError((err: firebase.auth.Error) => {
+        this.snackbar.error(getErrorMessage(err));
+        return of(null);
+      })
+    );
+  }
+
+  verifyPasswordResetCode(code: string): Observable<boolean> {
+    return from(this.afa.verifyPasswordResetCode(code)).pipe(
+      map(() => true),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
+
+  applyActionCode(code: string): Observable<boolean> {
+    return from(this.afa.applyActionCode(code)).pipe(
+      map(() => true),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
+
+  confirmPasswordReset(code, password): Observable<void> {
+    console.log('confirmPasswordReset', code, password);
+    return from(this.afa.confirmPasswordReset(code, password)).pipe(
+      tap(() => this.snackbar.success('New password has been saved.')),
       catchError((err: firebase.auth.Error) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);

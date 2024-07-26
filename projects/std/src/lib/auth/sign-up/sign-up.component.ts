@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, delay } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class SignUpComponent {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+    resource: new FormControl<unknown>(null, [Validators.required]),
   });
   readonly label = this.route.parent.snapshot.data?.label;
   readonly options = this.route.parent.snapshot.data?.options;

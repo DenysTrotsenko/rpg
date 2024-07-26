@@ -6,12 +6,16 @@ import { MaterialModule } from '../material/material.module';
 import { AuthComponent } from './auth.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthManagementComponent } from './auth-management/auth-management.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent,
+    AuthManagementComponent
   ],
   imports: [
     CommonModule,
