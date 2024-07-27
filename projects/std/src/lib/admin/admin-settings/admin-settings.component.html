@@ -4,7 +4,7 @@
   </button>
 </mat-toolbar>
 <mat-accordion class="o-a">
-  <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
+  <mat-expansion-panel *ngFor="let i of items$ | async;" [hideToggle]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{i.name}} (<span class="c-gray">{{i.id}}</span>)

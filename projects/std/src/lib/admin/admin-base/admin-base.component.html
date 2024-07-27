@@ -24,7 +24,7 @@
     </p>
   </ng-container>
   <mat-accordion class="o-a p-5">
-    <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
+    <mat-expansion-panel *ngFor="let i of items$ | async;" [hideToggle]="true">
       <mat-expansion-panel-header>
         <mat-panel-title class="p-r ff-g mr-0">
           <span class="f-1 d-f o-h" style="white-space: nowrap; width: 0;">
