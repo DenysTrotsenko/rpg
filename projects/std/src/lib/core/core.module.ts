@@ -1,6 +1,6 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -25,7 +25,6 @@ export const NAVIGATOR = new InjectionToken<Navigator>('Navigator');
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    HttpClientModule,
     DialogModule,
     SnackbarModule
   ],
@@ -40,7 +39,8 @@ export const NAVIGATOR = new InjectionToken<Navigator>('Navigator');
     FunctionsService,
     StorageService,
     SettingService,
-    { provide: NAVIGATOR, useValue: navigator }
+    { provide: NAVIGATOR, useValue: navigator },
+    provideHttpClient()
   ]
 })
 export class CoreModule {

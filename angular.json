@@ -53,12 +53,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "projects/imperium-maledictum/dist",
+            "outputPath": {
+              "base": "projects/imperium-maledictum/dist"
+            },
             "index": "projects/imperium-maledictum/src/index.html",
-            "main": "projects/imperium-maledictum/src/main.ts",
-            "polyfills": "projects/imperium-maledictum/src/polyfills.ts",
+            "polyfills": [
+              "projects/imperium-maledictum/src/polyfills.ts"
+            ],
             "tsConfig": "projects/imperium-maledictum/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -74,7 +77,8 @@
                 "projects/std/src/styles/"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/imperium-maledictum/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -99,9 +103,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -160,11 +162,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "projects//imperium-maledictum-console/dist",
+            "outputPath": {
+              "base": "projects//imperium-maledictum-console/dist"
+            },
             "index": "projects/imperium-maledictum-console/src/index.html",
-            "main": "projects/imperium-maledictum-console/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -183,7 +186,8 @@
                 "projects/std/src/styles/"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/imperium-maledictum-console/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -202,9 +206,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

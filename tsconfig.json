@@ -4,7 +4,7 @@
     "experimentalDecorators": true,
     "baseUrl": "./",
     "declaration": false,
-    "downlevelIteration": true,
+    "esModuleInterop": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "outDir": "./dist/out-tsc",
