@@ -3,11 +3,28 @@ import { Observable, of, switchMap } from 'rxjs';
 import { DialogService, Setting, SettingService, SnackbarService, StorageService } from '@std';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { AdminSettingsEditComponent } from './admin-settings-edit.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { AsyncPipe, NgForOf } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   templateUrl: './admin-settings.component.html',
   styleUrls: ['./admin-settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    AdminSettingsEditComponent,
+    MatToolbarModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    NgForOf,
+    MatTooltipModule,
+  ]
 })
 export class AdminSettingsComponent {
   readonly items$: Observable<Setting[]> = this.setting.all$;

@@ -1,12 +1,28 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FS_COLLECTION, getId16, Setting, SettingId, SettingService } from '@std';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { AsyncPipe, NgForOf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   templateUrl: './admin-settings-edit.component.html',
   styleUrls: ['./admin-settings-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    NgForOf,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule
+  ]
 })
 export class AdminSettingsEditComponent {
   readonly form: FormGroup = new FormGroup<any>({

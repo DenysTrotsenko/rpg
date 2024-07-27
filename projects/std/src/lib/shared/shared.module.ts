@@ -11,10 +11,6 @@ import { FindPipe } from './pipes/find.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { KeyValueArrayComponent } from './components/key-value-array/key-value-array.component';
 import { SelectionListComponent } from './components/selection-list/selection-list.component';
-import { AdminBaseModule } from './admin-base/admin-base.module';
-import { AdminUsersModule } from './admin-users/admin-users.module';
-import { AdminSettingsModule } from './admin-settings/admin-settings.module';
-import { AdminDictionaryModule } from './admin-dictionary/admin-dictionary.module';
 import { JsonEditorDialogComponent } from './json-editor-dialog/json-editor-dialog.component';
 import { CodeEditorModule } from './code-editor/code-editor.module';
 import { TodoEditorModule } from './todo-editor/todo-editor.module';
@@ -49,10 +45,6 @@ const IMPORTS = [
   ReactiveFormsModule,
   CodeEditorModule,
   TodoEditorModule,
-  AdminBaseModule,
-  AdminDictionaryModule,
-  AdminUsersModule,
-  AdminSettingsModule,
   JsonEditorDialogComponent,
   TreeEditorModule,
   NgOptimizedImage

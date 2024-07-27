@@ -13,7 +13,7 @@ import {
 } from '@std';
 import { AdminServiceConfig } from './admin-base.models';
 import { AbstractControl } from '@angular/forms';
-import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
+import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
 
 const getCount = items => items.reduce((result, value) => {
   return { ...result, [value]: (result[value] || 0) + 1 };

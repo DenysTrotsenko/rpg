@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, filter, finalize, tap } from 'rxjs/operators';
 import { DialogService, SnackbarService, StorageService } from '@std';
-import { JsonEditorDialogComponent } from '../json-editor-dialog/json-editor-dialog.component';
+import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
+
 
 @Injectable()
 export class AdminDictionaryService {

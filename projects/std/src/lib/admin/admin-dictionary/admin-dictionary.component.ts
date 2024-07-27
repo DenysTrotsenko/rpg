@@ -1,16 +1,37 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Data } from '@angular/router';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 import { Setting, SettingService } from '@std';
 import { AdminDictionaryService } from './admin-dictionary.service';
+import { AsyncPipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
   templateUrl: './admin-dictionary.component.html',
   styleUrls: ['./admin-dictionary.component.scss'],
   providers: [AdminDictionaryService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    NgIf,
+    NgForOf,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    KeyValuePipe,
+    JsonEditorDialogComponent
+  ]
 })
 export class AdminDictionaryComponent implements OnInit, OnDestroy {
   private readonly admin = inject(AdminDictionaryService);

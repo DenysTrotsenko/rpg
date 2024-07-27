@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Availability, Item, ItemTrait, ItemType, Range, Specialisation } from '@imperium-maledictum-1e/models/common';
-import { getId16 } from '@std';
-import { AdminBaseService } from '../../../../../std/src/lib/shared/admin-base/admin-base.service';
+import { getId16, AdminBaseService } from '@std';
 import { DataService } from '@im-common';
 
 @Component({

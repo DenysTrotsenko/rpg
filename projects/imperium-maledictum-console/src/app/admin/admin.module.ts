@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@std';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ItemTraitsComponent } from './item-traits/item-traits.component';
@@ -41,6 +40,13 @@ import { ActionsComponent } from './actions/actions.component';
 import { GetByIdPipe, ImperiumMaledictumCommonModule } from '@im-common';
 import { RolesComponent } from './roles/roles.component';
 import { OriginsComponent } from './origins/origins.component';
+import {
+  AdminBaseComponent,
+  AdminDictionaryComponent,
+  AdminSettingsComponent,
+  AdminUsersComponent,
+  SharedModule
+} from '@std';
 
 
 @NgModule({
@@ -86,10 +92,14 @@ import { OriginsComponent } from './origins/origins.component';
     OriginsComponent,
   ],
   imports: [
-    SharedModule,
     ImperiumMaledictumCommonModule,
     AdminRoutingModule,
-    GetByIdPipe
+    GetByIdPipe,
+    AdminBaseComponent,
+    AdminSettingsComponent,
+    AdminDictionaryComponent,
+    AdminUsersComponent,
+    SharedModule
   ]
 })
 export class AdminModule {}

@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { permissionGuard, PermissionId } from '@std';
+import {
+  AdminBaseComponent,
+  AdminDictionaryComponent,
+  AdminSettingsComponent, AdminUsersComponent,
+  permissionGuard,
+  PermissionId
+} from '@std';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 import { AdminComponent } from './admin.component';
-import { AdminBaseComponent } from '../../../../std/src/lib/shared/admin-base/admin-base.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { FactionsComponent } from './factions/factions.component';
@@ -18,7 +23,6 @@ import { TalentsComponent } from './talents/talents.component';
 import { BestiaryRolesComponent } from './bestiary-roles/bestiary-roles.component';
 import { BestiaryTraitsComponent } from './bestiary-traits/bestiary-traits.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
-import { AdminUsersComponent } from '../../../../std/src/lib/shared/admin-users/admin-users.component';
 import { PsychicPowersComponent } from './psychic-powers/psychic-powers.component';
 import { PsychicDisciplinesComponent } from './psychic-disciplines/psychic-disciplines.component';
 import { ItemAvailabilitiesComponent } from './item-availabilities/item-availabilities.component';
@@ -32,8 +36,6 @@ import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.componen
 import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
-import { AdminSettingsComponent } from '../../../../std/src/lib/shared/admin-settings/admin-settings.component';
-import { AdminDictionaryComponent } from '../../../../std/src/lib/shared/admin-dictionary/admin-dictionary.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 import { OriginsComponent } from './origins/origins.component';
 import { RolesComponent } from './roles/roles.component';

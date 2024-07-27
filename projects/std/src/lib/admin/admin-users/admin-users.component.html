@@ -1,6 +1,6 @@
 <mat-toolbar class="f-0-0-a"></mat-toolbar>
 <mat-accordion class="o-a">
-  <mat-expansion-panel *ngFor="let i of items$ | async;" hideToggle>
+  <mat-expansion-panel *ngFor="let i of items$ | async;" [hideToggle]="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{i.email}} (<span class="c-gray">{{i.id}}</span>)
@@ -13,7 +13,7 @@
     <div>
       <div>Id: {{i.id}}</div>
       <div>Email: {{i.email}}</div>
-      <div>Name: {{i.name || 'Anonymous'}}</div>
+      <div>Name: {{i.name || '--'}}</div>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

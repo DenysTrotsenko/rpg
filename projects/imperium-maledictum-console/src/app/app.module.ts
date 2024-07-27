@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CoreModule, LoggerModule, SharedModule } from '@std';
+import { CoreModule, LoggerModule } from '@std';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -19,7 +19,6 @@ import { ImperiumMaledictumCommonModule } from '@im-common';
   ],
   imports: [
     CoreModule,
-    SharedModule,
     AppRoutingModule,
     LoggerModule.forRoot(!environment.production),
     ImperiumMaledictumCommonModule
