@@ -1,24 +1,24 @@
 @use '@angular/material' as mat;
 @import '@angular/material';
 
-$app-primary-palette: mat.$blue-palette;
-$app-accent-palette: mat.$amber-palette;
-$app-warn-palette: mat.$red-palette;
+$app-primary-palette: mat.$m2-blue-palette;
+$app-accent-palette: mat.$m2-amber-palette;
+$app-warn-palette: mat.$m2-red-palette;
 
-$color-primary: mat.get-color-from-palette($app-primary-palette, 600);
-$color-accent: mat.get-color-from-palette($app-accent-palette, 500);
-$color-warn: mat.get-color-from-palette($app-warn-palette, 500);
+$color-primary: mat.m2-get-color-from-palette($app-primary-palette, 600);
+$color-accent: mat.m2-get-color-from-palette($app-accent-palette, 500);
+$color-warn: mat.m2-get-color-from-palette($app-warn-palette, 500);
 
-$app-primary: mat.define-palette($app-primary-palette, 600);
-$app-accent: mat.define-palette($app-accent-palette, 500);
-$app-warn: mat.define-palette($app-warn-palette, 500);
-$app-theme: mat.define-dark-theme((
+$app-primary: mat.m2-define-palette($app-primary-palette, 600);
+$app-accent: mat.m2-define-palette($app-accent-palette, 500);
+$app-warn: mat.m2-define-palette($app-warn-palette, 500);
+$app-theme: mat.m2-define-dark-theme((
   color: (
     primary: $app-primary,
     accent: $app-accent,
     warn: $app-warn,
   ),
-  typography: mat.define-typography-config($font-family: '"Catamaran", sans-serif'),
+  typography: mat.m2-define-typography-config($font-family: '"Catamaran", sans-serif'),
   density: 0
 ));
 

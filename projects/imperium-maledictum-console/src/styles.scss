@@ -16,7 +16,7 @@
 //    `@include mat.legacy-typography-hierarchy($general-typography);`
 @include mat.core();
 @include mat.all-component-themes($app-theme);
-@include mat.all-component-typographies(mat.define-typography-config($font-family: '"Catamaran", sans-serif'));
+@include mat.all-component-typographies(mat.m2-define-typography-config($font-family: '"Catamaran", sans-serif'));
 
 html, body {
   overscroll-behavior-x: none;
