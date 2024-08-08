@@ -26,6 +26,8 @@ export class ItemsComponent {
       traits: new UntypedFormControl([]),
       specialisations: new UntypedFormControl([]),
       damage: new UntypedFormControl(null),
+      penetration: new UntypedFormControl(null),
+      rend: new UntypedFormControl(null),
       range: new UntypedFormControl(null),
       magazine: new UntypedFormControl(null),
       magazineCost: new UntypedFormControl(null),

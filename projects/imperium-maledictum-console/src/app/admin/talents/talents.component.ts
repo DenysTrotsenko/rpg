@@ -16,7 +16,7 @@ export class TalentsComponent implements OnInit {
     cost: new FormControl<number>(100),
     labels: new FormGroup({
       requirements: new FormControl<string>(null),
-      flavor: new FormControl<string>(null, [Validators.required]),
+      flavor: new FormControl<string>(null),
       description: new FormControl<string>(null, [Validators.required]),
     }),
     system: new FormControl({})

@@ -80,9 +80,6 @@ $step: 5;
 .c-blue-gray { color: $color-blue-gray !important; }
 .c-gray { color: $color-gray !important; }
 
-.bg-gray-600 { background-color: $color-gray-600 !important; }
-.bg-gray-800 { background-color: $color-gray-800 !important; }
-
 .comma-separated:not(:last-child)::after { content: ',\00a0' !important; }
 .space-separated:not(:last-child)::after { content: '\00a0' !important; }
 

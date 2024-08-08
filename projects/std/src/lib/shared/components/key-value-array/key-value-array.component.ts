@@ -145,7 +145,8 @@ export class KeyValueArrayComponent implements ControlValueAccessor, Validator, 
         control.setValue(Boolean(value));
         break;
       case 'number':
-        control.setValue(Number(value));
+        const num = Number(value);
+        control.setValue(typeof num === 'number' ? num : 0);
         break;
       case 'string':
       default:

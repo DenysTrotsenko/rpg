@@ -73,6 +73,10 @@ export function hasDuplicates(array): boolean {
   return (new Set(array)).size !== array.length;
 }
 
+export function isFunction(fn: any): boolean {
+  return typeof fn === 'function';
+}
+
 export function setFormControlsEditable(
   form: UntypedFormGroup, controls: string[] = [], isEditable: boolean = true
 ): void {

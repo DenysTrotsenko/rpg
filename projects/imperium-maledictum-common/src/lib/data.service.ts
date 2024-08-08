@@ -23,7 +23,7 @@ import {
   Endeavour,
   EnvironmentalTrait,
   Event, Faction,
-  Item,
+  Item, ItemModification,
   ItemTrait,
   ItemType, Origin,
   PsychicDiscipline,
@@ -48,6 +48,7 @@ interface Data {
   [FileName.BESTIARY_TRAITS]: BestiaryTrait[];
   [FileName.CHARACTERISTICS]: Characteristic[];
   [FileName.CONDITIONS]: Condition[];
+  [FileName.ITEM_MODIFICATIONS]: ItemModification[];
   [FileName.SIZES]: Size[];
   [FileName.SKILLS]: Skill[];
   [FileName.SPECIALISATIONS]: Specialisation[];
@@ -175,6 +176,7 @@ export class DataService {
       [FileName.ITEMS]: this.download<Item>(storage, FileName.ITEMS),
       [FileName.ITEM_FLAWS]: this.download<ItemTrait>(storage, FileName.ITEM_FLAWS),
       [FileName.ITEM_QUALITIES]: this.download<ItemTrait>(storage, FileName.ITEM_QUALITIES),
+      [FileName.ITEM_MODIFICATIONS]: this.download<ItemModification>(storage, FileName.ITEM_MODIFICATIONS),
       [FileName.ITEM_TRAITS]: this.download<ItemTrait>(storage, FileName.ITEM_TRAITS),
       [FileName.ITEM_TYPES]: this.download<ItemType>(storage, FileName.ITEM_TYPES),
       [FileName.ORIGINS]: this.download<Origin>(storage, FileName.ORIGINS),
@@ -230,6 +232,7 @@ export class DataService {
   );
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_FLAWS]));
   readonly itemQualities$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_QUALITIES]));
+  readonly itemModifications$: Observable<ItemModification[]> = this.data$.pipe(map(data => data[FileName.ITEM_MODIFICATIONS]));
   readonly itemTraits$: Observable<ItemTrait[]> = this.data$.pipe(map(data => data[FileName.ITEM_TRAITS]));
   readonly itemTypes$: Observable<ItemType[]> = this.data$.pipe(map(data => data[FileName.ITEM_TYPES]));
   readonly origins$: Observable<Origin[]> = this.data$.pipe(map(data => data[FileName.ORIGINS]));

@@ -27,7 +27,8 @@
       <mat-error>Required.</mat-error>
     </mat-form-field>
     <mat-checkbox *ngIf="group.get('type').value === 'boolean'" formControlName="value"></mat-checkbox>
-    <button type="button" mat-icon-button (click)="onRemoveClick(i)">
+    <span class="f-1"></span>
+    <button type="button" mat-icon-button class="delete-btn" (click)="onRemoveClick(i)">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

@@ -4,6 +4,7 @@ import {
   CharacteristicId,
   FactionId,
   ItemId,
+  ItemModificationId,
   ItemTraitId,
   OriginId,
   PsychicPowerId,
@@ -43,7 +44,7 @@ export interface ItemValue {
   id: ItemId;
   qualities: ItemTraitId[];
   flaws: ItemTraitId[];
-  modifications: unknown[];
+  modifications: ItemModificationId[];
   quantity: number;
 }
 

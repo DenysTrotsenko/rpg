@@ -18,6 +18,7 @@ export type EnvironmentalTraitId = Opaque<string, 'EnvironmentalTraitId'>;
 export type EventId = Opaque<string, 'EventId'>;
 export type FactionId = Opaque<string, 'FactionId'>;
 export type ItemId = Opaque<string, 'ItemId'>;
+export type ItemModificationId = Opaque<string, 'ItemModificationId'>;
 export type ItemTraitId = Opaque<string, 'ItemTraitId'>;
 export type ItemTypeId = Opaque<string, 'ItemTypeId'>;
 export type MalignancyId = Opaque<string, 'MalignancyId'>;
@@ -123,7 +124,7 @@ export interface ItemBonusOption {
   ids?: ItemId[];
   qualities: ItemTraitId[];
   flaws: ItemTraitId[];
-  modifications: unknown[];
+  modifications: ItemModificationId[];
   quantity: number;
   /* internal, VM */
   label?: string;
@@ -182,7 +183,11 @@ export interface Faction {
   money: number | [number, number];
 }
 
+export type AmmoType = 'round' | 'shell' | 'arrow' | 'bolt';
+export type ItemCategory = 'melee' | 'ranged' | 'ammo' | 'augmetics';
+
 export interface Item extends HasBaseProperties<ItemId> {
+  category: ItemCategory;
   type: ItemTypeId;
   availability: AvailabilityId;
   encumbrance: number;
@@ -190,7 +195,10 @@ export interface Item extends HasBaseProperties<ItemId> {
   data: {
     specialisations?: SpecialisationId[];
     damage?: number;
+    penetration?: number;
+    rend?: number;
     range?: RangeId;
+    ammoType: string;
     magazine?: number;
     magazineCost?: number;
     magazineCostMultiplier?: number;
@@ -208,6 +216,19 @@ export interface Item extends HasBaseProperties<ItemId> {
 export interface ItemTrait {
   id: ItemTraitId;
   name: string;
+  labels: {
+    flavor?: string;
+    description: string;
+    tooltip?: string;
+  };
+  system?: Partial<System>;
+}
+
+export interface ItemModification {
+  id: ItemModificationId;
+  name: string;
+  cost: number;
+  availability: AvailabilityId;
   labels: {
     flavor?: string;
     description: string;

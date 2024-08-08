@@ -39,6 +39,7 @@ import { TargetsComponent } from './targets/targets.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 import { OriginsComponent } from './origins/origins.component';
 import { RolesComponent } from './roles/roles.component';
+import { ItemModificationsComponent } from './item-modifications/item-modifications.component';
 
 export const routes: Routes = [
   {
@@ -170,7 +171,7 @@ export const routes: Routes = [
         path: 'item-modifications',
         component: AdminBaseComponent,
         canActivate: [permissionGuard(PermissionId.ADMIN_SETTING)],
-        data: { path: FileName.ITEM_MODIFICATIONS, component: ItemTraitsComponent }
+        data: { path: FileName.ITEM_MODIFICATIONS, component: ItemModificationsComponent }
       },
       {
         path: 'item-types',

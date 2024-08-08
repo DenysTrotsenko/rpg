@@ -22,6 +22,7 @@ import { SizesComponent } from './sizes/sizes.component';
 import { SpeedComponent } from './speed/speed.component';
 import { ItemsComponent } from './items/items.component';
 import { ItemTypesComponent } from './item-types/item-types.component';
+import { ItemModificationsComponent } from './item-modifications/item-modifications.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { BestiaryFactionsComponent } from './bestiary-factions/bestiary-factions.component';
 import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.component';
@@ -73,6 +74,7 @@ import {
     SpeedComponent,
     ItemsComponent,
     ItemTypesComponent,
+    ItemModificationsComponent,
     BestiaryFactionsComponent,
     BestiaryTypesComponent,
     BestiaryComponent,

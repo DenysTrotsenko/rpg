@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItemTrait } from '@imperium-maledictum-1e/models/common';
+import { ItemModification, ItemTrait } from '@imperium-maledictum-1e/models/common';
 import { DataService } from '@im-common';
 
 
@@ -13,6 +13,7 @@ export class ArmouryComponent {
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly itemQualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
   readonly itemFlaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
+  readonly itemModifications$: Observable<ItemModification[]> = this.data.itemModifications$;
 
   constructor(private data: DataService) {}
 

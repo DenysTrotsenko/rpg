@@ -1,6 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Item, ItemId, ItemTrait, ItemTraitId } from '@imperium-maledictum-1e/models/common';
+import {
+  Item,
+  ItemId,
+  ItemModification,
+  ItemModificationId,
+  ItemTrait,
+  ItemTraitId
+} from '@imperium-maledictum-1e/models/common';
 import { Observable } from 'rxjs';
 import { DataService } from '@im-common';
 
@@ -33,6 +40,14 @@ import { DataService } from '@im-common';
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field appearance="outline" style="align-items:stretch;">
+        <mat-label>Modifications</mat-label>
+        <mat-select formControlName="modifications" multiple>
+          <mat-option *ngFor="let i of modifications$ | async;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Quantity</mat-label>
         <input matInput type="number" formControlName="quantity">
@@ -52,12 +67,14 @@ export class AddItemDialogComponent {
   readonly traits$: Observable<ItemTrait[]> = this.data.itemTraits$;
   readonly qualities$: Observable<ItemTrait[]> = this.data.itemQualities$;
   readonly flaws$: Observable<ItemTrait[]> = this.data.itemFlaws$;
+  readonly modifications$: Observable<ItemModification[]> = this.data.itemModifications$;
 
   readonly form = new FormGroup({
     id: new FormControl<ItemId>(null, [Validators.required]),
     qualities: new FormControl<ItemTraitId[]>([]),
     flaws: new FormControl<ItemTraitId[]>([]),
     traits: new FormControl<ItemTraitId[]>([]),
+    modifications: new FormControl<ItemModificationId[]>([]),
     quantity: new FormControl<number>(1, [Validators.required, Validators.min(0)]),
   });
 }

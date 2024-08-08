@@ -7,12 +7,13 @@
     <span class="c-gray">
       (<span *ngIf="i.specialisation" class="comma-separated">{{i.specialisation}}</span>
       <span *ngIf="i.damage" class="comma-separated"><b>Dam </b>{{i.damage}}</span>
+      <span *ngIf="i.penetration" class="comma-separated"><b>Pen </b>{{i.damage}}</span>
+      <span *ngIf="i.rend" class="comma-separated"><b>Rend </b>{{i.damage}}</span>
       <span *ngIf="i.range" class="comma-separated"><b>Rng </b>{{i.range}}</span>
       <span *ngIf="i.magazine" class="comma-separated"><b>Mag </b>{{i.magazine}}</span>
-      <span *ngIf="i.encumbrance" class="comma-separated"><b>Enc </b>{{i.encumbrance}}</span>
-      <span *ngIf="i.cost" class="comma-separated"><b>Cost </b>{{i.cost}}</span>
-      <span *ngIf="i.availability" class="comma-separated"><b>Avl </b>{{i.availability}}</span>
-      <span *ngIf="i.traits?.length" class="comma-separated"><b>Traits: </b><interactive *ngFor="let t of i.traits;" class="comma-separated" [id]="t.id"></interactive></span>)
+      <span class="comma-separated"><b>Enc </b>{{i.encumbrance}}</span>
+      <span *ngIf="i.traits?.length" class="comma-separated"><b>Traits: </b><interactive *ngFor="let t of i.traits;" class="comma-separated" [id]="t.id"></interactive></span>
+      <span *ngIf="i.modifications?.length" class="comma-separated"><b>Mods: </b><interactive *ngFor="let m of i.modifications;" class="comma-separated" [id]="m.id"></interactive></span>)
     </span>
   </p>
 </ng-container>

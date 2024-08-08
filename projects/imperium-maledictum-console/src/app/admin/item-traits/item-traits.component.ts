@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ItemTrait } from '@imperium-maledictum-1e/models/common';
@@ -9,17 +9,16 @@ import { getId16 } from '@std';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemTraitsComponent implements OnInit {
+  readonly data: ItemTrait = inject(MAT_DIALOG_DATA);
   readonly form: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl<string>('', [Validators.required]),
     labels: new FormGroup({
-      flavor: new FormControl<string>(null, [Validators.required]),
-      description: new FormControl<string>(null, [Validators.required]),
+      flavor: new FormControl<string>(null),
+      description: new FormControl<string>(null),
     }),
     system: new FormControl({})
   });
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ItemTrait) {}
 
   ngOnInit(): void {
     this.form.patchValue(!!this.data ? this.data : { id: getId16() });
