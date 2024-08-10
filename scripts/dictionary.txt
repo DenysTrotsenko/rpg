@@ -1,0 +1,4 @@
+Oriental - East
+Occidental - West
+Boreal - North
+Austral - South

@@ -40,7 +40,7 @@ export class StorageService {
         switchMap(files => forkJoin(files.map((j, index) => {
           const data = JSON.stringify(j, null, 2);
           const blob = new Blob([data], { type: 'application/json' });
-          return this.upload(`/${to}/${names[index]}`, blob);
+          return this.upload(`settings/${to}/${names[index]}`, blob);
         })))
       ))
     );

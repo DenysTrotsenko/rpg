@@ -2,12 +2,13 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Campaign, CampaignService, NavListItemData, UserService } from '@std';
+import { Campaign, CampaignService, NavListItemData, PermissionId, UserService } from '@std';
 
 const LOGGED_OPTIONS: NavListItemData[] = [
   { link: './campaigns', icon: 'grade', label: 'Campaigns' },
   { link: './characters', icon: 'group', label: 'Characters' },
-  { link: './system', icon: 'book_2', label: 'Rulebook' },
+  { link: './world', icon: 'language', label: 'World', permission: PermissionId.WORLD_18XX },
+  { link: './rules', icon: 'book_2', label: 'Rules' },
   { link: './references', icon: 'format_list_bulleted', label: 'References' },
   { link: './tools', icon: 'handyman', label: 'Tools' },
   { link: './profile', icon: 'account_circle', label: 'Profile' },

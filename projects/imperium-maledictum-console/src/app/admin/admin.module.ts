@@ -29,11 +29,7 @@ import { BestiaryTypesComponent } from './bestiary-types/bestiary-types.componen
 import { DifficultiesComponent } from './difficulties/difficulties.component';
 import { DurationsComponent } from './durations/durations.component';
 import { TargetsComponent } from './targets/targets.component';
-import { VirtuesComponent } from './virtues/virtues.component';
 import { FlawsComponent } from './flaws/flaws.component';
-import { MotivationsComponent } from './motivations/motivations.component';
-import { StatusComponent } from './status/status.component';
-import { DoomingsComponent } from './doomings/doomings.component';
 import { EnvironmentalTraitsComponent } from './environmental-traits/environmental-traits.component';
 import { EventsComponent } from './events/events.component';
 import { EndeavoursComponent } from './endeavours/endeavours.component';
@@ -81,11 +77,7 @@ import {
     DifficultiesComponent,
     DurationsComponent,
     TargetsComponent,
-    VirtuesComponent,
     FlawsComponent,
-    MotivationsComponent,
-    StatusComponent,
-    DoomingsComponent,
     EnvironmentalTraitsComponent,
     EventsComponent,
     EndeavoursComponent,

@@ -11,6 +11,7 @@ export class ReferencesComponent {
     { link: './armoury', label: 'Armoury' },
     { link: './bestiary', label: 'Bestiary' },
     { link: './characteristics', label: 'Characteristics' },
+    { link: './conditions', label: 'Conditions' },
     { link: './skills', label: 'Skills' },
     { link: './talents', label: 'Talents' },
   ];

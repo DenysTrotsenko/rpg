@@ -6,6 +6,7 @@ import { CharacteristicsComponent } from './characteristics/characteristics.comp
 import { ReferencesComponent } from './references.component';
 import { SkillsComponent } from './skills/skills.component';
 import { TalentsComponent } from './talents/talents.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'armoury', component: ArmouryComponent },
       { path: 'bestiary', component: BestiaryComponent },
       { path: 'characteristics', component: CharacteristicsComponent },
+      { path: 'conditions', component: ConditionsComponent },
       { path: 'skills', component: SkillsComponent },
       { path: 'talents', component: TalentsComponent },
       { path: '**', redirectTo: 'characteristics', pathMatch: 'full' }

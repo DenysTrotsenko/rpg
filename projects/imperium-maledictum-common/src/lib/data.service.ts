@@ -87,6 +87,15 @@ function getItemTraitTooltip(item: ItemTrait, data: Data): string {
   ].join('\n');
 }
 
+function getItemModificationTooltip(item: ItemModification, data: Data): string {
+  return [
+    `${item.name}\n`,
+    `Cost: ${item.cost}`,
+    `Availability: ${item.availability}`,
+    `${item.labels?.description}`,
+  ].join('\n');
+}
+
 function getPsychicPowersTooltip(item: PsychicPower, data: Data): string {
   const discipline: PsychicDiscipline = data[FileName.PSYCHIC_DISCIPLINES]?.find(i => i.id === item.discipline);
   const difficulty: Difficulty = data[FileName.DIFFICULTIES]?.find(i => i.id === item.difficulty);
@@ -135,6 +144,7 @@ const TOOLTIPS: Map<FileName, <T>(item: T, data: Data) => string> = new Map()
   .set(FileName.ITEM_QUALITIES, getItemTraitTooltip)
   .set(FileName.ITEM_FLAWS, getItemTraitTooltip)
   .set(FileName.ITEM_TRAITS, getItemTraitTooltip)
+  .set(FileName.ITEM_MODIFICATIONS, getItemModificationTooltip)
   .set(FileName.PSYCHIC_POWERS, getPsychicPowersTooltip)
   .set(FileName.SIZES, getTooltip)
   .set(FileName.SKILLS, getSkillTooltip)

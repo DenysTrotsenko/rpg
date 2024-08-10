@@ -20,8 +20,12 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'system',
-        loadChildren: () => import('../system/system.module').then(m => m.SystemModule)
+        path: 'world',
+        loadChildren: () => import('../world/world.module').then(m => m.WorldModule)
+      },
+      {
+        path: 'rules',
+        loadChildren: () => import('../rules/rules.module').then(m => m.RulesModule)
       },
       {
         path: 'references',
