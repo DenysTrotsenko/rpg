@@ -1,0 +1,10 @@
+Hb = Herbology
+Ch = Chemistry
+El = Electrical
+Ex = Explosives
+GS = Gun Smithy
+Mc = Mechanical
+Sm = Smithy
+Th = Therapeutics
+
+5-6 century - Воєвода Артур дістає меч з каменю, це початок магічної історії Англії.
