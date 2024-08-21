@@ -1,0 +1,18 @@
+<mat-toolbar class="f-0-0-a">
+  <a mat-flat-button color="primary" routerLink="../create">Create Character</a>
+</mat-toolbar>
+<mat-nav-list class="p-10">
+  <mat-list-item *ngFor="let i of characters$ | async; trackBy: trackById;">
+    <img *ngIf="i.image" matListItemAvatar [src]="i.image" alt="...">
+    <span *ngIf="!i.image" matListItemAvatar></span>
+    <a matListItemLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
+    <span matListItemMeta>
+      <button *ngIf="i.canAdvance" mat-icon-button (click)="onAdvanceClick(i.id)" matTooltip="Advance">
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
+      </button>
+      <button *ngIf="i.canDelete" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,20 @@
+:host {
+  ::ng-deep {
+    .mat-vertical-content {
+      padding-top: 5px;
+    }
+  }
+}
+
+.mat-mdc-form-field {
+  min-width: 80px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.edit-scheme-button {
+  position: relative;
+  top: 8px;
+}

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "imperium-maledictum"
+  },
+  "targets": {
+    "imperium-maledictum": {
+      "hosting": {
+        "aether-console": [
+          "aether-console"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

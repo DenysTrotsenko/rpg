@@ -1,0 +1,56 @@
+@import "../../../src/styles/variables";
+
+:host {
+  ::ng-deep {
+    .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mat-mdc-list-item-unscoped-content {
+      display: flex;
+    }
+  }
+}
+
+mat-sidenav-container {
+  height: 100%;
+
+  mat-sidenav {
+    width: 200px;
+    transition: width .25s ease-out;
+  }
+
+  mat-sidenav-content {
+    transition: margin-left .25s ease-out;
+  }
+
+  &:not(.expanded) {
+    mat-sidenav {
+      width: 56px;
+    }
+
+    mat-sidenav-content {
+      margin-left: 56px !important;
+    }
+
+    .not-expanded-hide {
+      display: none !important;
+    }
+  }
+}
+
+.logo {
+  width: 100%;
+  padding: 8px;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+.active {
+  color: $color-primary;
+}
+
+.warn {
+  color: $color-warn;
+}

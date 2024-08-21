@@ -18,7 +18,17 @@
     "im:deploy": "cd projects/imperium-maledictum && firebase deploy",
     "im:deploy-functions": "cd projects/imperium-maledictum/functions && npm run build && npm run deploy",
     "im:emulator": "cd projects/imperium-maledictum/functions && npm run serve",
-    "im:functions:build:watch": "cd projects/imperium-maledictum/functions && npm run build:watch"
+    "im:functions:build:watch": "cd projects/imperium-maledictum/functions && npm run build:watch",
+    "ac:test": "ng test --project=aether-console",
+    "ac:start": "ng serve --project=aether-console",
+    "ac:build": "ng build --configuration=production --project=aether-console",
+    "ac:watch": "ng build --project=aether-console --watch",
+    "ac:deploy": "cd projects/aether-console && firebase deploy",
+    "ar:test": "ng test --project=aether-rpg",
+    "ar:start": "ng serve --project=aether-rpg",
+    "ar:build": "ng build --configuration=production --project=aether-rpg",
+    "ar:watch": "ng build --project=aether-rpg --watch",
+    "ar:deploy": "cd projects/aether-rpg && firebase deploy"
   },
   "private": true,
   "dependencies": {
