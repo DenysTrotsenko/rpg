@@ -85,8 +85,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2.5mb",
-                  "maximumError": "5.0mb"
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -307,7 +307,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "projects/aether-rpg",
@@ -321,9 +322,8 @@
               "base": "projects/aether-rpg/dist"
             },
             "index": "projects/aether-rpg/src/index.html",
-            "browser": "projects/aether-rpg/src/main.ts",
             "polyfills": [
-              "zone.js"
+              "projects/aether-rpg/src/polyfills.ts"
             ],
             "tsConfig": "projects/aether-rpg/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -340,15 +340,16 @@
                 "projects/std/src/styles/"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/aether-rpg/src/main.ts"
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -356,12 +357,19 @@
                   "maximumError": "4kB"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/aether-rpg/src/environments/environment.ts",
+                  "with": "projects/aether-rpg/src/environments/environment.prod.ts"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -408,7 +416,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "projects/aether-console",
@@ -422,9 +431,8 @@
               "base": "projects/aether-console/dist"
             },
             "index": "projects/aether-console/src/index.html",
-            "browser": "projects/aether-console/src/main.ts",
             "polyfills": [
-              "zone.js"
+              "projects/aether-console/src/polyfills.ts"
             ],
             "tsConfig": "projects/aether-console/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -441,15 +449,16 @@
                 "projects/std/src/styles/"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/aether-console/src/main.ts"
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -457,12 +466,19 @@
                   "maximumError": "4kB"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/imperium-maledictum/src/environments/environment.ts",
+                  "with": "projects/imperium-maledictum/src/environments/environment.prod.ts"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"

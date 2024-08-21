@@ -6,6 +6,6 @@ export const environment = {
     projectId: 'imperium-maledictum',
     storageBucket: 'imperium-maledictum.appspot.com',
     messagingSenderId: '707060552162',
-    appId: '1:707060552162:web:deb0267337553aa048e9bb'
+    appId: '1:707060552162:web:3e990d8bd544869848e9bb'
   }
 };
