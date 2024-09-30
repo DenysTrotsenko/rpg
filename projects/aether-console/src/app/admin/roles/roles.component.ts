@@ -13,7 +13,7 @@ export class RolesComponent {
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
     labels: new UntypedFormGroup({
-      description: new UntypedFormControl(''),
+      description: new UntypedFormControl(null),
     }),
   });
 

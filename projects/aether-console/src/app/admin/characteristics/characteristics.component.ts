@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Characteristic } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
@@ -13,8 +13,8 @@ export class CharacteristicsComponent implements OnInit {
     id: new UntypedFormControl(null),
     name: new UntypedFormControl('', [Validators.required]),
     labels: new UntypedFormGroup({
-      abbreviation: new UntypedFormControl('', [Validators.required]),
-      description: new UntypedFormControl('', [Validators.required]),
+      abbreviation: new FormControl<string>(null, [Validators.required]),
+      description: new FormControl<string>(null),
     })
   });
 

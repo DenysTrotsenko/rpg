@@ -5,12 +5,12 @@ import { DataService } from '@im-common';
 import { filter, switchMap } from 'rxjs/operators';
 import { take } from 'rxjs';
 
+const aetherId = 'f4b5281249f79091';
 const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
-    data: { label: 'Setting' },
-    resolve: { options: () => inject(SettingService).all$ }
+    data: { id: aetherId }
   },
   {
     path: '',

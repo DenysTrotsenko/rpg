@@ -17,7 +17,7 @@ export class SpecialisationsComponent implements OnInit {
     restricted: new UntypedFormControl(null),
     skill: new UntypedFormControl(null),
     labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
+      description: new UntypedFormControl(null),
     }),
     system: new UntypedFormControl({})
   });

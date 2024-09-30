@@ -15,8 +15,8 @@ export class PsychicPhenomenasComponent implements OnInit {
     order: new UntypedFormControl(1, [Validators.required]),
     weight: new UntypedFormControl(1, [Validators.required]),
     labels: new UntypedFormGroup({
-      lingering: new UntypedFormControl(''),
-      description: new UntypedFormControl('', [Validators.required]),
+      lingering: new UntypedFormControl(null),
+      description: new UntypedFormControl(null),
     }),
   });
 

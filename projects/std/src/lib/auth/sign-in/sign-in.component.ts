@@ -16,13 +16,15 @@ export class SignInComponent {
   private readonly router = inject(Router);
 
   readonly progress$ = new BehaviorSubject(false);
+  readonly id = this.route.parent.snapshot.data?.id ?? null;
+  readonly label = this.route.parent.snapshot.data?.label;
+  readonly options = this.route.parent.snapshot.data?.options;
+  readonly isResourceRequired = !!this.label && !!this.options;
   readonly form: FormGroup = new FormGroup({
     email: new FormControl<string>(null, [Validators.required, Validators.email]),
     password: new FormControl<string>(null, [Validators.required, Validators.minLength(8)]),
-    resource: new FormControl<unknown>(null, [Validators.required]),
+    resource: new FormControl<string>(this.id, this.isResourceRequired ? [Validators.required] : []),
   });
-  readonly label = this.route.parent.snapshot.data?.label;
-  readonly options = this.route.parent.snapshot.data?.options;
 
   onSignIn(model: AuthWithEmailAndPassword & { resource: unknown; }): void {
     this.progress$.next(true);

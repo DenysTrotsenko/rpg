@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Characteristic, Skill } from '@imperium-maledictum-1e/models/common';
 import { getId16, Setting, SettingService, StorageService } from '@std';
@@ -14,10 +14,10 @@ import { FileName } from '@imperium-maledictum-1e/models/enums';
 export class SkillsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({
     id: new UntypedFormControl(null),
-    name: new UntypedFormControl('', [Validators.required]),
+    name: new FormControl<string>('', [Validators.required]),
     characteristic: new UntypedFormControl(null, [Validators.required]),
     labels: new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
+      description: new FormControl<string>(null),
     }),
     system: new UntypedFormControl({})
   });

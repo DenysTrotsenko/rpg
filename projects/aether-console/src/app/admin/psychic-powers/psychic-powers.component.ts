@@ -30,7 +30,8 @@ export class PsychicPowersComponent implements OnInit {
     target: new FormControl<TargetId[]>([], [Validators.required]),
     duration: new FormControl<DurationId>(null, [Validators.required]),
     labels: new FormGroup({
-      description: new FormControl<string>('', [Validators.required]),
+      flavor: new FormControl<string>(null),
+      description: new FormControl<string>(null),
     }),
   });
 

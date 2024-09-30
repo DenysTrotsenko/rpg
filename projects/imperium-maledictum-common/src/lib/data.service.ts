@@ -167,6 +167,7 @@ export class DataService {
     tap(() => this.cache.clear()),
   );
   readonly data$: Observable<Data> = this.storage$.pipe(
+    tap(storage => this.logger.log('Storage:', storage)),
     switchMap(storage => forkJoin({
       [FileName.ACTIONS]: this.download<Action>(storage, FileName.ACTIONS),
       [FileName.AVAILABILITIES]: this.download<Availability>(storage, FileName.AVAILABILITIES),
@@ -282,6 +283,8 @@ export class DataService {
   }
 
   private download<T>(storage: string, file: FileName): Observable<T[]> {
+    if (!storage) { return of([]); }
+
     return this.storage.download<T[]>(`/${storage}/${file}`).pipe(
       tap(res => this.logger.log('Downloaded:', file, res?.length, 'items loaded.')),
       catchError(() => of([]))
