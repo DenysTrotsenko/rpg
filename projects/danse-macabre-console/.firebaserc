@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "imperium-maledictum"
+  },
+  "targets": {
+    "imperium-maledictum": {
+      "hosting": {
+        "danse-macabre-console": [
+          "danse-macabre-console"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

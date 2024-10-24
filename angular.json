@@ -471,8 +471,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/imperium-maledictum/src/environments/environment.ts",
-                  "with": "projects/imperium-maledictum/src/environments/environment.prod.ts"
+                  "replace": "projects/aether-console/src/environments/environment.ts",
+                  "with": "projects/aether-console/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -521,6 +521,230 @@
             ],
             "styles": [
               "projects/aether-console/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "danse-macabre-rpg": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "projects/danse-macabre-rpg",
+      "sourceRoot": "projects/danse-macabre-rpg/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "projects/danse-macabre-rpg/dist"
+            },
+            "index": "projects/danse-macabre-rpg/src/index.html",
+            "polyfills": [
+              "projects/danse-macabre-rpg/src/polyfills.ts"
+            ],
+            "tsConfig": "projects/danse-macabre-rpg/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/danse-macabre-rpg/src/favicon.ico",
+              "projects/danse-macabre-rpg/src/assets"
+            ],
+            "styles": [
+              "projects/std/src/index.scss",
+              "projects/danse-macabre-rpg/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/std/src/styles/"
+              ]
+            },
+            "scripts": [],
+            "browser": "projects/danse-macabre-rpg/src/main.ts"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/danse-macabre-rpg/src/environments/environment.ts",
+                  "with": "projects/danse-macabre-rpg/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "options": {
+            "port": 1189
+          },
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "danse-macabre-rpg:build:production"
+            },
+            "development": {
+              "buildTarget": "danse-macabre-rpg:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/danse-macabre-rpg/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/danse-macabre-rpg/public"
+              }
+            ],
+            "styles": [
+              "projects/danse-macabre-rpg/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "danse-macabre-console": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "projects/danse-macabre-console",
+      "sourceRoot": "projects/danse-macabre-console/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "projects/danse-macabre-console/dist"
+            },
+            "index": "projects/danse-macabre-console/src/index.html",
+            "polyfills": [
+              "projects/danse-macabre-console/src/polyfills.ts"
+            ],
+            "tsConfig": "projects/danse-macabre-console/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/danse-macabre-console/src/favicon.ico",
+              "projects/danse-macabre-console/src/assets"
+            ],
+            "styles": [
+              "projects/std/src/index.scss",
+              "projects/danse-macabre-console/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/std/src/styles/"
+              ]
+            },
+            "scripts": [],
+            "browser": "projects/danse-macabre-console/src/main.ts"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/danse-macabre-console/src/environments/environment.ts",
+                  "with": "projects/danse-macabre-console/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "options": {
+            "port": 1190
+          },
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "danse-macabre-console:build:production"
+            },
+            "development": {
+              "buildTarget": "danse-macabre-console:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/danse-macabre-console/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/danse-macabre-console/public"
+              }
+            ],
+            "styles": [
+              "projects/danse-macabre-console/src/styles.scss"
             ],
             "scripts": []
           }

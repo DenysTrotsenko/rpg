@@ -28,7 +28,17 @@
     "ar:start": "ng serve --project=aether-rpg",
     "ar:build": "ng build --configuration=production --project=aether-rpg",
     "ar:watch": "ng build --project=aether-rpg --watch",
-    "ar:deploy": "cd projects/aether-rpg && firebase deploy"
+    "ar:deploy": "cd projects/aether-rpg && firebase deploy",
+    "dmc:test": "ng test --project=danse-macabre-console",
+    "dmc:start": "ng serve --project=danse-macabre-console",
+    "dmc:build": "ng build --configuration=production --project=danse-macabre-console",
+    "dmc:watch": "ng build --project=danse-macabre-console --watch",
+    "dmc:deploy": "cd projects/danse-macabre-console && firebase deploy",
+    "dmr:test": "ng test --project=danse-macabre-rpg",
+    "dmr:start": "ng serve --project=danse-macabre-rpg",
+    "dmr:build": "ng build --configuration=production --project=danse-macabre-rpg",
+    "dmr:watch": "ng build --project=danse-macabre-rpg --watch",
+    "dmr:deploy": "cd projects/danse-macabre-rpg && firebase deploy"
   },
   "private": true,
   "dependencies": {
