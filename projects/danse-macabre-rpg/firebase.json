@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "aether-rpg",
+    "target": "danse-macabre-rpg",
     "public": "dist/browser",
     "ignore": [
       "firebase.json",
