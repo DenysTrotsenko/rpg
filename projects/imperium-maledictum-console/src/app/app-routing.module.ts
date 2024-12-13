@@ -8,9 +8,7 @@ import { take } from 'rxjs';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('../../../std/src/lib/auth/auth.module').then(m => m.AuthModule),
-    data: { label: 'Setting' },
-    resolve: { options: () => inject(SettingService).all$ }
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '',

@@ -17,6 +17,14 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Modules</mat-label>
+        <mat-select formControlName="modules" multiple>
+          <mat-option *ngFor="let i of settings$ | async; trackBy: trackById;" [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Members</mat-label>
         <mat-select formControlName="members" multiple>
           <mat-option *ngFor="let i of users$ | async;" [value]="i.id">

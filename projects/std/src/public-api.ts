@@ -13,4 +13,5 @@ export * from './lib/utils';
 export * from './lib/enums';
 export * from './lib/guards';
 export * from './lib/const';
+export { MaterialModule } from './lib/material/material.module';
 export { StringPipe } from './lib/standalone/string.pipe';

@@ -1,15 +1,15 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit, OnDestroy } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, take } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, switchMap, takeUntil, tap } from 'rxjs/operators';
 import {
   Campaign,
   CampaignId,
-  CampaignService, Character,
+  CampaignService, Character, CharacterId,
   FirestoreService, FS_COLLECTION,
   getId16,
-  Setting,
+  Setting, SettingId,
   SettingService, User,
   UserId, UserService
 } from '@std';
@@ -30,10 +30,11 @@ export class CreateComponent implements OnInit, OnDestroy {
   readonly user = inject(UserService);
 
   readonly form: UntypedFormGroup = new UntypedFormGroup({
-    name: new UntypedFormControl('', [Validators.required]),
+    name: new FormControl<string>('', [Validators.required]),
     setting: new UntypedFormControl(null, [Validators.required]),
-    members: new UntypedFormControl([]),
-    characters: new UntypedFormControl([]),
+    modules: new FormControl<SettingId[]>([]),
+    members: new FormControl<UserId[]>([]),
+    characters: new FormControl<CharacterId[]>([]),
   });
 
   readonly destroy$: Subject<void> = new Subject();
