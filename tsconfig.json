@@ -24,6 +24,9 @@
       "@imperium-maledictum-1e/*": [
         "projects/srd/imperium-maledictum-1e/*"
       ],
+      "@wfrp-4e/*": [
+        "projects/srd/warhammer-fantasy-roleplay-4e/*"
+      ],
       "@im-common": [
         "projects/imperium-maledictum-common/src/public-api"
       ]

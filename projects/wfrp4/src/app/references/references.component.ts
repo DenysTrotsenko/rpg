@@ -1,0 +1,18 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NavListItemData } from '@std';
+
+@Component({
+  templateUrl: './references.component.html',
+  styleUrls: ['./references.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class ReferencesComponent {
+  readonly options: NavListItemData[] = [
+    { link: './characteristics', label: 'Characteristics' },
+    { link: './conditions', label: 'Conditions' },
+    { link: './skills', label: 'Skills' },
+    { link: './talents', label: 'Talents' },
+  ];
+
+  trackById(_, i): string { return i.id; }
+}

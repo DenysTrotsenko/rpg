@@ -107,7 +107,6 @@ export class AuthService {
   }
 
   confirmPasswordReset(code, password): Observable<void> {
-    console.log('confirmPasswordReset', code, password);
     return from(this.afa.confirmPasswordReset(code, password)).pipe(
       tap(() => this.snackbar.success('New password has been saved.')),
       catchError((err: firebase.auth.Error) => {
