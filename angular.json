@@ -37,6 +37,108 @@
         }
       }
     },
+    "forbidden-lands": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "projects/forbidden-lands",
+      "sourceRoot": "projects/forbidden-lands/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "projects/forbidden-lands/dist"
+            },
+            "index": "projects/forbidden-lands/src/index.html",
+            "browser": "projects/forbidden-lands/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/forbidden-lands/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/forbidden-lands/src/favicon.ico",
+              "projects/forbidden-lands/src/assets"
+            ],
+            "styles": [
+              "projects/std/src/index.scss",
+              "projects/forbidden-lands/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/std/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "forbidden-lands:build:production"
+            },
+            "development": {
+              "buildTarget": "forbidden-lands:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/forbidden-lands/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/forbidden-lands/public"
+              }
+            ],
+            "styles": [
+              "projects/forbidden-lands/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
     "imperium-maledictum": {
       "projectType": "application",
       "schematics": {

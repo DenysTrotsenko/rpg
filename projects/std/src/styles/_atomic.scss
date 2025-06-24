@@ -1,26 +1,26 @@
 @import "variables";
 
 $properties:
-  '.g'  'gap',
-  '.cg' 'column-gap',
-  '.rg' 'row-gap',
-  '.m'  'margin',
-  '.mt' 'margin-top',
-  '.mr' 'margin-right',
-  '.mb' 'margin-bottom',
-  '.ml' 'margin-left',
-  '.p'  'padding',
-  '.pt' 'padding-top',
-  '.pr' 'padding-right',
-  '.pb' 'padding-bottom',
-  '.pl' 'padding-left';
+  'g'  'gap',
+  'cg' 'column-gap',
+  'rg' 'row-gap',
+  'm'  'margin',
+  'mt' 'margin-top',
+  'mr' 'margin-right',
+  'mb' 'margin-bottom',
+  'ml' 'margin-left',
+  'p'  'padding',
+  'pt' 'padding-top',
+  'pr' 'padding-right',
+  'pb' 'padding-bottom',
+  'pl' 'padding-left';
 $step: 5;
 
 @for $i from 0 through 10 {
   $value: $step * $i;
 
   @each $class, $property in $properties {
-    #{$class}-#{$value} { #{$property}: #{$value}px !important; }
+    .#{$class}-#{$value} { #{$property}: #{$value}px !important; }
   }
 }
 
@@ -93,6 +93,10 @@ $step: 5;
 .ta-l { text-align: left !important; }
 .ta-c { text-align: center !important; }
 .ta-r { text-align: right !important; }
+
+.cc-2 { column-count: 2 !important; }
+.cc-3 { column-count: 3 !important; }
+.cc-4 { column-count: 4 !important; }
 
 /* Mobile-only styles */
 @media only screen and (max-width: 600px) {

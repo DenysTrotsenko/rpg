@@ -6,6 +6,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { SkillsComponent } from './skills/skills.component';
 import { CharacteristicsComponent } from './characteristics/characteristics.component';
 import { ConditionsComponent } from './conditions/conditions.component';
+import { CareersComponent } from './careers/careers.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ConditionsComponent } from './conditions/conditions.component';
     SkillsComponent,
     CharacteristicsComponent,
     ConditionsComponent,
+    CareersComponent,
   ],
   imports: [
     SharedModule,

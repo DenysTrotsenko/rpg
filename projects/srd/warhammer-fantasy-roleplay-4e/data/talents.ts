@@ -1471,7 +1471,7 @@ export const TALENTS: Talent[] = [
     labels: {
       max: 'Intelligence Bonus',
       tests: 'Any Lore Test concerning local detail',
-      description: 'You are an inquisitive soul who has travelled far and wide, learning all manner of local information. Add Lore (Local) to any Career you enter; if it is already in Career, you may purchase the Skill, both times — a different Speciality each time, such as Altdorf, Vorbergland, or Ubersreik — for 5 XP fewer per Advance.',
+      description: 'You are an inquisitive soul who enjoys travelling far and wide, absorbing local customs and colour as you go. Given a month\'s exposure to any locality, you may count the associated Lore (Local) Skill as a Basic Skill with a successful Intelligence Test (which can be attempted once per month). In addition, you gain a +10 bonus lo any Fellowship related Tests with someone from a locality you have gained knowledge of using this Talent, or for which you have advances in the appropriate Lore (Local) Skill.',
     },
     system: {
       MAX_LEVEL_FN: getIntelligenceBonus

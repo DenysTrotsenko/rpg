@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "wfrp4"
+  },
+  "targets": {
+    "wfrp4": {
+      "hosting": {
+        "app": [
+          "wfrp4"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

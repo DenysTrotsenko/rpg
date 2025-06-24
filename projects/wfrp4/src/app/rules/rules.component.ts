@@ -9,7 +9,7 @@ import { NavListItemData } from '@std';
 })
 export class RulesComponent {
   readonly options: NavListItemData[] = [
-    // { link: './character-creation', label: 'Character Creation' },
+    { link: './mounted-combat', label: 'Mounted Combat' },
     // { link: './skills', label: 'Skills' },
     // { link: './talents', label: 'Talents' },
     // { link: './item-traits', label: 'Item Traits' }

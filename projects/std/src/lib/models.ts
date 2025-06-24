@@ -51,6 +51,7 @@ export interface NavListItemData {
   label: string;
   class?: string;
   permission?: PermissionId;
+  children?: NavListItemData[];
 }
 
 export interface Setting {

@@ -5,12 +5,14 @@ import { ReferencesComponent } from './references.component';
 import { SkillsComponent } from './skills/skills.component';
 import { TalentsComponent } from './talents/talents.component';
 import { ConditionsComponent } from './conditions/conditions.component';
+import { CareersComponent } from './careers/careers.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ReferencesComponent,
     children: [
+      { path: 'careers', component: CareersComponent },
       { path: 'characteristics', component: CharacteristicsComponent },
       { path: 'conditions', component: ConditionsComponent },
       { path: 'skills', component: SkillsComponent },

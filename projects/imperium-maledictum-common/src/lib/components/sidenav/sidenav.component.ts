@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -30,6 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RouterLinkActive,
     RouterOutlet,
     NgForOf,
+    NgIf,
   ]
 })
 export class SidenavComponent {

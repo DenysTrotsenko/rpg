@@ -1,3 +1,22 @@
+export enum CareerId {
+  APOTHECARY = 'apothecary',
+}
+
+export enum CareerPathId {
+  APOTHECARYS_APPRENTICE = 'apothecarys_apprentice',
+}
+
+export enum ClassId {
+  ACADEMICS = 'academics',
+  BURGHERS = 'burghers',
+  COURTIERS = 'courtiers',
+  PEASANTS = 'peasants',
+  RANGERS = 'rangers',
+  RIVERFOLK = 'riverfolk',
+  ROGUES = 'rogues',
+  WARRIORS = 'warriors',
+}
+
 export enum CharacteristicId {
   WEAPON_SKILL = 'weapon_skill',
   BALLISTIC_SKILL = 'ballistic_skill',
@@ -11,7 +30,104 @@ export enum CharacteristicId {
   FELLOWSHIP = 'fellowship',
 }
 
+export enum ConditionId {
+}
+
+export enum CreatureTraitId {
+  AFRAID = 'afraid',
+  AMPHIBIOUS = 'amphibious',
+  ARBOREAL = 'arboreal',
+  ANIMOSITY = 'animosity',
+  ARMOUR = 'armour',
+  BELLIGERENT = 'belligerent',
+  BESTIAL = 'bestial',
+  BIG = 'big',
+  BITE = 'bite',
+  BLESSED = 'blessed',
+  BOUNCE = 'bounce',
+  BREATH = 'breath',
+  BRUTE = 'brute',
+  CHAMPION = 'champion',
+  CHILL_GRASP = 'chill_grasp',
+  CLEVER = 'clever',
+  COLD_BLOODED = 'cold_blooded',
+  CONSTRICTOR = 'constrictor',
+  CONSTRUCT = 'construct',
+  CORROSIVE_BLOOD = 'corrosive_blood',
+  CORRUPTION = 'corruption',
+  CUNNING = 'cunning',
+  DARK_VISION = 'dark_vision',
+  DAEMONIC = 'daemonic',
+  DIE_HARD = 'die_hard',
+  DISEASE = 'disease',
+  DISTRACTING = 'distracting',
+  ELITE = 'elite',
+  ETHEREAL = 'ethereal',
+  FAST = 'fast',
+  FEAR = 'fear',
+  FLIGHT = 'flight',
+  FRENZY = 'frenzy',
+  FURY = 'fury',
+  GHOSTLY_HOWL = 'ghostly_howl',
+  HARDY = 'hardy',
+  HATRED = 'hatred',
+  HORNS = 'horns',
+  HUNGRY = 'hungry',
+  IMMUNITY = 'immunity',
+  IMMUNITY_TO_PSYCHOLOGY = 'immunity_to_psychology',
+  INFECTED = 'infected',
+  INFESTATION = 'infestation',
+  LEADER = 'leader',
+  MAGICAL = 'magical',
+  MAGIC_RESISTANCE = 'magic_resistance',
+  MENTAL_CORRUPTION = 'mental_corruption',
+  MIRACLES = 'miracles',
+  MUTATION = 'mutation',
+  NIGHT_VISION = 'night_vision',
+  PAINLESS = 'painless',
+  PETRIFYING_GAZE = 'petrifying_gaze',
+  PREJUDICE = 'prejudice',
+  RANGED = 'ranged',
+  REAR = 'rear',
+  REGENERATE = 'regenerate',
+  SIZE = 'size',
+  SKITTISH = 'skittish',
+  SPELLCASTER = 'spellcaster',
+  STEALTHY = 'stealthy',
+  STRIDE = 'stride',
+  STUPID = 'stupid',
+  SWAMP_STRIDER = 'swamp_strider',
+  SWARM = 'swarm',
+  TAIL_ATTACK = 'tail_attack',
+  TENTACLES = 'tentacles',
+  TERRITORIAL = 'territorial',
+  TERROR = 'terror',
+  TRAINED = 'trained',
+  TONGUE_ATTACK = 'tongue_attack',
+  TOUGH = 'tough',
+  TRACKER = 'tracker',
+  UNDEAD = 'undead',
+  UNSTABLE = 'unstable',
+  VAMPIRIC = 'vampiric',
+  VENOM = 'venom',
+  VOMIT = 'vomit',
+  WARD = 'ward',
+  WALLCRAWLER = 'wallcrawler',
+  WEAPON = 'weapon',
+  WEB = 'web',
+}
+
 export enum MotivationId {}
+
+export enum SizeId {
+  TINY = 'tiny',
+  LITTLE = 'little',
+  SMALL = 'small',
+  AVERAGE = 'average',
+  LARGE = 'large',
+  ENORMOUS = 'enormous',
+  MONSTROUS = 'monstrous',
+}
 
 export enum SkillId {
   ANIMAL_CARE = 'animal_care',
@@ -59,6 +175,12 @@ export enum SkillId {
   SWIM = 'swim',
   TRACK = 'track',
   TRADE = 'trade',
+}
+
+export enum StatusTier {
+  BRASS = 'brass',
+  SILVER = 'silver',
+  GOLD = 'gold',
 }
 
 export enum TalentId {

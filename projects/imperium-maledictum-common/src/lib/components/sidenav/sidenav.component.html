@@ -7,9 +7,16 @@
       </button>
     </mat-toolbar>
     <mat-nav-list>
-      <a *ngFor="let i of options;" mat-list-item [routerLink]="i.link" routerLinkActive="active" matTooltip="{{expanded ? '' : i.label}}">
-        <mat-icon>{{i.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{i.label}}</span>
-      </a>
+      <ng-container *ngFor="let i of options;">
+        <a mat-list-item [routerLink]="i.link" routerLinkActive="active" matTooltip="{{expanded ? '' : i.label}}">
+          <mat-icon>{{i.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{i.label}}</span>
+        </a>
+        <ng-container *ngIf="expanded">
+          <a *ngFor="let j of i?.children;" class="pl-50" mat-list-item [routerLink]="i.link + '/' + j.link" routerLinkActive="active" matTooltip="{{expanded ? '' : j.label}}">
+            <mat-icon *ngIf="j.icon">{{j.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{j.label}}</span>
+          </a>
+        </ng-container>
+      </ng-container>
     </mat-nav-list>
     <mat-divider></mat-divider>
     <mat-action-list>
