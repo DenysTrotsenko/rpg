@@ -1,12 +1,20 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let i of talents$ | async; trackBy: trackById;" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title class="ff-g">{{i.name}}<span *ngIf="i.grouped">&nbsp;({{i.labels.placeholder}})</span></mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-      <p *ngIf="i.labels?.max" matLine><b>Max:</b> {{i.labels.max}}</p>
-      <p *ngIf="i.labels?.tests" matLine><b>Tests:</b> {{i.labels.tests}}</p>
-      <p matLine>{{i.labels?.description}}</p>
-    </div>
-  </mat-expansion-panel>
+  @for (i of talents$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">{{i.name}}@if (i.grouped) {
+          <span>&nbsp;({{i.labels.placeholder}})</span>
+        }</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        @if (i.labels?.max) {
+          <p matLine><b>Max:</b> {{i.labels.max}}</p>
+        }
+        @if (i.labels?.tests) {
+          <p matLine><b>Tests:</b> {{i.labels.tests}}</p>
+        }
+        <p matLine>{{i.labels?.description}}</p>
+      </div>
+    </mat-expansion-panel>
+  }
 </mat-accordion>

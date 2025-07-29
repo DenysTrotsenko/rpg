@@ -1,12 +1,14 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let i of skills$ | async; trackBy: trackById;" hideToggle (afterExpand)="opened$.next(i.id)">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="ff-g">{{i.name}}&nbsp;({{i.characteristic}})&nbsp;<em class="c-gray">{{i.special}}</em></mat-panel-title>
-    </mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-      <div>
-        <p matLine class="c-gray">{{i.description}}</p>
-      </div>
-    </ng-template>
-  </mat-expansion-panel>
+  @for (i of skills$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle (afterExpand)="opened$.next(i.id)">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">{{i.name}}&nbsp;({{i.characteristic}})&nbsp;<em class="c-gray">{{i.special}}</em></mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <div>
+          <p matLine class="c-gray">{{i.description}}</p>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  }
 </mat-accordion>

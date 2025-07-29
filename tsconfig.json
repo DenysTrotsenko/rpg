@@ -6,7 +6,7 @@
     "declaration": false,
     "esModuleInterop": true,
     "importHelpers": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "target": "ES2022",

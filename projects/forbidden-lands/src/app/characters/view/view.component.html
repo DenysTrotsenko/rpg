@@ -1,24 +1,26 @@
-<ng-container *ngIf="character$ | async as character;">
+@if (character$ | async; as character;) {
   <mat-toolbar class="d-f jc-sb">
     <h1 class="f-1">Character View</h1>
-    <button *ngIf="canAdvance$ | async" mat-icon-button (click)="onAdvanceClick(character.id)" matTooltip="Advance">
-      <mat-icon>keyboard_double_arrow_up</mat-icon>
-    </button>
+    @if (canAdvance$ | async) {
+      <button mat-icon-button (click)="onAdvanceClick(character.id)" matTooltip="Advance">
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
+      </button>
+    }
     <button mat-icon-button (click)="expand = !expand">
       <mat-icon>{{expand ? 'expand_content' : 'collapse_content'}}</mat-icon>
     </button>
   </mat-toolbar>
   <div class="p-10">
     <p class="ff-g fs-16">{{character.name}}</p>
-<!--    <character-details class="mb-10" [character]="character"></character-details>-->
-<!--    <character-characteristics class="mb-10" [character]="character"></character-characteristics>-->
-<!--    <character-skills-specializations [character]="character"></character-skills-specializations>-->
-<!--    <character-talents [character]="character"></character-talents>-->
-<!--    <character-powers [character]="character"></character-powers>-->
-<!--    <character-equipment [character]="character"></character-equipment>-->
+    <!--    <character-details class="mb-10" [character]="character"></character-details>-->
+    <!--    <character-characteristics class="mb-10" [character]="character"></character-characteristics>-->
+    <!--    <character-skills-specializations [character]="character"></character-skills-specializations>-->
+    <!--    <character-talents [character]="character"></character-talents>-->
+    <!--    <character-powers [character]="character"></character-powers>-->
+    <!--    <character-equipment [character]="character"></character-equipment>-->
   </div>
-<!--  <p class="c-gray">-->
-<!--    <i>{{description}}</i>-->
+  <!--  <p class="c-gray">-->
+  <!--    <i>{{description}}</i>-->
 <!--  </p>-->
 <!--  <p>-->
 <!--    <b class="c-gray">Belief & Flaw:</b>-->
@@ -78,9 +80,7 @@
 <!--      {{i.name}}-->
 <!--    </span>`-->
 <!--  </p>-->
-
 <!--&lt;!&ndash;  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>&ndash;&gt;-->
-
 <!--  <form [formGroup]="form" class="d-f fd-c">-->
 <!--    <div class="d-f cg-5 mb-10">-->
 <!--      <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="peril">-->
@@ -216,4 +216,4 @@
 <!--      </ng-container>-->
 <!--    </tr>-->
 <!--  </table>-->
-</ng-container>
+}

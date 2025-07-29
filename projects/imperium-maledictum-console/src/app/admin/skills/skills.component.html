@@ -8,9 +8,11 @@
     <mat-form-field appearance="outline">
       <mat-label>Characteristic</mat-label>
       <mat-select formControlName="characteristic">
-        <mat-option *ngFor="let i of characteristics$ | async; trackBy: trackById;" [value]="i.id">
-          {{i.name}}
-        </mat-option>
+        @for (i of characteristics$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <ng-container formGroupName="labels">

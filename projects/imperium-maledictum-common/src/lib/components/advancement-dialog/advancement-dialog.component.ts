@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,19 +46,17 @@ const DEFAULT_OPTION = null;
     styleUrls: ['./advancement-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AsyncPipe,
-        MatButtonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatOptionModule,
-        MatSelectModule,
-        NgForOf,
-        NgIf,
-        ReactiveFormsModule,
-        SharedModule,
-        StringPipe
-    ]
+    AsyncPipe,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    SharedModule,
+    StringPipe
+]
 })
 export class AdvancementDialogComponent {
   private readonly data = inject(DataService);

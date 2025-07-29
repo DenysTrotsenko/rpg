@@ -1,16 +1,19 @@
-<mat-label *ngIf="bonus.pick !== bonus.options.length" class="label">
-  Pick {{bonus?.pick}}:
-</mat-label>
+@if (bonus.pick !== bonus.options.length) {
+  <mat-label class="label">
+    Pick {{bonus?.pick}}:
+  </mat-label>
+}
 <mat-selection-list #bonuses dense class="p-0"
   [formControl]="control"
   [multiple]="true"
   (selectionChange)="onSelectionChange(bonuses.selectedOptions.selected)">
-  <mat-list-option
-    *ngFor="let option of bonus?.options; trackBy: trackById; let i = index"
-    [value]="i"
-    [class.hide_selector]="bonus.pick === bonus.options.length"
-    [matTooltip]="(option.id | getById)?.labels?.tooltip"
-    [disabled]="bonus.pick === bonus.options.length || bonuses.selectedOptions.selected?.length >= bonus?.pick && !control.value.includes(i) || (option?.disabled && !control.value.includes(i))">
-    {{option.label}}
-  </mat-list-option>
+  @for (option of bonus?.options; track trackById(i, option); let i = $index) {
+    <mat-list-option
+      [value]="i"
+      [class.hide_selector]="bonus.pick === bonus.options.length"
+      [matTooltip]="(option.id | getById)?.labels?.tooltip"
+      [disabled]="bonus.pick === bonus.options.length || bonuses.selectedOptions.selected?.length >= bonus?.pick && !control.value.includes(i) || (option?.disabled && !control.value.includes(i))">
+      {{option.label}}
+    </mat-list-option>
+  }
 </mat-selection-list>

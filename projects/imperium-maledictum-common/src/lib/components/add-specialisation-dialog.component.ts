@@ -13,17 +13,23 @@ import { map, startWith } from 'rxjs/operators';
         <mat-form-field appearance="outline">
           <mat-label>Specialisation</mat-label>
           <mat-select formControlName="id">
-            <mat-option *ngFor="let i of data;" [value]="i.id">
-              {{i.name}} ({{(i.skill | getById)?.name}}<span *ngIf="i.restricted">, Restricted</span>)
-            </mat-option>
+            @for (i of data; track i) {
+              <mat-option [value]="i.id">
+                {{i.name}} ({{(i.skill | getById)?.name}}@if (i.restricted) {
+                <span>, Restricted</span>
+                })
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
-        <ng-container *ngIf="specialisation$ | async as specialisation;">
-          <mat-form-field *ngIf="specialisation?.multiple" appearance="outline">
-            <mat-label>Details</mat-label>
-            <input matInput formControlName="details">
-          </mat-form-field>
-        </ng-container>
+        @if (specialisation$ | async; as specialisation;) {
+          @if (specialisation?.multiple) {
+            <mat-form-field appearance="outline">
+              <mat-label>Details</mat-label>
+              <input matInput formControlName="details">
+            </mat-form-field>
+          }
+        }
       </div>
       <div mat-dialog-actions>
         <button mat-button [mat-dialog-close]="null">Cancel</button>

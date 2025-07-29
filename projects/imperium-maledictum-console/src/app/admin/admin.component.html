@@ -1,19 +1,27 @@
-<mat-sidenav-container *ngIf="valid">
-  <mat-sidenav mode="side" opened>
-    <mat-nav-list dense>
-      <a *ngFor="let i of settingOptions$ | async;" mat-list-item [routerLink]="i.link" routerLinkActive="active">
-        <span>{{i.label}}</span>
-      </a>
-      <mat-divider></mat-divider>
-      <a *ngFor="let i of otherOptions$ | async;" mat-list-item [routerLink]="i.link" routerLinkActive="active">
-        <span>{{i.label}}</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-<p *ngIf="!valid" class="validation-message">
-  You have a duplicated json files in routes > data > path.
-</p>
+@if (valid) {
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list dense>
+        @for (i of settingOptions$ | async; track i) {
+          <a mat-list-item [routerLink]="i.link" routerLinkActive="active">
+            <span>{{i.label}}</span>
+          </a>
+        }
+        <mat-divider></mat-divider>
+        @for (i of otherOptions$ | async; track i) {
+          <a mat-list-item [routerLink]="i.link" routerLinkActive="active">
+            <span>{{i.label}}</span>
+          </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+}
+@if (!valid) {
+  <p class="validation-message">
+    You have a duplicated json files in routes > data > path.
+  </p>
+}

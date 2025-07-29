@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 import { Setting, SettingService } from '@std';
 import { AdminDictionaryService } from './admin-dictionary.service';
-import { AsyncPipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe, KeyValuePipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,18 +19,16 @@ import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-
     providers: [AdminDictionaryService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AsyncPipe,
-        NgIf,
-        NgForOf,
-        MatProgressSpinnerModule,
-        MatToolbarModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        KeyValuePipe,
-        JsonEditorDialogComponent
-    ]
+    AsyncPipe,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    KeyValuePipe,
+    JsonEditorDialogComponent
+]
 })
 export class AdminDictionaryComponent implements OnInit, OnDestroy {
   private readonly admin = inject(AdminDictionaryService);

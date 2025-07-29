@@ -13,9 +13,11 @@
       <mat-form-field appearance="outline">
         <mat-label>Availability</mat-label>
         <mat-select formControlName="availability">
-          <mat-option *ngFor="let i of availabilities$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of availabilities$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
     </div>

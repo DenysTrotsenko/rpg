@@ -9,12 +9,16 @@
     <mat-form-field appearance="outline">
       <mat-label>Skill</mat-label>
       <mat-select formControlName="skill">
-        <mat-select-trigger *ngIf="skills$ | async as skills;">
-          {{getSkillSelectTrigger(skills, form.get('skill').value)}}
-        </mat-select-trigger>
-        <mat-option *ngFor="let i of skills$ | async; trackBy: trackById;" [value]="i.id">
-          {{i.name}} <mat-icon [matTooltip]="i.labels?.description">info</mat-icon>
-        </mat-option>
+        @if (skills$ | async; as skills;) {
+          <mat-select-trigger>
+            {{getSkillSelectTrigger(skills, form.get('skill').value)}}
+          </mat-select-trigger>
+        }
+        @for (i of skills$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id">
+            {{i.name}} <mat-icon [matTooltip]="i.labels?.description">info</mat-icon>
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <ng-container formGroupName="labels">

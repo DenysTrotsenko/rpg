@@ -1,4 +1,6 @@
-<img *ngIf="image" [ngSrc]="image" width="200" height="200" alt="portrait">
+@if (image) {
+  <img [ngSrc]="image" width="200" height="200" alt="portrait">
+}
 <div>
   <p><b class="c-gray">Origin: </b><span>{{origin?.name}}</span></p>
   <p><b class="c-gray">Faction: </b><span>{{faction?.name}}</span></p>

@@ -4,7 +4,9 @@
   </button>
 </mat-action-list>
 <mat-selection-list [formControl]="control" #ref>
-  <mat-list-option *ngFor="let i of value; trackBy: trackById;" [value]="i.id">
-    {{i.name}}
-  </mat-list-option>
+  @for (i of value; track trackById($index, i)) {
+    <mat-list-option [value]="i.id">
+      {{i.name}}
+    </mat-list-option>
+  }
 </mat-selection-list>

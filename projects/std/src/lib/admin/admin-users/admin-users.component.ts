@@ -6,7 +6,7 @@ import { AdminUsersEditComponent } from './admin-users-edit.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -15,15 +15,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrls: ['./admin-users.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AdminUsersEditComponent,
-        MatToolbarModule,
-        MatExpansionModule,
-        MatIconModule,
-        NgForOf,
-        AsyncPipe,
-        MatButtonModule,
-        MatTooltipModule
-    ]
+    AdminUsersEditComponent,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatIconModule,
+    AsyncPipe,
+    MatButtonModule,
+    MatTooltipModule
+]
 })
 export class AdminUsersComponent {
   readonly items$: Observable<User[]> = this.user.all$;

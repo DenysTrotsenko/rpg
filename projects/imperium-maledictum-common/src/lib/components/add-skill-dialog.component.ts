@@ -10,9 +10,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Skill</mat-label>
         <mat-select [formControl]="form">
-          <mat-option *ngFor="let i of data;" [value]="i.id">
-            {{i.name}} ({{(i.characteristic | getById)?.labels?.abbreviation}})
-          </mat-option>
+          @for (i of data; track i) {
+            <mat-option [value]="i.id">
+              {{i.name}} ({{(i.characteristic | getById)?.labels?.abbreviation}})
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
     </div>

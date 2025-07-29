@@ -2,15 +2,21 @@
   <a mat-flat-button color="primary" routerLink="../create">Create Campaign</a>
 </mat-toolbar>
 <mat-nav-list class="p-10">
-  <mat-list-item *ngFor="let i of campaigns$ | async; trackBy: trackById;">
-    <a matListItemLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
-    <span matListItemMeta>
-      <a *ngIf="i.canEdit" mat-icon-button [routerLink]="['../create', i.id]" matTooltip="Edit">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <button *ngIf="i.canDelete" mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </span>
-  </mat-list-item>
+  @for (i of campaigns$ | async; track trackById($index, i)) {
+    <mat-list-item>
+      <a matListItemLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
+      <span matListItemMeta>
+        @if (i.canEdit) {
+          <a mat-icon-button [routerLink]="['../create', i.id]" matTooltip="Edit">
+            <mat-icon>edit</mat-icon>
+          </a>
+        }
+        @if (i.canDelete) {
+          <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+      </span>
+    </mat-list-item>
+  }
 </mat-nav-list>

@@ -8,9 +8,11 @@
     <mat-form-field appearance="outline">
       <mat-label>Clone From</mat-label>
       <mat-select formControlName="clone">
-        <mat-option *ngFor="let i of settings$ | async;" [value]="i.storage">
-          {{i.name}}
-        </mat-option>
+        @for (i of settings$ | async; track i) {
+          <mat-option [value]="i.storage">
+            {{i.name}}
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>

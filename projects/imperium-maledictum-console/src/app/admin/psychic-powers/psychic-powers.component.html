@@ -9,9 +9,11 @@
       <mat-form-field class="f-1" appearance="outline">
         <mat-label>Psychic Discipline</mat-label>
         <mat-select formControlName="discipline">
-          <mat-option *ngFor="let i of disciplines$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of disciplines$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-checkbox formControlName="overt">Overt</mat-checkbox>
@@ -24,33 +26,41 @@
       <mat-form-field appearance="outline" style="min-width:100px;">
         <mat-label>Difficulty</mat-label>
         <mat-select formControlName="difficulty">
-          <mat-option *ngFor="let i of difficulties$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}} ({{(i.bonus < 0 ? '' : '+') + i.bonus}})
-          </mat-option>
+          @for (i of difficulties$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}} ({{(i.bonus < 0 ? '' : '+') + i.bonus}})
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="min-width:100px;">
         <mat-label>Range</mat-label>
         <mat-select formControlName="range">
-          <mat-option *ngFor="let i of ranges$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of ranges$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="min-width:100px;">
         <mat-label>Target</mat-label>
         <mat-select formControlName="target" multiple>
-          <mat-option *ngFor="let i of targets$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of targets$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="min-width:100px;">
         <mat-label>Duration</mat-label>
         <mat-select formControlName="duration">
-          <mat-option *ngFor="let i of durations$ | async; trackBy: trackById;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of durations$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
     </div>

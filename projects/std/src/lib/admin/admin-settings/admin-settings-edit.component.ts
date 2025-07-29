@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -13,15 +13,14 @@ import { MatInputModule } from '@angular/material/input';
     styleUrls: ['./admin-settings-edit.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AsyncPipe,
-        NgForOf,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatInputModule
-    ]
+    AsyncPipe,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule
+]
 })
 export class AdminSettingsEditComponent {
   readonly form: FormGroup = new FormGroup<any>({

@@ -3,32 +3,40 @@
   <mat-form-field appearance="outline" class="mt-5 ai-s">
     <mat-label>Advancement Type</mat-label>
     <mat-select [formControl]="type">
-      <mat-option *ngFor="let i of ADVANCEMENT_TYPES;" [value]="i.id">{{i.name}}</mat-option>
+      @for (i of ADVANCEMENT_TYPES; track i) {
+        <mat-option [value]="i.id">{{i.name}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Options</mat-label>
     <mat-select [formControl]="option">
-      <mat-option *ngFor="let i of options$ | async;" [value]="i.id">{{i.name}}</mat-option>
+      @for (i of options$ | async; track i) {
+        <mat-option [value]="i.id">{{i.name}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
-  <div *ngIf="showProgress$ | async" class="d-f ai-c g-5">
-    <mat-form-field appearance="outline" subscriptSizing="dynamic">
-      <mat-label>Current</mat-label>
-      <input matInput readonly [value]="current$ | async | string">
-    </mat-form-field>
-    <mat-icon class="f-1 ta-c">arrow_forward</mat-icon>
-    <mat-form-field appearance="outline" subscriptSizing="dynamic">
-      <mat-label>Next</mat-label>
-      <input matInput readonly [value]="next$ | async | string">
-    </mat-form-field>
-  </div>
+  @if (showProgress$ | async) {
+    <div class="d-f ai-c g-5">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Current</mat-label>
+        <input matInput readonly [value]="current$ | async | string">
+      </mat-form-field>
+      <mat-icon class="f-1 ta-c">arrow_forward</mat-icon>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Next</mat-label>
+        <input matInput readonly [value]="next$ | async | string">
+      </mat-form-field>
+    </div>
+  }
 </div>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="null">
     Cancel
   </button>
   <button mat-flat-button color="primary" [disabled]="isOkDisabled$ | async" (click)="onSubmit()">
-    Ok <span *ngIf="showCost$ | async">({{cost$ | async}} XP)</span>
-  </button>
+    Ok @if (showCost$ | async) {
+    <span>({{cost$ | async}} XP)</span>
+  }
+</button>
 </div>

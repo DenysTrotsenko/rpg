@@ -1,8 +1,6 @@
-<ng-container *ngIf="loading$ | async; else loaded;">
+@if (loading$ | async) {
   <mat-spinner color="accent" style="margin: 10px auto;"></mat-spinner>
-</ng-container>
-
-<ng-template #loaded>
+} @else {
   <form [formGroup]="form" (ngSubmit)="onSubmitClick()">
     <mat-toolbar class="f-0-0-a">
       <h1>Profile</h1>
@@ -32,4 +30,5 @@
       </mat-form-field>
     </div>
   </form>
-</ng-template>
+}
+

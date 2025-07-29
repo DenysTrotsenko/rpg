@@ -19,40 +19,52 @@ import { DataService } from '@im-common';
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Item</mat-label>
         <mat-select formControlName="id">
-          <mat-option *ngFor="let i of items$ | async;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of items$ | async; track i) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Qualities</mat-label>
         <mat-select formControlName="qualities" multiple>
-          <mat-option *ngFor="let i of qualities$ | async;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of qualities$ | async; track i) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Flaws</mat-label>
         <mat-select formControlName="flaws" multiple>
-          <mat-option *ngFor="let i of flaws$ | async;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of flaws$ | async; track i) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" style="align-items:stretch;">
         <mat-label>Modifications</mat-label>
         <mat-select formControlName="modifications" multiple>
-          <mat-option *ngFor="let i of modifications$ | async;" [value]="i.id">
-            {{i.name}}
-          </mat-option>
+          @for (i of modifications$ | async; track i) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Quantity</mat-label>
         <input matInput type="number" formControlName="quantity">
-        <mat-error *ngIf="form.get('quantity').hasError('required')">Quantity is required</mat-error>
-        <mat-error *ngIf="form.get('quantity').hasError('min')">Minimum is 0</mat-error>
+        @if (form.get('quantity').hasError('required')) {
+          <mat-error>Quantity is required</mat-error>
+        }
+        @if (form.get('quantity').hasError('min')) {
+          <mat-error>Minimum is 0</mat-error>
+        }
       </mat-form-field>
     </div>
     <div mat-dialog-actions>

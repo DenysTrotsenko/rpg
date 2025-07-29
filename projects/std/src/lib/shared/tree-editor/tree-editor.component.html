@@ -1,12 +1,13 @@
-<std-tree-node
-  *ngFor="let node of nodes"
-  [node]="node"
-  [mode]="mode"
-  (addClick)="onAddClick($event)"
-  (editClick)="onEditClick($event)"
-  (deleteClick)="onDeleteClick($event)"
-  (infoClick)="onInfoClick($event)">
-</std-tree-node>
+@for (node of nodes; track node) {
+  <std-tree-node
+    [node]="node"
+    [mode]="mode"
+    (addClick)="onAddClick($event)"
+    (editClick)="onEditClick($event)"
+    (deleteClick)="onDeleteClick($event)"
+    (infoClick)="onInfoClick($event)">
+  </std-tree-node>
+}
 
 <!--<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree" cdkDropList (cdkDropListDropped)="onDrop($event)">-->
 <!--  <mat-tree-node *matTreeNodeDef="let node;" matTreeNodeToggle cdkDrag>-->

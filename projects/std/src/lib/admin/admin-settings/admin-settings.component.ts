@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
@@ -15,15 +15,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrls: ['./admin-settings.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AsyncPipe,
-        AdminSettingsEditComponent,
-        MatToolbarModule,
-        MatButtonModule,
-        MatExpansionModule,
-        MatIconModule,
-        NgForOf,
-        MatTooltipModule,
-    ]
+    AsyncPipe,
+    AdminSettingsEditComponent,
+    MatToolbarModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatTooltipModule
+]
 })
 export class AdminSettingsComponent {
   readonly items$: Observable<Setting[]> = this.setting.all$;

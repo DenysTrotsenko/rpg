@@ -6,7 +6,7 @@ import { HasCommonFields, HasId, HasSystem, Setting, SettingService } from '@std
 import { AdminBaseService } from './admin-base.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -22,20 +22,18 @@ import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-
     providers: [AdminBaseService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        AsyncPipe,
-        NgIf,
-        NgForOf,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatSelectModule,
-        MatExpansionModule,
-        MatProgressSpinnerModule,
-        CodeEditorModule,
-        MatTooltipModule,
-        ReactiveFormsModule,
-        JsonEditorDialogComponent
-    ]
+    AsyncPipe,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    CodeEditorModule,
+    MatTooltipModule,
+    ReactiveFormsModule,
+    JsonEditorDialogComponent
+]
 })
 export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem, K> implements OnInit, OnDestroy {
   readonly admin = inject(AdminBaseService<T, K>);

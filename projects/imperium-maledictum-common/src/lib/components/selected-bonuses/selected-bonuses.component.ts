@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectBonusComponent } from '@im-common';
-import { NgFor } from '@angular/common';
+
 import {
   Bonus,
   BonusOption,
@@ -18,7 +18,7 @@ export type BonusId = CharacteristicId | SkillId | SpecialisationId | TalentId;
     templateUrl: './selected-bonuses.component.html',
     styleUrls: ['./selected-bonuses.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgFor, SelectBonusComponent],
+    imports: [SelectBonusComponent],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

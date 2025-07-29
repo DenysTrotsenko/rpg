@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, inject, Input, Output } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule, MatListOption } from '@angular/material/list';
@@ -62,7 +62,7 @@ function getItemLabel(data: DataService, option: ItemBonusOption): string {
     templateUrl: './select-bonus.component.html',
     styleUrls: ['./select-bonus.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatListModule, NgFor, NgIf, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule, MatTooltipModule],
+    imports: [MatListModule, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule, MatTooltipModule],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { NgFor } from '@angular/common';
+
 import { SelectBonusComponent } from '@im-common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ItemValue } from '@imperium-maledictum-1e/models/character';
@@ -10,7 +10,7 @@ import { ItemBonus, ItemBonusOption } from '@imperium-maledictum-1e/models/commo
     templateUrl: './selected-items.component.html',
     styleUrls: ['./selected-items.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgFor, SelectBonusComponent],
+    imports: [SelectBonusComponent],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

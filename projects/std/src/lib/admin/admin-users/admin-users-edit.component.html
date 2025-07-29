@@ -2,9 +2,11 @@
 <div mat-dialog-content class="d-f fd-c">
   <form [formGroup]="form">
     <mat-selection-list formControlName="permissions">
-      <mat-list-option *ngFor="let i of permissions" [value]="i">
-        {{i}}
-      </mat-list-option>
+      @for (i of permissions; track i) {
+        <mat-list-option [value]="i">
+          {{i}}
+        </mat-list-option>
+      }
     </mat-selection-list>
   </form>
 </div>
