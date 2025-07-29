@@ -1,9 +1,9 @@
 import { HasWeight, JsonString } from './models';
 import { AbstractControl, UntypedFormGroup } from '@angular/forms';
-import firebase from 'firebase/compat';
 import { FIREBASE_ERROR_MESSAGES } from './const';
+import { FirebaseError } from 'firebase-admin';
 
-export function getErrorMessage(err: firebase.auth.Error): string {
+export function getErrorMessage(err: FirebaseError): string {
   return FIREBASE_ERROR_MESSAGES.get(err.code) ?? err.message;
 }
 

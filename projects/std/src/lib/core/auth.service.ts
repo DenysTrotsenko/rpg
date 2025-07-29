@@ -6,6 +6,7 @@ import { SnackbarService } from '../snackbar';
 import firebase from 'firebase/compat/app';
 import { AuthWithEmailAndPassword, UserId } from '../models';
 import { getErrorMessage } from '../utils';
+import { FirebaseError } from 'firebase-admin';
 
 @Injectable()
 export class AuthService {
@@ -39,7 +40,7 @@ export class AuthService {
   deleteUser(data: AuthWithEmailAndPassword): Observable<firebase.User | void> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
       switchMap(res => res.user.delete()),
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
@@ -53,7 +54,7 @@ export class AuthService {
 
   signIn(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.signInWithEmailAndPassword(data.email, data.password)).pipe(
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
@@ -62,7 +63,7 @@ export class AuthService {
 
   signOut(): Observable<void> {
     return from(this.afa.signOut()).pipe(
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
@@ -71,7 +72,7 @@ export class AuthService {
 
   signUp(data: AuthWithEmailAndPassword): Observable<firebase.auth.UserCredential> {
     return from(this.afa.createUserWithEmailAndPassword(data.email, data.password)).pipe(
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
@@ -81,7 +82,7 @@ export class AuthService {
   sendPasswordResetEmail(email: string): Observable<void> {
     return from(this.afa.sendPasswordResetEmail(email)).pipe(
       tap(() => this.snackbar.success('A password reset link has been sent to your email.')),
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
@@ -109,7 +110,7 @@ export class AuthService {
   confirmPasswordReset(code, password): Observable<void> {
     return from(this.afa.confirmPasswordReset(code, password)).pipe(
       tap(() => this.snackbar.success('New password has been saved.')),
-      catchError((err: firebase.auth.Error) => {
+      catchError((err: FirebaseError) => {
         this.snackbar.error(getErrorMessage(err));
         return of(null);
       })
