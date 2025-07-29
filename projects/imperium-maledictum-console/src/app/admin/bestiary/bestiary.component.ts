@@ -28,9 +28,10 @@ import {
 } from '@im-common';
 
 @Component({
-  templateUrl: './bestiary.component.html',
-  styleUrls: ['./bestiary.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './bestiary.component.html',
+    styleUrls: ['./bestiary.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BestiaryComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

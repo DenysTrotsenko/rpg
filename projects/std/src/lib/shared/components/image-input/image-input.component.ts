@@ -6,17 +6,18 @@ import { filter, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'image-input',
-  templateUrl: './image-input.component.html',
-  styleUrls: ['./image-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ImageInputComponent),
-      multi: true
-    }
-  ]
+    selector: 'image-input',
+    templateUrl: './image-input.component.html',
+    styleUrls: ['./image-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ImageInputComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class ImageInputComponent implements ControlValueAccessor {
   readonly dialog = inject(DialogService);

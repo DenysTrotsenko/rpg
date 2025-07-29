@@ -5,8 +5,9 @@ import { ItemTrait } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './item-traits.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './item-traits.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemTraitsComponent implements OnInit {
   readonly data: ItemTrait = inject(MAT_DIALOG_DATA);

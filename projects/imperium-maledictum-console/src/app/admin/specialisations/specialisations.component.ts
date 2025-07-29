@@ -7,8 +7,9 @@ import { Observable, switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  templateUrl: './specialisations.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './specialisations.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SpecialisationsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

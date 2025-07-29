@@ -3,9 +3,10 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'select-all',
-  templateUrl: './select-all.component.html',
-  styleUrls: ['./select-all.component.scss']
+    selector: 'select-all',
+    templateUrl: './select-all.component.html',
+    styleUrls: ['./select-all.component.scss'],
+    standalone: false
 })
 export class SelectAllComponent {
   @Input() model: AbstractControl | FormControl;

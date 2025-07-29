@@ -6,11 +6,12 @@ import { TreeEditorService } from './tree-editor.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'std-tree-editor',
-  templateUrl: './tree-editor.component.html',
-  styleUrls: ['./tree-editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [TreeEditorService]
+    selector: 'std-tree-editor',
+    templateUrl: './tree-editor.component.html',
+    styleUrls: ['./tree-editor.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TreeEditorService],
+    standalone: false
 })
 export class TreeEditorComponent implements OnInit {
   readonly tree = inject(TreeEditorService);

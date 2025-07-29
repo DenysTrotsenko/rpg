@@ -5,9 +5,10 @@ import { DataService } from '../../core/data.service';
 
 
 @Component({
-  templateUrl: './talents.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './talents.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TalentsComponent {
   readonly talents$: Observable<Talent[]> = this.data.talents$;

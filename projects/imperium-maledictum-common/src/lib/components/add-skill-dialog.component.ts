@@ -4,7 +4,7 @@ import { Skill, SkillId } from '@imperium-maledictum-1e/models/common';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  template: `
+    template: `
     <h1 mat-dialog-title>Add Skill</h1>
     <div mat-dialog-content class="d-f fd-c">
       <mat-form-field appearance="outline" style="align-items:stretch;">
@@ -19,7 +19,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     <div mat-dialog-actions>
       <button mat-button [mat-dialog-close]="null">Cancel</button>
       <button mat-flat-button color="primary" [disabled]="!form.valid" [mat-dialog-close]="form.getRawValue()">Add</button>
-    </div>`
+    </div>`,
+    standalone: false
 })
 export class AddSkillDialogComponent {
   readonly data: Skill[] = inject(MAT_DIALOG_DATA);

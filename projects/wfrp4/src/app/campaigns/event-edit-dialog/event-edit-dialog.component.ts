@@ -22,8 +22,9 @@ export interface EventEditDialogData {
 }
 
 @Component({
-  templateUrl: './event-edit-dialog.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './event-edit-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EventEditDialogComponent implements OnInit {
   readonly user = inject(UserService);

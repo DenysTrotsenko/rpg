@@ -10,9 +10,10 @@ interface Data {
 }
 
 @Component({
-  templateUrl: './todo-dialog.component.html',
-  styleUrls: ['./todo-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './todo-dialog.component.html',
+    styleUrls: ['./todo-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TodoDialogComponent implements OnInit {
   readonly data = inject<Data>(MAT_DIALOG_DATA);

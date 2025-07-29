@@ -6,19 +6,18 @@ import { ItemValue } from '@imperium-maledictum-1e/models/character';
 import { ItemBonus, ItemBonusOption } from '@imperium-maledictum-1e/models/common';
 
 @Component({
-  selector: 'selected-items',
-  templateUrl: './selected-items.component.html',
-  styleUrls: ['./selected-items.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [NgFor, SelectBonusComponent],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectedItemsComponent),
-      multi: true
-    }
-  ]
+    selector: 'selected-items',
+    templateUrl: './selected-items.component.html',
+    styleUrls: ['./selected-items.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgFor, SelectBonusComponent],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectedItemsComponent),
+            multi: true
+        }
+    ]
 })
 export class SelectedItemsComponent implements ControlValueAccessor {
   @Input() set value(bonuses: ItemBonus[]) {

@@ -9,20 +9,19 @@ import { AsyncPipe, NgForOf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  templateUrl: './admin-settings-edit.component.html',
-  styleUrls: ['./admin-settings-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    NgForOf,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatInputModule
-  ]
+    templateUrl: './admin-settings-edit.component.html',
+    styleUrls: ['./admin-settings-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatInputModule
+    ]
 })
 export class AdminSettingsEditComponent {
   readonly form: FormGroup = new FormGroup<any>({

@@ -2,16 +2,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Ou
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'number-input',
-  templateUrl: './number-input.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NumberInputComponent),
-      multi: true
-    }
-  ]
+    selector: 'number-input',
+    templateUrl: './number-input.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NumberInputComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class NumberInputComponent implements ControlValueAccessor {
   @Input() edit: boolean = false;

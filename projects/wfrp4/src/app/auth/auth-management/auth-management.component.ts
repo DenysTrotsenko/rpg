@@ -6,9 +6,10 @@ import { AuthService, AuthWithEmailAndPassword } from '@std';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
-  templateUrl: './auth-management.component.html',
-  styleUrls: ['../auth.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './auth-management.component.html',
+    styleUrls: ['../auth.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AuthManagementComponent {
   private readonly auth = inject(AuthService);

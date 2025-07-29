@@ -5,8 +5,9 @@ import { Condition } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './conditions.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './conditions.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ConditionsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

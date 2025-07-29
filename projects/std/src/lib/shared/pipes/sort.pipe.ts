@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sort'
+    name: 'sort',
+    standalone: false
 })
 export class SortPipe implements PipeTransform {
   transform<T>(value: T[], property: keyof T, order: 'asc' | 'desc' = 'asc'): T[] {

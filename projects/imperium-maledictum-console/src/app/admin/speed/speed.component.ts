@@ -5,8 +5,9 @@ import { Speed } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './speed.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './speed.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SpeedComponent implements OnInit {
   readonly data: Speed = inject(MAT_DIALOG_DATA);

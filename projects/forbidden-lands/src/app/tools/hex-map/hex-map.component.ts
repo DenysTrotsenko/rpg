@@ -5,20 +5,19 @@ import { NgForOf } from '@angular/common';
 import { RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-hex-map',
-  templateUrl: './hex-map.component.html',
-  styleUrls: ['./hex-map.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatListItem,
-    MatNavList,
-    MatSidenav,
-    MatSidenavContainer,
-    MatSidenavContent,
-    NgForOf,
-    RouterLinkActive
-  ],
-  standalone: true
+    selector: 'app-hex-map',
+    templateUrl: './hex-map.component.html',
+    styleUrls: ['./hex-map.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatListItem,
+        MatNavList,
+        MatSidenav,
+        MatSidenavContainer,
+        MatSidenavContent,
+        NgForOf,
+        RouterLinkActive
+    ]
 })
 export class HexMapComponent implements AfterViewInit {
   @ViewChild('myCanvas') canvas: ElementRef<HTMLCanvasElement>;

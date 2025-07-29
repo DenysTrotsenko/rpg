@@ -25,10 +25,11 @@ interface SpecializationView {
 }
 
 @Component({
-  selector: 'character-skills-specializations',
-  templateUrl: './character-skills-specializations.component.html',
-  styleUrls: ['./character-skills-specializations.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-skills-specializations',
+    templateUrl: './character-skills-specializations.component.html',
+    styleUrls: ['./character-skills-specializations.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterSkillsSpecializationsComponent {
   readonly data = inject(DataService);

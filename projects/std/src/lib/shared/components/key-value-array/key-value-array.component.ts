@@ -36,22 +36,23 @@ function validateKey(): ValidatorFn {
 type ValueType = 'string' | 'number' | 'boolean';
 
 @Component({
-  selector: 'std-key-value-array',
-  templateUrl: './key-value-array.component.html',
-  styleUrls: ['./key-value-array.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => KeyValueArrayComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => KeyValueArrayComponent),
-      multi: true
-    },
-  ]
+    selector: 'std-key-value-array',
+    templateUrl: './key-value-array.component.html',
+    styleUrls: ['./key-value-array.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => KeyValueArrayComponent),
+            multi: true
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => KeyValueArrayComponent),
+            multi: true
+        },
+    ],
+    standalone: false
 })
 export class KeyValueArrayComponent implements ControlValueAccessor, Validator, OnInit, OnDestroy {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

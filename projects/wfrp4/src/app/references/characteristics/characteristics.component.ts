@@ -4,9 +4,10 @@ import { DataService } from '../../core/data.service';
 
 
 @Component({
-  templateUrl: './characteristics.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './characteristics.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacteristicsComponent {
   readonly characteristics: Characteristic[] = this.data.characteristics;

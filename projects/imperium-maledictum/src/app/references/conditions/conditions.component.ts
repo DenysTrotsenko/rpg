@@ -5,9 +5,10 @@ import { DataService } from '@im-common';
 
 
 @Component({
-  templateUrl: './conditions.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './conditions.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ConditionsComponent {
   readonly data = inject(DataService);

@@ -5,10 +5,11 @@ import { catchError, finalize, tap } from 'rxjs/operators';
 import { BYTES_IN_MB } from '../../../const';
 
 @Component({
-  selector: 'image-upload',
-  templateUrl: './image-upload.component.html',
-  styleUrls: ['./image-upload.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'image-upload',
+    templateUrl: './image-upload.component.html',
+    styleUrls: ['./image-upload.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ImageUploadComponent {
   private readonly storage = inject(StorageService);

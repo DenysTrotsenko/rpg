@@ -8,8 +8,9 @@ import { tap } from 'rxjs/operators';
 import { DataService } from '@im-common';
 
 @Component({
-  templateUrl: './item-modifications.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './item-modifications.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemModificationsComponent implements OnInit {
   private readonly data = inject(DataService);

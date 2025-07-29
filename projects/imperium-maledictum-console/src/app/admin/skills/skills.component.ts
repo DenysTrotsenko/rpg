@@ -8,8 +8,9 @@ import { map } from 'rxjs/operators';
 import { FileName } from '@imperium-maledictum-1e/models/enums';
 
 @Component({
-  templateUrl: './skills.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './skills.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SkillsComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

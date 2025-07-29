@@ -9,9 +9,10 @@ import { ImperiumMaledictumCharacter as Character } from '@imperium-maledictum-1
 import { AdvancementDialogComponent } from '@im-common';
 
 @Component({
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './view.component.html',
+    styleUrls: ['./view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ViewComponent implements OnDestroy {
   private readonly auth = inject(AuthService);

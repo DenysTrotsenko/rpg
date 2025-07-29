@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { TreeMode, TreeNode } from './tree-editor.models';
 
 @Component({
-  selector: 'std-tree-node',
-  templateUrl: './tree-node.component.html',
-  styleUrls: ['./tree-node.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'std-tree-node',
+    templateUrl: './tree-node.component.html',
+    styleUrls: ['./tree-node.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TreeNodeComponent {
   @Input() node: TreeNode;

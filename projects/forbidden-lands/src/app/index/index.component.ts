@@ -22,9 +22,10 @@ const LOGGED_OPTIONS: NavListItemData[] = [
 ];
 
 @Component({
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './index.component.html',
+    styleUrls: ['./index.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IndexComponent {
   private readonly campaign = inject(CampaignService);

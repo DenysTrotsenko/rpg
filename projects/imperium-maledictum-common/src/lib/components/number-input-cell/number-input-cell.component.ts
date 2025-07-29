@@ -2,17 +2,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Ou
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'number-input-cell',
-  templateUrl: './number-input-cell.component.html',
-  styleUrls: ['./number-input-cell.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NumberInputCellComponent),
-      multi: true
-    }
-  ]
+    selector: 'number-input-cell',
+    templateUrl: './number-input-cell.component.html',
+    styleUrls: ['./number-input-cell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NumberInputCellComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class NumberInputCellComponent {
   @Input() edit: boolean = false;

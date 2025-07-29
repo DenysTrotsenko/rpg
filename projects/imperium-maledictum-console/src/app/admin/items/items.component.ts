@@ -8,8 +8,9 @@ import { getId16, AdminBaseService } from '@std';
 import { DataService } from '@im-common';
 
 @Component({
-  templateUrl: './items.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './items.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemsComponent {
   private readonly data = inject(DataService);

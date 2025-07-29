@@ -6,9 +6,10 @@ import { finalize, tap } from 'rxjs/operators';
 import { AuthService, AuthWithEmailAndPassword, SettingService } from '@std';
 
 @Component({
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['../auth.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './sign-up.component.html',
+    styleUrls: ['../auth.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SignUpComponent {
   private readonly auth = inject(AuthService);

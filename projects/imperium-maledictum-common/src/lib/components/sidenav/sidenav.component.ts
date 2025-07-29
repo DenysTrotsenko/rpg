@@ -13,25 +13,24 @@ import { AuthService, DialogService, NavListItemData } from '@std';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    NgForOf,
-    NgIf,
-  ]
+    selector: 'sidenav',
+    templateUrl: './sidenav.component.html',
+    styleUrls: ['./sidenav.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterOutlet,
+        NgForOf,
+        NgIf,
+    ]
 })
 export class SidenavComponent {
   private readonly auth = inject(AuthService);

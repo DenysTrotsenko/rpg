@@ -5,8 +5,9 @@ import { Malignancy } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './malignancies.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './malignancies.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MalignanciesComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

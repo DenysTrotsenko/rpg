@@ -8,9 +8,10 @@ export interface XpEditDialogData {
 }
 
 @Component({
-  templateUrl: './xp-edit-dialog.component.html',
-  styleUrls: ['./xp-edit-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './xp-edit-dialog.component.html',
+    styleUrls: ['./xp-edit-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class XpEditDialogComponent {
   readonly data: XpEditDialogData = inject(MAT_DIALOG_DATA);

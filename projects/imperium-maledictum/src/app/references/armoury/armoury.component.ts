@@ -5,9 +5,10 @@ import { DataService } from '@im-common';
 
 
 @Component({
-  templateUrl: './armoury.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './armoury.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ArmouryComponent {
   readonly itemTraits$: Observable<ItemTrait[]> = this.data.itemTraits$;

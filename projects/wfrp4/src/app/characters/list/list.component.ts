@@ -12,9 +12,10 @@ interface VM extends ImperiumMaledictumCharacter {
 }
 
 @Component({
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListComponent {
   private readonly auth = inject(AuthService);

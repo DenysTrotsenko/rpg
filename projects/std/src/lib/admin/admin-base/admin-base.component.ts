@@ -17,26 +17,25 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
-  templateUrl: './admin-base.component.html',
-  styleUrls: ['./admin-base.component.scss'],
-  providers: [AdminBaseService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    NgIf,
-    NgForOf,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    CodeEditorModule,
-    MatTooltipModule,
-    ReactiveFormsModule,
-    JsonEditorDialogComponent
-  ]
+    templateUrl: './admin-base.component.html',
+    styleUrls: ['./admin-base.component.scss'],
+    providers: [AdminBaseService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
+        CodeEditorModule,
+        MatTooltipModule,
+        ReactiveFormsModule,
+        JsonEditorDialogComponent
+    ]
 })
 export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem, K> implements OnInit, OnDestroy {
   readonly admin = inject(AdminBaseService<T, K>);

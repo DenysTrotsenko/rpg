@@ -5,22 +5,23 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'std-selection-list',
-  templateUrl: './selection-list.component.html',
-  styleUrls: ['./selection-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectionListComponent),
-      multi: true
-    },
-    // {
-    //   provide: NG_VALIDATORS,
-    //   useExisting: forwardRef(() => SelectionListComponent),
-    //   multi: true
-    // },
-  ]
+    selector: 'std-selection-list',
+    templateUrl: './selection-list.component.html',
+    styleUrls: ['./selection-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectionListComponent),
+            multi: true
+        },
+        // {
+        //   provide: NG_VALIDATORS,
+        //   useExisting: forwardRef(() => SelectionListComponent),
+        //   multi: true
+        // },
+    ],
+    standalone: false
 })
 export class SelectionListComponent implements ControlValueAccessor, OnInit, OnDestroy {
   @Input() value: unknown[];

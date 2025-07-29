@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 
 @Component({
-  templateUrl: './rules.component.html',
-  styleUrl: './rules.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './rules.component.html',
+    styleUrl: './rules.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RulesComponent {
   firstName = signal('Jane');

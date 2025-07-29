@@ -42,24 +42,23 @@ const DEFAULT_TYPE = null;
 const DEFAULT_OPTION = null;
 
 @Component({
-  templateUrl: './advancement-dialog.component.html',
-  styleUrls: ['./advancement-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    AsyncPipe,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    MatSelectModule,
-    NgForOf,
-    NgIf,
-    ReactiveFormsModule,
-    SharedModule,
-    StringPipe
-  ],
-  standalone: true
+    templateUrl: './advancement-dialog.component.html',
+    styleUrls: ['./advancement-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        AsyncPipe,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        NgForOf,
+        NgIf,
+        ReactiveFormsModule,
+        SharedModule,
+        StringPipe
+    ]
 })
 export class AdvancementDialogComponent {
   private readonly data = inject(DataService);

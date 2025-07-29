@@ -15,8 +15,9 @@ import { DataService } from '@im-common';
 
 
 @Component({
-  templateUrl: './psychic-powers.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './psychic-powers.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PsychicPowersComponent implements OnInit {
   readonly form: FormGroup = new FormGroup({

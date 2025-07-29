@@ -5,8 +5,9 @@ import { PerilOfTheWarp } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './perils-of-the-warp.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './perils-of-the-warp.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PerilsOfTheWarpComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

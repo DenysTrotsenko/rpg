@@ -14,10 +14,11 @@ type CharacteristicView = Characteristic & AdvanceableValue<CharacteristicId> & 
 };
 
 @Component({
-  selector: 'character-characteristics',
-  templateUrl: './character-characteristics.component.html',
-  styleUrls: ['./character-characteristics.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-characteristics',
+    templateUrl: './character-characteristics.component.html',
+    styleUrls: ['./character-characteristics.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterCharacteristicsComponent {
   readonly data = inject(DataService);

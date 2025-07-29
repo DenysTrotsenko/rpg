@@ -4,8 +4,9 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './events.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './events.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EventsComponent {
   readonly data = inject(MAT_DIALOG_DATA);

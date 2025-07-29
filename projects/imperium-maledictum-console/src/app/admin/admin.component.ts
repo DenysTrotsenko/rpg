@@ -50,9 +50,10 @@ const OTHER_OPTIONS: NavListItemData[] = [
 ];
 
 @Component({
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './admin.component.html',
+    styleUrls: ['./admin.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AdminComponent {
   private readonly user = inject(UserService);

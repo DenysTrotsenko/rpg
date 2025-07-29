@@ -5,8 +5,9 @@ import { Duration, DurationId } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './durations.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './durations.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DurationsComponent {
   readonly form: FormGroup = new FormGroup({

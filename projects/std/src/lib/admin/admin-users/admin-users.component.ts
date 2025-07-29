@@ -11,20 +11,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    AdminUsersEditComponent,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatIconModule,
-    NgForOf,
-    AsyncPipe,
-    MatButtonModule,
-    MatTooltipModule
-  ]
+    templateUrl: './admin-users.component.html',
+    styleUrls: ['./admin-users.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        AdminUsersEditComponent,
+        MatToolbarModule,
+        MatExpansionModule,
+        MatIconModule,
+        NgForOf,
+        AsyncPipe,
+        MatButtonModule,
+        MatTooltipModule
+    ]
 })
 export class AdminUsersComponent {
   readonly items$: Observable<User[]> = this.user.all$;

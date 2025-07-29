@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
-  template: `
+    template: `
     <form [formGroup]="form">
       <h1 mat-dialog-title>Add Specialisation</h1>
       <div mat-dialog-content class="d-f fd-c ai-s">
@@ -29,7 +29,8 @@ import { map, startWith } from 'rxjs/operators';
         <button mat-button [mat-dialog-close]="null">Cancel</button>
         <button mat-flat-button color="primary" [disabled]="!form.valid" [mat-dialog-close]="form.value">Add</button>
       </div>
-    </form>`
+    </form>`,
+    standalone: false
 })
 export class AddSpecialisationDialogComponent {
   readonly data: Specialisation[] = inject(MAT_DIALOG_DATA);

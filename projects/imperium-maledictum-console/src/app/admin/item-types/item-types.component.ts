@@ -5,8 +5,9 @@ import { ItemType } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './item-types.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './item-types.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemTypesComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

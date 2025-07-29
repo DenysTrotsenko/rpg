@@ -7,10 +7,11 @@ import {
 import { Characteristic, Faction, Origin, Role } from '@imperium-maledictum-1e/models/common';
 
 @Component({
-  selector: 'character-details',
-  templateUrl: './character-details.component.html',
-  styleUrls: ['./character-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-details',
+    templateUrl: './character-details.component.html',
+    styleUrls: ['./character-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterDetailsComponent {
   readonly data = inject(DataService);

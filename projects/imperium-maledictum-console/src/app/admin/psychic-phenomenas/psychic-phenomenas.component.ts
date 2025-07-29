@@ -5,8 +5,9 @@ import { PsychicPhenomena } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './psychic-phenomenas.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './psychic-phenomenas.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PsychicPhenomenasComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

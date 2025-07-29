@@ -5,8 +5,9 @@ import { Range } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './ranges.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './ranges.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RangesComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

@@ -6,9 +6,10 @@ import { Router } from '@angular/router';
 import { finalize, tap } from 'rxjs/operators';
 
 @Component({
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['../auth.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './sign-in.component.html',
+    styleUrls: ['../auth.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SignInComponent {
   private readonly auth = inject(AuthService);

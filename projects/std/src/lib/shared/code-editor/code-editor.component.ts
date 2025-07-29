@@ -16,10 +16,11 @@ import { takeUntil, tap } from 'rxjs/operators';
 /* Editor documentation: https://github.com/josdejong/svelte-jsoneditor */
 
 @Component({
-  selector: 'std-code-editor',
-  template: '<div id="editor" #editor></div>',
-  styleUrls: ['./code-editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'std-code-editor',
+    template: '<div id="editor" #editor></div>',
+    styleUrls: ['./code-editor.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CodeEditorComponent implements AfterViewInit, OnDestroy {
   @Input() set json(json) { this.json$.next(json); }

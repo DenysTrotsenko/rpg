@@ -4,8 +4,9 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './environmental-traits.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './environmental-traits.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EnvironmentalTraitsComponent {
   readonly data = inject(MAT_DIALOG_DATA);

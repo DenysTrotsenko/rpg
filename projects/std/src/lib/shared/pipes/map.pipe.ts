@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'map'
+    name: 'map',
+    standalone: false
 })
 export class MapPipe implements PipeTransform {
   transform<T>(value: T | T[], property: keyof T): any | any[] {

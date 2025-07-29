@@ -6,11 +6,12 @@ import { TodoEditorService } from './todo-editor.service';
 import { Character } from '@std';
 
 @Component({
-  selector: 'std-todo-editor',
-  templateUrl: './todo-editor.component.html',
-  styleUrls: ['./todo-editor.component.scss'],
-  providers: [TodoEditorService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'std-todo-editor',
+    templateUrl: './todo-editor.component.html',
+    styleUrls: ['./todo-editor.component.scss'],
+    providers: [TodoEditorService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TodoEditorComponent implements OnInit {
   readonly todo = inject(TodoEditorService);

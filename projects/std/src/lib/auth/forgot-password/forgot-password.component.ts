@@ -5,9 +5,10 @@ import { finalize } from 'rxjs/operators';
 import { AuthService, AuthWithEmailAndPassword } from '@std';
 
 @Component({
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['../auth.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './forgot-password.component.html',
+    styleUrls: ['../auth.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ForgotPasswordComponent {
   private readonly auth = inject(AuthService);

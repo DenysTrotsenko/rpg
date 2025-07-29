@@ -4,10 +4,11 @@ import { ImperiumMaledictumCharacter } from '@imperium-maledictum-1e/models/char
 import { Characteristic, PsychicPower } from '@imperium-maledictum-1e/models/common';
 
 @Component({
-  selector: 'character-powers',
-  templateUrl: './character-powers.component.html',
-  styleUrls: ['./character-powers.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-powers',
+    templateUrl: './character-powers.component.html',
+    styleUrls: ['./character-powers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterPowersComponent {
   readonly data = inject(DataService);

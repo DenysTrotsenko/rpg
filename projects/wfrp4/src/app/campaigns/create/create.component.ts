@@ -15,9 +15,10 @@ import {
 import { CharacterService } from '../../character.service';
 
 @Component({
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CreateComponent implements OnInit, OnDestroy {
   readonly campaign = inject(CampaignService);

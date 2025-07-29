@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavListItemData } from '@std';
 
 @Component({
-  selector: 'app-rules',
-  templateUrl: './rules.component.html',
-  styleUrl: './rules.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-rules',
+    templateUrl: './rules.component.html',
+    styleUrl: './rules.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RulesComponent {
   readonly options: NavListItemData[] = [

@@ -9,9 +9,10 @@ interface VM extends Campaign {
 }
 
 @Component({
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListComponent {
   readonly campaigns$: Observable<VM[]> = combineLatest([

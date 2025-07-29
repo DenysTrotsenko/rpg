@@ -6,10 +6,11 @@ import {
 import { Characteristic, Talent } from '@imperium-maledictum-1e/models/common';
 
 @Component({
-  selector: 'character-talents',
-  templateUrl: './character-talents.component.html',
-  styleUrls: ['./character-talents.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-talents',
+    templateUrl: './character-talents.component.html',
+    styleUrls: ['./character-talents.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterTalentsComponent {
   readonly data = inject(DataService);

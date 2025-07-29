@@ -2,17 +2,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, Ou
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'file-input',
-  templateUrl: './file-input.component.html',
-  styleUrls: ['./file-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FileInputComponent),
-      multi: true
-    }
-  ]
+    selector: 'file-input',
+    templateUrl: './file-input.component.html',
+    styleUrls: ['./file-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => FileInputComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class FileInputComponent implements ControlValueAccessor {
   @Input() accept: string;

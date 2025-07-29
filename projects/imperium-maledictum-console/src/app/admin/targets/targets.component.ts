@@ -5,8 +5,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './targets.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './targets.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TargetsComponent {
   readonly form: FormGroup = new FormGroup({

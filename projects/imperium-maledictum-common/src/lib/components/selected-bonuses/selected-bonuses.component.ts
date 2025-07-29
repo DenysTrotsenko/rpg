@@ -14,19 +14,18 @@ import {
 export type BonusId = CharacteristicId | SkillId | SpecialisationId | TalentId;
 
 @Component({
-  selector: 'selected-bonuses',
-  templateUrl: './selected-bonuses.component.html',
-  styleUrls: ['./selected-bonuses.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [NgFor, SelectBonusComponent],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectedBonusesComponent),
-      multi: true
-    }
-  ]
+    selector: 'selected-bonuses',
+    templateUrl: './selected-bonuses.component.html',
+    styleUrls: ['./selected-bonuses.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgFor, SelectBonusComponent],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectedBonusesComponent),
+            multi: true
+        }
+    ]
 })
 export class SelectedBonusesComponent implements ControlValueAccessor {
   @Input() set value(bonuses: Bonus[]) {

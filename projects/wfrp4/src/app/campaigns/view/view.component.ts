@@ -20,9 +20,10 @@ import {
 } from '../../../../../std/src/lib/shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './view.component.html',
+    styleUrls: ['./view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ViewComponent {
   readonly campaign = inject(CampaignService);

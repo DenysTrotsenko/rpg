@@ -13,7 +13,7 @@ import { DataService } from '@im-common';
 
 
 @Component({
-  template: `
+    template: `
     <h1 mat-dialog-title>Add Item</h1>
     <div mat-dialog-content class="d-f fd-c" [formGroup]="form">
       <mat-form-field appearance="outline" style="align-items:stretch;">
@@ -58,7 +58,8 @@ import { DataService } from '@im-common';
     <div mat-dialog-actions>
       <button mat-button [mat-dialog-close]="null">Cancel</button>
       <button mat-flat-button color="primary" [disabled]="!form.valid" [mat-dialog-close]="form.getRawValue()">Add</button>
-    </div>`
+    </div>`,
+    standalone: false
 })
 export class AddItemDialogComponent {
   private readonly data = inject(DataService);

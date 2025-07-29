@@ -5,8 +5,9 @@ import { Role } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './roles.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './roles.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RolesComponent {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

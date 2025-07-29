@@ -29,10 +29,11 @@ interface VM {
 }
 
 @Component({
-  selector: 'character-equipment',
-  templateUrl: './character-equipment.component.html',
-  styleUrls: ['./character-equipment.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'character-equipment',
+    templateUrl: './character-equipment.component.html',
+    styleUrls: ['./character-equipment.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacterEquipmentComponent {
   readonly data: DataService = inject(DataService);

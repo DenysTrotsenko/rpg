@@ -15,9 +15,10 @@ interface SkillView {
 }
 
 @Component({
-  templateUrl: './skills.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './skills.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SkillsComponent {
   readonly opened$: BehaviorSubject<SkillId> = new BehaviorSubject<SkillId>(null);

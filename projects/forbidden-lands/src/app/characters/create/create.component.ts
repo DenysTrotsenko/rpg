@@ -34,9 +34,10 @@ import {
 import { AdvanceableValue, ImperiumMaledictumCharacter, ItemValue } from '@imperium-maledictum-1e/models/character';
 
 @Component({
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CreateComponent {
   // private readonly RANDOM_TALENTS_QUANTITY: 2 | 1 = Math.random() < .01 ? 2 : 1;

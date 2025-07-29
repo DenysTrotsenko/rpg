@@ -7,17 +7,16 @@ import { NgForOf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  templateUrl: './admin-users-edit.component.html',
-  styleUrls: ['./admin-users-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    NgForOf,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatListModule,
-    MatDialogModule
-  ]
+    templateUrl: './admin-users-edit.component.html',
+    styleUrls: ['./admin-users-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgForOf,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatListModule,
+        MatDialogModule
+    ]
 })
 export class AdminUsersEditComponent implements OnInit {
   readonly form: FormGroup = new FormGroup<any>({

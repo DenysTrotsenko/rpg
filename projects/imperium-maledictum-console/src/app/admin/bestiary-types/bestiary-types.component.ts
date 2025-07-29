@@ -5,8 +5,9 @@ import { BestiaryType } from '@imperium-maledictum-1e/models/common';
 import { getId16 } from '@std';
 
 @Component({
-  templateUrl: './bestiary-types.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './bestiary-types.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BestiaryTypesComponent implements OnInit {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

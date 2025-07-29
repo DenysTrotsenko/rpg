@@ -7,9 +7,10 @@ import { NAVIGATOR } from '../core/core.module';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProfileComponent {
   readonly form: UntypedFormGroup = new UntypedFormGroup({

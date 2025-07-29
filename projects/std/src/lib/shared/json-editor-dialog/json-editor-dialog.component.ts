@@ -6,11 +6,10 @@ import { MaterialModule } from '../../material/material.module';
 import { CodeEditorModule } from '../code-editor/code-editor.module';
 
 @Component({
-  standalone: true,
-  templateUrl: './json-editor-dialog.component.html',
-  styleUrls: ['./json-editor-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeEditorModule, MaterialModule, CommonModule]
+    templateUrl: './json-editor-dialog.component.html',
+    styleUrls: ['./json-editor-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CodeEditorModule, MaterialModule, CommonModule]
 })
 export class JsonEditorDialogComponent {
   readonly data = inject(MAT_DIALOG_DATA);

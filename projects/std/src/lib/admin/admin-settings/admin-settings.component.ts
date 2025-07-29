@@ -11,20 +11,19 @@ import { AsyncPipe, NgForOf } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  templateUrl: './admin-settings.component.html',
-  styleUrls: ['./admin-settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    AdminSettingsEditComponent,
-    MatToolbarModule,
-    MatButtonModule,
-    MatExpansionModule,
-    MatIconModule,
-    NgForOf,
-    MatTooltipModule,
-  ]
+    templateUrl: './admin-settings.component.html',
+    styleUrls: ['./admin-settings.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        AsyncPipe,
+        AdminSettingsEditComponent,
+        MatToolbarModule,
+        MatButtonModule,
+        MatExpansionModule,
+        MatIconModule,
+        NgForOf,
+        MatTooltipModule,
+    ]
 })
 export class AdminSettingsComponent {
   readonly items$: Observable<Setting[]> = this.setting.all$;

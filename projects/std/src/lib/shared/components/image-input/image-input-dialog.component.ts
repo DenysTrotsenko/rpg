@@ -9,10 +9,11 @@ export interface ImageInputDialogData {
 }
 
 @Component({
-  selector: 'std-image-input-dialog',
-  templateUrl: './image-input-dialog.component.html',
-  styleUrls: ['./image-input-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'std-image-input-dialog',
+    templateUrl: './image-input-dialog.component.html',
+    styleUrls: ['./image-input-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ImageInputDialogComponent {
   readonly storage = inject(StorageService);

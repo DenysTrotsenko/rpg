@@ -58,19 +58,18 @@ function getItemLabel(data: DataService, option: ItemBonusOption): string {
 }
 
 @Component({
-  selector: 'select-bonus',
-  templateUrl: './select-bonus.component.html',
-  styleUrls: ['./select-bonus.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [MatListModule, NgFor, NgIf, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule, MatTooltipModule],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectBonusComponent),
-      multi: true
-    }
-  ]
+    selector: 'select-bonus',
+    templateUrl: './select-bonus.component.html',
+    styleUrls: ['./select-bonus.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatListModule, NgFor, NgIf, GetByIdPipe, ReactiveFormsModule, MatFormFieldModule, MatTooltipModule],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectBonusComponent),
+            multi: true
+        }
+    ]
 })
 export class SelectBonusComponent implements ControlValueAccessor {
   private readonly data = inject(DataService);

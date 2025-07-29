@@ -5,9 +5,10 @@ import { DataService } from '@im-common';
 
 
 @Component({
-  templateUrl: './characteristics.component.html',
-  styleUrls: ['../references.base.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './characteristics.component.html',
+    styleUrls: ['../references.base.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CharacteristicsComponent {
   readonly characteristics$: Observable<Characteristic[]> = this.data.characteristics$;

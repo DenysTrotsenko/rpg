@@ -5,10 +5,11 @@ import { TodoTask, TodoStatus, TodoMode, TodoId } from './todo-editor.models';
 import { TodoEditorService } from './todo-editor.service';
 
 @Component({
-  selector: 'std-todo-task',
-  templateUrl: './todo-task.component.html',
-  styleUrls: ['./todo-task.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'std-todo-task',
+    templateUrl: './todo-task.component.html',
+    styleUrls: ['./todo-task.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TodoTaskComponent {
   static readonly ICONS: Map<TodoStatus, string> = new Map()
