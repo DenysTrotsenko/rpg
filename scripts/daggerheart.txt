@@ -9,15 +9,15 @@ PROFICIENCY: 1
 
 AGILITY: 0 (Sprint, Leap, Maneuver)
 STRENGTH: -1 (Lift, Smash, Grapple)
-FINESSE: +1 (Control, Hide, Tinker)
+FINESSE: +2 (Control, Hide, Tinker)
 INSTINCT: +1 (Perceive, Sense, Navigate)
-PRESENCE: +2 (Charm, Perform, Deceive)
+PRESENCE: +3 (Charm, Perform, Deceive)
 KNOWLEDGE: 0 (Recall, Analyze, Comprehend)
 
 EXPERIENCES:
-Friend to All
-Fake It Till You Make It
-Wolf in Sheep’s Clothing
+2 Friend to All
+2 Fake It Till You Make It
+2 Beyond Ones Notice
 
 Luckbender: Once per session, after you or a willing ally within Close range makes an action roll, you can spend 3 Hope
 to reroll the Duality Dice.
@@ -40,50 +40,62 @@ Heart of a Poet: After you make an action roll to impress, persuade, or offend s
 to the roll.
 
 
-BOOK OF AVA
-Level 1 Codex Grimoire
-Recall Cost: 2
-
-Power Push: Make a Spellcast Roll against a target within Melee range. On a success, they’re knocked back to Far range
-and take d10+2 magic damage using your Proficiency.
-
-Tava’s Armor: Spend a Hope to give a target you can touch a +1 bonus to their Armor Score until their next rest or you
-cast Tava’s Armor again.
-
-Ice Spike: Make a Spellcast Roll (12) to summon a large ice spike within Far range. If you use it as a weapon, make
-the Spellcast Roll against the target’s Difficulty instead. On a success, deal d6 physical damage using your Proficiency.
-
 DEFT DECEIVER
 Level 1 Grace Ability
 Recall Cost: 0
 Spend a Hope to gain advantage on a roll to deceive or trick someone into believing a lie you tell them.
 
+
+BOOK OF TYFAR
+Level 1 Codex Grimoire
+Recall Cost: 2
+
+Wild Flame: Make a Spellcast Roll against up to three adversaries within Melee range. Targets you succeed against take
+2d6 magic damage and must mark a Stress as flames erupt from your hand.
+
+Magic Hand: You conjure a magical hand with the same size and strength as your own within Far range.
+
+Mysterious Mist: Make a Spellcast Roll (13) to cast a temporary thick fog that gathers in a stationary area within
+Very Close range. The fog heavily obscures this area and everything in it.
+
+
+BOOK OF SITIL
+Level 2 Codex Grimoire
+Recall Cost: 2
+
+Adjust Appearance: You magically shift your appearance and clothing to avoid recognition.
+
+Parallela: Spend 2 Hope to cast this spell on yourself or an ally within Close range. The next time the target makes an
+attack, they can hit an additional target within range that their attack roll would succeed against. You can only hold
+this spell on one creature at a time.
+
+Illusion: Make a Spellcast Roll (14). On a success, create a temporary visual illusion no larger than you within Close
+range that lasts for as long as you look at it. It holds up to scrutiny until an observer is within Melee range.
+
+
 WEAPONS & ARMOR
-Rapier       Presence Far   d8 phy One-Handed Quick: 1 stress -> +1
-Small Dagger Finesse  Melee d4 phy One-Handed Paired: +2 melee damage
-Gambeson Armor        6+1/12+1 3              Flexible: +1 to Evasion
+Rapier         Presence Far   d8 phy One-Handed Quick: 1 stress -> +1
+Small Dagger   Finesse  Melee d4 phy One-Handed Paired: +2 melee damage
+Gambeson Armor          6+1/12+1 3              Flexible: +1 to Evasion
 
 ITEMS
 A romance novel
 Potion of Endurance
 Potion of Health
-
-STRESS: 2
-HOPE: 2
-
-Rafon
-Quiran Wintersong
-Rob the Red (Dwarf)
-Jemna Gleemsilver (Gnome)
-
 Golden Dragon Amulet
 
+STRESS: 1
+HOPE: 3
+
+Rafon
+Shark Al Guul
+Quiran Wintersong
+Purple Cultist - main
+Black Robe - not main
+Rob the Red (Dwarf)
+Jemna Gleemsilver (Gnome)
 Mercenary Camp
 Town where hired, tavern
-
-Argus, the Prophet
-in Baldurs Gate
-Frullam Mondrath, F the Half-Elf
-Landragossa Signwrath,
-
-
+Argus, the Prophet in Baldurs Gate
+Frullam Mondrath, Female Cultist (Half-Elf)
+Landragossa Signwrath, Blue (Dragonborn)

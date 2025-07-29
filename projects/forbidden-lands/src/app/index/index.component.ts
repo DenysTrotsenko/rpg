@@ -14,7 +14,8 @@ const LOGGED_OPTIONS: NavListItemData[] = [
     icon: 'handyman',
     label: 'Tools',
     children: [
-      { link: './hex', label: 'Hex Map' },
+      { link: 'hex', label: 'Hex Map' },
+      { link: 'eu4map', label: 'World Map' },
     ]
   },
   { link: './profile', icon: 'account_circle', label: 'Profile' },

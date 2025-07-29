@@ -12,6 +12,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ImperiumMaledictumCommonModule } from '@im-common';
 import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideStore } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,16 @@ import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
     provideFunctions(() => getFunctions()),
     { provide: MatDialogRef, useValue: {} },
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: environment.ripple }
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: environment.ripple },
+    // provideStore(),
+    // provideStoreDevtools({
+    //   maxAge: 25,
+    //   logOnly: !environment.production,
+    //   autoPause: true,
+    //   trace: false,
+    //   traceLimit: 75,
+    //   connectInZone: true
+    // })
   ],
   bootstrap: [
     AppComponent
