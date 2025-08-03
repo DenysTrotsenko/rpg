@@ -1,4 +1,4 @@
-@for (bonus of bonuses; track trackByIndex(i, bonus); let i = $index) {
+@for (bonus of bonuses; let i = $index; track i) {
   <select-bonus
     class="mb-15"
     [value]="bonus"

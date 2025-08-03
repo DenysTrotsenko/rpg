@@ -11,7 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
     templateUrl: './admin-dictionary.component.html',
@@ -19,16 +18,15 @@ import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-
     providers: [AdminDictionaryService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-    AsyncPipe,
-    MatProgressSpinnerModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    KeyValuePipe,
-    JsonEditorDialogComponent
-]
+      AsyncPipe,
+      MatProgressSpinnerModule,
+      MatToolbarModule,
+      MatButtonModule,
+      ReactiveFormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      KeyValuePipe,
+    ]
 })
 export class AdminDictionaryComponent implements OnInit, OnDestroy {
   private readonly admin = inject(AdminDictionaryService);

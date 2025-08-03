@@ -51,10 +51,9 @@
     "firebase-admin": "^12.2.0",
     "firebase-functions": "^5.0.1",
     "material-symbols": "^0.20.0",
-    "pixi.js": "^8.10.2",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.1",
-    "vanilla-jsoneditor": "^0.17.3",
+    "vanilla-jsoneditor": "^3.8.0",
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
@@ -71,9 +70,9 @@
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.22.0",
     "firebase-functions-test": "^3.0.0",
-    "jasmine-core": "~3.6.0",
+    "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.3.16",
+    "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",

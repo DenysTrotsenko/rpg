@@ -69,5 +69,4 @@ export class SelectedBonusesComponent implements ControlValueAccessor {
   writeValue(value: number): void {}
   registerOnChange(fn: any): void { this.propagateChange = fn; }
   registerOnTouched(fn: any): void {}
-  trackByIndex(index: number): unknown { return index; }
 }

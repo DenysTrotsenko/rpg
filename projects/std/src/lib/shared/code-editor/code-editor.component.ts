@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { JSONEditor, Mode, TextContent } from 'vanilla-jsoneditor';
+import { createJSONEditor, JsonEditor, Mode, TextContent } from 'vanilla-jsoneditor';
 import { takeUntil, tap } from 'rxjs/operators';
 
 /* Editor documentation: https://github.com/josdejong/svelte-jsoneditor */
@@ -33,14 +33,14 @@ export class CodeEditorComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('editor', { static: true }) editorRef: ElementRef;
 
-  private editor: JSONEditor;
+  private editor: JsonEditor;
 
   private json$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   private destroy$: Subject<void> = new Subject<void>();
 
   ngAfterViewInit(): void {
-    this.editor = new JSONEditor({
+    this.editor = createJSONEditor({
       target: this.editorRef.nativeElement,
       props: {
         content: { json: this.json$.getValue() },

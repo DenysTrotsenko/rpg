@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { CodeEditorModule } from '../../shared/code-editor/code-editor.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-editor-dialog.component';
 
 @Component({
     templateUrl: './admin-base.component.html',
@@ -22,18 +21,17 @@ import { JsonEditorDialogComponent } from '../../shared/json-editor-dialog/json-
     providers: [AdminBaseService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-    AsyncPipe,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    CodeEditorModule,
-    MatTooltipModule,
-    ReactiveFormsModule,
-    JsonEditorDialogComponent
-]
+      AsyncPipe,
+      MatButtonModule,
+      MatIconModule,
+      MatToolbarModule,
+      MatSelectModule,
+      MatExpansionModule,
+      MatProgressSpinnerModule,
+      CodeEditorModule,
+      MatTooltipModule,
+      ReactiveFormsModule,
+    ]
 })
 export class AdminBaseComponent<T extends HasId<K> & HasCommonFields & HasSystem, K> implements OnInit, OnDestroy {
   readonly admin = inject(AdminBaseService<T, K>);
