@@ -1,0 +1,15 @@
+<mat-accordion>
+  @for (i of talents$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        @if (i.labels?.requirements) {
+          <p matLine><b>Requirements:</b> {{i.labels.requirements}}</p>
+        }
+        <p matLine><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

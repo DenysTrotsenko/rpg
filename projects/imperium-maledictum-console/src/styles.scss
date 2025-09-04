@@ -1,0 +1,55 @@
+@use '@angular/material' as mat;
+@import 'material-symbols';
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
+@import 'variables';
+@import './styles/variables';
+@import './styles/typography';
+
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy($general-typography);`
+@include mat.elevation-classes();
+@include mat.app-background();
+@include mat.all-component-themes($app-theme);
+@include mat.all-component-typographies(mat.m2-define-typography-config($font-family: '"Catamaran", sans-serif'));
+
+html, body {
+  overscroll-behavior-x: none;
+}
+
+// *****
+table.mat-mdc-table {
+  background: none;
+  border-spacing: 5px;
+  border: 1px solid gray;
+  border-radius: 4px;
+
+  .mat-mdc-cell {
+    padding: 0;
+  }
+}
+
+/* Tooltip */
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  max-width: 300px !important;
+  max-height: unset !important;
+  line-height: 1.25;
+  white-space: pre-line;
+}
+
+.snackbar-error {
+  color: white;
+  background-color: $color-warn;
+}
+
+.toolbar-main {
+  padding: 0 10px !important;
+  margin: -10px 0 10px -10px !important;
+  box-sizing: content-box !important;
+}

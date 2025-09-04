@@ -1,0 +1,39 @@
+@if (task$ | async; as task) {
+  <div class="d-f ai-c g-5 show-on-hover-area">
+    <button mat-icon-button (click)="onStatusClick([])" [class]="style$ | async">
+      <mat-icon>{{icon$ | async}}</mat-icon>
+    </button>
+    <div class="p-r f-1">
+      <p class="d-ib m-0" [class]="style$ | async">
+        {{task.hidden && hide ? '[ HIDDEN ]' : task?.name}}
+      </p>
+      <span class="experience"> ({{task?.experience}}xp)</span>
+      @if (mode === 'edit') {
+        <span class="actions">
+          <button mat-icon-button (click)="onAddClick([])">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onEditClick([])">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDeleteClick([])">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      }
+    </div>
+  </div>
+}
+<div class="d-f fd-c pl-30">
+  @for (i of (task$ | async)?.tasks; track i) {
+    <std-todo-task
+      [task]="i"
+      [mode]="mode"
+      [hide]="hide"
+      (addClick)="onAddClick($event)"
+      (deleteClick)="onDeleteClick($event)"
+      (editClick)="onEditClick($event)"
+      (statusClick)="onStatusClick($event)">
+    </std-todo-task>
+  }
+</div>

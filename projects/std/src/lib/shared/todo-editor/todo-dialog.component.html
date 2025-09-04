@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>{{task ? 'Edit' : 'Add'}} Task</h1>
+  <div mat-dialog-content class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>XP</mat-label>
+      <input matInput type="number" formControlName="experience">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Characters</mat-label>
+      <mat-select formControlName="characters" multiple>
+        @for (i of characters; track i) {
+          <mat-option [value]="i.id">
+            {{i?.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <div class="d-f g-10 mb-20">
+      <mat-checkbox formControlName="hidden">Hidden</mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions class="g-5 jc-fe">
+    <button mat-button [mat-dialog-close]="null">
+      Cancel
+    </button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">
+      {{task ? 'Edit' : 'Add'}}
+    </button>
+  </div>
+</form>

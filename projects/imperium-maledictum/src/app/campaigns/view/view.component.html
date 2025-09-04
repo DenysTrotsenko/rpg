@@ -1,0 +1,181 @@
+@if (campaign$ | async; as campaign;) {
+  <mat-toolbar>
+    <h1>
+      Campaign: <span class="ff-g">{{campaign.name}}</span>
+    </h1>
+    <span class="f-1"></span>
+    @if ((mode$ | async) === 'edit') {
+      <div class="d-f g-10">
+        <button mat-flat-button color="primary" (click)="onAddEventClick(campaign)">
+          + Event
+        </button>
+        <button mat-flat-button color="primary" (click)="onAddLocationClick(campaign)">
+          + Location
+        </button>
+        <button mat-flat-button color="primary" (click)="onAddPersonaClick(campaign)">
+          + Persona
+        </button>
+        <button mat-flat-button color="primary" (click)="onAddExperienceClick(campaign)">
+          + XP
+        </button>
+        <button mat-flat-button color="accent" (click)="onJsonClick(campaign)">
+          JSON
+        </button>
+        <image-upload color="accent" [path]="path$ | async"></image-upload>
+      </div>
+    }
+  </mat-toolbar>
+  <mat-tab-group class="p-10">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="mr-5">event</mat-icon>
+        Events
+      </ng-template>
+      <mat-accordion class="o-a d-b mt-10">
+        @for (i of campaign.events; track i) {
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="ff-g">
+                {{i.name}}@if (i.short) {
+                <span class="c-gray">, {{i.short}}</span>
+              }
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditEventClick(i, campaign)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteEventClick(i.id, campaign)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            @if (i.image) {
+              <img class="event-image" [src]="i.image" alt="image">
+            }
+            @if (i.description) {
+              <p matLine class="ws-pw">{{i.description}}</p>
+            }
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="mr-5">location_on</mat-icon>
+      Locations
+    </ng-template>
+    <mat-accordion class="o-a d-b mt-10">
+      @for (i of campaign.locations; track i) {
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditLocationClick(i, campaign)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteLocationClick(i.id, campaign)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            @if (i.image) {
+              <img class="event-image" [src]="i.image" alt="image">
+            }
+            @if (i.description) {
+              <p matLine class="ws-pw">{{i.description}}</p>
+            }
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="mr-5">person</mat-icon>
+      Personas
+    </ng-template>
+    <mat-accordion class="o-a d-b mt-10">
+      @for (i of campaign.personas; track i) {
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditPersonaClick(i, campaign)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeletePersonaClick(i.id, campaign)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            @if (i.image) {
+              <img class="event-image" [src]="i.image" alt="image">
+            }
+            @if (i.description) {
+              <p matLine class="ws-pw">{{i.description}}</p>
+            }
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </mat-tab>
+  <mat-tab label="XP">
+    <mat-card appearance="outlined" class="mt-10 mb-10">
+      <mat-card-header>
+        <mat-card-title class="ff-g">TOTAL</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        @if (experience$ | async; as xps) {
+          <table class="mat-table bs-0 w-100">
+            <tr class="mat-row">
+              @for (xp of xps; track xp) {
+                <td class="mat-cell p-5">{{xp.name}}</td>
+              }
+            </tr>
+            <tr class="mat-row">
+              @for (xp of xps; track xp) {
+                <td class="mat-cell p-5">{{xp.value}}</td>
+              }
+            </tr>
+          </table>
+        }
+      </mat-card-content>
+    </mat-card>
+    <mat-accordion class="o-a d-b mt-10">
+      @for (i of campaign.experience; track trackById($index, i)) {
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="ff-g">
+              {{i.name}}
+              <span class="f-1"></span>
+              <button mat-icon-button (click)="onEditExperienceClick(i, campaign)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteExperienceClick(i.id, campaign)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            @if (i.description) {
+              <p matLine class="ws-pw">{{i.description}}</p>
+            }
+            <std-todo-editor class="mt-10"
+              [mode]="mode$ | async"
+              [hide]="hide$ | async"
+              [characters]="characters$ | async"
+              [tasks]="i.tasks"
+              (valueChange)="onResultChange($event, campaign, i)">
+            </std-todo-editor>
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </mat-tab>
+</mat-tab-group>
+}

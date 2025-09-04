@@ -1,0 +1,14 @@
+{
+  "name": "std",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/cdk": "^10.2.0",
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14",
+    "@angular/forms": "^10.0.11",
+    "@angular/material": "^10.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

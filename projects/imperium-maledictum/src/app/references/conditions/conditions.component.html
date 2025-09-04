@@ -1,0 +1,12 @@
+<mat-accordion>
+  @for (i of conditions$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">{{i.name}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <p matLine class="ws-pw"><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

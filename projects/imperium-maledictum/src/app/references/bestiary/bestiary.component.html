@@ -1,0 +1,22 @@
+<mat-accordion>
+  @for (i of bestiary$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle (afterExpand)="opened$.next(i.id)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="ff-g">{{i.name}}</span>
+          <span class="ml-10 c-gray">
+            (<interactive [id]="i.size"></interactive>&nbsp;<interactive [id]="i.type"></interactive>, <interactive [id]="i.faction"></interactive>, <interactive [id]="i.role"></interactive>)
+          </span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <div>
+          <!--        <p matLine class="c-gray"><i>{{i.description}}</i></p>-->
+          <!--        <p *ngFor="let j of specialisations$ | async" matLine>-->
+          <!--          <b>{{j.name}}:</b> {{j.description}}-->
+        <!--        </p>-->
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
+}
+</mat-accordion>

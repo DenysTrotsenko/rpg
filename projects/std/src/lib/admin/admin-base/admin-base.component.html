@@ -1,0 +1,60 @@
+@if (loading$ | async) {
+  <mat-spinner color="accent" style="margin: 10px auto;"></mat-spinner>
+} @else {
+  <mat-toolbar class="f-0-0-a g-10">
+    <span class="fs-14">Sort By:</span>
+    <mat-select class="select-in-toolbar fs-14" style="width:200px;" [formControl]="sort">
+      @for (i of properties$ | async; track i) {
+        <mat-option class="fs-14"  [value]="i">{{i}}</mat-option>
+      }
+    </mat-select>
+    <span class="f-1"></span>
+    <button mat-flat-button color="primary" (click)="onAddClick()">
+      Add
+    </button>
+    <button mat-flat-button color="primary" (click)="onEditorClick()">
+      JSON
+    </button>
+    <button mat-flat-button color="accent" [disabled]="!(changed$.value && valid$.value && !loading$.value)" (click)="onSaveClick()">
+      Save
+    </button>
+  </mat-toolbar>
+  @if (duplicates$ | async; as duplicates) {
+    @if (!!duplicates?.length) {
+      <p class="validation-message">
+        List have duplicated IDs: {{duplicates}}
+      </p>
+    }
+  }
+  <mat-accordion class="o-a p-5">
+    @for (i of items$ | async; track i) {
+      <mat-expansion-panel [hideToggle]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="p-r ff-g mr-0">
+            <span class="f-1 d-f o-h" style="white-space: nowrap; width: 0;">
+              {{i.name}}
+              @if (i.system?.VALUE_REQUIRED) {
+                <span class="ml-5">({{i.system?.VALUE_PLACEHOLDER ?? 'X'}})</span>
+              }
+              <span class="ml-10 c-gray">({{i.id}})</span>
+            </span>
+            <span class="visible-on-hover f-0">
+              <button mat-icon-button (click)="onEditClick(i)" matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onCloneClick(i)" matTooltip="Clone">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+              <button mat-icon-button (click)="onDeleteClick(i.id)" matTooltip="Remove">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <std-code-editor [readonly]="true" [json]="i"></std-code-editor>
+        </ng-template>
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+}

@@ -1,0 +1,30 @@
+<div class="d-f g-5">
+  @if (mode === 'edit') {
+    <button mat-flat-button color="primary" class="f-1" (click)="onAddClick([])">
+      Add Task
+    </button>
+  }
+  <mat-button-toggle-group multiple appearance="standard"
+    [value]="filter"
+    (valueChange)="onFilterChange($event)">
+    <mat-button-toggle value="active">Active</mat-button-toggle>
+    <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    <mat-button-toggle value="failed">Failed</mat-button-toggle>
+  </mat-button-toggle-group>
+  @if (mode === 'edit') {
+    <button mat-flat-button color="accent" (click)="onJsonClick()">
+      JSON
+    </button>
+  }
+</div>
+@for (i of filtered$ | async; track i) {
+  <std-todo-task
+    [task]="i"
+    [mode]="mode"
+    [hide]="hide"
+    (addClick)="onAddClick($event)"
+    (statusClick)="onStatusClick($event)"
+    (editClick)="onEditClick($event)"
+    (deleteClick)="onDeleteClick($event)">
+  </std-todo-task>
+}

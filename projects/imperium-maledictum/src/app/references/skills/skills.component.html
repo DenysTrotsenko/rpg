@@ -1,0 +1,19 @@
+<mat-accordion>
+  @for (i of skills$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle (afterExpand)="opened$.next(i.id)">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">{{i.name}} ({{i.characteristic}})</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <div>
+          <p matLine class="c-gray"><i>{{i.description}}</i></p>
+          @for (j of specialisations$ | async; track j) {
+            <p matLine>
+              <b>{{j.name}}:</b> {{j.description}}
+            </p>
+          }
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

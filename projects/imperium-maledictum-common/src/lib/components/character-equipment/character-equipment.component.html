@@ -1,0 +1,45 @@
+@if (items?.length) {
+  <b class="c-gray mb-5">Equipment: </b>
+  @for (i of items; track i) {
+    <p class="comma-separated ws-pl c-pointer mb-0" [matTooltip]="i.tooltip">
+      @for (q of i.qualities; track q) {
+        <interactive class="space-separated c-green" [id]="q.id"></interactive>
+      }
+      @for (f of i.flaws; track f) {
+        <interactive class="space-separated c-red" [id]="f.id"></interactive>
+      }
+      <span>{{i.name}}</span>
+      <span class="c-gray">
+        (@if (i.specialisation) {
+        <span class="comma-separated">{{i.specialisation}}</span>
+      }
+      @if (i.damage) {
+        <span class="comma-separated"><b>Dam </b>{{i.damage}}</span>
+      }
+      @if (i.penetration) {
+        <span class="comma-separated"><b>Pen </b>{{i.damage}}</span>
+      }
+      @if (i.rend) {
+        <span class="comma-separated"><b>Rend </b>{{i.damage}}</span>
+      }
+      @if (i.range) {
+        <span class="comma-separated"><b>Rng </b>{{i.range}}</span>
+      }
+      @if (i.magazine) {
+        <span class="comma-separated"><b>Mag </b>{{i.magazine}}</span>
+      }
+      <span class="comma-separated"><b>Enc </b>{{i.encumbrance}}</span>
+      @if (i.traits?.length) {
+        <span class="comma-separated"><b>Traits: </b>@for (t of i.traits; track t) {
+        <interactive class="comma-separated" [id]="t.id"></interactive>
+      }</span>
+    }
+    @if (i.modifications?.length) {
+      <span class="comma-separated"><b>Mods: </b>@for (m of i.modifications; track m) {
+      <interactive class="comma-separated" [id]="m.id"></interactive>
+    }</span>
+    })
+  </span>
+</p>
+}
+}

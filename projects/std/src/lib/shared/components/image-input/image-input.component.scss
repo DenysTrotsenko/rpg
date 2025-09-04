@@ -1,0 +1,21 @@
+:host {
+  .image, .no-image {
+    cursor: pointer;
+  }
+
+  .image {
+    object-fit: cover;
+  }
+
+  .no-image {
+    position: relative;
+    box-shadow: inset 0 0 0 1px white;
+  }
+
+  .no-image-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}

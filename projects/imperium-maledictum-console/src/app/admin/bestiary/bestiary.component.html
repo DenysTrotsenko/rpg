@@ -1,0 +1,137 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Add NPC</h1>
+  <div mat-dialog-content class="d-f fd-c pt-5">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </ng-container>
+    <div class="d-f g-10">
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Size</mat-label>
+        <mat-select formControlName="size">
+          @for (i of sizes$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          @for (i of types$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Faction</mat-label>
+        <mat-select formControlName="faction">
+          @for (i of factions$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          @for (i of roles$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-f jc-sb" formArrayName="characteristics">
+      @for (characteristic of characteristics$ | async; track trackById(i, characteristic); let i = $index) {
+        <mat-form-field
+          [formGroupName]="i"
+          appearance="outline"
+          style="width:80px;">
+          <mat-label>{{characteristic.labels?.abbreviation}}</mat-label>
+          <input matInput type="number"
+            formControlName="value"
+            [min]="10"
+            [max]="characteristicMax$ | async"
+            [step]="5">
+        </mat-form-field>
+      }
+    </div>
+    <mat-form-field appearance="outline" style="align-items:stretch;">
+      <mat-label>Traits</mat-label>
+      <mat-select formControlName="traits" multiple>
+        @for (i of traits$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="align-items:stretch;">
+      <mat-label>Powers</mat-label>
+      <mat-select formControlName="powers" multiple>
+        @for (i of powers$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id">
+            {{i.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <div class="d-f g-5 fw-w">
+      <ng-container formArrayName="skills">
+        @for (skill of formSkills$ | async; track trackById(i, skill); let i = $index) {
+          <mat-form-field
+            [formGroupName]="i"
+            appearance="outline">
+            <mat-label>{{skill.name}}</mat-label>
+            <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+          </mat-form-field>
+        }
+      </ng-container>
+      <ng-container formArrayName="specialisations">
+        @for (spec of formSpecialisations$ | async; track trackById(i, spec); let i = $index) {
+          <mat-form-field
+            [formGroupName]="i"
+            appearance="outline">
+            <mat-label>
+              {{(spec.skill | getById)?.name}} ({{spec.name}}) @if (spec.details) {
+              <span>[{{spec.details}}]</span>
+            }
+          </mat-label>
+          <input matInput type="number" formControlName="value" [min]="0" [max]="20" [step]="5">
+        </mat-form-field>
+      }
+    </ng-container>
+  </div>
+  <div class="d-f fd-c g-5">
+    @for (item of formItems$ | async; track trackById(i, item); let i = $index) {
+      <div>{{item}}</div>
+    }
+  </div>
+</div>
+<div mat-dialog-actions class="g-5">
+  <button mat-stroked-button color="primary" (click)="onAddSkillClick()">
+    Add Skill
+  </button>
+  <button mat-stroked-button color="primary" (click)="onAddSpecialisationClick()">
+    Add Specialisation
+  </button>
+  <button mat-stroked-button color="primary" (click)="onAddItemClick()">
+    Add Item
+  </button>
+  <span class="f-1"></span>
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+</div>
+</form>

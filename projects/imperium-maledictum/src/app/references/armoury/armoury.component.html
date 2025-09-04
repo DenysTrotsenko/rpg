@@ -1,0 +1,64 @@
+<h1 class="mb-5 ff-g">Qualities</h1>
+<mat-accordion>
+  @for (i of itemQualities$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">
+          {{i.name}}
+          <span class="ml-10 c-gray">{{i.id}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <p matLine><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>
+<h1 class="mt-10 mb-5 ff-g">Flaws</h1>
+<mat-accordion>
+  @for (i of itemFlaws$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">
+          {{i.name}}
+          <span class="ml-10 c-gray">{{i.id}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <p matLine><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>
+<h1 class="mt-10 mb-5 ff-g">Traits</h1>
+<mat-accordion>
+  @for (i of itemTraits$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">
+          {{i.name}}
+          <span class="ml-10 c-gray">{{i.id}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <p matLine><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>
+<h1 class="mt-10 mb-5 ff-g">Modifications</h1>
+<mat-accordion>
+  @for (i of itemModifications$ | async; track trackById($index, i)) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ff-g">
+          {{i.name}}
+          <span class="ml-10 c-gray">{{i.id}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <p matLine><i>{{i.labels?.description}}</i></p>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

@@ -1,0 +1,37 @@
+@import "../../../../src/styles/variables";
+
+.show-on-hover-area {
+  .actions {
+    display: none;
+    position: absolute;
+    top: -50%;
+    right: 0;
+  }
+
+  &:hover {
+    .actions {
+      display: initial;
+    }
+  }
+}
+
+.experience {
+  color: $color-gray-400;
+}
+
+button.task-completed {
+  color: $color-green;
+}
+
+button.task-failed {
+  color: $color-red;
+}
+
+p.task-completed,
+p.task-failed {
+  color: $color-gray;
+}
+
+p.task-failed {
+  text-decoration: line-through;
+}

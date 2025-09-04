@@ -1,0 +1,8 @@
+@if (talents.length > 0) {
+  <p>
+    <b class="c-gray">Talents: </b>
+    @for (i of talents; track i) {
+      <span class="comma-separated ws-pl c-pointer" [matTooltip]="i.labels?.tooltip">{{i.name}}</span>
+    }
+  </p>
+}

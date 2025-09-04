@@ -1,0 +1,9 @@
+<button type="button" mat-flat-button [color]="color" (click)="file.click()">
+  <div class="d-f g-5 ai-c">
+    <span>{{label}}</span>
+    @if (loading) {
+      <mat-spinner [diameter]="16"></mat-spinner>
+    }
+  </div>
+</button>
+<input #file type="file" hidden [accept]="accept" [multiple]="multiple" (change)="onFileChange($event)">

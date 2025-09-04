@@ -1,0 +1,43 @@
+<button type="button" class="w-100 mb-10" mat-button [disabled]="!form.valid" (click)="onAddClick()">
+  Add System Variable
+</button>
+<ng-container [formGroup]="form">
+  @for (group of entries.controls; track group; let i = $index) {
+    <div class="d-f ai-b" [formGroup]="getFormGroup(i)">
+      <mat-form-field appearance="outline" class="mr-5">
+        <mat-label>Key</mat-label>
+        <input matInput formControlName="key">
+        <mat-error>Required. Uppercase letters, numbers and underscores only.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mr-10">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" (selectionChange)="onTypeChange($event.value, group)">
+          <mat-option value="string">String</mat-option>
+          <mat-option value="number">Number</mat-option>
+          <mat-option value="boolean">Boolean</mat-option>
+        </mat-select>
+      </mat-form-field>
+      @if (group.get('type').value === 'string') {
+        <mat-form-field appearance="outline">
+          <mat-label>Value</mat-label>
+          <input type="text" matInput formControlName="value">
+          <mat-error>Required.</mat-error>
+        </mat-form-field>
+      }
+      @if (group.get('type').value === 'number') {
+        <mat-form-field appearance="outline">
+          <mat-label>Value</mat-label>
+          <input type="number" matInput formControlName="value">
+          <mat-error>Required.</mat-error>
+        </mat-form-field>
+      }
+      @if (group.get('type').value === 'boolean') {
+        <mat-checkbox formControlName="value"></mat-checkbox>
+      }
+      <span class="f-1"></span>
+      <button type="button" mat-icon-button class="delete-btn" (click)="onRemoveClick(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  }
+</ng-container>

@@ -1,0 +1,106 @@
+@import "variables";
+
+$properties:
+  'g'  'gap',
+  'cg' 'column-gap',
+  'rg' 'row-gap',
+  'm'  'margin',
+  'mt' 'margin-top',
+  'mr' 'margin-right',
+  'mb' 'margin-bottom',
+  'ml' 'margin-left',
+  'p'  'padding',
+  'pt' 'padding-top',
+  'pr' 'padding-right',
+  'pb' 'padding-bottom',
+  'pl' 'padding-left';
+$step: 5;
+
+@for $i from 0 through 10 {
+  $value: $step * $i;
+
+  @each $class, $property in $properties {
+    .#{$class}-#{$value} { #{$property}: #{$value}px !important; }
+  }
+}
+
+.p-r { position: relative !important; }
+
+.d-b { display: block !important; }
+.d-ib { display: inline-block !important; }
+
+.d-f { display: flex !important; }
+.d-n { display: none !important; }
+.d-if { display: inline-flex !important; }
+.fd-c { flex-direction: column !important; }
+.jc-sb { justify-content: space-between !important; }
+.jc-fs { justify-content: flex-start !important; }
+.jc-fe { justify-content: flex-end !important; }
+.ai-fs { align-items: flex-start !important; }
+.ai-b { align-items: baseline !important; }
+.ai-c { align-items: center !important; }
+.ai-s { align-items: stretch !important; }
+.fw-w { flex-wrap: wrap !important; }
+.fw-nw { flex-wrap: nowrap !important; }
+.as-fs { align-self: flex-start !important; }
+.f-0 { flex: 0 !important; }
+.f-1 { flex: 1 !important; }
+.f-0-0-a { flex: 0 0 auto !important; }
+
+.w-100 { width: 100% !important; }
+
+.lh-0 { line-height: 0 !important; }
+.bs-0 { border-spacing: 0 !important; }
+
+.ws-nw { white-space: nowrap !important; }
+.ws-pw { white-space: pre-wrap !important; }
+
+.c-pointer { cursor: pointer !important; }
+.c-grab { cursor: grab !important; }
+
+.bs-bb { box-sizing: border-box !important; }
+
+.c-red { color: $color-red !important; }
+.c-pink { color: $color-pink !important; }
+.c-purple { color: $color-purple !important; }
+.c-deep-purple { color: $color-deep-purple !important; }
+.c-indigo { color: $color-indigo !important; }
+.c-blue { color: $color-blue !important; }
+.c-light-blue { color: $color-light-blue !important; }
+.c-cyan { color: $color-cyan !important; }
+.c-teal { color: $color-teal !important; }
+.c-green { color: $color-green !important; }
+.c-light-green { color: $color-light-green !important; }
+.c-lime { color: $color-lime !important; }
+.c-yellow { color: $color-yellow !important; }
+.c-amber { color: $color-amber !important; }
+.c-orange { color: $color-orange !important; }
+.c-deep-orange { color: $color-deep-orange !important; }
+.c-brown { color: $color-brown !important; }
+.c-blue-gray { color: $color-blue-gray !important; }
+.c-gray { color: $color-gray !important; }
+
+.comma-separated:not(:last-child)::after { content: ',\00a0' !important; }
+.space-separated:not(:last-child)::after { content: '\00a0' !important; }
+
+.va-t { vertical-align: top !important; }
+
+.o-h { overflow: hidden !important; }
+.o-a { overflow: auto !important; }
+
+.pe-n { pointer-events: none !important; }
+
+.ta-l { text-align: left !important; }
+.ta-c { text-align: center !important; }
+.ta-r { text-align: right !important; }
+
+.cc-2 { column-count: 2 !important; }
+.cc-3 { column-count: 3 !important; }
+.cc-4 { column-count: 4 !important; }
+
+/* Mobile-only styles */
+@media only screen and (max-width: 600px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}

@@ -1,0 +1,27 @@
+@if (valid) {
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list dense>
+        @for (i of settingOptions$ | async; track i) {
+          <a mat-list-item [routerLink]="i.link" routerLinkActive="active">
+            <span>{{i.label}}</span>
+          </a>
+        }
+        <mat-divider></mat-divider>
+        @for (i of otherOptions$ | async; track i) {
+          <a mat-list-item [routerLink]="i.link" routerLinkActive="active">
+            <span>{{i.label}}</span>
+          </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+}
+@if (!valid) {
+  <p class="validation-message">
+    You have a duplicated json files in routes > data > path.
+  </p>
+}

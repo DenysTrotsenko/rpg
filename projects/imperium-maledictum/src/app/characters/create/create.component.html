@@ -1,0 +1,180 @@
+<mat-toolbar>
+  <h1>Character Creation</h1>
+</mat-toolbar>
+<mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <!-- STEP 1: CHARACTERISTICS -->
+  <mat-step [stepControl]="step1">
+    <form [formGroup]="step1" class="d-f fd-c">
+      <ng-template matStepLabel>Characteristics</ng-template>
+      <div class="d-f jc-sb" formArrayName="characteristics">
+        @for (characteristic of characteristics$ | async; track trackById(i, characteristic); let i = $index) {
+          <mat-form-field
+            [formGroupName]="i"
+            appearance="outline"
+            style="width:80px;">
+            <mat-label>{{characteristic.labels?.abbreviation}}</mat-label>
+            <input matInput type="number" formControlName="starting" [min]="20" [max]="50" [step]="1">
+            @if (step1.get('characteristics.' + i + '.starting')?.hasError('required')) {
+              <mat-error>Required</mat-error>
+            }
+            @if (step1.get('characteristics.' + i + '.starting')?.hasError('min')) {
+              <mat-error>Min: 20</mat-error>
+            }
+            @if (step1.get('characteristics.' + i + '.starting')?.hasError('max')) {
+              <mat-error>Max: 50</mat-error>
+            }
+          </mat-form-field>
+        }
+      </div>
+      <div>
+        <button mat-button matStepperNext [disabled]="!step1.valid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- STEP 2: ORIGIN -->
+  <mat-step [stepControl]="step2">
+    <form [formGroup]="step2" class="d-f fd-c">
+      <ng-template matStepLabel>
+        Origin @if (step2.get('origin').value) {
+        <span>(<interactive [id]="step2.get('origin').value"></interactive>)</span>
+      }
+    </ng-template>
+    <mat-form-field appearance="outline">
+      <mat-label>Origin</mat-label>
+      <mat-select formControlName="origin">
+        @for (i of origins$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id">{{i.name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
+  @if (originBonuses$ | async) {
+    <ng-container [formGroup]="bonuses">
+      <selected-bonuses formControlName="origin" [value]="originBonuses$ | async"></selected-bonuses>
+    </ng-container>
+  }
+  @if (originItems$ | async) {
+    <ng-container [formGroup]="items">
+      <selected-items formControlName="origin" [value]="originItems$ | async"></selected-items>
+    </ng-container>
+  }
+  <div class="d-f g-5">
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext [disabled]="!step2.valid">Next</button>
+  </div>
+</mat-step>
+<!-- STEP 3: FACTION -->
+<mat-step [stepControl]="step3">
+  <form [formGroup]="step3" class="d-f fd-c">
+    <ng-template matStepLabel>
+      Faction @if (step3.get('faction').value) {
+      <span>(<interactive [id]="step3.get('faction').value"></interactive>)</span>
+    }
+  </ng-template>
+  <mat-form-field appearance="outline">
+    <mat-label>Faction</mat-label>
+    <mat-select formControlName="faction">
+      @for (i of factions$ | async; track trackById($index, i)) {
+        <mat-option [value]="i.id">{{i.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
+@if (factionBonuses$ | async) {
+  <ng-container [formGroup]="bonuses">
+    <selected-bonuses formControlName="faction" [value]="factionBonuses$ | async"></selected-bonuses>
+  </ng-container>
+}
+@if (factionItems$ | async) {
+  <ng-container [formGroup]="items">
+    <selected-items formControlName="faction" [value]="factionItems$ | async"></selected-items>
+  </ng-container>
+}
+<div class="d-f g-5">
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button matStepperNext [disabled]="!step3.valid">Next</button>
+</div>
+</mat-step>
+<!-- STEP 4: ROLE -->
+<mat-step [stepControl]="step4">
+  <form [formGroup]="step4" class="d-f fd-c">
+    <ng-template matStepLabel>
+      Role @if (step4.get('role').value) {
+      <span>(<interactive [id]="step4.get('role').value"></interactive>)</span>
+    }
+  </ng-template>
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      @for (i of roles$ | async; track trackById($index, i)) {
+        <mat-option [value]="i.id">{{i.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
+@if (roleBonuses$ | async) {
+  <ng-container [formGroup]="bonuses">
+    <selected-bonuses formControlName="role" [value]="roleBonuses$ | async"></selected-bonuses>
+  </ng-container>
+}
+@if (roleItems$ | async) {
+  <ng-container [formGroup]="items">
+    <selected-items formControlName="role" [value]="roleItems$ | async"></selected-items>
+  </ng-container>
+}
+<div class="d-f g-5">
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button matStepperNext [disabled]="!step4.valid">Next</button>
+</div>
+</mat-step>
+<!-- STEP 5: GENERAL -->
+<mat-step [stepControl]="step5">
+  <form [formGroup]="step5" class="d-f fd-c">
+    <ng-template matStepLabel>Name & Details</ng-template>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+      @if (step5.get('name').hasError('required')) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+    <div class="d-f g-10">
+      <image-input
+        formControlName="image"
+        class="mb-20"
+        [path]="imagesPath$ | async">
+      </image-input>
+      <image-upload color="accent" [path]="imagesPath$ | async"></image-upload>
+    </div>
+    <mat-form-field appearance="outline" style="align-items:stretch;">
+      <mat-label>Psychic Powers</mat-label>
+      <mat-select formControlName="powers" multiple>
+        @for (i of powers$ | async; track trackById($index, i)) {
+          <mat-option [value]="i.id" [matTooltip]="i.labels?.tooltip">
+            {{i.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    @if (randomTalentBonuses$ | async) {
+      <ng-container [formGroup]="bonuses">
+        <selected-bonuses formControlName="random" [value]="randomTalentBonuses$ | async"></selected-bonuses>
+      </ng-container>
+    }
+    <div class="d-f g-5">
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext [disabled]="!step5.valid">Next</button>
+    </div>
+  </form>
+</mat-step>
+<!-- OVERVIEW -->
+<mat-step>
+  <ng-template matStepLabel>Overview</ng-template>
+  <p class="mt-5">You are now done.</p>
+  <div class="d-f g-5">
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button (click)="stepper.reset()">Reset</button>
+    <button mat-button color="primary" (click)="onSubmit()">Save</button>
+  </div>
+</mat-step>
+</mat-stepper>

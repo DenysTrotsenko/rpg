@@ -1,0 +1,13 @@
+<h1 class="mb-5 ff-g">Timeline of 19th century</h1>
+<table class="mat-table bs-0 w-100">
+  <tr class="mat-row">
+    <td class="mat-cell p-5">Date</td>
+    <td class="mat-cell p-5">Description</td>
+  </tr>
+  @for (entry of timeline; track entry) {
+    <tr class="mat-row">
+      <td class="mat-cell p-5">{{entry?.date | date: 'y, d MMM'}}</td>
+      <td class="mat-cell p-5">{{entry?.description}}</td>
+    </tr>
+  }
+</table>

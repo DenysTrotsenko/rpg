@@ -1,0 +1,11 @@
+:host {
+  ::ng-deep {
+    .mat-mdc-list-item-avatar {
+      border-radius: 0 !important;
+    }
+
+    .mat-mdc-list-item-line {
+      text-decoration: none !important;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Add/Edit Setting</h1>
+  <div mat-dialog-content class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Clone From</mat-label>
+      <mat-select formControlName="clone">
+        @for (i of settings$ | async; track i) {
+          <mat-option [value]="i.storage">
+            {{i.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">
+    Cancel
+  </button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()">
+    Save
+  </button>
+</div>

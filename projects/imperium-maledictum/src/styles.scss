@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+@import 'material-symbols';
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
+@import 'variables';
+@import './styles/variables';
+@import './styles/typography';
+
+@include mat.elevation-classes();
+@include mat.app-background();
+@include mat.all-component-themes($app-theme);
+@include mat.all-component-typographies(mat.m2-define-typography-config($font-family: '"Catamaran", sans-serif'));
+
+html, body {
+  overscroll-behavior-x: none;
+}
+
+table.mat-mdc-table {
+  background: none;
+  border-spacing: 5px;
+  border: 1px solid gray;
+  border-radius: 4px;
+
+  .mat-mdc-cell {
+    padding: 0;
+  }
+}
+
+/* Tooltip */
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  max-width: 300px !important;
+  max-height: unset !important;
+  line-height: 1.25;
+  white-space: pre-line;
+  text-align: left;
+}
+
+.snackbar-error {
+  color: white;
+  background-color: $color-warn;
+}
+
+.toolbar-main {
+  padding: 0 10px !important;
+  margin: -10px 0 10px -10px !important;
+  box-sizing: content-box !important;
+}

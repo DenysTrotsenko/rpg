@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Add Bestiary Faction</h1>
+  <div mat-dialog-content class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="null">Cancel</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+  </div>
+</form>

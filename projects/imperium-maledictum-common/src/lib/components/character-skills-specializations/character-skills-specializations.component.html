@@ -1,0 +1,20 @@
+@if (skills.length > 0) {
+  <p>
+    <b class="c-gray">Skills: </b>
+    @for (i of skills; track i) {
+      <span class="comma-separated ws-pl c-pointer" [matTooltip]="i.tooltip">
+        {{i.name}} {{i.total}}%
+      </span>
+    }
+  </p>
+}
+@if (specialisations.length > 0) {
+  <p>
+    <b class="c-gray">Specialisations: </b>
+    @for (i of specialisations; track i) {
+      <span class="comma-separated ws-pl c-pointer" [matTooltip]="i.tooltip">
+        {{i.skill}} ({{i.name}}) {{i.total}}%
+      </span>
+    }
+  </p>
+}

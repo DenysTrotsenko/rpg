@@ -1,0 +1,8 @@
+<file-input
+  accept="image/*"
+  [multiple]="true"
+  [label]="label"
+  [color]="color"
+  [loading]="loading$ | async"
+  (valueChanges)="onImageChange($event)">
+</file-input>

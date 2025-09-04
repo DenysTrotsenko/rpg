@@ -1,0 +1,21 @@
+<mat-toolbar class="f-0-0-a"></mat-toolbar>
+<mat-accordion class="o-a">
+  @for (i of items$ | async; track i) {
+    <mat-expansion-panel [hideToggle]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{i.email}} (<span class="c-gray">{{i.id}}</span>)
+          <span class="f-1"></span>
+          <button mat-icon-button (click)="onEditClick(i)" matTooltip="Edit Permissions">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div>Id: {{i.id}}</div>
+        <div>Email: {{i.email}}</div>
+        <div>Name: {{i.name || '--'}}</div>
+      </div>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

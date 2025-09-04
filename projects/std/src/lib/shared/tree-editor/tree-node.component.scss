@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  line-height: 40px;
+
+  &:hover {
+    .visible-on-hover {
+      display: block;
+    }
+  }
+}

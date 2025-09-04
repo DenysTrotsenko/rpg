@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Image Gallery</h2>
+<mat-dialog-content class="images-container">
+  @for (src of gallery$ | async; track src) {
+    <img
+      class="image"
+      alt="image"
+      width="100"
+      height="100"
+      [ngSrc]="src"
+      [class.selected]="selected === src"
+      (click)="selected = src">
+  }
+</mat-dialog-content>
+<mat-dialog-actions class="actions">
+  <button mat-stroked-button color="primary" [mat-dialog-close]="null">Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="selected">Set</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "moduleResolution": "bundler",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "target": "ES2022",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@std": [
+        "projects/std/src/public-api",
+        "dist/std/std",
+        "dist/std"
+      ],
+      "@imperium-maledictum-1e/*": [
+        "projects/srd/imperium-maledictum-1e/*"
+      ],
+      "@wfrp-4e/*": [
+        "projects/srd/warhammer-fantasy-roleplay-4e/*"
+      ],
+      "@im-common": [
+        "projects/imperium-maledictum-common/src/public-api"
+      ]
+    },
+    "useDefineForClassFields": false
+  }
+}

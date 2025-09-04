@@ -1,0 +1,30 @@
+$font-family-default: "Catamaran", sans-serif;
+$font-family-printing-press: "IM Fell DW Pica SC", serif;
+$font-family-handwriting-1: "Herr Von Muellerhoff", cursive;
+$font-family-handwriting-2: "Mrs Saint Delafield", cursive;
+$font-family-handwriting-3: "Give You Glory", cursive;
+
+.ff-d { font-family: $font-family-default !important; }
+.ff-pp { font-family: $font-family-printing-press !important; }
+.ff-hw1 { font-family: $font-family-handwriting-1 !important; }
+.ff-hw2 { font-family: $font-family-handwriting-2 !important; }
+.ff-hw3 { font-family: $font-family-handwriting-3 !important; }
+
+.fs-10 { font-size: 10px !important; }
+.fs-12 { font-size: 12px !important; }
+.fs-14 { font-size: 14px !important; }
+.fs-16 { font-size: 16px !important; }
+.fs-18 { font-size: 18px !important; }
+.fs-20 { font-size: 20px !important; }
+.fs-24 { font-size: 24px !important; }
+
+.fw-b { font-weight: bold !important; }
+
+.ta-l { text-align: left !important; }
+.ta-r { text-align: right !important; }
+.ta-c { text-align: center !important; }
+
+.tt-c { text-transform: capitalize !important; }
+.tt-u { text-transform: uppercase !important; }
+
+.ws-pl { white-space: pre-line !important; }

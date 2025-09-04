@@ -1,0 +1,12 @@
+<mat-action-list>
+  <button mat-list-item (click)="onSelectClick(ref)">
+    Select / Deselect All
+  </button>
+</mat-action-list>
+<mat-selection-list [formControl]="control" #ref>
+  @for (i of value; track trackById($index, i)) {
+    <mat-list-option [value]="i.id">
+      {{i.name}}
+    </mat-list-option>
+  }
+</mat-selection-list>

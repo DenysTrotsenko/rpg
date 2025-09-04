@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list dense>
+      @for (i of options; track i) {
+        <a mat-list-item [routerLink]="i.link" routerLinkActive="active">
+          <span>{{i.label}}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

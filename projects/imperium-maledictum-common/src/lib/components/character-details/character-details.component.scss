@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: flex;
+  gap: 10px;
+}
+
+img {
+  //max-width: 200px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px mat.m2-get-color-from-palette(mat.$m2-gray-palette, 500);
+}

@@ -1,0 +1,7 @@
+@for (bonus of bonuses; let i = $index; track i) {
+  <select-bonus
+    class="mb-15"
+    [value]="bonus"
+    (valueChanges)="onBonusChange(i, bonus, $event)">
+  </select-bonus>
+}

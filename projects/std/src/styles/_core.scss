@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;500;700&family=IM+Fell+DW+Pica+SC&family=Herr+Von+Muellerhoff&family=Mrs+Saint+Delafield&family=Give+You+Glory&display=swap');
+@import "variables";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
+
+.mat-expansion-panel:hover {
+  .visible-on-hover {
+    display: flex;
+  }
+}
+
+.visible-on-hover {
+  display: none;
+}
+
+.select-in-toolbar {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

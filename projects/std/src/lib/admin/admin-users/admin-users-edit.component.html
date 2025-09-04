@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content class="d-f fd-c">
+  <form [formGroup]="form">
+    <mat-selection-list formControlName="permissions">
+      @for (i of permissions; track i) {
+        <mat-list-option [value]="i">
+          {{i}}
+        </mat-list-option>
+      }
+    </mat-selection-list>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">
+    Cancel
+  </button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()">
+    Change
+  </button>
+</div>

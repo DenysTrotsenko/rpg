@@ -1,0 +1,78 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Add Psychic Power</h1>
+  <div mat-dialog-content class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <div class="d-f ai-c g-20 mb-20">
+      <mat-form-field class="f-1" appearance="outline">
+        <mat-label>Psychic Discipline</mat-label>
+        <mat-select formControlName="discipline">
+          @for (i of disciplines$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox formControlName="overt">Overt</mat-checkbox>
+    </div>
+    <div class="d-f g-10">
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Warp Rating</mat-label>
+        <input matInput type="number" formControlName="cost">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Difficulty</mat-label>
+        <mat-select formControlName="difficulty">
+          @for (i of difficulties$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}} ({{(i.bonus < 0 ? '' : '+') + i.bonus}})
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Range</mat-label>
+        <mat-select formControlName="range">
+          @for (i of ranges$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Target</mat-label>
+        <mat-select formControlName="target" multiple>
+          @for (i of targets$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Duration</mat-label>
+        <mat-select formControlName="duration">
+          @for (i of durations$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </ng-container>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="null">Cancel</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid">Add</button>
+  </div>
+</form>

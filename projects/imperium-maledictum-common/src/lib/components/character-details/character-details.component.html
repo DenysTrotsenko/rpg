@@ -1,0 +1,16 @@
+@if (image) {
+  <img [ngSrc]="image" width="200" height="200" alt="portrait">
+}
+<div>
+  <p><b class="c-gray">Origin: </b><span>{{origin?.name}}</span></p>
+  <p><b class="c-gray">Faction: </b><span>{{faction?.name}}</span></p>
+  <p><b class="c-gray">Role: </b><span>{{role?.name}}</span></p>
+</div>
+<div>
+  <p><b class="c-gray">Fate: </b><span>{{fate}}</span></p>
+  <p><b class="c-gray">Wounds: </b><span>{{woundsMax}}</span></p>
+  <p><b class="c-gray">Critical Wounds: </b><span>{{criticalsMax}}</span></p>
+  <p><b class="c-gray">Corruption: </b><span>{{corruptionMax}}</span></p>
+  <p><b class="c-gray">Encumbrance: </b><span>{{encumbranceMax}}</span></p>
+  <p><b class="c-gray">Initiative: </b><span>{{initiative}}</span></p>
+</div>

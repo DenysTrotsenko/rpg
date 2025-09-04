@@ -1,0 +1,28 @@
+<mat-toolbar class="f-0-0-a">
+  <a mat-flat-button color="primary" routerLink="../create">Create Character</a>
+</mat-toolbar>
+<mat-nav-list class="p-10">
+  @for (i of characters$ | async; track trackById($index, i)) {
+    <mat-list-item>
+      @if (i.image) {
+        <img matListItemAvatar [src]="i.image" alt="...">
+      }
+      @if (!i.image) {
+        <span matListItemAvatar></span>
+      }
+      <a matListItemLine [routerLink]="['../view', i.id]">{{ i.name }}</a>
+      <span matListItemMeta>
+        @if (i.canAdvance) {
+          <button mat-icon-button (click)="onAdvanceClick(i.id)" matTooltip="Advance">
+            <mat-icon>keyboard_double_arrow_up</mat-icon>
+          </button>
+        }
+        @if (i.canDelete) {
+          <button mat-icon-button (click)="onDeleteClick(i)" matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+      </span>
+    </mat-list-item>
+  }
+</mat-nav-list>

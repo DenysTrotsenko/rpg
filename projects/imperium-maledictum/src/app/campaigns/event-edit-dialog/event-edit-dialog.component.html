@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>{{data?.title ?? 'Add Event'}}</h1>
+  <div mat-dialog-content class="d-f fd-c">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description</mat-label>
+      <input matInput formControlName="short">
+    </mat-form-field>
+    <image-input
+      formControlName="image"
+      class="mb-20"
+      [path]="path">
+    </image-input>
+    <mat-form-field appearance="outline">
+      <mat-label>Have Access</mat-label>
+      <mat-select formControlName="members" multiple>
+        <select-all [model]="form.get('members')" [values]="memberIds$ | async"></select-all>
+        @for (i of members$ | async; track i) {
+          <mat-option [value]="i.id">
+            {{i?.name}}@if (i?.email) {
+            <span class="c-gray"> ({{i.email}})</span>
+          }
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">
+    Cancel
+  </button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue(), data?.event)" [disabled]="!form.valid">
+    Save
+  </button>
+</div>
+</form>

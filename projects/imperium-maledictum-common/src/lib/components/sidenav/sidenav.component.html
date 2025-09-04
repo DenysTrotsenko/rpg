@@ -1,0 +1,35 @@
+<mat-sidenav-container [class.expanded]="expanded">
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar class="d-f jc-sb" [class.pl-5]="!expanded">
+      <div class="fs-14 f-1 truncate not-expanded-hide">{{title}}</div>
+      <button mat-icon-button class="f-0-0-a" (click)="onToggleSidenavClick()" matTooltip="{{expanded ? 'Collapse' : 'Expand'}}">
+        <mat-icon>{{expanded ? 'chevron_left' : 'chevron_right'}}</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      @for (i of options; track i) {
+        <a mat-list-item [routerLink]="i.link" routerLinkActive="active" matTooltip="{{expanded ? '' : i.label}}">
+          <mat-icon>{{i.icon}}</mat-icon><span class="ml-10 not-expanded-hide">{{i.label}}</span>
+        </a>
+        @if (expanded) {
+          @for (j of i?.children; track j) {
+            <a class="pl-50" mat-list-item [routerLink]="i.link + '/' + j.link" routerLinkActive="active" matTooltip="{{expanded ? '' : j.label}}">
+              @if (j.icon) {
+                <mat-icon>{{j.icon}}</mat-icon>
+                }<span class="ml-10 not-expanded-hide">{{j.label}}</span>
+              </a>
+            }
+          }
+        }
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-action-list>
+        <button mat-list-item matTooltip="{{expanded ? '' : 'Logout'}}" (click)="onLogoutClick()">
+          <mat-icon color="warn">logout</mat-icon><span class="ml-10 not-expanded-hide warn">Logout</span>
+        </button>
+      </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

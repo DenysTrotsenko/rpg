@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>JSON Editor</h1>
+<div mat-dialog-content class="d-f fd-c max-height-override">
+  <std-code-editor
+    [json]="data"
+    (errorChange)="error$.next($event)"
+    (valueChange)="value$.next($event)">
+  </std-code-editor>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="null">
+    Cancel
+  </button>
+  <button mat-flat-button color="primary" [disabled]="error$ | async" [mat-dialog-close]="value$.getValue()">
+    Change
+  </button>
+</div>

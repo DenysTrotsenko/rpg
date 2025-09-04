@@ -1,0 +1,7 @@
+@if (edit) {
+  <mat-icon (click)="onChangeClick(-step)">remove</mat-icon>
+}
+<input matInput type="text" readonly [value]="value.toString(10)">
+@if (edit) {
+  <mat-icon (click)="onChangeClick(step)">add</mat-icon>
+}

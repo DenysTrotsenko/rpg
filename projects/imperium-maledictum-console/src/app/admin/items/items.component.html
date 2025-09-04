@@ -1,0 +1,123 @@
+<form [formGroup]="form">
+  <h1 mat-dialog-title>Add Item</h1>
+  <div mat-dialog-content class="d-f fd-c pt-5">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <div class="d-f g-10">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          @for (i of itemTypes$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Availability</mat-label>
+        <mat-select formControlName="availability">
+          @for (i of availabilities$ | async; track trackById($index, i)) {
+            <mat-option [value]="i.id">
+              {{i.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Encumbrance</mat-label>
+        <input matInput type="number" formControlName="encumbrance">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="min-width:100px;">
+        <mat-label>Cost</mat-label>
+        <input matInput type="number" formControlName="cost">
+      </mat-form-field>
+    </div>
+    <ng-container formGroupName="labels">
+      <mat-form-field appearance="outline" class="f-1">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </ng-container>
+    <ng-container formGroupName="data">
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Traits</mat-label>
+          <mat-select formControlName="traits" multiple>
+            @for (i of itemTraits$ | async; track trackById($index, i)) {
+              <mat-option [value]="i.id">
+                {{i.name}}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <h3 class="ff-g">Weapon</h3>
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Damage</mat-label>
+          <input matInput type="number" formControlName="damage">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Penetration</mat-label>
+          <input matInput type="number" formControlName="penetration">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Rend</mat-label>
+          <input matInput type="number" formControlName="rend">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Range</mat-label>
+          <mat-select formControlName="range">
+            @for (i of ranges$ | async; track trackById($index, i)) {
+              <mat-option [value]="i.id">
+                {{i.name}}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Magazine</mat-label>
+          <input matInput type="number" formControlName="magazine">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Magazine Cost</mat-label>
+          <input matInput type="number" formControlName="magazineCost">
+        </mat-form-field>
+      </div>
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline" class="f-1">
+          <mat-label>Specialisations</mat-label>
+          <mat-select formControlName="specialisations" multiple>
+            @for (i of specialisations$ | async; track trackById($index, i)) {
+              <mat-option [value]="i.id">
+                {{i.name}} ({{(i.skill | getById)?.name}})
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <h3 class="ff-g">Armor</h3>
+      <div class="d-f g-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Armour</mat-label>
+          <input matInput type="number" formControlName="armour">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Locations</mat-label>
+          <mat-select formControlName="locations" multiple>
+            @for (i of locations; track i) {
+              <mat-option [value]="i">{{i}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="null">Cancel</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="onSubmit(form.getRawValue())" [disabled]="!form.valid">Add</button>
+  </div>
+</form>

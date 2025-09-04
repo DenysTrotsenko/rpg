@@ -1,0 +1,219 @@
+@if (character$ | async; as character;) {
+  <mat-toolbar class="d-f jc-sb">
+    <h1 class="f-1">Character View</h1>
+    @if (canAdvance$ | async) {
+      <button mat-icon-button (click)="onAdvanceClick(character.id)" matTooltip="Advance">
+        <mat-icon>keyboard_double_arrow_up</mat-icon>
+      </button>
+    }
+    <button mat-icon-button (click)="expand = !expand">
+      <mat-icon>{{expand ? 'expand_content' : 'collapse_content'}}</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="p-10">
+    <p class="ff-g fs-16">{{character.name}}</p>
+    <character-details class="mb-10" [character]="character"></character-details>
+    <character-characteristics class="mb-10" [character]="character"></character-characteristics>
+    <character-skills-specializations [character]="character"></character-skills-specializations>
+    <character-talents [character]="character"></character-talents>
+    <character-powers [character]="character"></character-powers>
+    <character-equipment [character]="character"></character-equipment>
+  </div>
+  <!--  <p class="c-gray">-->
+  <!--    <i>{{description}}</i>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <b class="c-gray">Belief & Flaw:</b>-->
+<!--    <span *ngFor="let i of personality;" class="comma-separated ws-pl" [matTooltip]="i.labels?.description">-->
+<!--      {{i.name}}-->
+<!--    </span>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <b class="c-gray">Languages:</b>-->
+<!--    <span *ngFor="let i of languages; trackBy: trackById" class="comma-separated ws-pl">-->
+<!--      {{i.name}}-->
+<!--    </span>-->
+<!--  </p>-->
+<!--  <p class="mb-0">-->
+<!--    <b class="c-gray">Attributes & Skills:</b>-->
+<!--  </p>-->
+<!--  <table class="mat-table bs-0 w-100 mb-15">-->
+<!--    <tr class="mat-row">-->
+<!--      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell p-5">{{i.name}} {{i.value}}% ({{i.bonus}})</td>-->
+<!--    </tr>-->
+<!--    <tr class="mat-row bg-gray-800">-->
+<!--      <td class="mat-cell p-5">Encumbrance: {{getEncumbranceLimit(character)}}</td>-->
+<!--      <td class="mat-cell p-5">DT: {{getDamageThresholds(character)}}</td>-->
+<!--      <td class="mat-cell p-5" [matTooltip]="getAllMovementsTooltip(character)">Movement: {{getMovement(character)}}</td>-->
+<!--      <td class="mat-cell p-5">Initiative: {{getInitiative(character)}}</td>-->
+<!--      <td class="mat-cell p-5"></td>-->
+<!--      <td class="mat-cell p-5">PT: {{getPerilThresholds(character)}}</td>-->
+<!--      <td class="mat-cell p-5"></td>-->
+<!--    </tr>-->
+<!--    <tr class="mat-row">-->
+<!--      <td *ngFor="let i of attributes; trackBy: trackById;" class="mat-cell va-t p-5">-->
+<!--        <div class="d-f fd-c">-->
+<!--            <span *ngFor="let j of filterSkillsByAttribute(skills, i.id); trackBy: trackById"-->
+<!--              [class.c-gray]="j.special && j.value === 0"-->
+<!--              [matTooltip]="j.tooltip">-->
+<!--              {{j.name}}{{j.special ? '*' : ''}} +{{j.value}}%-->
+<!--            </span>-->
+<!--        </div>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--  <p>-->
+<!--    <b class="c-gray">Traits:</b>-->
+<!--    <span *ngFor="let i of traits;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">-->
+<!--      {{i.name}}-->
+<!--    </span>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <b class="c-gray">Quirks, Afflictions, Permanent Injuries:</b>-->
+<!--    <span *ngFor="let i of quirks;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">-->
+<!--      {{i.name}}-->
+<!--    </span>-->
+<!--  </p>-->
+<!--  <p *ngIf="spells.length > 0">-->
+<!--    <b class="c-gray">Spells, Alchemical Arts:</b>-->
+<!--    <span *ngFor="let i of spells;" class="comma-separated ws-pl" [matTooltip]="i.labels?.tooltip">-->
+<!--      {{i.name}}-->
+<!--    </span>`-->
+<!--  </p>-->
+<!--&lt;!&ndash;  <ng-container *ngIf="(view$ | async) === 'full'"></ng-container>&ndash;&gt;-->
+<!--  <form [formGroup]="form" class="d-f fd-c">-->
+<!--    <div class="d-f cg-5 mb-10">-->
+<!--      <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="peril">-->
+<!--        <mat-label class="c-gray">Peril Condition Track</mat-label>-->
+<!--        <mat-radio-button [value]="0">UNHINDERED</mat-radio-button>-->
+<!--        <mat-radio-button [value]="1">Imperiled</mat-radio-button>-->
+<!--        <mat-radio-button [value]="2">Ignore 1 Skill Rank</mat-radio-button>-->
+<!--        <mat-radio-button [value]="3">Ignore 2 Skill Ranks</mat-radio-button>-->
+<!--        <mat-radio-button [value]="4">Ignore 3 Skill Ranks</mat-radio-button>-->
+<!--        <mat-radio-button [value]="5">INCAPACITATED!</mat-radio-button>-->
+<!--      </mat-radio-group>-->
+<!--      <mat-radio-group class="d-if fd-c rg-10 bordered" formControlName="damage">-->
+<!--        <mat-label class="c-gray">Damage Condition Track</mat-label>-->
+<!--        <mat-radio-button [value]="0">UNHARMED</mat-radio-button>-->
+<!--        <mat-radio-button [value]="1">Hurt</mat-radio-button>-->
+<!--        <mat-radio-button [value]="2">Moderately Wounded (Injury 1D6)</mat-radio-button>-->
+<!--        <mat-radio-button [value]="3">Seriously Wounded (Injury 2D6)</mat-radio-button>-->
+<!--        <mat-radio-button [value]="4">Grievously Wounded (Injury 3D6)</mat-radio-button>-->
+<!--        <mat-radio-button [value]="5">SLAIN!</mat-radio-button>-->
+<!--      </mat-radio-group>-->
+<!--      <div class="d-f fd-c jc-sb">-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Conflict</mat-label>-->
+<!--          <input matInput type="number" min="0" max="9" formControlName="conflict">-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Belief Ranks</mat-label>-->
+<!--          <input matInput type="number" min="0" max="9" formControlName="belief_ranks">-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Flaw Ranks</mat-label>-->
+<!--          <input matInput type="number" min="0" max="9" formControlName="flaw_ranks">-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="d-f jc-sb cg-5">-->
+<!--      <mat-form-field appearance="outline" class="f-1" [matTooltip]="getInjuriesTooltip()">-->
+<!--        <mat-label>Injuries</mat-label>-->
+<!--        <mat-select multiple formControlName="injuries">-->
+<!--          <mat-option *ngFor="let i of injuries;" [value]="i.id" [matTooltip]="i.labels?.effect">-->
+<!--            {{i.name}} ({{(i.type | getById: DataTypes.INJURY_TYPES)?.name}})-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Ailments</mat-label>-->
+<!--        <mat-select multiple formControlName="ailments">-->
+<!--          <mat-option *ngFor="let i of ailments;" [value]="i.id" [matTooltip]="i.labels?.tooltip">-->
+<!--            {{i.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="outline" class="f-1">-->
+<!--        <mat-label>Drugs</mat-label>-->
+<!--        <mat-select multiple formControlName="drugs">-->
+<!--          <mat-option *ngFor="let i of drugs;" [value]="i.id" [matTooltip]="i.labels?.tooltip">-->
+<!--            {{i.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <mat-form-field appearance="outline" class="w-100">-->
+<!--      <mat-label>Notes</mat-label>-->
+<!--      <textarea matInput formControlName="notes"></textarea>-->
+<!--    </mat-form-field>-->
+<!--  </form>-->
+<!--  &lt;!&ndash; WEAPONS &ndash;&gt;-->
+<!--  <p class="mb-0">-->
+<!--    <b class="c-gray">Weapons:</b>-->
+<!--  </p>-->
+<!--  <table class="mat-table w-100 mb-15">-->
+<!--    <tr class="mat-row">-->
+<!--      <th class="mat-header-cell ta-l">Name</th>-->
+<!--      <th class="mat-header-cell ta-l">Skill</th>-->
+<!--      <th class="mat-header-cell ta-l">Handling</th>-->
+<!--      <th class="mat-header-cell ta-l">Load</th>-->
+<!--      <th class="mat-header-cell ta-l">Ammo</th>-->
+<!--      <th class="mat-header-cell ta-l">Distance</th>-->
+<!--      <th class="mat-header-cell ta-l">Damage</th>-->
+<!--      <th class="mat-header-cell ta-l">Qualities</th>-->
+<!--      <th class="mat-header-cell ta-l">Encumbrance</th>-->
+<!--      <th class="mat-header-cell ta-l">Quantity</th>-->
+<!--      <th class="mat-header-cell ta-r">-->
+<!--        <mat-icon color="primary" class="c-pointer" matTooltip="Add Weapon" (click)="onAddWeaponClick()">add</mat-icon>-->
+<!--      </th>-->
+<!--    </tr>-->
+<!--    <tr *ngFor="let i of DEFAULT_WEAPONS" class="mat-row va-t h-32">-->
+<!--      <td class="mat-cell">{{i.name}}</td>-->
+<!--      <td class="mat-cell">-->
+<!--        <span *ngFor="let j of i.skills;" class="comma-separated ws-pl">-->
+<!--          {{(j | getById: DataTypes.SKILLS).name}}-->
+<!--        </span>-->
+<!--      </td>-->
+<!--      <td class="mat-cell">{{i.labels?.handling}}</td>-->
+<!--      <td class="mat-cell">{{i.labels?.load}}</td>-->
+<!--      <td class="mat-cell">{{i.labels?.ammo}}</td>-->
+<!--      <td class="mat-cell">{{i.labels?.distance}}</td>-->
+<!--      <td class="mat-cell">{{getWeaponDamage(i, character)}}</td>-->
+<!--      <td class="mat-cell">-->
+<!--        <span *ngFor="let j of i.qualities;" class="comma-separated ws-pl" [matTooltip]="(j | getById: DataTypes.QUALITIES)?.labels?.effect">-->
+<!--          {{(j | getById: DataTypes.QUALITIES).name}}-->
+<!--        </span>-->
+<!--      </td>-->
+<!--      <td class="mat-cell">{{i.encumbrance}}</td>-->
+<!--      <td class="mat-cell"></td>-->
+<!--      <td class="mat-cell ta-r"></td>-->
+<!--    </tr>-->
+<!--    <tr *ngFor="let i of form.get('weapons').value; index as index;" class="mat-row va-t h-32">-->
+<!--      <ng-container *ngIf="getWeapon(i.id) as weapon">-->
+<!--        <td class="mat-cell">{{weapon?.name}}</td>-->
+<!--        <td class="mat-cell">-->
+<!--          <span *ngFor="let j of weapon?.skills;" class="comma-separated ws-pl">-->
+<!--            {{(j | getById: DataTypes.SKILLS).name}}-->
+<!--          </span>-->
+<!--        </td>-->
+<!--        <td class="mat-cell">{{weapon?.labels?.handling}}</td>-->
+<!--        <td class="mat-cell">{{weapon?.labels?.load}}</td>-->
+<!--        <td class="mat-cell">{{weapon?.labels?.ammo}}</td>-->
+<!--        <td class="mat-cell">{{weapon?.labels?.distance}}</td>-->
+<!--        <td class="mat-cell">{{getWeaponDamage(weapon, character)}}</td>-->
+<!--        <td class="mat-cell">-->
+<!--          <span *ngFor="let j of getAllQualities(weapon, i.custom)" class="comma-separated ws-pl" [matTooltip]="j?.labels.effect">-->
+<!--            {{j?.name}}-->
+<!--          </span>-->
+<!--        </td>-->
+<!--        <td class="mat-cell">{{(weapon?.encumbrance * i.quantity).toFixed(2)}}</td>-->
+<!--        <td class="mat-cell">-->
+<!--          <input *ngIf="weapon?.quantifiable" #inpRef class="input-in-cell" matInput type="number" min="1" [value]="i.quantity" (input)="onQuantityChange($event, i.uid, inpRef)">-->
+<!--        </td>-->
+<!--        <td class="mat-cell ta-r">-->
+<!--          <mat-icon class="c-pointer" (click)="onRemoveWeaponClick(i.uid)">close</mat-icon>-->
+<!--        </td>-->
+<!--      </ng-container>-->
+<!--    </tr>-->
+<!--  </table>-->
+}

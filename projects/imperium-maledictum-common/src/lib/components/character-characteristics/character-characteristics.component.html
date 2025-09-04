@@ -1,0 +1,16 @@
+<table class="mat-table bs-0 w-100">
+  <tr class="mat-row">
+    @for (i of characteristics; track trackById($index, i)) {
+      <td class="mat-cell p-5">
+        {{i?.labels?.abbreviation}}
+      </td>
+    }
+  </tr>
+  <tr class="mat-row bg-gray-800">
+    @for (i of characteristics; track trackById($index, i)) {
+      <td class="mat-cell p-5 c-pointer" [matTooltip]="i.labels.tooltip">
+        {{i.current}}% ({{i.bonus}})
+      </td>
+    }
+  </tr>
+</table>

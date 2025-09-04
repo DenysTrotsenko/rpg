@@ -1,0 +1,19 @@
+<span class="f-1">{{node.name}}</span>
+<span class="visible-on-hover">
+  <button mat-icon-button (click)="onInfoClick(node)">
+    <mat-icon>info</mat-icon>
+  </button>
+  @if (mode === 'edit') {
+    <span>
+      <button mat-icon-button (click)="onAddClick(node)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onEditClick(node)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDeleteClick(node)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  }
+</span>

@@ -1,0 +1,21 @@
+@if (loading$ | async) {
+  <mat-spinner color="accent" style="margin: 10px auto;"></mat-spinner>
+} @else {
+  <mat-toolbar class="f-0-0-a">
+    <span class="f-1"></span>
+    <button mat-flat-button color="primary" class="mr-10" (click)="onEditorClick()">
+      JSON
+    </button>
+    <button mat-flat-button color="accent" [disabled]="!(changed$ | async)" (click)="onSaveClick()">
+      Save
+    </button>
+  </mat-toolbar>
+  <form [formGroup]="form" class="d-f fd-c ai-s p-10">
+    @for (control of form.controls | keyvalue; track control; let i = $index) {
+      <mat-form-field appearance="outline">
+        <mat-label>{{control.key}}</mat-label>
+        <input matInput [formControlName]="control.key">
+      </mat-form-field>
+    }
+  </form>
+}

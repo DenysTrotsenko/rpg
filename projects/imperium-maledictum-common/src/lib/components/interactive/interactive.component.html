@@ -1,0 +1,3 @@
+@if (id | getById; as item) {
+  <span [matTooltip]="item?.labels?.tooltip">{{item?.name}}</span>
+}

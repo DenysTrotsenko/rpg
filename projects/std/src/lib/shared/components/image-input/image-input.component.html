@@ -1,0 +1,18 @@
+@if (src$ | async; as src) {
+  <img
+    class="image"
+    alt="image"
+    [width]="width"
+    [height]="height"
+    [src]="src$ | async"
+    (click)="onClick(src)">
+}
+@if (!(src$ | async)) {
+  <div
+    class="no-image"
+    [style.width]="width + 'px'"
+    [style.height]="height + 'px'"
+    (click)="onClick()">
+    <mat-icon class="no-image-icon">add_photo_alternate</mat-icon>
+  </div>
+}
